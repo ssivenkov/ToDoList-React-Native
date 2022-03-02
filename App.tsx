@@ -1,18 +1,13 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
 import React from 'react';
-import {Text, View} from 'react-native';
+import {AppComponent} from './src/components/AppComponent';
+import {Provider} from 'react-redux';
+import {store} from './src/store/Store';
+import {ReturnComponentType} from './src/types/common/ReturnComponentType';
 
-export const App = () => {
+export const App = (): ReturnComponentType => {
   return (
-    <View>
-      <Text>qwertyuio</Text>
-    </View>
+    <Provider store={store}>
+      <AppComponent />
+    </Provider>
   );
 };
