@@ -20,8 +20,9 @@
   },
   "plugins": [
     "react",
-    "@typescript-eslint",
-    "prettier"
+    "prettier",
+    "react-hooks",
+    "@typescript-eslint"
   ],
   "rules": {
     "no-console": "error",
