@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 
 import {Text, View} from 'react-native';
-import {headerPropsType} from 'types/components/header/HeaderTypes';
+import {headerPropsType} from 'components/common/header/Types';
 import {ReturnComponentType} from 'types/common/ReturnComponentType';
 import {styles} from './Styles';
 
