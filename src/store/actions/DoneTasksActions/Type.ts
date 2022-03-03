@@ -3,4 +3,4 @@ export type SetDoneTasksActionsType = {
   doneTasks: Array<any>;
 };
 
-export type DoneTasksActionsType = SetDoneTasksActionsType;
+export type Type = SetDoneTasksActionsType;

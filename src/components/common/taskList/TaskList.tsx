@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 import {FlatList, ListRenderItem, Text, View} from 'react-native';
 import {ReturnComponentType} from 'types/common/ReturnComponentType';
 import {Task} from '../task/Task';
-import {TaskItemType} from 'types/reducers/TasksReducerTypes';
+import {TaskItemType} from 'store/reducers/TasksReducer/Types';
 import {Styles} from './Styles';
 
 type TaskListPropsType = {

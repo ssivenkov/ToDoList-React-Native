@@ -1,6 +1,6 @@
-import {DONE_TASKS_ACTIONS} from '../../enums/DoneTaskEnum';
-import {DoneTasksActionsType} from 'types/actions/DoneTasksActionsType';
-import {InitialDoneTasksStateType} from 'types/reducers/DoneTasksReducerTypes';
+import {DONE_TASKS_ACTIONS} from '../../../enums/DoneTaskEnum';
+import {Type} from 'store/actions/DoneTasksActions/Type';
+import {InitialDoneTasksStateType} from 'store/reducers/DoneTaskReducer/Types';
 
 const initialDoneTasksState = {
   doneTasks: [],
@@ -8,7 +8,7 @@ const initialDoneTasksState = {
 
 export const doneTasksReducer = (
   state: InitialDoneTasksStateType = initialDoneTasksState,
-  action: DoneTasksActionsType,
+  action: Type,
 ) => {
   switch (action.type) {
     case DONE_TASKS_ACTIONS.SET_DONE_TASKS:

@@ -13,8 +13,11 @@ export const styles = StyleSheet.create({
   },
 
   input: {
-    color: 'red',
-    backgroundColor: 'blue',
+    color: '#000',
+    fontSize: 18,
+    backgroundColor: '#ccc',
+    borderWidth: 1,
+    borderColor: 'darkred',
   },
 
   text: {

@@ -5,18 +5,19 @@ import {
   View,
   Text,
   TextInput,
+  Image,
 } from 'react-native';
-import {Header} from './common/header/Header';
-import {TaskList} from './common/taskList/TaskList';
-import {CustomButton} from './common/customButton/CustomButton';
-import {useSelector} from 'react-redux';
+import {Header} from '../../common/header/Header';
+import {TaskList} from '../../common/taskList/TaskList';
+import {CustomButton} from '../../common/customButton/CustomButton';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {styles} from './Styles';
 import {AppRootStateType} from 'store/Store';
 import {ReturnComponentType} from 'types/common/ReturnComponentType';
-import {TaskItemType} from 'types/reducers/TasksReducerTypes';
+import {useSelector} from 'react-redux';
+import {TaskItemType} from 'store/reducers/TasksReducer/Types';
 
-export const AppComponent = (): ReturnComponentType => {
+export const Tasks = (): ReturnComponentType => {
   const isDarkMode = useColorScheme() === 'dark';
   const [inputText, setInputText] = useState('');
   const windowWidth = useWindowDimensions();
