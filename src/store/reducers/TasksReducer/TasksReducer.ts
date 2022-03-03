@@ -1,6 +1,6 @@
-import {TASKS_ACTIONS} from '../../enums/TasksEnum';
-import {InitialTasksStateType} from 'types/reducers/TasksReducerTypes';
-import {TasksActionsType} from 'types/actions/TaskActionsTypes';
+import {TASKS_ACTIONS} from '../../../enums/TasksEnum';
+import {InitialTasksStateType} from 'store/reducers/TasksReducer/Types';
+import {TasksActionsType} from 'store/actions/TasksActions/Types';
 
 const initialTasksState: InitialTasksStateType = {
   tasks: [{key: 'task 1'}, {key: 'task 2'}, {key: 'task 3'}],
