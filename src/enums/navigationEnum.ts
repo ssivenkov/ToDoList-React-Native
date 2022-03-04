@@ -1,4 +1,4 @@
 export enum NAVIGATION {
-  TASKS = 'Tasks',
-  DONE_TASKS = 'DoneTasks',
+  TASKS_LIST = 'Tasks list',
+  SIGN_IN = 'Sign in',
 }
