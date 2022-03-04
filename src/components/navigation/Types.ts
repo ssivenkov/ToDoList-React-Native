@@ -1,4 +1,4 @@
 export type RootTabParamListType = {
-  Tasks: undefined;
-  DoneTasks: undefined;
+  'Tasks list': undefined;
+  'Sign in': undefined;
 };

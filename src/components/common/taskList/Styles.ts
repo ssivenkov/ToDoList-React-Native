@@ -1,15 +1,24 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
 
-export const Styles = StyleSheet.create({
+type TaskListStylesType = {
+  container: ViewStyle;
+  title: TextStyle;
+};
+
+export const taskListMarginVertical = 8;
+
+export const styles = StyleSheet.create<TaskListStylesType>({
   container: {
-    backgroundColor: 'purple',
+    backgroundColor: '#CFCFCF',
     alignItems: 'center',
-    padding: 15,
-    margin: 15,
+    padding: 10,
+    marginHorizontal: 15,
+    marginVertical: taskListMarginVertical,
+    borderRadius: 10,
   },
 
   title: {
-    color: 'yellow',
-    fontSize: 20,
+    color: '#444',
+    fontSize: 22,
   },
 });
