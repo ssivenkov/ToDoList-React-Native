@@ -1,6 +1,8 @@
+import {TaskListType} from '../../reducers/taskListsReducer/Types';
+
 export type SetTasksActionsType = {
   type: string;
-  tasks: Array<any>;
+  tasks: Array<TaskListType>;
 };
 
-export type TasksActionsType = SetTasksActionsType;
+export type TaskListsActionsType = SetTasksActionsType;

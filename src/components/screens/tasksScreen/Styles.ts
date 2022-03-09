@@ -5,6 +5,7 @@ type TasksScreenStylesType = {
   tasksListContainer: ViewStyle;
   tabBarContainer: ViewStyle;
   tabImage: ImageStyle;
+  buttonContainer: ViewStyle;
 };
 
 export const styles = StyleSheet.create<TasksScreenStylesType>({
@@ -24,5 +25,9 @@ export const styles = StyleSheet.create<TasksScreenStylesType>({
     width: 25,
     height: 25,
     resizeMode: 'contain',
+  },
+
+  buttonContainer: {
+    marginRight: 20,
   },
 });

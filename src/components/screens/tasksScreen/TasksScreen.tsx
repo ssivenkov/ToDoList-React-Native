@@ -4,40 +4,52 @@ import {NAVIGATION_TASKS} from '../../../enums/TasksEnum';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {useSelector} from 'react-redux';
 import {TaskList} from '../../common/taskList/TaskList';
-import {CustomButton} from '../../common/button/CustomButton';
-import {Image, View} from 'react-native';
+import {CustomImageButton} from '../../common/buttons/CustomImageButton';
+import {FlatList, ListRenderItem, Image, View} from 'react-native';
 import {AppRootStateType} from 'store/Store';
 import {ReturnComponentType} from 'types/common/ReturnComponentType';
-import {TaskItemType} from 'store/reducers/tasksReducer/Types';
-import TasksActive from '../../../assets/images/icons/TasksActive.png';
-import Tasks from '../../../assets/images/icons/Tasks.png';
-import DoneTasksActive from '../../../assets/images/icons/DoneTasksActive.png';
-import DoneTasks from '../../../assets/images/icons/DoneTasks.png';
-import Add from '../../../assets/images/icons/Add.png';
+import {TaskListType} from 'store/reducers/taskListsReducer/Types';
+import TasksActiveImage from '../../../assets/images/icons/TasksActive.png';
+import TasksImage from '../../../assets/images/icons/Tasks.png';
+import DoneTasksActiveImage from '../../../assets/images/icons/DoneTasksActive.png';
+import DoneTasksImage from '../../../assets/images/icons/DoneTasks.png';
+import AddTaskListImage from '../../../assets/images/icons/Add.png';
 import {TabParamListType} from './Types';
 
 const TasksScreenTab = createBottomTabNavigator<TabParamListType>();
 
 export const TasksScreen = (): ReturnComponentType => {
-  const toDoTaskList = useSelector<AppRootStateType, TaskItemType[]>(
-    (state) => state.tasks.toDoTasks,
+  const toDoTaskLists = useSelector<AppRootStateType, TaskListType[]>(
+    (state) => state.taskLists.toDoTaskLists,
   );
-  const doneTaskList = useSelector<AppRootStateType, TaskItemType[]>(
-    (state) => state.tasks.doneTasks,
+  const doneTaskLists = useSelector<AppRootStateType, TaskListType[]>(
+    (state) => state.taskLists.doneTaskLists,
   );
 
-  const TodoTasksScreen = () => {
+  const toDoTaskListRenderItem: ListRenderItem<TaskListType> = ({
+    item,
+  }): ReturnComponentType => {
+    return <TaskList todo title={item.title} tasks={item.tasks} />;
+  };
+
+  const doneTaskListRenderItem: ListRenderItem<TaskListType> = ({
+    item,
+  }): ReturnComponentType => {
+    return <TaskList title={item.title} tasks={item.tasks} />;
+  };
+
+  const TodoTasksScreen = (): ReturnComponentType => {
     return (
       <View style={styles.tasksListContainer}>
-        <TaskList todo dataList={toDoTaskList} title="Task list" />
+        <FlatList data={toDoTaskLists} renderItem={toDoTaskListRenderItem} />
       </View>
     );
   };
 
-  const DoneTasksScreen = () => {
+  const DoneTasksScreen = (): ReturnComponentType => {
     return (
       <View style={styles.tasksListContainer}>
-        <TaskList done dataList={doneTaskList} title="Done task list" />
+        <FlatList data={doneTaskLists} renderItem={doneTaskListRenderItem} />
       </View>
     );
   };
@@ -50,34 +62,34 @@ export const TasksScreen = (): ReturnComponentType => {
           switch (route.name) {
             case NAVIGATION_TASKS.TASKS:
               return focused ? (
-                <Image style={styles.tabImage} source={TasksActive} />
+                <Image style={styles.tabImage} source={TasksActiveImage} />
               ) : (
-                <Image style={styles.tabImage} source={Tasks} />
+                <Image style={styles.tabImage} source={TasksImage} />
               );
             case NAVIGATION_TASKS.DONE_TASKS:
               return focused ? (
-                <Image style={styles.tabImage} source={DoneTasksActive} />
+                <Image style={styles.tabImage} source={DoneTasksActiveImage} />
               ) : (
-                <Image style={styles.tabImage} source={DoneTasks} />
+                <Image style={styles.tabImage} source={DoneTasksImage} />
               );
             default:
-              return <Image style={styles.tabImage} source={Tasks} />;
+              return <Image style={styles.tabImage} source={TasksImage} />;
           }
         },
         headerRight: () => {
           if (route.name === NAVIGATION_TASKS.TASKS) {
             return (
-              <View style={{marginRight: 20}}>
-                <CustomButton bigImage>{Add}</CustomButton>
+              <View style={styles.buttonContainer}>
+                <CustomImageButton bigImage image={AddTaskListImage} />
               </View>
             );
           }
         },
         tabBarIconStyle: styles.tabImage,
         tabBarStyle: styles.tabBarContainer,
-        tabBarActiveBackgroundColor: 'blue',
+        tabBarActiveBackgroundColor: '#0000dd',
         tabBarActiveTintColor: '#fff',
-        tabBarInactiveTintColor: 'gray',
+        tabBarInactiveTintColor: '#123',
       })}>
       <TasksScreenTab.Screen
         name={NAVIGATION_TASKS.TASKS}
