@@ -1,26 +1,24 @@
 import React, {FC} from 'react';
 import {styles} from './Styles';
-import {CustomButton} from '../button/CustomButton';
+import {CustomImageButton} from '../buttons/CustomImageButton';
 import {Text, View} from 'react-native';
 import {ReturnComponentType} from 'types/common/ReturnComponentType';
-import Done from '../../../assets/images/icons/DoneTasks.png';
-import Pen from '../../../assets/images/icons/Pen.png';
-import Delete from '../../../assets/images/icons/Delete.png';
+import DoneImage from '../../../assets/images/icons/DoneTasks.png';
+import PenImage from '../../../assets/images/icons/Pen.png';
+import DeleteImage from '../../../assets/images/icons/Delete.png';
+import {TaskPropsType} from './Types';
 
-type TaskItemPropsType = {
-  title: string;
-  todo?: boolean;
-};
-
-export const Task: FC<TaskItemPropsType> = (props): ReturnComponentType => {
+export const Task: FC<TaskPropsType> = (props): ReturnComponentType => {
   const {title, todo} = props;
 
   return (
     <View style={styles.container}>
       <Text style={styles.text}>{title}</Text>
-      {todo && <CustomButton smallImage>{Done}</CustomButton>}
-      <CustomButton smallImage>{Pen}</CustomButton>
-      <CustomButton smallImage>{Delete}</CustomButton>
+      <View style={styles.buttonsContainer}>
+        {todo && <CustomImageButton image={DoneImage} />}
+        <CustomImageButton image={PenImage} />
+        <CustomImageButton image={DeleteImage} />
+      </View>
     </View>
   );
 };

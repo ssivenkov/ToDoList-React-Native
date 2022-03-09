@@ -8,10 +8,10 @@ import {SignInScreen} from '../screens/signInScreen/SignInScreen';
 import {Image} from 'react-native';
 import {RootTabParamListType} from './Types';
 import {ReturnComponentType} from 'types/common/ReturnComponentType';
-import tasksList from '../../assets/images/icons/TasksList.png';
-import tasksListActive from '../../assets/images/icons/TasksListActive.png';
-import signIn from '../../assets/images/icons/signIn.png';
-import signInActive from '../../assets/images/icons/sigInActive.png';
+import tasksListImage from '../../assets/images/icons/TasksList.png';
+import tasksListActiveImage from '../../assets/images/icons/TasksListActive.png';
+import signInImage from '../../assets/images/icons/signIn.png';
+import signInActiveImage from '../../assets/images/icons/sigInActive.png';
 
 const RootTab = createBottomTabNavigator<RootTabParamListType>();
 
@@ -25,18 +25,23 @@ export const Navigation = (): ReturnComponentType => {
             switch (route.name) {
               case NAVIGATION.TASKS_LIST:
                 return focused ? (
-                  <Image style={styles.tabImage} source={tasksListActive} />
+                  <Image
+                    style={styles.tabImage}
+                    source={tasksListActiveImage}
+                  />
                 ) : (
-                  <Image style={styles.tabImage} source={tasksList} />
+                  <Image style={styles.tabImage} source={tasksListImage} />
                 );
               case NAVIGATION.SIGN_IN:
                 return focused ? (
-                  <Image style={styles.tabImage} source={signInActive} />
+                  <Image style={styles.tabImage} source={signInActiveImage} />
                 ) : (
-                  <Image style={styles.tabImage} source={signIn} />
+                  <Image style={styles.tabImage} source={signInImage} />
                 );
               default:
-                return <Image style={styles.tabImage} source={tasksList} />;
+                return (
+                  <Image style={styles.tabImage} source={tasksListImage} />
+                );
             }
           },
           headerShown: false,
@@ -44,7 +49,7 @@ export const Navigation = (): ReturnComponentType => {
           tabBarStyle: styles.tabBarContainer,
           tabBarActiveBackgroundColor: 'purple',
           tabBarActiveTintColor: '#fff',
-          tabBarInactiveTintColor: 'gray',
+          tabBarInactiveTintColor: '#123',
         })}>
         <RootTab.Screen name={NAVIGATION.TASKS_LIST} component={TasksScreen} />
         <RootTab.Screen name={NAVIGATION.SIGN_IN} component={SignInScreen} />
