@@ -1,11 +1,11 @@
 import {combineReducers, createStore} from 'redux';
-import {tasksReducer} from './reducers/tasksReducer/TasksReducer';
+import {taskListsReducer} from './reducers/taskListsReducer/TaskListsReducer';
 import {SetTasksActionsType} from 'store/actions/TasksActions/Types';
 import {Type} from 'store/actions/signInActions/Type';
 import {signInReducer} from './reducers/signInReducer/SignInReducer';
 
 const rootReducer = combineReducers({
-  tasks: tasksReducer,
+  taskLists: taskListsReducer,
   signIn: signInReducer,
 });
 
