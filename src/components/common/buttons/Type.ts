@@ -1,14 +1,13 @@
-import {ImageSourcePropType} from 'react-native';
-
-export type CustomImageButtonPropsType = {
-  image: ImageSourcePropType;
-
-  bigImage?: boolean;
-  onPress?: () => void;
-};
+import {FontawesomeObject} from '@fortawesome/fontawesome-svg-core';
 
 export type CustomTextButtonPropsType = {
   title: string;
+
+  onPress?: () => void;
+};
+
+export type CustomIconButtonPropsType = {
+  icon: FontawesomeObject;
 
   onPress?: () => void;
 };

@@ -4,17 +4,16 @@ import {NAVIGATION_TASKS} from '../../../enums/TasksEnum';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {useSelector} from 'react-redux';
 import {TaskList} from '../../common/taskList/TaskList';
-import {CustomImageButton} from '../../common/buttons/CustomImageButton';
-import {FlatList, ListRenderItem, Image, View} from 'react-native';
+import {FlatList, ListRenderItem, View} from 'react-native';
 import {AppRootStateType} from 'store/Store';
 import {ReturnComponentType} from 'types/common/ReturnComponentType';
 import {TaskListType} from 'store/reducers/taskListsReducer/Types';
-import TasksActiveImage from '../../../assets/images/icons/TasksActive.png';
-import TasksImage from '../../../assets/images/icons/Tasks.png';
-import DoneTasksActiveImage from '../../../assets/images/icons/DoneTasksActive.png';
-import DoneTasksImage from '../../../assets/images/icons/DoneTasks.png';
-import AddTaskListImage from '../../../assets/images/icons/Add.png';
 import {TabParamListType} from './Types';
+import {Input} from '../../common/input/Input';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {faPlus, faCheck, faListCheck} from '@fortawesome/free-solid-svg-icons';
+import {iconSizeLarge} from '../../../constants/constants';
+import {ModalIcon} from '../../common/modals/ModalIcon';
 
 const TasksScreenTab = createBottomTabNavigator<TabParamListType>();
 
@@ -62,30 +61,44 @@ export const TasksScreen = (): ReturnComponentType => {
           switch (route.name) {
             case NAVIGATION_TASKS.TASKS:
               return focused ? (
-                <Image style={styles.tabImage} source={TasksActiveImage} />
+                <FontAwesomeIcon
+                  style={styles.tabLightIcon}
+                  icon={faListCheck}
+                  size={iconSizeLarge}
+                />
               ) : (
-                <Image style={styles.tabImage} source={TasksImage} />
+                <FontAwesomeIcon icon={faListCheck} size={iconSizeLarge} />
               );
             case NAVIGATION_TASKS.DONE_TASKS:
               return focused ? (
-                <Image style={styles.tabImage} source={DoneTasksActiveImage} />
+                <FontAwesomeIcon
+                  style={styles.tabLightIcon}
+                  icon={faCheck}
+                  size={iconSizeLarge}
+                />
               ) : (
-                <Image style={styles.tabImage} source={DoneTasksImage} />
+                <FontAwesomeIcon icon={faCheck} size={iconSizeLarge} />
               );
             default:
-              return <Image style={styles.tabImage} source={TasksImage} />;
+              return <FontAwesomeIcon icon={faCheck} size={iconSizeLarge} />;
           }
         },
         headerRight: () => {
           if (route.name === NAVIGATION_TASKS.TASKS) {
             return (
               <View style={styles.buttonContainer}>
-                <CustomImageButton bigImage image={AddTaskListImage} />
+                <ModalIcon
+                  okHandler={() => {}}
+                  description={'Enter new tasklist title:'}
+                  buttonIcon={
+                    <FontAwesomeIcon icon={faPlus} size={iconSizeLarge} />
+                  }>
+                  <Input />
+                </ModalIcon>
               </View>
             );
           }
         },
-        tabBarIconStyle: styles.tabImage,
         tabBarStyle: styles.tabBarContainer,
         tabBarActiveBackgroundColor: '#0000dd',
         tabBarActiveTintColor: '#fff',
