@@ -4,7 +4,11 @@ import {Task} from '../task/Task';
 import {FlatList, ListRenderItem, Text, View} from 'react-native';
 import {ReturnComponentType} from 'types/common/ReturnComponentType';
 import {TaskListPropsType} from './Types';
-import {CustomTextButton} from '../buttons/CustomTextButton';
+import {Input} from '../input/Input';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {ModalIcon} from '../modals/ModalIcon';
+import {faPen, faTrash, faPlus} from '@fortawesome/free-solid-svg-icons';
+import {iconSizeSmall} from '../../../constants/constants';
 
 export const TaskList: FC<TaskListPropsType> = (props): ReturnComponentType => {
   const {title, tasks, todo} = props;
@@ -29,7 +33,34 @@ export const TaskList: FC<TaskListPropsType> = (props): ReturnComponentType => {
     <View style={styles.container}>
       <View style={styles.controlsContainer}>
         <Text style={styles.title}>{title}</Text>
-        {todo && <CustomTextButton title={'Add task'} />}
+        <View style={styles.buttonsContainer}>
+          {todo && (
+            <ModalIcon
+              okHandler={() => {}}
+              description={'Enter new task title:'}
+              buttonIcon={
+                <FontAwesomeIcon icon={faPlus} size={iconSizeSmall} />
+              }>
+              <Input />
+            </ModalIcon>
+          )}
+          <ModalIcon
+            okHandler={() => {}}
+            description={'Edit tasklist title:'}
+            buttonIcon={<FontAwesomeIcon icon={faPen} size={iconSizeSmall} />}>
+            <Input value={title} />
+          </ModalIcon>
+          <ModalIcon
+            okHandler={() => {}}
+            buttonIcon={
+              <FontAwesomeIcon icon={faTrash} size={iconSizeSmall} />
+            }>
+            <Text style={styles.warnText}>
+              Are you sure to delete{' '}
+              <Text style={styles.redHighlightTask}>{title}</Text>?
+            </Text>
+          </ModalIcon>
+        </View>
       </View>
       {tasksList}
     </View>
