@@ -1,16 +1,15 @@
-import {StyleSheet, ViewStyle, ImageStyle, TextStyle} from 'react-native';
+import {StyleSheet, ViewStyle, TextStyle} from 'react-native';
 
 type CustomButtonStylesType = {
   textButton: ViewStyle;
   text: TextStyle;
-  bigImage: ImageStyle;
-  smallImage: ImageStyle;
+  icon: ViewStyle;
 };
 
 export const styles = StyleSheet.create<CustomButtonStylesType>({
   textButton: {
-    paddingHorizontal: 8,
-    paddingVertical: 5,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
     borderRadius: 8,
     backgroundColor: '#123',
     justifyContent: 'center',
@@ -22,16 +21,7 @@ export const styles = StyleSheet.create<CustomButtonStylesType>({
     color: '#fff',
   },
 
-  bigImage: {
-    width: 30,
-    height: 30,
-    resizeMode: 'contain',
-  },
-
-  smallImage: {
-    width: 23,
-    height: 23,
-    marginHorizontal: 6,
-    resizeMode: 'contain',
+  icon: {
+    marginHorizontal: 4,
   },
 });

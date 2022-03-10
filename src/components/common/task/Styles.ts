@@ -4,6 +4,9 @@ type TaskStylesType = {
   container: ViewStyle;
   text: TextStyle;
   buttonsContainer: ViewStyle;
+  warnText: TextStyle;
+  redHighlightTask: TextStyle;
+  greenHighlightTask: TextStyle;
 };
 
 export const styles = StyleSheet.create<TaskStylesType>({
@@ -25,5 +28,20 @@ export const styles = StyleSheet.create<TaskStylesType>({
   buttonsContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+  },
+
+  warnText: {
+    color: '#000',
+    fontSize: 20,
+  },
+
+  redHighlightTask: {
+    color: 'red',
+    fontWeight: '500',
+  },
+
+  greenHighlightTask: {
+    color: '#090',
+    fontWeight: '500',
   },
 });
