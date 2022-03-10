@@ -1,15 +1,16 @@
 import React, {useState} from 'react';
 import {TextInput, View} from 'react-native';
 import {styles} from './Styles';
+import {InputPropsType} from './Types';
 
-export const Input = () => {
-  const [inputText, setInputText] = useState('');
+export const Input = ({value}: InputPropsType) => {
+  const [inputText, setInputText] = useState(value ? value : '');
 
   return (
-    <View>
+    <View style={styles.container}>
       <TextInput
         style={styles.input}
-        placeholder={'Enter task title...'}
+        placeholder={'...'}
         onChangeText={(text: string) => {
           setInputText(text);
         }}

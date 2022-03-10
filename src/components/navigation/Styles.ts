@@ -1,8 +1,9 @@
-import {StyleSheet, ImageStyle, ViewStyle} from 'react-native';
+import {StyleSheet, ViewStyle} from 'react-native';
+import {FontAwesomeIconStyle} from '@fortawesome/react-native-fontawesome';
 
 type NavigationStylesType = {
   tabBarContainer: ViewStyle;
-  tabImage: ImageStyle;
+  tabLightIcon: FontAwesomeIconStyle;
 };
 
 export const styles = StyleSheet.create<NavigationStylesType>({
@@ -11,9 +12,7 @@ export const styles = StyleSheet.create<NavigationStylesType>({
     backgroundColor: '#fff',
   },
 
-  tabImage: {
-    width: 25,
-    height: 25,
-    resizeMode: 'contain',
+  tabLightIcon: {
+    color: '#fff',
   },
 });

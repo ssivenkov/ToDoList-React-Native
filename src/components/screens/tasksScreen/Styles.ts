@@ -1,10 +1,11 @@
-import {StyleSheet, ImageStyle, ViewStyle} from 'react-native';
+import {StyleSheet, ViewStyle} from 'react-native';
 import {taskListMarginVertical} from '../../common/taskList/Styles';
+import {FontAwesomeIconStyle} from '@fortawesome/react-native-fontawesome';
 
 type TasksScreenStylesType = {
   tasksListContainer: ViewStyle;
   tabBarContainer: ViewStyle;
-  tabImage: ImageStyle;
+  tabLightIcon: FontAwesomeIconStyle;
   buttonContainer: ViewStyle;
 };
 
@@ -21,13 +22,11 @@ export const styles = StyleSheet.create<TasksScreenStylesType>({
     backgroundColor: '#fff',
   },
 
-  tabImage: {
-    width: 25,
-    height: 25,
-    resizeMode: 'contain',
+  tabLightIcon: {
+    color: '#fff',
   },
 
   buttonContainer: {
-    marginRight: 20,
+    marginRight: 10,
   },
 });

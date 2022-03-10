@@ -4,6 +4,9 @@ type TaskListStylesType = {
   container: ViewStyle;
   title: TextStyle;
   controlsContainer: ViewStyle;
+  buttonsContainer: ViewStyle;
+  warnText: TextStyle;
+  redHighlightTask: TextStyle;
 };
 
 export const taskListMarginVertical = 8;
@@ -24,8 +27,22 @@ export const styles = StyleSheet.create<TaskListStylesType>({
     marginBottom: 8,
   },
 
+  buttonsContainer: {
+    flexDirection: 'row',
+  },
+
   title: {
     color: '#444',
     fontSize: 22,
+  },
+
+  warnText: {
+    color: '#000',
+    fontSize: 20,
+  },
+
+  redHighlightTask: {
+    color: 'red',
+    fontWeight: '500',
   },
 });
