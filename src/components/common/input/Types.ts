@@ -1,3 +1,4 @@
 export type InputPropsType = {
-  value?: string;
+  value: string;
+  onValueChange: (inputValue: string) => void;
 };

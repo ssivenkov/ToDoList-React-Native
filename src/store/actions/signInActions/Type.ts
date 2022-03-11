@@ -3,4 +3,4 @@ export type SetSignInActionsType = {
   signIn: Array<any>;
 };
 
-export type Type = SetSignInActionsType;
+export type SignInActionsType = SetSignInActionsType;
