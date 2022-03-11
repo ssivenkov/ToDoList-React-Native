@@ -1,5 +1,3 @@
-import {FontawesomeObject} from '@fortawesome/fontawesome-svg-core';
-
 export type CustomTextButtonPropsType = {
   title: string;
 
@@ -7,7 +5,7 @@ export type CustomTextButtonPropsType = {
 };
 
 export type CustomIconButtonPropsType = {
-  icon: FontawesomeObject;
+  icon: JSX.Element;
 
   onPress?: () => void;
 };

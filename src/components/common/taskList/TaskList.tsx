@@ -4,28 +4,28 @@ import {Task} from '../task/Task';
 import {FlatList, ListRenderItem, Text, View} from 'react-native';
 import {ReturnComponentType} from 'types/common/ReturnComponentType';
 import {TaskListPropsType} from './Types';
-import {Input} from '../input/Input';
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {ModalIcon} from '../modals/ModalIcon';
-import {faPen, faTrash, faPlus} from '@fortawesome/free-solid-svg-icons';
-import {iconSizeSmall} from '../../../constants/constants';
+import {CreateTaskButton} from '../../screens/tasksScreen/Buttons/CreateTaskButton/CreateTaskButton';
+import {EditTaskListTitleButton} from '../../screens/tasksScreen/Buttons/EditTaskListTitleButton/EditTaskListTitleButton';
+import {DeleteTaskListButton} from '../../screens/tasksScreen/Buttons/DeleteTaskListButton/DeleteTaskListButton';
+import {TaskType} from '../../../store/reducers/taskListReducer/Types';
 
 export const TaskList: FC<TaskListPropsType> = (props): ReturnComponentType => {
-  const {title, tasks, todo} = props;
-  const renderTodoTaskItem: ListRenderItem<string> = ({
+  const {id, title, tasks, todo} = props;
+
+  const renderTodoTaskItem: ListRenderItem<TaskType> = ({
     item,
   }): ReturnComponentType => {
-    return <Task todo title={item} />;
+    return <Task todo title={item.title} />;
   };
-  const renderDoneTaskItem: ListRenderItem<string> = ({
+  const renderDoneTaskItem: ListRenderItem<TaskType> = ({
     item,
   }): ReturnComponentType => {
-    return <Task title={item} />;
+    return <Task title={item.title} />;
   };
   let tasksList;
-  if (todo) {
+  if (todo && tasks) {
     tasksList = <FlatList data={tasks} renderItem={renderTodoTaskItem} />;
-  } else {
+  } else if (tasks) {
     tasksList = <FlatList data={tasks} renderItem={renderDoneTaskItem} />;
   }
 
@@ -34,35 +34,12 @@ export const TaskList: FC<TaskListPropsType> = (props): ReturnComponentType => {
       <View style={styles.controlsContainer}>
         <Text style={styles.title}>{title}</Text>
         <View style={styles.buttonsContainer}>
-          {todo && (
-            <ModalIcon
-              okHandler={() => {}}
-              description={'Enter new task title:'}
-              buttonIcon={
-                <FontAwesomeIcon icon={faPlus} size={iconSizeSmall} />
-              }>
-              <Input />
-            </ModalIcon>
-          )}
-          <ModalIcon
-            okHandler={() => {}}
-            description={'Edit tasklist title:'}
-            buttonIcon={<FontAwesomeIcon icon={faPen} size={iconSizeSmall} />}>
-            <Input value={title} />
-          </ModalIcon>
-          <ModalIcon
-            okHandler={() => {}}
-            buttonIcon={
-              <FontAwesomeIcon icon={faTrash} size={iconSizeSmall} />
-            }>
-            <Text style={styles.warnText}>
-              Are you sure to delete{' '}
-              <Text style={styles.redHighlightTask}>{title}</Text>?
-            </Text>
-          </ModalIcon>
+          {todo && <CreateTaskButton />}
+          <EditTaskListTitleButton oldTitle={title} id={id} tasks={tasks} />
+          <DeleteTaskListButton id={id} titleToBeDeletedTaskList={title} />
         </View>
       </View>
-      {tasksList}
+      {tasks && tasksList}
     </View>
   );
 };
