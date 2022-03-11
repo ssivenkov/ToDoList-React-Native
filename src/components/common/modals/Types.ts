@@ -1,5 +1,3 @@
-import {FontawesomeObject} from '@fortawesome/fontawesome-svg-core';
-
 export type ModalTextPropsType = {
   buttonTitle: string;
 
@@ -9,7 +7,7 @@ export type ModalTextPropsType = {
 };
 
 export type ModalIconPropsType = {
-  buttonIcon: FontawesomeObject;
+  buttonIcon: JSX.Element;
 
   children?: any;
   description?: string;

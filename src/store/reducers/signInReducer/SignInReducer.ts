@@ -1,5 +1,5 @@
 import {SIGN_IN_ACTIONS} from '../../../enums/SignInEnum';
-import {Type} from 'store/actions/signInActions/Type';
+import {SignInActionsType} from 'store/actions/signInActions/Type';
 import {InitialSignInStateType} from 'store/reducers/signInReducer/Types';
 
 const initialSignInState = {
@@ -8,7 +8,7 @@ const initialSignInState = {
 
 export const signInReducer = (
   state: InitialSignInStateType = initialSignInState,
-  action: Type,
+  action: SignInActionsType,
 ) => {
   switch (action.type) {
     case SIGN_IN_ACTIONS.SET_SIGN_IN:

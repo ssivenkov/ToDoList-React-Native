@@ -4,52 +4,101 @@ import {NAVIGATION_TASKS} from '../../../enums/TasksEnum';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {useSelector} from 'react-redux';
 import {TaskList} from '../../common/taskList/TaskList';
-import {FlatList, ListRenderItem, View} from 'react-native';
+import {FlatList, ListRenderItem, Text, View} from 'react-native';
 import {AppRootStateType} from 'store/Store';
 import {ReturnComponentType} from 'types/common/ReturnComponentType';
-import {TaskListType} from 'store/reducers/taskListsReducer/Types';
+import {TaskListType} from 'store/reducers/taskListReducer/Types';
 import {TabParamListType} from './Types';
-import {Input} from '../../common/input/Input';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {faPlus, faCheck, faListCheck} from '@fortawesome/free-solid-svg-icons';
+import {faCheck, faListCheck} from '@fortawesome/free-solid-svg-icons';
 import {iconSizeLarge} from '../../../constants/constants';
-import {ModalIcon} from '../../common/modals/ModalIcon';
+import {CreateTaskListButton} from './Buttons/CreateTaskListButton/CreateTaskListButton';
 
 const TasksScreenTab = createBottomTabNavigator<TabParamListType>();
 
 export const TasksScreen = (): ReturnComponentType => {
-  const toDoTaskLists = useSelector<AppRootStateType, TaskListType[]>(
-    (state) => state.taskLists.toDoTaskLists,
+  const taskLists = useSelector<AppRootStateType, TaskListType[]>(
+    (state) => state.taskLists.taskLists,
   );
-  const doneTaskLists = useSelector<AppRootStateType, TaskListType[]>(
-    (state) => state.taskLists.doneTaskLists,
-  );
+
+  const toDoTaskListsFilter = taskLists.filter((taskList) => {
+    if (
+      !taskList.tasks?.length ||
+      taskList.tasks?.some((task) => !task.isDone)
+    ) {
+      return taskList;
+    }
+  });
+
+  const doneTaskListsFilter = () =>
+    taskLists.filter((taskList) => {
+      return taskList.tasks?.some((task) => task.isDone);
+    });
+
+  const toDoTaskLists =
+    toDoTaskListsFilter.length > 0 ? toDoTaskListsFilter : null;
+  const doneTaskLists =
+    doneTaskListsFilter().length > 0 ? doneTaskListsFilter() : null;
 
   const toDoTaskListRenderItem: ListRenderItem<TaskListType> = ({
     item,
   }): ReturnComponentType => {
-    return <TaskList todo title={item.title} tasks={item.tasks} />;
+    const toDoTasks = item.tasks
+      ? item.tasks.filter((task) => !task.isDone)
+      : null;
+
+    return <TaskList todo id={item.id} title={item.title} tasks={toDoTasks} />;
   };
 
   const doneTaskListRenderItem: ListRenderItem<TaskListType> = ({
     item,
   }): ReturnComponentType => {
-    return <TaskList title={item.title} tasks={item.tasks} />;
+    const doneTasks = item.tasks
+      ? item.tasks.filter((task) => task.isDone)
+      : null;
+
+    return <TaskList id={item.id} title={item.title} tasks={doneTasks} />;
   };
 
   const TodoTasksScreen = (): ReturnComponentType => {
     return (
-      <View style={styles.tasksListContainer}>
-        <FlatList data={toDoTaskLists} renderItem={toDoTaskListRenderItem} />
-      </View>
+      <>
+        {toDoTaskLists ? (
+          <View style={styles.tasksListContainer}>
+            <FlatList
+              data={toDoTaskLists}
+              renderItem={toDoTaskListRenderItem}
+            />
+          </View>
+        ) : (
+          <View style={styles.nullContentContainer}>
+            <Text style={styles.nullContentText}>
+              Todo task lists is not found
+            </Text>
+          </View>
+        )}
+      </>
     );
   };
 
   const DoneTasksScreen = (): ReturnComponentType => {
     return (
-      <View style={styles.tasksListContainer}>
-        <FlatList data={doneTaskLists} renderItem={doneTaskListRenderItem} />
-      </View>
+      <>
+        {doneTaskLists ? (
+          <View style={styles.tasksListContainer}>
+            <FlatList
+              data={doneTaskLists}
+              renderItem={doneTaskListRenderItem}
+            />
+          </View>
+        ) : (
+          <View style={styles.nullContentContainer}>
+            <Text style={styles.nullContentText}>
+              Done task lists is not found
+            </Text>
+          </View>
+        )}
+      </>
     );
   };
 
@@ -87,14 +136,7 @@ export const TasksScreen = (): ReturnComponentType => {
           if (route.name === NAVIGATION_TASKS.TASKS) {
             return (
               <View style={styles.buttonContainer}>
-                <ModalIcon
-                  okHandler={() => {}}
-                  description={'Enter new tasklist title:'}
-                  buttonIcon={
-                    <FontAwesomeIcon icon={faPlus} size={iconSizeLarge} />
-                  }>
-                  <Input />
-                </ModalIcon>
+                <CreateTaskListButton />
               </View>
             );
           }
