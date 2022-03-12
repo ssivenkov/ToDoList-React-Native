@@ -1,28 +1,45 @@
-import React, {useState} from 'react';
+import React, {FC, useState} from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faPlus} from '@fortawesome/free-solid-svg-icons';
 import {iconSizeSmall, idLength} from '../../../../../constants/constants';
 import {Input} from '../../../../common/input/Input';
 import {ModalIcon} from '../../../../common/modals/ModalIcon';
 import {nanoid} from 'nanoid';
-import {addNewTaskList} from '../../../../../store/actions/TasksActions/taskListActions';
+import {addNewTask} from '../../../../../store/actions/TasksActions/taskListActions';
 import {useDispatch} from 'react-redux';
 import {ReturnComponentType} from '../../../../../types/common/ReturnComponentType';
+import {CreateTaskButtonPropsType} from '../CreateTaskListButton/Types';
+import {
+  TaskListType,
+  TaskType,
+} from '../../../../../store/reducers/taskListReducer/Types';
 
-export const CreateTaskButton = (): ReturnComponentType => {
+export const CreateTaskButton: FC<CreateTaskButtonPropsType> = (
+  props,
+): ReturnComponentType => {
+  const {taskListId, taskListTitle, tasksList} = props;
   const dispatch = useDispatch();
   const [newTaskTitle, setNewTaskTitle] = useState<string>('');
 
   const createTask = (): void => {
-    if (newTaskTitle.length >= 1) {
-      const id = nanoid(idLength);
-      const taskList = {
-        id: id,
+    if (newTaskTitle) {
+      const taskId: string = nanoid(idLength);
+      const newTask: TaskType = {
+        id: taskId,
         title: newTaskTitle,
-        tasks: null,
+        isDone: false,
+      };
+      const newTaskListNewTasks = tasksList
+        ? [...tasksList, newTask]
+        : [newTask];
+
+      const modifiedTaskList: TaskListType = {
+        id: taskListId,
+        title: taskListTitle,
+        tasks: newTaskListNewTasks,
       };
 
-      dispatch(addNewTaskList(taskList));
+      dispatch(addNewTask(modifiedTaskList));
       setNewTaskTitle('');
     }
   };

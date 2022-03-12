@@ -15,12 +15,12 @@ export const TaskList: FC<TaskListPropsType> = (props): ReturnComponentType => {
   const renderTodoTaskItem: ListRenderItem<TaskType> = ({
     item,
   }): ReturnComponentType => {
-    return <Task todo title={item.title} />;
+    return <Task todo title={item.title} taskListId={id} taskId={item.id} />;
   };
   const renderDoneTaskItem: ListRenderItem<TaskType> = ({
     item,
   }): ReturnComponentType => {
-    return <Task title={item.title} />;
+    return <Task title={item.title} taskListId={id} taskId={item.id} />;
   };
   let tasksList;
   if (todo && tasks) {
@@ -34,7 +34,13 @@ export const TaskList: FC<TaskListPropsType> = (props): ReturnComponentType => {
       <View style={styles.controlsContainer}>
         <Text style={styles.title}>{title}</Text>
         <View style={styles.buttonsContainer}>
-          {todo && <CreateTaskButton />}
+          {todo && (
+            <CreateTaskButton
+              taskListId={id}
+              taskListTitle={title}
+              tasksList={tasks}
+            />
+          )}
           <EditTaskListTitleButton oldTitle={title} id={id} tasks={tasks} />
           <DeleteTaskListButton id={id} titleToBeDeletedTaskList={title} />
         </View>

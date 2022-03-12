@@ -1,4 +1,4 @@
-import {TASK_LIST_ACTIONS} from '../../../enums/TasksEnum';
+import {TASK_LIST_ACTIONS} from '../../../enums/TaskListsEnum';
 import {TaskListStateType} from 'store/reducers/taskListReducer/Types';
 import {TaskListActionsType} from 'store/actions/TasksActions/Types';
 
@@ -29,6 +29,17 @@ export const taskListReducer = (
         ...state,
         taskLists: [...state.taskLists, action.newTaskList],
       };
+
+    case TASK_LIST_ACTIONS.ADD_NEW_TASK:
+      return {
+        ...state,
+        taskLists: [
+          ...state.taskLists.filter(
+            (taskList) => taskList.id !== action.modifiedTaskList.id,
+          ),
+          action.modifiedTaskList,
+        ],
+      };
     case TASK_LIST_ACTIONS.DELETE_TASK_LIST:
       return {
         ...state,
@@ -48,6 +59,43 @@ export const taskListReducer = (
           action.editedTaskList,
         ],
       };
+
+    case TASK_LIST_ACTIONS.SET_TASK_DONE:
+      return {
+        ...state,
+        taskLists: [
+          ...state.taskLists.filter(
+            (taskList) => taskList.id !== action.editedTaskList.id,
+          ),
+          action.editedTaskList,
+        ],
+      };
+    case TASK_LIST_ACTIONS.EDIT_TASK_TITLE:
+      return {
+        ...state,
+        taskLists: [
+          ...state.taskLists.filter(
+            (taskList) => taskList.id !== action.editedTaskList.id,
+          ),
+          action.editedTaskList,
+        ],
+      };
+    case TASK_LIST_ACTIONS.DELETE_TASK:
+      return {
+        ...state,
+        taskLists: [
+          ...state.taskLists.map((taskList) => {
+            if (taskList.tasks && taskList.id === action.taskListId) {
+              const conditionTaskList = {...taskList};
+              conditionTaskList.tasks = conditionTaskList.tasks!.filter(
+                (task) => task.id !== action.taskId,
+              );
+              return conditionTaskList;
+            } else return taskList;
+          }),
+        ],
+      };
+
     default:
       return state;
   }

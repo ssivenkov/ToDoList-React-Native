@@ -8,7 +8,7 @@ import {EditTaskTitleButton} from '../../screens/tasksScreen/Buttons/EditTaskTit
 import {DoneTaskButton} from '../../screens/tasksScreen/Buttons/DoneTaskButton/DoneTaskButton';
 
 export const Task: FC<TaskPropsType> = (props): ReturnComponentType => {
-  const {title, todo} = props;
+  const {title, todo, taskListId, taskId} = props;
 
   return (
     <View style={styles.container}>
@@ -16,7 +16,11 @@ export const Task: FC<TaskPropsType> = (props): ReturnComponentType => {
       <View style={styles.buttonsContainer}>
         {todo && <DoneTaskButton completedTaskTitle={title} />}
         <EditTaskTitleButton titleToBeEditedTask={title} />
-        <DeleteTaskButton titleToBeDeletedTask={title} />
+        <DeleteTaskButton
+          titleToBeDeletedTask={title}
+          taskListId={taskListId}
+          taskId={taskId}
+        />
       </View>
     </View>
   );
