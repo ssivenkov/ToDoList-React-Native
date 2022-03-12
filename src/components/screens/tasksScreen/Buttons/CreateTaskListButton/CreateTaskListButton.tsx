@@ -20,7 +20,7 @@ export const CreateTaskListButton = (): ReturnComponentType => {
       const taskList: TaskListType = {
         id,
         title: newTaskListTitle,
-        tasks: null,
+        tasks: [],
       };
 
       dispatch(addNewTaskList(taskList));

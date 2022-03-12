@@ -1,6 +1,6 @@
 import React from 'react';
 import {styles} from './Styles';
-import {NAVIGATION_TASKS} from '../../../enums/TasksEnum';
+import {NAVIGATION_TASKS} from '../../../enums/TaskListsEnum';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {useSelector} from 'react-redux';
 import {TaskList} from '../../common/taskList/TaskList';
@@ -13,10 +13,21 @@ import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faCheck, faListCheck} from '@fortawesome/free-solid-svg-icons';
 import {iconSizeLarge} from '../../../constants/constants';
 import {CreateTaskListButton} from './Buttons/CreateTaskListButton/CreateTaskListButton';
+import {selectModifiedTaskListById} from '../../../store/selectors/taskListsSelectors';
 
 const TasksScreenTab = createBottomTabNavigator<TabParamListType>();
 
 export const TasksScreen = (): ReturnComponentType => {
+  /*const state = useSelector<AppRootStateType, AppRootStateType>(
+    (state) => state,
+  );
+
+  const taskLists = state.taskLists.taskLists
+    ? state.taskLists.taskLists.map((taskList) =>
+        selectModifiedTaskListById(state, taskList.id),
+      )
+    : [];*/
+
   const taskLists = useSelector<AppRootStateType, TaskListType[]>(
     (state) => state.taskLists.taskLists,
   );
@@ -30,15 +41,12 @@ export const TasksScreen = (): ReturnComponentType => {
     }
   });
 
-  const doneTaskListsFilter = () =>
-    taskLists.filter((taskList) => {
-      return taskList.tasks?.some((task) => task.isDone);
-    });
+  const doneTaskListsFilter = taskLists.filter((taskList) => {
+    return taskList.tasks?.some((task) => task.isDone);
+  });
 
-  const toDoTaskLists =
-    toDoTaskListsFilter.length > 0 ? toDoTaskListsFilter : null;
-  const doneTaskLists =
-    doneTaskListsFilter().length > 0 ? doneTaskListsFilter() : null;
+  const toDoTaskLists = toDoTaskListsFilter ? toDoTaskListsFilter : null;
+  const doneTaskLists = doneTaskListsFilter ? doneTaskListsFilter : null;
 
   const toDoTaskListRenderItem: ListRenderItem<TaskListType> = ({
     item,

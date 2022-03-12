@@ -1,11 +1,14 @@
-import {TASK_LIST_ACTIONS} from '../../../enums/TasksEnum';
+import {TASK_LIST_ACTIONS} from '../../../enums/TaskListsEnum';
 import {
+  AddNewTaskActionType,
   AddNewTaskListActionType,
+  DeleteTaskActionType,
   DeleteTaskListActionType,
   EditTaskListTitleActionType,
+  SetTaskDoneActionType,
   SetTaskListsActionType,
 } from 'store/actions/TasksActions/Types';
-import {TaskListType} from '../../reducers/taskListReducer/Types';
+import {TaskListType, TaskType} from '../../reducers/taskListReducer/Types';
 
 export const setTaskLists = (
   taskLists: TaskListType[],
@@ -21,6 +24,20 @@ export const addNewTaskList = (
   newTaskList,
 });
 
+export const addNewTask = (
+  modifiedTaskList: TaskListType,
+): AddNewTaskActionType => ({
+  type: TASK_LIST_ACTIONS.ADD_NEW_TASK,
+  modifiedTaskList,
+});
+
+export const setTaskDone = (
+  modifiedTaskList: TaskListType,
+): SetTaskDoneActionType => ({
+  type: TASK_LIST_ACTIONS.SET_TASK_DONE,
+  modifiedTaskList,
+});
+
 export const deleteTaskList = (
   taskListId: string,
 ): DeleteTaskListActionType => ({
@@ -33,4 +50,13 @@ export const setEditedTaskList = (
 ): EditTaskListTitleActionType => ({
   type: TASK_LIST_ACTIONS.EDIT_TASK_LIST_TITLE,
   editedTaskList,
+});
+
+export const deleteTask = (
+  taskListId: string,
+  taskId: string,
+): DeleteTaskActionType => ({
+  type: TASK_LIST_ACTIONS.DELETE_TASK,
+  taskListId,
+  taskId,
 });
