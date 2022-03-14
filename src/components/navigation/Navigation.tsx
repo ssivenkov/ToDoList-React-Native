@@ -1,15 +1,15 @@
-import React from 'react';
-import {styles} from './Styles';
-import {NAVIGATION} from '../../enums/navigationEnum';
-import {NavigationContainer} from '@react-navigation/native';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {TasksScreen} from '../screens/tasksScreen/TasksScreen';
-import {SignInScreen} from '../screens/signInScreen/SignInScreen';
-import {RootTabParamListType} from './Types';
-import {ReturnComponentType} from 'types/common/ReturnComponentType';
 import {faFile, faUser} from '@fortawesome/free-solid-svg-icons';
-import {iconSizeMedium} from '../../constants/constants';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {NavigationContainer} from '@react-navigation/native';
+import React from 'react';
+import {ReturnComponentType} from 'types/common/ReturnComponentType';
+import {iconSizeMedium} from '../../constants/constants';
+import {NAVIGATION} from '../../enums/navigationEnum';
+import {SignInScreen} from '../screens/signInScreen/SignInScreen';
+import {TasksScreen} from '../screens/tasksScreen/TasksScreen';
+import {styles} from './Styles';
+import {RootTabParamListType} from './Types';
 
 const RootTab = createBottomTabNavigator<RootTabParamListType>();
 

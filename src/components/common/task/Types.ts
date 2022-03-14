@@ -1,4 +1,10 @@
+import {TaskType} from '../../../store/reducers/taskListReducer/Types';
+import {NullableType} from '../../../types/common/NullableType';
+
 export type TaskPropsType = {
-  title: string;
   todo?: boolean;
+  taskListId: string;
+  taskListTasks: NullableType<TaskType[]>;
+  taskTitle: string;
+  taskId: string;
 };
