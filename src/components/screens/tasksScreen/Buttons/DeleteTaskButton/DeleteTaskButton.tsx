@@ -1,14 +1,14 @@
-import React from 'react';
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faTrash} from '@fortawesome/free-solid-svg-icons';
-import {iconSizeSmall} from '../../../../../constants/constants';
-import {ModalIcon} from '../../../../common/modals/ModalIcon';
-import {useDispatch} from 'react-redux';
-import {ReturnComponentType} from '../../../../../types/common/ReturnComponentType';
-import {DeleteTaskButtonPropsType} from './Types';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import React from 'react';
 import {Text} from 'react-native';
-import {styles} from './Styles';
+import {useDispatch} from 'react-redux';
+import {iconSizeSmall} from '../../../../../constants/constants';
 import {deleteTask} from '../../../../../store/actions/TasksActions/taskListActions';
+import {ReturnComponentType} from '../../../../../types/common/ReturnComponentType';
+import {ModalIcon} from '../../../../common/modals/ModalIcon';
+import {styles} from './Styles';
+import {DeleteTaskButtonPropsType} from './Types';
 
 export const DeleteTaskButton = ({
   titleToBeDeletedTask,

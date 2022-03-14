@@ -1,6 +1,6 @@
-import {SIGN_IN_ACTIONS} from '../../../enums/SignInEnum';
 import {SignInActionsType} from 'store/actions/signInActions/Type';
 import {InitialSignInStateType} from 'store/reducers/signInReducer/Types';
+import {SIGN_IN_ACTIONS} from '../../../enums/SignInEnum';
 
 const initialSignInState = {
   signIn: [],
