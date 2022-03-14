@@ -1,36 +1,23 @@
-import React from 'react';
-import {styles} from './Styles';
-import {NAVIGATION_TASKS} from '../../../enums/TaskListsEnum';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {useSelector} from 'react-redux';
-import {TaskList} from '../../common/taskList/TaskList';
-import {FlatList, ListRenderItem, Text, View} from 'react-native';
-import {AppRootStateType} from 'store/Store';
-import {ReturnComponentType} from 'types/common/ReturnComponentType';
-import {TaskListType} from 'store/reducers/taskListReducer/Types';
-import {TabParamListType} from './Types';
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faCheck, faListCheck} from '@fortawesome/free-solid-svg-icons';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import React from 'react';
+import {FlatList, ListRenderItem, Text, View} from 'react-native';
+import {useSelector} from 'react-redux';
+import {TaskListType} from 'store/reducers/taskListReducer/Types';
+import {ReturnComponentType} from 'types/common/ReturnComponentType';
 import {iconSizeLarge} from '../../../constants/constants';
+import {NAVIGATION_TASKS} from '../../../enums/TaskListsEnum';
+import {getTaskList} from '../../../store/selectors/taskListSelectors';
+import {TaskList} from '../../common/taskList/TaskList';
 import {CreateTaskListButton} from './Buttons/CreateTaskListButton/CreateTaskListButton';
-import {selectModifiedTaskListById} from '../../../store/selectors/taskListsSelectors';
+import {styles} from './Styles';
+import {TabParamListType} from './Types';
 
 const TasksScreenTab = createBottomTabNavigator<TabParamListType>();
 
 export const TasksScreen = (): ReturnComponentType => {
-  /*const state = useSelector<AppRootStateType, AppRootStateType>(
-    (state) => state,
-  );
-
-  const taskLists = state.taskLists.taskLists
-    ? state.taskLists.taskLists.map((taskList) =>
-        selectModifiedTaskListById(state, taskList.id),
-      )
-    : [];*/
-
-  const taskLists = useSelector<AppRootStateType, TaskListType[]>(
-    (state) => state.taskLists.taskLists,
-  );
+  const taskLists = useSelector(getTaskList);
 
   const toDoTaskListsFilter = taskLists.filter((taskList) => {
     if (

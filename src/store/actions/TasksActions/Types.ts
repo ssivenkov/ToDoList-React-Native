@@ -17,7 +17,8 @@ export type AddNewTaskActionType = {
 
 export type SetTaskDoneActionType = {
   type: string;
-  modifiedTaskList: TaskListType;
+  taskListId: string;
+  doneTaskId: string;
 };
 
 export type DeleteTaskListActionType = {
@@ -33,7 +34,15 @@ export type DeleteTaskActionType = {
 
 export type EditTaskListTitleActionType = {
   type: string;
-  editedTaskList: TaskListType;
+  taskListId: string;
+  editedTaskListTitle: string;
+};
+
+export type EditTaskTitleActionType = {
+  type: string;
+  taskListId: string;
+  taskId: string;
+  editedTaskTitle: string;
 };
 
 export type TaskListActionsType = SetTaskListsActionType &
@@ -42,4 +51,5 @@ export type TaskListActionsType = SetTaskListsActionType &
   SetTaskDoneActionType &
   DeleteTaskListActionType &
   DeleteTaskActionType &
-  EditTaskListTitleActionType;
+  EditTaskListTitleActionType &
+  EditTaskTitleActionType;

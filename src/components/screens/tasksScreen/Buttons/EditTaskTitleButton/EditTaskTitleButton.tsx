@@ -1,39 +1,34 @@
-import React, {useState} from 'react';
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faPen} from '@fortawesome/free-solid-svg-icons';
-import {iconSizeSmall} from '../../../../../constants/constants';
-import {ModalIcon} from '../../../../common/modals/ModalIcon';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
+import {iconSizeSmall} from '../../../../../constants/constants';
+import {setEditedTask} from '../../../../../store/actions/TasksActions/taskListActions';
 import {ReturnComponentType} from '../../../../../types/common/ReturnComponentType';
-import {EditTaskTitleButtonPropsType} from './Types';
 import {Input} from '../../../../common/input/Input';
-import {addNewTaskList} from '../../../../../store/actions/TasksActions/taskListActions';
+import {ModalIcon} from '../../../../common/modals/ModalIcon';
+import {EditTaskTitleButtonPropsType} from './Types';
 
-export const EditTaskTitleButton = ({
-  titleToBeEditedTask,
-}: EditTaskTitleButtonPropsType): ReturnComponentType => {
+export const EditTaskTitleButton = (
+  props: EditTaskTitleButtonPropsType,
+): ReturnComponentType => {
+  const {taskListId, taskId, oldTaskTitle} = props;
   const dispatch = useDispatch();
-  const [newTaskTitle, setNewTaskTitle] = useState<string>(titleToBeEditedTask);
+  const [editedTaskTitle, setEditedTaskTitle] = useState<string>(oldTaskTitle);
 
-  const createTask = (): void => {
-    if (newTaskTitle.length >= 1) {
-      const taskList = {
-        id: '123',
-        title: newTaskTitle,
-        tasks: null,
-      };
-
-      dispatch(addNewTaskList(taskList));
-      setNewTaskTitle('');
+  const editTaskTitle = (): void => {
+    if (editedTaskTitle.length >= 1) {
+      dispatch(setEditedTask(taskListId, taskId, editedTaskTitle));
+      setEditedTaskTitle('');
     }
   };
 
   return (
     <ModalIcon
-      okHandler={() => createTask()}
+      okHandler={() => editTaskTitle()}
       description={'Edit task title:'}
       buttonIcon={<FontAwesomeIcon icon={faPen} size={iconSizeSmall} />}>
-      <Input value={newTaskTitle} onValueChange={setNewTaskTitle} />
+      <Input value={editedTaskTitle} onValueChange={setEditedTaskTitle} />
     </ModalIcon>
   );
 };
