@@ -1,26 +1,29 @@
-import React from 'react';
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faCheck} from '@fortawesome/free-solid-svg-icons';
-import {iconSizeSmall} from '../../../../../constants/constants';
-import {ModalIcon} from '../../../../common/modals/ModalIcon';
-import {useDispatch} from 'react-redux';
-import {ReturnComponentType} from '../../../../../types/common/ReturnComponentType';
-import {DoneTaskButtonPropsType} from './Types';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import React from 'react';
 import {Text} from 'react-native';
+import {useDispatch} from 'react-redux';
+import {iconSizeSmall} from '../../../../../constants/constants';
+import {setTaskIsDone} from '../../../../../store/actions/TasksActions/taskListActions';
+import {ReturnComponentType} from '../../../../../types/common/ReturnComponentType';
+import {ModalIcon} from '../../../../common/modals/ModalIcon';
 import {styles} from './Styles';
+import {DoneTaskButtonPropsType} from './Types';
 
 export const DoneTaskButton = ({
+  taskListId,
+  doneTaskId,
   completedTaskTitle,
 }: DoneTaskButtonPropsType): ReturnComponentType => {
   const dispatch = useDispatch();
 
-  const createTask = (): void => {
-    /*dispatch(addNewTaskList(taskList));*/
+  const setDoneTask = (): void => {
+    dispatch(setTaskIsDone(taskListId, doneTaskId));
   };
 
   return (
     <ModalIcon
-      okHandler={() => createTask()}
+      okHandler={() => setDoneTask()}
       buttonIcon={<FontAwesomeIcon icon={faCheck} size={iconSizeSmall} />}>
       <Text style={styles.warnText}>
         Are you sure the task{' '}

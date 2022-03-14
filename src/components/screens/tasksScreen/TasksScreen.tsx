@@ -1,25 +1,23 @@
-import React from 'react';
-import {styles} from './Styles';
-import {NAVIGATION_TASKS} from '../../../enums/TasksEnum';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {useSelector} from 'react-redux';
-import {TaskList} from '../../common/taskList/TaskList';
-import {FlatList, ListRenderItem, Text, View} from 'react-native';
-import {AppRootStateType} from 'store/Store';
-import {ReturnComponentType} from 'types/common/ReturnComponentType';
-import {TaskListType} from 'store/reducers/taskListReducer/Types';
-import {TabParamListType} from './Types';
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faCheck, faListCheck} from '@fortawesome/free-solid-svg-icons';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import React from 'react';
+import {FlatList, ListRenderItem, Text, View} from 'react-native';
+import {useSelector} from 'react-redux';
+import {TaskListType} from 'store/reducers/taskListReducer/Types';
+import {ReturnComponentType} from 'types/common/ReturnComponentType';
 import {iconSizeLarge} from '../../../constants/constants';
+import {NAVIGATION_TASKS} from '../../../enums/TaskListsEnum';
+import {getTaskList} from '../../../store/selectors/taskListSelectors';
+import {TaskList} from '../../common/taskList/TaskList';
 import {CreateTaskListButton} from './Buttons/CreateTaskListButton/CreateTaskListButton';
+import {styles} from './Styles';
+import {TabParamListType} from './Types';
 
 const TasksScreenTab = createBottomTabNavigator<TabParamListType>();
 
 export const TasksScreen = (): ReturnComponentType => {
-  const taskLists = useSelector<AppRootStateType, TaskListType[]>(
-    (state) => state.taskLists.taskLists,
-  );
+  const taskLists = useSelector(getTaskList);
 
   const toDoTaskListsFilter = taskLists.filter((taskList) => {
     if (
@@ -30,15 +28,12 @@ export const TasksScreen = (): ReturnComponentType => {
     }
   });
 
-  const doneTaskListsFilter = () =>
-    taskLists.filter((taskList) => {
-      return taskList.tasks?.some((task) => task.isDone);
-    });
+  const doneTaskListsFilter = taskLists.filter((taskList) => {
+    return taskList.tasks?.some((task) => task.isDone);
+  });
 
-  const toDoTaskLists =
-    toDoTaskListsFilter.length > 0 ? toDoTaskListsFilter : null;
-  const doneTaskLists =
-    doneTaskListsFilter().length > 0 ? doneTaskListsFilter() : null;
+  const toDoTaskLists = toDoTaskListsFilter ? toDoTaskListsFilter : null;
+  const doneTaskLists = doneTaskListsFilter ? doneTaskListsFilter : null;
 
   const toDoTaskListRenderItem: ListRenderItem<TaskListType> = ({
     item,

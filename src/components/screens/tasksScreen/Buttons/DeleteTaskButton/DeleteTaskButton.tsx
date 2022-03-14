@@ -8,19 +8,22 @@ import {ReturnComponentType} from '../../../../../types/common/ReturnComponentTy
 import {DeleteTaskButtonPropsType} from './Types';
 import {Text} from 'react-native';
 import {styles} from './Styles';
+import {deleteTask} from '../../../../../store/actions/TasksActions/taskListActions';
 
 export const DeleteTaskButton = ({
   titleToBeDeletedTask,
+  taskListId,
+  taskId,
 }: DeleteTaskButtonPropsType): ReturnComponentType => {
   const dispatch = useDispatch();
 
-  const createTask = (): void => {
-    /*dispatch(addNewTaskList(taskList));*/
+  const removeTask = (): void => {
+    dispatch(deleteTask(taskListId, taskId));
   };
 
   return (
     <ModalIcon
-      okHandler={() => createTask()}
+      okHandler={() => removeTask()}
       buttonIcon={<FontAwesomeIcon icon={faTrash} size={iconSizeSmall} />}>
       <Text style={styles.warnText}>
         Are you sure to delete{' '}
