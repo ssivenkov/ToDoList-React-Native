@@ -1,3 +1,5 @@
 export type EditTaskTitleButtonPropsType = {
-  titleToBeEditedTask: string;
+  taskListId: string;
+  taskId: string;
+  oldTaskTitle: string;
 };

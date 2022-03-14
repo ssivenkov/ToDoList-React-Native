@@ -1,37 +1,34 @@
-import React, {FC, useState} from 'react';
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faPlus} from '@fortawesome/free-solid-svg-icons';
-import {iconSizeSmall, idLength} from '../../../../../constants/constants';
-import {Input} from '../../../../common/input/Input';
-import {ModalIcon} from '../../../../common/modals/ModalIcon';
-import {nanoid} from 'nanoid';
-import {addNewTask} from '../../../../../store/actions/TasksActions/taskListActions';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import React, {FC, useState} from 'react';
 import {useDispatch} from 'react-redux';
-import {ReturnComponentType} from '../../../../../types/common/ReturnComponentType';
-import {CreateTaskButtonPropsType} from '../CreateTaskListButton/Types';
+import {iconSizeSmall} from '../../../../../constants/constants';
+import {addNewTask} from '../../../../../store/actions/TasksActions/taskListActions';
 import {
   TaskListType,
   TaskType,
 } from '../../../../../store/reducers/taskListReducer/Types';
+import {ReturnComponentType} from '../../../../../types/common/ReturnComponentType';
+import {Input} from '../../../../common/input/Input';
+import {ModalIcon} from '../../../../common/modals/ModalIcon';
+import {CreateTaskButtonPropsType} from './Types';
 
 export const CreateTaskButton: FC<CreateTaskButtonPropsType> = (
   props,
 ): ReturnComponentType => {
-  const {taskListId, taskListTitle, tasksList} = props;
+  const {taskListId, taskListTitle, tasks} = props;
   const dispatch = useDispatch();
   const [newTaskTitle, setNewTaskTitle] = useState<string>('');
 
   const createTask = (): void => {
     if (newTaskTitle) {
-      const taskId: string = nanoid(idLength);
+      const taskId: string = Math.random().toString();
       const newTask: TaskType = {
         id: taskId,
         title: newTaskTitle,
         isDone: false,
       };
-      const newTaskListNewTasks = tasksList
-        ? [...tasksList, newTask]
-        : [newTask];
+      const newTaskListNewTasks = tasks ? [...tasks, newTask] : [newTask];
 
       const modifiedTaskList: TaskListType = {
         id: taskListId,

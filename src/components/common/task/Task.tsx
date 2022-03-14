@@ -1,23 +1,35 @@
 import React, {FC} from 'react';
-import {styles} from './Styles';
 import {Text, View} from 'react-native';
 import {ReturnComponentType} from 'types/common/ReturnComponentType';
-import {TaskPropsType} from './Types';
 import {DeleteTaskButton} from '../../screens/tasksScreen/Buttons/DeleteTaskButton/DeleteTaskButton';
-import {EditTaskTitleButton} from '../../screens/tasksScreen/Buttons/EditTaskTitleButton/EditTaskTitleButton';
 import {DoneTaskButton} from '../../screens/tasksScreen/Buttons/DoneTaskButton/DoneTaskButton';
+import {EditTaskTitleButton} from '../../screens/tasksScreen/Buttons/EditTaskTitleButton/EditTaskTitleButton';
+import {styles} from './Styles';
+import {TaskPropsType} from './Types';
 
 export const Task: FC<TaskPropsType> = (props): ReturnComponentType => {
-  const {title, todo, taskListId, taskId} = props;
+  const {todo, taskListId, taskListTasks, taskTitle, taskId} = props;
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>{title}</Text>
+      <Text style={styles.text}>{taskTitle}</Text>
       <View style={styles.buttonsContainer}>
-        {todo && <DoneTaskButton completedTaskTitle={title} />}
-        <EditTaskTitleButton titleToBeEditedTask={title} />
+        {todo && (
+          <DoneTaskButton
+            completedTaskTitle={taskTitle}
+            taskListId={taskListId}
+            doneTaskId={taskId}
+          />
+        )}
+        {taskListTasks && (
+          <EditTaskTitleButton
+            taskListId={taskListId}
+            taskId={taskId}
+            oldTaskTitle={taskTitle}
+          />
+        )}
         <DeleteTaskButton
-          titleToBeDeletedTask={title}
+          titleToBeDeletedTask={taskTitle}
           taskListId={taskListId}
           taskId={taskId}
         />

@@ -1,41 +1,38 @@
-import React, {useState} from 'react';
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faPen} from '@fortawesome/free-solid-svg-icons';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import React, {useState} from 'react';
+import {useDispatch} from 'react-redux';
 import {iconSizeSmall} from '../../../../../constants/constants';
+import {setEditedTaskListTitle} from '../../../../../store/actions/TasksActions/taskListActions';
+import {ReturnComponentType} from '../../../../../types/common/ReturnComponentType';
 import {Input} from '../../../../common/input/Input';
 import {ModalIcon} from '../../../../common/modals/ModalIcon';
-import {useDispatch} from 'react-redux';
-import {ReturnComponentType} from '../../../../../types/common/ReturnComponentType';
 import {EditTaskListTitleButtonPropsType} from './Types';
-import {setEditedTaskList} from '../../../../../store/actions/TasksActions/taskListActions';
 
 export const EditTaskListTitleButton = ({
-  oldTitle,
-  id,
-  tasks,
+  oldTaskListTitle,
+  taskListId,
 }: EditTaskListTitleButtonPropsType): ReturnComponentType => {
   const dispatch = useDispatch();
-  const [newTaskListTitle, setNewTaskListTitle] = useState<string>(oldTitle);
+  const [editedTaskListTitle, setEditedTaskListTitleState] =
+    useState<string>(oldTaskListTitle);
 
-  const addNewTaskList = (): void => {
-    if (newTaskListTitle.length >= 1) {
-      const editedTaskList = {
-        id: id,
-        title: newTaskListTitle,
-        tasks: tasks,
-      };
-
-      dispatch(setEditedTaskList(editedTaskList));
-      setNewTaskListTitle('');
+  const editTaskList = (): void => {
+    if (editedTaskListTitle.length >= 1) {
+      dispatch(setEditedTaskListTitle(taskListId, editedTaskListTitle));
+      setEditedTaskListTitleState('');
     }
   };
 
   return (
     <ModalIcon
-      okHandler={() => addNewTaskList()}
+      okHandler={() => editTaskList()}
       description={'Edit task list title:'}
       buttonIcon={<FontAwesomeIcon icon={faPen} size={iconSizeSmall} />}>
-      <Input value={newTaskListTitle} onValueChange={setNewTaskListTitle} />
+      <Input
+        value={editedTaskListTitle}
+        onValueChange={setEditedTaskListTitleState}
+      />
     </ModalIcon>
   );
 };
