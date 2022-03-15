@@ -21,15 +21,17 @@ export const TasksScreen = (): ReturnComponentType => {
 
   const toDoTaskListsFilter = taskLists.filter((taskList) => {
     if (
-      !taskList.tasks?.length ||
-      taskList.tasks?.some((task) => !task.isDone)
+      taskList.showInToDo &&
+      (!taskList.tasks?.length || taskList.tasks.some((task) => !task.isDone))
     ) {
       return taskList;
     }
   });
 
   const doneTaskListsFilter = taskLists.filter((taskList) => {
-    return taskList.tasks?.some((task) => task.isDone);
+    if (taskList.tasks) {
+      return taskList.tasks.some((task) => task.isDone);
+    }
   });
 
   const toDoTaskLists = toDoTaskListsFilter ? toDoTaskListsFilter : null;
@@ -42,7 +44,15 @@ export const TasksScreen = (): ReturnComponentType => {
       ? item.tasks.filter((task) => !task.isDone)
       : null;
 
-    return <TaskList todo id={item.id} title={item.title} tasks={toDoTasks} />;
+    return (
+      <TaskList
+        todo={true}
+        id={item.id}
+        title={item.title}
+        tasks={toDoTasks}
+        taskLists={taskLists}
+      />
+    );
   };
 
   const doneTaskListRenderItem: ListRenderItem<TaskListType> = ({
@@ -52,13 +62,22 @@ export const TasksScreen = (): ReturnComponentType => {
       ? item.tasks.filter((task) => task.isDone)
       : null;
 
-    return <TaskList id={item.id} title={item.title} tasks={doneTasks} />;
+    if (!item.tasks) return null;
+    return (
+      <TaskList
+        todo={false}
+        id={item.id}
+        title={item.title}
+        tasks={doneTasks}
+        taskLists={taskLists}
+      />
+    );
   };
 
   const TodoTasksScreen = (): ReturnComponentType => {
     return (
       <>
-        {toDoTaskLists ? (
+        {toDoTaskLists && toDoTaskLists.length > 0 ? (
           <View style={styles.tasksListContainer}>
             <FlatList
               data={toDoTaskLists}
@@ -79,7 +98,7 @@ export const TasksScreen = (): ReturnComponentType => {
   const DoneTasksScreen = (): ReturnComponentType => {
     return (
       <>
-        {doneTaskLists ? (
+        {doneTaskLists && doneTaskLists.length > 0 ? (
           <View style={styles.tasksListContainer}>
             <FlatList
               data={doneTaskLists}

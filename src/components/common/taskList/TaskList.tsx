@@ -10,18 +10,19 @@ import {styles} from './Styles';
 import {TaskListPropsType} from './Types';
 
 export const TaskList: FC<TaskListPropsType> = (props): ReturnComponentType => {
-  const {id, title, tasks, todo} = props;
+  const {todo, id, title, tasks, taskLists} = props;
 
   const renderTodoTaskItem: ListRenderItem<TaskType> = ({
     item,
   }): ReturnComponentType => {
     return (
       <Task
-        todo
+        isTodo={true}
         taskListId={id}
         taskListTasks={tasks}
         taskTitle={item.title}
         taskId={item.id}
+        taskLists={taskLists}
       />
     );
   };
@@ -30,10 +31,12 @@ export const TaskList: FC<TaskListPropsType> = (props): ReturnComponentType => {
   }): ReturnComponentType => {
     return (
       <Task
+        isTodo={false}
         taskListId={id}
         taskListTasks={tasks}
         taskTitle={item.title}
         taskId={item.id}
+        taskLists={taskLists}
       />
     );
   };
@@ -57,7 +60,12 @@ export const TaskList: FC<TaskListPropsType> = (props): ReturnComponentType => {
             />
           )}
           <EditTaskListTitleButton oldTaskListTitle={title} taskListId={id} />
-          <DeleteTaskListButton id={id} titleToBeDeletedTaskList={title} />
+          <DeleteTaskListButton
+            taskListId={id}
+            titleToBeDeletedTaskList={title}
+            isTodoTaskList={todo}
+            taskListTasks={tasks}
+          />
         </View>
       </View>
       {tasks && tasksList}

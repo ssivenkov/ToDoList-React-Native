@@ -4,7 +4,8 @@ export enum TASK_LIST_ACTIONS {
   ADD_NEW_TASK = 'taskListsReducer/ADD_NEW_TASK',
   EDIT_TASK_LIST_TITLE = 'taskListsReducer/EDIT_TASK_LIST_TITLE',
   DELETE_TASK_LIST = 'taskListsReducer/DELETE_TASK_LIST',
-  SET_TASK_DONE = 'taskListsReducer/SET_TASK_IS_DONE',
+  DELETE_TASK_LIST_FULL = 'taskListsReducer/DELETE_TASK_LIST_FULL',
+  SET_TASK_DONE = 'taskListsReducer/SET_TASK_DONE',
   EDIT_TASK_TITLE = 'taskListsReducer/EDIT_TASK_TITLE',
   DELETE_TASK = 'taskListsReducer/DELETE_TASK',
 }

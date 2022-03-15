@@ -33,10 +33,11 @@ export const CreateTaskButton: FC<CreateTaskButtonPropsType> = (
       const modifiedTaskList: TaskListType = {
         id: taskListId,
         title: taskListTitle,
+        showInToDo: true,
         tasks: newTaskListNewTasks,
       };
 
-      dispatch(addNewTask(modifiedTaskList));
+      dispatch(addNewTask(modifiedTaskList, taskListId));
       setNewTaskTitle('');
     }
   };
