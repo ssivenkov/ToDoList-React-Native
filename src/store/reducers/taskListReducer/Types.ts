@@ -9,6 +9,7 @@ export type TaskType = {
 export type TaskListType = {
   id: string;
   title: string;
+  showInToDo: boolean;
   tasks: NullableType<TaskType[]>;
 };
 

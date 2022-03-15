@@ -19,6 +19,7 @@ export const CreateTaskListButton = (): ReturnComponentType => {
       const taskList: TaskListType = {
         id,
         title: newTaskListTitle,
+        showInToDo: true,
         tasks: [],
       };
 

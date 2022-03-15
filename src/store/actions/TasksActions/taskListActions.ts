@@ -3,13 +3,15 @@ import {
   AddNewTaskListActionType,
   DeleteTaskActionType,
   DeleteTaskListActionType,
+  DeleteTaskListFullActionType,
   EditTaskListTitleActionType,
   EditTaskTitleActionType,
   SetTaskDoneActionType,
   SetTaskListsActionType,
 } from 'store/actions/TasksActions/Types';
 import {TASK_LIST_ACTIONS} from '../../../enums/TaskListsEnum';
-import {TaskListType} from '../../reducers/taskListReducer/Types';
+import {NullableType} from '../../../types/common/NullableType';
+import {TaskListType, TaskType} from '../../reducers/taskListReducer/Types';
 
 export const setTaskLists = (
   taskLists: TaskListType[],
@@ -27,9 +29,11 @@ export const addNewTaskList = (
 
 export const addNewTask = (
   modifiedTaskList: TaskListType,
+  taskListId: string,
 ): AddNewTaskActionType => ({
   type: TASK_LIST_ACTIONS.ADD_NEW_TASK,
   modifiedTaskList,
+  taskListId,
 });
 
 export const setEditedTaskListTitle = (
@@ -41,10 +45,23 @@ export const setEditedTaskListTitle = (
   editedTaskListTitle,
 });
 
-export const deleteTaskList = (
+export const deleteTaskListFromScreen = (
+  taskListTasks: NullableType<TaskListType[]>,
   taskListId: string,
+  deleteTodoTask: boolean,
+  deleteDoneTask: boolean,
 ): DeleteTaskListActionType => ({
   type: TASK_LIST_ACTIONS.DELETE_TASK_LIST,
+  taskListTasks,
+  taskListId,
+  deleteTodoTask,
+  deleteDoneTask,
+});
+
+export const deleteTaskListFull = (
+  taskListId: string,
+): DeleteTaskListFullActionType => ({
+  type: TASK_LIST_ACTIONS.DELETE_TASK_LIST_FULL,
   taskListId,
 });
 

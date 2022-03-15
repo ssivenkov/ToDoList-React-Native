@@ -7,18 +7,10 @@ const initialTaskListState: TaskListStateType = {
     {
       id: '1',
       title: 'task list 1',
+      showInToDo: true,
       tasks: [
-        {id: '123', isDone: true, title: 'task 1'},
-        {id: '545', isDone: false, title: 'task 2'},
-        {id: '56778', isDone: false, title: 'task 3'},
-      ],
-    },
-    {
-      id: '2',
-      title: 'task list 2',
-      tasks: [
-        {id: '456', isDone: false, title: 'task 1'},
-        {id: '2354267', isDone: true, title: 'task 1'},
+        {id: '123', isDone: false, title: 'task 1'},
+        {id: '027', isDone: true, title: 'task 2'},
       ],
     },
   ],
@@ -31,6 +23,7 @@ export const taskListReducer = (
   switch (action.type) {
     case TASK_LIST_ACTIONS.SET_TASK_LISTS:
       return {...state};
+
     case TASK_LIST_ACTIONS.ADD_NEW_TASK_LIST:
       return {
         ...state,
@@ -41,13 +34,44 @@ export const taskListReducer = (
       return {
         ...state,
         taskLists: [
-          ...state.taskLists.filter(
-            (taskList) => taskList.id !== action.modifiedTaskList.id,
-          ),
-          action.modifiedTaskList,
+          ...state.taskLists.map((taskList) => {
+            if (taskList.id === action.taskListId) {
+              return action.modifiedTaskList;
+            } else return taskList;
+          }),
         ],
       };
+
     case TASK_LIST_ACTIONS.DELETE_TASK_LIST:
+      return {
+        ...state,
+        taskLists: [
+          ...state.taskLists.map((taskList) => {
+            if (taskList.id === action.taskListId) {
+              const taskListWithTasks = {...taskList};
+
+              if (action.deleteTodoTask) {
+                if (taskListWithTasks.tasks) {
+                  taskListWithTasks.showInToDo = false;
+                  taskListWithTasks.tasks = taskListWithTasks.tasks.filter(
+                    (task) => task.isDone,
+                  );
+                }
+              } else if (action.deleteDoneTask) {
+                if (taskListWithTasks.tasks) {
+                  taskListWithTasks.tasks = taskListWithTasks.tasks.filter(
+                    (task) => !task.isDone,
+                  );
+                }
+              }
+
+              return taskListWithTasks;
+            } else return taskList;
+          }),
+        ],
+      };
+
+    case TASK_LIST_ACTIONS.DELETE_TASK_LIST_FULL:
       return {
         ...state,
         taskLists: [
@@ -56,12 +80,17 @@ export const taskListReducer = (
           ),
         ],
       };
+
     case TASK_LIST_ACTIONS.EDIT_TASK_LIST_TITLE:
       return {
         taskLists: [
-          ...state.taskLists.filter(
-            (taskList) => taskList.id !== action.taskListId,
-          ),
+          ...state.taskLists.map((taskList) => {
+            if (taskList.id === action.taskListId) {
+              const editedTaskList = {...taskList};
+              editedTaskList.title = action.editedTaskListTitle;
+              return editedTaskList;
+            } else return taskList;
+          }),
         ],
       };
 
@@ -87,6 +116,7 @@ export const taskListReducer = (
           }),
         ],
       };
+
     case TASK_LIST_ACTIONS.EDIT_TASK_TITLE:
       return {
         ...state,
@@ -109,6 +139,7 @@ export const taskListReducer = (
           }),
         ],
       };
+
     case TASK_LIST_ACTIONS.DELETE_TASK:
       return {
         ...state,
