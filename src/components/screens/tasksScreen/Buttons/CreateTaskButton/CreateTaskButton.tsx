@@ -16,27 +16,32 @@ import {CreateTaskButtonPropsType} from './Types';
 export const CreateTaskButton: FC<CreateTaskButtonPropsType> = (
   props,
 ): ReturnComponentType => {
-  const {taskListId, taskListTitle, tasks} = props;
+  const {taskListId, taskListTitle, fullTaskList} = props;
   const dispatch = useDispatch();
   const [newTaskTitle, setNewTaskTitle] = useState<string>('');
 
   const createTask = (): void => {
+    const taskId: string = Math.random().toString();
+    const newTask: TaskType = {
+      id: taskId,
+      isDone: false,
+      title: newTaskTitle,
+    };
+
+    const newTaskListNewTasks =
+      fullTaskList.tasks.length === 0
+        ? [newTask]
+        : [...fullTaskList.tasks, newTask];
+
+    const modifiedTaskList: TaskListType = {
+      id: taskListId,
+      title: taskListTitle,
+      showInToDo: true,
+      tasks: newTaskListNewTasks,
+    };
+
     if (newTaskTitle) {
-      const taskId: string = Math.random().toString();
-      const newTask: TaskType = {
-        id: taskId,
-        title: newTaskTitle,
-        isDone: false,
-      };
-      const newTaskListNewTasks = tasks ? [...tasks, newTask] : [newTask];
-
-      const modifiedTaskList: TaskListType = {
-        id: taskListId,
-        title: taskListTitle,
-        tasks: newTaskListNewTasks,
-      };
-
-      dispatch(addNewTask(modifiedTaskList));
+      dispatch(addNewTask(modifiedTaskList, taskListId));
       setNewTaskTitle('');
     }
   };

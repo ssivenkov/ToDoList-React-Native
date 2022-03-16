@@ -1,4 +1,5 @@
-import {TaskListType} from '../../reducers/taskListReducer/Types';
+import {NullableType} from '../../../types/common/NullableType';
+import {TaskListType, TaskType} from '../../reducers/taskListReducer/Types';
 
 export type SetTaskListsActionType = {
   type: string;
@@ -13,6 +14,7 @@ export type AddNewTaskListActionType = {
 export type AddNewTaskActionType = {
   type: string;
   modifiedTaskList: TaskListType;
+  taskListId: string;
 };
 
 export type SetTaskDoneActionType = {
@@ -22,6 +24,13 @@ export type SetTaskDoneActionType = {
 };
 
 export type DeleteTaskListActionType = {
+  type: string;
+  fullTaskList: TaskListType;
+  deleteTodoTask: boolean;
+  deleteDoneTask: boolean;
+};
+
+export type DeleteTaskListFullActionType = {
   type: string;
   taskListId: string;
 };
@@ -52,4 +61,5 @@ export type TaskListActionsType = SetTaskListsActionType &
   DeleteTaskListActionType &
   DeleteTaskActionType &
   EditTaskListTitleActionType &
+  DeleteTaskListFullActionType &
   EditTaskTitleActionType;

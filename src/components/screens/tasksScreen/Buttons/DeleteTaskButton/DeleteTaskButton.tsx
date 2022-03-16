@@ -4,21 +4,38 @@ import React from 'react';
 import {Text} from 'react-native';
 import {useDispatch} from 'react-redux';
 import {iconSizeSmall} from '../../../../../constants/constants';
-import {deleteTask} from '../../../../../store/actions/TasksActions/taskListActions';
+import {
+  deleteTask,
+  deleteTaskListFromScreen,
+  deleteTaskListFull,
+} from '../../../../../store/actions/TasksActions/taskListActions';
 import {ReturnComponentType} from '../../../../../types/common/ReturnComponentType';
 import {ModalIcon} from '../../../../common/modals/ModalIcon';
 import {styles} from './Styles';
 import {DeleteTaskButtonPropsType} from './Types';
 
 export const DeleteTaskButton = ({
-  titleToBeDeletedTask,
-  taskListId,
+  isTodoTaskList,
   taskId,
+  taskTitle,
+  fullTaskList,
 }: DeleteTaskButtonPropsType): ReturnComponentType => {
   const dispatch = useDispatch();
+  const toDoTasks = fullTaskList.tasks.filter((task) => !task.isDone);
+  const doneTasks = fullTaskList.tasks.filter((task) => task.isDone);
 
   const removeTask = (): void => {
-    dispatch(deleteTask(taskListId, taskId));
+    if (!isTodoTaskList && toDoTasks.length === 0 && doneTasks.length === 1) {
+      dispatch(deleteTaskListFull(fullTaskList.id));
+    } else if (
+      !isTodoTaskList &&
+      toDoTasks.length !== 0 &&
+      doneTasks.length === 1
+    ) {
+      dispatch(deleteTaskListFromScreen(fullTaskList, false, true));
+    } else {
+      dispatch(deleteTask(fullTaskList.id, taskId));
+    }
   };
 
   return (
@@ -27,7 +44,7 @@ export const DeleteTaskButton = ({
       buttonIcon={<FontAwesomeIcon icon={faTrash} size={iconSizeSmall} />}>
       <Text style={styles.warnText}>
         Are you sure to delete{' '}
-        <Text style={styles.redHighlightTask}>{titleToBeDeletedTask}</Text>?
+        <Text style={styles.redHighlightTask}>{taskTitle}</Text>?
       </Text>
     </ModalIcon>
   );

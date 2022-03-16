@@ -17,7 +17,7 @@ export const styles = StyleSheet.create<CustomButtonStylesType>({
   },
 
   text: {
-    fontSize: 16,
+    fontSize: 19,
     color: '#fff',
   },
 
