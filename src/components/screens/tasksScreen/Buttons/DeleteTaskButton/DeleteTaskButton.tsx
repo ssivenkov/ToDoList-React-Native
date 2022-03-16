@@ -2,11 +2,12 @@ import {faTrash} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import React from 'react';
 import {Text} from 'react-native';
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {iconSizeSmall} from '../../../../../constants/constants';
 import {
   deleteTask,
   deleteTaskListFromScreen,
+  deleteTaskListFull,
 } from '../../../../../store/actions/TasksActions/taskListActions';
 import {ReturnComponentType} from '../../../../../types/common/ReturnComponentType';
 import {ModalIcon} from '../../../../common/modals/ModalIcon';
@@ -15,32 +16,26 @@ import {DeleteTaskButtonPropsType} from './Types';
 
 export const DeleteTaskButton = ({
   isTodoTaskList,
-  taskListId,
-  taskListTasks,
   taskId,
   taskTitle,
-  taskLists,
+  fullTaskList,
 }: DeleteTaskButtonPropsType): ReturnComponentType => {
   const dispatch = useDispatch();
-  const toDoTaskListsFilter = taskLists?.filter((taskList) => {
-    if (
-      !taskList.tasks?.length ||
-      taskList.tasks?.some((task) => !task.isDone)
-    ) {
-      return taskList;
-    }
-  });
-  const toDoTaskLists = toDoTaskListsFilter ? toDoTaskListsFilter : null;
+  const toDoTasks = fullTaskList.tasks.filter((task) => !task.isDone);
+  const doneTasks = fullTaskList.tasks.filter((task) => task.isDone);
 
   const removeTask = (): void => {
-    if (
+    if (!isTodoTaskList && toDoTasks.length === 0 && doneTasks.length === 1) {
+      dispatch(deleteTaskListFull(fullTaskList.id));
+    } else if (
       !isTodoTaskList &&
-      !toDoTaskLists &&
-      taskListTasks &&
-      taskListTasks.length === 1
+      toDoTasks.length !== 0 &&
+      doneTasks.length === 1
     ) {
-      dispatch(deleteTaskListFromScreen(taskLists, taskListId, true, false));
-    } else dispatch(deleteTask(taskListId, taskId));
+      dispatch(deleteTaskListFromScreen(fullTaskList, false, true));
+    } else {
+      dispatch(deleteTask(fullTaskList.id, taskId));
+    }
   };
 
   return (

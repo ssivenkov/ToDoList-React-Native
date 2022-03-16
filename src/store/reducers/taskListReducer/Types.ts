@@ -1,5 +1,3 @@
-import {NullableType} from '../../../types/common/NullableType';
-
 export type TaskType = {
   id: string;
   isDone: boolean;
@@ -10,7 +8,7 @@ export type TaskListType = {
   id: string;
   title: string;
   showInToDo: boolean;
-  tasks: NullableType<TaskType[]>;
+  tasks: TaskType[];
 };
 
 export type TaskListStateType = {

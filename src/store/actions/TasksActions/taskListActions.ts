@@ -46,14 +46,12 @@ export const setEditedTaskListTitle = (
 });
 
 export const deleteTaskListFromScreen = (
-  taskListTasks: NullableType<TaskListType[]>,
-  taskListId: string,
+  fullTaskList: TaskListType,
   deleteTodoTask: boolean,
   deleteDoneTask: boolean,
 ): DeleteTaskListActionType => ({
-  type: TASK_LIST_ACTIONS.DELETE_TASK_LIST,
-  taskListTasks,
-  taskListId,
+  type: TASK_LIST_ACTIONS.DELETE_TASK_LIST_FROM_SCREEN,
+  fullTaskList,
   deleteTodoTask,
   deleteDoneTask,
 });

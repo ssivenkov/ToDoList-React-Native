@@ -25,8 +25,7 @@ export type SetTaskDoneActionType = {
 
 export type DeleteTaskListActionType = {
   type: string;
-  taskListTasks: NullableType<TaskListType[]>;
-  taskListId: string;
+  fullTaskList: TaskListType;
   deleteTodoTask: boolean;
   deleteDoneTask: boolean;
 };

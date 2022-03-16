@@ -10,65 +10,56 @@ import {styles} from './Styles';
 import {TaskListPropsType} from './Types';
 
 export const TaskList: FC<TaskListPropsType> = (props): ReturnComponentType => {
-  const {todo, id, title, tasks, taskLists} = props;
+  const {
+    isTodoTaskList,
+    taskListId,
+    taskListTitle,
+    taskListPropsTasks,
+    fullTaskList,
+  } = props;
 
-  const renderTodoTaskItem: ListRenderItem<TaskType> = ({
+  const renderTaskItem: ListRenderItem<TaskType> = ({
     item,
   }): ReturnComponentType => {
     return (
       <Task
-        isTodo={true}
-        taskListId={id}
-        taskListTasks={tasks}
+        isTodo={isTodoTaskList}
+        taskListId={taskListId}
         taskTitle={item.title}
         taskId={item.id}
-        taskLists={taskLists}
+        fullTaskList={fullTaskList}
       />
     );
   };
-  const renderDoneTaskItem: ListRenderItem<TaskType> = ({
-    item,
-  }): ReturnComponentType => {
-    return (
-      <Task
-        isTodo={false}
-        taskListId={id}
-        taskListTasks={tasks}
-        taskTitle={item.title}
-        taskId={item.id}
-        taskLists={taskLists}
-      />
-    );
-  };
-  let tasksList;
-  if (todo && tasks) {
-    tasksList = <FlatList data={tasks} renderItem={renderTodoTaskItem} />;
-  } else if (tasks) {
-    tasksList = <FlatList data={tasks} renderItem={renderDoneTaskItem} />;
-  }
+
+  const tasks = (
+    <FlatList data={taskListPropsTasks} renderItem={renderTaskItem} />
+  );
 
   return (
     <View style={styles.container}>
       <View style={styles.controlsContainer}>
-        <Text style={styles.title}>{title}</Text>
+        <Text style={styles.title}>{taskListTitle}</Text>
         <View style={styles.buttonsContainer}>
-          {todo && (
+          {isTodoTaskList && (
             <CreateTaskButton
-              taskListId={id}
-              taskListTitle={title}
-              tasks={tasks}
+              taskListId={taskListId}
+              taskListTitle={taskListTitle}
+              fullTaskList={fullTaskList}
             />
           )}
-          <EditTaskListTitleButton oldTaskListTitle={title} taskListId={id} />
+          <EditTaskListTitleButton
+            oldTaskListTitle={taskListTitle}
+            taskListId={taskListId}
+          />
           <DeleteTaskListButton
-            taskListId={id}
-            titleToBeDeletedTaskList={title}
-            isTodoTaskList={todo}
-            taskListTasks={tasks}
+            titleToBeDeletedTaskList={taskListTitle}
+            isTodoTaskList={isTodoTaskList}
+            fullTaskList={fullTaskList}
           />
         </View>
       </View>
-      {tasks && tasksList}
+      {taskListPropsTasks && tasks}
     </View>
   );
 };
