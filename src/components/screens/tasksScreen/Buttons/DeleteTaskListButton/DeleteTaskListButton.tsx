@@ -16,20 +16,23 @@ import {DeleteTaskListButtonPropsType} from './Types';
 export const DeleteTaskListButton = (
   props: DeleteTaskListButtonPropsType,
 ): ReturnComponentType => {
-  const {taskListId, titleToBeDeletedTaskList, isTodoTaskList, taskListTasks} =
-    props;
+  const {titleToBeDeletedTaskList, isTodoTaskList, fullTaskList} = props;
   const dispatch = useDispatch();
 
   const removeTaskList = (): void => {
-    if (isTodoTaskList && taskListTasks) {
-      dispatch(
-        deleteTaskListFromScreen(taskListTasks, taskListId, true, false),
-      );
-    } else if (!isTodoTaskList && taskListTasks) {
-      dispatch(
-        deleteTaskListFromScreen(taskListTasks, taskListId, false, true),
-      );
-    } else dispatch(deleteTaskListFull(taskListId));
+    const toDoTasks = fullTaskList.tasks.filter((task) => !task.isDone);
+    const doneTasks = fullTaskList.tasks.filter((task) => task.isDone);
+
+    if (
+      (isTodoTaskList && doneTasks.length === 0) ||
+      (!isTodoTaskList && toDoTasks.length === 0)
+    ) {
+      dispatch(deleteTaskListFull(fullTaskList.id));
+    } else if (isTodoTaskList && !!toDoTasks && !!doneTasks) {
+      dispatch(deleteTaskListFromScreen(fullTaskList, true, false));
+    } else if (!isTodoTaskList && !!toDoTasks && !!doneTasks) {
+      dispatch(deleteTaskListFromScreen(fullTaskList, false, true));
+    }
   };
 
   return (

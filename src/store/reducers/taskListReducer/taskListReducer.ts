@@ -42,30 +42,26 @@ export const taskListReducer = (
         ],
       };
 
-    case TASK_LIST_ACTIONS.DELETE_TASK_LIST:
+    case TASK_LIST_ACTIONS.DELETE_TASK_LIST_FROM_SCREEN:
       return {
         ...state,
         taskLists: [
           ...state.taskLists.map((taskList) => {
-            if (taskList.id === action.taskListId) {
-              const taskListWithTasks = {...taskList};
-
+            if (taskList.id === action.fullTaskList.id) {
+              const conditionTaskList = {...taskList};
               if (action.deleteTodoTask) {
-                if (taskListWithTasks.tasks) {
-                  taskListWithTasks.showInToDo = false;
-                  taskListWithTasks.tasks = taskListWithTasks.tasks.filter(
-                    (task) => task.isDone,
-                  );
-                }
-              } else if (action.deleteDoneTask) {
-                if (taskListWithTasks.tasks) {
-                  taskListWithTasks.tasks = taskListWithTasks.tasks.filter(
-                    (task) => !task.isDone,
-                  );
-                }
+                conditionTaskList.showInToDo = false;
+                conditionTaskList.tasks = conditionTaskList.tasks.filter(
+                  (task) => task.isDone,
+                );
               }
-
-              return taskListWithTasks;
+              if (action.deleteDoneTask) {
+                conditionTaskList.showInToDo = true;
+                conditionTaskList.tasks = conditionTaskList.tasks.filter(
+                  (task) => !task.isDone,
+                );
+              }
+              return conditionTaskList;
             } else return taskList;
           }),
         ],

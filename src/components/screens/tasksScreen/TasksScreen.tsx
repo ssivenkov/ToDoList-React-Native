@@ -19,57 +19,42 @@ const TasksScreenTab = createBottomTabNavigator<TabParamListType>();
 export const TasksScreen = (): ReturnComponentType => {
   const taskLists = useSelector(getTaskList);
 
-  const toDoTaskListsFilter = taskLists.filter((taskList) => {
-    if (
-      taskList.showInToDo &&
-      (!taskList.tasks?.length || taskList.tasks.some((task) => !task.isDone))
-    ) {
+  const toDoTaskLists = taskLists.filter((taskList) => {
+    if (taskList.showInToDo || taskList.tasks.some((task) => !task.isDone)) {
       return taskList;
     }
   });
-
-  const doneTaskListsFilter = taskLists.filter((taskList) => {
+  const doneTaskLists = taskLists.filter((taskList) => {
     if (taskList.tasks) {
       return taskList.tasks.some((task) => task.isDone);
     }
   });
 
-  const toDoTaskLists = toDoTaskListsFilter ? toDoTaskListsFilter : null;
-  const doneTaskLists = doneTaskListsFilter ? doneTaskListsFilter : null;
-
   const toDoTaskListRenderItem: ListRenderItem<TaskListType> = ({
     item,
   }): ReturnComponentType => {
-    const toDoTasks = item.tasks
-      ? item.tasks.filter((task) => !task.isDone)
-      : null;
-
+    const toDoTasks = item.tasks && item.tasks.filter((task) => !task.isDone);
     return (
       <TaskList
-        todo={true}
-        id={item.id}
-        title={item.title}
-        tasks={toDoTasks}
-        taskLists={taskLists}
+        isTodoTaskList={true}
+        taskListId={item.id}
+        taskListTitle={item.title}
+        taskListPropsTasks={toDoTasks}
+        fullTaskList={item}
       />
     );
   };
-
   const doneTaskListRenderItem: ListRenderItem<TaskListType> = ({
     item,
   }): ReturnComponentType => {
-    const doneTasks = item.tasks
-      ? item.tasks.filter((task) => task.isDone)
-      : null;
-
-    if (!item.tasks) return null;
+    const doneTasks = item.tasks && item.tasks.filter((task) => task.isDone);
     return (
       <TaskList
-        todo={false}
-        id={item.id}
-        title={item.title}
-        tasks={doneTasks}
-        taskLists={taskLists}
+        isTodoTaskList={false}
+        taskListId={item.id}
+        taskListTitle={item.title}
+        taskListPropsTasks={doneTasks}
+        fullTaskList={item}
       />
     );
   };

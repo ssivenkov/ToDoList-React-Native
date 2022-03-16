@@ -8,8 +8,7 @@ import {styles} from './Styles';
 import {TaskPropsType} from './Types';
 
 export const Task: FC<TaskPropsType> = (props): ReturnComponentType => {
-  const {isTodo, taskListId, taskListTasks, taskTitle, taskId, taskLists} =
-    props;
+  const {isTodo, taskListId, taskTitle, taskId, fullTaskList} = props;
 
   return (
     <View style={styles.container}>
@@ -29,11 +28,9 @@ export const Task: FC<TaskPropsType> = (props): ReturnComponentType => {
         />
         <DeleteTaskButton
           isTodoTaskList={isTodo}
-          taskListId={taskListId}
-          taskListTasks={taskListTasks}
           taskId={taskId}
           taskTitle={taskTitle}
-          taskLists={taskLists}
+          fullTaskList={fullTaskList}
         />
       </View>
     </View>
