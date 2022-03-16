@@ -8,30 +8,29 @@ import {styles} from './Styles';
 import {TaskPropsType} from './Types';
 
 export const Task: FC<TaskPropsType> = (props): ReturnComponentType => {
-  const {todo, taskListId, taskListTasks, taskTitle, taskId} = props;
+  const {isTodo, taskListId, taskTitle, taskId, fullTaskList} = props;
 
   return (
     <View style={styles.container}>
       <Text style={styles.text}>{taskTitle}</Text>
       <View style={styles.buttonsContainer}>
-        {todo && (
+        {isTodo && (
           <DoneTaskButton
             completedTaskTitle={taskTitle}
             taskListId={taskListId}
             doneTaskId={taskId}
           />
         )}
-        {taskListTasks && (
-          <EditTaskTitleButton
-            taskListId={taskListId}
-            taskId={taskId}
-            oldTaskTitle={taskTitle}
-          />
-        )}
-        <DeleteTaskButton
-          titleToBeDeletedTask={taskTitle}
+        <EditTaskTitleButton
           taskListId={taskListId}
           taskId={taskId}
+          oldTaskTitle={taskTitle}
+        />
+        <DeleteTaskButton
+          isTodoTaskList={isTodo}
+          taskId={taskId}
+          taskTitle={taskTitle}
+          fullTaskList={fullTaskList}
         />
       </View>
     </View>

@@ -21,6 +21,7 @@ export const styles = StyleSheet.create<TaskStylesType>({
   },
 
   text: {
+    flex: 1,
     color: '#000',
     fontSize: 20,
   },

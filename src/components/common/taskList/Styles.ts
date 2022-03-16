@@ -32,6 +32,7 @@ export const styles = StyleSheet.create<TaskListStylesType>({
   },
 
   title: {
+    flex: 1,
     color: '#444',
     fontSize: 22,
   },

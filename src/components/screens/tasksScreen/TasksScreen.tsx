@@ -19,46 +19,50 @@ const TasksScreenTab = createBottomTabNavigator<TabParamListType>();
 export const TasksScreen = (): ReturnComponentType => {
   const taskLists = useSelector(getTaskList);
 
-  const toDoTaskListsFilter = taskLists.filter((taskList) => {
-    if (
-      !taskList.tasks?.length ||
-      taskList.tasks?.some((task) => !task.isDone)
-    ) {
+  const toDoTaskLists = taskLists.filter((taskList) => {
+    if (taskList.showInToDo || taskList.tasks.some((task) => !task.isDone)) {
       return taskList;
     }
   });
-
-  const doneTaskListsFilter = taskLists.filter((taskList) => {
-    return taskList.tasks?.some((task) => task.isDone);
+  const doneTaskLists = taskLists.filter((taskList) => {
+    if (taskList.tasks) {
+      return taskList.tasks.some((task) => task.isDone);
+    }
   });
-
-  const toDoTaskLists = toDoTaskListsFilter ? toDoTaskListsFilter : null;
-  const doneTaskLists = doneTaskListsFilter ? doneTaskListsFilter : null;
 
   const toDoTaskListRenderItem: ListRenderItem<TaskListType> = ({
     item,
   }): ReturnComponentType => {
-    const toDoTasks = item.tasks
-      ? item.tasks.filter((task) => !task.isDone)
-      : null;
-
-    return <TaskList todo id={item.id} title={item.title} tasks={toDoTasks} />;
+    const toDoTasks = item.tasks && item.tasks.filter((task) => !task.isDone);
+    return (
+      <TaskList
+        isTodoTaskList={true}
+        taskListId={item.id}
+        taskListTitle={item.title}
+        taskListPropsTasks={toDoTasks}
+        fullTaskList={item}
+      />
+    );
   };
-
   const doneTaskListRenderItem: ListRenderItem<TaskListType> = ({
     item,
   }): ReturnComponentType => {
-    const doneTasks = item.tasks
-      ? item.tasks.filter((task) => task.isDone)
-      : null;
-
-    return <TaskList id={item.id} title={item.title} tasks={doneTasks} />;
+    const doneTasks = item.tasks && item.tasks.filter((task) => task.isDone);
+    return (
+      <TaskList
+        isTodoTaskList={false}
+        taskListId={item.id}
+        taskListTitle={item.title}
+        taskListPropsTasks={doneTasks}
+        fullTaskList={item}
+      />
+    );
   };
 
   const TodoTasksScreen = (): ReturnComponentType => {
     return (
       <>
-        {toDoTaskLists ? (
+        {toDoTaskLists && toDoTaskLists.length > 0 ? (
           <View style={styles.tasksListContainer}>
             <FlatList
               data={toDoTaskLists}
@@ -79,7 +83,7 @@ export const TasksScreen = (): ReturnComponentType => {
   const DoneTasksScreen = (): ReturnComponentType => {
     return (
       <>
-        {doneTaskLists ? (
+        {doneTaskLists && doneTaskLists.length > 0 ? (
           <View style={styles.tasksListContainer}>
             <FlatList
               data={doneTaskLists}
