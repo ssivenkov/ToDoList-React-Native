@@ -1,12 +1,10 @@
-import {CustomTextButtonPropsType} from 'components/common/buttons/Type';
+import {CustomTextButtonPropsType} from 'components/common/buttons/type';
 import React, {FC} from 'react';
 import {Text, TouchableOpacity} from 'react-native';
-import {ReturnComponentType} from 'types/common/ReturnComponentType';
-import {styles} from './Styles';
+import {ReturnComponentType} from 'types/common/returnComponentType';
+import {styles} from './styles';
 
-export const CustomTextButton: FC<CustomTextButtonPropsType> = (
-  props,
-): ReturnComponentType => {
+export const CustomTextButton: FC<CustomTextButtonPropsType> = (props) => {
   const {title, onPress} = props;
 
   return (
