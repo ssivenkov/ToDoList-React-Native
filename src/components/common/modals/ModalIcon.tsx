@@ -2,8 +2,8 @@ import React, {useState} from 'react';
 import {Modal, Pressable, View, Text} from 'react-native';
 import {CustomIconButton} from '../buttons/CustomIconButton';
 import {CustomTextButton} from '../buttons/CustomTextButton';
-import {styles} from './Styles';
-import {ModalIconPropsType} from './Types';
+import {styles} from './styles';
+import {ModalIconPropsType} from './types';
 
 export const ModalIcon = ({
   children,

@@ -1,7 +1,7 @@
 import React from 'react';
 import {TextInput, View} from 'react-native';
-import {styles} from './Styles';
-import {InputPropsType} from './Types';
+import {styles} from './styles';
+import {InputPropsType} from './types';
 
 export const Input = ({value, onValueChange}: InputPropsType) => {
   return (
