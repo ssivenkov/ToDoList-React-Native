@@ -3,10 +3,10 @@ import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import React from 'react';
 import {Text} from 'react-native';
 import {useDispatch} from 'react-redux';
-import {iconSizeSmall} from '../../../../../constants/constants';
-import {setTaskIsDone} from '../../../../../store/actions/tasksActions/taskListActions';
-import {ReturnComponentType} from '../../../../../types/common/returnComponentType';
-import {ModalIcon} from '../../../../common/modals/ModalIcon';
+import {ReturnComponentType} from '../../../commonTypes/returnComponentType';
+import {iconSizeSmall} from '../../../constants/constants';
+import {setTaskIsDone} from '../../../store/actions/tasksActions/taskListActions';
+import {ModalIcon} from '../../common/modals/ModalIcon';
 import {styles} from './styles';
 import {DoneTaskButtonPropsType} from './types';
 

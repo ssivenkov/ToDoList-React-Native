@@ -2,9 +2,9 @@ import React from 'react';
 import {FlatList, ListRenderItem, Text, View} from 'react-native';
 import {useSelector} from 'react-redux';
 import {TaskListType} from 'store/reducers/taskListReducer/types';
-import {getTaskList} from '../../../../../store/selectors/taskListSelectors';
-import {ReturnComponentType} from '../../../../../types/common/returnComponentType';
-import {TaskList} from '../../../../common/taskList/TaskList';
+import {ReturnComponentType} from '../../../commonTypes/returnComponentType';
+import {getTaskList} from '../../../store/selectors/taskListSelectors';
+import {TaskList} from '../../common/taskList/TaskList';
 import {styles} from './styles';
 
 export const DoneTasksScreen = (): ReturnComponentType => {

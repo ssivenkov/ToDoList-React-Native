@@ -2,15 +2,15 @@ import {faPlus} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import React, {FC, useState} from 'react';
 import {useDispatch} from 'react-redux';
-import {iconSizeSmall} from '../../../../../constants/constants';
-import {addNewTask} from '../../../../../store/actions/tasksActions/taskListActions';
+import {ReturnComponentType} from '../../../commonTypes/returnComponentType';
+import {iconSizeSmall} from '../../../constants/constants';
+import {addNewTask} from '../../../store/actions/tasksActions/taskListActions';
 import {
   TaskListType,
   TaskType,
-} from '../../../../../store/reducers/taskListReducer/types';
-import {ReturnComponentType} from '../../../../../types/common/returnComponentType';
-import {Input} from '../../../../common/input/Input';
-import {ModalIcon} from '../../../../common/modals/ModalIcon';
+} from '../../../store/reducers/taskListReducer/types';
+import {Input} from '../../common/input/Input';
+import {ModalIcon} from '../../common/modals/ModalIcon';
 import {CreateTaskButtonPropsType} from './types';
 
 export const CreateTaskButton: FC<CreateTaskButtonPropsType> = (

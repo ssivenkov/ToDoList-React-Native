@@ -1,13 +1,13 @@
 import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
-import {taskListMarginVertical} from '../../../../common/taskList/styles';
+import {taskListMarginVertical} from '../../common/taskList/styles';
 
-type TodoTasksScreenStylesType = {
+type DoneTasksScreenStylesType = {
   tasksListContainer: ViewStyle;
   nullContentContainer: ViewStyle;
   nullContentText: TextStyle;
 };
 
-export const styles = StyleSheet.create<TodoTasksScreenStylesType>({
+export const styles = StyleSheet.create<DoneTasksScreenStylesType>({
   tasksListContainer: {
     backgroundColor: '#eee',
     paddingVertical: taskListMarginVertical,

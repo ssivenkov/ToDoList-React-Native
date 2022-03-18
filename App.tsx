@@ -3,9 +3,9 @@ import 'react-native-gesture-handler';
 import SplashScreen from 'react-native-splash-screen';
 import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/lib/integration/react';
-import {Navigation} from './src/components/navigation/Navigation';
+import {ReturnComponentType} from './src/commonTypes/returnComponentType';
+import {Navigation} from './src/navigation/Navigation';
 import {persistor, store} from './src/store/store';
-import {ReturnComponentType} from './src/types/common/returnComponentType';
 
 export const App = (): ReturnComponentType => {
   useEffect(() => {
