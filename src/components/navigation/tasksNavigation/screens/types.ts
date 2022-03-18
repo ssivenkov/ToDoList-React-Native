@@ -1,4 +1,4 @@
-export type TabParamListType = {
+export type TabParamsListType = {
   'Todo tasks': undefined;
   'Done tasks': undefined;
 };
