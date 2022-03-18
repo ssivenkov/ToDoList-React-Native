@@ -1,43 +1,32 @@
 import {FontAwesomeIconStyle} from '@fortawesome/react-native-fontawesome';
-import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
-import {taskListMarginVertical} from '../../common/taskList/styles';
+import {StyleSheet, ViewStyle} from 'react-native';
 
 type TasksScreenStylesType = {
-  tasksListContainer: ViewStyle;
-  nullContentContainer: ViewStyle;
   tabBarContainer: ViewStyle;
+  tabBarItem: ViewStyle;
   tabLightIcon: FontAwesomeIconStyle;
-  buttonContainer: ViewStyle;
-  nullContentText: TextStyle;
+  tabDarkIcon: FontAwesomeIconStyle;
+  tabBarIndicator: ViewStyle;
 };
 
 export const styles = StyleSheet.create<TasksScreenStylesType>({
-  tasksListContainer: {
-    backgroundColor: '#eee',
-    paddingVertical: taskListMarginVertical,
-  },
-
-  nullContentContainer: {
-    height: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-
-  nullContentText: {
-    fontSize: 22,
-    color: '#000',
-  },
-
   tabBarContainer: {
-    height: 50,
     backgroundColor: '#fff',
   },
 
-  tabLightIcon: {
-    color: '#fff',
+  tabBarItem: {
+    height: 60,
   },
 
-  buttonContainer: {
-    marginRight: 10,
+  tabLightIcon: {
+    color: 'purple',
+  },
+
+  tabDarkIcon: {
+    color: '#000',
+  },
+
+  tabBarIndicator: {
+    backgroundColor: 'darkmagenta',
   },
 });
