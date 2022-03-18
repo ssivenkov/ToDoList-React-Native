@@ -1,4 +1,4 @@
-import {NullableType} from '../../../types/common/nullableType';
+import {NullableType} from '../../../commonTypes/nullableType';
 import {TaskListType, TaskType} from '../../reducers/taskListReducer/types';
 
 export type SetTaskListsActionType = {

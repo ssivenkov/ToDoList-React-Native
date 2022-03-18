@@ -2,16 +2,16 @@ import {faFile, faUser} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
+import {ReturnComponentType} from 'commonTypes/returnComponentType';
 import React from 'react';
 import {View} from 'react-native';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
-import {ReturnComponentType} from 'types/common/returnComponentType';
-import {iconSizeMedium} from '../../constants/constants';
-import {NAVIGATION} from '../../enums/navigationEnum';
-import {SignInScreen} from '../screens/signInScreen/signInScreen';
+import {CreateTaskListButton} from '../components/buttons/createTaskListButton/createTaskListButton';
+import {SignInScreen} from '../components/screens/signInScreen/SignInScreen';
+import {iconSizeMedium} from '../constants/constants';
+import {NAVIGATION} from '../enums/navigationEnum';
 import {styles} from './styles';
-import {TasksNavigator} from './tasksNavigation/TasksNavigator';
-import {CreateTaskListButton} from './tasksNavigation/buttons/createTaskListButton/createTaskListButton';
+import {TasksNavigation} from './tasksNavigation/TasksNavigation';
 import {RootTabParamListType} from './types';
 
 const RootTab = createBottomTabNavigator<RootTabParamListType>();
@@ -43,7 +43,7 @@ export const Navigation = (): ReturnComponentType => {
           })}>
           <RootTab.Screen
             name={NAVIGATION.TASKS}
-            component={TasksNavigator}
+            component={TasksNavigation}
             options={() => ({
               tabBarIcon: ({focused}) => (
                 <FontAwesomeIcon

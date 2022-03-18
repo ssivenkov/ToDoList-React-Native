@@ -2,11 +2,11 @@ import {faPen} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
-import {iconSizeSmall} from '../../../../../constants/constants';
-import {setEditedTask} from '../../../../../store/actions/tasksActions/taskListActions';
-import {ReturnComponentType} from '../../../../../types/common/returnComponentType';
-import {Input} from '../../../../common/input/Input';
-import {ModalIcon} from '../../../../common/modals/ModalIcon';
+import {ReturnComponentType} from '../../../commonTypes/returnComponentType';
+import {iconSizeSmall} from '../../../constants/constants';
+import {setEditedTask} from '../../../store/actions/tasksActions/taskListActions';
+import {Input} from '../../common/input/Input';
+import {ModalIcon} from '../../common/modals/ModalIcon';
 import {EditTaskTitleButtonPropsType} from './types';
 
 export const EditTaskTitleButton = (

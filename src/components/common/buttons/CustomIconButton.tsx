@@ -1,7 +1,7 @@
+import {ReturnComponentType} from 'commonTypes/returnComponentType';
 import {CustomIconButtonPropsType} from 'components/common/buttons/type';
 import React, {FC} from 'react';
 import {Text, TouchableOpacity} from 'react-native';
-import {ReturnComponentType} from 'types/common/returnComponentType';
 import {styles} from './styles';
 
 export const CustomIconButton: FC<CustomIconButtonPropsType> = (

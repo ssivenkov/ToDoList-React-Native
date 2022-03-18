@@ -9,8 +9,8 @@ import {
   SetTaskDoneActionType,
   SetTaskListsActionType,
 } from 'store/actions/tasksActions/types';
+import {NullableType} from '../../../commonTypes/nullableType';
 import {TASK_LIST_ACTIONS} from '../../../enums/taskListsEnum';
-import {NullableType} from '../../../types/common/nullableType';
 import {TaskListType, TaskType} from '../../reducers/taskListReducer/types';
 
 export const setTaskLists = (

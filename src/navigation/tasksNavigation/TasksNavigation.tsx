@@ -1,18 +1,18 @@
 import {faCheck, faListCheck} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
+import {ReturnComponentType} from 'commonTypes/returnComponentType';
 import React from 'react';
-import {ReturnComponentType} from 'types/common/returnComponentType';
-import {iconSizeLarge} from '../../../constants/constants';
-import {NAVIGATION_TASKS} from '../../../enums/taskListsEnum';
-import {DoneTasksScreen} from './screens/DoneTaskScreen/DoneTaskScreen';
-import {TodoTasksScreen} from './screens/TodoTaskScreen/TodoTaskScreen';
-import {TabParamsListType} from './screens/types';
+import {DoneTasksScreen} from '../../components/screens/doneTaskScreen/DoneTaskScreen';
+import {TodoTasksScreen} from '../../components/screens/todoTaskScreen/TodoTaskScreen';
+import {iconSizeLarge} from '../../constants/constants';
+import {NAVIGATION_TASKS} from '../../enums/taskListsEnum';
 import {styles} from './styles';
+import {TabParamsListType} from './types';
 
 const Tab = createMaterialTopTabNavigator<TabParamsListType>();
 
-export const TasksNavigator = (): ReturnComponentType => {
+export const TasksNavigation = (): ReturnComponentType => {
   return (
     <Tab.Navigator
       initialRouteName={NAVIGATION_TASKS.TASKS}
