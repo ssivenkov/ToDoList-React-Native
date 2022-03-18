@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import {Modal, Pressable, View, Text} from 'react-native';
 import {CustomTextButton} from '../buttons/CustomTextButton';
-import {styles} from './Styles';
-import {ModalTextPropsType} from './Types';
+import {styles} from './styles';
+import {ModalTextPropsType} from './types';
 
 export const ModalText = ({
   children,

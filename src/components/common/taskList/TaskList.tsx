@@ -1,13 +1,13 @@
+import {ReturnComponentType} from 'commonTypes/returnComponentType';
 import React, {FC} from 'react';
 import {FlatList, ListRenderItem, Text, View} from 'react-native';
-import {ReturnComponentType} from 'types/common/ReturnComponentType';
-import {TaskType} from '../../../store/reducers/taskListReducer/Types';
-import {CreateTaskButton} from '../../screens/tasksScreen/Buttons/CreateTaskButton/CreateTaskButton';
-import {DeleteTaskListButton} from '../../screens/tasksScreen/Buttons/DeleteTaskListButton/DeleteTaskListButton';
-import {EditTaskListTitleButton} from '../../screens/tasksScreen/Buttons/EditTaskListTitleButton/EditTaskListTitleButton';
+import {TaskType} from '../../../store/reducers/taskListReducer/types';
+import {CreateTaskButton} from '../../buttons/createTaskButton/CreateTaskButton';
+import {DeleteTaskListButton} from '../../buttons/deleteTaskListButton/DeleteTaskListButton';
+import {EditTaskListTitleButton} from '../../buttons/editTaskListTitleButton/EditTaskListTitleButton';
 import {Task} from '../task/Task';
-import {styles} from './Styles';
-import {TaskListPropsType} from './Types';
+import {styles} from './styles';
+import {TaskListPropsType} from './types';
 
 export const TaskList: FC<TaskListPropsType> = (props): ReturnComponentType => {
   const {
