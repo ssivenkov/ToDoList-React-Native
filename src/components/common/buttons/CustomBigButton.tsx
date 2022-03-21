@@ -10,12 +10,8 @@ export const CustomBigButton: FC<CustomTextButtonPropsType> = (props) => {
   const disabled = hasErrors || !hasTouched;
   const buttonStyles = [styles.bigButton, disabled ? styles.disable : {}];
 
-  const onPressCallback = () => {
-    if (!disabled) onPress();
-  };
-
   return (
-    <TouchableOpacity onPress={onPressCallback} disabled={disabled}>
+    <TouchableOpacity onPress={onPress} disabled={disabled}>
       <View style={buttonStyles}>
         <Text style={styles.bigText}>{title}</Text>
       </View>

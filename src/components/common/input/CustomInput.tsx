@@ -1,5 +1,6 @@
 import React from 'react';
 import {TextInput, View} from 'react-native';
+import {COLORS} from '../../../colors/colors';
 import {styles} from './styles';
 import {InputPropsType} from './types';
 
@@ -17,7 +18,7 @@ export const CustomInput = (props: InputPropsType) => {
       <TextInput
         style={styles.input}
         placeholder={placeholder}
-        placeholderTextColor={'#aaa'}
+        placeholderTextColor={COLORS.gray}
         onChangeText={(text: string) => {
           onValueChange(text);
         }}

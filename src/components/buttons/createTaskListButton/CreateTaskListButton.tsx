@@ -8,6 +8,7 @@ import {iconSizeLarge} from '../../../constants/constants';
 import {addNewTaskList} from '../../../store/actions/tasksActions/taskListActions';
 import {CustomInput} from '../../common/input/CustomInput';
 import {ModalIcon} from '../../common/modals/ModalIcon';
+import {styles} from './styles';
 
 export const CreateTaskListButton = (): ReturnComponentType => {
   const dispatch = useDispatch();
@@ -36,7 +37,7 @@ export const CreateTaskListButton = (): ReturnComponentType => {
         <FontAwesomeIcon
           icon={faPlus}
           size={iconSizeLarge}
-          style={{color: '#fff'}}
+          style={styles.icon}
         />
       }>
       <CustomInput
