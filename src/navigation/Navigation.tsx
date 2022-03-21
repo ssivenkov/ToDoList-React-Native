@@ -6,6 +6,7 @@ import {ReturnComponentType} from 'commonTypes/returnComponentType';
 import React from 'react';
 import {View} from 'react-native';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
+import {COLORS} from '../colors/colors';
 import {CreateTaskListButton} from '../components/buttons/createTaskListButton/CreateTaskListButton';
 import {SignInScreen} from '../components/screens/signInScreen/SignInScreen';
 import {iconSizeMedium} from '../constants/constants';
@@ -35,9 +36,9 @@ export const Navigation = (): ReturnComponentType => {
             headerStyle: styles.header,
             headerTitleStyle: styles.headerTitleStyle,
             tabBarStyle: styles.tabBarContainer,
-            tabBarActiveBackgroundColor: 'purple',
-            tabBarActiveTintColor: '#fff',
-            tabBarInactiveTintColor: '#000',
+            tabBarActiveBackgroundColor: COLORS.FRESH_EGGPLANT,
+            tabBarActiveTintColor: COLORS.WHITE,
+            tabBarInactiveTintColor: COLORS.BLACK,
             tabBarIconStyle: styles.icon,
             tabBarLabelStyle: styles.title,
           })}>

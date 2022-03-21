@@ -1,4 +1,5 @@
 import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
+import {COLORS} from '../../../colors/colors';
 
 type TaskStylesType = {
   container: ViewStyle;
@@ -17,12 +18,12 @@ export const styles = StyleSheet.create<TaskStylesType>({
     paddingVertical: 5,
     marginVertical: 2,
     borderRadius: 7,
-    backgroundColor: '#acacac',
+    backgroundColor: COLORS.SILVER_CHALICE,
   },
 
   text: {
     flex: 1,
-    color: '#000',
+    color: COLORS.BLACK,
     fontSize: 20,
   },
 
@@ -32,17 +33,17 @@ export const styles = StyleSheet.create<TaskStylesType>({
   },
 
   warnText: {
-    color: '#000',
+    color: COLORS.BLACK,
     fontSize: 20,
   },
 
   redHighlightTask: {
-    color: 'red',
+    color: COLORS.RED,
     fontWeight: '500',
   },
 
   greenHighlightTask: {
-    color: '#090',
+    color: COLORS.COD_GRAY,
     fontWeight: '500',
   },
 });

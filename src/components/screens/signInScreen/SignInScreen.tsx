@@ -12,7 +12,8 @@ export const SignInScreen = (): ReturnComponentType => {
   const minPasswordLength = 6;
 
   const onSubmit = (values: SignInValueType) => {
-    const value = values; // temp const
+    //NOTE: temp const
+    const value = values;
   };
 
   const signInValidationSchema = yup.object().shape({

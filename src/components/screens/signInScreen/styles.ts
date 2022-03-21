@@ -1,4 +1,5 @@
 import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
+import {COLORS} from '../../../colors/colors';
 
 type SignInScreenStylesType = {
   container: ViewStyle;
@@ -28,14 +29,14 @@ export const styles = StyleSheet.create<SignInScreenStylesType>({
   title: {
     fontSize: 30,
     fontWeight: '500',
-    color: '#000',
+    color: COLORS.BLACK,
     marginTop: 30,
     marginBottom: 10,
   },
 
   error: {
     fontSize: 14,
-    color: 'red',
+    color: COLORS.RED,
   },
 
   bigButtonContainer: {

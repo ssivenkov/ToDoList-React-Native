@@ -18,7 +18,7 @@ export const CustomInput = (props: InputPropsType) => {
       <TextInput
         style={styles.input}
         placeholder={placeholder}
-        placeholderTextColor={COLORS.gray}
+        placeholderTextColor={COLORS.SILVER_CHALICE}
         onChangeText={(text: string) => {
           onValueChange(text);
         }}
