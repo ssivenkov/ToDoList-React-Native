@@ -9,7 +9,6 @@ type TodoTasksScreenStylesType = {
 
 export const styles = StyleSheet.create<TodoTasksScreenStylesType>({
   tasksListContainer: {
-    backgroundColor: '#eee',
     paddingVertical: taskListMarginVertical,
   },
 

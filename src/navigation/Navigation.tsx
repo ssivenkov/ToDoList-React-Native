@@ -6,7 +6,7 @@ import {ReturnComponentType} from 'commonTypes/returnComponentType';
 import React from 'react';
 import {View} from 'react-native';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
-import {CreateTaskListButton} from '../components/buttons/createTaskListButton/createTaskListButton';
+import {CreateTaskListButton} from '../components/buttons/createTaskListButton/CreateTaskListButton';
 import {SignInScreen} from '../components/screens/signInScreen/SignInScreen';
 import {iconSizeMedium} from '../constants/constants';
 import {NAVIGATION} from '../enums/navigationEnum';

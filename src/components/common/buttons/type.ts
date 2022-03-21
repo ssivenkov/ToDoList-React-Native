@@ -1,7 +1,9 @@
 export type CustomTextButtonPropsType = {
   title: string;
+  onPress: () => void;
 
-  onPress?: () => void;
+  touched?: Array<boolean>;
+  errors?: Array<string | undefined>;
 };
 
 export type CustomIconButtonPropsType = {

@@ -3,16 +3,28 @@ import {TextInput, View} from 'react-native';
 import {styles} from './styles';
 import {InputPropsType} from './types';
 
-export const Input = ({value, onValueChange}: InputPropsType) => {
+export const CustomInput = (props: InputPropsType) => {
+  const {
+    value,
+    onValueChange,
+    onBlur,
+    placeholder,
+    keyboardType,
+    secureTextEntry,
+  } = props;
   return (
     <View style={styles.container}>
       <TextInput
         style={styles.input}
-        placeholder={'...'}
+        placeholder={placeholder}
+        placeholderTextColor={'#aaa'}
         onChangeText={(text: string) => {
           onValueChange(text);
         }}
+        onBlur={onBlur}
         defaultValue={value}
+        keyboardType={keyboardType}
+        secureTextEntry={secureTextEntry}
       />
     </View>
   );
