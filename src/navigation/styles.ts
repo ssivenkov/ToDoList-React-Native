@@ -1,5 +1,6 @@
 import {FontAwesomeIconStyle} from '@fortawesome/react-native-fontawesome';
 import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
+import {COLORS} from '../colors/colors';
 
 type NavigationStylesType = {
   header: ViewStyle;
@@ -14,25 +15,25 @@ type NavigationStylesType = {
 
 export const styles = StyleSheet.create<NavigationStylesType>({
   header: {
-    backgroundColor: '#610061',
+    backgroundColor: COLORS.POMPADOUR,
   },
 
   headerTitleStyle: {
-    color: '#fff',
+    color: COLORS.WHITE,
     fontSize: 22,
   },
 
   tabBarContainer: {
     height: 55,
-    backgroundColor: '#fff',
+    backgroundColor: COLORS.WHITE,
   },
 
   tabLightIcon: {
-    color: '#fff',
+    color: COLORS.WHITE,
   },
 
   tabDarkIcon: {
-    color: '#000',
+    color: COLORS.BLACK,
   },
 
   buttonContainer: {

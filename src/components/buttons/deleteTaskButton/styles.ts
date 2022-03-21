@@ -1,4 +1,5 @@
 import {StyleSheet, TextStyle} from 'react-native';
+import {COLORS} from '../../../colors/colors';
 
 type DeleteTaskListButtonStylesType = {
   warnText: TextStyle;
@@ -8,12 +9,12 @@ type DeleteTaskListButtonStylesType = {
 export const styles = StyleSheet.create<DeleteTaskListButtonStylesType>({
   warnText: {
     marginBottom: 15,
-    color: '#000',
+    color: COLORS.BLACK,
     fontSize: 20,
   },
 
   redHighlightTask: {
-    color: 'red',
+    color: COLORS.RED,
     fontWeight: '500',
   },
 });
