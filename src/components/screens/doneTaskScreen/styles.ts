@@ -9,7 +9,6 @@ type DoneTasksScreenStylesType = {
 
 export const styles = StyleSheet.create<DoneTasksScreenStylesType>({
   tasksListContainer: {
-    backgroundColor: '#eee',
     paddingVertical: taskListMarginVertical,
   },
 

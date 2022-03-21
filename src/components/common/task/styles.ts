@@ -17,7 +17,7 @@ export const styles = StyleSheet.create<TaskStylesType>({
     paddingVertical: 5,
     marginVertical: 2,
     borderRadius: 7,
-    backgroundColor: '#aaa',
+    backgroundColor: '#acacac',
   },
 
   text: {
