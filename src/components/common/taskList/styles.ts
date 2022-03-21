@@ -1,4 +1,5 @@
 import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
+import {COLORS} from '../../../colors/colors';
 
 type TaskListStylesType = {
   container: ViewStyle;
@@ -13,7 +14,7 @@ export const taskListMarginVertical = 8;
 
 export const styles = StyleSheet.create<TaskListStylesType>({
   container: {
-    backgroundColor: '#CFCFCF',
+    backgroundColor: COLORS.ALTO,
     padding: 10,
     marginHorizontal: 15,
     marginVertical: taskListMarginVertical,
@@ -33,17 +34,17 @@ export const styles = StyleSheet.create<TaskListStylesType>({
 
   title: {
     flex: 1,
-    color: '#444',
+    color: COLORS.TUNDORA,
     fontSize: 22,
   },
 
   warnText: {
-    color: '#000',
+    color: COLORS.BLACK,
     fontSize: 20,
   },
 
   redHighlightTask: {
-    color: 'red',
+    color: COLORS.RED,
     fontWeight: '500',
   },
 });

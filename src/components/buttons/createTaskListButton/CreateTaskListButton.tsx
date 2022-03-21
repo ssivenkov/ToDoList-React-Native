@@ -6,8 +6,9 @@ import {useDispatch} from 'react-redux';
 import {TaskListType} from 'store/reducers/taskListReducer/types';
 import {iconSizeLarge} from '../../../constants/constants';
 import {addNewTaskList} from '../../../store/actions/tasksActions/taskListActions';
-import {Input} from '../../common/input/Input';
+import {CustomInput} from '../../common/input/CustomInput';
 import {ModalIcon} from '../../common/modals/ModalIcon';
+import {styles} from './styles';
 
 export const CreateTaskListButton = (): ReturnComponentType => {
   const dispatch = useDispatch();
@@ -36,10 +37,13 @@ export const CreateTaskListButton = (): ReturnComponentType => {
         <FontAwesomeIcon
           icon={faPlus}
           size={iconSizeLarge}
-          style={{color: '#fff'}}
+          style={styles.icon}
         />
       }>
-      <Input value={newTaskListTitle} onValueChange={setNewTaskListTitle} />
+      <CustomInput
+        value={newTaskListTitle}
+        onValueChange={setNewTaskListTitle}
+      />
     </ModalIcon>
   );
 };

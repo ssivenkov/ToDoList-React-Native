@@ -1,15 +1,15 @@
 import {faPlus} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {ReturnComponentType} from 'commonTypes/returnComponentType';
 import React, {FC, useState} from 'react';
 import {useDispatch} from 'react-redux';
-import {ReturnComponentType} from '../../../commonTypes/returnComponentType';
 import {iconSizeSmall} from '../../../constants/constants';
 import {addNewTask} from '../../../store/actions/tasksActions/taskListActions';
 import {
   TaskListType,
   TaskType,
 } from '../../../store/reducers/taskListReducer/types';
-import {Input} from '../../common/input/Input';
+import {CustomInput} from '../../common/input/CustomInput';
 import {ModalIcon} from '../../common/modals/ModalIcon';
 import {CreateTaskButtonPropsType} from './types';
 
@@ -51,7 +51,7 @@ export const CreateTaskButton: FC<CreateTaskButtonPropsType> = (
       okHandler={() => createTask()}
       description={'Enter new task title:'}
       buttonIcon={<FontAwesomeIcon icon={faPlus} size={iconSizeSmall} />}>
-      <Input value={newTaskTitle} onValueChange={setNewTaskTitle} />
+      <CustomInput value={newTaskTitle} onValueChange={setNewTaskTitle} />
     </ModalIcon>
   );
 };
