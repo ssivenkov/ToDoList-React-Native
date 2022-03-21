@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import {COLORS} from '../../../colors/colors';
 
 export const styles = StyleSheet.create({
   centeredView: {
@@ -14,12 +15,12 @@ export const styles = StyleSheet.create({
     margin: 20,
     borderRadius: 20,
     padding: 25,
-    backgroundColor: '#fff',
+    backgroundColor: COLORS.WHITE,
   },
 
   text: {
     fontSize: 20,
-    color: '#000',
+    color: COLORS.BLACK,
     marginBottom: 12,
   },
 

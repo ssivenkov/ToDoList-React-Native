@@ -3,6 +3,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import {ReturnComponentType} from 'commonTypes/returnComponentType';
 import React from 'react';
+import {COLORS} from '../../colors/colors';
 import {DoneTasksScreen} from '../../components/screens/doneTaskScreen/DoneTaskScreen';
 import {TodoTasksScreen} from '../../components/screens/todoTaskScreen/TodoTaskScreen';
 import {iconSizeLarge} from '../../constants/constants';
@@ -19,8 +20,8 @@ export const TasksNavigation = (): ReturnComponentType => {
       screenOptions={() => ({
         tabBarStyle: styles.tabBarContainer,
         tabBarItemStyle: styles.tabBarItem,
-        tabBarActiveTintColor: 'purple',
-        tabBarInactiveTintColor: '#000',
+        tabBarActiveTintColor: COLORS.FRESH_EGGPLANT,
+        tabBarInactiveTintColor: COLORS.BLACK,
         tabBarIndicatorStyle: styles.tabBarIndicator,
       })}>
       <Tab.Screen

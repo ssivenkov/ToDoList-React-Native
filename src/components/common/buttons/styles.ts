@@ -1,4 +1,5 @@
 import {StyleSheet, ViewStyle, TextStyle} from 'react-native';
+import {COLORS} from '../../../colors/colors';
 
 type CustomButtonStylesType = {
   bigButton: ViewStyle;
@@ -14,7 +15,7 @@ export const styles = StyleSheet.create<CustomButtonStylesType>({
     paddingHorizontal: 12,
     paddingVertical: 12,
     borderRadius: 5,
-    backgroundColor: '#5015b7',
+    backgroundColor: COLORS.BLUE_GEM,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -27,7 +28,7 @@ export const styles = StyleSheet.create<CustomButtonStylesType>({
     paddingHorizontal: 12,
     paddingVertical: 6,
     borderRadius: 8,
-    backgroundColor: '#123',
+    backgroundColor: COLORS.CELTIC,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -35,12 +36,12 @@ export const styles = StyleSheet.create<CustomButtonStylesType>({
   bigText: {
     fontSize: 22,
     fontWeight: '700',
-    color: '#fff',
+    color: COLORS.WHITE,
   },
 
   text: {
     fontSize: 19,
-    color: '#fff',
+    color: COLORS.WHITE,
   },
 
   icon: {

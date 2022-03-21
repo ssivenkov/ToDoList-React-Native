@@ -1,5 +1,6 @@
 import {FontAwesomeIconStyle} from '@fortawesome/react-native-fontawesome';
 import {StyleSheet, ViewStyle} from 'react-native';
+import {COLORS} from '../../colors/colors';
 
 type TasksScreenStylesType = {
   tabBarContainer: ViewStyle;
@@ -11,7 +12,7 @@ type TasksScreenStylesType = {
 
 export const styles = StyleSheet.create<TasksScreenStylesType>({
   tabBarContainer: {
-    backgroundColor: '#fff',
+    backgroundColor: COLORS.WHITE,
   },
 
   tabBarItem: {
@@ -19,14 +20,14 @@ export const styles = StyleSheet.create<TasksScreenStylesType>({
   },
 
   tabLightIcon: {
-    color: 'purple',
+    color: COLORS.FRESH_EGGPLANT,
   },
 
   tabDarkIcon: {
-    color: '#000',
+    color: COLORS.BLACK,
   },
 
   tabBarIndicator: {
-    backgroundColor: 'darkmagenta',
+    backgroundColor: COLORS.FRESH_EGGPLANT,
   },
 });

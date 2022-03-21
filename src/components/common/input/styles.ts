@@ -1,4 +1,5 @@
 import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
+import {COLORS} from '../../../colors/colors';
 
 type InputStylesType = {
   container: ViewStyle;
@@ -15,8 +16,8 @@ export const styles = StyleSheet.create<InputStylesType>({
     alignContent: 'center',
     fontSize: 20,
     paddingHorizontal: 10,
-    color: '#000',
-    backgroundColor: '#ddd',
+    color: COLORS.BLACK,
+    backgroundColor: COLORS.ALTO,
     borderRadius: 8,
   },
 });
