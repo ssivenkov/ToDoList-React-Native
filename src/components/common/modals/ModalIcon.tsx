@@ -1,7 +1,7 @@
+import {CustomIconButton} from '@components/common/buttons/CustomIconButton';
+import {CustomTextButton} from '@components/common/buttons/CustomTextButton';
 import React, {useState} from 'react';
 import {Modal, Pressable, View, Text} from 'react-native';
-import {CustomIconButton} from '../buttons/CustomIconButton';
-import {CustomTextButton} from '../buttons/CustomTextButton';
 import {styles} from './styles';
 import {ModalIconPropsType} from './types';
 
@@ -10,6 +10,7 @@ export const ModalIcon = ({
   description,
   buttonIcon,
   okHandler,
+  okDisable,
 }: ModalIconPropsType) => {
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -38,6 +39,7 @@ export const ModalIcon = ({
                 <CustomTextButton
                   onPress={() => onOkButtonPress()}
                   title={'Ok'}
+                  disable={okDisable}
                 />
               )}
               <CustomTextButton onPress={onCancelButtonPress} title={'Close'} />

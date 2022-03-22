@@ -1,6 +1,6 @@
+import {COLORS} from '@colors/colors';
+import {taskListMarginVertical} from '@components/common/taskList/styles';
 import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
-import {COLORS} from '../../../colors/colors';
-import {taskListMarginVertical} from '../../common/taskList/styles';
 
 type DoneTasksScreenStylesType = {
   tasksListContainer: ViewStyle;

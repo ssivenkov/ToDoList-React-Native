@@ -1,10 +1,10 @@
+import {ReturnComponentType} from '@commonTypes/returnComponentType';
+import {TaskList} from '@components/common/taskList/TaskList';
+import {TaskListType} from '@store/reducers/taskListReducer/types';
+import {getTaskList} from '@store/selectors/taskListSelectors';
 import React from 'react';
 import {FlatList, ListRenderItem, Text, View} from 'react-native';
 import {useSelector} from 'react-redux';
-import {TaskListType} from 'store/reducers/taskListReducer/types';
-import {ReturnComponentType} from '../../../commonTypes/returnComponentType';
-import {getTaskList} from '../../../store/selectors/taskListSelectors';
-import {TaskList} from '../../common/taskList/TaskList';
 import {styles} from './styles';
 
 export const DoneTasksScreen = (): ReturnComponentType => {
