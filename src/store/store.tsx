@@ -1,4 +1,8 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {SignInActionsType} from '@store/actions/signInActions/type';
+import {TaskListActionsType} from '@store/actions/tasksActions/types';
+import {signInReducer} from '@store/reducers/signInReducer/signInReducer';
+import {taskListReducer} from '@store/reducers/taskListReducer/taskListReducer';
 import {
   /*applyMiddleware, */
   combineReducers,
@@ -11,10 +15,6 @@ import {
   /*thunk,*/
   ThunkAction,
 } from 'redux-thunk';
-import {SignInActionsType} from 'store/actions/signInActions/type';
-import {TaskListActionsType} from 'store/actions/tasksActions/types';
-import {signInReducer} from './reducers/signInReducer/signInReducer';
-import {taskListReducer} from './reducers/taskListReducer/taskListReducer';
 
 const rootReducer = combineReducers({
   taskLists: taskListReducer,

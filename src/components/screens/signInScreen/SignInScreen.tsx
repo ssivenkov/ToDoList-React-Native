@@ -1,10 +1,10 @@
-import {ReturnComponentType} from 'commonTypes/returnComponentType';
+import {ReturnComponentType} from '@commonTypes/returnComponentType';
+import {CustomBigButton} from '@components/common/buttons/CustomBigButton';
+import {CustomInput} from '@components/common/input/CustomInput';
 import {useFormik} from 'formik';
 import React from 'react';
 import {Text, View} from 'react-native';
 import * as yup from 'yup';
-import {CustomBigButton} from '../../common/buttons/CustomBigButton';
-import {CustomInput} from '../../common/input/CustomInput';
 import {styles} from './styles';
 import {SignInValueType} from './types';
 
@@ -13,7 +13,7 @@ export const SignInScreen = (): ReturnComponentType => {
 
   const onSubmit = (values: SignInValueType) => {
     //NOTE: temp const
-    const value = values;
+    return values;
   };
 
   const signInValidationSchema = yup.object().shape({

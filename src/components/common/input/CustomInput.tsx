@@ -1,6 +1,6 @@
+import {COLORS} from '@colors/colors';
 import React from 'react';
 import {TextInput, View} from 'react-native';
-import {COLORS} from '../../../colors/colors';
 import {styles} from './styles';
 import {InputPropsType} from './types';
 
