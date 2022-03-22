@@ -1,5 +1,5 @@
+import {COLORS} from '@colors/colors';
 import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
-import {COLORS} from '../../../colors/colors';
 
 type InputStylesType = {
   container: ViewStyle;

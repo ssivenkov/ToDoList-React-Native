@@ -1,15 +1,15 @@
+import {ReturnComponentType} from '@commonTypes/returnComponentType';
+import {ModalIcon} from '@components/common/modals/ModalIcon';
+import {iconSizeSmall} from '@constants/constants';
 import {faTrash} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import React from 'react';
-import {Text} from 'react-native';
-import {useDispatch} from 'react-redux';
-import {ReturnComponentType} from '../../../commonTypes/returnComponentType';
-import {iconSizeSmall} from '../../../constants/constants';
 import {
   deleteTaskListFromScreen,
   deleteTaskListFull,
-} from '../../../store/actions/tasksActions/taskListActions';
-import {ModalIcon} from '../../common/modals/ModalIcon';
+} from '@store/actions/tasksActions/taskListActions';
+import React from 'react';
+import {Text} from 'react-native';
+import {useDispatch} from 'react-redux';
 import {styles} from './styles';
 import {DeleteTaskListButtonPropsType} from './types';
 
