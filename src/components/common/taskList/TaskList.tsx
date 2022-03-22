@@ -1,11 +1,11 @@
-import {ReturnComponentType} from 'commonTypes/returnComponentType';
+import {ReturnComponentType} from '@commonTypes/returnComponentType';
+import {CreateTaskButton} from '@components/buttons/createTaskButton/CreateTaskButton';
+import {DeleteTaskListButton} from '@components/buttons/deleteTaskListButton/DeleteTaskListButton';
+import {EditTaskListTitleButton} from '@components/buttons/editTaskListTitleButton/EditTaskListTitleButton';
+import {Task} from '@components/common/task/Task';
+import {TaskType} from '@store/reducers/taskListReducer/types';
 import React, {FC} from 'react';
 import {FlatList, ListRenderItem, Text, View} from 'react-native';
-import {TaskType} from '../../../store/reducers/taskListReducer/types';
-import {CreateTaskButton} from '../../buttons/createTaskButton/CreateTaskButton';
-import {DeleteTaskListButton} from '../../buttons/deleteTaskListButton/DeleteTaskListButton';
-import {EditTaskListTitleButton} from '../../buttons/editTaskListTitleButton/EditTaskListTitleButton';
-import {Task} from '../task/Task';
 import {styles} from './styles';
 import {TaskListPropsType} from './types';
 

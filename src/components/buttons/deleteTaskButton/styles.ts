@@ -1,5 +1,5 @@
+import {COLORS} from '@colors/colors';
 import {StyleSheet, TextStyle} from 'react-native';
-import {COLORS} from '../../../colors/colors';
 
 type DeleteTaskListButtonStylesType = {
   warnText: TextStyle;

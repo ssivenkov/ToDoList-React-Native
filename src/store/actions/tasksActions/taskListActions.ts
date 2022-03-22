@@ -1,3 +1,4 @@
+import {TASK_LIST_ACTIONS} from '@enums/taskListsEnum';
 import {
   AddNewTaskActionType,
   AddNewTaskListActionType,
@@ -8,10 +9,8 @@ import {
   EditTaskTitleActionType,
   SetTaskDoneActionType,
   SetTaskListsActionType,
-} from 'store/actions/tasksActions/types';
-import {NullableType} from '../../../commonTypes/nullableType';
-import {TASK_LIST_ACTIONS} from '../../../enums/taskListsEnum';
-import {TaskListType, TaskType} from '../../reducers/taskListReducer/types';
+} from '@store/actions/tasksActions/types';
+import {TaskListType} from '@store/reducers/taskListReducer/types';
 
 export const setTaskLists = (
   taskLists: TaskListType[],

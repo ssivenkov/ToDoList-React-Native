@@ -1,13 +1,13 @@
+import {COLORS} from '@colors/colors';
+import {ReturnComponentType} from '@commonTypes/returnComponentType';
+import {DoneTasksScreen} from '@components/screens/doneTaskScreen/DoneTaskScreen';
+import {TodoTasksScreen} from '@components/screens/todoTaskScreen/TodoTaskScreen';
+import {iconSizeLarge} from '@constants/constants';
+import {NAVIGATION_TASKS} from '@enums/taskListsEnum';
 import {faCheck, faListCheck} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
-import {ReturnComponentType} from 'commonTypes/returnComponentType';
 import React from 'react';
-import {COLORS} from '../../colors/colors';
-import {DoneTasksScreen} from '../../components/screens/doneTaskScreen/DoneTaskScreen';
-import {TodoTasksScreen} from '../../components/screens/todoTaskScreen/TodoTaskScreen';
-import {iconSizeLarge} from '../../constants/constants';
-import {NAVIGATION_TASKS} from '../../enums/taskListsEnum';
 import {styles} from './styles';
 import {TabParamsListType} from './types';
 

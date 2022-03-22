@@ -1,6 +1,6 @@
-import {TaskListActionsType} from 'store/actions/tasksActions/types';
-import {TaskListStateType} from 'store/reducers/taskListReducer/types';
-import {TASK_LIST_ACTIONS} from '../../../enums/taskListsEnum';
+import {TASK_LIST_ACTIONS} from '@enums/taskListsEnum';
+import {TaskListActionsType} from '@store/actions/tasksActions/types';
+import {TaskListStateType} from '@store/reducers/taskListReducer/types';
 
 const initialTaskListState: TaskListStateType = {
   taskLists: [

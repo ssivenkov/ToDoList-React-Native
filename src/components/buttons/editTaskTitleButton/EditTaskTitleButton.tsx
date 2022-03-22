@@ -1,12 +1,12 @@
+import {ReturnComponentType} from '@commonTypes/returnComponentType';
+import {CustomInput} from '@components/common/input/CustomInput';
+import {ModalIcon} from '@components/common/modals/ModalIcon';
+import {iconSizeSmall} from '@constants/constants';
 import {faPen} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {setEditedTask} from '@store/actions/tasksActions/taskListActions';
 import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
-import {ReturnComponentType} from '../../../commonTypes/returnComponentType';
-import {iconSizeSmall} from '../../../constants/constants';
-import {setEditedTask} from '../../../store/actions/tasksActions/taskListActions';
-import {CustomInput} from '../../common/input/CustomInput';
-import {ModalIcon} from '../../common/modals/ModalIcon';
 import {EditTaskTitleButtonPropsType} from './types';
 
 export const EditTaskTitleButton = (
@@ -26,6 +26,7 @@ export const EditTaskTitleButton = (
   return (
     <ModalIcon
       okHandler={() => editTaskTitle()}
+      okDisable={!editedTaskTitle}
       description={'Edit task title:'}
       buttonIcon={<FontAwesomeIcon icon={faPen} size={iconSizeSmall} />}>
       <CustomInput value={editedTaskTitle} onValueChange={setEditedTaskTitle} />

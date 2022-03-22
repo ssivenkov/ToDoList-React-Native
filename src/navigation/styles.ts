@@ -1,6 +1,6 @@
+import {COLORS} from '@colors/colors';
 import {FontAwesomeIconStyle} from '@fortawesome/react-native-fontawesome';
 import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
-import {COLORS} from '../colors/colors';
 
 type NavigationStylesType = {
   header: ViewStyle;

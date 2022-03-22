@@ -1,16 +1,15 @@
+import {ReturnComponentType} from '@commonTypes/returnComponentType';
+import {CustomInput} from '@components/common/input/CustomInput';
+import {ModalIcon} from '@components/common/modals/ModalIcon';
+import {iconSizeSmall} from '@constants/constants';
 import {faPlus} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {ReturnComponentType} from 'commonTypes/returnComponentType';
+import {addNewTask} from '@store/actions/tasksActions/taskListActions';
+import {TaskListType, TaskType} from '@store/reducers/taskListReducer/types';
 import React, {FC, useState} from 'react';
+import 'react-native-get-random-values';
 import {useDispatch} from 'react-redux';
-import {iconSizeSmall} from '../../../constants/constants';
-import {addNewTask} from '../../../store/actions/tasksActions/taskListActions';
-import {
-  TaskListType,
-  TaskType,
-} from '../../../store/reducers/taskListReducer/types';
-import {CustomInput} from '../../common/input/CustomInput';
-import {ModalIcon} from '../../common/modals/ModalIcon';
+import {v4 as uuidv4} from 'uuid';
 import {CreateTaskButtonPropsType} from './types';
 
 export const CreateTaskButton: FC<CreateTaskButtonPropsType> = (
@@ -21,7 +20,7 @@ export const CreateTaskButton: FC<CreateTaskButtonPropsType> = (
   const [newTaskTitle, setNewTaskTitle] = useState<string>('');
 
   const createTask = (): void => {
-    const taskId: string = Math.random().toString();
+    const taskId: string = uuidv4();
     const newTask: TaskType = {
       id: taskId,
       isDone: false,
@@ -49,6 +48,7 @@ export const CreateTaskButton: FC<CreateTaskButtonPropsType> = (
   return (
     <ModalIcon
       okHandler={() => createTask()}
+      okDisable={!newTaskTitle}
       description={'Enter new task title:'}
       buttonIcon={<FontAwesomeIcon icon={faPlus} size={iconSizeSmall} />}>
       <CustomInput value={newTaskTitle} onValueChange={setNewTaskTitle} />

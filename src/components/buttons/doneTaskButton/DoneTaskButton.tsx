@@ -1,12 +1,12 @@
+import {ReturnComponentType} from '@commonTypes/returnComponentType';
+import {ModalIcon} from '@components/common/modals/ModalIcon';
+import {iconSizeSmall} from '@constants/constants';
 import {faCheck} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {setTaskIsDone} from '@store/actions/tasksActions/taskListActions';
 import React from 'react';
 import {Text} from 'react-native';
 import {useDispatch} from 'react-redux';
-import {ReturnComponentType} from '../../../commonTypes/returnComponentType';
-import {iconSizeSmall} from '../../../constants/constants';
-import {setTaskIsDone} from '../../../store/actions/tasksActions/taskListActions';
-import {ModalIcon} from '../../common/modals/ModalIcon';
 import {styles} from './styles';
 import {DoneTaskButtonPropsType} from './types';
 

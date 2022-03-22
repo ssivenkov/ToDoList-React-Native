@@ -1,9 +1,9 @@
-import {ReturnComponentType} from 'commonTypes/returnComponentType';
+import {ReturnComponentType} from '@commonTypes/returnComponentType';
+import {DeleteTaskButton} from '@components/buttons/deleteTaskButton/DeleteTaskButton';
+import {DoneTaskButton} from '@components/buttons/doneTaskButton/DoneTaskButton';
+import {EditTaskTitleButton} from '@components/buttons/editTaskTitleButton/EditTaskTitleButton';
 import React, {FC} from 'react';
 import {Text, View} from 'react-native';
-import {DeleteTaskButton} from '../../buttons/deleteTaskButton/DeleteTaskButton';
-import {DoneTaskButton} from '../../buttons/doneTaskButton/DoneTaskButton';
-import {EditTaskTitleButton} from '../../buttons/editTaskTitleButton/EditTaskTitleButton';
 import {styles} from './styles';
 import {TaskPropsType} from './types';
 

@@ -1,10 +1,11 @@
+import {COLORS} from '@colors/colors';
 import {StyleSheet, ViewStyle, TextStyle} from 'react-native';
-import {COLORS} from '../../../colors/colors';
 
 type CustomButtonStylesType = {
   bigButton: ViewStyle;
   disable: ViewStyle;
   textButton: ViewStyle;
+  textButtonDisable: ViewStyle;
   bigText: TextStyle;
   text: TextStyle;
   icon: ViewStyle;
@@ -31,6 +32,10 @@ export const styles = StyleSheet.create<CustomButtonStylesType>({
     backgroundColor: COLORS.CELTIC,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+
+  textButtonDisable: {
+    backgroundColor: COLORS.ALTO,
   },
 
   bigText: {

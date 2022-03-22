@@ -1,7 +1,4 @@
-import {
-  TaskListType,
-  TaskType,
-} from '../../../store/reducers/taskListReducer/types';
+import {TaskListType, TaskType} from '@store/reducers/taskListReducer/types';
 
 export type TaskListPropsType = {
   taskListId: string;

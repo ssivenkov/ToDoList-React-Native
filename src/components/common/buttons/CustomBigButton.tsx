@@ -1,4 +1,4 @@
-import {CustomTextButtonPropsType} from 'components/common/buttons/type';
+import {CustomTextButtonPropsType} from '@components/common/buttons/type';
 import React, {FC} from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
 import {styles} from './styles';

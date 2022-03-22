@@ -1,12 +1,12 @@
+import {ReturnComponentType} from '@commonTypes/returnComponentType';
+import {CustomInput} from '@components/common/input/CustomInput';
+import {ModalIcon} from '@components/common/modals/ModalIcon';
+import {iconSizeSmall} from '@constants/constants';
 import {faPen} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {setEditedTaskListTitle} from '@store/actions/tasksActions/taskListActions';
 import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
-import {ReturnComponentType} from '../../../commonTypes/returnComponentType';
-import {iconSizeSmall} from '../../../constants/constants';
-import {setEditedTaskListTitle} from '../../../store/actions/tasksActions/taskListActions';
-import {CustomInput} from '../../common/input/CustomInput';
-import {ModalIcon} from '../../common/modals/ModalIcon';
 import {EditTaskListTitleButtonPropsType} from './types';
 
 export const EditTaskListTitleButton = ({
@@ -27,6 +27,7 @@ export const EditTaskListTitleButton = ({
   return (
     <ModalIcon
       okHandler={() => editTaskList()}
+      okDisable={!editedTaskListTitle}
       description={'Edit task list title:'}
       buttonIcon={<FontAwesomeIcon icon={faPen} size={iconSizeSmall} />}>
       <CustomInput
