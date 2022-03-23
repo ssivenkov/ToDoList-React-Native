@@ -3,26 +3,26 @@ import {ReturnComponentType} from '@commonTypes/returnComponentType';
 import {CreateTaskListButton} from '@components/buttons/createTaskListButton/CreateTaskListButton';
 import {SignInScreen} from '@components/screens/signInScreen/SignInScreen';
 import {iconSizeMedium} from '@constants/constants';
-import {NAVIGATION} from '@enums/navigationEnum';
 import {faFile, faUser} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {TasksNavigation} from '@navigation/tasksNavigation/TasksNavigation';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
+import {useTranslation} from 'react-i18next';
 import {View} from 'react-native';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {styles} from './styles';
-import {RootTabParamListType} from './types';
 
-const RootTab = createBottomTabNavigator<RootTabParamListType>();
+const RootTab = createBottomTabNavigator();
 
 export const Navigation = (): ReturnComponentType => {
+  const {t} = useTranslation();
   return (
     <SafeAreaProvider>
       <NavigationContainer>
         <RootTab.Navigator
-          initialRouteName={NAVIGATION.TASKS}
+          initialRouteName={`${t('Tasks')}`}
           screenOptions={() => ({
             headerStyle: styles.header,
             headerTitleStyle: styles.headerTitleStyle,
@@ -34,7 +34,7 @@ export const Navigation = (): ReturnComponentType => {
             tabBarLabelStyle: styles.title,
           })}>
           <RootTab.Screen
-            name={NAVIGATION.TASKS}
+            name={`${t('Tasks')}`}
             component={TasksNavigation}
             options={() => ({
               headerRight: () => {
@@ -54,7 +54,7 @@ export const Navigation = (): ReturnComponentType => {
             })}
           />
           <RootTab.Screen
-            name={NAVIGATION.SIGN_IN}
+            name={`${t('SignIn')}`}
             component={SignInScreen}
             options={() => ({
               tabBarIcon: ({focused}) => (

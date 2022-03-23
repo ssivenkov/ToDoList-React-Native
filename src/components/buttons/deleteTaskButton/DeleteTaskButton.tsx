@@ -9,6 +9,7 @@ import {
   deleteTaskListFull,
 } from '@store/actions/tasksActions/taskListActions';
 import React from 'react';
+import {useTranslation} from 'react-i18next';
 import {Text} from 'react-native';
 import {useDispatch} from 'react-redux';
 import {styles} from './styles';
@@ -20,6 +21,7 @@ export const DeleteTaskButton = ({
   taskTitle,
   fullTaskList,
 }: DeleteTaskButtonPropsType): ReturnComponentType => {
+  const {t} = useTranslation();
   const dispatch = useDispatch();
   const toDoTasks = fullTaskList.tasks.filter((task) => !task.isDone);
   const doneTasks = fullTaskList.tasks.filter((task) => task.isDone);
@@ -43,7 +45,7 @@ export const DeleteTaskButton = ({
       okHandler={() => removeTask()}
       buttonIcon={<FontAwesomeIcon icon={faTrash} size={iconSizeSmall} />}>
       <Text style={styles.warnText}>
-        Are you sure to delete{' '}
+        {t('DeleteQuestionButtonTitle')}
         <Text style={styles.redHighlightTask}>{taskTitle}</Text>?
       </Text>
     </ModalIcon>

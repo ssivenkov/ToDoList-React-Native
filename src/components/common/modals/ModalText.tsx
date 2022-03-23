@@ -1,5 +1,6 @@
 import {CustomTextButton} from '@components/common/buttons/CustomTextButton';
 import React, {useState} from 'react';
+import {useTranslation} from 'react-i18next';
 import {Modal, Pressable, View, Text} from 'react-native';
 import {styles} from './styles';
 import {ModalTextPropsType} from './types';
@@ -10,6 +11,7 @@ export const ModalText = ({
   buttonTitle,
   okHandler,
 }: ModalTextPropsType) => {
+  const {t} = useTranslation();
   const [modalVisible, setModalVisible] = useState(false);
 
   const onCancelButtonPress = () => {
@@ -36,10 +38,13 @@ export const ModalText = ({
               {okHandler && (
                 <CustomTextButton
                   onPress={() => onOkButtonPress()}
-                  title={'Ok'}
+                  title={`${t('Ok')}`}
                 />
               )}
-              <CustomTextButton onPress={onCancelButtonPress} title={'Close'} />
+              <CustomTextButton
+                onPress={onCancelButtonPress}
+                title={`${t('Close')}`}
+              />
             </View>
           </View>
         </View>
