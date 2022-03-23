@@ -2,9 +2,8 @@
   "translation": {
     "CreateTaskButtonTitle": "Enter new task title:",
     "CreateTaskListButtonTitle": "Enter new task list title:",
-    "DeleteQuestionButtonTitle": "Are you sure to delete ",
-    "DoneButtonTitlePart1": "Are you sure the task ",
-    "DoneButtonTitlePart2": " is completed?",
+    "DeleteQuestionButtonTitle": "Are you sure to delete <0>{{text}}</0>?",
+    "DoneButton": "Are you sure the task <0>{{text}}</0> is completed?",
     "EditTaskListButtonTitle": "Edit task list title:",
     "EditTaskButtonTitle": "Edit task title:",
     "TodoTasksTab": "Todo tasks",
@@ -18,8 +17,7 @@
     "SignInWithGoogle": "Sign in with Google",
     "ValidEmailError": "Please enter valid email",
     "EmailRequiredError": "Email address is required",
-    "MinPasswordLengthErrorPart1": "Password must be at least",
-    "MinPasswordLengthErrorPart2": "characters",
+    "MinPasswordLengthError": "Password must be at least <0>{{text}}</0> characters",
     "PasswordRequireError": "Password is required"
   }
 }

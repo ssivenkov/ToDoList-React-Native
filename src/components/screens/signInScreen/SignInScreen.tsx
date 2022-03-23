@@ -3,8 +3,9 @@ import {CustomBigButton} from '@components/common/buttons/CustomBigButton';
 import {CustomInput} from '@components/common/input/CustomInput';
 import {useFormik} from 'formik';
 import React from 'react';
-import {useTranslation} from 'react-i18next';
+import {Trans, useTranslation} from 'react-i18next';
 import {Text, View} from 'react-native';
+import {v4 as uuidv4} from 'uuid';
 import * as yup from 'yup';
 import {styles} from './styles';
 import {SignInValueType} from './types';
@@ -18,6 +19,16 @@ export const SignInScreen = (): ReturnComponentType => {
     return values;
   };
 
+  const minPasswordLengthErrorTextElement = (
+    min: number,
+  ): ReturnComponentType => {
+    return (
+      <Trans i18nKey="MinPasswordLengthError">
+        <Text key={uuidv4()}>{{text: min}}</Text>
+      </Trans>
+    );
+  };
+
   const signInValidationSchema = yup.object().shape({
     email: yup
       .string()
@@ -25,13 +36,7 @@ export const SignInScreen = (): ReturnComponentType => {
       .required(`${t('EmailRequiredError')}`),
     password: yup
       .string()
-      .min(
-        minPasswordLength,
-        ({min}) =>
-          `${t('MinPasswordLengthErrorPart1')} ${min} ${t(
-            'MinPasswordLengthErrorPart2',
-          )}`,
-      )
+      .min(minPasswordLength, ({min}) => minPasswordLengthErrorTextElement(min))
       .required(`${t('PasswordRequireError')}`),
   });
 

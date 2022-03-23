@@ -2,9 +2,8 @@
   "translation": {
     "CreateTaskButtonTitle": "Название новой задачи:",
     "CreateTaskListButtonTitle": "Название нового списка задач:",
-    "DeleteQuestionButtonTitle": "Удалить ",
-    "DoneButtonTitlePart1": "Задача ",
-    "DoneButtonTitlePart2": " выполнена?",
+    "DeleteQuestionButtonTitle": "Удалить <0>{{text}}</0>?",
+    "DoneButton": "Задача <0>{{text}}</0> выполнена?",
     "EditTaskListButtonTitle": "Название списка задач:",
     "EditTaskButtonTitle": "Название задачи:",
     "TodoTasksTab": "Выполнить",
@@ -18,8 +17,7 @@
     "SignInWithGoogle": "Вход через Google",
     "ValidEmailError": "Введите корректную эл. почту",
     "EmailRequiredError": "Эл. почта обязательна",
-    "MinPasswordLengthErrorPart1": "Пароль должен содержать минимум",
-    "MinPasswordLengthErrorPart2": "символов",
+    "MinPasswordLengthError": "Пароль должен содержать минимум <0>{{text}}</0> символов",
     "PasswordRequireError": "Пароль обязателен"
   }
 }
