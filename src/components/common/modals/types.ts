@@ -3,7 +3,7 @@ export type ModalTextPropsType = {
 
   children?: any;
   description?: string;
-  okHandler?: () => any;
+  okHandler?: () => void;
 };
 
 export type ModalIconPropsType = {
@@ -11,6 +11,7 @@ export type ModalIconPropsType = {
 
   children?: any;
   description?: string;
-  okHandler?: () => any;
+  okHandler?: () => void;
   okDisable?: boolean;
+  closeHandler?: () => void;
 };

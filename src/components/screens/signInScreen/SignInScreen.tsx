@@ -3,12 +3,15 @@ import {CustomBigButton} from '@components/common/buttons/CustomBigButton';
 import {CustomInput} from '@components/common/input/CustomInput';
 import {useFormik} from 'formik';
 import React from 'react';
+import {Trans, useTranslation} from 'react-i18next';
 import {Text, View} from 'react-native';
+import {v4 as uuidv4} from 'uuid';
 import * as yup from 'yup';
 import {styles} from './styles';
 import {SignInValueType} from './types';
 
 export const SignInScreen = (): ReturnComponentType => {
+  const {t} = useTranslation();
   const minPasswordLength = 6;
 
   const onSubmit = (values: SignInValueType) => {
@@ -16,18 +19,25 @@ export const SignInScreen = (): ReturnComponentType => {
     return values;
   };
 
+  const minPasswordLengthErrorTextElement = (
+    min: number,
+  ): ReturnComponentType => {
+    return (
+      <Trans i18nKey="signInScreen.MinPasswordLengthError">
+        <Text key={uuidv4()}>{{text: min}}</Text>
+      </Trans>
+    );
+  };
+
   const signInValidationSchema = yup.object().shape({
     email: yup
       .string()
-      .email('Please enter valid email')
-      .required('Email address is required'),
+      .email(`${t('signInScreen.ValidEmailError')}`)
+      .required(`${t('signInScreen.EmailRequiredError')}`),
     password: yup
       .string()
-      .min(
-        minPasswordLength,
-        ({min}) => `Password must be at least ${min} characters`,
-      )
-      .required('Password is required'),
+      .min(minPasswordLength, ({min}) => minPasswordLengthErrorTextElement(min))
+      .required(`${t('signInScreen.PasswordRequireError')}`),
   });
 
   const formik = useFormik({
@@ -43,14 +53,14 @@ export const SignInScreen = (): ReturnComponentType => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Sign in</Text>
+      <Text style={styles.title}>{t('signInScreen.SignIn')}</Text>
       <>
         <View style={styles.inputContainer}>
           <CustomInput
             onValueChange={formik.handleChange('email')}
             onBlur={formik.handleBlur('email')}
             value={formik.values.email}
-            placeholder={'Email'}
+            placeholder={`${t('signInScreen.Email')}`}
             keyboardType="email-address"
           />
           <View style={styles.errorContainer}>
@@ -64,7 +74,7 @@ export const SignInScreen = (): ReturnComponentType => {
             onValueChange={formik.handleChange('password')}
             onBlur={formik.handleBlur('password')}
             value={formik.values.password}
-            placeholder={'Password'}
+            placeholder={`${t('signInScreen.Password')}`}
             secureTextEntry={true}
           />
           <View style={styles.errorContainer}>
@@ -76,7 +86,7 @@ export const SignInScreen = (): ReturnComponentType => {
         <View style={styles.bigButtonContainer}>
           <CustomBigButton
             onPress={formik.handleSubmit}
-            title={`Sign in with Google`}
+            title={`${t('signInScreen.SignInWithGoogle')}`}
             touched={[!!formik.touched.email, !!formik.touched.password]}
             errors={[formik.errors.email, formik.errors.password]}
           />

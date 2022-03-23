@@ -6,6 +6,7 @@ import {faPen} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {setEditedTask} from '@store/actions/tasksActions/taskListActions';
 import React, {useState} from 'react';
+import {useTranslation} from 'react-i18next';
 import {useDispatch} from 'react-redux';
 import {EditTaskTitleButtonPropsType} from './types';
 
@@ -13,21 +14,27 @@ export const EditTaskTitleButton = (
   props: EditTaskTitleButtonPropsType,
 ): ReturnComponentType => {
   const {taskListId, taskId, oldTaskTitle} = props;
+  const {t} = useTranslation();
   const dispatch = useDispatch();
   const [editedTaskTitle, setEditedTaskTitle] = useState<string>(oldTaskTitle);
 
-  const editTaskTitle = (): void => {
+  const onOkPress = (): void => {
     if (editedTaskTitle.length >= 1) {
       dispatch(setEditedTask(taskListId, taskId, editedTaskTitle));
       setEditedTaskTitle('');
     }
   };
 
+  const onClosePress = (): void => {
+    setEditedTaskTitle(oldTaskTitle);
+  };
+
   return (
     <ModalIcon
-      okHandler={() => editTaskTitle()}
+      okHandler={() => onOkPress()}
+      closeHandler={() => onClosePress()}
       okDisable={!editedTaskTitle}
-      description={'Edit task title:'}
+      description={`${t('tasksInScreen.EditTaskButtonTitle')}`}
       buttonIcon={<FontAwesomeIcon icon={faPen} size={iconSizeSmall} />}>
       <CustomInput value={editedTaskTitle} onValueChange={setEditedTaskTitle} />
     </ModalIcon>

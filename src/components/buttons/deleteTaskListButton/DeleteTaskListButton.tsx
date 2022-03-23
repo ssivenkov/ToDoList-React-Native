@@ -8,8 +8,10 @@ import {
   deleteTaskListFull,
 } from '@store/actions/tasksActions/taskListActions';
 import React from 'react';
+import {Trans} from 'react-i18next';
 import {Text} from 'react-native';
 import {useDispatch} from 'react-redux';
+import {v4 as uuidv4} from 'uuid';
 import {styles} from './styles';
 import {DeleteTaskListButtonPropsType} from './types';
 
@@ -40,8 +42,11 @@ export const DeleteTaskListButton = (
       okHandler={() => removeTaskList()}
       buttonIcon={<FontAwesomeIcon icon={faTrash} size={iconSizeSmall} />}>
       <Text style={styles.warnText}>
-        Are you sure to delete{' '}
-        <Text style={styles.redHighlightTask}>{titleToBeDeletedTaskList}</Text>?
+        <Trans i18nKey="tasksInScreen.DeleteQuestionButtonTitle">
+          <Text key={uuidv4()} style={styles.redHighlightTask}>
+            {{text: titleToBeDeletedTaskList}}
+          </Text>
+        </Trans>
       </Text>
     </ModalIcon>
   );

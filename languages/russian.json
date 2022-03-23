@@ -1,0 +1,29 @@
+{
+  "translation": {
+    "common": {
+      "Ok": "Ок",
+      "Close": "Закрыть"
+    },
+    "tasksInScreen": {
+      "Tasks": "Задачи",
+      "CreateTaskButtonTitle": "Название новой задачи:",
+      "CreateTaskListButtonTitle": "Название нового списка задач:",
+      "DeleteQuestionButtonTitle": "Удалить <0>{{text}}</0>?",
+      "DoneButton": "Задача <0>{{text}}</0> выполнена?",
+      "EditTaskListButtonTitle": "Название списка задач:",
+      "EditTaskButtonTitle": "Название задачи:",
+      "TodoTasksTab": "Выполнить",
+      "DoneTasksTab": "Выполненные"
+    },
+    "signInScreen": {
+      "SignIn": "Вход",
+      "Email": "Эл. почта",
+      "Password": "Пароль",
+      "SignInWithGoogle": "Вход через Google",
+      "ValidEmailError": "Введите корректную эл. почту",
+      "EmailRequiredError": "Эл. почта обязательна",
+      "MinPasswordLengthError": "Пароль должен содержать минимум <0>{{text}}</0> символов",
+      "PasswordRequireError": "Пароль обязателен"
+    }
+  }
+}

@@ -9,8 +9,3 @@ export enum TASK_LIST_ACTIONS {
   EDIT_TASK_TITLE = 'taskListsReducer/EDIT_TASK_TITLE',
   DELETE_TASK = 'taskListsReducer/DELETE_TASK',
 }
-
-export enum NAVIGATION_TASKS {
-  TASKS = 'Todo tasks',
-  DONE_TASKS = 'Done tasks',
-}
