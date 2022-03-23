@@ -45,7 +45,7 @@ export const DeleteTaskButton = ({
       okHandler={() => removeTask()}
       buttonIcon={<FontAwesomeIcon icon={faTrash} size={iconSizeSmall} />}>
       <Text style={styles.warnText}>
-        <Trans i18nKey="DeleteQuestionButtonTitle">
+        <Trans i18nKey="tasksInScreen.DeleteQuestionButtonTitle">
           <Text key={uuidv4()} style={styles.redHighlightTask}>
             {{text: taskTitle}}
           </Text>

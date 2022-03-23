@@ -37,7 +37,7 @@ export const CreateTaskListButton = (): ReturnComponentType => {
     <ModalIcon
       okHandler={() => createTaskList()}
       okDisable={!newTaskListTitle}
-      description={`${t('CreateTaskListButtonTitle')}`}
+      description={`${t('tasksInScreen.CreateTaskListButtonTitle')}`}
       buttonIcon={
         <FontAwesomeIcon
           icon={faPlus}

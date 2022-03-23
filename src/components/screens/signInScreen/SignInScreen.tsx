@@ -23,7 +23,7 @@ export const SignInScreen = (): ReturnComponentType => {
     min: number,
   ): ReturnComponentType => {
     return (
-      <Trans i18nKey="MinPasswordLengthError">
+      <Trans i18nKey="signInScreen.MinPasswordLengthError">
         <Text key={uuidv4()}>{{text: min}}</Text>
       </Trans>
     );
@@ -32,12 +32,12 @@ export const SignInScreen = (): ReturnComponentType => {
   const signInValidationSchema = yup.object().shape({
     email: yup
       .string()
-      .email(`${t('ValidEmailError')}`)
-      .required(`${t('EmailRequiredError')}`),
+      .email(`${t('signInScreen.ValidEmailError')}`)
+      .required(`${t('signInScreen.EmailRequiredError')}`),
     password: yup
       .string()
       .min(minPasswordLength, ({min}) => minPasswordLengthErrorTextElement(min))
-      .required(`${t('PasswordRequireError')}`),
+      .required(`${t('signInScreen.PasswordRequireError')}`),
   });
 
   const formik = useFormik({
@@ -53,14 +53,14 @@ export const SignInScreen = (): ReturnComponentType => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{t('SignIn')}</Text>
+      <Text style={styles.title}>{t('signInScreen.SignIn')}</Text>
       <>
         <View style={styles.inputContainer}>
           <CustomInput
             onValueChange={formik.handleChange('email')}
             onBlur={formik.handleBlur('email')}
             value={formik.values.email}
-            placeholder={`${t('Email')}`}
+            placeholder={`${t('signInScreen.Email')}`}
             keyboardType="email-address"
           />
           <View style={styles.errorContainer}>
@@ -74,7 +74,7 @@ export const SignInScreen = (): ReturnComponentType => {
             onValueChange={formik.handleChange('password')}
             onBlur={formik.handleBlur('password')}
             value={formik.values.password}
-            placeholder={`${t('Password')}`}
+            placeholder={`${t('signInScreen.Password')}`}
             secureTextEntry={true}
           />
           <View style={styles.errorContainer}>
@@ -86,7 +86,7 @@ export const SignInScreen = (): ReturnComponentType => {
         <View style={styles.bigButtonContainer}>
           <CustomBigButton
             onPress={formik.handleSubmit}
-            title={`${t('SignInWithGoogle')}`}
+            title={`${t('signInScreen.SignInWithGoogle')}`}
             touched={[!!formik.touched.email, !!formik.touched.password]}
             errors={[formik.errors.email, formik.errors.password]}
           />
