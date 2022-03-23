@@ -14,9 +14,6 @@ export const ModalText = ({
   const {t} = useTranslation();
   const [modalVisible, setModalVisible] = useState(false);
 
-  const onCancelButtonPress = () => {
-    setModalVisible(false);
-  };
   const onOkButtonPress = () => {
     okHandler && okHandler();
     setModalVisible(false);
@@ -42,7 +39,7 @@ export const ModalText = ({
                 />
               )}
               <CustomTextButton
-                onPress={onCancelButtonPress}
+                onPress={() => setModalVisible(false)}
                 title={`${t('Close')}`}
               />
             </View>
