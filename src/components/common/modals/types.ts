@@ -13,4 +13,5 @@ export type ModalIconPropsType = {
   description?: string;
   okHandler?: () => any;
   okDisable?: boolean;
+  closeHandler?: () => any;
 };

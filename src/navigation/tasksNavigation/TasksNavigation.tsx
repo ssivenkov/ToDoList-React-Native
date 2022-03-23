@@ -3,20 +3,20 @@ import {ReturnComponentType} from '@commonTypes/returnComponentType';
 import {DoneTasksScreen} from '@components/screens/doneTaskScreen/DoneTaskScreen';
 import {TodoTasksScreen} from '@components/screens/todoTaskScreen/TodoTaskScreen';
 import {iconSizeLarge} from '@constants/constants';
-import {NAVIGATION_TASKS} from '@enums/taskListsEnum';
 import {faCheck, faListCheck} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import React from 'react';
+import {useTranslation} from 'react-i18next';
 import {styles} from './styles';
-import {TabParamsListType} from './types';
 
-const Tab = createMaterialTopTabNavigator<TabParamsListType>();
+const Tab = createMaterialTopTabNavigator();
 
 export const TasksNavigation = (): ReturnComponentType => {
+  const {t} = useTranslation();
   return (
     <Tab.Navigator
-      initialRouteName={NAVIGATION_TASKS.TASKS}
+      initialRouteName={`${t('TodoTasksTab')}`}
       screenOptions={() => ({
         tabBarStyle: styles.tabBarContainer,
         tabBarItemStyle: styles.tabBarItem,
@@ -25,7 +25,7 @@ export const TasksNavigation = (): ReturnComponentType => {
         tabBarIndicatorStyle: styles.tabBarIndicator,
       })}>
       <Tab.Screen
-        name={NAVIGATION_TASKS.TASKS}
+        name={`${t('TodoTasksTab')}`}
         component={TodoTasksScreen}
         options={() => ({
           tabBarIcon: ({focused}) => (
@@ -38,7 +38,7 @@ export const TasksNavigation = (): ReturnComponentType => {
         })}
       />
       <Tab.Screen
-        name={NAVIGATION_TASKS.DONE_TASKS}
+        name={`${t('DoneTasksTab')}`}
         component={DoneTasksScreen}
         options={() => ({
           tabBarIcon: ({focused}) => (
