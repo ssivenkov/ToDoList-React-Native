@@ -7,6 +7,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {addNewTask} from '@store/actions/tasksActions/taskListActions';
 import {TaskListType, TaskType} from '@store/reducers/taskListReducer/types';
 import React, {FC, useState} from 'react';
+import {useTranslation} from 'react-i18next';
 import 'react-native-get-random-values';
 import {useDispatch} from 'react-redux';
 import {v4 as uuidv4} from 'uuid';
@@ -16,6 +17,7 @@ export const CreateTaskButton: FC<CreateTaskButtonPropsType> = (
   props,
 ): ReturnComponentType => {
   const {taskListId, taskListTitle, fullTaskList} = props;
+  const {t} = useTranslation();
   const dispatch = useDispatch();
   const [newTaskTitle, setNewTaskTitle] = useState<string>('');
 
@@ -49,7 +51,7 @@ export const CreateTaskButton: FC<CreateTaskButtonPropsType> = (
     <ModalIcon
       okHandler={() => createTask()}
       okDisable={!newTaskTitle}
-      description={'Enter new task title:'}
+      description={`${t('tasksInScreen.CreateTaskButtonTitle')}`}
       buttonIcon={<FontAwesomeIcon icon={faPlus} size={iconSizeSmall} />}>
       <CustomInput value={newTaskTitle} onValueChange={setNewTaskTitle} />
     </ModalIcon>

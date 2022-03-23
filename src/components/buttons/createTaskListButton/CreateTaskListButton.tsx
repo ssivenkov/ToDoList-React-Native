@@ -7,12 +7,14 @@ import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {addNewTaskList} from '@store/actions/tasksActions/taskListActions';
 import {TaskListType} from '@store/reducers/taskListReducer/types';
 import React, {useState} from 'react';
+import {useTranslation} from 'react-i18next';
 import 'react-native-get-random-values';
 import {useDispatch} from 'react-redux';
 import {v4 as uuidv4} from 'uuid';
 import {styles} from './styles';
 
 export const CreateTaskListButton = (): ReturnComponentType => {
+  const {t} = useTranslation();
   const dispatch = useDispatch();
   const [newTaskListTitle, setNewTaskListTitle] = useState<string>('');
 
@@ -35,7 +37,7 @@ export const CreateTaskListButton = (): ReturnComponentType => {
     <ModalIcon
       okHandler={() => createTaskList()}
       okDisable={!newTaskListTitle}
-      description={'Enter new task list title:'}
+      description={`${t('tasksInScreen.CreateTaskListButtonTitle')}`}
       buttonIcon={
         <FontAwesomeIcon
           icon={faPlus}
