@@ -42,13 +42,13 @@ export const ModalIcon = ({
               {okHandler && (
                 <CustomTextButton
                   onPress={() => onOkButtonPress()}
-                  title={`${t('Ok')}`}
+                  title={`${t('common.Ok')}`}
                   disable={okDisable}
                 />
               )}
               <CustomTextButton
                 onPress={onCancelButtonPress}
-                title={`${t('Close')}`}
+                title={`${t('common.Close')}`}
               />
             </View>
           </View>

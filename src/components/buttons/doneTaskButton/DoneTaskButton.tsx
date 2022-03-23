@@ -28,7 +28,7 @@ export const DoneTaskButton = ({
       okHandler={() => setDoneTask()}
       buttonIcon={<FontAwesomeIcon icon={faCheck} size={iconSizeSmall} />}>
       <Text style={styles.warnText}>
-        <Trans i18nKey="DoneButton">
+        <Trans i18nKey="tasksInScreen.DoneButton">
           <Text key={uuidv4()} style={styles.greenHighlightTask}>
             {{text: completedTaskTitle}}
           </Text>

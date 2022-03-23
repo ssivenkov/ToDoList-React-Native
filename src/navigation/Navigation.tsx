@@ -22,7 +22,7 @@ export const Navigation = (): ReturnComponentType => {
     <SafeAreaProvider>
       <NavigationContainer>
         <RootTab.Navigator
-          initialRouteName={`${t('Tasks')}`}
+          initialRouteName={`${t('tasksInScreen.Tasks')}`}
           screenOptions={() => ({
             headerStyle: styles.header,
             headerTitleStyle: styles.headerTitleStyle,
@@ -34,7 +34,7 @@ export const Navigation = (): ReturnComponentType => {
             tabBarLabelStyle: styles.title,
           })}>
           <RootTab.Screen
-            name={`${t('Tasks')}`}
+            name={`${t('tasksInScreen.Tasks')}`}
             component={TasksNavigation}
             options={() => ({
               headerRight: () => {
@@ -54,7 +54,7 @@ export const Navigation = (): ReturnComponentType => {
             })}
           />
           <RootTab.Screen
-            name={`${t('SignIn')}`}
+            name={`${t('signInScreen.SignIn')}`}
             component={SignInScreen}
             options={() => ({
               tabBarIcon: ({focused}) => (

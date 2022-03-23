@@ -34,7 +34,7 @@ export const EditTaskTitleButton = (
       okHandler={() => onOkPress()}
       closeHandler={() => onClosePress()}
       okDisable={!editedTaskTitle}
-      description={`${t('EditTaskButtonTitle')}`}
+      description={`${t('tasksInScreen.EditTaskButtonTitle')}`}
       buttonIcon={<FontAwesomeIcon icon={faPen} size={iconSizeSmall} />}>
       <CustomInput value={editedTaskTitle} onValueChange={setEditedTaskTitle} />
     </ModalIcon>

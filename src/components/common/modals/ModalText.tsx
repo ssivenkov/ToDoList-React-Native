@@ -35,12 +35,12 @@ export const ModalText = ({
               {okHandler && (
                 <CustomTextButton
                   onPress={() => onOkButtonPress()}
-                  title={`${t('Ok')}`}
+                  title={`${t('common.Ok')}`}
                 />
               )}
               <CustomTextButton
                 onPress={() => setModalVisible(false)}
-                title={`${t('Close')}`}
+                title={`${t('common.Close')}`}
               />
             </View>
           </View>
