@@ -1,10 +1,11 @@
 import {ReturnComponentType} from '@commonTypes/returnComponentType';
 import {CustomBigButton} from '@components/common/buttons/CustomBigButton';
 import {CustomInput} from '@components/common/input/CustomInput';
+import auth from '@react-native-firebase/auth';
 import {useFormik} from 'formik';
 import React from 'react';
 import {Trans, useTranslation} from 'react-i18next';
-import {Text, View} from 'react-native';
+import {Button, Text, View} from 'react-native';
 import {v4 as uuidv4} from 'uuid';
 import * as yup from 'yup';
 import {styles} from './styles';
@@ -51,6 +52,10 @@ export const SignInScreen = (): ReturnComponentType => {
     },
   });
 
+  const logOut = () => {
+    auth().signOut();
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{t('signInScreen.SignIn')}</Text>
@@ -92,6 +97,7 @@ export const SignInScreen = (): ReturnComponentType => {
           />
         </View>
       </>
+      <Button title={'Log out'} onPress={logOut} />
     </View>
   );
 };
