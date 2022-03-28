@@ -1,32 +1,19 @@
 import {COLORS} from '@colors/colors';
-import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
+import {ImageStyle, StyleSheet, TextStyle, ViewStyle} from 'react-native';
 
 type SignInScreenStylesType = {
-  container: ViewStyle;
-  inputContainer: ViewStyle;
-  errorContainer: ViewStyle;
-  title: TextStyle;
-  error: TextStyle;
-  bigButtonContainer: ViewStyle;
+  signInScreenContainer: ViewStyle;
+  screenTitle: TextStyle;
+  avatar: ImageStyle;
 };
 
 export const styles = StyleSheet.create<SignInScreenStylesType>({
-  container: {
+  signInScreenContainer: {
     marginHorizontal: 15,
     alignItems: 'center',
   },
 
-  inputContainer: {
-    marginVertical: 15,
-    position: 'relative',
-  },
-
-  errorContainer: {
-    position: 'absolute',
-    top: 50,
-  },
-
-  title: {
+  screenTitle: {
     fontSize: 30,
     fontWeight: '500',
     color: COLORS.BLACK,
@@ -34,12 +21,10 @@ export const styles = StyleSheet.create<SignInScreenStylesType>({
     marginBottom: 10,
   },
 
-  error: {
-    fontSize: 14,
-    color: COLORS.RED,
-  },
-
-  bigButtonContainer: {
-    marginTop: 30,
+  avatar: {
+    width: 80,
+    height: 80,
+    borderRadius: 100,
+    marginBottom: 15,
   },
 });

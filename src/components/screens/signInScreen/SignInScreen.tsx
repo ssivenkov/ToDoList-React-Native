@@ -1,97 +1,79 @@
 import {ReturnComponentType} from '@commonTypes/returnComponentType';
-import {CustomBigButton} from '@components/common/buttons/CustomBigButton';
-import {CustomInput} from '@components/common/input/CustomInput';
-import {useFormik} from 'formik';
-import React from 'react';
-import {Trans, useTranslation} from 'react-i18next';
-import {Text, View} from 'react-native';
-import {v4 as uuidv4} from 'uuid';
-import * as yup from 'yup';
+import {CustomTextButton} from '@components/common/buttons/CustomTextButton';
+import {SignInButton} from '@components/screens/signInScreen/SignInButton/SignInButton';
+import {signInStyles} from '@components/screens/signInScreen/SignInButton/styles';
+import {faGoogle} from '@fortawesome/free-brands-svg-icons';
+import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth/lib';
+import {GoogleSignin} from '@react-native-google-signin/google-signin';
+import React, {useEffect, useState} from 'react';
+import {useTranslation} from 'react-i18next';
+import {Image, Text, View} from 'react-native';
 import {styles} from './styles';
-import {SignInValueType} from './types';
 
 export const SignInScreen = (): ReturnComponentType => {
   const {t} = useTranslation();
-  const minPasswordLength = 6;
+  const [firebaseInitializing, setFirebaseInitializing] =
+    useState<boolean>(true);
+  const [userData, setUserData] = useState<FirebaseAuthTypes.User | null>();
+  let waitingUserData = false;
 
-  const onSubmit = (values: SignInValueType) => {
-    //NOTE: temp const
-    return values;
+  const onGoogleButtonPress = async () => {
+    waitingUserData = true;
+    try {
+      const {idToken} = await GoogleSignin.signIn();
+      const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+      // Sign-in the user with the credential
+      return auth().signInWithCredential(googleCredential);
+    } catch (err) {
+      waitingUserData = false;
+    }
   };
 
-  const minPasswordLengthErrorTextElement = (
-    min: number,
-  ): ReturnComponentType => {
+  const onAuthStateChanged = (user: FirebaseAuthTypes.User | null) => {
+    setUserData(user);
+    if (firebaseInitializing) setFirebaseInitializing(false);
+  };
+
+  const signOut = () => {
+    auth().signOut();
+    GoogleSignin.signOut();
+  };
+
+  useEffect(() => {
+    GoogleSignin.configure({
+      webClientId:
+        '39222740250-rco3iuni391tlvdtj9vm857nsmp6t5db.apps.googleusercontent.com',
+    });
+    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+    return subscriber;
+  }, []);
+
+  if (!userData) {
     return (
-      <Trans i18nKey="signInScreen.MinPasswordLengthError">
-        <Text key={uuidv4()}>{{text: min}}</Text>
-      </Trans>
+      <View style={styles.signInScreenContainer}>
+        <Text style={styles.screenTitle}>{t('signInScreen.SignIn')}</Text>
+        <SignInButton
+          onPress={onGoogleButtonPress}
+          serviceTitle={'Google'}
+          icon={faGoogle}
+          buttonColorStyle={signInStyles.googleStyle}
+          disabled={waitingUserData && !userData}
+        />
+      </View>
     );
-  };
-
-  const signInValidationSchema = yup.object().shape({
-    email: yup
-      .string()
-      .email(`${t('signInScreen.ValidEmailError')}`)
-      .required(`${t('signInScreen.EmailRequiredError')}`),
-    password: yup
-      .string()
-      .min(minPasswordLength, ({min}) => minPasswordLengthErrorTextElement(min))
-      .required(`${t('signInScreen.PasswordRequireError')}`),
-  });
-
-  const formik = useFormik({
-    initialValues: {
-      email: '',
-      password: '',
-    },
-    validationSchema: signInValidationSchema,
-    onSubmit: (values) => {
-      onSubmit(values);
-    },
-  });
+  }
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>{t('signInScreen.SignIn')}</Text>
-      <>
-        <View style={styles.inputContainer}>
-          <CustomInput
-            onValueChange={formik.handleChange('email')}
-            onBlur={formik.handleBlur('email')}
-            value={formik.values.email}
-            placeholder={`${t('signInScreen.Email')}`}
-            keyboardType="email-address"
-          />
-          <View style={styles.errorContainer}>
-            {formik.errors.email && formik.touched.email && (
-              <Text style={styles.error}>{formik.errors.email}</Text>
-            )}
-          </View>
-        </View>
-        <View style={styles.inputContainer}>
-          <CustomInput
-            onValueChange={formik.handleChange('password')}
-            onBlur={formik.handleBlur('password')}
-            value={formik.values.password}
-            placeholder={`${t('signInScreen.Password')}`}
-            secureTextEntry={true}
-          />
-          <View style={styles.errorContainer}>
-            {formik.errors.password && formik.touched.password && (
-              <Text style={styles.error}>{formik.errors.password}</Text>
-            )}
-          </View>
-        </View>
-        <View style={styles.bigButtonContainer}>
-          <CustomBigButton
-            onPress={formik.handleSubmit}
-            title={`${t('signInScreen.SignInWithGoogle')}`}
-            touched={[!!formik.touched.email, !!formik.touched.password]}
-            errors={[formik.errors.email, formik.errors.password]}
-          />
-        </View>
-      </>
+    <View style={styles.signInScreenContainer}>
+      <Text style={styles.screenTitle}>{userData.displayName}</Text>
+      {userData.photoURL && (
+        <Image source={{uri: userData.photoURL}} style={styles.avatar} />
+      )}
+      <CustomTextButton
+        title={'Sign out'}
+        onPress={signOut}
+        disable={!userData}
+      />
     </View>
   );
 };
