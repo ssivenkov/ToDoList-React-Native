@@ -10,11 +10,8 @@ export const CustomIconButton: FC<CustomIconButtonPropsType> = (
   const {icon, onPress, disable} = props;
 
   return (
-    <TouchableOpacity
-      style={[styles.icon]}
-      onPress={onPress}
-      disabled={disable}>
-      <Text style={{color: '#fff'}}>{icon}</Text>
+    <TouchableOpacity style={styles.icon} onPress={onPress} disabled={disable}>
+      <Text style={styles.text}>{icon}</Text>
     </TouchableOpacity>
   );
 };
