@@ -19,11 +19,7 @@
       "SignIn": "Sign in",
       "Email": "Email",
       "Password": "Password",
-      "SignInWithGoogle": "Sign in with Google",
-      "ValidEmailError": "Please enter valid email",
-      "EmailRequiredError": "Email address is required",
-      "MinPasswordLengthError": "Password must be at least <0>{{text}}</0> characters",
-      "PasswordRequireError": "Password is required"
+      "SignInWith": "Sign in with <0>{{text}}</0>"
     }
   }
 }
