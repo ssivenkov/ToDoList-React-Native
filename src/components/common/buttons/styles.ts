@@ -6,7 +6,6 @@ type CustomButtonStylesType = {
   disable: ViewStyle;
   textButton: ViewStyle;
   textButtonDisable: ViewStyle;
-  bigText: TextStyle;
   text: TextStyle;
   icon: ViewStyle;
 };
@@ -36,12 +35,6 @@ export const styles = StyleSheet.create<CustomButtonStylesType>({
 
   textButtonDisable: {
     backgroundColor: COLORS.ALTO,
-  },
-
-  bigText: {
-    fontSize: 22,
-    fontWeight: '700',
-    color: COLORS.WHITE,
   },
 
   text: {
