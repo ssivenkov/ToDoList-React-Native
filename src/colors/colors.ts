@@ -5,9 +5,11 @@ export const COLORS = {
   RED: '#f00',
   POMPADOUR: '#610061',
   BLUE_GEM: '#5015b7',
+  CORNFLOWER_BLUE: '#4285F4',
+  CHAMBRAY: '#3B5998',
   CELTIC: '#123',
   FRESH_EGGPLANT: '#800080',
   TUNDORA: '#444',
-  COD_GRAY: '#090',
+  COD_GRAY: '#999',
   BLACK: '#000',
 };

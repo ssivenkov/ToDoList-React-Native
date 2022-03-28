@@ -18,6 +18,7 @@ const RootTab = createBottomTabNavigator();
 
 export const Navigation = (): ReturnComponentType => {
   const {t} = useTranslation();
+
   return (
     <SafeAreaProvider>
       <NavigationContainer>

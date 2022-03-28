@@ -19,11 +19,7 @@
       "SignIn": "Вход",
       "Email": "Эл. почта",
       "Password": "Пароль",
-      "SignInWithGoogle": "Вход через Google",
-      "ValidEmailError": "Введите корректную эл. почту",
-      "EmailRequiredError": "Эл. почта обязательна",
-      "MinPasswordLengthError": "Пароль должен содержать минимум <0>{{text}}</0> символов",
-      "PasswordRequireError": "Пароль обязателен"
+      "SignInWith": "Sign in with <0>{{text}}</0>"
     }
   }
 }
