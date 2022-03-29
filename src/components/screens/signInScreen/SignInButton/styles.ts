@@ -12,10 +12,11 @@ type CustomButtonStylesType = {
 
 export const signInStyles = StyleSheet.create<CustomButtonStylesType>({
   button: {
+    width: '100%',
     flexDirection: 'row',
-    borderRadius: 3,
     justifyContent: 'center',
     alignItems: 'center',
+    borderRadius: 3,
     paddingVertical: 8,
     paddingHorizontal: 12,
     marginVertical: 10,

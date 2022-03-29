@@ -2,14 +2,20 @@ import {COLORS} from '@colors/colors';
 import {ImageStyle, StyleSheet, TextStyle, ViewStyle} from 'react-native';
 
 type SignInScreenStylesType = {
-  signInScreenContainer: ViewStyle;
+  screenContainer: ViewStyle;
+  signInContainer: ViewStyle;
   screenTitle: TextStyle;
   avatar: ImageStyle;
 };
 
 export const styles = StyleSheet.create<SignInScreenStylesType>({
-  signInScreenContainer: {
+  screenContainer: {
     marginHorizontal: 15,
+    alignItems: 'center',
+  },
+
+  signInContainer: {
+    paddingHorizontal: 50,
     alignItems: 'center',
   },
 

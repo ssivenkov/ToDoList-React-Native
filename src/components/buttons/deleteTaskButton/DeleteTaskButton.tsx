@@ -31,7 +31,7 @@ export const DeleteTaskButton = ({
       dispatch(deleteTaskListFull(fullTaskList.id));
     } else if (
       !isTodoTaskList &&
-      toDoTasks.length !== 0 &&
+      toDoTasks.length > 0 &&
       doneTasks.length === 1
     ) {
       dispatch(deleteTaskListFromScreen(fullTaskList, false, true));
