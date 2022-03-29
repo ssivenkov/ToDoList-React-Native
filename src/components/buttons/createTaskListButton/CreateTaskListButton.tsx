@@ -19,7 +19,7 @@ export const CreateTaskListButton = (): ReturnComponentType => {
   const [newTaskListTitle, setNewTaskListTitle] = useState<string>('');
 
   const createTaskList = (): void => {
-    if (newTaskListTitle.length) {
+    if (newTaskListTitle.length > 0) {
       const id: string = uuidv4();
       const taskList: TaskListType = {
         id,
