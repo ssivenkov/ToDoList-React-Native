@@ -30,7 +30,11 @@ export const TaskList: FC<TaskListPropsType> = (props) => {
   };
 
   const tasks = (
-    <FlatList data={taskListPropsTasks} renderItem={renderTaskItem} />
+    <FlatList
+      data={taskListPropsTasks}
+      renderItem={renderTaskItem}
+      keyExtractor={(item) => item.id}
+    />
   );
 
   return (
