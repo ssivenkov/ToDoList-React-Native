@@ -1,4 +1,3 @@
-import {ReturnComponentType} from '@commonTypes/returnComponentType';
 import {TaskList} from '@components/common/taskList/TaskList';
 import {TaskListType} from '@store/reducers/taskListReducer/types';
 import {getTaskList} from '@store/selectors/taskListSelectors';
@@ -7,7 +6,7 @@ import {FlatList, ListRenderItem, Text, View} from 'react-native';
 import {useSelector} from 'react-redux';
 import {styles} from './styles';
 
-export const DoneTasksScreen = (): ReturnComponentType => {
+export const DoneTasksScreen = () => {
   const taskLists = useSelector(getTaskList);
   const doneTaskLists = taskLists.filter((taskList) => {
     if (taskList.tasks) {
@@ -15,9 +14,7 @@ export const DoneTasksScreen = (): ReturnComponentType => {
     }
   });
 
-  const doneTaskListRenderItem: ListRenderItem<TaskListType> = ({
-    item,
-  }): ReturnComponentType => {
+  const doneTaskListRenderItem: ListRenderItem<TaskListType> = ({item}) => {
     const doneTasks = item.tasks && item.tasks.filter((task) => task.isDone);
     return (
       <TaskList
