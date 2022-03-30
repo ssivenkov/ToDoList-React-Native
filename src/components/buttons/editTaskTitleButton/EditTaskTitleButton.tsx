@@ -18,7 +18,7 @@ export const EditTaskTitleButton = (props: EditTaskTitleButtonPropsType) => {
   const onOkPress = (): void => {
     if (editedTaskTitle.length > 0) {
       dispatch(setEditedTask(taskListId, taskId, editedTaskTitle));
-      setEditedTaskTitle('');
+      setEditedTaskTitle(editedTaskTitle);
     }
   };
 

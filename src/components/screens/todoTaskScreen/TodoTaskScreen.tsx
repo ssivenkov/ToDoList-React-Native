@@ -1,8 +1,15 @@
 import {TaskList} from '@components/common/taskList/TaskList';
 import {TaskListType} from '@store/reducers/taskListReducer/types';
 import {getTaskList} from '@store/selectors/taskListSelectors';
-import React from 'react';
-import {FlatList, ListRenderItem, Text, View} from 'react-native';
+import React, {useEffect} from 'react';
+import {
+  FlatList,
+  ListRenderItem,
+  Text,
+  View,
+  ScrollView,
+  LogBox,
+} from 'react-native';
 import {useSelector} from 'react-redux';
 import {styles} from './styles';
 
@@ -27,19 +34,28 @@ export const TodoTasksScreen = () => {
     );
   };
 
+  // hide error
+  useEffect(() => {
+    LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
+  }, []);
+
+  if (toDoTaskLists.length > 0) {
+    // FlatList must be in ScrollView because this fixes input interaction bug in modal windows
+    return (
+      <ScrollView>
+        <FlatList
+          data={toDoTaskLists}
+          renderItem={toDoTaskListRenderItem}
+          keyExtractor={(item) => item.id}
+          style={styles.tasksListContainer}
+        />
+      </ScrollView>
+    );
+  }
+
   return (
-    <>
-      {toDoTaskLists && toDoTaskLists.length > 0 ? (
-        <View style={styles.tasksListContainer}>
-          <FlatList data={toDoTaskLists} renderItem={toDoTaskListRenderItem} />
-        </View>
-      ) : (
-        <View style={styles.nullContentContainer}>
-          <Text style={styles.nullContentText}>
-            Todo task lists is not found
-          </Text>
-        </View>
-      )}
-    </>
+    <View style={styles.nullContentContainer}>
+      <Text style={styles.nullContentText}>Todo task lists is not found</Text>
+    </View>
   );
 };
