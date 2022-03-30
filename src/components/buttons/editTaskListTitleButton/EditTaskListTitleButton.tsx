@@ -21,7 +21,7 @@ export const EditTaskListTitleButton = ({
   const onOkPress = (): void => {
     if (editedTaskListTitle.length > 0) {
       dispatch(setEditedTaskListTitle(taskListId, editedTaskListTitle));
-      setEditedTaskListTitleState('');
+      setEditedTaskListTitleState(editedTaskListTitle);
     }
   };
 

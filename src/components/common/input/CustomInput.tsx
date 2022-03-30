@@ -5,14 +5,7 @@ import {styles} from './styles';
 import {InputPropsType} from './types';
 
 export const CustomInput = (props: InputPropsType) => {
-  const {
-    value,
-    onValueChange,
-    onBlur,
-    placeholder,
-    keyboardType,
-    secureTextEntry,
-  } = props;
+  const {value, onValueChange, placeholder} = props;
   return (
     <View style={styles.container}>
       <TextInput
@@ -22,10 +15,7 @@ export const CustomInput = (props: InputPropsType) => {
         onChangeText={(text: string) => {
           onValueChange(text);
         }}
-        onBlur={onBlur}
-        defaultValue={value}
-        keyboardType={keyboardType}
-        secureTextEntry={secureTextEntry}
+        value={value}
       />
     </View>
   );
