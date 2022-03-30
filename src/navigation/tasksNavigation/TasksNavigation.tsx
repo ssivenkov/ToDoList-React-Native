@@ -1,5 +1,4 @@
 import {COLORS} from '@colors/colors';
-import {ReturnComponentType} from '@commonTypes/returnComponentType';
 import {DoneTasksScreen} from '@components/screens/doneTaskScreen/DoneTaskScreen';
 import {TodoTasksScreen} from '@components/screens/todoTaskScreen/TodoTaskScreen';
 import {iconSizeLarge} from '@constants/constants';
@@ -12,7 +11,7 @@ import {styles} from './styles';
 
 const Tab = createMaterialTopTabNavigator();
 
-export const TasksNavigation = (): ReturnComponentType => {
+export const TasksNavigation = () => {
   const {t} = useTranslation();
   return (
     <Tab.Navigator

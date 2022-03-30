@@ -1,4 +1,3 @@
-import {ReturnComponentType} from '@commonTypes/returnComponentType';
 import {ModalIcon} from '@components/common/modals/ModalIcon';
 import {iconSizeSmall} from '@constants/constants';
 import {faTrash} from '@fortawesome/free-solid-svg-icons';
@@ -15,9 +14,7 @@ import {v4 as uuidv4} from 'uuid';
 import {styles} from './styles';
 import {DeleteTaskListButtonPropsType} from './types';
 
-export const DeleteTaskListButton = (
-  props: DeleteTaskListButtonPropsType,
-): ReturnComponentType => {
+export const DeleteTaskListButton = (props: DeleteTaskListButtonPropsType) => {
   const {titleToBeDeletedTaskList, isTodoTaskList, fullTaskList} = props;
   const dispatch = useDispatch();
 

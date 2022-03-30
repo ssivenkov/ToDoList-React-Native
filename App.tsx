@@ -1,4 +1,3 @@
-import {ReturnComponentType} from '@commonTypes/returnComponentType';
 import {Navigation} from '@navigation/Navigation';
 import {persistor, store} from '@store/store';
 import React, {useEffect} from 'react';
@@ -7,7 +6,7 @@ import SplashScreen from 'react-native-splash-screen';
 import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/lib/integration/react';
 
-export const App = (): ReturnComponentType => {
+export const App = () => {
   useEffect(() => {
     setTimeout(() => {
       SplashScreen.hide();

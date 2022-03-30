@@ -1,4 +1,3 @@
-import {ReturnComponentType} from '@commonTypes/returnComponentType';
 import {ModalIcon} from '@components/common/modals/ModalIcon';
 import {iconSizeSmall} from '@constants/constants';
 import {faTrash} from '@fortawesome/free-solid-svg-icons';
@@ -21,7 +20,7 @@ export const DeleteTaskButton = ({
   taskId,
   taskTitle,
   fullTaskList,
-}: DeleteTaskButtonPropsType): ReturnComponentType => {
+}: DeleteTaskButtonPropsType) => {
   const dispatch = useDispatch();
   const toDoTasks = fullTaskList.tasks.filter((task) => !task.isDone);
   const doneTasks = fullTaskList.tasks.filter((task) => task.isDone);

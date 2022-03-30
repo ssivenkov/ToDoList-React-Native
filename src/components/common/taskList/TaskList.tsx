@@ -1,4 +1,3 @@
-import {ReturnComponentType} from '@commonTypes/returnComponentType';
 import {CreateTaskButton} from '@components/buttons/createTaskButton/CreateTaskButton';
 import {DeleteTaskListButton} from '@components/buttons/deleteTaskListButton/DeleteTaskListButton';
 import {EditTaskListTitleButton} from '@components/buttons/editTaskListTitleButton/EditTaskListTitleButton';
@@ -9,7 +8,7 @@ import {FlatList, ListRenderItem, Text, View} from 'react-native';
 import {styles} from './styles';
 import {TaskListPropsType} from './types';
 
-export const TaskList: FC<TaskListPropsType> = (props): ReturnComponentType => {
+export const TaskList: FC<TaskListPropsType> = (props) => {
   const {
     isTodoTaskList,
     taskListId,
@@ -18,9 +17,7 @@ export const TaskList: FC<TaskListPropsType> = (props): ReturnComponentType => {
     fullTaskList,
   } = props;
 
-  const renderTaskItem: ListRenderItem<TaskType> = ({
-    item,
-  }): ReturnComponentType => {
+  const renderTaskItem: ListRenderItem<TaskType> = ({item}) => {
     return (
       <Task
         isTodo={isTodoTaskList}

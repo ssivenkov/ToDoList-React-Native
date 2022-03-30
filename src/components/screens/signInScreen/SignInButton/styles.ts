@@ -14,7 +14,7 @@ export const signInStyles = StyleSheet.create<CustomButtonStylesType>({
   button: {
     width: '100%',
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     alignItems: 'center',
     borderRadius: 3,
     paddingVertical: 8,

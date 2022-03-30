@@ -1,4 +1,3 @@
-import {ReturnComponentType} from '@commonTypes/returnComponentType';
 import {ModalIcon} from '@components/common/modals/ModalIcon';
 import {iconSizeSmall} from '@constants/constants';
 import {faCheck} from '@fortawesome/free-solid-svg-icons';
@@ -16,7 +15,7 @@ export const DoneTaskButton = ({
   taskListId,
   doneTaskId,
   completedTaskTitle,
-}: DoneTaskButtonPropsType): ReturnComponentType => {
+}: DoneTaskButtonPropsType) => {
   const dispatch = useDispatch();
 
   const setDoneTask = (): void => {
