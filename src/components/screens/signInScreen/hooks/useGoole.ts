@@ -1,29 +1,35 @@
 import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
+import {setSignInStatus} from '@store/actions/signInActions/signInActions';
 import {useEffect, useState} from 'react';
+import {useDispatch} from 'react-redux';
 
 export const useGoogle = () => {
+  const dispatch = useDispatch();
   const [firebaseInitializing, setFirebaseInitializing] =
     useState<boolean>(true);
   const [googleUserData, setGoogleUserData] =
     useState<FirebaseAuthTypes.User | null>(null);
-  let waitingUserData = false;
+  let waitingGoogleUserData = false;
 
   const onGoogleButtonPress = async () => {
-    waitingUserData = true;
+    waitingGoogleUserData = true;
     try {
       const {idToken} = await GoogleSignin.signIn();
       const googleCredential = auth.GoogleAuthProvider.credential(idToken);
       // Sign-in the user with the credential
       return auth().signInWithCredential(googleCredential);
     } catch (err) {
-      waitingUserData = false;
+      waitingGoogleUserData = false;
 
       return null;
     }
   };
 
   const onGoogleAuthStateChanged = (user: FirebaseAuthTypes.User | null) => {
+    if (user) {
+      dispatch(setSignInStatus('Google'));
+    } else dispatch(setSignInStatus(''));
     setGoogleUserData(user);
     if (firebaseInitializing) setFirebaseInitializing(false);
   };
@@ -47,5 +53,10 @@ export const useGoogle = () => {
     return subscriber;
   }, []);
 
-  return {googleSignOut, onGoogleButtonPress, googleUserData, waitingUserData};
+  return {
+    googleSignOut,
+    onGoogleButtonPress,
+    googleUserData,
+    waitingGoogleUserData,
+  };
 };

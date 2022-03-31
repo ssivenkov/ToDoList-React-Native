@@ -3,7 +3,7 @@ import {SignInActionsType} from '@store/actions/signInActions/type';
 import {InitialSignInStateType} from '@store/reducers/signInReducer/types';
 
 const initialSignInState = {
-  signIn: [],
+  signInStatus: '',
 };
 
 export const signInReducer = (
@@ -11,8 +11,8 @@ export const signInReducer = (
   action: SignInActionsType,
 ) => {
   switch (action.type) {
-    case SIGN_IN_ACTIONS.SET_SIGN_IN:
-      return {...state};
+    case SIGN_IN_ACTIONS.SET_SIGN_IN_STATUS:
+      return {...state, signInStatus: action.signInStatus};
     default:
       return state;
   }
