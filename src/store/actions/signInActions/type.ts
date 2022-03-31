@@ -1,6 +1,6 @@
-export type SetSignInActionsType = {
+export type SetSignInStatusActionsType = {
   type: string;
-  signIn: Array<any>;
+  signInStatus: string;
 };
 
-export type SignInActionsType = SetSignInActionsType;
+export type SignInActionsType = SetSignInStatusActionsType;
