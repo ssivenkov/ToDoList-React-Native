@@ -19,18 +19,18 @@ export const useFacebook = () => {
         'public_profile',
         'email',
       ]);
+
       if (result.isCancelled) {
-        console.log('User cancelled the login process');
+        // User cancelled the login process
+        return null;
       }
+
       const data = await AccessToken.getCurrentAccessToken();
-      if (!data) {
-        console.log('Something went wrong obtaining access token');
-      } else {
-        const facebookCredential = auth.FacebookAuthProvider.credential(
-          data.accessToken,
-        );
-        return auth().signInWithCredential(facebookCredential);
-      }
+      const facebookCredential = auth.FacebookAuthProvider.credential(
+        data!.accessToken,
+      );
+
+      return auth().signInWithCredential(facebookCredential);
     } catch (err) {
       waitingFacebookUserData = false;
 
@@ -39,7 +39,6 @@ export const useFacebook = () => {
   };
 
   const onFacebookAuthStateChanged = (user: FirebaseAuthTypes.User | null) => {
-    console.log('facebook user: ', user);
     if (user) {
       dispatch(setSignInStatus('Facebook'));
     } else dispatch(setSignInStatus(''));

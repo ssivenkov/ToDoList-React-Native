@@ -8,3 +8,13 @@ export type SignInButtonPropsType = {
   onPress: () => void;
   disabled: boolean;
 };
+
+type UserDataType = {
+  displayName: string | null;
+  photoURL: string | null;
+};
+
+export type UserScreenPropsType = {
+  userData: UserDataType;
+  signOutCallback: () => void;
+};
