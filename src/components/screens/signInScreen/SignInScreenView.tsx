@@ -1,6 +1,6 @@
 import {SignInButton} from '@components/screens/signInScreen/SignInButton/SignInButton';
-import {UserScreen} from '@components/screens/signInScreen/SignInButton/UserScreen';
 import {signInStyles} from '@components/screens/signInScreen/SignInButton/styles';
+import {UserScreen} from '@components/screens/signInScreen/UserScreen/UserScreen';
 import {SignInScreenViewPropsType} from '@components/screens/signInScreen/types';
 import {FacebookTitle, GoogleTitle} from '@constants/constants';
 import {faFacebook, faGoogle} from '@fortawesome/free-brands-svg-icons';

@@ -1,11 +1,8 @@
 import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
-import {setSignInStatus} from '@store/actions/signInActions/signInActions';
 import {useEffect, useState} from 'react';
 import {AccessToken, LoginManager} from 'react-native-fbsdk-next';
-import {useDispatch} from 'react-redux';
 
 export const useFacebook = () => {
-  const dispatch = useDispatch();
   const [firebaseInitializing, setFirebaseInitializing] =
     useState<boolean>(true);
   const [facebookUserData, setFacebookUserData] =
@@ -39,9 +36,6 @@ export const useFacebook = () => {
   };
 
   const onFacebookAuthStateChanged = (user: FirebaseAuthTypes.User | null) => {
-    if (user) {
-      dispatch(setSignInStatus('Facebook'));
-    } else dispatch(setSignInStatus(''));
     setFacebookUserData(user);
     if (firebaseInitializing) setFirebaseInitializing(false);
   };

@@ -13,7 +13,9 @@
       "EditTaskListButtonTitle": "Edit task list title:",
       "EditTaskButtonTitle": "Edit task title:",
       "TodoTasksTab": "Todo tasks",
-      "DoneTasksTab": "Done tasks"
+      "DoneTasksTab": "Done tasks",
+      "NoToDoTaskLists": "Todo task lists is not found",
+      "NoDoneTaskLists": "Done task lists is not found"
     },
     "signInScreen": {
       "SignIn": "Sign in",
