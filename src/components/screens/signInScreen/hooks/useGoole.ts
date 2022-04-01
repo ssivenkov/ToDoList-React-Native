@@ -1,11 +1,8 @@
 import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
-import {setSignInStatus} from '@store/actions/signInActions/signInActions';
 import {useEffect, useState} from 'react';
-import {useDispatch} from 'react-redux';
 
 export const useGoogle = () => {
-  const dispatch = useDispatch();
   const [firebaseInitializing, setFirebaseInitializing] =
     useState<boolean>(true);
   const [googleUserData, setGoogleUserData] =
@@ -27,9 +24,6 @@ export const useGoogle = () => {
   };
 
   const onGoogleAuthStateChanged = (user: FirebaseAuthTypes.User | null) => {
-    if (user) {
-      dispatch(setSignInStatus('Google'));
-    } else dispatch(setSignInStatus(''));
     setGoogleUserData(user);
     if (firebaseInitializing) setFirebaseInitializing(false);
   };
