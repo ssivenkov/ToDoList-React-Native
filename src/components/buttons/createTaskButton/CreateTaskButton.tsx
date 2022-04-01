@@ -1,4 +1,3 @@
-import {ReturnComponentType} from '@commonTypes/returnComponentType';
 import {CustomInput} from '@components/common/input/CustomInput';
 import {ModalIcon} from '@components/common/modals/ModalIcon';
 import {iconSizeSmall} from '@constants/constants';
@@ -13,9 +12,7 @@ import {useDispatch} from 'react-redux';
 import {v4 as uuidv4} from 'uuid';
 import {CreateTaskButtonPropsType} from './types';
 
-export const CreateTaskButton: FC<CreateTaskButtonPropsType> = (
-  props,
-): ReturnComponentType => {
+export const CreateTaskButton: FC<CreateTaskButtonPropsType> = (props) => {
   const {taskListId, taskListTitle, fullTaskList} = props;
   const {t} = useTranslation();
   const dispatch = useDispatch();

@@ -1,4 +1,3 @@
-import {ReturnComponentType} from '@commonTypes/returnComponentType';
 import {CustomInput} from '@components/common/input/CustomInput';
 import {ModalIcon} from '@components/common/modals/ModalIcon';
 import {iconSizeSmall} from '@constants/constants';
@@ -13,16 +12,16 @@ import {EditTaskListTitleButtonPropsType} from './types';
 export const EditTaskListTitleButton = ({
   oldTaskListTitle,
   taskListId,
-}: EditTaskListTitleButtonPropsType): ReturnComponentType => {
+}: EditTaskListTitleButtonPropsType) => {
   const {t} = useTranslation();
   const dispatch = useDispatch();
   const [editedTaskListTitle, setEditedTaskListTitleState] =
     useState<string>(oldTaskListTitle);
 
   const onOkPress = (): void => {
-    if (editedTaskListTitle.length >= 1) {
+    if (editedTaskListTitle.length > 0) {
       dispatch(setEditedTaskListTitle(taskListId, editedTaskListTitle));
-      setEditedTaskListTitleState('');
+      setEditedTaskListTitleState(editedTaskListTitle);
     }
   };
 

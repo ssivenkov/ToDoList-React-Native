@@ -1,4 +1,3 @@
-import {ReturnComponentType} from '@commonTypes/returnComponentType';
 import {ModalIcon} from '@components/common/modals/ModalIcon';
 import {iconSizeSmall} from '@constants/constants';
 import {faTrash} from '@fortawesome/free-solid-svg-icons';
@@ -11,14 +10,11 @@ import React from 'react';
 import {Trans} from 'react-i18next';
 import {Text} from 'react-native';
 import {useDispatch} from 'react-redux';
-import {v4 as uuidv4} from 'uuid';
 import {styles} from './styles';
 import {DeleteTaskListButtonPropsType} from './types';
 
-export const DeleteTaskListButton = (
-  props: DeleteTaskListButtonPropsType,
-): ReturnComponentType => {
-  const {titleToBeDeletedTaskList, isTodoTaskList, fullTaskList} = props;
+export const DeleteTaskListButton = (props: DeleteTaskListButtonPropsType) => {
+  const {taskListTitle, isTodoTaskList, fullTaskList} = props;
   const dispatch = useDispatch();
 
   const removeTaskList = (): void => {
@@ -43,9 +39,7 @@ export const DeleteTaskListButton = (
       buttonIcon={<FontAwesomeIcon icon={faTrash} size={iconSizeSmall} />}>
       <Text style={styles.warnText}>
         <Trans i18nKey="tasksInScreen.DeleteQuestionButtonTitle">
-          <Text key={uuidv4()} style={styles.redHighlightTask}>
-            {{text: titleToBeDeletedTaskList}}
-          </Text>
+          <Text style={styles.redHighlightTask}>{{text: taskListTitle}}</Text>
         </Trans>
       </Text>
     </ModalIcon>

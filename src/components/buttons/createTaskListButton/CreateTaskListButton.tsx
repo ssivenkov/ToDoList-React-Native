@@ -1,4 +1,3 @@
-import {ReturnComponentType} from '@commonTypes/returnComponentType';
 import {CustomInput} from '@components/common/input/CustomInput';
 import {ModalIcon} from '@components/common/modals/ModalIcon';
 import {iconSizeLarge} from '@constants/constants';
@@ -13,13 +12,13 @@ import {useDispatch} from 'react-redux';
 import {v4 as uuidv4} from 'uuid';
 import {styles} from './styles';
 
-export const CreateTaskListButton = (): ReturnComponentType => {
+export const CreateTaskListButton = () => {
   const {t} = useTranslation();
   const dispatch = useDispatch();
   const [newTaskListTitle, setNewTaskListTitle] = useState<string>('');
 
   const createTaskList = (): void => {
-    if (newTaskListTitle.length) {
+    if (newTaskListTitle.length > 0) {
       const id: string = uuidv4();
       const taskList: TaskListType = {
         id,

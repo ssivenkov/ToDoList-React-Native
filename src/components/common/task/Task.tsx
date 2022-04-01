@@ -1,4 +1,3 @@
-import {ReturnComponentType} from '@commonTypes/returnComponentType';
 import {DeleteTaskButton} from '@components/buttons/deleteTaskButton/DeleteTaskButton';
 import {DoneTaskButton} from '@components/buttons/doneTaskButton/DoneTaskButton';
 import {EditTaskTitleButton} from '@components/buttons/editTaskTitleButton/EditTaskTitleButton';
@@ -7,7 +6,7 @@ import {Text, View} from 'react-native';
 import {styles} from './styles';
 import {TaskPropsType} from './types';
 
-export const Task: FC<TaskPropsType> = (props): ReturnComponentType => {
+export const Task: FC<TaskPropsType> = (props) => {
   const {isTodo, taskListId, taskTitle, taskId, fullTaskList} = props;
 
   return (

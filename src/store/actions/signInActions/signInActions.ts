@@ -1,7 +1,9 @@
 import {SIGN_IN_ACTIONS} from '@enums/signInEnum';
-import {SetSignInActionsType} from '@store/actions/signInActions/type';
+import {SetSignInStatusActionsType} from '@store/actions/signInActions/type';
 
-export const setTasks = (signIn: Array<any>): SetSignInActionsType => ({
-  type: SIGN_IN_ACTIONS.SET_SIGN_IN,
-  signIn: signIn,
+export const setSignInStatus = (
+  signInStatus: string,
+): SetSignInStatusActionsType => ({
+  type: SIGN_IN_ACTIONS.SET_SIGN_IN_STATUS,
+  signInStatus,
 });

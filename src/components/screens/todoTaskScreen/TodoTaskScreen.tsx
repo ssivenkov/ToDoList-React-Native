@@ -1,13 +1,13 @@
-import {ReturnComponentType} from '@commonTypes/returnComponentType';
 import {TaskList} from '@components/common/taskList/TaskList';
-import {TaskListType} from '@store/reducers/taskListReducer/types';
 import {getTaskList} from '@store/selectors/taskListSelectors';
 import React from 'react';
-import {FlatList, ListRenderItem, Text, View} from 'react-native';
+import {useTranslation} from 'react-i18next';
+import {Text, View, ScrollView} from 'react-native';
 import {useSelector} from 'react-redux';
 import {styles} from './styles';
 
-export const TodoTasksScreen = (): ReturnComponentType => {
+export const TodoTasksScreen = () => {
+  const {t} = useTranslation();
   const taskLists = useSelector(getTaskList);
   const toDoTaskLists = taskLists.filter((taskList) => {
     if (taskList.showInToDo || taskList.tasks.some((task) => !task.isDone)) {
@@ -15,34 +15,30 @@ export const TodoTasksScreen = (): ReturnComponentType => {
     }
   });
 
-  const toDoTaskListRenderItem: ListRenderItem<TaskListType> = ({
-    item,
-  }): ReturnComponentType => {
-    const toDoTasks = item.tasks && item.tasks.filter((task) => !task.isDone);
+  if (toDoTaskLists.length > 0) {
     return (
-      <TaskList
-        isTodoTaskList={true}
-        taskListId={item.id}
-        taskListTitle={item.title}
-        taskListPropsTasks={toDoTasks}
-        fullTaskList={item}
-      />
+      <ScrollView style={styles.tasksListContainer}>
+        {toDoTaskLists.map((toDoTaskList) => (
+          <TaskList
+            key={toDoTaskList.id}
+            isTodoTaskList={true}
+            taskListId={toDoTaskList.id}
+            taskListTitle={toDoTaskList.title}
+            taskListPropsTasks={toDoTaskList.tasks.filter(
+              (task) => !task.isDone,
+            )}
+            fullTaskList={toDoTaskList}
+          />
+        ))}
+      </ScrollView>
     );
-  };
+  }
 
   return (
-    <>
-      {toDoTaskLists && toDoTaskLists.length > 0 ? (
-        <View style={styles.tasksListContainer}>
-          <FlatList data={toDoTaskLists} renderItem={toDoTaskListRenderItem} />
-        </View>
-      ) : (
-        <View style={styles.nullContentContainer}>
-          <Text style={styles.nullContentText}>
-            Todo task lists is not found
-          </Text>
-        </View>
-      )}
-    </>
+    <View style={styles.nullContentContainer}>
+      <Text style={styles.nullContentText}>
+        {t('tasksInScreen.NoToDoTaskLists')}
+      </Text>
+    </View>
   );
 };

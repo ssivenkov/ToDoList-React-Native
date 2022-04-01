@@ -2,7 +2,7 @@ import {CustomIconButton} from '@components/common/buttons/CustomIconButton';
 import {CustomTextButton} from '@components/common/buttons/CustomTextButton';
 import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
-import {Modal, Pressable, View, Text} from 'react-native';
+import {Modal, View, Text} from 'react-native';
 import {styles} from './styles';
 import {ModalIconPropsType} from './types';
 
@@ -15,12 +15,17 @@ export const ModalIcon = ({
   closeHandler,
 }: ModalIconPropsType) => {
   const {t} = useTranslation();
-  const [modalVisible, setModalVisible] = useState(false);
+  const [modalVisible, setModalVisible] = useState<boolean>(false);
+
+  const onButtonPress = () => {
+    if (!modalVisible) setModalVisible(true);
+  };
 
   const onCancelButtonPress = () => {
     closeHandler && closeHandler();
     setModalVisible(false);
   };
+
   const onOkButtonPress = () => {
     okHandler && okHandler();
     setModalVisible(false);
@@ -31,9 +36,7 @@ export const ModalIcon = ({
       <Modal
         transparent={true}
         visible={modalVisible}
-        onRequestClose={() => {
-          setModalVisible(!modalVisible);
-        }}>
+        onRequestClose={() => setModalVisible(false)}>
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             {description && <Text style={styles.text}>{description}</Text>}
@@ -54,12 +57,7 @@ export const ModalIcon = ({
           </View>
         </View>
       </Modal>
-      <Pressable>
-        <CustomIconButton
-          onPress={() => setModalVisible(true)}
-          icon={buttonIcon}
-        />
-      </Pressable>
+      <CustomIconButton onPress={onButtonPress} icon={buttonIcon} />
     </View>
   );
 };
