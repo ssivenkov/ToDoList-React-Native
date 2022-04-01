@@ -1,8 +1,8 @@
 import {CustomTextButton} from '@components/common/buttons/CustomTextButton';
-import {UserScreenPropsType} from '@components/screens/signInScreen/SignInButton/types';
-import {styles} from '@components/screens/signInScreen/styles';
 import React from 'react';
 import {Image, Text, View} from 'react-native';
+import {styles} from './styles';
+import {UserScreenPropsType} from './types';
 
 export const UserScreen = (props: UserScreenPropsType) => {
   const {userData, signOutCallback} = props;

@@ -2,9 +2,8 @@ import {CreateTaskButton} from '@components/buttons/createTaskButton/CreateTaskB
 import {DeleteTaskListButton} from '@components/buttons/deleteTaskListButton/DeleteTaskListButton';
 import {EditTaskListTitleButton} from '@components/buttons/editTaskListTitleButton/EditTaskListTitleButton';
 import {Task} from '@components/common/task/Task';
-import {TaskType} from '@store/reducers/taskListReducer/types';
 import React, {FC} from 'react';
-import {FlatList, ListRenderItem, Text, View} from 'react-native';
+import {Text, View} from 'react-native';
 import {styles} from './styles';
 import {TaskListPropsType} from './types';
 
@@ -17,25 +16,16 @@ export const TaskList: FC<TaskListPropsType> = (props) => {
     fullTaskList,
   } = props;
 
-  const renderTaskItem: ListRenderItem<TaskType> = ({item}) => {
-    return (
-      <Task
-        isTodo={isTodoTaskList}
-        taskListId={taskListId}
-        taskTitle={item.title}
-        taskId={item.id}
-        fullTaskList={fullTaskList}
-      />
-    );
-  };
-
-  const tasks = (
-    <FlatList
-      data={taskListPropsTasks}
-      renderItem={renderTaskItem}
-      keyExtractor={(item) => item.id}
+  const tasks = taskListPropsTasks.map((task) => (
+    <Task
+      key={task.id}
+      isTodo={isTodoTaskList}
+      taskListId={taskListId}
+      taskTitle={task.title}
+      taskId={task.id}
+      fullTaskList={fullTaskList}
     />
-  );
+  ));
 
   return (
     <View style={styles.container}>
@@ -54,7 +44,7 @@ export const TaskList: FC<TaskListPropsType> = (props) => {
             taskListId={taskListId}
           />
           <DeleteTaskListButton
-            titleToBeDeletedTaskList={taskListTitle}
+            taskListTitle={taskListTitle}
             isTodoTaskList={isTodoTaskList}
             fullTaskList={fullTaskList}
           />

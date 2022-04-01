@@ -1,19 +1,13 @@
 import {TaskList} from '@components/common/taskList/TaskList';
-import {TaskListType} from '@store/reducers/taskListReducer/types';
 import {getTaskList} from '@store/selectors/taskListSelectors';
-import React, {useEffect} from 'react';
-import {
-  FlatList,
-  ListRenderItem,
-  LogBox,
-  ScrollView,
-  Text,
-  View,
-} from 'react-native';
+import React from 'react';
+import {useTranslation} from 'react-i18next';
+import {ScrollView, Text, View} from 'react-native';
 import {useSelector} from 'react-redux';
 import {styles} from './styles';
 
 export const DoneTasksScreen = () => {
+  const {t} = useTranslation();
   const taskLists = useSelector(getTaskList);
   const doneTaskLists = taskLists.filter((taskList) => {
     if (taskList.tasks) {
@@ -21,41 +15,30 @@ export const DoneTasksScreen = () => {
     }
   });
 
-  const doneTaskListRenderItem: ListRenderItem<TaskListType> = ({item}) => {
-    const doneTasks = item.tasks && item.tasks.filter((task) => task.isDone);
-    return (
-      <TaskList
-        isTodoTaskList={false}
-        taskListId={item.id}
-        taskListTitle={item.title}
-        taskListPropsTasks={doneTasks}
-        fullTaskList={item}
-      />
-    );
-  };
-
-  // hide error
-  useEffect(() => {
-    LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
-  }, []);
-
   if (doneTaskLists.length > 0) {
-    // FlatList must be in ScrollView because this fixes input interaction bug in modal windows
     return (
-      <ScrollView>
-        <FlatList
-          data={doneTaskLists}
-          renderItem={doneTaskListRenderItem}
-          keyExtractor={(item) => item.id}
-          style={styles.tasksListContainer}
-        />
+      <ScrollView style={styles.tasksListContainer}>
+        {doneTaskLists.map((doneTaskList) => (
+          <TaskList
+            key={doneTaskList.id}
+            isTodoTaskList={false}
+            taskListId={doneTaskList.id}
+            taskListTitle={doneTaskList.title}
+            taskListPropsTasks={doneTaskList.tasks.filter(
+              (task) => task.isDone,
+            )}
+            fullTaskList={doneTaskList}
+          />
+        ))}
       </ScrollView>
     );
   }
 
   return (
     <View style={styles.nullContentContainer}>
-      <Text style={styles.nullContentText}>Done task lists is not found</Text>
+      <Text style={styles.nullContentText}>
+        {t('tasksInScreen.NoDoneTaskLists')}
+      </Text>
     </View>
   );
 };

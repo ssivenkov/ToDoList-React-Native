@@ -11,7 +11,6 @@ import React from 'react';
 import {Trans} from 'react-i18next';
 import {Text} from 'react-native';
 import {useDispatch} from 'react-redux';
-import {v4 as uuidv4} from 'uuid';
 import {styles} from './styles';
 import {DeleteTaskButtonPropsType} from './types';
 
@@ -45,9 +44,7 @@ export const DeleteTaskButton = ({
       buttonIcon={<FontAwesomeIcon icon={faTrash} size={iconSizeSmall} />}>
       <Text style={styles.warnText}>
         <Trans i18nKey="tasksInScreen.DeleteQuestionButtonTitle">
-          <Text key={uuidv4()} style={styles.redHighlightTask}>
-            {{text: taskTitle}}
-          </Text>
+          <Text style={styles.redHighlightTask}>{{text: taskTitle}}</Text>
         </Trans>
       </Text>
     </ModalIcon>
