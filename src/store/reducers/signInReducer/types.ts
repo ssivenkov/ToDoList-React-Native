@@ -1,3 +1,3 @@
 export type InitialSignInStateType = {
-  signIn: Array<any>;
+  signInStatus: string;
 };

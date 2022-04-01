@@ -1,7 +1,6 @@
 import {COLORS} from '@colors/colors';
-import {ReturnComponentType} from '@commonTypes/returnComponentType';
 import {CreateTaskListButton} from '@components/buttons/createTaskListButton/CreateTaskListButton';
-import {SignInScreen} from '@components/screens/signInScreen/SignInScreen';
+import {SignInScreen} from '@components/screens/signInScreen';
 import {iconSizeMedium} from '@constants/constants';
 import {faFile, faUser} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
@@ -16,7 +15,7 @@ import {styles} from './styles';
 
 const RootTab = createBottomTabNavigator();
 
-export const Navigation = (): ReturnComponentType => {
+export const Navigation = () => {
   const {t} = useTranslation();
 
   return (
