@@ -1,13 +1,13 @@
-import {ReturnComponentType} from '@commonTypes/returnComponentType';
 import {TaskList} from '@components/common/taskList/TaskList';
-import {TaskListType} from '@store/reducers/taskListReducer/types';
 import {getTaskList} from '@store/selectors/taskListSelectors';
 import React from 'react';
-import {FlatList, ListRenderItem, Text, View} from 'react-native';
+import {useTranslation} from 'react-i18next';
+import {ScrollView, Text, View} from 'react-native';
 import {useSelector} from 'react-redux';
 import {styles} from './styles';
 
-export const DoneTasksScreen = (): ReturnComponentType => {
+export const DoneTasksScreen = () => {
+  const {t} = useTranslation();
   const taskLists = useSelector(getTaskList);
   const doneTaskLists = taskLists.filter((taskList) => {
     if (taskList.tasks) {
@@ -15,34 +15,30 @@ export const DoneTasksScreen = (): ReturnComponentType => {
     }
   });
 
-  const doneTaskListRenderItem: ListRenderItem<TaskListType> = ({
-    item,
-  }): ReturnComponentType => {
-    const doneTasks = item.tasks && item.tasks.filter((task) => task.isDone);
+  if (doneTaskLists.length > 0) {
     return (
-      <TaskList
-        isTodoTaskList={false}
-        taskListId={item.id}
-        taskListTitle={item.title}
-        taskListPropsTasks={doneTasks}
-        fullTaskList={item}
-      />
+      <ScrollView style={styles.tasksListContainer}>
+        {doneTaskLists.map((doneTaskList) => (
+          <TaskList
+            key={doneTaskList.id}
+            isTodoTaskList={false}
+            taskListId={doneTaskList.id}
+            taskListTitle={doneTaskList.title}
+            taskListPropsTasks={doneTaskList.tasks.filter(
+              (task) => task.isDone,
+            )}
+            fullTaskList={doneTaskList}
+          />
+        ))}
+      </ScrollView>
     );
-  };
+  }
 
   return (
-    <>
-      {doneTaskLists && doneTaskLists.length > 0 ? (
-        <View style={styles.tasksListContainer}>
-          <FlatList data={doneTaskLists} renderItem={doneTaskListRenderItem} />
-        </View>
-      ) : (
-        <View style={styles.nullContentContainer}>
-          <Text style={styles.nullContentText}>
-            Done task lists is not found
-          </Text>
-        </View>
-      )}
-    </>
+    <View style={styles.nullContentContainer}>
+      <Text style={styles.nullContentText}>
+        {t('tasksInScreen.NoDoneTaskLists')}
+      </Text>
+    </View>
   );
 };

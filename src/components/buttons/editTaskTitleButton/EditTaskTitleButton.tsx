@@ -1,4 +1,3 @@
-import {ReturnComponentType} from '@commonTypes/returnComponentType';
 import {CustomInput} from '@components/common/input/CustomInput';
 import {ModalIcon} from '@components/common/modals/ModalIcon';
 import {iconSizeSmall} from '@constants/constants';
@@ -10,18 +9,16 @@ import {useTranslation} from 'react-i18next';
 import {useDispatch} from 'react-redux';
 import {EditTaskTitleButtonPropsType} from './types';
 
-export const EditTaskTitleButton = (
-  props: EditTaskTitleButtonPropsType,
-): ReturnComponentType => {
+export const EditTaskTitleButton = (props: EditTaskTitleButtonPropsType) => {
   const {taskListId, taskId, oldTaskTitle} = props;
   const {t} = useTranslation();
   const dispatch = useDispatch();
   const [editedTaskTitle, setEditedTaskTitle] = useState<string>(oldTaskTitle);
 
   const onOkPress = (): void => {
-    if (editedTaskTitle.length >= 1) {
+    if (editedTaskTitle.length > 0) {
       dispatch(setEditedTask(taskListId, taskId, editedTaskTitle));
-      setEditedTaskTitle('');
+      setEditedTaskTitle(editedTaskTitle);
     }
   };
 
