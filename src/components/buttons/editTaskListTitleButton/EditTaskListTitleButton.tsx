@@ -31,8 +31,8 @@ export const EditTaskListTitleButton = ({
 
   return (
     <ModalIcon
-      okHandler={() => onOkPress()}
-      closeHandler={() => onClosePress()}
+      okHandler={onOkPress}
+      closeHandler={onClosePress}
       okDisable={!editedTaskListTitle}
       description={`${t('tasksInScreen.EditTaskListButtonTitle')}`}
       buttonIcon={<FontAwesomeIcon icon={faPen} size={iconSizeSmall} />}>
