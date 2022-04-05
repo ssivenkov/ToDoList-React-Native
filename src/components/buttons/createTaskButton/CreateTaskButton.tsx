@@ -46,7 +46,7 @@ export const CreateTaskButton: FC<CreateTaskButtonPropsType> = (props) => {
 
   return (
     <ModalIcon
-      okHandler={() => createTask()}
+      okHandler={createTask}
       okDisable={!newTaskTitle}
       description={`${t('tasksInScreen.CreateTaskButtonTitle')}`}
       buttonIcon={<FontAwesomeIcon icon={faPlus} size={iconSizeSmall} />}>

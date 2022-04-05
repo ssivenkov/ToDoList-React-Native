@@ -1,5 +1,5 @@
 import {SIGN_IN_ACTIONS} from '@enums/signInEnum';
-import {SignInActionsType} from '@store/actions/signInActions/type';
+import {SignInActionsType} from '@store/actions/signInActions/types';
 import {InitialSignInStateType} from '@store/reducers/signInReducer/types';
 
 const initialSignInState = {

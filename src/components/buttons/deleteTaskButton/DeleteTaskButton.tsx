@@ -40,7 +40,7 @@ export const DeleteTaskButton = ({
 
   return (
     <ModalIcon
-      okHandler={() => removeTask()}
+      okHandler={removeTask}
       buttonIcon={<FontAwesomeIcon icon={faTrash} size={iconSizeSmall} />}>
       <Text style={styles.warnText}>
         <Trans i18nKey="tasksInScreen.DeleteQuestionButtonTitle">

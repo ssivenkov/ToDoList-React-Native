@@ -47,14 +47,14 @@ export const SignInScreenView = (props: SignInScreenViewPropsType) => {
         serviceTitle={GoogleTitle}
         icon={faGoogle}
         buttonColorStyle={signInStyles.googleStyle}
-        disabled={waitingGoogleUserData && !googleUserData}
+        disabled={waitingGoogleUserData}
       />
       <SignInButton
         onPress={onFacebookButtonPress}
         serviceTitle={FacebookTitle}
         icon={faFacebook}
         buttonColorStyle={signInStyles.facebookStyle}
-        disabled={waitingFacebookUserData && !facebookUserData}
+        disabled={waitingFacebookUserData}
       />
     </View>
   );

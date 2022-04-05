@@ -1,5 +1,4 @@
-import {NullableType} from '../../../commonTypes/nullableType';
-import {TaskListType, TaskType} from '../../reducers/taskListReducer/types';
+import {TaskListType} from '@store/reducers/taskListReducer/types';
 
 export type SetTaskListsActionType = {
   type: string;
