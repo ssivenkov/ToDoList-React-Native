@@ -1,11 +1,11 @@
 import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
+import {errorAlert} from '@root/helpers/Alert';
 import {
   getGoogleUserData,
   GoogleSignOut,
-} from '@store/actions/signInActions/signInActions';
+} from '@store/actions/signInSagaActions/signInSagaActions';
 import {useEffect, useState} from 'react';
-import {Alert} from 'react-native';
 import {useDispatch} from 'react-redux';
 
 export const useGoogle = () => {
@@ -20,8 +20,8 @@ export const useGoogle = () => {
   const onGoogleButtonPress = () => {
     try {
       dispatch(getGoogleUserData({setWaitingGoogleUserData}));
-    } catch (err: any) {
-      Alert.alert(err.toString());
+    } catch (error) {
+      if (error instanceof Error) errorAlert(error);
     } finally {
       setWaitingGoogleUserData(false);
     }
@@ -33,11 +33,11 @@ export const useGoogle = () => {
     if (firebaseInitializing) setFirebaseInitializing(false);
   };
 
-  const googleSignOut = async () => {
+  const googleSignOut = () => {
     try {
       dispatch(GoogleSignOut());
-    } catch (err: any) {
-      Alert.alert(err.toString());
+    } catch (error) {
+      if (error instanceof Error) errorAlert(error);
     }
   };
 
