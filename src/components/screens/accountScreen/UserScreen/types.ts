@@ -1,5 +1,7 @@
 type UserDataType = {
   displayName: string | null;
+  email: string | null;
+  phoneNumber: string | null;
   photoURL: string | null;
 };
 

@@ -15,7 +15,7 @@ export const TasksNavigation = () => {
   const {t} = useTranslation();
   return (
     <Tab.Navigator
-      initialRouteName={`${t('tasksInScreen.TodoTasksTab')}`}
+      initialRouteName={`${t('tasksScreen.TodoTasksTab')}`}
       screenOptions={() => ({
         tabBarStyle: styles.tabBarContainer,
         tabBarItemStyle: styles.tabBarItem,
@@ -24,7 +24,7 @@ export const TasksNavigation = () => {
         tabBarIndicatorStyle: styles.tabBarIndicator,
       })}>
       <Tab.Screen
-        name={`${t('tasksInScreen.TodoTasksTab')}`}
+        name={`${t('tasksScreen.TodoTasksTab')}`}
         component={TodoTasksScreen}
         options={() => ({
           tabBarIcon: ({focused}) => (
@@ -37,7 +37,7 @@ export const TasksNavigation = () => {
         })}
       />
       <Tab.Screen
-        name={`${t('tasksInScreen.DoneTasksTab')}`}
+        name={`${t('tasksScreen.DoneTasksTab')}`}
         component={DoneTasksScreen}
         options={() => ({
           tabBarIcon: ({focused}) => (

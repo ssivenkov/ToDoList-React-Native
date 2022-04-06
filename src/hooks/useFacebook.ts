@@ -41,11 +41,10 @@ export const useFacebook = () => {
   };
 
   useEffect(() => {
-    const subscriber = auth().onAuthStateChanged((user) =>
+    // subscriber
+    return auth().onAuthStateChanged((user) =>
       onFacebookAuthStateChanged(user),
     );
-
-    return subscriber;
   }, []);
 
   return {

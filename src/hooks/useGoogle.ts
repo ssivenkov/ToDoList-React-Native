@@ -46,11 +46,8 @@ export const useGoogle = () => {
       webClientId:
         '39222740250-rco3iuni391tlvdtj9vm857nsmp6t5db.apps.googleusercontent.com',
     });
-    const subscriber = auth().onAuthStateChanged((user) =>
-      onGoogleAuthStateChanged(user),
-    );
-
-    return subscriber;
+    // subscriber
+    return auth().onAuthStateChanged((user) => onGoogleAuthStateChanged(user));
   }, []);
 
   return {

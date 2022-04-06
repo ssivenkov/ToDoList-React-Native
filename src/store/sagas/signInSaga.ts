@@ -1,13 +1,14 @@
 import auth from '@react-native-firebase/auth';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import {errorAlert} from '@root/helpers/Alert';
+import {setAuthStatus} from '@store/actions/signInActions/signInActions';
 import {
   GetFacebookUserDataSagaActionType,
   GetGoogleUserDataSagaActionType,
   AuthCredentialType,
 } from '@store/actions/signInSagaActions/types';
 import {AccessToken, LoginManager} from 'react-native-fbsdk-next';
-import {call} from 'redux-saga/effects';
+import {call, put} from 'redux-saga/effects';
 
 const commonSignInWithCredential = (credential: AuthCredentialType) => {
   return auth().signInWithCredential(credential);
@@ -29,6 +30,7 @@ export function* googleUserDataWorker(action: GetGoogleUserDataSagaActionType) {
       idToken,
     );
     yield call(commonSignInWithCredential, googleCredential);
+    yield put(setAuthStatus(true));
   } catch (error) {
     if (error instanceof Error) errorAlert(error);
   }
@@ -38,6 +40,7 @@ export function* googleSignOutWorker() {
   try {
     yield call(commonSignOut);
     yield call(GoogleSignin.signOut);
+    yield put(setAuthStatus(false));
   } catch (error) {
     if (error instanceof Error) errorAlert(error);
   }
@@ -65,6 +68,7 @@ export function* facebookUserDataWorker(
       accessToken,
     );
     yield call(commonSignInWithCredential, facebookCredential);
+    yield put(setAuthStatus(true));
   } catch (error) {
     if (error instanceof Error) errorAlert(error);
   }
@@ -73,6 +77,7 @@ export function* facebookUserDataWorker(
 export function* facebookSignOutWorker() {
   try {
     yield call(commonSignOut);
+    yield put(setAuthStatus(false));
   } catch (error) {
     if (error instanceof Error) errorAlert(error);
   }

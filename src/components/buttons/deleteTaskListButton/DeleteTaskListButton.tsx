@@ -38,7 +38,7 @@ export const DeleteTaskListButton = (props: DeleteTaskListButtonPropsType) => {
       okHandler={removeTaskList}
       buttonIcon={<FontAwesomeIcon icon={faTrash} size={iconSizeSmall} />}>
       <Text style={styles.warnText}>
-        <Trans i18nKey="tasksInScreen.DeleteQuestionButtonTitle">
+        <Trans i18nKey="tasksScreen.DeleteQuestionButtonTitle">
           <Text style={styles.redHighlightTask}>{{text: taskListTitle}}</Text>
         </Trans>
       </Text>

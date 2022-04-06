@@ -4,7 +4,7 @@ import {iconSizeSmall} from '@constants/constants';
 import {faPlus} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {addNewTask} from '@store/actions/tasksActions/taskListActions';
-import {TaskListType, TaskType} from '@store/reducers/taskListReducer/types';
+import {TaskListType, TaskType} from '@store/reducers/tasksReducer/types';
 import React, {FC, useState} from 'react';
 import {useTranslation} from 'react-i18next';
 import 'react-native-get-random-values';
@@ -48,7 +48,7 @@ export const CreateTaskButton: FC<CreateTaskButtonPropsType> = (props) => {
     <ModalIcon
       okHandler={createTask}
       okDisable={!newTaskTitle}
-      description={`${t('tasksInScreen.CreateTaskButtonTitle')}`}
+      description={`${t('tasksScreen.CreateTaskButtonTitle')}`}
       buttonIcon={<FontAwesomeIcon icon={faPlus} size={iconSizeSmall} />}>
       <CustomInput value={newTaskTitle} onValueChange={setNewTaskTitle} />
     </ModalIcon>

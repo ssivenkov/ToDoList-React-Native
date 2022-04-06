@@ -1,6 +1,6 @@
-export type SetSignInStatusActionType = {
+export type SetAuthStatusActionType = {
   type: string;
-  signInStatus: string;
+  authStatus: boolean;
 };
 
-export type SignInActionsType = SetSignInStatusActionType;
+export type AuthActionsType = SetAuthStatusActionType;

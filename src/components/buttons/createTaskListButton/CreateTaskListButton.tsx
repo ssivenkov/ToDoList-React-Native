@@ -4,7 +4,7 @@ import {iconSizeLarge} from '@constants/constants';
 import {faPlus} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {addNewTaskList} from '@store/actions/tasksActions/taskListActions';
-import {TaskListType} from '@store/reducers/taskListReducer/types';
+import {TaskListType} from '@store/reducers/tasksReducer/types';
 import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
 import 'react-native-get-random-values';
@@ -36,7 +36,7 @@ export const CreateTaskListButton = () => {
     <ModalIcon
       okHandler={createTaskList}
       okDisable={!newTaskListTitle}
-      description={`${t('tasksInScreen.CreateTaskListButtonTitle')}`}
+      description={`${t('tasksScreen.CreateTaskListButtonTitle')}`}
       buttonIcon={
         <FontAwesomeIcon
           icon={faPlus}

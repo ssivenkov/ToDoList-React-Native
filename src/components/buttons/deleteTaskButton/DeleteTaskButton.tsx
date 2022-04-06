@@ -43,7 +43,7 @@ export const DeleteTaskButton = ({
       okHandler={removeTask}
       buttonIcon={<FontAwesomeIcon icon={faTrash} size={iconSizeSmall} />}>
       <Text style={styles.warnText}>
-        <Trans i18nKey="tasksInScreen.DeleteQuestionButtonTitle">
+        <Trans i18nKey="tasksScreen.DeleteQuestionButtonTitle">
           <Text style={styles.redHighlightTask}>{{text: taskTitle}}</Text>
         </Trans>
       </Text>

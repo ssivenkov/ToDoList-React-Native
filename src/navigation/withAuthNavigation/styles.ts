@@ -2,7 +2,7 @@ import {COLORS} from '@colors/colors';
 import {FontAwesomeIconStyle} from '@fortawesome/react-native-fontawesome';
 import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
 
-type NavigationStylesType = {
+type WithAuthNavigationStylesType = {
   header: ViewStyle;
   headerTitleStyle: TextStyle;
   tabBarContainer: ViewStyle;
@@ -13,7 +13,7 @@ type NavigationStylesType = {
   title: TextStyle;
 };
 
-export const styles = StyleSheet.create<NavigationStylesType>({
+export const styles = StyleSheet.create<WithAuthNavigationStylesType>({
   header: {
     backgroundColor: COLORS.POMPADOUR,
   },
