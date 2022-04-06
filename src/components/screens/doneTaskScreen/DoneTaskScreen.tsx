@@ -37,7 +37,7 @@ export const DoneTasksScreen = () => {
   return (
     <View style={styles.nullContentContainer}>
       <Text style={styles.nullContentText}>
-        {t('tasksInScreen.NoDoneTaskLists')}
+        {t('tasksScreen.NoDoneTaskLists')}
       </Text>
     </View>
   );

@@ -4,7 +4,7 @@
       "Ok": "Ок",
       "Close": "Закрыть"
     },
-    "tasksInScreen": {
+    "tasksScreen": {
       "Tasks": "Задачи",
       "CreateTaskButtonTitle": "Название новой задачи:",
       "CreateTaskListButtonTitle": "Название нового списка задач:",
@@ -19,9 +19,10 @@
     },
     "signInScreen": {
       "SignIn": "Вход",
-      "Email": "Эл. почта",
-      "Password": "Пароль",
-      "SignInWith": "Sign in with <0>{{text}}</0>"
+      "SignInWith": "Вход через <0>{{text}}</0>"
+    },
+    "accountScreen": {
+      "Account": "Аккаунт"
     }
   }
 }

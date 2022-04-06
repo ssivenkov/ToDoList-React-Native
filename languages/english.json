@@ -4,7 +4,7 @@
       "Ok": "Ok",
       "Close": "Close"
     },
-    "tasksInScreen": {
+    "tasksScreen": {
       "Tasks": "Tasks",
       "CreateTaskButtonTitle": "Enter new task title:",
       "CreateTaskListButtonTitle": "Enter new task list title:",
@@ -19,9 +19,10 @@
     },
     "signInScreen": {
       "SignIn": "Sign in",
-      "Email": "Email",
-      "Password": "Password",
       "SignInWith": "Sign in with <0>{{text}}</0>"
+    },
+    "accountScreen": {
+      "Account": "Account"
     }
   }
 }

@@ -11,6 +11,6 @@ export type TaskListType = {
   tasks: TaskType[];
 };
 
-export type TaskListStateType = {
+export type TasksStateType = {
   taskLists: TaskListType[];
 };

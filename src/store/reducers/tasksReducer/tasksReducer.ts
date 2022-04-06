@@ -1,8 +1,8 @@
-import {TASK_LIST_ACTIONS} from '@enums/taskListsEnum';
-import {TaskListActionsType} from '@store/actions/tasksActions/types';
-import {TaskListStateType} from '@store/reducers/taskListReducer/types';
+import {TASKS_ACTIONS} from '@enums/tasksEnum';
+import {TasksActionsType} from '@store/actions/tasksActions/types';
+import {TasksStateType} from '@store/reducers/tasksReducer/types';
 
-const initialTaskListState: TaskListStateType = {
+const initialTasksState: TasksStateType = {
   taskLists: [
     {
       id: '1',
@@ -16,21 +16,21 @@ const initialTaskListState: TaskListStateType = {
   ],
 };
 
-export const taskListReducer = (
-  state: TaskListStateType = initialTaskListState,
-  action: TaskListActionsType,
-): TaskListStateType => {
+export const tasksReducer = (
+  state: TasksStateType = initialTasksState,
+  action: TasksActionsType,
+): TasksStateType => {
   switch (action.type) {
-    case TASK_LIST_ACTIONS.SET_TASK_LISTS:
+    case TASKS_ACTIONS.SET_TASK_LISTS:
       return {...state};
 
-    case TASK_LIST_ACTIONS.ADD_NEW_TASK_LIST:
+    case TASKS_ACTIONS.ADD_NEW_TASK_LIST:
       return {
         ...state,
         taskLists: [...state.taskLists, action.newTaskList],
       };
 
-    case TASK_LIST_ACTIONS.ADD_NEW_TASK:
+    case TASKS_ACTIONS.ADD_NEW_TASK:
       return {
         ...state,
         taskLists: [
@@ -42,7 +42,7 @@ export const taskListReducer = (
         ],
       };
 
-    case TASK_LIST_ACTIONS.DELETE_TASK_LIST_FROM_SCREEN:
+    case TASKS_ACTIONS.DELETE_TASK_LIST_FROM_SCREEN:
       return {
         ...state,
         taskLists: [
@@ -67,7 +67,7 @@ export const taskListReducer = (
         ],
       };
 
-    case TASK_LIST_ACTIONS.DELETE_TASK_LIST_FULL:
+    case TASKS_ACTIONS.DELETE_TASK_LIST_FULL:
       return {
         ...state,
         taskLists: [
@@ -77,7 +77,7 @@ export const taskListReducer = (
         ],
       };
 
-    case TASK_LIST_ACTIONS.EDIT_TASK_LIST_TITLE:
+    case TASKS_ACTIONS.EDIT_TASK_LIST_TITLE:
       return {
         taskLists: [
           ...state.taskLists.map((taskList) => {
@@ -90,7 +90,7 @@ export const taskListReducer = (
         ],
       };
 
-    case TASK_LIST_ACTIONS.SET_TASK_DONE:
+    case TASKS_ACTIONS.SET_TASK_DONE:
       return {
         taskLists: [
           ...state.taskLists.map((taskList) => {
@@ -113,7 +113,7 @@ export const taskListReducer = (
         ],
       };
 
-    case TASK_LIST_ACTIONS.EDIT_TASK_TITLE:
+    case TASKS_ACTIONS.EDIT_TASK_TITLE:
       return {
         ...state,
         taskLists: [
@@ -136,7 +136,7 @@ export const taskListReducer = (
         ],
       };
 
-    case TASK_LIST_ACTIONS.DELETE_TASK:
+    case TASKS_ACTIONS.DELETE_TASK:
       return {
         ...state,
         taskLists: [
