@@ -25,8 +25,8 @@ export const styles = StyleSheet.create<CustomButtonStylesType>({
   },
 
   textButton: {
-    paddingHorizontal: 12,
-    paddingVertical: 6,
+    paddingHorizontal: 16,
+    paddingVertical: 8,
     borderRadius: 8,
     backgroundColor: COLORS.CELTIC,
     justifyContent: 'center',
@@ -38,7 +38,7 @@ export const styles = StyleSheet.create<CustomButtonStylesType>({
   },
 
   text: {
-    fontSize: 19,
+    fontSize: 20,
     color: COLORS.WHITE,
   },
 

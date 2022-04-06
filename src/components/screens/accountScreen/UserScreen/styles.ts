@@ -3,28 +3,40 @@ import {ImageStyle, StyleSheet, TextStyle, ViewStyle} from 'react-native';
 
 type UserScreenStylesType = {
   screenContainer: ViewStyle;
-  screenTitle: TextStyle;
   avatar: ImageStyle;
+  name: TextStyle;
+  text: TextStyle;
+  buttonContainer: ViewStyle;
 };
 
 export const styles = StyleSheet.create<UserScreenStylesType>({
   screenContainer: {
     marginHorizontal: 15,
+    marginTop: 50,
     alignItems: 'center',
   },
 
-  screenTitle: {
+  avatar: {
+    width: 130,
+    height: 130,
+    borderRadius: 100,
+    marginBottom: 20,
+  },
+
+  name: {
     fontSize: 30,
     fontWeight: '500',
     color: COLORS.BLACK,
-    marginTop: 30,
     marginBottom: 10,
   },
 
-  avatar: {
-    width: 80,
-    height: 80,
-    borderRadius: 100,
-    marginBottom: 15,
+  text: {
+    fontSize: 22,
+    color: COLORS.BLACK,
+    marginBottom: 10,
+  },
+
+  buttonContainer: {
+    marginTop: 20,
   },
 });

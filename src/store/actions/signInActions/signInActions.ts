@@ -1,9 +1,9 @@
 import {SIGN_IN_ACTIONS} from '@enums/signInEnum';
-import {SetSignInStatusActionType} from '@store/actions/signInActions/types';
+import {SetAuthStatusActionType} from '@store/actions/signInActions/types';
 
-export const setSignInStatus = (
-  signInStatus: string,
-): SetSignInStatusActionType => ({
-  type: SIGN_IN_ACTIONS.SET_SIGN_IN_STATUS,
-  signInStatus,
+export const setAuthStatus = (
+  authStatus: boolean,
+): SetAuthStatusActionType => ({
+  type: SIGN_IN_ACTIONS.SET_AUTH_STATUS,
+  authStatus,
 });

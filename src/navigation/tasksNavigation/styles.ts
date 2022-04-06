@@ -2,7 +2,7 @@ import {COLORS} from '@colors/colors';
 import {FontAwesomeIconStyle} from '@fortawesome/react-native-fontawesome';
 import {StyleSheet, ViewStyle} from 'react-native';
 
-type TasksScreenStylesType = {
+type TasksNavigationStylesType = {
   tabBarContainer: ViewStyle;
   tabBarItem: ViewStyle;
   tabLightIcon: FontAwesomeIconStyle;
@@ -10,7 +10,7 @@ type TasksScreenStylesType = {
   tabBarIndicator: ViewStyle;
 };
 
-export const styles = StyleSheet.create<TasksScreenStylesType>({
+export const styles = StyleSheet.create<TasksNavigationStylesType>({
   tabBarContainer: {
     backgroundColor: COLORS.WHITE,
   },
