@@ -3,7 +3,7 @@ import {ModalIcon} from '@components/common/modals/ModalIcon';
 import {iconSizeSmall} from '@constants/constants';
 import {faPlus} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {addNewTask} from '@store/actions/tasksActions/taskListActions';
+import {addNewTask} from '@store/actions/tasksSagaActions/tasksSagaActions';
 import {TaskListType, TaskType} from '@store/reducers/tasksReducer/types';
 import React, {FC, useState} from 'react';
 import {useTranslation} from 'react-i18next';
@@ -26,10 +26,9 @@ export const CreateTaskButton: FC<CreateTaskButtonPropsType> = (props) => {
       title: newTaskTitle,
     };
 
-    const newTaskListNewTasks =
-      fullTaskList.tasks.length === 0
-        ? [newTask]
-        : [...fullTaskList.tasks, newTask];
+    const newTaskListNewTasks = fullTaskList.tasks
+      ? [...fullTaskList.tasks, newTask]
+      : [newTask];
 
     const modifiedTaskList: TaskListType = {
       id: taskListId,
@@ -39,7 +38,7 @@ export const CreateTaskButton: FC<CreateTaskButtonPropsType> = (props) => {
     };
 
     if (newTaskTitle) {
-      dispatch(addNewTask(modifiedTaskList, taskListId));
+      dispatch(addNewTask({modifiedTaskList, taskListId, newTask}));
       setNewTaskTitle('');
     }
   };

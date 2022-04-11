@@ -15,7 +15,7 @@ export const DoneTasksScreen = () => {
     }
   });
 
-  if (doneTaskLists.length > 0) {
+  if (taskLists && doneTaskLists.length > 0) {
     return (
       <ScrollView style={styles.tasksListContainer}>
         {doneTaskLists.map((doneTaskList) => (
@@ -24,9 +24,10 @@ export const DoneTasksScreen = () => {
             isTodoTaskList={false}
             taskListId={doneTaskList.id}
             taskListTitle={doneTaskList.title}
-            taskListPropsTasks={doneTaskList.tasks.filter(
-              (task) => task.isDone,
-            )}
+            taskListPropsTasks={
+              doneTaskList.tasks &&
+              doneTaskList.tasks.filter((task) => task.isDone)
+            }
             fullTaskList={doneTaskList}
           />
         ))}

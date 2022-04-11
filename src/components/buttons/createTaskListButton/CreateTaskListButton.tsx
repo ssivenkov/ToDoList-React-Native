@@ -3,7 +3,7 @@ import {ModalIcon} from '@components/common/modals/ModalIcon';
 import {iconSizeLarge} from '@constants/constants';
 import {faPlus} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {addNewTaskList} from '@store/actions/tasksActions/taskListActions';
+import {addNewTaskList} from '@store/actions/tasksSagaActions/tasksSagaActions';
 import {TaskListType} from '@store/reducers/tasksReducer/types';
 import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
