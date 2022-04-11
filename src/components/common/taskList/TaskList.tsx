@@ -16,16 +16,18 @@ export const TaskList: FC<TaskListPropsType> = (props) => {
     fullTaskList,
   } = props;
 
-  const tasks = taskListPropsTasks.map((task) => (
-    <Task
-      key={task.id}
-      isTodo={isTodoTaskList}
-      taskListId={taskListId}
-      taskTitle={task.title}
-      taskId={task.id}
-      fullTaskList={fullTaskList}
-    />
-  ));
+  const tasks =
+    taskListPropsTasks &&
+    taskListPropsTasks.map((task) => (
+      <Task
+        key={task.id}
+        isTodo={isTodoTaskList}
+        taskListId={taskListId}
+        taskTitle={task.title}
+        taskId={task.id}
+        fullTaskList={fullTaskList}
+      />
+    ));
 
   return (
     <View style={styles.container}>

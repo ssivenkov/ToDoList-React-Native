@@ -5,7 +5,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {
   deleteTaskListFromScreen,
   deleteTaskListFull,
-} from '@store/actions/tasksActions/taskListActions';
+} from '@store/actions/tasksSagaActions/tasksSagaActions';
 import React from 'react';
 import {Trans} from 'react-i18next';
 import {Text} from 'react-native';
@@ -18,18 +18,34 @@ export const DeleteTaskListButton = (props: DeleteTaskListButtonPropsType) => {
   const dispatch = useDispatch();
 
   const removeTaskList = (): void => {
-    const toDoTasks = fullTaskList.tasks.filter((task) => !task.isDone);
-    const doneTasks = fullTaskList.tasks.filter((task) => task.isDone);
+    const toDoTasks = fullTaskList.tasks
+      ? fullTaskList.tasks.filter((task) => !task.isDone)
+      : false;
+    const doneTasks = fullTaskList.tasks
+      ? fullTaskList.tasks.filter((task) => task.isDone)
+      : false;
 
     if (
-      (isTodoTaskList && doneTasks.length === 0) ||
-      (!isTodoTaskList && toDoTasks.length === 0)
+      (isTodoTaskList && doneTasks && doneTasks.length === 0) ||
+      (!isTodoTaskList && toDoTasks && toDoTasks.length === 0)
     ) {
-      dispatch(deleteTaskListFull(fullTaskList.id));
+      dispatch(deleteTaskListFull({taskListId: fullTaskList.id}));
     } else if (isTodoTaskList && !!toDoTasks && !!doneTasks) {
-      dispatch(deleteTaskListFromScreen(fullTaskList, true, false));
+      dispatch(
+        deleteTaskListFromScreen({
+          fullTaskList,
+          deleteTodoTask: true,
+          deleteDoneTask: false,
+        }),
+      );
     } else if (!isTodoTaskList && !!toDoTasks && !!doneTasks) {
-      dispatch(deleteTaskListFromScreen(fullTaskList, false, true));
+      dispatch(
+        deleteTaskListFromScreen({
+          fullTaskList,
+          deleteTodoTask: false,
+          deleteDoneTask: true,
+        }),
+      );
     }
   };
 

@@ -3,7 +3,7 @@ import {ModalIcon} from '@components/common/modals/ModalIcon';
 import {iconSizeSmall} from '@constants/constants';
 import {faPen} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {setEditedTask} from '@store/actions/tasksActions/taskListActions';
+import {setEditedTask} from '@store/actions/tasksSagaActions/tasksSagaActions';
 import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
 import {useDispatch} from 'react-redux';
@@ -17,7 +17,13 @@ export const EditTaskTitleButton = (props: EditTaskTitleButtonPropsType) => {
 
   const onOkPress = (): void => {
     if (editedTaskTitle.length > 0) {
-      dispatch(setEditedTask(taskListId, taskId, editedTaskTitle));
+      dispatch(
+        setEditedTask({
+          taskListId,
+          taskId,
+          editedTaskTitle,
+        }),
+      );
       setEditedTaskTitle(editedTaskTitle);
     }
   };

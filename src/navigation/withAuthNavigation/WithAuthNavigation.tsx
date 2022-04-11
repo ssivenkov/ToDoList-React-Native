@@ -6,14 +6,22 @@ import {faFile, faUser} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {TasksNavigation} from '@navigation/tasksNavigation/TasksNavigation';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import React from 'react';
+import {syncUserTaskLists} from '@store/actions/tasksSagaActions/tasksSagaActions';
+import React, {useEffect} from 'react';
 import {useTranslation} from 'react-i18next';
 import {View} from 'react-native';
+import {useDispatch} from 'react-redux';
 import {styles} from './styles';
 
 export const WithAuthNavigation = () => {
   const BottomNavigator = createBottomTabNavigator();
+  const dispatch = useDispatch();
   const {t} = useTranslation();
+
+  useEffect(() => {
+    dispatch(syncUserTaskLists());
+  }, []);
+
   return (
     <BottomNavigator.Navigator
       initialRouteName={`${t('tasksScreen.Tasks')}`}

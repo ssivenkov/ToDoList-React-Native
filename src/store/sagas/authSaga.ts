@@ -1,58 +1,47 @@
 import auth from '@react-native-firebase/auth';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import {errorAlert} from '@root/helpers/Alert';
-import {setAuthStatus} from '@store/actions/signInActions/signInActions';
+import {
+  setAuthStatus,
+  setUserData,
+} from '@store/actions/authActions/authActions';
 import {
   GetFacebookUserDataSagaActionType,
   GetGoogleUserDataSagaActionType,
   AuthCredentialType,
-} from '@store/actions/signInSagaActions/types';
+} from '@store/actions/authSagaActions/types';
+import {setTaskLists} from '@store/actions/tasksActions/tasksActions';
 import {AccessToken, LoginManager} from 'react-native-fbsdk-next';
-import {call, put} from 'redux-saga/effects';
+import {call, put, select} from 'redux-saga/effects';
 
-const commonSignInWithCredential = (credential: AuthCredentialType) => {
+const signInWithCredential = (credential: AuthCredentialType) => {
   return auth().signInWithCredential(credential);
 };
 
-const commonSignOut = () => {
+const signOut = () => {
   return auth().signOut();
 };
 
-// Google
-
-export function* googleUserDataWorker(action: GetGoogleUserDataSagaActionType) {
-  const {setWaitingGoogleUserData} = action.payload;
-  setWaitingGoogleUserData(true);
+export function* googleSignInWorker(action: GetGoogleUserDataSagaActionType) {
+  const {setWaitingUserData} = action.payload;
+  setWaitingUserData(true);
   try {
     const {idToken} = yield call(GoogleSignin.signIn);
     const googleCredential: AuthCredentialType = yield call(
       auth.GoogleAuthProvider.credential,
       idToken,
     );
-    yield call(commonSignInWithCredential, googleCredential);
-    yield put(setAuthStatus(true));
+    yield call(signInWithCredential, googleCredential);
   } catch (error) {
     if (error instanceof Error) errorAlert(error);
   }
 }
 
-export function* googleSignOutWorker() {
-  try {
-    yield call(commonSignOut);
-    yield call(GoogleSignin.signOut);
-    yield put(setAuthStatus(false));
-  } catch (error) {
-    if (error instanceof Error) errorAlert(error);
-  }
-}
-
-// Facebook
-
-export function* facebookUserDataWorker(
+export function* facebookSignInWorker(
   action: GetFacebookUserDataSagaActionType,
 ) {
-  const {setWaitingFacebookUserData} = action.payload;
-  setWaitingFacebookUserData(true);
+  const {setWaitingUserData} = action.payload;
+  setWaitingUserData(true);
   try {
     const {isCancelled} = yield call(LoginManager.logInWithPermissions, [
       'public_profile',
@@ -67,17 +56,22 @@ export function* facebookUserDataWorker(
       auth.FacebookAuthProvider.credential,
       accessToken,
     );
-    yield call(commonSignInWithCredential, facebookCredential);
-    yield put(setAuthStatus(true));
+    yield call(signInWithCredential, facebookCredential);
   } catch (error) {
     if (error instanceof Error) errorAlert(error);
   }
 }
 
-export function* facebookSignOutWorker() {
+export function* signOutWorker() {
   try {
-    yield call(commonSignOut);
+    yield call(signOut);
+    const {_user} = yield select((state) => state.auth.userData);
+    if (_user.providerData[0].providerId === 'google.com') {
+      yield call(GoogleSignin.signOut);
+    }
+    yield put(setUserData(null));
     yield put(setAuthStatus(false));
+    yield put(setTaskLists([]));
   } catch (error) {
     if (error instanceof Error) errorAlert(error);
   }

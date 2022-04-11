@@ -8,7 +8,7 @@ export type TaskListType = {
   id: string;
   title: string;
   showInToDo: boolean;
-  tasks: TaskType[];
+  tasks?: TaskType[];
 };
 
 export type TasksStateType = {

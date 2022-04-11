@@ -1,25 +1,48 @@
-import {UserScreen} from '@components/screens/accountScreen/UserScreen/UserScreen';
-import {useFacebook} from '@root/hooks/useFacebook';
-import {useGoogle} from '@root/hooks/useGoogle';
+import {CustomTextButton} from '@components/common/buttons/CustomTextButton';
+import {styles} from '@components/screens/accountScreen/styles';
+import {FirebaseAuthTypes} from '@react-native-firebase/auth';
+import {errorAlert} from '@root/helpers/Alert';
+import {signOutSaga} from '@store/actions/authSagaActions/authSagaActions';
+import {AppRootStateType} from '@store/store';
 import React from 'react';
-import {Text} from 'react-native';
+import {Image, Text, View} from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
 
 export const AccountScreen = () => {
-  const {googleSignOut, googleUserData} = useGoogle();
-  const {facebookSignOut, facebookUserData} = useFacebook();
+  const dispatch = useDispatch();
+  const userData = useSelector<AppRootStateType, FirebaseAuthTypes.User | null>(
+    (state) => state.auth.userData,
+  );
 
-  if (googleUserData) {
-    return (
-      <UserScreen userData={googleUserData} signOutCallback={googleSignOut} />
-    );
-  }
+  const signOut = () => {
+    try {
+      dispatch(signOutSaga());
+    } catch (error) {
+      if (error instanceof Error) errorAlert(error);
+    }
+  };
 
-  if (facebookUserData) {
+  if (userData) {
     return (
-      <UserScreen
-        userData={facebookUserData}
-        signOutCallback={facebookSignOut}
-      />
+      <View style={styles.screenContainer}>
+        {userData.photoURL && (
+          <Image source={{uri: userData.photoURL}} style={styles.avatar} />
+        )}
+        {userData.displayName && (
+          <Text style={styles.name}>{userData.displayName}</Text>
+        )}
+        {userData.email && <Text style={styles.text}>{userData.email}</Text>}
+        {userData.phoneNumber && (
+          <Text style={styles.text}>{userData.phoneNumber}</Text>
+        )}
+        <View style={styles.buttonContainer}>
+          <CustomTextButton
+            title={'Sign out'}
+            onPress={signOut}
+            disable={!userData}
+          />
+        </View>
+      </View>
     );
   }
 

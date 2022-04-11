@@ -6,7 +6,7 @@ import {
   deleteTask,
   deleteTaskListFromScreen,
   deleteTaskListFull,
-} from '@store/actions/tasksActions/taskListActions';
+} from '@store/actions/tasksSagaActions/tasksSagaActions';
 import React from 'react';
 import {Trans} from 'react-i18next';
 import {Text} from 'react-native';
@@ -21,20 +21,41 @@ export const DeleteTaskButton = ({
   fullTaskList,
 }: DeleteTaskButtonPropsType) => {
   const dispatch = useDispatch();
-  const toDoTasks = fullTaskList.tasks.filter((task) => !task.isDone);
-  const doneTasks = fullTaskList.tasks.filter((task) => task.isDone);
+  const toDoTasks = fullTaskList.tasks
+    ? fullTaskList.tasks.filter((task) => !task.isDone)
+    : [];
+  const doneTasks = fullTaskList.tasks
+    ? fullTaskList.tasks.filter((task) => task.isDone)
+    : [];
 
   const removeTask = (): void => {
-    if (!isTodoTaskList && toDoTasks.length === 0 && doneTasks.length === 1) {
-      dispatch(deleteTaskListFull(fullTaskList.id));
+    if (
+      (isTodoTaskList &&
+        doneTasks.length === 0 &&
+        !!toDoTasks &&
+        toDoTasks.length === 1) ||
+      (!isTodoTaskList &&
+        toDoTasks.length === 0 &&
+        !!doneTasks &&
+        doneTasks.length === 1)
+    ) {
+      dispatch(deleteTaskListFull({taskListId: fullTaskList.id}));
     } else if (
       !isTodoTaskList &&
+      toDoTasks &&
       toDoTasks.length > 0 &&
+      doneTasks &&
       doneTasks.length === 1
     ) {
-      dispatch(deleteTaskListFromScreen(fullTaskList, false, true));
+      dispatch(
+        deleteTaskListFromScreen({
+          fullTaskList,
+          deleteTodoTask: false,
+          deleteDoneTask: true,
+        }),
+      );
     } else {
-      dispatch(deleteTask(fullTaskList.id, taskId));
+      dispatch(deleteTask({taskListId: fullTaskList.id, taskId}));
     }
   };
 
