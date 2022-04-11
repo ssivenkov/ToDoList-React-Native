@@ -3,17 +3,7 @@ import {TasksActionsType} from '@store/actions/tasksActions/types';
 import {TasksStateType} from '@store/reducers/tasksReducer/types';
 
 const initialTasksState: TasksStateType = {
-  taskLists: [
-    {
-      id: '1',
-      title: 'task list 1',
-      showInToDo: true,
-      tasks: [
-        {id: '123', isDone: false, title: 'task 1'},
-        {id: '027', isDone: true, title: 'task 2'},
-      ],
-    },
-  ],
+  taskLists: [],
 };
 
 export const tasksReducer = (
@@ -22,7 +12,7 @@ export const tasksReducer = (
 ): TasksStateType => {
   switch (action.type) {
     case TASKS_ACTIONS.SET_TASK_LISTS:
-      return {...state};
+      return {...state, taskLists: action.taskLists};
 
     case TASKS_ACTIONS.ADD_NEW_TASK_LIST:
       return {
@@ -48,20 +38,24 @@ export const tasksReducer = (
         taskLists: [
           ...state.taskLists.map((taskList) => {
             if (taskList.id === action.fullTaskList.id) {
-              const conditionTaskList = {...taskList};
+              const targetTaskList = {...taskList};
               if (action.deleteTodoTask) {
-                conditionTaskList.showInToDo = false;
-                conditionTaskList.tasks = conditionTaskList.tasks.filter(
-                  (task) => task.isDone,
-                );
+                targetTaskList.showInToDo = false;
+                if (targetTaskList.tasks) {
+                  targetTaskList.tasks = targetTaskList.tasks.filter(
+                    (task) => task.isDone,
+                  );
+                }
               }
               if (action.deleteDoneTask) {
-                conditionTaskList.showInToDo = true;
-                conditionTaskList.tasks = conditionTaskList.tasks.filter(
-                  (task) => !task.isDone,
-                );
+                targetTaskList.showInToDo = true;
+                if (targetTaskList.tasks) {
+                  targetTaskList.tasks = targetTaskList.tasks.filter(
+                    (task) => !task.isDone,
+                  );
+                }
               }
-              return conditionTaskList;
+              return targetTaskList;
             } else return taskList;
           }),
         ],
@@ -95,19 +89,17 @@ export const tasksReducer = (
         taskLists: [
           ...state.taskLists.map((taskList) => {
             if (taskList.id === action.taskListId) {
-              const taskListWithDoneTask = {...taskList};
-              if (taskListWithDoneTask.tasks) {
-                taskListWithDoneTask.tasks = taskListWithDoneTask.tasks.map(
-                  (task) => {
-                    if (task.id === action.doneTaskId) {
-                      const doneTask = {...task};
-                      doneTask.isDone = true;
-                      return doneTask;
-                    } else return task;
-                  },
-                );
+              const targetTaskList = {...taskList};
+              if (targetTaskList.tasks) {
+                targetTaskList.tasks = targetTaskList.tasks.map((task) => {
+                  if (task.id === action.doneTaskId) {
+                    const doneTask = {...task};
+                    doneTask.isDone = true;
+                    return doneTask;
+                  } else return task;
+                });
               }
-              return taskListWithDoneTask;
+              return targetTaskList;
             } else return taskList;
           }),
         ],
@@ -118,10 +110,10 @@ export const tasksReducer = (
         ...state,
         taskLists: [
           ...state.taskLists.map((taskList) => {
-            if (taskList.tasks && taskList.id === action.taskListId) {
-              const editedTaskList = {...taskList};
-              if (editedTaskList.tasks) {
-                editedTaskList.tasks = editedTaskList.tasks.map((task) => {
+            if (taskList.id === action.taskListId) {
+              const targetTaskList = {...taskList};
+              if (targetTaskList.tasks) {
+                targetTaskList.tasks = targetTaskList.tasks.map((task) => {
                   if (task.id === action.taskId) {
                     const editedTask = {...task};
                     editedTask.title = action.editedTaskTitle;
@@ -130,7 +122,7 @@ export const tasksReducer = (
                   return task;
                 });
               }
-              return editedTaskList;
+              return targetTaskList;
             } else return taskList;
           }),
         ],

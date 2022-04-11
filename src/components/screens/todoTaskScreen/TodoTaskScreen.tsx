@@ -10,12 +10,15 @@ export const TodoTasksScreen = () => {
   const {t} = useTranslation();
   const taskLists = useSelector(getTaskList);
   const toDoTaskLists = taskLists.filter((taskList) => {
-    if (taskList.showInToDo || taskList.tasks.some((task) => !task.isDone)) {
+    if (
+      taskList.showInToDo ||
+      (taskList.tasks && taskList.tasks.some((task) => !task.isDone))
+    ) {
       return taskList;
     }
   });
 
-  if (toDoTaskLists.length > 0) {
+  if (taskLists && toDoTaskLists.length > 0) {
     return (
       <ScrollView style={styles.tasksListContainer}>
         {toDoTaskLists.map((toDoTaskList) => (
@@ -24,9 +27,10 @@ export const TodoTasksScreen = () => {
             isTodoTaskList={true}
             taskListId={toDoTaskList.id}
             taskListTitle={toDoTaskList.title}
-            taskListPropsTasks={toDoTaskList.tasks.filter(
-              (task) => !task.isDone,
-            )}
+            taskListPropsTasks={
+              toDoTaskList.tasks &&
+              toDoTaskList.tasks.filter((task) => !task.isDone)
+            }
             fullTaskList={toDoTaskList}
           />
         ))}
