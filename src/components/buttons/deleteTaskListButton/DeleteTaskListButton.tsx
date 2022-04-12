@@ -20,15 +20,17 @@ export const DeleteTaskListButton = (props: DeleteTaskListButtonPropsType) => {
   const removeTaskList = (): void => {
     const toDoTasks = fullTaskList.tasks
       ? fullTaskList.tasks.filter((task) => !task.isDone)
-      : false;
+      : [];
     const doneTasks = fullTaskList.tasks
       ? fullTaskList.tasks.filter((task) => task.isDone)
-      : false;
+      : [];
 
     if (
-      (isTodoTaskList && doneTasks && doneTasks.length === 0) ||
-      (!isTodoTaskList && toDoTasks && toDoTasks.length === 0)
+      (isTodoTaskList && doneTasks.length === 0) ||
+      (!isTodoTaskList && toDoTasks.length === 0) ||
+      (!toDoTasks && !doneTasks)
     ) {
+      console.log('попали в if');
       dispatch(deleteTaskListFull({taskListId: fullTaskList.id}));
     } else if (isTodoTaskList && !!toDoTasks && !!doneTasks) {
       dispatch(

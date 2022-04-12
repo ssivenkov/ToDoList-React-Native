@@ -30,21 +30,13 @@ export const DeleteTaskButton = ({
 
   const removeTask = (): void => {
     if (
-      (isTodoTaskList &&
-        doneTasks.length === 0 &&
-        !!toDoTasks &&
-        toDoTasks.length === 1) ||
-      (!isTodoTaskList &&
-        toDoTasks.length === 0 &&
-        !!doneTasks &&
-        doneTasks.length === 1)
+      (isTodoTaskList && doneTasks.length === 0 && toDoTasks.length === 1) ||
+      (!isTodoTaskList && toDoTasks.length === 0 && doneTasks.length === 1)
     ) {
       dispatch(deleteTaskListFull({taskListId: fullTaskList.id}));
     } else if (
       !isTodoTaskList &&
-      toDoTasks &&
       toDoTasks.length > 0 &&
-      doneTasks &&
       doneTasks.length === 1
     ) {
       dispatch(
