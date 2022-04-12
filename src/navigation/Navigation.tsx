@@ -1,4 +1,6 @@
 import {SignInScreen} from '@components/screens/signInScreen/SignInScreen';
+import {SignIn, WithAuth} from '@constants/constants';
+import {RootStackParamList} from '@navigation/types';
 import {WithAuthNavigation} from '@navigation/withAuthNavigation/WithAuthNavigation';
 import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
@@ -12,7 +14,7 @@ import React, {useEffect, useState} from 'react';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {useDispatch, useSelector} from 'react-redux';
 
-const RootNavigator = createNativeStackNavigator();
+const RootStack = createNativeStackNavigator<RootStackParamList>();
 
 export const Navigation = () => {
   const dispatch = useDispatch();
@@ -41,21 +43,21 @@ export const Navigation = () => {
   return (
     <SafeAreaProvider>
       <NavigationContainer>
-        <RootNavigator.Navigator>
+        <RootStack.Navigator>
           {isAuth ? (
-            <RootNavigator.Screen
-              name="WithAuth"
+            <RootStack.Screen
+              name={WithAuth}
               component={WithAuthNavigation}
               options={{headerShown: false}}
             />
           ) : (
-            <RootNavigator.Screen
-              name="SignIn"
+            <RootStack.Screen
+              name={SignIn}
               component={SignInScreen}
               options={{headerShown: false}}
             />
           )}
-        </RootNavigator.Navigator>
+        </RootStack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>
   );
