@@ -1,6 +1,5 @@
 import {COLORS} from '@colors/colors';
-import {DoneTasksScreen} from '@components/screens/doneTaskScreen/DoneTaskScreen';
-import {TodoTasksScreen} from '@components/screens/todoTaskScreen/TodoTaskScreen';
+import {TasksScreen} from '@components/screens/tasksScreen/TaskScreen';
 import {iconSizeLarge} from '@constants/constants';
 import {faCheck, faListCheck} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
@@ -13,6 +12,9 @@ const Tab = createMaterialTopTabNavigator();
 
 export const TasksNavigation = () => {
   const {t} = useTranslation();
+  const TodoTasksScreenComponent = () => TasksScreen({isTodoScreen: true});
+  const DoneTasksScreenComponent = () => TasksScreen({isTodoScreen: false});
+
   return (
     <Tab.Navigator
       initialRouteName={`${t('tasksScreen.TodoTasksTab')}`}
@@ -25,7 +27,7 @@ export const TasksNavigation = () => {
       })}>
       <Tab.Screen
         name={`${t('tasksScreen.TodoTasksTab')}`}
-        component={TodoTasksScreen}
+        component={TodoTasksScreenComponent}
         options={() => ({
           tabBarIcon: ({focused}) => (
             <FontAwesomeIcon
@@ -38,7 +40,7 @@ export const TasksNavigation = () => {
       />
       <Tab.Screen
         name={`${t('tasksScreen.DoneTasksTab')}`}
-        component={DoneTasksScreen}
+        component={DoneTasksScreenComponent}
         options={() => ({
           tabBarIcon: ({focused}) => (
             <FontAwesomeIcon

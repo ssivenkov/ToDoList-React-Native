@@ -22,5 +22,6 @@ export const styles = StyleSheet.create<TodoTasksScreenStylesType>({
   nullContentText: {
     fontSize: 22,
     color: COLORS.BLACK,
+    textAlign: 'center',
   },
 });

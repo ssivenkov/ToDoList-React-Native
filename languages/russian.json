@@ -14,11 +14,11 @@
       "EditTaskButtonTitle": "Название задачи:",
       "TodoTasksTab": "Выполнить",
       "DoneTasksTab": "Выполненные",
-      "NoToDoTaskLists": "Списков задач к выполнению не найдено",
-      "NoDoneTaskLists": "Выполненных списков задач не найдено"
+      "NoTaskListsFound": "Списков задач не найдено"
     },
     "signInScreen": {
       "SignIn": "Вход",
+      "SignOut": "Выход",
       "SignInWith": "Вход через <0>{{text}}</0>"
     },
     "accountScreen": {

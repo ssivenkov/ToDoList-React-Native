@@ -5,11 +5,13 @@ import {errorAlert} from '@root/helpers/Alert';
 import {signOutSaga} from '@store/actions/authSagaActions/authSagaActions';
 import {AppRootStateType} from '@store/store';
 import React from 'react';
+import {useTranslation} from 'react-i18next';
 import {Image, Text, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 
 export const AccountScreen = () => {
   const dispatch = useDispatch();
+  const {t} = useTranslation();
   const userData = useSelector<AppRootStateType, FirebaseAuthTypes.User | null>(
     (state) => state.auth.userData,
   );
@@ -37,7 +39,7 @@ export const AccountScreen = () => {
         )}
         <View style={styles.buttonContainer}>
           <CustomTextButton
-            title={'Sign out'}
+            title={t('signInScreen.SignOut')}
             onPress={signOut}
             disable={!userData}
           />
