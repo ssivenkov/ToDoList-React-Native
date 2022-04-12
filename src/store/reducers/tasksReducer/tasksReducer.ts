@@ -133,7 +133,7 @@ export const tasksReducer = (
         ...state,
         taskLists: [
           ...state.taskLists.map((taskList) => {
-            if (taskList.tasks && taskList.id === action.taskListId) {
+            if (taskList.id === action.taskListId) {
               const editedTaskList = {...taskList};
               if (editedTaskList.tasks) {
                 editedTaskList.tasks = editedTaskList.tasks.filter(
