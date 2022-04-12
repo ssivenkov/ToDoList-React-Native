@@ -14,11 +14,11 @@
       "EditTaskButtonTitle": "Edit task title:",
       "TodoTasksTab": "Todo tasks",
       "DoneTasksTab": "Done tasks",
-      "NoToDoTaskLists": "Todo task lists is not found",
-      "NoDoneTaskLists": "Done task lists is not found"
+      "NoTaskListsFound": "No tasklists found"
     },
     "signInScreen": {
       "SignIn": "Sign in",
+      "SignOut": "Sign out",
       "SignInWith": "Sign in with <0>{{text}}</0>"
     },
     "accountScreen": {

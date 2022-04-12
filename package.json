@@ -5,6 +5,7 @@
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
+    "metro connect": "adb -s 1243dcd2 reverse tcp:8081 tcp:8081",
     "start with cache": "react-native start --reset-cache",
     "start": "react-native start",
     "test": "jest",
