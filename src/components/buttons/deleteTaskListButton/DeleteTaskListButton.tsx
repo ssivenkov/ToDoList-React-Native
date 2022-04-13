@@ -28,9 +28,8 @@ export const DeleteTaskListButton = (props: DeleteTaskListButtonPropsType) => {
     if (
       (isTodoTaskList && doneTasks.length === 0) ||
       (!isTodoTaskList && toDoTasks.length === 0) ||
-      (!toDoTasks && !doneTasks)
+      (toDoTasks.length === 0 && doneTasks.length === 0)
     ) {
-      console.log('попали в if');
       dispatch(deleteTaskListFull({taskListId: fullTaskList.id}));
     } else if (isTodoTaskList && !!toDoTasks && !!doneTasks) {
       dispatch(
