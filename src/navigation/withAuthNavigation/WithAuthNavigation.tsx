@@ -44,6 +44,7 @@ export const WithAuthNavigation = () => {
           headerStyle: styles.header,
           headerTitle: `${t('tasksScreen.Tasks')}`,
           headerTitleStyle: styles.headerTitleStyle,
+          tabBarLabel: `${t('tasksScreen.Tasks')}`,
           headerRight: () => {
             return (
               <View style={styles.buttonContainer}>
@@ -68,6 +69,7 @@ export const WithAuthNavigation = () => {
           headerStyle: styles.header,
           headerTitle: `${t('accountScreen.Account')}`,
           headerTitleStyle: styles.headerTitleStyle,
+          tabBarLabel: `${t('accountScreen.Account')}`,
           tabBarIcon: ({focused}) => (
             <FontAwesomeIcon
               style={focused ? styles.tabLightIcon : styles.tabDarkIcon}

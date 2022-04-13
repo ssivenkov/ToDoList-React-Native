@@ -3,6 +3,7 @@ import {ModalIcon} from '@components/common/modals/ModalIcon';
 import {iconSizeLarge} from '@constants/constants';
 import {faPlus} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {createDate} from '@root/helpers/GenerateDate';
 import {addNewTaskList} from '@store/actions/tasksSagaActions/tasksSagaActions';
 import {TaskListType} from '@store/reducers/tasksReducer/types';
 import React, {useState} from 'react';
@@ -19,15 +20,14 @@ export const CreateTaskListButton = () => {
 
   const createTaskList = (): void => {
     if (newTaskListTitle.length > 0) {
-      const id: string = uuidv4();
-      const taskList: TaskListType = {
-        id,
+      const newTaskList: TaskListType = {
+        id: uuidv4(),
+        date: createDate(),
         title: newTaskListTitle,
         showInToDo: true,
-        tasks: [],
       };
 
-      dispatch(addNewTaskList(taskList));
+      dispatch(addNewTaskList(newTaskList));
       setNewTaskListTitle('');
     }
   };

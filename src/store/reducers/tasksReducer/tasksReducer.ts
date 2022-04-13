@@ -17,7 +17,7 @@ export const tasksReducer = (
     case TASKS_ACTIONS.ADD_NEW_TASK_LIST:
       return {
         ...state,
-        taskLists: [...state.taskLists, action.newTaskList],
+        taskLists: [action.newTaskList, ...state.taskLists],
       };
 
     case TASKS_ACTIONS.ADD_NEW_TASK:
