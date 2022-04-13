@@ -5,7 +5,6 @@ import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {
   deleteTask,
   deleteTaskListFromScreen,
-  deleteTaskListFull,
 } from '@store/actions/tasksSagaActions/tasksSagaActions';
 import React from 'react';
 import {Trans} from 'react-i18next';
@@ -29,16 +28,7 @@ export const DeleteTaskButton = ({
     : [];
 
   const removeTask = (): void => {
-    if (
-      (isTodoTaskList && doneTasks.length === 0 && toDoTasks.length === 1) ||
-      (!isTodoTaskList && toDoTasks.length === 0 && doneTasks.length === 1)
-    ) {
-      dispatch(deleteTaskListFull({taskListId: fullTaskList.id}));
-    } else if (
-      !isTodoTaskList &&
-      toDoTasks.length > 0 &&
-      doneTasks.length === 1
-    ) {
+    if (!isTodoTaskList && toDoTasks.length > 0 && doneTasks.length === 1) {
       dispatch(
         deleteTaskListFromScreen({
           fullTaskList,

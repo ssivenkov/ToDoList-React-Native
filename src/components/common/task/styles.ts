@@ -16,7 +16,7 @@ export const styles = StyleSheet.create<TaskStylesType>({
     flexDirection: 'row',
     paddingHorizontal: 10,
     paddingVertical: 5,
-    marginVertical: 2,
+    marginVertical: 3,
     borderRadius: 7,
     backgroundColor: COLORS.SILVER_CHALICE,
   },

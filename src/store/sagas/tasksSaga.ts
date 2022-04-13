@@ -32,7 +32,7 @@ import {
   SetTaskIsDoneActionType,
   SetTaskIsDonePayloadType,
 } from '@store/actions/tasksSagaActions/types';
-import {TaskListType, TaskType} from '@store/reducers/tasksReducer/types';
+import {TaskListType} from '@store/reducers/tasksReducer/types';
 import {call, put, select} from 'redux-saga/effects';
 
 export function* checkUserWorker() {
@@ -96,9 +96,9 @@ export function* addNewTaskWorker(action: AddNewTaskSagaActionType) {
   try {
     const {uid} = yield select((state) => state.auth.userData);
     const addNewTaskToFirebase = (payload: AddNewTaskPayloadType) => {
-      DB.ref(`${Users}/${uid}/${taskLists}/${payload.taskListId}`).set(
-        payload.modifiedTaskList,
-      );
+      DB.ref(
+        `${Users}/${uid}/${taskLists}/${payload.taskListId}/${tasks}/${payload.newTask.id}`,
+      ).set(payload.newTask);
     };
     yield call(addNewTaskToFirebase, action.payload);
     yield put(
@@ -165,25 +165,38 @@ export function* deleteTaskListFromScreenWorker(
       payload: DeleteTaskListFromScreenPayloadType,
     ) => {
       const modifiedTaskList = {...payload.fullTaskList};
+
       if (payload.deleteTodoTask) {
-        modifiedTaskList.showInToDo = false;
-        if (modifiedTaskList.tasks) {
+        DB.ref(`${Users}/${uid}/${taskLists}/${modifiedTaskList.id}`).update({
+          showInToDo: false,
+        });
+        if (modifiedTaskList.tasks && modifiedTaskList.tasks.length > 0) {
           modifiedTaskList.tasks = modifiedTaskList.tasks.filter(
             (task) => task.isDone,
           );
         }
       }
+
       if (payload.deleteDoneTask) {
-        modifiedTaskList.showInToDo = true;
-        if (modifiedTaskList.tasks) {
+        DB.ref(`${Users}/${uid}/${taskLists}/${modifiedTaskList.id}`).update({
+          showInToDo: true,
+        });
+        if (modifiedTaskList.tasks && modifiedTaskList.tasks.length > 0) {
           modifiedTaskList.tasks = modifiedTaskList.tasks.filter(
             (task) => !task.isDone,
           );
         }
       }
-      DB.ref(`${Users}/${uid}/${taskLists}/${modifiedTaskList.id}`).set(
-        modifiedTaskList,
-      );
+
+      if (modifiedTaskList.tasks && modifiedTaskList.tasks[0]) {
+        const FirebaseTasks = {
+          [modifiedTaskList.tasks[0].id]: {...modifiedTaskList.tasks[0]},
+        };
+
+        DB.ref(
+          `${Users}/${uid}/${taskLists}/${modifiedTaskList.id}/${tasks}`,
+        ).set(FirebaseTasks);
+      }
     };
     yield call(deleteTaskListFromScreenInFirebase, action.payload);
     yield put(
@@ -203,23 +216,10 @@ export function* deleteTaskListFromScreenWorker(
 export function* setTaskIsDoneWorker(action: SetTaskIsDoneActionType) {
   try {
     const {uid} = yield select((state) => state.auth.userData);
-    const snapshot: FirebaseDatabaseTypes.DataSnapshot = yield DB.ref(
-      `${Users}/${uid}/${taskLists}/${action.payload.taskListId}`,
-    ).once('value');
-    const targetTaskList = snapshot.val();
     const setTaskIsDoneInFirebase = (payload: SetTaskIsDonePayloadType) => {
-      if (targetTaskList.tasks) {
-        targetTaskList.tasks = targetTaskList.tasks.map((task: TaskType) => {
-          if (task.id === payload.doneTaskId) {
-            const doneTask = {...task};
-            doneTask.isDone = true;
-            return doneTask;
-          } else return task;
-        });
-      }
       DB.ref(
-        `${Users}/${uid}/${taskLists}/${action.payload.taskListId}/${tasks}`,
-      ).set(targetTaskList.tasks);
+        `${Users}/${uid}/${taskLists}/${payload.taskListId}/${tasks}/${payload.doneTaskId}`,
+      ).update({isDone: true});
     };
     yield call(setTaskIsDoneInFirebase, action.payload);
     yield put(
@@ -235,22 +235,10 @@ export function* setTaskIsDoneWorker(action: SetTaskIsDoneActionType) {
 export function* editTaskTitleWorker(action: SetEditedTaskActionType) {
   try {
     const {uid} = yield select((state) => state.auth.userData);
-    const snapshot: FirebaseDatabaseTypes.DataSnapshot = yield DB.ref(
-      `${Users}/${uid}/${taskLists}/${action.payload.taskListId}`,
-    ).once('value');
-    const targetTaskList = snapshot.val();
     const editTaskTitleInFirebase = (payload: SetEditedTaskPayloadType) => {
-      targetTaskList.tasks = targetTaskList.tasks.map((task: TaskType) => {
-        if (task.id === payload.taskId) {
-          const editedTask = {...task};
-          editedTask.title = payload.editedTaskTitle;
-          return editedTask;
-        }
-        return task;
-      });
-      DB.ref(`${Users}/${uid}/${taskLists}/${payload.taskListId}/${tasks}`).set(
-        targetTaskList.tasks,
-      );
+      DB.ref(
+        `${Users}/${uid}/${taskLists}/${payload.taskListId}/${tasks}/${payload.taskId}`,
+      ).update({title: payload.editedTaskTitle});
     };
     yield call(editTaskTitleInFirebase, action.payload);
     yield put(
@@ -270,17 +258,10 @@ export function* editTaskTitleWorker(action: SetEditedTaskActionType) {
 export function* deleteTaskWorker(action: DeleteTaskActionType) {
   try {
     const {uid} = yield select((state) => state.auth.userData);
-    const snapshot: FirebaseDatabaseTypes.DataSnapshot = yield DB.ref(
-      `${Users}/${uid}/${taskLists}/${action.payload.taskListId}`,
-    ).once('value');
-    const targetTaskList = snapshot.val();
     const deleteTaskInFirebase = (payload: DeleteTaskPayloadType) => {
-      targetTaskList.tasks = targetTaskList.tasks.filter(
-        (task: TaskType) => task.id !== payload.taskId,
-      );
-      DB.ref(`${Users}/${uid}/${taskLists}/${payload.taskListId}/${tasks}`).set(
-        targetTaskList.tasks,
-      );
+      DB.ref(
+        `${Users}/${uid}/${taskLists}/${payload.taskListId}/${tasks}/${payload.taskId}`,
+      ).remove();
     };
     yield call(deleteTaskInFirebase, action.payload);
     yield put(deleteTask(action.payload.taskListId, action.payload.taskId));

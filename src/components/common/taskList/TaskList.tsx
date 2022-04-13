@@ -2,6 +2,7 @@ import {CreateTaskButton} from '@components/buttons/createTaskButton/CreateTaskB
 import {DeleteTaskListButton} from '@components/buttons/deleteTaskListButton/DeleteTaskListButton';
 import {EditTaskListTitleButton} from '@components/buttons/editTaskListTitleButton/EditTaskListTitleButton';
 import {Task} from '@components/common/task/Task';
+import {sortingTasks} from '@components/screens/tasksScreen/sorting';
 import React, {FC} from 'react';
 import {Text, View} from 'react-native';
 import {styles} from './styles';
@@ -11,14 +12,23 @@ export const TaskList: FC<TaskListPropsType> = (props) => {
   const {
     isTodoTaskList,
     taskListId,
+    taskListDate,
     taskListTitle,
     taskListPropsTasks,
     fullTaskList,
   } = props;
 
+  let sortedTasks;
+  if (taskListPropsTasks) {
+    sortedTasks = taskListPropsTasks.map((item) => item);
+  }
+  if (sortedTasks) {
+    sortedTasks = sortingTasks(sortedTasks);
+  }
+
   const tasks =
-    taskListPropsTasks &&
-    taskListPropsTasks.map((task) => (
+    sortedTasks &&
+    sortedTasks.map((task) => (
       <Task
         key={task.id}
         isTodo={isTodoTaskList}
@@ -37,6 +47,7 @@ export const TaskList: FC<TaskListPropsType> = (props) => {
           {isTodoTaskList && (
             <CreateTaskButton
               taskListId={taskListId}
+              taskListDate={taskListDate}
               taskListTitle={taskListTitle}
               fullTaskList={fullTaskList}
             />
@@ -52,7 +63,7 @@ export const TaskList: FC<TaskListPropsType> = (props) => {
           />
         </View>
       </View>
-      {taskListPropsTasks && tasks}
+      {tasks && <View style={styles.tasksContainer}>{tasks}</View>}
     </View>
   );
 };
