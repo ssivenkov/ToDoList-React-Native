@@ -7,6 +7,8 @@ type TasksScreenStylesType = {
   screenTitle: TextStyle;
 };
 
+const {BLACK} = COLORS;
+
 export const styles = StyleSheet.create<TasksScreenStylesType>({
   signInWrapper: {
     height: '100%',
@@ -24,7 +26,7 @@ export const styles = StyleSheet.create<TasksScreenStylesType>({
   screenTitle: {
     fontSize: 30,
     fontWeight: '500',
-    color: COLORS.BLACK,
+    color: BLACK,
     marginBottom: 25,
   },
 });

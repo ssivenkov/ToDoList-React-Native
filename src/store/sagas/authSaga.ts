@@ -33,7 +33,10 @@ export function* googleSignInWorker(action: GetGoogleUserDataSagaActionType) {
     );
     yield call(signInWithCredential, googleCredential);
   } catch (error) {
-    if (error instanceof Error) errorAlert(error);
+    if (error instanceof Error) {
+      errorAlert(error);
+      setWaitingUserData(false);
+    }
   }
 }
 
@@ -49,7 +52,9 @@ export function* facebookSignInWorker(
     ]);
 
     // User cancelled the login process
-    if (isCancelled) return null;
+    if (isCancelled) {
+      return null;
+    }
 
     const {accessToken} = yield call(AccessToken.getCurrentAccessToken);
     const facebookCredential: AuthCredentialType = yield call(
@@ -58,7 +63,10 @@ export function* facebookSignInWorker(
     );
     yield call(signInWithCredential, facebookCredential);
   } catch (error) {
-    if (error instanceof Error) errorAlert(error);
+    if (error instanceof Error) {
+      errorAlert(error);
+      setWaitingUserData(false);
+    }
   }
 }
 
@@ -66,6 +74,7 @@ export function* signOutWorker() {
   try {
     yield call(signOut);
     const {_user} = yield select((state) => state.auth.userData);
+
     if (_user.providerData[0].providerId === 'google.com') {
       yield call(GoogleSignin.signOut);
     }
@@ -73,6 +82,8 @@ export function* signOutWorker() {
     yield put(setAuthStatus(false));
     yield put(setTaskLists([]));
   } catch (error) {
-    if (error instanceof Error) errorAlert(error);
+    if (error instanceof Error) {
+      errorAlert(error);
+    }
   }
 }

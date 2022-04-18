@@ -9,6 +9,9 @@ type UserScreenStylesType = {
   buttonContainer: ViewStyle;
 };
 
+const {BLACK} = COLORS;
+const AvatarSize = 130;
+
 export const styles = StyleSheet.create<UserScreenStylesType>({
   screenContainer: {
     marginHorizontal: 15,
@@ -17,8 +20,8 @@ export const styles = StyleSheet.create<UserScreenStylesType>({
   },
 
   avatar: {
-    width: 130,
-    height: 130,
+    width: AvatarSize,
+    height: AvatarSize,
     borderRadius: 100,
     marginBottom: 20,
   },
@@ -26,13 +29,13 @@ export const styles = StyleSheet.create<UserScreenStylesType>({
   name: {
     fontSize: 30,
     fontWeight: '500',
-    color: COLORS.BLACK,
+    color: BLACK,
     marginBottom: 10,
   },
 
   text: {
     fontSize: 22,
-    color: COLORS.BLACK,
+    color: BLACK,
     marginBottom: 10,
   },
 

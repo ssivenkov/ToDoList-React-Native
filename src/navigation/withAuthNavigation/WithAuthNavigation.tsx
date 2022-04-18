@@ -14,7 +14,7 @@ import {View} from 'react-native';
 import {useDispatch} from 'react-redux';
 import {styles} from './styles';
 
-const Tab = createBottomTabNavigator<BottomTabParamList>();
+const {Navigator, Screen} = createBottomTabNavigator<BottomTabParamList>();
 
 export const WithAuthNavigation = () => {
   const dispatch = useDispatch();
@@ -25,7 +25,7 @@ export const WithAuthNavigation = () => {
   }, []);
 
   return (
-    <Tab.Navigator
+    <Navigator
       initialRouteName={Tasks}
       screenOptions={() => ({
         headerShown: false,
@@ -36,7 +36,7 @@ export const WithAuthNavigation = () => {
         tabBarIconStyle: styles.icon,
         tabBarLabelStyle: styles.title,
       })}>
-      <Tab.Screen
+      <Screen
         name={Tasks}
         component={TasksNavigation}
         options={() => ({
@@ -45,13 +45,11 @@ export const WithAuthNavigation = () => {
           headerTitle: `${t('tasksScreen.Tasks')}`,
           headerTitleStyle: styles.headerTitleStyle,
           tabBarLabel: `${t('tasksScreen.Tasks')}`,
-          headerRight: () => {
-            return (
-              <View style={styles.buttonContainer}>
-                <CreateTaskListButton />
-              </View>
-            );
-          },
+          headerRight: () => (
+            <View style={styles.buttonContainer}>
+              <CreateTaskListButton />
+            </View>
+          ),
           tabBarIcon: ({focused}) => (
             <FontAwesomeIcon
               style={focused ? styles.tabLightIcon : styles.tabDarkIcon}
@@ -61,7 +59,7 @@ export const WithAuthNavigation = () => {
           ),
         })}
       />
-      <Tab.Screen
+      <Screen
         name={Account}
         component={AccountScreen}
         options={() => ({
@@ -79,6 +77,6 @@ export const WithAuthNavigation = () => {
           ),
         })}
       />
-    </Tab.Navigator>
+    </Navigator>
   );
 };

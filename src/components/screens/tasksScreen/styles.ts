@@ -1,5 +1,5 @@
 import {COLORS} from '@colors/colors';
-import {taskListMarginVertical} from '@components/common/taskList/styles';
+import {TaskListMarginVertical} from '@components/common/taskList/styles';
 import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
 
 type TodoTasksScreenStylesType = {
@@ -8,9 +8,11 @@ type TodoTasksScreenStylesType = {
   nullContentText: TextStyle;
 };
 
+const {BLACK} = COLORS;
+
 export const styles = StyleSheet.create<TodoTasksScreenStylesType>({
   tasksListContainer: {
-    marginVertical: taskListMarginVertical,
+    marginVertical: TaskListMarginVertical,
   },
 
   nullContentContainer: {
@@ -21,7 +23,7 @@ export const styles = StyleSheet.create<TodoTasksScreenStylesType>({
 
   nullContentText: {
     fontSize: 22,
-    color: COLORS.BLACK,
+    color: BLACK,
     textAlign: 'center',
   },
 });

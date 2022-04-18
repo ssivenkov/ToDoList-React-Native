@@ -6,37 +6,39 @@ import {Modal, View, Text} from 'react-native';
 import {styles} from './styles';
 import {ModalIconPropsType} from './types';
 
-export const ModalIcon = ({
-  children,
-  description,
-  buttonIcon,
-  okHandler,
-  okDisable,
-  closeHandler,
-}: ModalIconPropsType) => {
+export const ModalIcon = (props: ModalIconPropsType) => {
+  const {
+    children,
+    description,
+    buttonIcon,
+    okHandler,
+    okDisable,
+    closeHandler,
+  } = props;
   const {t} = useTranslation();
   const [modalVisible, setModalVisible] = useState<boolean>(false);
 
-  const onButtonPress = () => {
-    if (!modalVisible) setModalVisible(true);
+  const onButtonPress = (): void => {
+    !modalVisible && setModalVisible(true);
   };
 
-  const onCancelButtonPress = () => {
+  const onCancelButtonPress = (): void => {
     closeHandler && closeHandler();
     setModalVisible(false);
   };
 
-  const onOkButtonPress = () => {
+  const onOkButtonPress = (): void => {
     okHandler && okHandler();
+    setModalVisible(false);
+  };
+
+  const onRequestClose = (): void => {
     setModalVisible(false);
   };
 
   return (
     <View>
-      <Modal
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={() => setModalVisible(false)}>
+      <Modal transparent visible={modalVisible} onRequestClose={onRequestClose}>
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             {description && <Text style={styles.text}>{description}</Text>}
@@ -44,7 +46,7 @@ export const ModalIcon = ({
             <View style={styles.buttonsContainer}>
               {okHandler && (
                 <CustomTextButton
-                  onPress={() => onOkButtonPress()}
+                  onPress={onOkButtonPress}
                   title={`${t('common.Ok')}`}
                   disable={okDisable}
                 />

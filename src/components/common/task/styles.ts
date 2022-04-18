@@ -10,6 +10,9 @@ type TaskStylesType = {
   greenHighlightTask: TextStyle;
 };
 
+const {SILVER_CHALICE, BLACK, RED, COD_GRAY} = COLORS;
+const textSize = 20;
+
 export const styles = StyleSheet.create<TaskStylesType>({
   container: {
     justifyContent: 'space-between',
@@ -18,13 +21,13 @@ export const styles = StyleSheet.create<TaskStylesType>({
     paddingVertical: 5,
     marginVertical: 3,
     borderRadius: 7,
-    backgroundColor: COLORS.SILVER_CHALICE,
+    backgroundColor: SILVER_CHALICE,
   },
 
   text: {
     flex: 1,
-    color: COLORS.BLACK,
-    fontSize: 20,
+    color: BLACK,
+    fontSize: textSize,
   },
 
   buttonsContainer: {
@@ -33,17 +36,17 @@ export const styles = StyleSheet.create<TaskStylesType>({
   },
 
   warnText: {
-    color: COLORS.BLACK,
-    fontSize: 20,
+    color: BLACK,
+    fontSize: textSize,
   },
 
   redHighlightTask: {
-    color: COLORS.RED,
+    color: RED,
     fontWeight: '500',
   },
 
   greenHighlightTask: {
-    color: COLORS.COD_GRAY,
+    color: COD_GRAY,
     fontWeight: '500',
   },
 });

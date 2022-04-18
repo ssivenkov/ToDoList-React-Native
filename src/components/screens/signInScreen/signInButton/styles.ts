@@ -4,11 +4,14 @@ import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
 
 type CustomButtonStylesType = {
   button: ViewStyle;
+  disabled: ViewStyle;
   icon: FontAwesomeIconStyle;
   text: TextStyle;
   googleStyle: ViewStyle;
   facebookStyle: ViewStyle;
 };
+
+const {WHITE, CORNFLOWER_BLUE, CHAMBRAY, COD_GRAY} = COLORS;
 
 export const signInStyles = StyleSheet.create<CustomButtonStylesType>({
   button: {
@@ -25,19 +28,23 @@ export const signInStyles = StyleSheet.create<CustomButtonStylesType>({
   icon: {
     marginRight: 15,
     marginLeft: 5,
-    color: COLORS.WHITE,
+    color: WHITE,
   },
 
   text: {
     fontSize: 22,
-    color: COLORS.WHITE,
+    color: WHITE,
   },
 
   googleStyle: {
-    backgroundColor: COLORS.CORNFLOWER_BLUE,
+    backgroundColor: CORNFLOWER_BLUE,
   },
 
   facebookStyle: {
-    backgroundColor: COLORS.CHAMBRAY,
+    backgroundColor: CHAMBRAY,
+  },
+
+  disabled: {
+    backgroundColor: COD_GRAY,
   },
 });

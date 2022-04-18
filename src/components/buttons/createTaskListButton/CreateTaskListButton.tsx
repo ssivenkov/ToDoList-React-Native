@@ -18,6 +18,10 @@ export const CreateTaskListButton = () => {
   const dispatch = useDispatch();
   const [newTaskListTitle, setNewTaskListTitle] = useState<string>('');
 
+  const onClosePress = (): void => {
+    setNewTaskListTitle('');
+  };
+
   const createTaskList = (): void => {
     if (newTaskListTitle.length > 0) {
       const newTaskList: TaskListType = {
@@ -35,7 +39,7 @@ export const CreateTaskListButton = () => {
   return (
     <ModalIcon
       okHandler={createTaskList}
-      closeHandler={() => setNewTaskListTitle('')}
+      closeHandler={onClosePress}
       okDisable={!newTaskListTitle}
       description={`${t('tasksScreen.CreateTaskListButtonTitle')}`}
       buttonIcon={
