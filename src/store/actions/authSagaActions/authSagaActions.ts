@@ -6,20 +6,20 @@ import {
   GetUserDataPayloadType,
 } from '@store/actions/authSagaActions/types';
 
-export const GoogleSignInSaga = (
+export const GoogleSignIn = (
   payload: GetUserDataPayloadType,
 ): GetGoogleUserDataSagaActionType => ({
   type: AUTH_SAGA_ACTIONS.GOOGLE_SIGN_IN_SAGA,
   payload,
 });
 
-export const FacebookSignInSaga = (
+export const FacebookSignIn = (
   payload: GetUserDataPayloadType,
 ): GetFacebookUserDataSagaActionType => ({
   type: AUTH_SAGA_ACTIONS.FACEBOOK_SIGN_IN_SAGA,
   payload,
 });
 
-export const signOutSaga = (): SignOutSagaActionType => ({
+export const signOut = (): SignOutSagaActionType => ({
   type: AUTH_SAGA_ACTIONS.SIGN_OUT_SAGA,
 });

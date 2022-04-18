@@ -13,27 +13,29 @@ type WithAuthNavigationStylesType = {
   title: TextStyle;
 };
 
+const {BLACK, WHITE, POMPADOUR} = COLORS;
+
 export const styles = StyleSheet.create<WithAuthNavigationStylesType>({
   header: {
-    backgroundColor: COLORS.POMPADOUR,
+    backgroundColor: POMPADOUR,
   },
 
   headerTitleStyle: {
-    color: COLORS.WHITE,
+    color: WHITE,
     fontSize: 22,
   },
 
   tabBarContainer: {
     height: 55,
-    backgroundColor: COLORS.WHITE,
+    backgroundColor: WHITE,
   },
 
   tabLightIcon: {
-    color: COLORS.WHITE,
+    color: WHITE,
   },
 
   tabDarkIcon: {
-    color: COLORS.BLACK,
+    color: BLACK,
   },
 
   buttonContainer: {

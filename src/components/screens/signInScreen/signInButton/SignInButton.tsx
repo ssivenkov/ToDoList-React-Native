@@ -7,11 +7,14 @@ import {signInStyles} from './styles';
 import {SignInButtonPropsType} from './types';
 
 export const SignInButton = (props: SignInButtonPropsType) => {
-  const {buttonColorStyle, serviceTitle, icon, onPress, disabled} = props;
+  const {colorStyle, serviceTitle, icon, onPress, disabled} = props;
 
   return (
     <TouchableOpacity
-      style={[signInStyles.button, buttonColorStyle]}
+      style={[
+        signInStyles.button,
+        disabled ? signInStyles.disabled : colorStyle,
+      ]}
       onPress={onPress}
       disabled={disabled}>
       <FontAwesomeIcon

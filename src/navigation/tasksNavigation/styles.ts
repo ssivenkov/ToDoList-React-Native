@@ -10,9 +10,11 @@ type TasksNavigationStylesType = {
   tabBarIndicator: ViewStyle;
 };
 
+const {BLACK, WHITE, FRESH_EGGPLANT} = COLORS;
+
 export const styles = StyleSheet.create<TasksNavigationStylesType>({
   tabBarContainer: {
-    backgroundColor: COLORS.WHITE,
+    backgroundColor: WHITE,
   },
 
   tabBarItem: {
@@ -20,14 +22,14 @@ export const styles = StyleSheet.create<TasksNavigationStylesType>({
   },
 
   tabLightIcon: {
-    color: COLORS.FRESH_EGGPLANT,
+    color: FRESH_EGGPLANT,
   },
 
   tabDarkIcon: {
-    color: COLORS.BLACK,
+    color: BLACK,
   },
 
   tabBarIndicator: {
-    backgroundColor: COLORS.FRESH_EGGPLANT,
+    backgroundColor: FRESH_EGGPLANT,
   },
 });

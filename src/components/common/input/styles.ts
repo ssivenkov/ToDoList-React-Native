@@ -6,6 +6,8 @@ type InputStylesType = {
   input: TextStyle;
 };
 
+const {BLACK, ALTO} = COLORS;
+
 export const styles = StyleSheet.create<InputStylesType>({
   container: {
     flexDirection: 'row',
@@ -16,8 +18,8 @@ export const styles = StyleSheet.create<InputStylesType>({
     alignContent: 'center',
     fontSize: 20,
     paddingHorizontal: 10,
-    color: COLORS.BLACK,
-    backgroundColor: COLORS.ALTO,
+    color: BLACK,
+    backgroundColor: ALTO,
     borderRadius: 8,
   },
 });

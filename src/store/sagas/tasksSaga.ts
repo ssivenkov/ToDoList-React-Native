@@ -63,11 +63,12 @@ export function* syncUserTaskListsWorker() {
       `${Users}/${uid}`,
     ).once('value');
     const userTaskListsObject = snapshot.val().taskLists;
+
     if (userTaskListsObject && Object.keys(userTaskListsObject).length > 0) {
-      const userTaskListsArray: TaskListType[] = Object.entries(
+      const userTaskLists: TaskListType[] = Object.entries(
         userTaskListsObject,
       ).map((item: any) => item[1]);
-      yield put(setTaskLists(userTaskListsArray));
+      yield put(setTaskLists(userTaskLists));
     }
     yield put(setAuthStatus(true));
   } catch (error) {

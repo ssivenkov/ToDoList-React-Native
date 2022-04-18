@@ -19,6 +19,10 @@ export const CreateTaskButton: FC<CreateTaskButtonPropsType> = (props) => {
   const dispatch = useDispatch();
   const [newTaskTitle, setNewTaskTitle] = useState<string>('');
 
+  const onClosePress = (): void => {
+    setNewTaskTitle('');
+  };
+
   const createTask = (): void => {
     const newTask: TaskType = {
       id: uuidv4(),
@@ -48,7 +52,7 @@ export const CreateTaskButton: FC<CreateTaskButtonPropsType> = (props) => {
   return (
     <ModalIcon
       okHandler={createTask}
-      closeHandler={() => setNewTaskTitle('')}
+      closeHandler={onClosePress}
       okDisable={!newTaskTitle}
       description={`${t('tasksScreen.CreateTaskButtonTitle')}`}
       buttonIcon={<FontAwesomeIcon icon={faPlus} size={iconSizeSmall} />}>
