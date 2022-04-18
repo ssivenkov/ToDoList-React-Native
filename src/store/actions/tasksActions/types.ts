@@ -1,4 +1,4 @@
-import {TaskListType} from '@store/reducers/taskListReducer/types';
+import {TaskListType} from '@store/reducers/tasksReducer/types';
 
 export type SetTaskListsActionType = {
   type: string;
@@ -53,7 +53,7 @@ export type EditTaskTitleActionType = {
   editedTaskTitle: string;
 };
 
-export type TaskListActionsType = SetTaskListsActionType &
+export type TasksActionsType = SetTaskListsActionType &
   AddNewTaskListActionType &
   AddNewTaskActionType &
   SetTaskDoneActionType &
