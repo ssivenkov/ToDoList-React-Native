@@ -4,6 +4,7 @@ export const COLORS = {
   SILVER_CHALICE: '#aaa',
   RED: '#f00',
   POMPADOUR: '#610061',
+  JAPANESE_LAUREL: '#009900',
   BLUE_GEM: '#5015b7',
   CORNFLOWER_BLUE: '#4285F4',
   CHAMBRAY: '#3B5998',

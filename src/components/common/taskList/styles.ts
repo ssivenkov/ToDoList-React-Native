@@ -11,14 +11,15 @@ type TaskListStylesType = {
   tasksContainer: ViewStyle;
 };
 
-export const taskListMarginVertical = 8;
+export const TaskListMarginVertical = 8;
+const {ALTO, TUNDORA, BLACK, RED} = COLORS;
 
 export const styles = StyleSheet.create<TaskListStylesType>({
   container: {
-    backgroundColor: COLORS.ALTO,
+    backgroundColor: ALTO,
     padding: 10,
     marginHorizontal: 15,
-    marginVertical: taskListMarginVertical,
+    marginVertical: TaskListMarginVertical,
     borderRadius: 10,
   },
 
@@ -34,21 +35,21 @@ export const styles = StyleSheet.create<TaskListStylesType>({
 
   title: {
     flex: 1,
-    color: COLORS.TUNDORA,
+    color: TUNDORA,
     fontSize: 22,
   },
 
   warnText: {
-    color: COLORS.BLACK,
+    color: BLACK,
     fontSize: 20,
   },
 
   redHighlightTask: {
-    color: COLORS.RED,
+    color: RED,
     fontWeight: '500',
   },
 
   tasksContainer: {
-    marginTop: taskListMarginVertical,
+    marginTop: TaskListMarginVertical,
   },
 });

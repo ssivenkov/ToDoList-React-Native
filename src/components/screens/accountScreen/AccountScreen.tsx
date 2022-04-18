@@ -1,8 +1,8 @@
 import {CustomTextButton} from '@components/common/buttons/CustomTextButton';
 import {styles} from '@components/screens/accountScreen/styles';
-import {FirebaseAuthTypes} from '@react-native-firebase/auth';
-import {errorAlert} from '@root/helpers/Alert';
-import {signOutSaga} from '@store/actions/authSagaActions/authSagaActions';
+import {signOut} from '@store/actions/authSagaActions/authSagaActions';
+import {UserDataType} from '@store/reducers/authReducer/types';
+import {getUserData} from '@store/selectors/authSelectors';
 import {AppRootStateType} from '@store/store';
 import React from 'react';
 import {useTranslation} from 'react-i18next';
@@ -12,16 +12,10 @@ import {useDispatch, useSelector} from 'react-redux';
 export const AccountScreen = () => {
   const dispatch = useDispatch();
   const {t} = useTranslation();
-  const userData = useSelector<AppRootStateType, FirebaseAuthTypes.User | null>(
-    (state) => state.auth.userData,
-  );
+  const userData = useSelector<AppRootStateType, UserDataType>(getUserData);
 
-  const signOut = () => {
-    try {
-      dispatch(signOutSaga());
-    } catch (error) {
-      if (error instanceof Error) errorAlert(error);
-    }
+  const onSignOutPress = (): void => {
+    dispatch(signOut());
   };
 
   if (userData) {
@@ -40,7 +34,7 @@ export const AccountScreen = () => {
         <View style={styles.buttonContainer}>
           <CustomTextButton
             title={t('signInScreen.SignOut')}
-            onPress={signOut}
+            onPress={onSignOutPress}
             disable={!userData}
           />
         </View>
@@ -48,5 +42,5 @@ export const AccountScreen = () => {
     );
   }
 
-  return <Text>Loading...</Text>;
+  return <Text>User data not found</Text>;
 };

@@ -1,10 +1,11 @@
 import {TaskListType, TaskType} from '@store/reducers/tasksReducer/types';
 
 export type TaskListPropsType = {
-  taskListId: string;
-  taskListDate: string;
-  taskListTitle: string;
-  taskListPropsTasks?: TaskType[];
+  id: string;
+  date: string;
+  title: string;
   isTodoTaskList: boolean;
   fullTaskList: TaskListType;
+
+  tasks?: TaskType[];
 };

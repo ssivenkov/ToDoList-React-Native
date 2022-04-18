@@ -9,7 +9,7 @@ import React from 'react';
 import {useTranslation} from 'react-i18next';
 import {styles} from './styles';
 
-const Tab = createMaterialTopTabNavigator<TopTabParamList>();
+const {Navigator, Screen} = createMaterialTopTabNavigator<TopTabParamList>();
 
 export const TasksNavigation = () => {
   const {t} = useTranslation();
@@ -17,7 +17,7 @@ export const TasksNavigation = () => {
   const DoneTasksScreenComponent = () => TasksScreen({isTodoScreen: false});
 
   return (
-    <Tab.Navigator
+    <Navigator
       initialRouteName={ToDo}
       screenOptions={() => ({
         tabBarStyle: styles.tabBarContainer,
@@ -26,7 +26,7 @@ export const TasksNavigation = () => {
         tabBarInactiveTintColor: COLORS.BLACK,
         tabBarIndicatorStyle: styles.tabBarIndicator,
       })}>
-      <Tab.Screen
+      <Screen
         name={ToDo}
         component={TodoTasksScreenComponent}
         options={() => ({
@@ -40,7 +40,7 @@ export const TasksNavigation = () => {
           ),
         })}
       />
-      <Tab.Screen
+      <Screen
         name={Done}
         component={DoneTasksScreenComponent}
         options={() => ({
@@ -54,6 +54,6 @@ export const TasksNavigation = () => {
           ),
         })}
       />
-    </Tab.Navigator>
+    </Navigator>
   );
 };

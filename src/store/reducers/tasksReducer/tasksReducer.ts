@@ -39,8 +39,10 @@ export const tasksReducer = (
           ...state.taskLists.map((taskList) => {
             if (taskList.id === action.fullTaskList.id) {
               const targetTaskList = {...taskList};
+
               if (action.deleteTodoTask) {
                 targetTaskList.showInToDo = false;
+
                 if (targetTaskList.tasks) {
                   targetTaskList.tasks = targetTaskList.tasks.filter(
                     (task) => task.isDone,
@@ -49,6 +51,7 @@ export const tasksReducer = (
               }
               if (action.deleteDoneTask) {
                 targetTaskList.showInToDo = true;
+
                 if (targetTaskList.tasks) {
                   targetTaskList.tasks = targetTaskList.tasks.filter(
                     (task) => !task.isDone,
@@ -90,6 +93,7 @@ export const tasksReducer = (
           ...state.taskLists.map((taskList) => {
             if (taskList.id === action.taskListId) {
               const targetTaskList = {...taskList};
+
               if (targetTaskList.tasks) {
                 targetTaskList.tasks = targetTaskList.tasks.map((task) => {
                   if (task.id === action.doneTaskId) {
@@ -112,6 +116,7 @@ export const tasksReducer = (
           ...state.taskLists.map((taskList) => {
             if (taskList.id === action.taskListId) {
               const targetTaskList = {...taskList};
+
               if (targetTaskList.tasks) {
                 targetTaskList.tasks = targetTaskList.tasks.map((task) => {
                   if (task.id === action.taskId) {
@@ -135,6 +140,7 @@ export const tasksReducer = (
           ...state.taskLists.map((taskList) => {
             if (taskList.id === action.taskListId) {
               const editedTaskList = {...taskList};
+
               if (editedTaskList.tasks) {
                 editedTaskList.tasks = editedTaskList.tasks.filter(
                   (task) => task.id !== action.taskId,
