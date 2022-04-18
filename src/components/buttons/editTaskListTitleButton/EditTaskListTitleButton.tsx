@@ -3,7 +3,7 @@ import {ModalIcon} from '@components/common/modals/ModalIcon';
 import {iconSizeSmall} from '@constants/constants';
 import {faPen} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {setEditedTaskListTitle} from '@store/actions/tasksActions/taskListActions';
+import {editTaskListTitle} from '@store/actions/tasksSagaActions/tasksSagaActions';
 import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
 import {useDispatch} from 'react-redux';
@@ -20,7 +20,7 @@ export const EditTaskListTitleButton = ({
 
   const onOkPress = (): void => {
     if (editedTaskListTitle.length > 0) {
-      dispatch(setEditedTaskListTitle(taskListId, editedTaskListTitle));
+      dispatch(editTaskListTitle({taskListId, editedTaskListTitle}));
       setEditedTaskListTitleState(editedTaskListTitle);
     }
   };
@@ -34,7 +34,7 @@ export const EditTaskListTitleButton = ({
       okHandler={onOkPress}
       closeHandler={onClosePress}
       okDisable={!editedTaskListTitle}
-      description={`${t('tasksInScreen.EditTaskListButtonTitle')}`}
+      description={`${t('tasksScreen.EditTaskListButtonTitle')}`}
       buttonIcon={<FontAwesomeIcon icon={faPen} size={iconSizeSmall} />}>
       <CustomInput
         value={editedTaskListTitle}

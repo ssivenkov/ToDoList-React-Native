@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {signInReducer} from '@store/reducers/signInReducer/signInReducer';
-import {taskListReducer} from '@store/reducers/taskListReducer/taskListReducer';
+import {authReducer} from '@store/reducers/authReducer/authReducer';
+import {tasksReducer} from '@store/reducers/tasksReducer/tasksReducer';
 import {rootWatcher} from '@store/sagas/rootWatcher';
 import {
   applyMiddleware,
@@ -13,8 +13,8 @@ import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 import createSagaMiddleware from 'redux-saga';
 
 const rootReducer = combineReducers({
-  taskLists: taskListReducer,
-  signIn: signInReducer,
+  tasks: tasksReducer,
+  auth: authReducer,
 });
 
 const persistConfig = {

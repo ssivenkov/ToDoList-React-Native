@@ -6,7 +6,7 @@ import {
   deleteTask,
   deleteTaskListFromScreen,
   deleteTaskListFull,
-} from '@store/actions/tasksActions/taskListActions';
+} from '@store/actions/tasksSagaActions/tasksSagaActions';
 import React from 'react';
 import {Trans} from 'react-i18next';
 import {Text} from 'react-native';
@@ -21,20 +21,30 @@ export const DeleteTaskButton = ({
   fullTaskList,
 }: DeleteTaskButtonPropsType) => {
   const dispatch = useDispatch();
-  const toDoTasks = fullTaskList.tasks.filter((task) => !task.isDone);
-  const doneTasks = fullTaskList.tasks.filter((task) => task.isDone);
+  const toDoTasks = fullTaskList.tasks
+    ? fullTaskList.tasks.filter((task) => !task.isDone)
+    : [];
+  const doneTasks = fullTaskList.tasks
+    ? fullTaskList.tasks.filter((task) => task.isDone)
+    : [];
 
   const removeTask = (): void => {
-    if (!isTodoTaskList && toDoTasks.length === 0 && doneTasks.length === 1) {
-      dispatch(deleteTaskListFull(fullTaskList.id));
+    if (!isTodoTaskList && toDoTasks.length > 0 && doneTasks.length === 1) {
+      dispatch(
+        deleteTaskListFromScreen({
+          fullTaskList,
+          deleteTodoTask: false,
+          deleteDoneTask: true,
+        }),
+      );
     } else if (
       !isTodoTaskList &&
-      toDoTasks.length > 0 &&
+      toDoTasks.length === 0 &&
       doneTasks.length === 1
     ) {
-      dispatch(deleteTaskListFromScreen(fullTaskList, false, true));
+      dispatch(deleteTaskListFull({taskListId: fullTaskList.id}));
     } else {
-      dispatch(deleteTask(fullTaskList.id, taskId));
+      dispatch(deleteTask({taskListId: fullTaskList.id, taskId}));
     }
   };
 
@@ -43,7 +53,7 @@ export const DeleteTaskButton = ({
       okHandler={removeTask}
       buttonIcon={<FontAwesomeIcon icon={faTrash} size={iconSizeSmall} />}>
       <Text style={styles.warnText}>
-        <Trans i18nKey="tasksInScreen.DeleteQuestionButtonTitle">
+        <Trans i18nKey="tasksScreen.DeleteQuestionButtonTitle">
           <Text style={styles.redHighlightTask}>{{text: taskTitle}}</Text>
         </Trans>
       </Text>
