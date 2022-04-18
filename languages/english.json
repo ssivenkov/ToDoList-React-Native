@@ -4,7 +4,7 @@
       "Ok": "Ok",
       "Close": "Close"
     },
-    "tasksInScreen": {
+    "tasksScreen": {
       "Tasks": "Tasks",
       "CreateTaskButtonTitle": "Enter new task title:",
       "CreateTaskListButtonTitle": "Enter new task list title:",
@@ -14,14 +14,15 @@
       "EditTaskButtonTitle": "Edit task title:",
       "TodoTasksTab": "Todo tasks",
       "DoneTasksTab": "Done tasks",
-      "NoToDoTaskLists": "Todo task lists is not found",
-      "NoDoneTaskLists": "Done task lists is not found"
+      "NoTaskListsFound": "No tasklists found"
     },
     "signInScreen": {
       "SignIn": "Sign in",
-      "Email": "Email",
-      "Password": "Password",
+      "SignOut": "Sign out",
       "SignInWith": "Sign in with <0>{{text}}</0>"
+    },
+    "accountScreen": {
+      "Account": "Account"
     }
   }
 }

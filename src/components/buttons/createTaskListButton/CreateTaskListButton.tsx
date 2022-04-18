@@ -3,8 +3,9 @@ import {ModalIcon} from '@components/common/modals/ModalIcon';
 import {iconSizeLarge} from '@constants/constants';
 import {faPlus} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {addNewTaskList} from '@store/actions/tasksActions/taskListActions';
-import {TaskListType} from '@store/reducers/taskListReducer/types';
+import {createDate} from '@root/helpers/GenerateDate';
+import {addNewTaskList} from '@store/actions/tasksSagaActions/tasksSagaActions';
+import {TaskListType} from '@store/reducers/tasksReducer/types';
 import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
 import 'react-native-get-random-values';
@@ -17,17 +18,20 @@ export const CreateTaskListButton = () => {
   const dispatch = useDispatch();
   const [newTaskListTitle, setNewTaskListTitle] = useState<string>('');
 
+  const onClosePress = (): void => {
+    setNewTaskListTitle('');
+  };
+
   const createTaskList = (): void => {
     if (newTaskListTitle.length > 0) {
-      const id: string = uuidv4();
-      const taskList: TaskListType = {
-        id,
+      const newTaskList: TaskListType = {
+        id: uuidv4(),
+        date: createDate(),
         title: newTaskListTitle,
         showInToDo: true,
-        tasks: [],
       };
 
-      dispatch(addNewTaskList(taskList));
+      dispatch(addNewTaskList(newTaskList));
       setNewTaskListTitle('');
     }
   };
@@ -35,8 +39,9 @@ export const CreateTaskListButton = () => {
   return (
     <ModalIcon
       okHandler={createTaskList}
+      closeHandler={onClosePress}
       okDisable={!newTaskListTitle}
-      description={`${t('tasksInScreen.CreateTaskListButtonTitle')}`}
+      description={`${t('tasksScreen.CreateTaskListButtonTitle')}`}
       buttonIcon={
         <FontAwesomeIcon
           icon={faPlus}

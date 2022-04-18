@@ -4,7 +4,7 @@
       "Ok": "Ок",
       "Close": "Закрыть"
     },
-    "tasksInScreen": {
+    "tasksScreen": {
       "Tasks": "Задачи",
       "CreateTaskButtonTitle": "Название новой задачи:",
       "CreateTaskListButtonTitle": "Название нового списка задач:",
@@ -14,14 +14,15 @@
       "EditTaskButtonTitle": "Название задачи:",
       "TodoTasksTab": "Выполнить",
       "DoneTasksTab": "Выполненные",
-      "NoToDoTaskLists": "Списков задач к выполнению не найдено",
-      "NoDoneTaskLists": "Выполненных списков задач не найдено"
+      "NoTaskListsFound": "Списков задач не найдено"
     },
     "signInScreen": {
       "SignIn": "Вход",
-      "Email": "Эл. почта",
-      "Password": "Пароль",
-      "SignInWith": "Sign in with <0>{{text}}</0>"
+      "SignOut": "Выход",
+      "SignInWith": "Вход через <0>{{text}}</0>"
+    },
+    "accountScreen": {
+      "Account": "Аккаунт"
     }
   }
 }

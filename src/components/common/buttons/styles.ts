@@ -10,12 +10,14 @@ type CustomButtonStylesType = {
   icon: ViewStyle;
 };
 
+const {BLUE_GEM, CELTIC, ALTO, WHITE} = COLORS;
+
 export const styles = StyleSheet.create<CustomButtonStylesType>({
   bigButton: {
     paddingHorizontal: 12,
     paddingVertical: 12,
     borderRadius: 5,
-    backgroundColor: COLORS.BLUE_GEM,
+    backgroundColor: BLUE_GEM,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -25,21 +27,21 @@ export const styles = StyleSheet.create<CustomButtonStylesType>({
   },
 
   textButton: {
-    paddingHorizontal: 12,
-    paddingVertical: 6,
+    paddingHorizontal: 16,
+    paddingVertical: 8,
     borderRadius: 8,
-    backgroundColor: COLORS.CELTIC,
+    backgroundColor: CELTIC,
     justifyContent: 'center',
     alignItems: 'center',
   },
 
   textButtonDisable: {
-    backgroundColor: COLORS.ALTO,
+    backgroundColor: ALTO,
   },
 
   text: {
-    fontSize: 19,
-    color: COLORS.WHITE,
+    fontSize: 20,
+    color: WHITE,
   },
 
   icon: {

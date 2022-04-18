@@ -2,7 +2,7 @@ import {COLORS} from '@colors/colors';
 import {FontAwesomeIconStyle} from '@fortawesome/react-native-fontawesome';
 import {StyleSheet, ViewStyle} from 'react-native';
 
-type TasksScreenStylesType = {
+type TasksNavigationStylesType = {
   tabBarContainer: ViewStyle;
   tabBarItem: ViewStyle;
   tabLightIcon: FontAwesomeIconStyle;
@@ -10,9 +10,11 @@ type TasksScreenStylesType = {
   tabBarIndicator: ViewStyle;
 };
 
-export const styles = StyleSheet.create<TasksScreenStylesType>({
+const {BLACK, WHITE, FRESH_EGGPLANT} = COLORS;
+
+export const styles = StyleSheet.create<TasksNavigationStylesType>({
   tabBarContainer: {
-    backgroundColor: COLORS.WHITE,
+    backgroundColor: WHITE,
   },
 
   tabBarItem: {
@@ -20,14 +22,14 @@ export const styles = StyleSheet.create<TasksScreenStylesType>({
   },
 
   tabLightIcon: {
-    color: COLORS.FRESH_EGGPLANT,
+    color: FRESH_EGGPLANT,
   },
 
   tabDarkIcon: {
-    color: COLORS.BLACK,
+    color: BLACK,
   },
 
   tabBarIndicator: {
-    backgroundColor: COLORS.FRESH_EGGPLANT,
+    backgroundColor: FRESH_EGGPLANT,
   },
 });

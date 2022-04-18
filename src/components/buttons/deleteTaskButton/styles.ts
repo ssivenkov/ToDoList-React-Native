@@ -6,15 +6,17 @@ type DeleteTaskListButtonStylesType = {
   redHighlightTask: TextStyle;
 };
 
+const {BLACK, RED} = COLORS;
+
 export const styles = StyleSheet.create<DeleteTaskListButtonStylesType>({
   warnText: {
     marginBottom: 15,
-    color: COLORS.BLACK,
+    color: BLACK,
     fontSize: 20,
   },
 
   redHighlightTask: {
-    color: COLORS.RED,
+    color: RED,
     fontWeight: '500',
   },
 });
