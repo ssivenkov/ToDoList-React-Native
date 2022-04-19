@@ -32,7 +32,11 @@ import {
   SetTaskIsDoneActionType,
   SetTaskIsDonePayloadType,
 } from '@store/actions/tasksSagaActions/types';
-import {TaskListType} from '@store/reducers/tasksReducer/types';
+import {
+  TaskListBeforeConvertInterface,
+  TaskListInterface,
+  TaskListWithTaskType,
+} from '@store/reducers/tasksReducer/types';
 import {call, put, select} from 'redux-saga/effects';
 
 export function* checkUserWorker() {
@@ -62,14 +66,33 @@ export function* syncUserTaskListsWorker() {
     const snapshot: FirebaseDatabaseTypes.DataSnapshot = yield DB.ref(
       `${Users}/${uid}`,
     ).once('value');
-    const userTaskListsObject = snapshot.val().taskLists;
 
-    if (userTaskListsObject && Object.keys(userTaskListsObject).length > 0) {
-      const userTaskLists: TaskListType[] = Object.entries(
-        userTaskListsObject,
-      ).map((item: any) => item[1]);
+    if (snapshot.val().taskLists) {
+      const userTaskListsObject = snapshot.val().taskLists;
+      // convert taskLists object to taskLists array
+      const userTaskListsBeforeConvert: TaskListBeforeConvertInterface[] =
+        Object.values(userTaskListsObject);
+      // convert tasks object in every taskLists to tasks array in every taskLists
+      const userTaskLists: TaskListInterface[] = userTaskListsBeforeConvert.map(
+        (taskList) => {
+          if (taskList.tasks) {
+            const taskListWithTasksAsArray: TaskListInterface = {
+              ...taskList,
+              tasks: Object.values(taskList.tasks),
+            };
+            return taskListWithTasksAsArray;
+          } else {
+            const oldTaskList: TaskListWithTaskType = {...taskList};
+            return oldTaskList;
+          }
+        },
+      );
+
       yield put(setTaskLists(userTaskLists));
+    } else {
+      yield put(setTaskLists([]));
     }
+
     yield put(setAuthStatus(true));
   } catch (error) {
     if (error instanceof Error) {
@@ -81,7 +104,7 @@ export function* syncUserTaskListsWorker() {
 export function* addNewTaskListWorker(action: AddNewTaskListSagaActionType) {
   try {
     const {uid} = yield select((state) => state.auth.userData);
-    const addNewTaskListToFirebase = (newTaskList: TaskListType) => {
+    const addNewTaskListToFirebase = (newTaskList: TaskListInterface) => {
       DB.ref(`${Users}/${uid}/${taskLists}/${newTaskList.id}`).set(newTaskList);
     };
     yield call(addNewTaskListToFirebase, action.payload);
