@@ -10,24 +10,24 @@ import {
   SetTaskDoneActionType,
   SetTaskListsActionType,
 } from '@store/actions/tasksActions/types';
-import {TaskListType} from '@store/reducers/tasksReducer/types';
+import {TaskListInterface} from '@store/reducers/tasksReducer/types';
 
 export const setTaskLists = (
-  taskLists: TaskListType[],
+  taskLists: TaskListInterface[],
 ): SetTaskListsActionType => ({
   type: TASKS_ACTIONS.SET_TASK_LISTS,
   taskLists,
 });
 
 export const addNewTaskList = (
-  newTaskList: TaskListType,
+  newTaskList: TaskListInterface,
 ): AddNewTaskListActionType => ({
   type: TASKS_ACTIONS.ADD_NEW_TASK_LIST,
   newTaskList,
 });
 
 export const addNewTask = (
-  modifiedTaskList: TaskListType,
+  modifiedTaskList: TaskListInterface,
   taskListId: string,
 ): AddNewTaskActionType => ({
   type: TASKS_ACTIONS.ADD_NEW_TASK,
@@ -45,7 +45,7 @@ export const setEditedTaskListTitle = (
 });
 
 export const deleteTaskListFromScreen = (
-  fullTaskList: TaskListType,
+  fullTaskList: TaskListInterface,
   deleteTodoTask: boolean,
   deleteDoneTask: boolean,
 ): DeleteTaskListActionType => ({

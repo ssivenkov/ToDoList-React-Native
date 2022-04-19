@@ -5,7 +5,7 @@ import {faPlus} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {createDate} from '@root/helpers/GenerateDate';
 import {addNewTaskList} from '@store/actions/tasksSagaActions/tasksSagaActions';
-import {TaskListType} from '@store/reducers/tasksReducer/types';
+import {TaskListInterface} from '@store/reducers/tasksReducer/types';
 import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
 import 'react-native-get-random-values';
@@ -24,7 +24,7 @@ export const CreateTaskListButton = () => {
 
   const createTaskList = (): void => {
     if (newTaskListTitle.length > 0) {
-      const newTaskList: TaskListType = {
+      const newTaskList: TaskListInterface = {
         id: uuidv4(),
         date: createDate(),
         title: newTaskListTitle,

@@ -5,14 +5,25 @@ export type TaskType = {
   title: string;
 };
 
-export type TaskListType = {
+export type TaskListWithTaskType = {
   id: string;
   date: string;
   title: string;
   showInToDo: boolean;
-  tasks?: TaskType[];
 };
 
+type TasksObjectType = {
+  [key: string]: TaskType;
+};
+
+export interface TaskListBeforeConvertInterface extends TaskListWithTaskType {
+  tasks?: TasksObjectType;
+}
+
+export interface TaskListInterface extends TaskListWithTaskType {
+  tasks?: TaskType[];
+}
+
 export type TasksStateType = {
-  taskLists: TaskListType[];
+  taskLists: TaskListInterface[];
 };
