@@ -18,7 +18,7 @@ import {
   SetTaskIsDonePayloadType,
   SyncUserTaskListsSagaActionType,
 } from '@store/actions/tasksSagaActions/types';
-import {TaskListType} from '@store/reducers/tasksReducer/types';
+import {TaskListInterface} from '@store/reducers/tasksReducer/types';
 
 export const checkUser = (): CheckUserSagaActionType => ({
   type: TASKS_SAGA_ACTIONS.CHECK_USER,
@@ -29,7 +29,7 @@ export const syncUserTaskLists = (): SyncUserTaskListsSagaActionType => ({
 });
 
 export const addNewTaskList = (
-  payload: TaskListType,
+  payload: TaskListInterface,
 ): AddNewTaskListSagaActionType => ({
   type: TASKS_SAGA_ACTIONS.ADD_NEW_TASK_LIST,
   payload,

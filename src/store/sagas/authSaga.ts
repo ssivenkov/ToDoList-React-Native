@@ -18,10 +18,6 @@ const signInWithCredential = (credential: AuthCredentialType) => {
   return auth().signInWithCredential(credential);
 };
 
-const signOut = () => {
-  return auth().signOut();
-};
-
 export function* googleSignInWorker(action: GetGoogleUserDataSagaActionType) {
   const {setWaitingUserData} = action.payload;
   setWaitingUserData(true);
@@ -72,10 +68,13 @@ export function* facebookSignInWorker(
 
 export function* signOutWorker() {
   try {
+    const signOut = () => {
+      return auth().signOut();
+    };
     yield call(signOut);
-    const {_user} = yield select((state) => state.auth.userData);
+    const {providerData} = yield select((state) => state.auth.userData);
 
-    if (_user.providerData[0].providerId === 'google.com') {
+    if (providerData[0].providerId === 'google.com') {
       yield call(GoogleSignin.signOut);
     }
     yield put(setUserData(null));
@@ -83,6 +82,7 @@ export function* signOutWorker() {
     yield put(setTaskLists([]));
   } catch (error) {
     if (error instanceof Error) {
+      console.log(error);
       errorAlert(error);
     }
   }

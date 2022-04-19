@@ -1,11 +1,11 @@
-import {TaskListType, TaskType} from '@store/reducers/tasksReducer/types';
+import {TaskListInterface, TaskType} from '@store/reducers/tasksReducer/types';
 
 export type TaskListPropsType = {
   id: string;
   date: string;
   title: string;
   isTodoTaskList: boolean;
-  fullTaskList: TaskListType;
+  fullTaskList: TaskListInterface;
 
   tasks?: TaskType[];
 };

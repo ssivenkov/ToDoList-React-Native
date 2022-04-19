@@ -4,7 +4,7 @@ import {signOut} from '@store/actions/authSagaActions/authSagaActions';
 import {UserDataType} from '@store/reducers/authReducer/types';
 import {getUserData} from '@store/selectors/authSelectors';
 import {AppRootStateType} from '@store/store';
-import React from 'react';
+import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
 import {Image, Text, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
@@ -13,10 +13,14 @@ export const AccountScreen = () => {
   const dispatch = useDispatch();
   const {t} = useTranslation();
   const userData = useSelector<AppRootStateType, UserDataType>(getUserData);
+  const [waitingSignOut, setWaitingSignOut] = useState<boolean>(false);
 
   const onSignOutPress = (): void => {
+    setWaitingSignOut(true);
     dispatch(signOut());
   };
+
+  console.log(userData);
 
   if (userData) {
     return (
@@ -35,7 +39,7 @@ export const AccountScreen = () => {
           <CustomTextButton
             title={t('signInScreen.SignOut')}
             onPress={onSignOutPress}
-            disable={!userData}
+            disable={waitingSignOut}
           />
         </View>
       </View>
