@@ -1,5 +1,5 @@
 import {TASKS_SAGA_ACTIONS} from '@enums/tasksSagaEnum';
-import {TaskListType, TaskType} from '@store/reducers/tasksReducer/types';
+import {TaskListInterface, TaskType} from '@store/reducers/tasksReducer/types';
 
 export type CheckUserSagaActionType = {
   type: typeof TASKS_SAGA_ACTIONS.CHECK_USER;
@@ -11,11 +11,11 @@ export type SyncUserTaskListsSagaActionType = {
 
 export type AddNewTaskListSagaActionType = {
   type: typeof TASKS_SAGA_ACTIONS.ADD_NEW_TASK_LIST;
-  payload: TaskListType;
+  payload: TaskListInterface;
 };
 
 export type AddNewTaskPayloadType = {
-  modifiedTaskList: TaskListType;
+  modifiedTaskList: TaskListInterface;
   taskListId: string;
   newTask: TaskType;
 };
@@ -45,7 +45,7 @@ export type DeleteTaskListFullActionType = {
 };
 
 export type DeleteTaskListFromScreenPayloadType = {
-  fullTaskList: TaskListType;
+  fullTaskList: TaskListInterface;
   deleteTodoTask: boolean;
   deleteDoneTask: boolean;
 };

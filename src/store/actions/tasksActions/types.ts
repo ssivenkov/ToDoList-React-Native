@@ -1,18 +1,18 @@
-import {TaskListType} from '@store/reducers/tasksReducer/types';
+import {TaskListInterface} from '@store/reducers/tasksReducer/types';
 
 export type SetTaskListsActionType = {
   type: string;
-  taskLists: TaskListType[];
+  taskLists: TaskListInterface[];
 };
 
 export type AddNewTaskListActionType = {
   type: string;
-  newTaskList: TaskListType;
+  newTaskList: TaskListInterface;
 };
 
 export type AddNewTaskActionType = {
   type: string;
-  modifiedTaskList: TaskListType;
+  modifiedTaskList: TaskListInterface;
   taskListId: string;
 };
 
@@ -24,7 +24,7 @@ export type SetTaskDoneActionType = {
 
 export type DeleteTaskListActionType = {
   type: string;
-  fullTaskList: TaskListType;
+  fullTaskList: TaskListInterface;
   deleteTodoTask: boolean;
   deleteDoneTask: boolean;
 };
