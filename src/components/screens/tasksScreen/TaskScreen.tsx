@@ -14,11 +14,9 @@ export const TasksScreen = (props: TodoTasksScreenPropsType) => {
   const taskLists = useSelector(getTaskList);
 
   const toDoTaskLists = taskLists.filter((taskList) => {
-    if (taskList.tasks) {
-      taskList.tasks = Object.values(taskList.tasks);
+    if (taskList.showInToDo) {
+      return true;
     }
-
-    return taskList.showInToDo;
   });
 
   const doneTaskLists = taskLists.filter((taskList) => {
