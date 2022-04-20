@@ -7,7 +7,7 @@ type TasksScreenStylesType = {
   screenTitle: TextStyle;
 };
 
-const {BLACK} = COLORS;
+const {BLACK, WHITE} = COLORS;
 
 export const styles = StyleSheet.create<TasksScreenStylesType>({
   signInWrapper: {
@@ -15,6 +15,7 @@ export const styles = StyleSheet.create<TasksScreenStylesType>({
     justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: 50,
+    backgroundColor: WHITE,
   },
 
   signInContainer: {

@@ -1,16 +1,16 @@
 import auth from '@react-native-firebase/auth';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import {errorAlert} from '@root/helpers/Alert';
-import {
-  setAuthStatus,
-  setUserData,
-} from '@store/actions/authActions/authActions';
+import {setAuthState} from '@store/actions/authActions/authActions';
 import {
   GetFacebookUserDataSagaActionType,
   GetGoogleUserDataSagaActionType,
   AuthCredentialType,
 } from '@store/actions/authSagaActions/types';
 import {setTaskLists} from '@store/actions/tasksActions/tasksActions';
+import {initialAuthState} from '@store/reducers/authReducer/authReducer';
+import {UserDataType} from '@store/reducers/authReducer/types';
+import {AppRootStateType} from '@store/store';
 import {AccessToken, LoginManager} from 'react-native-fbsdk-next';
 import {call, put, select} from 'redux-saga/effects';
 
@@ -20,8 +20,13 @@ const signInWithCredential = (credential: AuthCredentialType) => {
 
 export function* googleSignInWorker(action: GetGoogleUserDataSagaActionType) {
   const {setWaitingUserData} = action.payload;
-  setWaitingUserData(true);
   try {
+    yield call(setWaitingUserData, true);
+    // delay for starting animation
+    const delay = (time: number) =>
+      new Promise((resolve) => setTimeout(resolve, time));
+    yield call(delay, 10);
+
     const {idToken} = yield call(GoogleSignin.signIn);
     const googleCredential: AuthCredentialType = yield call(
       auth.GoogleAuthProvider.credential,
@@ -30,8 +35,8 @@ export function* googleSignInWorker(action: GetGoogleUserDataSagaActionType) {
     yield call(signInWithCredential, googleCredential);
   } catch (error) {
     if (error instanceof Error) {
-      errorAlert(error);
       setWaitingUserData(false);
+      errorAlert(error);
     }
   }
 }
@@ -40,8 +45,13 @@ export function* facebookSignInWorker(
   action: GetFacebookUserDataSagaActionType,
 ) {
   const {setWaitingUserData} = action.payload;
-  setWaitingUserData(true);
   try {
+    yield call(setWaitingUserData, true);
+    // delay for starting animation
+    const delay = (time: number) =>
+      new Promise((resolve) => setTimeout(resolve, time));
+    yield call(delay, 10);
+
     const {isCancelled} = yield call(LoginManager.logInWithPermissions, [
       'public_profile',
       'email',
@@ -71,18 +81,25 @@ export function* signOutWorker() {
     const signOut = () => {
       return auth().signOut();
     };
-    yield call(signOut);
-    const {providerData} = yield select((state) => state.auth.userData);
 
-    if (providerData[0].providerId === 'google.com') {
+    // delay for starting animation
+    const delay = (time: number) =>
+      new Promise((resolve) => setTimeout(resolve, time));
+    yield call(delay, 10);
+
+    yield call(signOut);
+    const userData: UserDataType = yield select(
+      (state: AppRootStateType) => state.auth.userData,
+    );
+    const providerId = userData && userData.providerData[0]?.providerId;
+
+    if (providerId === 'google.com') {
       yield call(GoogleSignin.signOut);
     }
-    yield put(setUserData(null));
-    yield put(setAuthStatus(false));
+    yield put(setAuthState(initialAuthState));
     yield put(setTaskLists([]));
   } catch (error) {
     if (error instanceof Error) {
-      console.log(error);
       errorAlert(error);
     }
   }

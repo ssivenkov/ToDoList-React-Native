@@ -29,7 +29,7 @@ const sagaMiddleware = createSagaMiddleware();
 export const store = createStore(
   persistedReducer,
   applyMiddleware(sagaMiddleware),
-  /*composeEnhancers(applyMiddleware(sagaMiddleware)),*/
+  /*  composeEnhancers(applyMiddleware(sagaMiddleware)),*/
 );
 sagaMiddleware.run(rootWatcher);
 export const persistor = persistStore(store);
