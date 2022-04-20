@@ -1,9 +1,11 @@
 import {AUTH_ACTIONS} from '@enums/authEnum';
 import {FirebaseAuthTypes} from '@react-native-firebase/auth';
 import {
+  SetAuthStateActionType,
   SetAuthStatusActionType,
   SetUserDataActionType,
 } from '@store/actions/authActions/types';
+import {InitialAuthStateType} from '@store/reducers/authReducer/types';
 
 export const setAuthStatus = (
   authStatus: boolean,
@@ -17,4 +19,11 @@ export const setUserData = (
 ): SetUserDataActionType => ({
   type: AUTH_ACTIONS.SET_USER_DATA,
   userData,
+});
+
+export const setAuthState = (
+  authState: InitialAuthStateType,
+): SetAuthStateActionType => ({
+  type: AUTH_ACTIONS.SET_AUTH_STATE,
+  authState,
 });

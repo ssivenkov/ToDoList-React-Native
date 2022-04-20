@@ -44,6 +44,8 @@ export const Navigation = () => {
     return auth().onAuthStateChanged((user) => onAuthStateChanged(user));
   }, []);
 
+  if (firebaseInitializing) return null;
+
   return (
     <SafeAreaProvider>
       <NavigationContainer>
