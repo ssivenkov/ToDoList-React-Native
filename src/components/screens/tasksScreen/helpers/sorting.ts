@@ -1,13 +1,12 @@
 import {TaskListInterface, TaskType} from '@store/reducers/tasksReducer/types';
-
-const _ = require('lodash');
+import orderBy from 'lodash/orderBy';
 
 export const sortingTaskLists = (
   taskListsArray: TaskListInterface[],
 ): TaskListInterface[] => {
-  return _.orderBy(taskListsArray, ['date'], ['desc']);
+  return orderBy(taskListsArray, ['date'], ['desc']);
 };
 
 export const sortingTasks = (tasksArr: TaskType[]): TaskType[] => {
-  return _.orderBy(tasksArr, ['date'], ['desc']);
+  return orderBy(tasksArr, ['date'], ['desc']);
 };
