@@ -2,7 +2,7 @@ import {AUTH_ACTIONS} from '@enums/authEnum';
 import {AuthActionsType} from '@store/actions/authActions/types';
 import {InitialAuthStateType} from '@store/reducers/authReducer/types';
 
-const initialAuthState: InitialAuthStateType = {
+export const initialAuthState: InitialAuthStateType = {
   authStatus: false,
   userData: null,
 };
@@ -16,6 +16,8 @@ export const authReducer = (
       return {...state, authStatus: action.authStatus};
     case AUTH_ACTIONS.SET_USER_DATA:
       return {...state, userData: action.userData};
+    case AUTH_ACTIONS.SET_AUTH_STATE:
+      return {...state, ...action.authState};
     default:
       return state;
   }

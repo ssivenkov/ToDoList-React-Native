@@ -1,4 +1,5 @@
 import {CustomTextButton} from '@components/common/buttons/CustomTextButton';
+import {Loader} from '@components/common/loader/loader';
 import {styles} from '@components/screens/accountScreen/styles';
 import {signOut} from '@store/actions/authSagaActions/authSagaActions';
 import {UserDataType} from '@store/reducers/authReducer/types';
@@ -20,9 +21,7 @@ export const AccountScreen = () => {
     dispatch(signOut());
   };
 
-  console.log(userData);
-
-  if (userData) {
+  if (userData && !waitingSignOut) {
     return (
       <View style={styles.screenContainer}>
         {userData.photoURL && (
@@ -46,5 +45,5 @@ export const AccountScreen = () => {
     );
   }
 
-  return <Text>User data not found</Text>;
+  return <Loader />;
 };
