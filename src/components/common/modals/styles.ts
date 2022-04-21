@@ -6,6 +6,8 @@ const {BLACK, WHITE} = COLORS;
 type ModalStylesType = {
   centeredView: ViewStyle;
   modalView: ViewStyle;
+  centerContainer: ViewStyle;
+  visibilityContainer: ViewStyle;
   text: TextStyle;
   buttonsContainer: ViewStyle;
 };
@@ -20,11 +22,18 @@ export const styles = StyleSheet.create<ModalStylesType>({
 
   modalView: {
     width: '90%',
-    alignItems: 'center',
     margin: 20,
     borderRadius: 20,
     padding: 25,
     backgroundColor: WHITE,
+  },
+
+  centerContainer: {
+    alignItems: 'center',
+  },
+
+  visibilityContainer: {
+    opacity: 0,
   },
 
   text: {

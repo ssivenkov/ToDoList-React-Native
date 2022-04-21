@@ -4,6 +4,7 @@ import {iconSizeLarge} from '@constants/constants';
 import {faPlus} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {createDate} from '@root/helpers/GenerateDate';
+import {SetStateType} from '@root/types/common/types';
 import {addNewTaskList} from '@store/actions/tasksSagaActions/tasksSagaActions';
 import {TaskListInterface} from '@store/reducers/tasksReducer/types';
 import React, {useState} from 'react';
@@ -14,15 +15,18 @@ import {v4 as uuidv4} from 'uuid';
 import {styles} from './styles';
 
 export const CreateTaskListButton = () => {
-  const {t} = useTranslation();
   const dispatch = useDispatch();
+  const {t} = useTranslation();
   const [newTaskListTitle, setNewTaskListTitle] = useState<string>('');
 
   const onClosePress = (): void => {
     setNewTaskListTitle('');
   };
 
-  const createTaskList = (): void => {
+  const createTaskList = (
+    setIsLoading: SetStateType<boolean>,
+    setModalVisible: SetStateType<boolean>,
+  ): void => {
     if (newTaskListTitle.length > 0) {
       const newTaskList: TaskListInterface = {
         id: uuidv4(),
@@ -31,8 +35,14 @@ export const CreateTaskListButton = () => {
         showInToDo: true,
       };
 
-      dispatch(addNewTaskList(newTaskList));
-      setNewTaskListTitle('');
+      dispatch(
+        addNewTaskList({
+          newTaskList,
+          setIsLoading,
+          setModalVisible,
+          setNewTaskListTitle,
+        }),
+      );
     }
   };
 

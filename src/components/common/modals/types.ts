@@ -1,3 +1,5 @@
+import {SetStateType} from '@root/types/common/types';
+
 export type ModalTextPropsType = {
   buttonTitle: string;
 
@@ -8,10 +10,13 @@ export type ModalTextPropsType = {
 
 export type ModalIconPropsType = {
   buttonIcon: JSX.Element;
+  okHandler: (
+    setIsLoading: SetStateType<boolean>,
+    setModalVisible: SetStateType<boolean>,
+  ) => void;
 
   children?: any;
   description?: string;
-  okHandler?: () => void;
   okDisable?: boolean;
   closeHandler?: () => void;
 };

@@ -26,6 +26,7 @@ export function* rootWatcher() {
     facebookSignInWorker,
   );
   yield takeLatest(AUTH_SAGA_ACTIONS.SIGN_OUT_SAGA, signOutWorker);
+
   yield takeLatest(TASKS_SAGA_ACTIONS.CHECK_USER, checkUserWorker);
   yield takeLatest(
     TASKS_SAGA_ACTIONS.SYNC_USER_TASK_LISTS,
