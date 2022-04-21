@@ -1,4 +1,9 @@
-import {taskLists, tasks, Users} from '@constants/constants';
+import {
+  NoInternetConnection,
+  taskLists,
+  tasks,
+  Users,
+} from '@constants/constants';
 import NetInfo, {NetInfoState} from '@react-native-community/netinfo';
 import {FirebaseDatabaseTypes} from '@react-native-firebase/database';
 import {errorAlert} from '@root/helpers/Alert';
@@ -107,7 +112,8 @@ export function* addNewTaskListWorker(action: AddNewTaskListSagaActionType) {
   try {
     const connectionStatus: NetInfoState = yield NetInfo.fetch();
     if (!connectionStatus.isInternetReachable) {
-      throw new Error('No internet connection!');
+      errorAlert(NoInternetConnection);
+      return;
     }
 
     yield call(action.payload.setIsLoading, true);
@@ -134,7 +140,8 @@ export function* addNewTaskWorker(action: AddNewTaskSagaActionType) {
   try {
     const connectionStatus: NetInfoState = yield NetInfo.fetch();
     if (!connectionStatus.isInternetReachable) {
-      throw new Error('No internet connection!');
+      errorAlert(NoInternetConnection);
+      return;
     }
 
     yield call(action.payload.setIsLoading, true);
@@ -165,7 +172,8 @@ export function* editTaskListTitleWorker(
   try {
     const connectionStatus: NetInfoState = yield NetInfo.fetch();
     if (!connectionStatus.isInternetReachable) {
-      throw new Error('No internet connection!');
+      errorAlert(NoInternetConnection);
+      return;
     }
 
     yield call(action.payload.setIsLoading, true);
@@ -206,7 +214,8 @@ export function* deleteTaskListFullWorker(
   try {
     const connectionStatus: NetInfoState = yield NetInfo.fetch();
     if (!connectionStatus.isInternetReachable) {
-      throw new Error('No internet connection!');
+      errorAlert(NoInternetConnection);
+      return;
     }
 
     yield call(action.payload.setIsLoading, true);
@@ -236,7 +245,8 @@ export function* deleteTaskListFromScreenWorker(
   try {
     const connectionStatus: NetInfoState = yield NetInfo.fetch();
     if (!connectionStatus.isInternetReachable) {
-      throw new Error('No internet connection!');
+      errorAlert(NoInternetConnection);
+      return;
     }
 
     yield call(action.payload.setIsLoading, true);
@@ -304,7 +314,8 @@ export function* setTaskIsDoneWorker(action: SetTaskIsDoneActionType) {
   try {
     const connectionStatus: NetInfoState = yield NetInfo.fetch();
     if (!connectionStatus.isInternetReachable) {
-      throw new Error('No internet connection!');
+      errorAlert(NoInternetConnection);
+      return;
     }
 
     yield call(action.payload.setIsLoading, true);
@@ -332,7 +343,8 @@ export function* editTaskTitleWorker(action: SetEditedTaskActionType) {
   try {
     const connectionStatus: NetInfoState = yield NetInfo.fetch();
     if (!connectionStatus.isInternetReachable) {
-      throw new Error('No internet connection!');
+      errorAlert(NoInternetConnection);
+      return;
     }
 
     yield call(action.payload.setIsLoading, true);
@@ -368,7 +380,8 @@ export function* deleteTaskWorker(action: DeleteTaskActionType) {
   try {
     const connectionStatus: NetInfoState = yield NetInfo.fetch();
     if (!connectionStatus.isInternetReachable) {
-      throw new Error('No internet connection!');
+      errorAlert(NoInternetConnection);
+      return;
     }
 
     yield call(action.payload.setIsLoading, true);
