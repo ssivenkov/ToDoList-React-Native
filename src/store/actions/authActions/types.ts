@@ -1,4 +1,5 @@
 import {FirebaseAuthTypes} from '@react-native-firebase/auth';
+import {Nullable} from '@root/types/common/types';
 import {InitialAuthStateType} from '@store/reducers/authReducer/types';
 
 export type SetAuthStatusActionType = {
@@ -8,7 +9,7 @@ export type SetAuthStatusActionType = {
 
 export type SetUserDataActionType = {
   type: string;
-  userData: FirebaseAuthTypes.User | null;
+  userData: Nullable<FirebaseAuthTypes.User>;
 };
 
 export type SetAuthStateActionType = {

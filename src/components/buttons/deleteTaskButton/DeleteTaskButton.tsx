@@ -2,6 +2,7 @@ import {ModalIcon} from '@components/common/modals/ModalIcon';
 import {iconSizeSmall} from '@constants/constants';
 import {faTrash} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {SetStateType} from '@root/types/common/types';
 import {
   deleteTask,
   deleteTaskListFromScreen,
@@ -14,12 +15,8 @@ import {useDispatch} from 'react-redux';
 import {styles} from './styles';
 import {DeleteTaskButtonPropsType} from './types';
 
-export const DeleteTaskButton = ({
-  isTodoTaskList,
-  taskId,
-  taskTitle,
-  fullTaskList,
-}: DeleteTaskButtonPropsType) => {
+export const DeleteTaskButton = (props: DeleteTaskButtonPropsType) => {
+  const {isTodoTaskList, taskId, taskTitle, fullTaskList} = props;
   const dispatch = useDispatch();
   const toDoTasks = fullTaskList.tasks
     ? fullTaskList.tasks.filter((task) => !task.isDone)
@@ -28,13 +25,18 @@ export const DeleteTaskButton = ({
     ? fullTaskList.tasks.filter((task) => task.isDone)
     : [];
 
-  const removeTask = (): void => {
+  const removeTask = (
+    setIsLoading: SetStateType<boolean>,
+    setModalVisible: SetStateType<boolean>,
+  ): void => {
     if (!isTodoTaskList && toDoTasks.length > 0 && doneTasks.length === 1) {
       dispatch(
         deleteTaskListFromScreen({
           fullTaskList,
           deleteTodoTask: false,
           deleteDoneTask: true,
+          setIsLoading,
+          setModalVisible,
         }),
       );
     } else if (
@@ -42,9 +44,22 @@ export const DeleteTaskButton = ({
       toDoTasks.length === 0 &&
       doneTasks.length === 1
     ) {
-      dispatch(deleteTaskListFull({taskListId: fullTaskList.id}));
+      dispatch(
+        deleteTaskListFull({
+          taskListId: fullTaskList.id,
+          setIsLoading,
+          setModalVisible,
+        }),
+      );
     } else {
-      dispatch(deleteTask({taskListId: fullTaskList.id, taskId}));
+      dispatch(
+        deleteTask({
+          taskListId: fullTaskList.id,
+          taskId,
+          setIsLoading,
+          setModalVisible,
+        }),
+      );
     }
   };
 
