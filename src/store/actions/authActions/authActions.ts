@@ -1,5 +1,6 @@
 import {AUTH_ACTIONS} from '@enums/authEnum';
 import {FirebaseAuthTypes} from '@react-native-firebase/auth';
+import {Nullable} from '@root/types/common/types';
 import {
   SetAuthStateActionType,
   SetAuthStatusActionType,
@@ -15,7 +16,7 @@ export const setAuthStatus = (
 });
 
 export const setUserData = (
-  userData: FirebaseAuthTypes.User | null,
+  userData: Nullable<FirebaseAuthTypes.User>,
 ): SetUserDataActionType => ({
   type: AUTH_ACTIONS.SET_USER_DATA,
   userData,

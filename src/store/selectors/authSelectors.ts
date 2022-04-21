@@ -1,4 +1,5 @@
 import {FirebaseAuthTypes} from '@react-native-firebase/auth';
+import {Nullable} from '@root/types/common/types';
 import {AppRootStateType} from '@store/store';
 
 export const getUserAuthStatus = (state: AppRootStateType): boolean => {
@@ -7,6 +8,6 @@ export const getUserAuthStatus = (state: AppRootStateType): boolean => {
 
 export const getUserData = (
   state: AppRootStateType,
-): FirebaseAuthTypes.User | null => {
+): Nullable<FirebaseAuthTypes.User> => {
   return state.auth.userData;
 };

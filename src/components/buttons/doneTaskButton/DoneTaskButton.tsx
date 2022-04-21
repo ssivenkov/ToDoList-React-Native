@@ -2,6 +2,7 @@ import {ModalIcon} from '@components/common/modals/ModalIcon';
 import {iconSizeSmall} from '@constants/constants';
 import {faCheck} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {SetStateType} from '@root/types/common/types';
 import {setTaskIsDone} from '@store/actions/tasksSagaActions/tasksSagaActions';
 import React from 'react';
 import {Trans} from 'react-i18next';
@@ -18,8 +19,13 @@ export const DoneTaskButton = ({
 }: DoneTaskButtonPropsType) => {
   const dispatch = useDispatch();
 
-  const setDoneTask = (): void => {
-    dispatch(setTaskIsDone({taskListId, doneTaskId}));
+  const setDoneTask = (
+    setIsLoading: SetStateType<boolean>,
+    setModalVisible: SetStateType<boolean>,
+  ): void => {
+    dispatch(
+      setTaskIsDone({taskListId, doneTaskId, setIsLoading, setModalVisible}),
+    );
   };
 
   return (

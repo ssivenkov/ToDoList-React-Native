@@ -7,6 +7,7 @@ import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {GoogleWebClientId} from '@root/api/config';
+import {Nullable} from '@root/types/common/types';
 import {setUserData} from '@store/actions/authActions/authActions';
 import {checkUser} from '@store/actions/tasksSagaActions/tasksSagaActions';
 import {getUserAuthStatus} from '@store/selectors/authSelectors';
@@ -23,7 +24,7 @@ export const Navigation = () => {
   const [firebaseInitializing, setFirebaseInitializing] =
     useState<boolean>(true);
 
-  const onAuthStateChanged = (user: FirebaseAuthTypes.User | null) => {
+  const onAuthStateChanged = (user: Nullable<FirebaseAuthTypes.User>) => {
     dispatch(setUserData(user));
 
     if (user) {
