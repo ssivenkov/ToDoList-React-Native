@@ -14,7 +14,8 @@
       "EditTaskButtonTitle": "Название задачи:",
       "TodoTasksTab": "Выполнить",
       "DoneTasksTab": "Выполненные",
-      "NoTaskListsFound": "Списков задач не найдено"
+      "NoTaskListsFound": "Списков задач не найдено",
+      "EnableNotification": "Напомнить о задаче"
     },
     "signInScreen": {
       "SignIn": "Вход",

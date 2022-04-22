@@ -3,7 +3,7 @@ import {ModalIcon} from '@components/common/modals/ModalIcon';
 import {iconSizeLarge} from '@constants/constants';
 import {faPlus} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {createDate} from '@root/helpers/GenerateDate';
+import {createDate} from '@root/helpers/generateDate';
 import {SetStateType} from '@root/types/common/types';
 import {addNewTaskList} from '@store/actions/tasksSagaActions/tasksSagaActions';
 import {TaskListInterface} from '@store/reducers/tasksReducer/types';
