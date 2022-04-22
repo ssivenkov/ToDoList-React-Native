@@ -1,9 +1,4 @@
-import {
-  NoInternetConnection,
-  taskLists,
-  tasks,
-  Users,
-} from '@constants/constants';
+import {taskLists, tasks, Users} from '@constants/constants';
 import NetInfo, {NetInfoState} from '@react-native-community/netinfo';
 import {FirebaseDatabaseTypes} from '@react-native-firebase/database';
 import {errorAlert} from '@root/helpers/Alert';
@@ -44,6 +39,7 @@ import {
   TaskListInterface,
   TaskListWithTaskType,
 } from '@store/reducers/tasksReducer/types';
+import {t} from 'i18next';
 import {call, put, select} from 'redux-saga/effects';
 
 export function* checkUserWorker() {
@@ -112,7 +108,7 @@ export function* addNewTaskListWorker(action: AddNewTaskListSagaActionType) {
   try {
     const connectionStatus: NetInfoState = yield NetInfo.fetch();
     if (!connectionStatus.isInternetReachable) {
-      errorAlert(NoInternetConnection);
+      errorAlert(t('common.NoInternetConnection'));
       return;
     }
 
@@ -140,7 +136,7 @@ export function* addNewTaskWorker(action: AddNewTaskSagaActionType) {
   try {
     const connectionStatus: NetInfoState = yield NetInfo.fetch();
     if (!connectionStatus.isInternetReachable) {
-      errorAlert(NoInternetConnection);
+      errorAlert(t('common.NoInternetConnection'));
       return;
     }
 
@@ -172,7 +168,7 @@ export function* editTaskListTitleWorker(
   try {
     const connectionStatus: NetInfoState = yield NetInfo.fetch();
     if (!connectionStatus.isInternetReachable) {
-      errorAlert(NoInternetConnection);
+      errorAlert(t('common.NoInternetConnection'));
       return;
     }
 
@@ -214,7 +210,7 @@ export function* deleteTaskListFullWorker(
   try {
     const connectionStatus: NetInfoState = yield NetInfo.fetch();
     if (!connectionStatus.isInternetReachable) {
-      errorAlert(NoInternetConnection);
+      errorAlert(t('common.NoInternetConnection'));
       return;
     }
 
@@ -245,7 +241,7 @@ export function* deleteTaskListFromScreenWorker(
   try {
     const connectionStatus: NetInfoState = yield NetInfo.fetch();
     if (!connectionStatus.isInternetReachable) {
-      errorAlert(NoInternetConnection);
+      errorAlert(t('common.NoInternetConnection'));
       return;
     }
 
@@ -314,7 +310,7 @@ export function* setTaskIsDoneWorker(action: SetTaskIsDoneActionType) {
   try {
     const connectionStatus: NetInfoState = yield NetInfo.fetch();
     if (!connectionStatus.isInternetReachable) {
-      errorAlert(NoInternetConnection);
+      errorAlert(t('common.NoInternetConnection'));
       return;
     }
 
@@ -343,7 +339,7 @@ export function* editTaskTitleWorker(action: SetEditedTaskActionType) {
   try {
     const connectionStatus: NetInfoState = yield NetInfo.fetch();
     if (!connectionStatus.isInternetReachable) {
-      errorAlert(NoInternetConnection);
+      errorAlert(t('common.NoInternetConnection'));
       return;
     }
 
@@ -380,7 +376,7 @@ export function* deleteTaskWorker(action: DeleteTaskActionType) {
   try {
     const connectionStatus: NetInfoState = yield NetInfo.fetch();
     if (!connectionStatus.isInternetReachable) {
-      errorAlert(NoInternetConnection);
+      errorAlert(t('common.NoInternetConnection'));
       return;
     }
 
