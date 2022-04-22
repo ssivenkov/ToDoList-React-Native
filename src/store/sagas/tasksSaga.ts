@@ -1,4 +1,5 @@
 import {taskLists, tasks, Users} from '@constants/constants';
+import NetInfo, {NetInfoState} from '@react-native-community/netinfo';
 import {FirebaseDatabaseTypes} from '@react-native-firebase/database';
 import {errorAlert} from '@root/helpers/Alert';
 import {DB} from '@root/helpers/DB';
@@ -33,10 +34,12 @@ import {
   SetTaskIsDonePayloadType,
 } from '@store/actions/tasksSagaActions/types';
 import {
+  ConvertedTasksForFirebaseType,
   TaskListBeforeConvertInterface,
   TaskListInterface,
   TaskListWithTaskType,
 } from '@store/reducers/tasksReducer/types';
+import {t} from 'i18next';
 import {call, put, select} from 'redux-saga/effects';
 
 export function* checkUserWorker() {
@@ -103,13 +106,26 @@ export function* syncUserTaskListsWorker() {
 
 export function* addNewTaskListWorker(action: AddNewTaskListSagaActionType) {
   try {
+    const connectionStatus: NetInfoState = yield NetInfo.fetch();
+    if (!connectionStatus.isInternetReachable) {
+      errorAlert(t('common.NoInternetConnection'));
+      return;
+    }
+
+    yield call(action.payload.setIsLoading, true);
     const {uid} = yield select((state) => state.auth.userData);
     const addNewTaskListToFirebase = (newTaskList: TaskListInterface) => {
-      DB.ref(`${Users}/${uid}/${taskLists}/${newTaskList.id}`).set(newTaskList);
+      return DB.ref(`${Users}/${uid}/${taskLists}/${newTaskList.id}`).set(
+        newTaskList,
+      );
     };
-    yield call(addNewTaskListToFirebase, action.payload);
-    yield put(addNewTaskList(action.payload));
+    yield call(addNewTaskListToFirebase, action.payload.newTaskList);
+    yield put(addNewTaskList(action.payload.newTaskList));
+    yield call(action.payload.setIsLoading, false);
+    yield call(action.payload.setModalVisible, false);
+    yield call(action.payload.setNewTaskListTitle, '');
   } catch (error) {
+    yield call(action.payload.setIsLoading, false);
     if (error instanceof Error) {
       errorAlert(error);
     }
@@ -118,9 +134,16 @@ export function* addNewTaskListWorker(action: AddNewTaskListSagaActionType) {
 
 export function* addNewTaskWorker(action: AddNewTaskSagaActionType) {
   try {
+    const connectionStatus: NetInfoState = yield NetInfo.fetch();
+    if (!connectionStatus.isInternetReachable) {
+      errorAlert(t('common.NoInternetConnection'));
+      return;
+    }
+
+    yield call(action.payload.setIsLoading, true);
     const {uid} = yield select((state) => state.auth.userData);
     const addNewTaskToFirebase = (payload: AddNewTaskPayloadType) => {
-      DB.ref(
+      return DB.ref(
         `${Users}/${uid}/${taskLists}/${payload.taskListId}/${tasks}/${payload.newTask.id}`,
       ).set(payload.newTask);
     };
@@ -128,7 +151,11 @@ export function* addNewTaskWorker(action: AddNewTaskSagaActionType) {
     yield put(
       addNewTask(action.payload.modifiedTaskList, action.payload.taskListId),
     );
+    yield call(action.payload.setIsLoading, false);
+    yield call(action.payload.setModalVisible, false);
+    yield call(action.payload.setNewTaskTitle, '');
   } catch (error) {
+    yield call(action.payload.setIsLoading, false);
     if (error instanceof Error) {
       errorAlert(error);
     }
@@ -139,11 +166,20 @@ export function* editTaskListTitleWorker(
   action: EditTaskListTitleFullActionType,
 ) {
   try {
+    const connectionStatus: NetInfoState = yield NetInfo.fetch();
+    if (!connectionStatus.isInternetReachable) {
+      errorAlert(t('common.NoInternetConnection'));
+      return;
+    }
+
+    yield call(action.payload.setIsLoading, true);
     const {uid} = yield select((state) => state.auth.userData);
     const sendModifiedTaskListToFirebase = (
       payload: EditTaskListTitleFullPayloadType,
     ) => {
-      DB.ref(`${Users}/${uid}/${taskLists}/${payload.taskListId}`).update({
+      return DB.ref(
+        `${Users}/${uid}/${taskLists}/${payload.taskListId}`,
+      ).update({
         title: payload.editedTaskListTitle,
       });
     };
@@ -154,7 +190,14 @@ export function* editTaskListTitleWorker(
         action.payload.editedTaskListTitle,
       ),
     );
+    yield call(action.payload.setIsLoading, false);
+    yield call(action.payload.setModalVisible, false);
+    yield call(
+      action.payload.setEditedTaskListTitleState,
+      action.payload.editedTaskListTitle,
+    );
   } catch (error) {
+    yield call(action.payload.setIsLoading, false);
     if (error instanceof Error) {
       errorAlert(error);
     }
@@ -165,15 +208,27 @@ export function* deleteTaskListFullWorker(
   action: DeleteTaskListFullActionType,
 ) {
   try {
+    const connectionStatus: NetInfoState = yield NetInfo.fetch();
+    if (!connectionStatus.isInternetReachable) {
+      errorAlert(t('common.NoInternetConnection'));
+      return;
+    }
+
+    yield call(action.payload.setIsLoading, true);
     const {uid} = yield select((state) => state.auth.userData);
     const deleteTaskListInFirebase = (
       payload: DeleteTaskListFullPayloadType,
     ) => {
-      DB.ref(`${Users}/${uid}/${taskLists}/${payload.taskListId}`).remove();
+      return DB.ref(
+        `${Users}/${uid}/${taskLists}/${payload.taskListId}`,
+      ).remove();
     };
     yield call(deleteTaskListInFirebase, action.payload);
     yield put(deleteTaskListFull(action.payload.taskListId));
+    yield call(action.payload.setIsLoading, false);
+    yield call(action.payload.setModalVisible, false);
   } catch (error) {
+    yield call(action.payload.setIsLoading, false);
     if (error instanceof Error) {
       errorAlert(error);
     }
@@ -184,6 +239,13 @@ export function* deleteTaskListFromScreenWorker(
   action: DeleteTaskListFromScreenActionType,
 ) {
   try {
+    const connectionStatus: NetInfoState = yield NetInfo.fetch();
+    if (!connectionStatus.isInternetReachable) {
+      errorAlert(t('common.NoInternetConnection'));
+      return;
+    }
+
+    yield call(action.payload.setIsLoading, true);
     const {uid} = yield select((state) => state.auth.userData);
     const deleteTaskListFromScreenInFirebase = (
       payload: DeleteTaskListFromScreenPayloadType,
@@ -202,9 +264,6 @@ export function* deleteTaskListFromScreenWorker(
       }
 
       if (payload.deleteDoneTask) {
-        DB.ref(`${Users}/${uid}/${taskLists}/${modifiedTaskList.id}`).update({
-          showInToDo: true,
-        });
         if (modifiedTaskList.tasks && modifiedTaskList.tasks.length > 0) {
           modifiedTaskList.tasks = modifiedTaskList.tasks.filter(
             (task) => !task.isDone,
@@ -212,14 +271,21 @@ export function* deleteTaskListFromScreenWorker(
         }
       }
 
-      if (modifiedTaskList.tasks && modifiedTaskList.tasks[0]) {
-        const FirebaseTasks = {
-          [modifiedTaskList.tasks[0].id]: {...modifiedTaskList.tasks[0]},
-        };
+      if (modifiedTaskList.tasks && modifiedTaskList.tasks.length > 0) {
+        const convertedTasksForFirebase: ConvertedTasksForFirebaseType =
+          modifiedTaskList.tasks.reduce(
+            (acc: ConvertedTasksForFirebaseType, task) => {
+              return {
+                ...acc,
+                [task.id]: task,
+              };
+            },
+            {},
+          );
 
-        DB.ref(
+        return DB.ref(
           `${Users}/${uid}/${taskLists}/${modifiedTaskList.id}/${tasks}`,
-        ).set(FirebaseTasks);
+        ).set(convertedTasksForFirebase);
       }
     };
     yield call(deleteTaskListFromScreenInFirebase, action.payload);
@@ -230,7 +296,10 @@ export function* deleteTaskListFromScreenWorker(
         action.payload.deleteDoneTask,
       ),
     );
+    yield call(action.payload.setIsLoading, false);
+    yield call(action.payload.setModalVisible, false);
   } catch (error) {
+    yield call(action.payload.setIsLoading, false);
     if (error instanceof Error) {
       errorAlert(error);
     }
@@ -239,9 +308,16 @@ export function* deleteTaskListFromScreenWorker(
 
 export function* setTaskIsDoneWorker(action: SetTaskIsDoneActionType) {
   try {
+    const connectionStatus: NetInfoState = yield NetInfo.fetch();
+    if (!connectionStatus.isInternetReachable) {
+      errorAlert(t('common.NoInternetConnection'));
+      return;
+    }
+
+    yield call(action.payload.setIsLoading, true);
     const {uid} = yield select((state) => state.auth.userData);
     const setTaskIsDoneInFirebase = (payload: SetTaskIsDonePayloadType) => {
-      DB.ref(
+      return DB.ref(
         `${Users}/${uid}/${taskLists}/${payload.taskListId}/${tasks}/${payload.doneTaskId}`,
       ).update({isDone: true});
     };
@@ -249,7 +325,10 @@ export function* setTaskIsDoneWorker(action: SetTaskIsDoneActionType) {
     yield put(
       setTaskIsDone(action.payload.taskListId, action.payload.doneTaskId),
     );
+    yield call(action.payload.setIsLoading, false);
+    yield call(action.payload.setModalVisible, false);
   } catch (error) {
+    yield call(action.payload.setIsLoading, false);
     if (error instanceof Error) {
       errorAlert(error);
     }
@@ -258,9 +337,16 @@ export function* setTaskIsDoneWorker(action: SetTaskIsDoneActionType) {
 
 export function* editTaskTitleWorker(action: SetEditedTaskActionType) {
   try {
+    const connectionStatus: NetInfoState = yield NetInfo.fetch();
+    if (!connectionStatus.isInternetReachable) {
+      errorAlert(t('common.NoInternetConnection'));
+      return;
+    }
+
+    yield call(action.payload.setIsLoading, true);
     const {uid} = yield select((state) => state.auth.userData);
     const editTaskTitleInFirebase = (payload: SetEditedTaskPayloadType) => {
-      DB.ref(
+      return DB.ref(
         `${Users}/${uid}/${taskLists}/${payload.taskListId}/${tasks}/${payload.taskId}`,
       ).update({title: payload.editedTaskTitle});
     };
@@ -272,7 +358,14 @@ export function* editTaskTitleWorker(action: SetEditedTaskActionType) {
         action.payload.editedTaskTitle,
       ),
     );
+    yield call(action.payload.setIsLoading, false);
+    yield call(action.payload.setModalVisible, false);
+    yield call(
+      action.payload.setEditedTaskTitle,
+      action.payload.editedTaskTitle,
+    );
   } catch (error) {
+    yield call(action.payload.setIsLoading, false);
     if (error instanceof Error) {
       errorAlert(error);
     }
@@ -281,15 +374,25 @@ export function* editTaskTitleWorker(action: SetEditedTaskActionType) {
 
 export function* deleteTaskWorker(action: DeleteTaskActionType) {
   try {
+    const connectionStatus: NetInfoState = yield NetInfo.fetch();
+    if (!connectionStatus.isInternetReachable) {
+      errorAlert(t('common.NoInternetConnection'));
+      return;
+    }
+
+    yield call(action.payload.setIsLoading, true);
     const {uid} = yield select((state) => state.auth.userData);
     const deleteTaskInFirebase = (payload: DeleteTaskPayloadType) => {
-      DB.ref(
+      return DB.ref(
         `${Users}/${uid}/${taskLists}/${payload.taskListId}/${tasks}/${payload.taskId}`,
       ).remove();
     };
     yield call(deleteTaskInFirebase, action.payload);
     yield put(deleteTask(action.payload.taskListId, action.payload.taskId));
+    yield call(action.payload.setIsLoading, false);
+    yield call(action.payload.setModalVisible, false);
   } catch (error) {
+    yield call(action.payload.setIsLoading, false);
     if (error instanceof Error) {
       errorAlert(error);
     }

@@ -2,6 +2,7 @@ import {ModalIcon} from '@components/common/modals/ModalIcon';
 import {iconSizeSmall} from '@constants/constants';
 import {faTrash} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {SetStateType} from '@root/types/common/types';
 import {
   deleteTaskListFromScreen,
   deleteTaskListFull,
@@ -17,7 +18,10 @@ export const DeleteTaskListButton = (props: DeleteTaskListButtonPropsType) => {
   const {taskListTitle, isTodoTaskList, fullTaskList} = props;
   const dispatch = useDispatch();
 
-  const removeTaskList = (): void => {
+  const removeTaskList = (
+    setIsLoading: SetStateType<boolean>,
+    setModalVisible: SetStateType<boolean>,
+  ): void => {
     const toDoTasks = fullTaskList.tasks
       ? fullTaskList.tasks.filter((task) => !task.isDone)
       : [];
@@ -30,13 +34,21 @@ export const DeleteTaskListButton = (props: DeleteTaskListButtonPropsType) => {
       (!isTodoTaskList && toDoTasks.length === 0) ||
       (toDoTasks.length === 0 && doneTasks.length === 0)
     ) {
-      dispatch(deleteTaskListFull({taskListId: fullTaskList.id}));
+      dispatch(
+        deleteTaskListFull({
+          taskListId: fullTaskList.id,
+          setIsLoading,
+          setModalVisible,
+        }),
+      );
     } else if (isTodoTaskList) {
       dispatch(
         deleteTaskListFromScreen({
           fullTaskList,
           deleteTodoTask: true,
           deleteDoneTask: false,
+          setIsLoading,
+          setModalVisible,
         }),
       );
     } else if (!isTodoTaskList) {
@@ -45,6 +57,8 @@ export const DeleteTaskListButton = (props: DeleteTaskListButtonPropsType) => {
           fullTaskList,
           deleteTodoTask: false,
           deleteDoneTask: true,
+          setIsLoading,
+          setModalVisible,
         }),
       );
     }
