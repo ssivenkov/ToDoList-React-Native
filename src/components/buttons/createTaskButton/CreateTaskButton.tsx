@@ -4,16 +4,17 @@ import {iconSizeSmall} from '@constants/constants';
 import {faPlus} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {createDate} from '@root/helpers/GenerateDate';
+import {SetStateType} from '@root/types/common/types';
 import {addNewTask} from '@store/actions/tasksSagaActions/tasksSagaActions';
 import {TaskListInterface, TaskType} from '@store/reducers/tasksReducer/types';
-import React, {FC, useState} from 'react';
+import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
 import 'react-native-get-random-values';
 import {useDispatch} from 'react-redux';
 import {v4 as uuidv4} from 'uuid';
 import {CreateTaskButtonPropsType} from './types';
 
-export const CreateTaskButton: FC<CreateTaskButtonPropsType> = (props) => {
+export const CreateTaskButton = (props: CreateTaskButtonPropsType) => {
   const {taskListId, taskListDate, taskListTitle, fullTaskList} = props;
   const {t} = useTranslation();
   const dispatch = useDispatch();
@@ -23,7 +24,10 @@ export const CreateTaskButton: FC<CreateTaskButtonPropsType> = (props) => {
     setNewTaskTitle('');
   };
 
-  const createTask = (): void => {
+  const createTask = (
+    setIsLoading: SetStateType<boolean>,
+    setModalVisible: SetStateType<boolean>,
+  ): void => {
     const newTask: TaskType = {
       id: uuidv4(),
       date: createDate(),
@@ -44,8 +48,16 @@ export const CreateTaskButton: FC<CreateTaskButtonPropsType> = (props) => {
     };
 
     if (newTaskTitle) {
-      dispatch(addNewTask({modifiedTaskList, taskListId, newTask}));
-      setNewTaskTitle('');
+      dispatch(
+        addNewTask({
+          modifiedTaskList,
+          taskListId,
+          newTask,
+          setIsLoading,
+          setModalVisible,
+          setNewTaskTitle,
+        }),
+      );
     }
   };
 

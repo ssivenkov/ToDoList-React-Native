@@ -3,6 +3,7 @@ import {ModalIcon} from '@components/common/modals/ModalIcon';
 import {iconSizeSmall} from '@constants/constants';
 import {faPen} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {SetStateType} from '@root/types/common/types';
 import {editTaskListTitle} from '@store/actions/tasksSagaActions/tasksSagaActions';
 import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
@@ -18,10 +19,20 @@ export const EditTaskListTitleButton = ({
   const [editedTaskListTitle, setEditedTaskListTitleState] =
     useState<string>(oldTaskListTitle);
 
-  const onOkPress = (): void => {
+  const onOkPress = (
+    setIsLoading: SetStateType<boolean>,
+    setModalVisible: SetStateType<boolean>,
+  ): void => {
     if (editedTaskListTitle.length > 0) {
-      dispatch(editTaskListTitle({taskListId, editedTaskListTitle}));
-      setEditedTaskListTitleState(editedTaskListTitle);
+      dispatch(
+        editTaskListTitle({
+          taskListId,
+          editedTaskListTitle,
+          setIsLoading,
+          setModalVisible,
+          setEditedTaskListTitleState,
+        }),
+      );
     }
   };
 
