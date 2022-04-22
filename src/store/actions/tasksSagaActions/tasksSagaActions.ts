@@ -1,5 +1,6 @@
 import {TASKS_SAGA_ACTIONS} from '@enums/tasksSagaEnum';
 import {
+  AddNewTaskListPayloadType,
   AddNewTaskListSagaActionType,
   AddNewTaskPayloadType,
   AddNewTaskSagaActionType,
@@ -18,7 +19,6 @@ import {
   SetTaskIsDonePayloadType,
   SyncUserTaskListsSagaActionType,
 } from '@store/actions/tasksSagaActions/types';
-import {TaskListInterface} from '@store/reducers/tasksReducer/types';
 
 export const checkUser = (): CheckUserSagaActionType => ({
   type: TASKS_SAGA_ACTIONS.CHECK_USER,
@@ -29,7 +29,7 @@ export const syncUserTaskLists = (): SyncUserTaskListsSagaActionType => ({
 });
 
 export const addNewTaskList = (
-  payload: TaskListInterface,
+  payload: AddNewTaskListPayloadType,
 ): AddNewTaskListSagaActionType => ({
   type: TASKS_SAGA_ACTIONS.ADD_NEW_TASK_LIST,
   payload,

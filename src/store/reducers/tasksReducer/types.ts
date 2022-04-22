@@ -27,3 +27,7 @@ export interface TaskListInterface extends TaskListWithTaskType {
 export type TasksStateType = {
   taskLists: TaskListInterface[];
 };
+
+export type ConvertedTasksForFirebaseType = {
+  [T: string]: TaskType;
+};

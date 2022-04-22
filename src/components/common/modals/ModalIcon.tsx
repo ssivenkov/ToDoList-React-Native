@@ -1,5 +1,6 @@
 import {CustomIconButton} from '@components/common/buttons/CustomIconButton';
 import {CustomTextButton} from '@components/common/buttons/CustomTextButton';
+import {Loader} from '@components/common/loader/loader';
 import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
 import {Modal, View, Text} from 'react-native';
@@ -17,6 +18,7 @@ export const ModalIcon = (props: ModalIconPropsType) => {
   } = props;
   const {t} = useTranslation();
   const [modalVisible, setModalVisible] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const onButtonPress = (): void => {
     !modalVisible && setModalVisible(true);
@@ -28,29 +30,22 @@ export const ModalIcon = (props: ModalIconPropsType) => {
   };
 
   const onOkButtonPress = (): void => {
-    okHandler && okHandler();
-    setModalVisible(false);
-  };
-
-  const onRequestClose = (): void => {
-    setModalVisible(false);
+    okHandler(setIsLoading, setModalVisible);
   };
 
   return (
     <View>
-      <Modal transparent visible={modalVisible} onRequestClose={onRequestClose}>
+      <Modal transparent visible={modalVisible}>
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             {description && <Text style={styles.text}>{description}</Text>}
             {children && <View>{children}</View>}
             <View style={styles.buttonsContainer}>
-              {okHandler && (
-                <CustomTextButton
-                  onPress={onOkButtonPress}
-                  title={`${t('common.Ok')}`}
-                  disable={okDisable}
-                />
-              )}
+              <CustomTextButton
+                onPress={onOkButtonPress}
+                title={`${t('common.Ok')}`}
+                disable={okDisable}
+              />
               <CustomTextButton
                 onPress={onCancelButtonPress}
                 title={`${t('common.Close')}`}
@@ -58,6 +53,7 @@ export const ModalIcon = (props: ModalIconPropsType) => {
             </View>
           </View>
         </View>
+        {isLoading && <Loader />}
       </Modal>
       <CustomIconButton onPress={onButtonPress} icon={buttonIcon} />
     </View>

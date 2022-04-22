@@ -2,7 +2,8 @@
   "translation": {
     "common": {
       "Ok": "Ок",
-      "Close": "Закрыть"
+      "Close": "Закрыть",
+      "NoInternetConnection": "Отсутствует подключение к интернету"
     },
     "tasksScreen": {
       "Tasks": "Задачи",
