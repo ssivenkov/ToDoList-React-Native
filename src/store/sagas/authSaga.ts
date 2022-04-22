@@ -1,6 +1,7 @@
 import auth from '@react-native-firebase/auth';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
-import {errorAlert} from '@root/helpers/Alert';
+import {errorAlert} from '@root/helpers/alert';
+import {delay} from '@root/helpers/delay';
 import {setAuthState} from '@store/actions/authActions/authActions';
 import {
   GetFacebookUserDataSagaActionType,
@@ -22,9 +23,6 @@ export function* googleSignInWorker(action: GetGoogleUserDataSagaActionType) {
   const {setWaitingUserData} = action.payload;
   try {
     yield call(setWaitingUserData, true);
-    // delay for starting animation
-    const delay = (time: number) =>
-      new Promise((resolve) => setTimeout(resolve, time));
     yield call(delay, 10);
 
     const {idToken} = yield call(GoogleSignin.signIn);
@@ -47,9 +45,6 @@ export function* facebookSignInWorker(
   const {setWaitingUserData} = action.payload;
   try {
     yield call(setWaitingUserData, true);
-    // delay for starting animation
-    const delay = (time: number) =>
-      new Promise((resolve) => setTimeout(resolve, time));
     yield call(delay, 10);
 
     const {isCancelled} = yield call(LoginManager.logInWithPermissions, [
@@ -82,9 +77,6 @@ export function* signOutWorker() {
       return auth().signOut();
     };
 
-    // delay for starting animation
-    const delay = (time: number) =>
-      new Promise((resolve) => setTimeout(resolve, time));
     yield call(delay, 10);
 
     yield call(signOut);

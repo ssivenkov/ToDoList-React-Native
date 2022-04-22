@@ -6,8 +6,9 @@ import {
 } from '@constants/constants';
 import NetInfo, {NetInfoState} from '@react-native-community/netinfo';
 import {FirebaseDatabaseTypes} from '@react-native-firebase/database';
-import {errorAlert} from '@root/helpers/Alert';
-import {DB} from '@root/helpers/DB';
+import {DB} from '@root/api/DB';
+import {errorAlert} from '@root/helpers/alert';
+import {delay} from '@root/helpers/delay';
 import {setAuthStatus} from '@store/actions/authActions/authActions';
 import {
   addNewTask,
@@ -115,6 +116,7 @@ export function* addNewTaskListWorker(action: AddNewTaskListSagaActionType) {
       errorAlert(NoInternetConnection);
       return;
     }
+    yield call(delay, 10);
 
     yield call(action.payload.setIsLoading, true);
     const {uid} = yield select((state) => state.auth.userData);
@@ -143,6 +145,7 @@ export function* addNewTaskWorker(action: AddNewTaskSagaActionType) {
       errorAlert(NoInternetConnection);
       return;
     }
+    yield call(delay, 10);
 
     yield call(action.payload.setIsLoading, true);
     const {uid} = yield select((state) => state.auth.userData);
@@ -175,6 +178,7 @@ export function* editTaskListTitleWorker(
       errorAlert(NoInternetConnection);
       return;
     }
+    yield call(delay, 10);
 
     yield call(action.payload.setIsLoading, true);
     const {uid} = yield select((state) => state.auth.userData);
@@ -217,6 +221,7 @@ export function* deleteTaskListFullWorker(
       errorAlert(NoInternetConnection);
       return;
     }
+    yield call(delay, 10);
 
     yield call(action.payload.setIsLoading, true);
     const {uid} = yield select((state) => state.auth.userData);
@@ -248,6 +253,7 @@ export function* deleteTaskListFromScreenWorker(
       errorAlert(NoInternetConnection);
       return;
     }
+    yield call(delay, 10);
 
     yield call(action.payload.setIsLoading, true);
     const {uid} = yield select((state) => state.auth.userData);
@@ -317,6 +323,7 @@ export function* setTaskIsDoneWorker(action: SetTaskIsDoneActionType) {
       errorAlert(NoInternetConnection);
       return;
     }
+    yield call(delay, 10);
 
     yield call(action.payload.setIsLoading, true);
     const {uid} = yield select((state) => state.auth.userData);
@@ -346,6 +353,7 @@ export function* editTaskTitleWorker(action: SetEditedTaskActionType) {
       errorAlert(NoInternetConnection);
       return;
     }
+    yield call(delay, 10);
 
     yield call(action.payload.setIsLoading, true);
     const {uid} = yield select((state) => state.auth.userData);
@@ -383,6 +391,7 @@ export function* deleteTaskWorker(action: DeleteTaskActionType) {
       errorAlert(NoInternetConnection);
       return;
     }
+    yield call(delay, 10);
 
     yield call(action.payload.setIsLoading, true);
     const {uid} = yield select((state) => state.auth.userData);
