@@ -1,5 +1,6 @@
 import {
   NoInternetConnection,
+  notificationIdMaxLength,
   taskLists,
   tasks,
   Users,
@@ -8,11 +9,14 @@ import NetInfo, {NetInfoState} from '@react-native-community/netinfo';
 import {FirebaseDatabaseTypes} from '@react-native-firebase/database';
 import {DB} from '@root/api/DB';
 import {errorAlert} from '@root/helpers/alert';
+import {createNotification} from '@root/helpers/createNotification';
 import {delay} from '@root/helpers/delay';
+import {getRandomNumber} from '@root/helpers/getRandomNumber';
 import {setAuthStatus} from '@store/actions/authActions/authActions';
 import {
   addNewTask,
   addNewTaskList,
+  addTaskNotification,
   deleteTask,
   deleteTaskListFromScreen,
   deleteTaskListFull,
@@ -45,6 +49,7 @@ import {
   TaskListInterface,
   TaskListWithTaskType,
 } from '@store/reducers/tasksReducer/types';
+import {getChannelIDSelector} from '@store/selectors/authSelectors';
 import {call, put, select} from 'redux-saga/effects';
 
 export function* checkUserWorker() {
@@ -149,12 +154,33 @@ export function* addNewTaskWorker(action: AddNewTaskSagaActionType) {
 
     yield call(action.payload.setIsLoading, true);
     const {uid} = yield select((state) => state.auth.userData);
+    const channelId: string = yield select(getChannelIDSelector);
     const addNewTaskToFirebase = (payload: AddNewTaskPayloadType) => {
       return DB.ref(
         `${Users}/${uid}/${taskLists}/${payload.taskListId}/${tasks}/${payload.newTask.id}`,
       ).set(payload.newTask);
     };
     yield call(addNewTaskToFirebase, action.payload);
+
+    if (action.payload.shouldCreateNotification) {
+      const notificationID = getRandomNumber(notificationIdMaxLength);
+
+      yield call(
+        createNotification,
+        channelId,
+        action.payload.date,
+        notificationID,
+        action.payload.newTask.title,
+      );
+
+      yield put(
+        addTaskNotification({
+          taskID: action.payload.newTask.id,
+          notificationID,
+        }),
+      );
+    }
+
     yield put(
       addNewTask(action.payload.modifiedTaskList, action.payload.taskListId),
     );
