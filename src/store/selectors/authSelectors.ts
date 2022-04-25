@@ -11,3 +11,7 @@ export const getUserData = (
 ): Nullable<FirebaseAuthTypes.User> => {
   return state.auth.userData;
 };
+
+export const getChannelIDSelector = (state: AppRootStateType): string => {
+  return state.auth.channelID;
+};

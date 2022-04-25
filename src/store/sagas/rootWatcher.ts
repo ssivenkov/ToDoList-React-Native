@@ -4,6 +4,7 @@ import {
   googleSignInWorker,
   signOutWorker,
   facebookSignInWorker,
+  createChannelWorker,
 } from '@store/sagas/authSaga';
 import {
   addNewTaskListWorker,
@@ -26,6 +27,7 @@ export function* rootWatcher() {
     facebookSignInWorker,
   );
   yield takeLatest(AUTH_SAGA_ACTIONS.SIGN_OUT_SAGA, signOutWorker);
+  yield takeLatest(AUTH_SAGA_ACTIONS.CREATE_CHANNEL_SAGA, createChannelWorker);
 
   yield takeLatest(TASKS_SAGA_ACTIONS.CHECK_USER, checkUserWorker);
   yield takeLatest(

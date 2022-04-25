@@ -11,9 +11,19 @@ import {PersistGate} from 'redux-persist/lib/integration/react';
 export const App = () => {
   useEffect(() => {
     PushNotification.configure({
+      // (required) Called when a remote is received or opened, or local notification is opened
       onNotification: function (notification) {
+        // (required) Called when a remote is received or opened, or local notification is opened
         notification.finish(PushNotificationIOS.FetchResult.NoData);
       },
+
+      // IOS ONLY (optional): default: all - Permissions to register.
+      permissions: {
+        alert: true,
+        badge: true,
+        sound: true,
+      },
+
       popInitialNotification: true,
       requestPermissions: true,
     });

@@ -30,6 +30,8 @@ export type AddNewTaskPayloadType = {
   modifiedTaskList: TaskListInterface;
   taskListId: string;
   newTask: TaskType;
+  shouldCreateNotification: boolean;
+  date: Date;
   setIsLoading: SetStateType<boolean>;
   setModalVisible: SetStateType<boolean>;
   setNewTaskTitle: SetStateType<string>;

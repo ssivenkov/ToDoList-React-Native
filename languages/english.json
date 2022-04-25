@@ -15,7 +15,8 @@
       "TodoTasksTab": "Todo tasks",
       "DoneTasksTab": "Done tasks",
       "NoTaskListsFound": "No task lists found",
-      "EnableNotification": "Remind of the task"
+      "EnableNotification": "Remind of the task",
+      "TaskNotification": "Perform task"
     },
     "signInScreen": {
       "SignIn": "Sign in",

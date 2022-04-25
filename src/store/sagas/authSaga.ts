@@ -1,8 +1,12 @@
 import auth from '@react-native-firebase/auth';
+import messaging from '@react-native-firebase/messaging';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import {errorAlert} from '@root/helpers/alert';
 import {delay} from '@root/helpers/delay';
-import {setAuthState} from '@store/actions/authActions/authActions';
+import {
+  setAuthState,
+  setChannelID,
+} from '@store/actions/authActions/authActions';
 import {
   GetFacebookUserDataSagaActionType,
   GetGoogleUserDataSagaActionType,
@@ -13,11 +17,42 @@ import {initialAuthState} from '@store/reducers/authReducer/authReducer';
 import {UserDataType} from '@store/reducers/authReducer/types';
 import {AppRootStateType} from '@store/store';
 import {AccessToken, LoginManager} from 'react-native-fbsdk-next';
+import PushNotification from 'react-native-push-notification';
 import {call, put, select} from 'redux-saga/effects';
 
 const signInWithCredential = (credential: AuthCredentialType) => {
   return auth().signInWithCredential(credential);
 };
+
+export function* createChannelWorker() {
+  try {
+    const getChannelID = () => {
+      return messaging().getToken();
+    };
+    const channelId: string = yield call(getChannelID);
+    const createChannel = () => {
+      PushNotification.createChannel(
+        {
+          channelId,
+          channelName: 'Task notification channel',
+          channelDescription: 'A channel to categorise your notifications',
+          playSound: true,
+          soundName: 'default',
+          importance: 4,
+          vibrate: true,
+        },
+        (created) => created, // callback returns whether the channel was created, false means it already existed.
+      );
+    };
+
+    yield call(createChannel);
+    yield put(setChannelID(channelId));
+  } catch (error) {
+    if (error instanceof Error) {
+      errorAlert(error);
+    }
+  }
+}
 
 export function* googleSignInWorker(action: GetGoogleUserDataSagaActionType) {
   const {setWaitingUserData} = action.payload;
