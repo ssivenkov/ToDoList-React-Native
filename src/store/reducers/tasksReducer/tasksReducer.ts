@@ -4,6 +4,7 @@ import {TasksStateType} from '@store/reducers/tasksReducer/types';
 
 const initialTasksState: TasksStateType = {
   taskLists: [],
+  notificationIDs: [],
 };
 
 export const tasksReducer = (
@@ -30,6 +31,12 @@ export const tasksReducer = (
             } else return taskList;
           }),
         ],
+      };
+
+    case TASKS_ACTIONS.ADD_TASK_NOTIFICATION:
+      return {
+        ...state,
+        notificationIDs: [...state.notificationIDs, action.payload],
       };
 
     case TASKS_ACTIONS.DELETE_TASK_LIST_FROM_SCREEN:
@@ -76,6 +83,7 @@ export const tasksReducer = (
 
     case TASKS_ACTIONS.EDIT_TASK_LIST_TITLE:
       return {
+        ...state,
         taskLists: [
           ...state.taskLists.map((taskList) => {
             if (taskList.id === action.taskListId) {
@@ -89,6 +97,7 @@ export const tasksReducer = (
 
     case TASKS_ACTIONS.SET_TASK_DONE:
       return {
+        ...state,
         taskLists: [
           ...state.taskLists.map((taskList) => {
             if (taskList.id === action.taskListId) {

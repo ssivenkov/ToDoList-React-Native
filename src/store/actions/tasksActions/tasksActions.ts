@@ -2,6 +2,7 @@ import {TASKS_ACTIONS} from '@enums/tasksEnum';
 import {
   AddNewTaskActionType,
   AddNewTaskListActionType,
+  AddTaskNotificationActionType,
   DeleteTaskActionType,
   DeleteTaskListActionType,
   DeleteTaskListFullActionType,
@@ -10,7 +11,10 @@ import {
   SetTaskDoneActionType,
   SetTaskListsActionType,
 } from '@store/actions/tasksActions/types';
-import {TaskListInterface} from '@store/reducers/tasksReducer/types';
+import {
+  NotificationIDType,
+  TaskListInterface,
+} from '@store/reducers/tasksReducer/types';
 
 export const setTaskLists = (
   taskLists: TaskListInterface[],
@@ -33,6 +37,13 @@ export const addNewTask = (
   type: TASKS_ACTIONS.ADD_NEW_TASK,
   modifiedTaskList,
   taskListId,
+});
+
+export const addTaskNotification = (
+  payload: NotificationIDType,
+): AddTaskNotificationActionType => ({
+  type: TASKS_ACTIONS.ADD_TASK_NOTIFICATION,
+  payload,
 });
 
 export const setEditedTaskListTitle = (

@@ -69,6 +69,8 @@ export const CreateTaskButton = (props: CreateTaskButtonPropsType) => {
           modifiedTaskList,
           taskListId,
           newTask,
+          shouldCreateNotification: isOn,
+          date,
           setIsLoading,
           setModalVisible,
           setNewTaskTitle,

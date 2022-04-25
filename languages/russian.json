@@ -15,7 +15,8 @@
       "TodoTasksTab": "Выполнить",
       "DoneTasksTab": "Выполненные",
       "NoTaskListsFound": "Списков задач не найдено",
-      "EnableNotification": "Напомнить о задаче"
+      "EnableNotification": "Напомнить о задаче",
+      "TaskNotification": "Выполните задачу"
     },
     "signInScreen": {
       "SignIn": "Вход",

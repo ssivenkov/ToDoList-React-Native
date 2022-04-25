@@ -24,8 +24,14 @@ export interface TaskListInterface extends TaskListWithTaskType {
   tasks?: TaskType[];
 }
 
+export type NotificationIDType = {
+  taskID: string;
+  notificationID: number;
+};
+
 export type TasksStateType = {
   taskLists: TaskListInterface[];
+  notificationIDs: NotificationIDType[];
 };
 
 export type ConvertedTasksForFirebaseType = {

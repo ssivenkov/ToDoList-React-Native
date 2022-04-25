@@ -6,4 +6,5 @@ export type UserDataType = Nullable<FirebaseAuthTypes.User>;
 export type InitialAuthStateType = {
   authStatus: boolean;
   userData: UserDataType;
+  channelID: string;
 };
