@@ -8,6 +8,7 @@ import {
   DeleteTaskListFullActionType,
   EditTaskListTitleActionType,
   EditTaskTitleActionType,
+  SetNotificationIDsActionType,
   SetTaskDoneActionType,
   SetTaskListsActionType,
 } from '@store/actions/tasksActions/types';
@@ -21,6 +22,13 @@ export const setTaskLists = (
 ): SetTaskListsActionType => ({
   type: TASKS_ACTIONS.SET_TASK_LISTS,
   taskLists,
+});
+
+export const setNotificationIDs = (
+  notifications: NotificationIDType[],
+): SetNotificationIDsActionType => ({
+  type: TASKS_ACTIONS.SET_NOTIFICATIONS,
+  notifications,
 });
 
 export const addNewTaskList = (

@@ -1,5 +1,6 @@
 export enum TASKS_ACTIONS {
   SET_TASK_LISTS = 'taskListsReducer/SET_TASK_LISTS',
+  SET_NOTIFICATIONS = 'taskListsReducer/SET_NOTIFICATIONS',
   ADD_NEW_TASK_LIST = 'taskListsReducer/ADD_NEW_TASK_LIST',
   ADD_NEW_TASK = 'taskListsReducer/ADD_NEW_TASK',
   ADD_TASK_NOTIFICATION = 'taskListsReducer/ADD_TASK_NOTIFICATION',

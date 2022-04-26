@@ -12,6 +12,6 @@ export const getUserData = (
   return state.auth.userData;
 };
 
-export const getChannelIDSelector = (state: AppRootStateType): string => {
+export const getChannelID = (state: AppRootStateType): string => {
   return state.auth.channelID;
 };

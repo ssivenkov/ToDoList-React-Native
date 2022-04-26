@@ -8,6 +8,11 @@ export type SetTaskListsActionType = {
   taskLists: TaskListInterface[];
 };
 
+export type SetNotificationIDsActionType = {
+  type: string;
+  notifications: NotificationIDType[];
+};
+
 export type AddNewTaskListActionType = {
   type: string;
   newTaskList: TaskListInterface;
@@ -62,6 +67,7 @@ export type EditTaskTitleActionType = {
 };
 
 export type TasksActionsType = SetTaskListsActionType &
+  SetNotificationIDsActionType &
   AddNewTaskListActionType &
   AddNewTaskActionType &
   AddTaskNotificationActionType &

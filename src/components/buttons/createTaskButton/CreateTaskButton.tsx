@@ -9,6 +9,7 @@ import {createDate} from '@root/helpers/generateDate';
 import {SetStateType} from '@root/types/common/types';
 import {addNewTask} from '@store/actions/tasksSagaActions/tasksSagaActions';
 import {TaskListInterface, TaskType} from '@store/reducers/tasksReducer/types';
+import {nanoid} from 'nanoid';
 import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
 import {Text, View} from 'react-native';
@@ -16,7 +17,6 @@ import DatePicker from 'react-native-date-picker';
 import 'react-native-get-random-values';
 import {useDispatch} from 'react-redux';
 import ToggleSwitch from 'toggle-switch-react-native';
-import {v4 as uuidv4} from 'uuid';
 import {CreateTaskButtonPropsType} from './types';
 
 export const CreateTaskButton = (props: CreateTaskButtonPropsType) => {
@@ -45,7 +45,7 @@ export const CreateTaskButton = (props: CreateTaskButtonPropsType) => {
     setModalVisible: SetStateType<boolean>,
   ): void => {
     const newTask: TaskType = {
-      id: uuidv4(),
+      id: nanoid(),
       date: createDate(),
       isDone: false,
       title: newTaskTitle,
@@ -74,6 +74,7 @@ export const CreateTaskButton = (props: CreateTaskButtonPropsType) => {
           setIsLoading,
           setModalVisible,
           setNewTaskTitle,
+          setIsOn,
         }),
       );
     }
