@@ -35,6 +35,7 @@ export type AddNewTaskPayloadType = {
   setIsLoading: SetStateType<boolean>;
   setModalVisible: SetStateType<boolean>;
   setNewTaskTitle: SetStateType<string>;
+  setIsOn: SetStateType<boolean>;
 };
 
 export type AddNewTaskSagaActionType = {

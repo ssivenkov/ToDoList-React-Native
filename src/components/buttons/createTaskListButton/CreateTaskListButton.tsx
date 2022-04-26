@@ -7,11 +7,11 @@ import {createDate} from '@root/helpers/generateDate';
 import {SetStateType} from '@root/types/common/types';
 import {addNewTaskList} from '@store/actions/tasksSagaActions/tasksSagaActions';
 import {TaskListInterface} from '@store/reducers/tasksReducer/types';
+import {nanoid} from 'nanoid';
 import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
 import 'react-native-get-random-values';
 import {useDispatch} from 'react-redux';
-import {v4 as uuidv4} from 'uuid';
 import {styles} from './styles';
 
 export const CreateTaskListButton = () => {
@@ -29,7 +29,7 @@ export const CreateTaskListButton = () => {
   ): void => {
     if (newTaskListTitle.length > 0) {
       const newTaskList: TaskListInterface = {
-        id: uuidv4(),
+        id: nanoid(),
         date: createDate(),
         title: newTaskListTitle,
         showInToDo: true,

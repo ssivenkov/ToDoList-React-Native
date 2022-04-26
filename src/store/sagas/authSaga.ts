@@ -15,7 +15,7 @@ import {
 import {setTaskLists} from '@store/actions/tasksActions/tasksActions';
 import {initialAuthState} from '@store/reducers/authReducer/authReducer';
 import {UserDataType} from '@store/reducers/authReducer/types';
-import {AppRootStateType} from '@store/store';
+import {getUserData} from '@store/selectors/authSelectors';
 import {AccessToken, LoginManager} from 'react-native-fbsdk-next';
 import PushNotification from 'react-native-push-notification';
 import {call, put, select} from 'redux-saga/effects';
@@ -115,9 +115,7 @@ export function* signOutWorker() {
     yield call(delay, 10);
 
     yield call(signOut);
-    const userData: UserDataType = yield select(
-      (state: AppRootStateType) => state.auth.userData,
-    );
+    const userData: UserDataType = yield select(getUserData);
     const providerId = userData && userData.providerData[0]?.providerId;
 
     if (providerId === 'google.com') {

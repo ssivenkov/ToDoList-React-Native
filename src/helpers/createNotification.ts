@@ -4,7 +4,7 @@ import PushNotification from 'react-native-push-notification';
 export const createNotification = (
   channelId: string,
   date: Date,
-  id: number,
+  id: string,
   taskTitle: string,
 ) => {
   PushNotification.localNotificationSchedule({
