@@ -15,6 +15,9 @@ export const tasksReducer = (
     case TASKS_ACTIONS.SET_TASK_LISTS:
       return {...state, taskLists: action.taskLists};
 
+    case TASKS_ACTIONS.SET_NOTIFICATIONS:
+      return {...state, notificationIDs: action.notifications};
+
     case TASKS_ACTIONS.ADD_NEW_TASK_LIST:
       return {
         ...state,
