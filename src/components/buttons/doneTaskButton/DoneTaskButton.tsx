@@ -8,7 +8,6 @@ import React from 'react';
 import {Trans} from 'react-i18next';
 import {Text} from 'react-native';
 import {useDispatch} from 'react-redux';
-import {v4 as uuidv4} from 'uuid';
 import {styles} from './styles';
 import {DoneTaskButtonPropsType} from './types';
 
@@ -34,7 +33,7 @@ export const DoneTaskButton = ({
       buttonIcon={<FontAwesomeIcon icon={faCheck} size={iconSizeSmall} />}>
       <Text style={styles.warnText}>
         <Trans i18nKey="tasksScreen.DoneButton">
-          <Text key={uuidv4()} style={styles.greenHighlightTask}>
+          <Text style={styles.greenHighlightTask}>
             {{text: completedTaskTitle}}
           </Text>
         </Trans>

@@ -1,8 +1,16 @@
-import {TaskListInterface} from '@store/reducers/tasksReducer/types';
+import {
+  NotificationIDType,
+  TaskListInterface,
+} from '@store/reducers/tasksReducer/types';
 
 export type SetTaskListsActionType = {
   type: string;
   taskLists: TaskListInterface[];
+};
+
+export type SetNotificationIDsActionType = {
+  type: string;
+  notifications: NotificationIDType[];
 };
 
 export type AddNewTaskListActionType = {
@@ -14,6 +22,21 @@ export type AddNewTaskActionType = {
   type: string;
   modifiedTaskList: TaskListInterface;
   taskListId: string;
+};
+
+export type SetTasksNotificationsActionType = {
+  type: string;
+  tasksIDArr: string[];
+};
+
+export type TaskNotificationActionType = {
+  type: string;
+  payload: NotificationIDType;
+};
+
+export type DeleteTaskNotificationActionType = {
+  type: string;
+  taskID: string;
 };
 
 export type SetTaskDoneActionType = {
@@ -54,8 +77,12 @@ export type EditTaskTitleActionType = {
 };
 
 export type TasksActionsType = SetTaskListsActionType &
+  SetNotificationIDsActionType &
   AddNewTaskListActionType &
   AddNewTaskActionType &
+  SetTasksNotificationsActionType &
+  TaskNotificationActionType &
+  DeleteTaskNotificationActionType &
   SetTaskDoneActionType &
   DeleteTaskListActionType &
   DeleteTaskActionType &

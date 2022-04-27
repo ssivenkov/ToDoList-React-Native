@@ -4,7 +4,12 @@ import {
   GetGoogleUserDataSagaActionType,
   SignOutSagaActionType,
   GetUserDataPayloadType,
+  CreateChannelSagaActionType,
 } from '@store/actions/authSagaActions/types';
+
+export const createChannel = (): CreateChannelSagaActionType => ({
+  type: AUTH_SAGA_ACTIONS.CREATE_CHANNEL_SAGA,
+});
 
 export const GoogleSignIn = (
   payload: GetUserDataPayloadType,
