@@ -1,5 +1,4 @@
 import {
-  NoInternetConnection,
   notificationIdMaxLength,
   taskLists,
   tasks,
@@ -59,6 +58,7 @@ import {
   getNotificationIDs,
   getTaskLists,
 } from '@store/selectors/tasksSelectors';
+import {t} from 'i18next';
 import PushNotification from 'react-native-push-notification';
 import {call, put, select} from 'redux-saga/effects';
 
