@@ -36,10 +36,43 @@ export const tasksReducer = (
         ],
       };
 
+    case TASKS_ACTIONS.SET_TASKS_NOTIFICATIONS:
+      return {
+        ...state,
+        notificationIDs: [
+          ...state.notificationIDs.filter((notification) => {
+            const notificationToDelete =
+              action.tasksIDArr.join(',').indexOf(notification.taskID) > -1;
+            if (!notificationToDelete) return true;
+          }),
+        ],
+      };
+
     case TASKS_ACTIONS.ADD_TASK_NOTIFICATION:
       return {
         ...state,
         notificationIDs: [...state.notificationIDs, action.payload],
+      };
+
+    case TASKS_ACTIONS.EDIT_TASK_NOTIFICATION:
+      return {
+        ...state,
+        notificationIDs: [
+          ...state.notificationIDs.filter((notification) => {
+            return notification.taskID !== action.payload.taskID;
+          }),
+          action.payload,
+        ],
+      };
+
+    case TASKS_ACTIONS.DELETE_TASK_NOTIFICATION:
+      return {
+        ...state,
+        notificationIDs: [
+          ...state.notificationIDs.filter((notification) => {
+            return notification.taskID !== action.taskID;
+          }),
+        ],
       };
 
     case TASKS_ACTIONS.DELETE_TASK_LIST_FROM_SCREEN:

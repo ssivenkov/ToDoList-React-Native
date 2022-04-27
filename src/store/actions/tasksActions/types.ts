@@ -24,9 +24,19 @@ export type AddNewTaskActionType = {
   taskListId: string;
 };
 
-export type AddTaskNotificationActionType = {
+export type SetTasksNotificationsActionType = {
+  type: string;
+  tasksIDArr: string[];
+};
+
+export type TaskNotificationActionType = {
   type: string;
   payload: NotificationIDType;
+};
+
+export type DeleteTaskNotificationActionType = {
+  type: string;
+  taskID: string;
 };
 
 export type SetTaskDoneActionType = {
@@ -70,7 +80,9 @@ export type TasksActionsType = SetTaskListsActionType &
   SetNotificationIDsActionType &
   AddNewTaskListActionType &
   AddNewTaskActionType &
-  AddTaskNotificationActionType &
+  SetTasksNotificationsActionType &
+  TaskNotificationActionType &
+  DeleteTaskNotificationActionType &
   SetTaskDoneActionType &
   DeleteTaskListActionType &
   DeleteTaskActionType &

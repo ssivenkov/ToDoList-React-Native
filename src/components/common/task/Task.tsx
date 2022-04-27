@@ -1,6 +1,6 @@
 import {DeleteTaskButton} from '@components/buttons/deleteTaskButton/DeleteTaskButton';
 import {DoneTaskButton} from '@components/buttons/doneTaskButton/DoneTaskButton';
-import {EditTaskTitleButton} from '@components/buttons/editTaskTitleButton/EditTaskTitleButton';
+import {EditTaskButton} from '@components/buttons/editTaskButton/EditTaskButton';
 import React, {FC} from 'react';
 import {Text, View} from 'react-native';
 import {styles} from './styles';
@@ -20,10 +20,11 @@ export const Task: FC<TaskPropsType> = (props) => {
             doneTaskId={taskId}
           />
         )}
-        <EditTaskTitleButton
+        <EditTaskButton
           taskListId={taskListId}
           taskId={taskId}
           oldTaskTitle={taskTitle}
+          isTodo={isTodo}
         />
         <DeleteTaskButton
           isTodoTaskList={isTodo}
