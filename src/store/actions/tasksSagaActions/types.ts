@@ -1,5 +1,5 @@
 import {TASKS_SAGA_ACTIONS} from '@enums/tasksSagaEnum';
-import {SetStateType} from '@root/types/common/types';
+import {Nullable, SetStateType} from '@root/types/common/types';
 import {
   TaskListInterface,
   TaskListWithTaskType,
@@ -30,9 +30,12 @@ export type AddNewTaskPayloadType = {
   modifiedTaskList: TaskListInterface;
   taskListId: string;
   newTask: TaskType;
+  shouldCreateNotification: boolean;
+  date: Nullable<Date>;
   setIsLoading: SetStateType<boolean>;
   setModalVisible: SetStateType<boolean>;
   setNewTaskTitle: SetStateType<string>;
+  setIsOn: SetStateType<boolean>;
 };
 
 export type AddNewTaskSagaActionType = {
@@ -93,6 +96,8 @@ export type SetEditedTaskPayloadType = {
   taskListId: string;
   taskId: string;
   editedTaskTitle: string;
+  shouldCreateNotification: boolean;
+  date: Nullable<Date>;
   setIsLoading: SetStateType<boolean>;
   setModalVisible: SetStateType<boolean>;
   setEditedTaskTitle: SetStateType<string>;

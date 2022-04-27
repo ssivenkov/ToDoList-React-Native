@@ -4,9 +4,15 @@ import {Nullable} from '@root/types/common/types';
 import {
   SetAuthStateActionType,
   SetAuthStatusActionType,
+  SetChannelIDActionType,
   SetUserDataActionType,
 } from '@store/actions/authActions/types';
 import {InitialAuthStateType} from '@store/reducers/authReducer/types';
+
+export const setChannelID = (channelID: string): SetChannelIDActionType => ({
+  type: AUTH_ACTIONS.SET_CHANNEL_ID,
+  channelID,
+});
 
 export const setAuthStatus = (
   authStatus: boolean,

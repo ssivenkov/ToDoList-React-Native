@@ -5,18 +5,32 @@ import {
   DeleteTaskActionType,
   DeleteTaskListActionType,
   DeleteTaskListFullActionType,
+  DeleteTaskNotificationActionType,
   EditTaskListTitleActionType,
   EditTaskTitleActionType,
+  SetNotificationIDsActionType,
   SetTaskDoneActionType,
   SetTaskListsActionType,
+  SetTasksNotificationsActionType,
+  TaskNotificationActionType,
 } from '@store/actions/tasksActions/types';
-import {TaskListInterface} from '@store/reducers/tasksReducer/types';
+import {
+  NotificationIDType,
+  TaskListInterface,
+} from '@store/reducers/tasksReducer/types';
 
 export const setTaskLists = (
   taskLists: TaskListInterface[],
 ): SetTaskListsActionType => ({
   type: TASKS_ACTIONS.SET_TASK_LISTS,
   taskLists,
+});
+
+export const setNotificationIDs = (
+  notifications: NotificationIDType[],
+): SetNotificationIDsActionType => ({
+  type: TASKS_ACTIONS.SET_NOTIFICATIONS,
+  notifications,
 });
 
 export const addNewTaskList = (
@@ -33,6 +47,34 @@ export const addNewTask = (
   type: TASKS_ACTIONS.ADD_NEW_TASK,
   modifiedTaskList,
   taskListId,
+});
+
+export const setTasksNotifications = (
+  tasksIDArr: string[],
+): SetTasksNotificationsActionType => ({
+  type: TASKS_ACTIONS.SET_TASKS_NOTIFICATIONS,
+  tasksIDArr,
+});
+
+export const addTaskNotification = (
+  payload: NotificationIDType,
+): TaskNotificationActionType => ({
+  type: TASKS_ACTIONS.ADD_TASK_NOTIFICATION,
+  payload,
+});
+
+export const editTaskNotification = (
+  payload: NotificationIDType,
+): TaskNotificationActionType => ({
+  type: TASKS_ACTIONS.EDIT_TASK_NOTIFICATION,
+  payload,
+});
+
+export const deleteTaskNotification = (
+  taskID: string,
+): DeleteTaskNotificationActionType => ({
+  type: TASKS_ACTIONS.DELETE_TASK_NOTIFICATION,
+  taskID,
 });
 
 export const setEditedTaskListTitle = (

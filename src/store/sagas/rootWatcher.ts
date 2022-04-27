@@ -4,6 +4,7 @@ import {
   googleSignInWorker,
   signOutWorker,
   facebookSignInWorker,
+  createChannelWorker,
 } from '@store/sagas/authSaga';
 import {
   addNewTaskListWorker,
@@ -13,7 +14,7 @@ import {
   deleteTaskListFullWorker,
   deleteTaskWorker,
   editTaskListTitleWorker,
-  editTaskTitleWorker,
+  editTaskWorker,
   setTaskIsDoneWorker,
   syncUserTaskListsWorker,
 } from '@store/sagas/tasksSaga';
@@ -26,6 +27,7 @@ export function* rootWatcher() {
     facebookSignInWorker,
   );
   yield takeLatest(AUTH_SAGA_ACTIONS.SIGN_OUT_SAGA, signOutWorker);
+  yield takeLatest(AUTH_SAGA_ACTIONS.CREATE_CHANNEL_SAGA, createChannelWorker);
 
   yield takeLatest(TASKS_SAGA_ACTIONS.CHECK_USER, checkUserWorker);
   yield takeLatest(
@@ -47,6 +49,6 @@ export function* rootWatcher() {
     deleteTaskListFromScreenWorker,
   );
   yield takeLatest(TASKS_SAGA_ACTIONS.SET_TASK_IS_DONE, setTaskIsDoneWorker);
-  yield takeLatest(TASKS_SAGA_ACTIONS.SET_EDITED_TASK, editTaskTitleWorker);
+  yield takeLatest(TASKS_SAGA_ACTIONS.SET_EDITED_TASK, editTaskWorker);
   yield takeLatest(TASKS_SAGA_ACTIONS.DELETE_TASK, deleteTaskWorker);
 }

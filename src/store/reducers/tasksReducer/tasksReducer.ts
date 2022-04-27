@@ -4,6 +4,7 @@ import {TasksStateType} from '@store/reducers/tasksReducer/types';
 
 const initialTasksState: TasksStateType = {
   taskLists: [],
+  notificationIDs: [],
 };
 
 export const tasksReducer = (
@@ -13,6 +14,9 @@ export const tasksReducer = (
   switch (action.type) {
     case TASKS_ACTIONS.SET_TASK_LISTS:
       return {...state, taskLists: action.taskLists};
+
+    case TASKS_ACTIONS.SET_NOTIFICATIONS:
+      return {...state, notificationIDs: action.notifications};
 
     case TASKS_ACTIONS.ADD_NEW_TASK_LIST:
       return {
@@ -28,6 +32,45 @@ export const tasksReducer = (
             if (taskList.id === action.taskListId) {
               return action.modifiedTaskList;
             } else return taskList;
+          }),
+        ],
+      };
+
+    case TASKS_ACTIONS.SET_TASKS_NOTIFICATIONS:
+      return {
+        ...state,
+        notificationIDs: [
+          ...state.notificationIDs.filter((notification) => {
+            const notificationToDelete =
+              action.tasksIDArr.join(',').indexOf(notification.taskID) > -1;
+            if (!notificationToDelete) return true;
+          }),
+        ],
+      };
+
+    case TASKS_ACTIONS.ADD_TASK_NOTIFICATION:
+      return {
+        ...state,
+        notificationIDs: [...state.notificationIDs, action.payload],
+      };
+
+    case TASKS_ACTIONS.EDIT_TASK_NOTIFICATION:
+      return {
+        ...state,
+        notificationIDs: [
+          ...state.notificationIDs.filter((notification) => {
+            return notification.taskID !== action.payload.taskID;
+          }),
+          action.payload,
+        ],
+      };
+
+    case TASKS_ACTIONS.DELETE_TASK_NOTIFICATION:
+      return {
+        ...state,
+        notificationIDs: [
+          ...state.notificationIDs.filter((notification) => {
+            return notification.taskID !== action.taskID;
           }),
         ],
       };
@@ -76,6 +119,7 @@ export const tasksReducer = (
 
     case TASKS_ACTIONS.EDIT_TASK_LIST_TITLE:
       return {
+        ...state,
         taskLists: [
           ...state.taskLists.map((taskList) => {
             if (taskList.id === action.taskListId) {
@@ -89,6 +133,7 @@ export const tasksReducer = (
 
     case TASKS_ACTIONS.SET_TASK_DONE:
       return {
+        ...state,
         taskLists: [
           ...state.taskLists.map((taskList) => {
             if (taskList.id === action.taskListId) {
