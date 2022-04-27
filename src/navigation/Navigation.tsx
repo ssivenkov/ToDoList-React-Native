@@ -9,8 +9,9 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {GoogleWebClientId} from '@root/api/config';
 import {Nullable} from '@root/types/common/types';
 import {setUserData} from '@store/actions/authActions/authActions';
+import {createChannel} from '@store/actions/authSagaActions/authSagaActions';
 import {checkUser} from '@store/actions/tasksSagaActions/tasksSagaActions';
-import {getUserAuthStatus} from '@store/selectors/authSelectors';
+import {getChannelID, getUserAuthStatus} from '@store/selectors/authSelectors';
 import {AppRootStateType} from '@store/store';
 import React, {useEffect, useState} from 'react';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
@@ -23,6 +24,7 @@ export const Navigation = () => {
   const isUserAuth = useSelector<AppRootStateType, boolean>(getUserAuthStatus);
   const [firebaseInitializing, setFirebaseInitializing] =
     useState<boolean>(true);
+  const channelID: string = useSelector(getChannelID);
 
   const onAuthStateChanged = (user: Nullable<FirebaseAuthTypes.User>) => {
     dispatch(setUserData(user));
@@ -37,6 +39,8 @@ export const Navigation = () => {
   };
 
   useEffect(() => {
+    if (!channelID) dispatch(createChannel());
+
     GoogleSignin.configure({
       webClientId: GoogleWebClientId,
     });

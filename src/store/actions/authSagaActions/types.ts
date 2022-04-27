@@ -10,6 +10,10 @@ export type GetUserDataPayloadType = {
   setWaitingUserData: (status: boolean) => void;
 };
 
+export type CreateChannelSagaActionType = {
+  type: typeof AUTH_SAGA_ACTIONS.CREATE_CHANNEL_SAGA;
+};
+
 export type GetGoogleUserDataSagaActionType = {
   type: typeof AUTH_SAGA_ACTIONS.GOOGLE_SIGN_IN_SAGA;
   payload: GetUserDataPayloadType;

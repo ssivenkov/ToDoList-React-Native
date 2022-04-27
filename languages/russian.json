@@ -12,10 +12,12 @@
       "DeleteQuestionButtonTitle": "Удалить <0>{{text}}</0>?",
       "DoneButton": "Задача <0>{{text}}</0> выполнена?",
       "EditTaskListButtonTitle": "Название списка задач:",
-      "EditTaskButtonTitle": "Название задачи:",
+      "EditTaskButton": "Редактирование задачи:",
       "TodoTasksTab": "Выполнить",
       "DoneTasksTab": "Выполненные",
-      "NoTaskListsFound": "Списков задач не найдено"
+      "NoTaskListsFound": "Списков задач не найдено",
+      "EnableNotification": "Напомнить о задаче",
+      "TaskNotification": "Выполните задачу"
     },
     "signInScreen": {
       "SignIn": "Вход",
