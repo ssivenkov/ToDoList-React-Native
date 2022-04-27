@@ -7,11 +7,13 @@ export const createNotification = (
   id: string,
   taskTitle: string,
 ) => {
+  const message: string = `${t('tasksScreen.TaskNotification')} ${taskTitle}`;
+
   PushNotification.localNotificationSchedule({
     channelId,
     date,
     id,
-    message: `${t('tasksScreen.TaskNotification')} ${taskTitle}`,
+    message,
     allowWhileIdle: true,
   });
 };
