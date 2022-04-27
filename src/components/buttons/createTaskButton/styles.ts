@@ -7,8 +7,6 @@ type CreateTaskButtonStylesType = {
   dateTimePickerContainer: ViewStyle;
 };
 
-const {BLACK} = COLORS;
-
 export const styles = StyleSheet.create<CreateTaskButtonStylesType>({
   notificationContainer: {
     marginTop: 23,
@@ -18,7 +16,7 @@ export const styles = StyleSheet.create<CreateTaskButtonStylesType>({
   },
 
   text: {
-    color: BLACK,
+    color: COLORS.BLACK,
     fontSize: 20,
     marginBottom: 2,
   },
