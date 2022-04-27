@@ -13,4 +13,3 @@ export const ToDo = 'ToDo';
 export const Done = 'Done';
 export const WithAuth = 'WithAuth';
 export const SignIn = 'SignIn';
-export const NoInternetConnection = 'No internet connection!';

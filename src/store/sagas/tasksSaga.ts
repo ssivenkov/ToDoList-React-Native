@@ -129,7 +129,7 @@ export function* addNewTaskListWorker(action: AddNewTaskListSagaActionType) {
   try {
     const connectionStatus: NetInfoState = yield NetInfo.fetch();
     if (!connectionStatus.isInternetReachable) {
-      errorAlert(NoInternetConnection);
+      errorAlert(t('common.NoInternetConnection'));
       return;
     }
     yield call(delay, 10);
@@ -159,7 +159,7 @@ export function* addNewTaskWorker(action: AddNewTaskSagaActionType) {
   try {
     const connectionStatus: NetInfoState = yield NetInfo.fetch();
     if (!connectionStatus.isInternetReachable) {
-      errorAlert(NoInternetConnection);
+      errorAlert(t('common.NoInternetConnection'));
       return;
     }
     yield call(delay, 10);
@@ -222,7 +222,7 @@ export function* editTaskListTitleWorker(
   try {
     const connectionStatus: NetInfoState = yield NetInfo.fetch();
     if (!connectionStatus.isInternetReachable) {
-      errorAlert(NoInternetConnection);
+      errorAlert(t('common.NoInternetConnection'));
       return;
     }
     yield call(delay, 10);
@@ -265,7 +265,7 @@ export function* deleteTaskListFullWorker(
   try {
     const connectionStatus: NetInfoState = yield NetInfo.fetch();
     if (!connectionStatus.isInternetReachable) {
-      errorAlert(NoInternetConnection);
+      errorAlert(t('common.NoInternetConnection'));
       return;
     }
     yield call(delay, 10);
@@ -325,7 +325,7 @@ export function* deleteTaskListFromScreenWorker(
   try {
     const connectionStatus: NetInfoState = yield NetInfo.fetch();
     if (!connectionStatus.isInternetReachable) {
-      errorAlert(NoInternetConnection);
+      errorAlert(t('common.NoInternetConnection'));
       return;
     }
     yield call(delay, 10);
@@ -421,7 +421,7 @@ export function* setTaskIsDoneWorker(action: SetTaskIsDoneActionType) {
   try {
     const connectionStatus: NetInfoState = yield NetInfo.fetch();
     if (!connectionStatus.isInternetReachable) {
-      errorAlert(NoInternetConnection);
+      errorAlert(t('common.NoInternetConnection'));
       return;
     }
     yield call(delay, 10);
@@ -464,7 +464,7 @@ export function* editTaskWorker(action: SetEditedTaskActionType) {
   try {
     const connectionStatus: NetInfoState = yield NetInfo.fetch();
     if (!connectionStatus.isInternetReachable) {
-      errorAlert(NoInternetConnection);
+      errorAlert(t('common.NoInternetConnection'));
       return;
     }
     yield call(delay, 10);
@@ -546,7 +546,7 @@ export function* deleteTaskWorker(action: DeleteTaskActionType) {
   try {
     const connectionStatus: NetInfoState = yield NetInfo.fetch();
     if (!connectionStatus.isInternetReachable) {
-      errorAlert(NoInternetConnection);
+      errorAlert(t('common.NoInternetConnection'));
       return;
     }
     yield call(delay, 10);
