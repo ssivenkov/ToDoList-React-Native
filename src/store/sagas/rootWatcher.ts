@@ -14,7 +14,7 @@ import {
   deleteTaskListFullWorker,
   deleteTaskWorker,
   editTaskListTitleWorker,
-  editTaskTitleWorker,
+  editTaskWorker,
   setTaskIsDoneWorker,
   syncUserTaskListsWorker,
 } from '@store/sagas/tasksSaga';
@@ -49,6 +49,6 @@ export function* rootWatcher() {
     deleteTaskListFromScreenWorker,
   );
   yield takeLatest(TASKS_SAGA_ACTIONS.SET_TASK_IS_DONE, setTaskIsDoneWorker);
-  yield takeLatest(TASKS_SAGA_ACTIONS.SET_EDITED_TASK, editTaskTitleWorker);
+  yield takeLatest(TASKS_SAGA_ACTIONS.SET_EDITED_TASK, editTaskWorker);
   yield takeLatest(TASKS_SAGA_ACTIONS.DELETE_TASK, deleteTaskWorker);
 }

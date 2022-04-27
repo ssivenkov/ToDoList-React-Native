@@ -11,7 +11,7 @@
       "DeleteQuestionButtonTitle": "Are you sure to delete <0>{{text}}</0>?",
       "DoneButton": "Are you sure the task <0>{{text}}</0> is completed?",
       "EditTaskListButtonTitle": "Edit task list title:",
-      "EditTaskButtonTitle": "Edit task title:",
+      "EditTaskButton": "Edit task:",
       "TodoTasksTab": "Todo tasks",
       "DoneTasksTab": "Done tasks",
       "NoTaskListsFound": "No task lists found",

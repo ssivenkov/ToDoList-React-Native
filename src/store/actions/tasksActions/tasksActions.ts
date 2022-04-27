@@ -2,15 +2,17 @@ import {TASKS_ACTIONS} from '@enums/tasksEnum';
 import {
   AddNewTaskActionType,
   AddNewTaskListActionType,
-  AddTaskNotificationActionType,
   DeleteTaskActionType,
   DeleteTaskListActionType,
   DeleteTaskListFullActionType,
+  DeleteTaskNotificationActionType,
   EditTaskListTitleActionType,
   EditTaskTitleActionType,
   SetNotificationIDsActionType,
   SetTaskDoneActionType,
   SetTaskListsActionType,
+  SetTasksNotificationsActionType,
+  TaskNotificationActionType,
 } from '@store/actions/tasksActions/types';
 import {
   NotificationIDType,
@@ -47,11 +49,32 @@ export const addNewTask = (
   taskListId,
 });
 
+export const setTasksNotifications = (
+  tasksIDArr: string[],
+): SetTasksNotificationsActionType => ({
+  type: TASKS_ACTIONS.SET_TASKS_NOTIFICATIONS,
+  tasksIDArr,
+});
+
 export const addTaskNotification = (
   payload: NotificationIDType,
-): AddTaskNotificationActionType => ({
+): TaskNotificationActionType => ({
   type: TASKS_ACTIONS.ADD_TASK_NOTIFICATION,
   payload,
+});
+
+export const editTaskNotification = (
+  payload: NotificationIDType,
+): TaskNotificationActionType => ({
+  type: TASKS_ACTIONS.EDIT_TASK_NOTIFICATION,
+  payload,
+});
+
+export const deleteTaskNotification = (
+  taskID: string,
+): DeleteTaskNotificationActionType => ({
+  type: TASKS_ACTIONS.DELETE_TASK_NOTIFICATION,
+  taskID,
 });
 
 export const setEditedTaskListTitle = (

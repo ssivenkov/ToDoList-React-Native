@@ -20,11 +20,14 @@ import {
   deleteTask,
   deleteTaskListFromScreen,
   deleteTaskListFull,
+  deleteTaskNotification,
+  editTaskNotification,
   setEditedTask,
   setEditedTaskListTitle,
   setNotificationIDs,
   setTaskIsDone,
   setTaskLists,
+  setTasksNotifications,
 } from '@store/actions/tasksActions/tasksActions';
 import {syncUserTaskLists} from '@store/actions/tasksSagaActions/tasksSagaActions';
 import {
@@ -164,6 +167,9 @@ export function* addNewTaskWorker(action: AddNewTaskSagaActionType) {
     yield call(action.payload.setIsLoading, true);
     const {uid} = yield select(getUserData);
     const channelId: string = yield select(getChannelID);
+    const notificationID = generateRandomNumber(
+      notificationIdMaxLength,
+    ).toString();
     const addNewTaskToFirebase = (payload: AddNewTaskPayloadType) => {
       return DB.ref(
         `${Users}/${uid}/${taskLists}/${payload.taskListId}/${tasks}/${payload.newTask.id}`,
@@ -171,11 +177,7 @@ export function* addNewTaskWorker(action: AddNewTaskSagaActionType) {
     };
     yield call(addNewTaskToFirebase, action.payload);
 
-    if (action.payload.shouldCreateNotification) {
-      const notificationID = generateRandomNumber(
-        notificationIdMaxLength,
-      ).toString();
-
+    if (action.payload.shouldCreateNotification && action.payload.date) {
       yield call(
         createNotification,
         channelId,
@@ -188,6 +190,7 @@ export function* addNewTaskWorker(action: AddNewTaskSagaActionType) {
         addTaskNotification({
           taskID: action.payload.newTask.id,
           notificationID,
+          date: action.payload.date,
         }),
       );
     } else {
@@ -290,7 +293,9 @@ export function* deleteTaskListFullWorker(
     };
 
     if (taskList && taskList.tasks) {
+      const tasksIDArr: string[] = [];
       taskList.tasks.forEach((task) => {
+        tasksIDArr.push(task.id);
         const notificationItem = findNotificationItem(task.id);
 
         if (notificationItem && notificationItem.notificationID) {
@@ -299,6 +304,8 @@ export function* deleteTaskListFullWorker(
           );
         }
       });
+
+      yield put(setTasksNotifications(tasksIDArr));
     }
 
     yield put(deleteTaskListFull(action.payload.taskListId));
@@ -325,6 +332,15 @@ export function* deleteTaskListFromScreenWorker(
 
     yield call(action.payload.setIsLoading, true);
     const {uid} = yield select(getUserData);
+    const notificationIDs: NotificationIDType[] = yield select(
+      getNotificationIDs,
+    );
+    const findNotificationItem = (taskID: string) => {
+      return notificationIDs.find((item) => item.taskID === taskID);
+    };
+
+    const tasksIDArr: string[] = [];
+
     const deleteTaskListFromScreenInFirebase = (
       payload: DeleteTaskListFromScreenPayloadType,
     ) => {
@@ -334,7 +350,20 @@ export function* deleteTaskListFromScreenWorker(
         DB.ref(`${Users}/${uid}/${taskLists}/${modifiedTaskList.id}`).update({
           showInToDo: false,
         });
+
         if (modifiedTaskList.tasks && modifiedTaskList.tasks.length > 0) {
+          modifiedTaskList.tasks.forEach((task) => {
+            if (!task.isDone) tasksIDArr.push(task.id);
+
+            const notificationItem = findNotificationItem(task.id);
+
+            if (notificationItem && notificationItem.notificationID) {
+              PushNotification.cancelLocalNotification(
+                notificationItem.notificationID,
+              );
+            }
+          });
+
           modifiedTaskList.tasks = modifiedTaskList.tasks.filter(
             (task) => task.isDone,
           );
@@ -366,7 +395,11 @@ export function* deleteTaskListFromScreenWorker(
         ).set(convertedTasksForFirebase);
       }
     };
+
     yield call(deleteTaskListFromScreenInFirebase, action.payload);
+
+    yield put(setTasksNotifications(tasksIDArr));
+
     yield put(
       deleteTaskListFromScreen(
         action.payload.fullTaskList,
@@ -401,6 +434,19 @@ export function* setTaskIsDoneWorker(action: SetTaskIsDoneActionType) {
       ).update({isDone: true});
     };
     yield call(setTaskIsDoneInFirebase, action.payload);
+
+    const notificationIDs: NotificationIDType[] = yield select(
+      getNotificationIDs,
+    );
+    const taskNotification = notificationIDs.find((item) => {
+      return action.payload.doneTaskId === item.taskID;
+    });
+
+    if (taskNotification && taskNotification.notificationID) {
+      PushNotification.cancelLocalNotification(taskNotification.notificationID);
+    }
+    yield put(deleteTaskNotification(action.payload.doneTaskId));
+
     yield put(
       setTaskIsDone(action.payload.taskListId, action.payload.doneTaskId),
     );
@@ -414,7 +460,7 @@ export function* setTaskIsDoneWorker(action: SetTaskIsDoneActionType) {
   }
 }
 
-export function* editTaskTitleWorker(action: SetEditedTaskActionType) {
+export function* editTaskWorker(action: SetEditedTaskActionType) {
   try {
     const connectionStatus: NetInfoState = yield NetInfo.fetch();
     if (!connectionStatus.isInternetReachable) {
@@ -425,12 +471,56 @@ export function* editTaskTitleWorker(action: SetEditedTaskActionType) {
 
     yield call(action.payload.setIsLoading, true);
     const {uid} = yield select(getUserData);
+    const channelId: string = yield select(getChannelID);
     const editTaskTitleInFirebase = (payload: SetEditedTaskPayloadType) => {
       return DB.ref(
         `${Users}/${uid}/${taskLists}/${payload.taskListId}/${tasks}/${payload.taskId}`,
       ).update({title: payload.editedTaskTitle});
     };
     yield call(editTaskTitleInFirebase, action.payload);
+
+    if (action.payload.shouldCreateNotification && action.payload.date) {
+      const notificationID = generateRandomNumber(
+        notificationIdMaxLength,
+      ).toString();
+
+      yield call(
+        createNotification,
+        channelId,
+        action.payload.date,
+        notificationID,
+        action.payload.editedTaskTitle,
+      );
+
+      yield put(
+        editTaskNotification({
+          taskID: action.payload.taskId,
+          notificationID,
+          date: action.payload.date,
+        }),
+      );
+    } else {
+      const notificationIDs: NotificationIDType[] = yield select(
+        getNotificationIDs,
+      );
+
+      const taskNotification = notificationIDs.find((item) => {
+        return action.payload.taskId === item.taskID;
+      });
+
+      if (taskNotification && taskNotification.notificationID) {
+        PushNotification.cancelLocalNotification(
+          taskNotification.notificationID,
+        );
+      }
+
+      yield put(
+        editTaskNotification({
+          taskID: action.payload.taskId,
+        }),
+      );
+    }
+
     yield put(
       setEditedTask(
         action.payload.taskListId,
@@ -480,6 +570,7 @@ export function* deleteTaskWorker(action: DeleteTaskActionType) {
     if (taskNotification && taskNotification.notificationID) {
       PushNotification.cancelLocalNotification(taskNotification.notificationID);
     }
+    yield put(deleteTaskNotification(action.payload.taskId));
 
     yield put(deleteTask(action.payload.taskListId, action.payload.taskId));
     yield call(action.payload.setIsLoading, false);

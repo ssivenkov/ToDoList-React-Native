@@ -1,7 +1,6 @@
-import {COLORS} from '@colors/colors';
-import {styles} from '@components/buttons/createTaskButton/styles';
 import {CustomInput} from '@components/common/input/CustomInput';
 import {ModalIcon} from '@components/common/modals/ModalIcon';
+import {Notification} from '@components/common/notification/Notification';
 import {iconSizeSmall} from '@constants/constants';
 import {faPlus} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
@@ -12,11 +11,8 @@ import {TaskListInterface, TaskType} from '@store/reducers/tasksReducer/types';
 import {nanoid} from 'nanoid';
 import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
-import {Text, View} from 'react-native';
-import DatePicker from 'react-native-date-picker';
 import 'react-native-get-random-values';
 import {useDispatch} from 'react-redux';
-import ToggleSwitch from 'toggle-switch-react-native';
 import {CreateTaskButtonPropsType} from './types';
 
 export const CreateTaskButton = (props: CreateTaskButtonPropsType) => {
@@ -37,7 +33,6 @@ export const CreateTaskButton = (props: CreateTaskButtonPropsType) => {
   const onClosePress = (): void => {
     setNewTaskTitle('');
     setIsOn(false);
-    setDate(new Date());
   };
 
   const createTask = (
@@ -88,22 +83,12 @@ export const CreateTaskButton = (props: CreateTaskButtonPropsType) => {
       description={`${t('tasksScreen.CreateTaskButtonTitle')}`}
       buttonIcon={<FontAwesomeIcon icon={faPlus} size={iconSizeSmall} />}>
       <CustomInput value={newTaskTitle} onValueChange={setNewTaskTitle} />
-      <View style={styles.notificationContainer}>
-        <Text style={styles.text}>{t('tasksScreen.EnableNotification')}</Text>
-        <ToggleSwitch
-          isOn={isOn}
-          onColor={COLORS.JAPANESE_LAUREL}
-          offColor={COLORS.SILVER_CHALICE}
-          size="medium"
-          onToggle={(isOn) => toggleSwitcher(isOn)}
-          animationSpeed={250}
-        />
-      </View>
-      {isOn && (
-        <View style={styles.dateTimePickerContainer}>
-          <DatePicker date={date} onDateChange={setDate} />
-        </View>
-      )}
+      <Notification
+        isOn={isOn}
+        toggleSwitcher={toggleSwitcher}
+        date={date}
+        setDate={setDate}
+      />
     </ModalIcon>
   );
 };
