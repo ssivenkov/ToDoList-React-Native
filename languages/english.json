@@ -2,7 +2,8 @@
   "translation": {
     "common": {
       "Ok": "Ok",
-      "Close": "Close"
+      "Close": "Close",
+      "NoInternetConnection": "No internet connection"
     },
     "tasksScreen": {
       "Tasks": "Tasks",
