@@ -17,7 +17,8 @@ import {styles} from './styles';
 export const CreateTaskListButton = () => {
   const dispatch = useDispatch();
   const {t} = useTranslation();
-  const [newTaskListTitle, setNewTaskListTitle] = useState<string>('');
+  const [newTaskListTitle, setNewTaskListTitle] =
+    useState<TaskListInterface['title']>('');
 
   const onClosePress = (): void => {
     setNewTaskListTitle('');

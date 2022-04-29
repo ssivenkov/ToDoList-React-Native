@@ -3,12 +3,12 @@ import {DeleteTaskListButton} from '@components/buttons/deleteTaskListButton/Del
 import {EditTaskListTitleButton} from '@components/buttons/editTaskListTitleButton/EditTaskListTitleButton';
 import {Task} from '@components/common/task/Task';
 import {sortingTasks} from '@components/screens/tasksScreen/helpers/sorting';
-import React, {FC} from 'react';
+import React from 'react';
 import {Text, View} from 'react-native';
 import {styles} from './styles';
 import {TaskListPropsType} from './types';
 
-export const TaskList: FC<TaskListPropsType> = (props) => {
+export const TaskList = (props: TaskListPropsType) => {
   const {isTodoTaskList, id, date, title, tasks = [], fullTaskList} = props;
   const sortedTasks = sortingTasks(tasks);
   const tasksArr =

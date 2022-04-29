@@ -1,7 +1,8 @@
 import {TASKS_ACTIONS} from '@enums/tasksEnum';
+import {NotificationType} from '@store/reducers/tasksReducer/types';
 
 type DeleteTaskActionPayloadType = {
-  taskID: string;
+  taskID: NotificationType['taskID'];
 };
 
 export type DeleteTaskNotificationActionReturnType = {

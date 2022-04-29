@@ -25,7 +25,7 @@ export interface TaskListInterface extends TaskListWithTaskType {
 }
 
 export type NotificationType = {
-  taskID: string;
+  taskID: TaskType['id'];
 
   notificationID?: string;
   date?: Date;

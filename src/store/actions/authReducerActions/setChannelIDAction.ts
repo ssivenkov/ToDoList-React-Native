@@ -1,7 +1,8 @@
 import {AUTH_ACTIONS} from '@enums/authEnum';
+import {ChannelIDType} from '@store/reducers/authReducer/types';
 
 type SetChannelIDActionPayloadType = {
-  channelID: string;
+  channelID: ChannelIDType;
 };
 
 export type SetChannelIDActionReturnType = {

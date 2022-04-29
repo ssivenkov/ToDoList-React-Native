@@ -1,6 +1,7 @@
 import messaging from '@react-native-firebase/messaging';
 import {errorAlert} from '@root/helpers/alertHelper';
 import {setChannelIDAction} from '@store/actions/authReducerActions/setChannelIDAction';
+import {ChannelIDType} from '@store/reducers/authReducer/types';
 import PushNotification from 'react-native-push-notification';
 import {call, put} from 'redux-saga/effects';
 
@@ -9,7 +10,7 @@ export function* createChannelSaga() {
     const getChannelID = () => {
       return messaging().getToken();
     };
-    const channelID: string = yield call(getChannelID);
+    const channelID: ChannelIDType = yield call(getChannelID);
     const createChannel = () => {
       PushNotification.createChannel(
         {
