@@ -5,20 +5,20 @@ import {
   signOutWorker,
   facebookSignInWorker,
   createChannelWorker,
+  checkUserWorker,
+  syncUserTaskListsWorker,
 } from '@store/sagas/authSaga';
 import {
   addNewTaskListWorker,
   addNewTaskWorker,
-  checkUserWorker,
   deleteTaskListFromScreenWorker,
   deleteTaskListFullWorker,
   deleteTaskWorker,
   editTaskListTitleWorker,
   editTaskWorker,
   setTaskIsDoneWorker,
-  syncUserTaskListsWorker,
 } from '@store/sagas/tasksSaga';
-import {takeLatest} from 'redux-saga/effects';
+import {takeEvery, takeLatest} from 'redux-saga/effects';
 
 export function* rootWatcher() {
   yield takeLatest(AUTH_SAGA_ACTIONS.GOOGLE_SIGN_IN_SAGA, googleSignInWorker);
@@ -28,12 +28,12 @@ export function* rootWatcher() {
   );
   yield takeLatest(AUTH_SAGA_ACTIONS.SIGN_OUT_SAGA, signOutWorker);
   yield takeLatest(AUTH_SAGA_ACTIONS.CREATE_CHANNEL_SAGA, createChannelWorker);
-
-  yield takeLatest(TASKS_SAGA_ACTIONS.CHECK_USER, checkUserWorker);
+  yield takeEvery(AUTH_SAGA_ACTIONS.CHECK_USER, checkUserWorker);
   yield takeLatest(
-    TASKS_SAGA_ACTIONS.SYNC_USER_TASK_LISTS,
+    AUTH_SAGA_ACTIONS.SYNC_USER_TASK_LISTS,
     syncUserTaskListsWorker,
   );
+
   yield takeLatest(TASKS_SAGA_ACTIONS.ADD_NEW_TASK_LIST, addNewTaskListWorker);
   yield takeLatest(TASKS_SAGA_ACTIONS.ADD_NEW_TASK, addNewTaskWorker);
   yield takeLatest(

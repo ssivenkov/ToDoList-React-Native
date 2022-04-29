@@ -1,14 +1,11 @@
-import {FirebaseAuthTypes} from '@react-native-firebase/auth';
-import {Nullable} from '@root/types/common/types';
+import {UserDataType, UserIDType} from '@store/reducers/authReducer/types';
 import {AppRootStateType} from '@store/store';
 
-export const getUserAuthStatus = (state: AppRootStateType): boolean => {
-  return state.auth.authStatus;
+export const getUserID = (state: AppRootStateType): UserIDType => {
+  return state.auth.userID;
 };
 
-export const getUserData = (
-  state: AppRootStateType,
-): Nullable<FirebaseAuthTypes.User> => {
+export const getUserData = (state: AppRootStateType): UserDataType => {
   return state.auth.userData;
 };
 

@@ -5,127 +5,67 @@ import {
   Users,
 } from '@constants/constants';
 import NetInfo, {NetInfoState} from '@react-native-community/netinfo';
-import {FirebaseDatabaseTypes} from '@react-native-firebase/database';
 import {DB} from '@root/api/DB';
 import {errorAlert} from '@root/helpers/alert';
+import {cancelNotification} from '@root/helpers/cancelNotification';
 import {createNotification} from '@root/helpers/createNotification';
 import {delay} from '@root/helpers/delay';
 import {generateRandomNumber} from '@root/helpers/generateRandomNumber';
-import {setAuthStatus} from '@store/actions/authActions/authActions';
+import {addTaskNotification} from '@store/actions/tasksReducerActions/notificationsActions/addTaskNotification';
+import {deleteTaskNotification} from '@store/actions/tasksReducerActions/notificationsActions/deleteTaskNotification';
+import {editTaskNotification} from '@store/actions/tasksReducerActions/notificationsActions/editTaskNotification';
+import {setTasksNotifications} from '@store/actions/tasksReducerActions/notificationsActions/setTasksNotifications';
+import {addNewTaskList} from '@store/actions/tasksReducerActions/taskListsActions/addNewTaskList';
+import {deleteTaskListFromScreen} from '@store/actions/tasksReducerActions/taskListsActions/deleteTaskListFromScreen';
+import {deleteTaskListFull} from '@store/actions/tasksReducerActions/taskListsActions/deleteTaskListFull';
+import {setEditedTaskListTitle} from '@store/actions/tasksReducerActions/taskListsActions/setEditedTaskListTitle';
+import {addNewTask} from '@store/actions/tasksReducerActions/tasksActions/addNewTask';
+import {deleteTask} from '@store/actions/tasksReducerActions/tasksActions/deleteTask';
+import {setEditedTask} from '@store/actions/tasksReducerActions/tasksActions/setEditedTask';
+import {setTaskIsDone} from '@store/actions/tasksReducerActions/tasksActions/setTaskIsDone';
+import {AddNewTaskListSagaActionReturnType} from '@store/actions/tasksSagaActions/taskListsSagasActions/addNewTaskList';
 import {
-  addNewTask,
-  addNewTaskList,
-  addTaskNotification,
-  deleteTask,
-  deleteTaskListFromScreen,
-  deleteTaskListFull,
-  deleteTaskNotification,
-  editTaskNotification,
-  setEditedTask,
-  setEditedTaskListTitle,
-  setNotificationIDs,
-  setTaskIsDone,
-  setTaskLists,
-  setTasksNotifications,
-} from '@store/actions/tasksActions/tasksActions';
-import {syncUserTaskLists} from '@store/actions/tasksSagaActions/tasksSagaActions';
+  DeleteTaskListFromScreenSagaActionReturnType,
+  DeleteTaskListFromScreenSagaPayloadType,
+} from '@store/actions/tasksSagaActions/taskListsSagasActions/deleteTaskListFromScreen';
 import {
-  AddNewTaskListSagaActionType,
-  AddNewTaskPayloadType,
-  AddNewTaskSagaActionType,
-  DeleteTaskActionType,
-  DeleteTaskListFromScreenActionType,
-  DeleteTaskListFromScreenPayloadType,
-  DeleteTaskListFullActionType,
-  DeleteTaskListFullPayloadType,
-  DeleteTaskPayloadType,
-  EditTaskListTitleFullActionType,
-  EditTaskListTitleFullPayloadType,
-  SetEditedTaskActionType,
-  SetEditedTaskPayloadType,
-  SetTaskIsDoneActionType,
-  SetTaskIsDonePayloadType,
-} from '@store/actions/tasksSagaActions/types';
+  DeleteTaskListFullSagaActionReturnType,
+  DeleteTaskListFullSagaPayloadType,
+} from '@store/actions/tasksSagaActions/taskListsSagasActions/deleteTaskListFull';
+import {
+  EditTaskListTitleSagaActionReturnType,
+  EditTaskListTitleSagaPayloadType,
+} from '@store/actions/tasksSagaActions/taskListsSagasActions/editTaskListTitle';
+import {
+  AddNewTaskSagaActionReturnType,
+  AddNewTaskSagaPayloadType,
+} from '@store/actions/tasksSagaActions/tasksSagasActions/addNewTask';
+import {
+  DeleteTaskSagaActionReturnType,
+  DeleteTaskSagaPayloadType,
+} from '@store/actions/tasksSagaActions/tasksSagasActions/deleteTask';
+import {
+  SetEditedTaskActionSagaReturnType,
+  SetEditedTaskSagaPayloadType,
+} from '@store/actions/tasksSagaActions/tasksSagasActions/setEditedTask';
+import {
+  SetTaskIsDoneSagaActionReturnType,
+  SetTaskIsDoneSagaPayloadType,
+} from '@store/actions/tasksSagaActions/tasksSagasActions/setTaskIsDone';
+import {UserIDType} from '@store/reducers/authReducer/types';
 import {
   ConvertedTasksForFirebaseType,
-  NotificationIDType,
-  TaskListBeforeConvertInterface,
+  NotificationType,
   TaskListInterface,
-  TaskListWithTaskType,
 } from '@store/reducers/tasksReducer/types';
-import {getChannelID, getUserData} from '@store/selectors/authSelectors';
-import {
-  getNotificationIDs,
-  getTaskLists,
-} from '@store/selectors/tasksSelectors';
+import {getChannelID, getUserID} from '@store/selectors/authSelectors';
+import {getNotifications, getTaskLists} from '@store/selectors/tasksSelectors';
 import {t} from 'i18next';
-import PushNotification from 'react-native-push-notification';
 import {call, put, select} from 'redux-saga/effects';
 
-export function* checkUserWorker() {
-  try {
-    const {uid} = yield select(getUserData);
-    const snapshot: FirebaseDatabaseTypes.DataSnapshot = yield DB.ref(
-      `${Users}/${uid}`,
-    ).once('value');
-    const isUserExist = snapshot.exists();
-    if (!isUserExist) {
-      const newUserData = {userToken: uid, taskLists: []};
-      yield DB.ref(`${Users}/${uid}`).set(newUserData);
-      yield put(setAuthStatus(true));
-    } else {
-      yield put(syncUserTaskLists());
-    }
-  } catch (error) {
-    if (error instanceof Error) {
-      errorAlert(error);
-    }
-  }
-}
-
-export function* syncUserTaskListsWorker() {
-  try {
-    const {uid} = yield select(getUserData);
-    const snapshot: FirebaseDatabaseTypes.DataSnapshot = yield DB.ref(
-      `${Users}/${uid}`,
-    ).once('value');
-
-    if (snapshot.val().taskLists) {
-      const userTaskListsObject = snapshot.val().taskLists;
-      // convert taskLists object to taskLists array
-      const userTaskListsBeforeConvert: TaskListBeforeConvertInterface[] =
-        Object.values(userTaskListsObject);
-      // convert tasks object in every taskLists to tasks array in every taskLists
-      const userTaskLists: TaskListInterface[] = userTaskListsBeforeConvert.map(
-        (taskList) => {
-          if (taskList.tasks) {
-            const taskListWithTasksAsArray: TaskListInterface = {
-              ...taskList,
-              tasks: Object.values(taskList.tasks),
-            };
-            return taskListWithTasksAsArray;
-          } else {
-            const oldTaskList: TaskListWithTaskType = {...taskList};
-            return oldTaskList;
-          }
-        },
-      );
-
-      yield put(setTaskLists(userTaskLists));
-    } else {
-      yield put(setTaskLists([]));
-      yield put(setNotificationIDs([]));
-    }
-
-    yield put(setAuthStatus(true));
-  } catch (error) {
-    if (error instanceof Error) {
-      errorAlert(error);
-    }
-  }
-}
-
-export function* addNewTaskListWorker(action: AddNewTaskListSagaActionType) {
+export function* addNewTaskListWorker(
+  action: AddNewTaskListSagaActionReturnType,
+) {
   try {
     const connectionStatus: NetInfoState = yield NetInfo.fetch();
     if (!connectionStatus.isInternetReachable) {
@@ -135,15 +75,15 @@ export function* addNewTaskListWorker(action: AddNewTaskListSagaActionType) {
     yield call(delay, 10);
 
     yield call(action.payload.setIsLoading, true);
-    const {uid} = yield select(getUserData);
+    const userID: UserIDType = yield select(getUserID);
     const addNewTaskListToFirebase = (newTaskList: TaskListInterface) => {
-      return DB.ref(`${Users}/${uid}/${taskLists}/${newTaskList.id}`).set(
+      return DB.ref(`${Users}/${userID}/${taskLists}/${newTaskList.id}`).set(
         newTaskList,
       );
     };
 
     yield call(addNewTaskListToFirebase, action.payload.newTaskList);
-    yield put(addNewTaskList(action.payload.newTaskList));
+    yield put(addNewTaskList({taskList: action.payload.newTaskList}));
     yield call(action.payload.setIsLoading, false);
     yield call(action.payload.setModalVisible, false);
     yield call(action.payload.setNewTaskListTitle, '');
@@ -155,7 +95,7 @@ export function* addNewTaskListWorker(action: AddNewTaskListSagaActionType) {
   }
 }
 
-export function* addNewTaskWorker(action: AddNewTaskSagaActionType) {
+export function* addNewTaskWorker(action: AddNewTaskSagaActionReturnType) {
   try {
     const connectionStatus: NetInfoState = yield NetInfo.fetch();
     if (!connectionStatus.isInternetReachable) {
@@ -165,14 +105,14 @@ export function* addNewTaskWorker(action: AddNewTaskSagaActionType) {
     yield call(delay, 10);
 
     yield call(action.payload.setIsLoading, true);
-    const {uid} = yield select(getUserData);
+    const userID: UserIDType = yield select(getUserID);
     const channelId: string = yield select(getChannelID);
     const notificationID = generateRandomNumber(
       notificationIdMaxLength,
     ).toString();
-    const addNewTaskToFirebase = (payload: AddNewTaskPayloadType) => {
+    const addNewTaskToFirebase = (payload: AddNewTaskSagaPayloadType) => {
       return DB.ref(
-        `${Users}/${uid}/${taskLists}/${payload.taskListId}/${tasks}/${payload.newTask.id}`,
+        `${Users}/${userID}/${taskLists}/${payload.taskListId}/${tasks}/${payload.newTask.id}`,
       ).set(payload.newTask);
     };
     yield call(addNewTaskToFirebase, action.payload);
@@ -188,21 +128,28 @@ export function* addNewTaskWorker(action: AddNewTaskSagaActionType) {
 
       yield put(
         addTaskNotification({
-          taskID: action.payload.newTask.id,
-          notificationID,
-          date: action.payload.date,
+          notification: {
+            taskID: action.payload.newTask.id,
+            notificationID,
+            date: action.payload.date,
+          },
         }),
       );
     } else {
       yield put(
         addTaskNotification({
-          taskID: action.payload.newTask.id,
+          notification: {
+            taskID: action.payload.newTask.id,
+          },
         }),
       );
     }
 
     yield put(
-      addNewTask(action.payload.modifiedTaskList, action.payload.taskListId),
+      addNewTask({
+        taskListId: action.payload.taskListId,
+        modifiedTaskList: action.payload.modifiedTaskList,
+      }),
     );
     yield call(action.payload.setIsLoading, false);
     yield call(action.payload.setModalVisible, false);
@@ -217,7 +164,7 @@ export function* addNewTaskWorker(action: AddNewTaskSagaActionType) {
 }
 
 export function* editTaskListTitleWorker(
-  action: EditTaskListTitleFullActionType,
+  action: EditTaskListTitleSagaActionReturnType,
 ) {
   try {
     const connectionStatus: NetInfoState = yield NetInfo.fetch();
@@ -228,22 +175,22 @@ export function* editTaskListTitleWorker(
     yield call(delay, 10);
 
     yield call(action.payload.setIsLoading, true);
-    const {uid} = yield select(getUserData);
+    const userID: UserIDType = yield select(getUserID);
     const sendModifiedTaskListToFirebase = (
-      payload: EditTaskListTitleFullPayloadType,
+      payload: EditTaskListTitleSagaPayloadType,
     ) => {
       return DB.ref(
-        `${Users}/${uid}/${taskLists}/${payload.taskListId}`,
+        `${Users}/${userID}/${taskLists}/${payload.taskListId}`,
       ).update({
         title: payload.editedTaskListTitle,
       });
     };
     yield call(sendModifiedTaskListToFirebase, action.payload);
     yield put(
-      setEditedTaskListTitle(
-        action.payload.taskListId,
-        action.payload.editedTaskListTitle,
-      ),
+      setEditedTaskListTitle({
+        taskListId: action.payload.taskListId,
+        editedTaskListTitle: action.payload.editedTaskListTitle,
+      }),
     );
     yield call(action.payload.setIsLoading, false);
     yield call(action.payload.setModalVisible, false);
@@ -260,7 +207,7 @@ export function* editTaskListTitleWorker(
 }
 
 export function* deleteTaskListFullWorker(
-  action: DeleteTaskListFullActionType,
+  action: DeleteTaskListFullSagaActionReturnType,
 ) {
   try {
     const connectionStatus: NetInfoState = yield NetInfo.fetch();
@@ -271,44 +218,44 @@ export function* deleteTaskListFullWorker(
     yield call(delay, 10);
 
     yield call(action.payload.setIsLoading, true);
-    const {uid} = yield select(getUserData);
+    const userID: UserIDType = yield select(getUserID);
     const deleteTaskListInFirebase = (
-      payload: DeleteTaskListFullPayloadType,
+      payload: DeleteTaskListFullSagaPayloadType,
     ): Promise<void> => {
       return DB.ref(
-        `${Users}/${uid}/${taskLists}/${payload.taskListId}`,
+        `${Users}/${userID}/${taskLists}/${payload.taskListId}`,
       ).remove();
     };
     yield call(deleteTaskListInFirebase, action.payload);
 
     const taskListsArr: TaskListInterface[] = yield select(getTaskLists);
-    const notificationIDs: NotificationIDType[] = yield select(
-      getNotificationIDs,
-    );
+    const notifications: NotificationType[] = yield select(getNotifications);
     const taskList = taskListsArr.find(
       (taskList) => taskList.id === action.payload.taskListId,
     );
     const findNotificationItem = (taskID: string) => {
-      return notificationIDs.find((item) => item.taskID === taskID);
+      return notifications.find((item) => item.taskID === taskID);
     };
 
     if (taskList && taskList.tasks) {
-      const tasksIDArr: string[] = [];
+      const tasksNotifications: string[] = [];
       taskList.tasks.forEach((task) => {
-        tasksIDArr.push(task.id);
+        tasksNotifications.push(task.id);
         const notificationItem = findNotificationItem(task.id);
 
         if (notificationItem && notificationItem.notificationID) {
-          PushNotification.cancelLocalNotification(
-            notificationItem.notificationID,
-          );
+          cancelNotification(notificationItem.notificationID);
         }
       });
 
-      yield put(setTasksNotifications(tasksIDArr));
+      yield put(setTasksNotifications({notifications: tasksNotifications}));
     }
 
-    yield put(deleteTaskListFull(action.payload.taskListId));
+    yield put(
+      deleteTaskListFull({
+        taskListId: action.payload.taskListId,
+      }),
+    );
     yield call(action.payload.setIsLoading, false);
     yield call(action.payload.setModalVisible, false);
   } catch (error) {
@@ -320,7 +267,7 @@ export function* deleteTaskListFullWorker(
 }
 
 export function* deleteTaskListFromScreenWorker(
-  action: DeleteTaskListFromScreenActionType,
+  action: DeleteTaskListFromScreenSagaActionReturnType,
 ) {
   try {
     const connectionStatus: NetInfoState = yield NetInfo.fetch();
@@ -331,36 +278,34 @@ export function* deleteTaskListFromScreenWorker(
     yield call(delay, 10);
 
     yield call(action.payload.setIsLoading, true);
-    const {uid} = yield select(getUserData);
-    const notificationIDs: NotificationIDType[] = yield select(
-      getNotificationIDs,
-    );
+    const userID: UserIDType = yield select(getUserID);
+    const notifications: NotificationType[] = yield select(getNotifications);
     const findNotificationItem = (taskID: string) => {
-      return notificationIDs.find((item) => item.taskID === taskID);
+      return notifications.find((item) => item.taskID === taskID);
     };
 
-    const tasksIDArr: string[] = [];
+    const tasksNotifications: string[] = [];
 
     const deleteTaskListFromScreenInFirebase = (
-      payload: DeleteTaskListFromScreenPayloadType,
+      payload: DeleteTaskListFromScreenSagaPayloadType,
     ) => {
       const modifiedTaskList = {...payload.fullTaskList};
 
       if (payload.deleteTodoTask) {
-        DB.ref(`${Users}/${uid}/${taskLists}/${modifiedTaskList.id}`).update({
-          showInToDo: false,
-        });
+        DB.ref(`${Users}/${userID}/${taskLists}/${modifiedTaskList.id}`).update(
+          {
+            showInToDo: false,
+          },
+        );
 
         if (modifiedTaskList.tasks && modifiedTaskList.tasks.length > 0) {
           modifiedTaskList.tasks.forEach((task) => {
-            if (!task.isDone) tasksIDArr.push(task.id);
+            if (!task.isDone) tasksNotifications.push(task.id);
 
             const notificationItem = findNotificationItem(task.id);
 
             if (notificationItem && notificationItem.notificationID) {
-              PushNotification.cancelLocalNotification(
-                notificationItem.notificationID,
-              );
+              cancelNotification(notificationItem.notificationID);
             }
           });
 
@@ -391,21 +336,21 @@ export function* deleteTaskListFromScreenWorker(
           );
 
         return DB.ref(
-          `${Users}/${uid}/${taskLists}/${modifiedTaskList.id}/${tasks}`,
+          `${Users}/${userID}/${taskLists}/${modifiedTaskList.id}/${tasks}`,
         ).set(convertedTasksForFirebase);
       }
     };
 
     yield call(deleteTaskListFromScreenInFirebase, action.payload);
 
-    yield put(setTasksNotifications(tasksIDArr));
+    yield put(setTasksNotifications({notifications: tasksNotifications}));
 
     yield put(
-      deleteTaskListFromScreen(
-        action.payload.fullTaskList,
-        action.payload.deleteTodoTask,
-        action.payload.deleteDoneTask,
-      ),
+      deleteTaskListFromScreen({
+        deleteTodoTask: action.payload.deleteTodoTask,
+        deleteDoneTask: action.payload.deleteDoneTask,
+        fullTaskList: action.payload.fullTaskList,
+      }),
     );
     yield call(action.payload.setIsLoading, false);
     yield call(action.payload.setModalVisible, false);
@@ -417,7 +362,9 @@ export function* deleteTaskListFromScreenWorker(
   }
 }
 
-export function* setTaskIsDoneWorker(action: SetTaskIsDoneActionType) {
+export function* setTaskIsDoneWorker(
+  action: SetTaskIsDoneSagaActionReturnType,
+) {
   try {
     const connectionStatus: NetInfoState = yield NetInfo.fetch();
     if (!connectionStatus.isInternetReachable) {
@@ -427,28 +374,29 @@ export function* setTaskIsDoneWorker(action: SetTaskIsDoneActionType) {
     yield call(delay, 10);
 
     yield call(action.payload.setIsLoading, true);
-    const {uid} = yield select(getUserData);
-    const setTaskIsDoneInFirebase = (payload: SetTaskIsDonePayloadType) => {
+    const userID: UserIDType = yield select(getUserID);
+    const setTaskIsDoneInFirebase = (payload: SetTaskIsDoneSagaPayloadType) => {
       return DB.ref(
-        `${Users}/${uid}/${taskLists}/${payload.taskListId}/${tasks}/${payload.doneTaskId}`,
+        `${Users}/${userID}/${taskLists}/${payload.taskListId}/${tasks}/${payload.doneTaskId}`,
       ).update({isDone: true});
     };
     yield call(setTaskIsDoneInFirebase, action.payload);
 
-    const notificationIDs: NotificationIDType[] = yield select(
-      getNotificationIDs,
-    );
-    const taskNotification = notificationIDs.find((item) => {
+    const notifications: NotificationType[] = yield select(getNotifications);
+    const taskNotification = notifications.find((item) => {
       return action.payload.doneTaskId === item.taskID;
     });
 
     if (taskNotification && taskNotification.notificationID) {
-      PushNotification.cancelLocalNotification(taskNotification.notificationID);
+      cancelNotification(taskNotification.notificationID);
     }
-    yield put(deleteTaskNotification(action.payload.doneTaskId));
+    yield put(deleteTaskNotification({taskID: action.payload.doneTaskId}));
 
     yield put(
-      setTaskIsDone(action.payload.taskListId, action.payload.doneTaskId),
+      setTaskIsDone({
+        doneTaskId: action.payload.doneTaskId,
+        taskListId: action.payload.taskListId,
+      }),
     );
     yield call(action.payload.setIsLoading, false);
     yield call(action.payload.setModalVisible, false);
@@ -460,7 +408,7 @@ export function* setTaskIsDoneWorker(action: SetTaskIsDoneActionType) {
   }
 }
 
-export function* editTaskWorker(action: SetEditedTaskActionType) {
+export function* editTaskWorker(action: SetEditedTaskActionSagaReturnType) {
   try {
     const connectionStatus: NetInfoState = yield NetInfo.fetch();
     if (!connectionStatus.isInternetReachable) {
@@ -470,11 +418,11 @@ export function* editTaskWorker(action: SetEditedTaskActionType) {
     yield call(delay, 10);
 
     yield call(action.payload.setIsLoading, true);
-    const {uid} = yield select(getUserData);
+    const userID: UserIDType = yield select(getUserID);
     const channelId: string = yield select(getChannelID);
-    const editTaskTitleInFirebase = (payload: SetEditedTaskPayloadType) => {
+    const editTaskTitleInFirebase = (payload: SetEditedTaskSagaPayloadType) => {
       return DB.ref(
-        `${Users}/${uid}/${taskLists}/${payload.taskListId}/${tasks}/${payload.taskId}`,
+        `${Users}/${userID}/${taskLists}/${payload.taskListId}/${tasks}/${payload.taskId}`,
       ).update({title: payload.editedTaskTitle});
     };
     yield call(editTaskTitleInFirebase, action.payload);
@@ -494,39 +442,39 @@ export function* editTaskWorker(action: SetEditedTaskActionType) {
 
       yield put(
         editTaskNotification({
-          taskID: action.payload.taskId,
-          notificationID,
-          date: action.payload.date,
+          notification: {
+            taskID: action.payload.taskId,
+            notificationID,
+            date: action.payload.date,
+          },
         }),
       );
     } else {
-      const notificationIDs: NotificationIDType[] = yield select(
-        getNotificationIDs,
-      );
+      const notifications: NotificationType[] = yield select(getNotifications);
 
-      const taskNotification = notificationIDs.find((item) => {
+      const taskNotification = notifications.find((item) => {
         return action.payload.taskId === item.taskID;
       });
 
       if (taskNotification && taskNotification.notificationID) {
-        PushNotification.cancelLocalNotification(
-          taskNotification.notificationID,
-        );
+        cancelNotification(taskNotification.notificationID);
       }
 
       yield put(
         editTaskNotification({
-          taskID: action.payload.taskId,
+          notification: {
+            taskID: action.payload.taskId,
+          },
         }),
       );
     }
 
     yield put(
-      setEditedTask(
-        action.payload.taskListId,
-        action.payload.taskId,
-        action.payload.editedTaskTitle,
-      ),
+      setEditedTask({
+        taskListId: action.payload.taskListId,
+        taskId: action.payload.taskId,
+        editedTaskTitle: action.payload.editedTaskTitle,
+      }),
     );
     yield call(action.payload.setIsLoading, false);
     yield call(action.payload.setModalVisible, false);
@@ -542,7 +490,7 @@ export function* editTaskWorker(action: SetEditedTaskActionType) {
   }
 }
 
-export function* deleteTaskWorker(action: DeleteTaskActionType) {
+export function* deleteTaskWorker(action: DeleteTaskSagaActionReturnType) {
   try {
     const connectionStatus: NetInfoState = yield NetInfo.fetch();
     if (!connectionStatus.isInternetReachable) {
@@ -552,27 +500,30 @@ export function* deleteTaskWorker(action: DeleteTaskActionType) {
     yield call(delay, 10);
 
     yield call(action.payload.setIsLoading, true);
-    const {uid} = yield select(getUserData);
-    const deleteTaskInFirebase = (payload: DeleteTaskPayloadType) => {
+    const userID: UserIDType = yield select(getUserID);
+    const deleteTaskInFirebase = (payload: DeleteTaskSagaPayloadType) => {
       return DB.ref(
-        `${Users}/${uid}/${taskLists}/${payload.taskListId}/${tasks}/${payload.taskId}`,
+        `${Users}/${userID}/${taskLists}/${payload.taskListId}/${tasks}/${payload.taskId}`,
       ).remove();
     };
     yield call(deleteTaskInFirebase, action.payload);
 
-    const notificationIDs: NotificationIDType[] = yield select(
-      getNotificationIDs,
-    );
-    const taskNotification = notificationIDs.find((item) => {
+    const notifications: NotificationType[] = yield select(getNotifications);
+    const taskNotification = notifications.find((item) => {
       return action.payload.taskId === item.taskID;
     });
 
     if (taskNotification && taskNotification.notificationID) {
-      PushNotification.cancelLocalNotification(taskNotification.notificationID);
+      cancelNotification(taskNotification.notificationID);
     }
-    yield put(deleteTaskNotification(action.payload.taskId));
+    yield put(deleteTaskNotification({taskID: action.payload.taskId}));
 
-    yield put(deleteTask(action.payload.taskListId, action.payload.taskId));
+    yield put(
+      deleteTask({
+        taskId: action.payload.taskId,
+        taskListId: action.payload.taskListId,
+      }),
+    );
     yield call(action.payload.setIsLoading, false);
     yield call(action.payload.setModalVisible, false);
   } catch (error) {

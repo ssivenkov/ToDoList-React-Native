@@ -3,10 +3,8 @@ import {SignInButton} from '@components/screens/signInScreen/signInButton/SignIn
 import {signInStyles} from '@components/screens/signInScreen/signInButton/styles';
 import {FacebookTitle, GoogleTitle} from '@constants/constants';
 import {faFacebook, faGoogle} from '@fortawesome/free-brands-svg-icons';
-import {
-  FacebookSignIn,
-  GoogleSignIn,
-} from '@store/actions/authSagaActions/authSagaActions';
+import {FacebookSignIn} from '@store/actions/authSagaActions/FacebookSignIn';
+import {GoogleSignIn} from '@store/actions/authSagaActions/GoogleSignIn';
 import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
 import {Text, View} from 'react-native';
