@@ -5,8 +5,8 @@ import {iconSizeSmall} from '@constants/constants';
 import {faPen} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {Nullable, SetStateType} from '@root/types/common/types';
-import {setEditedTask} from '@store/actions/tasksSagaActions/tasksSagaActions';
-import {getNotificationIDs} from '@store/selectors/tasksSelectors';
+import {setEditedTask} from '@store/actions/tasksSagaActions/tasksSagasActions/setEditedTask';
+import {getNotifications} from '@store/selectors/tasksSelectors';
 import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
 import {useDispatch, useSelector} from 'react-redux';
@@ -17,10 +17,8 @@ export const EditTaskButton = (props: EditTaskTitleButtonPropsType) => {
   const {t} = useTranslation();
   const dispatch = useDispatch();
   const [editedTaskTitle, setEditedTaskTitle] = useState<string>(oldTaskTitle);
-  const notificationIDs = useSelector(getNotificationIDs);
-  const taskNotification = notificationIDs.find(
-    (item) => item.taskID === taskId,
-  );
+  const notifications = useSelector(getNotifications);
+  const taskNotification = notifications.find((item) => item.taskID === taskId);
   const [date, setDate] = useState<Nullable<Date>>(
     taskNotification?.date ?? null,
   );

@@ -2,17 +2,16 @@ import {SignInScreen} from '@components/screens/signInScreen/SignInScreen';
 import {SignIn, WithAuth} from '@constants/constants';
 import {RootStackParamList} from '@navigation/types';
 import {WithAuthNavigation} from '@navigation/withAuthNavigation/WithAuthNavigation';
-import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
+import auth from '@react-native-firebase/auth';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {GoogleWebClientId} from '@root/api/config';
-import {Nullable} from '@root/types/common/types';
-import {setUserData} from '@store/actions/authActions/authActions';
-import {createChannel} from '@store/actions/authSagaActions/authSagaActions';
-import {checkUser} from '@store/actions/tasksSagaActions/tasksSagaActions';
-import {getChannelID, getUserAuthStatus} from '@store/selectors/authSelectors';
-import {AppRootStateType} from '@store/store';
+import {setUserData} from '@store/actions/authReducerActions/setUserData';
+import {setUserID} from '@store/actions/authReducerActions/setUserID';
+import {createChannel} from '@store/actions/authSagaActions/createChannel';
+import {UserDataType} from '@store/reducers/authReducer/types';
+import {getChannelID, getUserID} from '@store/selectors/authSelectors';
 import React, {useEffect, useState} from 'react';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {useDispatch, useSelector} from 'react-redux';
@@ -21,16 +20,18 @@ const {Navigator, Screen} = createNativeStackNavigator<RootStackParamList>();
 
 export const Navigation = () => {
   const dispatch = useDispatch();
-  const isUserAuth = useSelector<AppRootStateType, boolean>(getUserAuthStatus);
+  const isUserAuth = !!useSelector(getUserID);
   const [firebaseInitializing, setFirebaseInitializing] =
     useState<boolean>(true);
   const channelID: string = useSelector(getChannelID);
 
-  const onAuthStateChanged = (user: Nullable<FirebaseAuthTypes.User>) => {
-    dispatch(setUserData(user));
+  const onAuthStateChanged = (userData: UserDataType) => {
+    dispatch(setUserData({userData: userData}));
 
-    if (user) {
-      dispatch(checkUser());
+    if (userData) {
+      dispatch(setUserID({userID: userData.uid}));
+    } else {
+      dispatch(setUserID({userID: null}));
     }
 
     if (firebaseInitializing) {

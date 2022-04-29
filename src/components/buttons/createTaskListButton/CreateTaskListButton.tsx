@@ -5,7 +5,7 @@ import {faPlus} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {createDate} from '@root/helpers/generateDate';
 import {SetStateType} from '@root/types/common/types';
-import {addNewTaskList} from '@store/actions/tasksSagaActions/tasksSagaActions';
+import {addNewTaskList} from '@store/actions/tasksSagaActions/taskListsSagasActions/addNewTaskList';
 import {TaskListInterface} from '@store/reducers/tasksReducer/types';
 import {nanoid} from 'nanoid';
 import React, {useState} from 'react';
