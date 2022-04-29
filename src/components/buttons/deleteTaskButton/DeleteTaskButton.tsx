@@ -3,9 +3,9 @@ import {iconSizeSmall} from '@constants/constants';
 import {faTrash} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {SetStateType} from '@root/types/common/types';
-import {deleteTaskListFromScreen} from '@store/actions/tasksSagaActions/taskListsSagasActions/deleteTaskListFromScreen';
-import {deleteTaskListFull} from '@store/actions/tasksSagaActions/taskListsSagasActions/deleteTaskListFull';
-import {deleteTask} from '@store/actions/tasksSagaActions/tasksSagasActions/deleteTask';
+import {deleteTaskListFromScreenAction} from '@store/actions/tasksSagaActions/taskListsSagasActions/deleteTaskListFromScreenAction';
+import {deleteTaskListFullAction} from '@store/actions/tasksSagaActions/taskListsSagasActions/deleteTaskListFullAction';
+import {deleteTaskAction} from '@store/actions/tasksSagaActions/tasksSagasActions/deleteTaskAction';
 import React from 'react';
 import {Trans} from 'react-i18next';
 import {Text} from 'react-native';
@@ -29,7 +29,7 @@ export const DeleteTaskButton = (props: DeleteTaskButtonPropsType) => {
   ): void => {
     if (!isTodoTaskList && toDoTasks.length > 0 && doneTasks.length === 1) {
       dispatch(
-        deleteTaskListFromScreen({
+        deleteTaskListFromScreenAction({
           fullTaskList,
           deleteTodoTask: false,
           deleteDoneTask: true,
@@ -43,7 +43,7 @@ export const DeleteTaskButton = (props: DeleteTaskButtonPropsType) => {
       doneTasks.length === 1
     ) {
       dispatch(
-        deleteTaskListFull({
+        deleteTaskListFullAction({
           taskListId: fullTaskList.id,
           setIsLoading,
           setModalVisible,
@@ -51,7 +51,7 @@ export const DeleteTaskButton = (props: DeleteTaskButtonPropsType) => {
       );
     } else {
       dispatch(
-        deleteTask({
+        deleteTaskAction({
           taskListId: fullTaskList.id,
           taskId,
           setIsLoading,
