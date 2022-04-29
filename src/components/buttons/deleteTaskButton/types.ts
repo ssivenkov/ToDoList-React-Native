@@ -1,8 +1,8 @@
-import {TaskListInterface} from '@store/reducers/tasksReducer/types';
+import {TaskListInterface, TaskType} from '@store/reducers/tasksReducer/types';
 
 export type DeleteTaskButtonPropsType = {
   isTodoTaskList: boolean;
-  taskId: string;
-  taskTitle: string;
+  taskId: TaskType['id'];
+  taskTitle: TaskType['title'];
   fullTaskList: TaskListInterface;
 };

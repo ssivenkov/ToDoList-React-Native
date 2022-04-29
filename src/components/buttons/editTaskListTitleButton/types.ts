@@ -1,4 +1,6 @@
+import {TaskListInterface} from '@store/reducers/tasksReducer/types';
+
 export type EditTaskListTitleButtonPropsType = {
-  oldTaskListTitle: string;
-  taskListId: string;
+  oldTaskListTitle: TaskListInterface['title'];
+  taskListId: TaskListInterface['id'];
 };

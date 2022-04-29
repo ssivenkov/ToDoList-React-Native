@@ -19,7 +19,7 @@ export const CreateTaskButton = (props: CreateTaskButtonPropsType) => {
   const {taskListId, taskListDate, taskListTitle, fullTaskList} = props;
   const {t} = useTranslation();
   const dispatch = useDispatch();
-  const [newTaskTitle, setNewTaskTitle] = useState<string>('');
+  const [newTaskTitle, setNewTaskTitle] = useState<TaskType['title']>('');
   const [date, setDate] = useState<Date>(new Date());
   const [isOn, setIsOn] = useState<boolean>(false);
 

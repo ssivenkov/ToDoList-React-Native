@@ -52,9 +52,9 @@ export function* deleteTaskListFullSaga(
     };
 
     if (taskList && taskList.tasks) {
-      const tasksNotifications: string[] = [];
+      const notificationTaskIDs: string[] = [];
       taskList.tasks.forEach((task) => {
-        tasksNotifications.push(task.id);
+        notificationTaskIDs.push(task.id);
         const notificationItem = findNotificationItem(task.id);
 
         if (notificationItem && notificationItem.notificationID) {
@@ -62,9 +62,7 @@ export function* deleteTaskListFullSaga(
         }
       });
 
-      yield put(
-        setTasksNotificationsAction({notifications: tasksNotifications}),
-      );
+      yield put(setTasksNotificationsAction({notificationTaskIDs}));
     }
 
     yield put(

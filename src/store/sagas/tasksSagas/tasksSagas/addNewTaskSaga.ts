@@ -16,7 +16,7 @@ import {
   AddNewTaskSagaActionReturnType,
   AddNewTaskSagaPayloadType,
 } from '@store/actions/tasksSagaActions/tasksSagasActions/addNewTaskAction';
-import {UserIDType} from '@store/reducers/authReducer/types';
+import {ChannelIDType, UserIDType} from '@store/reducers/authReducer/types';
 import {getChannelID, getUserID} from '@store/selectors/authSelectors';
 import {t} from 'i18next';
 import {call, put, select} from 'redux-saga/effects';
@@ -32,7 +32,7 @@ export function* addNewTaskSaga(action: AddNewTaskSagaActionReturnType) {
 
     yield call(action.payload.setIsLoading, true);
     const userID: UserIDType = yield select(getUserID);
-    const channelId: string = yield select(getChannelID);
+    const channelId: ChannelIDType = yield select(getChannelID);
     const notificationID = generateRandomNumberHelper(
       notificationIdMaxLength,
     ).toString();
@@ -44,13 +44,12 @@ export function* addNewTaskSaga(action: AddNewTaskSagaActionReturnType) {
     yield call(addNewTaskToFirebase, action.payload);
 
     if (action.payload.shouldCreateNotification && action.payload.date) {
-      yield call(
-        createNotificationHelper,
+      yield call(createNotificationHelper, {
         channelId,
-        action.payload.date,
+        date: action.payload.date,
         notificationID,
-        action.payload.newTask.title,
-      );
+        taskTitle: action.payload.newTask.title,
+      });
 
       yield put(
         addTaskNotificationAction({

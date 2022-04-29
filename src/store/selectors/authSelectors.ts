@@ -1,4 +1,8 @@
-import {UserDataType, UserIDType} from '@store/reducers/authReducer/types';
+import {
+  ChannelIDType,
+  UserDataType,
+  UserIDType,
+} from '@store/reducers/authReducer/types';
 import {AppRootStateType} from '@store/store';
 
 export const getUserID = (state: AppRootStateType): UserIDType => {
@@ -9,6 +13,6 @@ export const getUserData = (state: AppRootStateType): UserDataType => {
   return state.auth.userData;
 };
 
-export const getChannelID = (state: AppRootStateType): string => {
+export const getChannelID = (state: AppRootStateType): ChannelIDType => {
   return state.auth.channelID;
 };

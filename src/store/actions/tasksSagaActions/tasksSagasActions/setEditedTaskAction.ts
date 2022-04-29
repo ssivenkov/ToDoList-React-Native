@@ -1,10 +1,11 @@
 import {TASKS_SAGA_ACTIONS} from '@enums/tasksSagaEnum';
 import {Nullable, SetStateType} from '@root/types/common/types';
+import {TaskListInterface, TaskType} from '@store/reducers/tasksReducer/types';
 
 export type SetEditedTaskSagaPayloadType = {
-  taskListId: string;
-  taskId: string;
-  editedTaskTitle: string;
+  taskListId: TaskListInterface['id'];
+  taskId: TaskType['id'];
+  editedTaskTitle: TaskType['title'];
   shouldCreateNotification: boolean;
   date: Nullable<Date>;
   setIsLoading: SetStateType<boolean>;

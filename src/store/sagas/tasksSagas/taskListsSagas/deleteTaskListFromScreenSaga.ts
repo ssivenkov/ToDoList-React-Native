@@ -38,7 +38,7 @@ export function* deleteTaskListFromScreenSaga(
       return notifications.find((item) => item.taskID === taskID);
     };
 
-    const tasksNotifications: string[] = [];
+    const notificationTaskIDs: string[] = [];
 
     const deleteTaskListFromScreenInFirebase = (
       payload: DeleteTaskListFromScreenSagaPayloadType,
@@ -54,7 +54,7 @@ export function* deleteTaskListFromScreenSaga(
 
         if (modifiedTaskList.tasks && modifiedTaskList.tasks.length > 0) {
           modifiedTaskList.tasks.forEach((task) => {
-            if (!task.isDone) tasksNotifications.push(task.id);
+            if (!task.isDone) notificationTaskIDs.push(task.id);
 
             const notificationItem = findNotificationItem(task.id);
 
@@ -97,7 +97,7 @@ export function* deleteTaskListFromScreenSaga(
 
     yield call(deleteTaskListFromScreenInFirebase, action.payload);
 
-    yield put(setTasksNotificationsAction({notifications: tasksNotifications}));
+    yield put(setTasksNotificationsAction({notificationTaskIDs}));
 
     yield put(
       deleteTaskListFromScreenAction({

@@ -5,6 +5,7 @@ import {faPen} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {SetStateType} from '@root/types/common/types';
 import {editTaskListTitleAction} from '@store/actions/tasksSagaActions/taskListsSagasActions/editTaskListTitleAction';
+import {TaskListInterface} from '@store/reducers/tasksReducer/types';
 import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
 import {useDispatch} from 'react-redux';
@@ -17,7 +18,7 @@ export const EditTaskListTitleButton = ({
   const {t} = useTranslation();
   const dispatch = useDispatch();
   const [editedTaskListTitle, setEditedTaskListTitleState] =
-    useState<string>(oldTaskListTitle);
+    useState<TaskListInterface['title']>(oldTaskListTitle);
 
   const onOkPress = (
     setIsLoading: SetStateType<boolean>,
