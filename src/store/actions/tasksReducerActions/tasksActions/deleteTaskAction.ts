@@ -1,8 +1,9 @@
 import {TASKS_ACTIONS} from '@enums/tasksEnum';
+import {TaskListInterface, TaskType} from '@store/reducers/tasksReducer/types';
 
 type DeleteTaskActionPayloadType = {
-  taskListId: string;
-  taskId: string;
+  taskListId: TaskListInterface['id'];
+  taskId: TaskType['id'];
 };
 
 export type DeleteTaskActionReturnType = {

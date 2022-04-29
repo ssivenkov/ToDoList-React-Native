@@ -17,7 +17,7 @@ import {
   SetEditedTaskActionSagaReturnType,
   SetEditedTaskSagaPayloadType,
 } from '@store/actions/tasksSagaActions/tasksSagasActions/setEditedTaskAction';
-import {UserIDType} from '@store/reducers/authReducer/types';
+import {ChannelIDType, UserIDType} from '@store/reducers/authReducer/types';
 import {NotificationType} from '@store/reducers/tasksReducer/types';
 import {getChannelID, getUserID} from '@store/selectors/authSelectors';
 import {getNotifications} from '@store/selectors/tasksSelectors';
@@ -35,7 +35,7 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
 
     yield call(action.payload.setIsLoading, true);
     const userID: UserIDType = yield select(getUserID);
-    const channelId: string = yield select(getChannelID);
+    const channelId: ChannelIDType = yield select(getChannelID);
     const editTaskTitleInFirebase = (payload: SetEditedTaskSagaPayloadType) => {
       return DB.ref(
         `${Users}/${userID}/${taskLists}/${payload.taskListId}/${tasks}/${payload.taskId}`,
@@ -48,13 +48,12 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
         notificationIdMaxLength,
       ).toString();
 
-      yield call(
-        createNotificationHelper,
+      yield call(createNotificationHelper, {
         channelId,
-        action.payload.date,
+        date: action.payload.date,
         notificationID,
-        action.payload.editedTaskTitle,
-      );
+        taskTitle: action.payload.editedTaskTitle,
+      });
 
       yield put(
         editTaskNotificationAction({

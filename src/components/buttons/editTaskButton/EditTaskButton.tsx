@@ -6,6 +6,7 @@ import {faPen} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {Nullable, SetStateType} from '@root/types/common/types';
 import {setEditedTaskAction} from '@store/actions/tasksSagaActions/tasksSagasActions/setEditedTaskAction';
+import {TaskType} from '@store/reducers/tasksReducer/types';
 import {getNotifications} from '@store/selectors/tasksSelectors';
 import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
@@ -16,7 +17,8 @@ export const EditTaskButton = (props: EditTaskTitleButtonPropsType) => {
   const {taskListId, taskId, oldTaskTitle, isTodo} = props;
   const {t} = useTranslation();
   const dispatch = useDispatch();
-  const [editedTaskTitle, setEditedTaskTitle] = useState<string>(oldTaskTitle);
+  const [editedTaskTitle, setEditedTaskTitle] =
+    useState<TaskType['title']>(oldTaskTitle);
   const notifications = useSelector(getNotifications);
   const taskNotification = notifications.find((item) => item.taskID === taskId);
   const [date, setDate] = useState<Nullable<Date>>(

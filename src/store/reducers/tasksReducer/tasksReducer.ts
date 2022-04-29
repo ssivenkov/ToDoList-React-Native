@@ -81,7 +81,7 @@ export const tasksReducer = (
         notifications: [
           ...state.notifications.filter((notification) => {
             const notificationToDelete =
-              action.payload.notifications
+              action.payload.notificationTaskIDs
                 .join(',')
                 .indexOf(notification.taskID) > -1;
             if (!notificationToDelete) return true;

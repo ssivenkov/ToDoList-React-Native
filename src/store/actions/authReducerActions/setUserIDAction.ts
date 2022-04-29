@@ -1,8 +1,8 @@
 import {AUTH_ACTIONS} from '@enums/authEnum';
-import {Nullable} from '@root/types/common/types';
+import {UserIDType} from '@store/reducers/authReducer/types';
 
 type SetUserIDActionPayloadType = {
-  userID: Nullable<string>;
+  userID: UserIDType;
 };
 
 export type SetUserIDActionReturnType = {

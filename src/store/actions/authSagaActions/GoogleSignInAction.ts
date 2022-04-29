@@ -6,7 +6,7 @@ export type GetUserDataSagaActionPayloadType = {
 };
 
 export type GetGoogleUserDataSagaActionReturnType = {
-  type: typeof AUTH_SAGA_ACTIONS.GOOGLE_SIGN_IN_SAGA;
+  type: AUTH_SAGA_ACTIONS.GOOGLE_SIGN_IN_SAGA;
   payload: GetUserDataSagaActionPayloadType;
 };
 

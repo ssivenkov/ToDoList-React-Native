@@ -1,7 +1,7 @@
 import {TASKS_ACTIONS} from '@enums/tasksEnum';
 
 type SetTasksNotificationsActionPayloadType = {
-  notifications: string[];
+  notificationTaskIDs: string[];
 };
 
 export type SetTasksNotificationsActionReturnType = {
