@@ -4,7 +4,7 @@ import {iconSizeSmall} from '@constants/constants';
 import {faPen} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {SetStateType} from '@root/types/common/types';
-import {editTaskListTitle} from '@store/actions/tasksSagaActions/taskListsSagasActions/editTaskListTitle';
+import {editTaskListTitleAction} from '@store/actions/tasksSagaActions/taskListsSagasActions/editTaskListTitleAction';
 import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
 import {useDispatch} from 'react-redux';
@@ -25,7 +25,7 @@ export const EditTaskListTitleButton = ({
   ): void => {
     if (editedTaskListTitle.length > 0) {
       dispatch(
-        editTaskListTitle({
+        editTaskListTitleAction({
           taskListId,
           editedTaskListTitle,
           setIsLoading,

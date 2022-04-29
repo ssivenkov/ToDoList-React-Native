@@ -5,7 +5,7 @@ import {iconSizeSmall} from '@constants/constants';
 import {faPen} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {Nullable, SetStateType} from '@root/types/common/types';
-import {setEditedTask} from '@store/actions/tasksSagaActions/tasksSagasActions/setEditedTask';
+import {setEditedTaskAction} from '@store/actions/tasksSagaActions/tasksSagasActions/setEditedTaskAction';
 import {getNotifications} from '@store/selectors/tasksSelectors';
 import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
@@ -46,7 +46,7 @@ export const EditTaskButton = (props: EditTaskTitleButtonPropsType) => {
   ): void => {
     if (editedTaskTitle.length > 0) {
       dispatch(
-        setEditedTask({
+        setEditedTaskAction({
           taskListId,
           taskId,
           editedTaskTitle,

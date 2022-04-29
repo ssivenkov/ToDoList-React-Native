@@ -3,8 +3,8 @@ import {SignInButton} from '@components/screens/signInScreen/signInButton/SignIn
 import {signInStyles} from '@components/screens/signInScreen/signInButton/styles';
 import {FacebookTitle, GoogleTitle} from '@constants/constants';
 import {faFacebook, faGoogle} from '@fortawesome/free-brands-svg-icons';
-import {FacebookSignIn} from '@store/actions/authSagaActions/FacebookSignIn';
-import {GoogleSignIn} from '@store/actions/authSagaActions/GoogleSignIn';
+import {FacebookSignInAction} from '@store/actions/authSagaActions/FacebookSignInAction';
+import {GoogleSignInAction} from '@store/actions/authSagaActions/GoogleSignInAction';
 import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
 import {Text, View} from 'react-native';
@@ -17,11 +17,11 @@ export const SignInScreen = () => {
   const [waitingUserData, setWaitingUserData] = useState<boolean>(false);
 
   const onGoogleButtonPress = (): void => {
-    dispatch(GoogleSignIn({setWaitingUserData}));
+    dispatch(GoogleSignInAction({setWaitingUserData}));
   };
 
   const onFacebookButtonPress = (): void => {
-    dispatch(FacebookSignIn({setWaitingUserData}));
+    dispatch(FacebookSignInAction({setWaitingUserData}));
   };
 
   if (waitingUserData) {

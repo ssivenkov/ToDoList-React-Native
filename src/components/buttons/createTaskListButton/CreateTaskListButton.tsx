@@ -3,9 +3,9 @@ import {ModalIcon} from '@components/common/modals/ModalIcon';
 import {iconSizeLarge} from '@constants/constants';
 import {faPlus} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {createDate} from '@root/helpers/generateDate';
+import {createDate} from '@root/helpers/generateDateHelper';
 import {SetStateType} from '@root/types/common/types';
-import {addNewTaskList} from '@store/actions/tasksSagaActions/taskListsSagasActions/addNewTaskList';
+import {addNewTaskListAction} from '@store/actions/tasksSagaActions/taskListsSagasActions/addNewTaskListAction';
 import {TaskListInterface} from '@store/reducers/tasksReducer/types';
 import {nanoid} from 'nanoid';
 import React, {useState} from 'react';
@@ -36,7 +36,7 @@ export const CreateTaskListButton = () => {
       };
 
       dispatch(
-        addNewTaskList({
+        addNewTaskListAction({
           newTaskList,
           setIsLoading,
           setModalVisible,

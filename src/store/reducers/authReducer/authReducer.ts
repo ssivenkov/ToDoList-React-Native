@@ -1,8 +1,8 @@
 import {AUTH_ACTIONS} from '@enums/authEnum';
-import {SetAuthStateActionReturnType} from '@store/actions/authReducerActions/setAuthState';
-import {SetChannelIDActionReturnType} from '@store/actions/authReducerActions/setChannelID';
-import {SetUserDataActionReturnType} from '@store/actions/authReducerActions/setUserData';
-import {SetUserIDActionReturnType} from '@store/actions/authReducerActions/setUserID';
+import {SetAuthStateActionReturnType} from '@store/actions/authReducerActions/setAuthStateAction';
+import {SetChannelIDActionReturnType} from '@store/actions/authReducerActions/setChannelIDAction';
+import {SetUserDataActionReturnType} from '@store/actions/authReducerActions/setUserDataAction';
+import {SetUserIDActionReturnType} from '@store/actions/authReducerActions/setUserIDAction';
 import {AuthStateType} from '@store/reducers/authReducer/types';
 
 export type AuthActionsType =

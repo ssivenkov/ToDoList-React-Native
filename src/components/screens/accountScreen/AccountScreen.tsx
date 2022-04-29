@@ -1,7 +1,7 @@
 import {CustomTextButton} from '@components/common/buttons/CustomTextButton';
 import {Loader} from '@components/common/loader/loader';
 import {styles} from '@components/screens/accountScreen/styles';
-import {signOut} from '@store/actions/authSagaActions/signOut';
+import {signOutAction} from '@store/actions/authSagaActions/signOutAction';
 import {UserDataType} from '@store/reducers/authReducer/types';
 import {getUserData} from '@store/selectors/authSelectors';
 import {AppRootStateType} from '@store/store';
@@ -18,7 +18,7 @@ export const AccountScreen = () => {
 
   const onSignOutPress = (): void => {
     setWaitingSignOut(true);
-    dispatch(signOut());
+    dispatch(signOutAction());
   };
 
   if (userData && !waitingSignOut) {

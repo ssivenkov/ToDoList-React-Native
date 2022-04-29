@@ -3,7 +3,7 @@ import {iconSizeSmall} from '@constants/constants';
 import {faCheck} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {SetStateType} from '@root/types/common/types';
-import {setTaskIsDone} from '@store/actions/tasksSagaActions/tasksSagasActions/setTaskIsDone';
+import {setTaskIsDoneAction} from '@store/actions/tasksSagaActions/tasksSagasActions/setTaskIsDoneAction';
 import React from 'react';
 import {Trans} from 'react-i18next';
 import {Text} from 'react-native';
@@ -23,7 +23,12 @@ export const DoneTaskButton = ({
     setModalVisible: SetStateType<boolean>,
   ): void => {
     dispatch(
-      setTaskIsDone({taskListId, doneTaskId, setIsLoading, setModalVisible}),
+      setTaskIsDoneAction({
+        taskListId,
+        doneTaskId,
+        setIsLoading,
+        setModalVisible,
+      }),
     );
   };
 
