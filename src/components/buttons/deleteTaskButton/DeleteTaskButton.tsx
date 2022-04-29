@@ -3,11 +3,9 @@ import {iconSizeSmall} from '@constants/constants';
 import {faTrash} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {SetStateType} from '@root/types/common/types';
-import {
-  deleteTask,
-  deleteTaskListFromScreen,
-  deleteTaskListFull,
-} from '@store/actions/tasksSagaActions/tasksSagaActions';
+import {deleteTaskListFromScreen} from '@store/actions/tasksSagaActions/taskListsSagasActions/deleteTaskListFromScreen';
+import {deleteTaskListFull} from '@store/actions/tasksSagaActions/taskListsSagasActions/deleteTaskListFull';
+import {deleteTask} from '@store/actions/tasksSagaActions/tasksSagasActions/deleteTask';
 import React from 'react';
 import {Trans} from 'react-i18next';
 import {Text} from 'react-native';

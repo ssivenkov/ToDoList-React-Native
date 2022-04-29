@@ -7,7 +7,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {TasksNavigation} from '@navigation/tasksNavigation/TasksNavigation';
 import {BottomTabParamList} from '@navigation/withAuthNavigation/types';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {syncUserTaskLists} from '@store/actions/tasksSagaActions/tasksSagaActions';
+import {syncUserTaskLists} from '@store/actions/authSagaActions/syncUserTaskLists';
 import React, {useEffect} from 'react';
 import {useTranslation} from 'react-i18next';
 import {View} from 'react-native';

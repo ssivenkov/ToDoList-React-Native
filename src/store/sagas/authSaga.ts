@@ -1,39 +1,114 @@
+import {Users} from '@constants/constants';
 import auth from '@react-native-firebase/auth';
 import messaging from '@react-native-firebase/messaging';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
+import {DB} from '@root/api/DB';
 import {errorAlert} from '@root/helpers/alert';
 import {delay} from '@root/helpers/delay';
-import {
-  setAuthState,
-  setChannelID,
-} from '@store/actions/authActions/authActions';
-import {
-  GetFacebookUserDataSagaActionType,
-  GetGoogleUserDataSagaActionType,
-  AuthCredentialType,
-} from '@store/actions/authSagaActions/types';
-import {setTaskLists} from '@store/actions/tasksActions/tasksActions';
+import {setAuthState} from '@store/actions/authReducerActions/setAuthState';
+import {setChannelID} from '@store/actions/authReducerActions/setChannelID';
+import {GetFacebookUserDataSagaActionReturnType} from '@store/actions/authSagaActions/FacebookSignIn';
+import {GetGoogleUserDataSagaActionReturnType} from '@store/actions/authSagaActions/GoogleSignIn';
+import {syncUserTaskLists} from '@store/actions/authSagaActions/syncUserTaskLists';
+import {setNotifications} from '@store/actions/tasksReducerActions/notificationsActions/setNotifications';
+import {setTaskLists} from '@store/actions/tasksReducerActions/taskListsActions/setTaskLists';
 import {initialAuthState} from '@store/reducers/authReducer/authReducer';
-import {UserDataType} from '@store/reducers/authReducer/types';
-import {getUserData} from '@store/selectors/authSelectors';
+import {
+  SnapshotType,
+  UserDataType,
+  UserIDType,
+} from '@store/reducers/authReducer/types';
+import {
+  TaskListBeforeConvertInterface,
+  TaskListInterface,
+  TaskListWithTaskType,
+} from '@store/reducers/tasksReducer/types';
+import {getUserData, getUserID} from '@store/selectors/authSelectors';
 import {AccessToken, LoginManager} from 'react-native-fbsdk-next';
 import PushNotification from 'react-native-push-notification';
 import {call, put, select} from 'redux-saga/effects';
 
+type AuthCredentialType = {
+  providerId: string;
+  token: string;
+  secret: string;
+};
+
 const signInWithCredential = (credential: AuthCredentialType) => {
   return auth().signInWithCredential(credential);
 };
+
+export function* checkUserWorker() {
+  try {
+    const userID: UserIDType = yield select(getUserID);
+    const snapshot: SnapshotType = yield DB.ref(`${Users}/${userID}`).once(
+      'value',
+    );
+    const isUserExist = snapshot.exists();
+
+    if (!isUserExist && userID) {
+      DB.ref(`${Users}/${userID}`).set({userToken: userID});
+    } else {
+      yield put(syncUserTaskLists());
+    }
+  } catch (error) {
+    if (error instanceof Error) {
+      errorAlert(error);
+    }
+  }
+}
+
+export function* syncUserTaskListsWorker() {
+  try {
+    const userID: UserIDType = yield select(getUserID);
+    const snapshot: SnapshotType = yield DB.ref(`${Users}/${userID}`).once(
+      'value',
+    );
+    const hasTaskLists = Object.keys(snapshot.val()?.taskLists).length > 0;
+
+    if (hasTaskLists) {
+      const userTaskListsObject = snapshot.val().taskLists;
+      // convert taskLists object to taskLists array
+      const userTaskListsBeforeConvert: TaskListBeforeConvertInterface[] =
+        Object.values(userTaskListsObject);
+      // convert tasks object in every taskLists to tasks array in every taskLists
+      const taskLists: TaskListInterface[] = userTaskListsBeforeConvert.map(
+        (taskList) => {
+          if (taskList.tasks) {
+            const taskListWithTasksAsArray: TaskListInterface = {
+              ...taskList,
+              tasks: Object.values(taskList.tasks),
+            };
+            return taskListWithTasksAsArray;
+          } else {
+            const oldTaskList: TaskListWithTaskType = {...taskList};
+            return oldTaskList;
+          }
+        },
+      );
+
+      yield put(setTaskLists({taskLists}));
+    } else {
+      yield put(setTaskLists({taskLists: []}));
+      yield put(setNotifications({notifications: []}));
+    }
+  } catch (error) {
+    if (error instanceof Error) {
+      errorAlert(error);
+    }
+  }
+}
 
 export function* createChannelWorker() {
   try {
     const getChannelID = () => {
       return messaging().getToken();
     };
-    const channelId: string = yield call(getChannelID);
+    const channelID: string = yield call(getChannelID);
     const createChannel = () => {
       PushNotification.createChannel(
         {
-          channelId,
+          channelId: channelID,
           channelName: 'Task notification channel',
           channelDescription: 'A channel to categorise your notifications',
           playSound: true,
@@ -46,7 +121,7 @@ export function* createChannelWorker() {
     };
 
     yield call(createChannel);
-    yield put(setChannelID(channelId));
+    yield put(setChannelID({channelID}));
   } catch (error) {
     if (error instanceof Error) {
       errorAlert(error);
@@ -54,8 +129,10 @@ export function* createChannelWorker() {
   }
 }
 
-export function* googleSignInWorker(action: GetGoogleUserDataSagaActionType) {
-  const {setWaitingUserData} = action.payload;
+export function* googleSignInWorker(
+  action: GetGoogleUserDataSagaActionReturnType,
+) {
+  const setWaitingUserData = action.payload.setWaitingUserData;
   try {
     yield call(setWaitingUserData, true);
     yield call(delay, 10);
@@ -75,9 +152,9 @@ export function* googleSignInWorker(action: GetGoogleUserDataSagaActionType) {
 }
 
 export function* facebookSignInWorker(
-  action: GetFacebookUserDataSagaActionType,
+  action: GetFacebookUserDataSagaActionReturnType,
 ) {
-  const {setWaitingUserData} = action.payload;
+  const setWaitingUserData = action.payload.setWaitingUserData;
   try {
     yield call(setWaitingUserData, true);
     yield call(delay, 10);
@@ -111,18 +188,17 @@ export function* signOutWorker() {
     const signOut = () => {
       return auth().signOut();
     };
-
+    const userData: UserDataType = yield select(getUserData);
+    const providerId = userData?.providerData[0]?.providerId;
     yield call(delay, 10);
 
     yield call(signOut);
-    const userData: UserDataType = yield select(getUserData);
-    const providerId = userData && userData.providerData[0]?.providerId;
 
     if (providerId === 'google.com') {
       yield call(GoogleSignin.signOut);
     }
-    yield put(setAuthState(initialAuthState));
-    yield put(setTaskLists([]));
+    yield put(setAuthState({authState: initialAuthState}));
+    yield put(setTaskLists({taskLists: []}));
   } catch (error) {
     if (error instanceof Error) {
       errorAlert(error);
