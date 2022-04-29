@@ -4,9 +4,9 @@ import {Notification} from '@components/common/notification/Notification';
 import {iconSizeSmall} from '@constants/constants';
 import {faPlus} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {createDate} from '@root/helpers/generateDate';
+import {createDate} from '@root/helpers/generateDateHelper';
 import {SetStateType} from '@root/types/common/types';
-import {addNewTask} from '@store/actions/tasksSagaActions/tasksSagasActions/addNewTask';
+import {addNewTaskAction} from '@store/actions/tasksSagaActions/tasksSagasActions/addNewTaskAction';
 import {TaskListInterface, TaskType} from '@store/reducers/tasksReducer/types';
 import {nanoid} from 'nanoid';
 import React, {useState} from 'react';
@@ -60,7 +60,7 @@ export const CreateTaskButton = (props: CreateTaskButtonPropsType) => {
 
     if (newTaskTitle) {
       dispatch(
-        addNewTask({
+        addNewTaskAction({
           modifiedTaskList,
           taskListId,
           newTask,

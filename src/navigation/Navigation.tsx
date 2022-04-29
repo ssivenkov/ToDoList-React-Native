@@ -7,9 +7,9 @@ import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {GoogleWebClientId} from '@root/api/config';
-import {setUserData} from '@store/actions/authReducerActions/setUserData';
-import {setUserID} from '@store/actions/authReducerActions/setUserID';
-import {createChannel} from '@store/actions/authSagaActions/createChannel';
+import {setUserDataAction} from '@store/actions/authReducerActions/setUserDataAction';
+import {setUserIDAction} from '@store/actions/authReducerActions/setUserIDAction';
+import {createChannelAction} from '@store/actions/authSagaActions/createChannelAction';
 import {UserDataType} from '@store/reducers/authReducer/types';
 import {getChannelID, getUserID} from '@store/selectors/authSelectors';
 import React, {useEffect, useState} from 'react';
@@ -26,12 +26,12 @@ export const Navigation = () => {
   const channelID: string = useSelector(getChannelID);
 
   const onAuthStateChanged = (userData: UserDataType) => {
-    dispatch(setUserData({userData: userData}));
+    dispatch(setUserDataAction({userData: userData}));
 
     if (userData) {
-      dispatch(setUserID({userID: userData.uid}));
+      dispatch(setUserIDAction({userID: userData.uid}));
     } else {
-      dispatch(setUserID({userID: null}));
+      dispatch(setUserIDAction({userID: null}));
     }
 
     if (firebaseInitializing) {
@@ -40,7 +40,7 @@ export const Navigation = () => {
   };
 
   useEffect(() => {
-    if (!channelID) dispatch(createChannel());
+    if (!channelID) dispatch(createChannelAction());
 
     GoogleSignin.configure({
       webClientId: GoogleWebClientId,

@@ -7,7 +7,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {TasksNavigation} from '@navigation/tasksNavigation/TasksNavigation';
 import {BottomTabParamList} from '@navigation/withAuthNavigation/types';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {syncUserTaskLists} from '@store/actions/authSagaActions/syncUserTaskLists';
+import {syncUserTaskListsAction} from '@store/actions/authSagaActions/syncUserTaskListsAction';
 import React, {useEffect} from 'react';
 import {useTranslation} from 'react-i18next';
 import {View} from 'react-native';
@@ -21,7 +21,7 @@ export const WithAuthNavigation = () => {
   const {t} = useTranslation();
 
   useEffect(() => {
-    dispatch(syncUserTaskLists());
+    dispatch(syncUserTaskListsAction());
   }, []);
 
   return (
