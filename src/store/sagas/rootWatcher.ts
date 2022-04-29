@@ -1,23 +1,19 @@
 import {AUTH_SAGA_ACTIONS} from '@enums/authSagaEnum';
 import {TASKS_SAGA_ACTIONS} from '@enums/tasksSagaEnum';
-import {
-  googleSignInWorker,
-  signOutWorker,
-  facebookSignInWorker,
-  createChannelWorker,
-  checkUserWorker,
-  syncUserTaskListsWorker,
-} from '@store/sagas/authSaga';
-import {
-  addNewTaskListWorker,
-  addNewTaskWorker,
-  deleteTaskListFromScreenWorker,
-  deleteTaskListFullWorker,
-  deleteTaskWorker,
-  editTaskListTitleWorker,
-  editTaskWorker,
-  setTaskIsDoneWorker,
-} from '@store/sagas/tasksSaga';
+import {checkUserWorker} from '@store/sagas/authSagas/checkUserWorker';
+import {createChannelWorker} from '@store/sagas/authSagas/createChannelWorker';
+import {facebookSignInWorker} from '@store/sagas/authSagas/facebookSignInWorker';
+import {googleSignInWorker} from '@store/sagas/authSagas/googleSignInWorker';
+import {signOutWorker} from '@store/sagas/authSagas/signOutWorker';
+import {syncUserTaskListsWorker} from '@store/sagas/authSagas/syncUserTaskListsWorker';
+import {addNewTaskListWorker} from '@store/sagas/tasksSagas/taskListsSagas/addNewTaskListWorker';
+import {deleteTaskListFromScreenWorker} from '@store/sagas/tasksSagas/taskListsSagas/deleteTaskListFromScreenWorker';
+import {deleteTaskListFullWorker} from '@store/sagas/tasksSagas/taskListsSagas/deleteTaskListFullWorker';
+import {editTaskListTitleWorker} from '@store/sagas/tasksSagas/taskListsSagas/editTaskListTitleWorker';
+import {addNewTaskWorker} from '@store/sagas/tasksSagas/tasksSagas/addNewTaskWorker';
+import {deleteTaskWorker} from '@store/sagas/tasksSagas/tasksSagas/deleteTaskWorker';
+import {editTaskWorker} from '@store/sagas/tasksSagas/tasksSagas/editTaskWorker';
+import {setTaskIsDoneWorker} from '@store/sagas/tasksSagas/tasksSagas/setTaskIsDoneWorker';
 import {takeEvery, takeLatest} from 'redux-saga/effects';
 
 export function* rootWatcher() {
