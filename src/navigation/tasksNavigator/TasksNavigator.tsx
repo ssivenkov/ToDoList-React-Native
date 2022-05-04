@@ -14,9 +14,6 @@ const {Navigator, Screen} = createMaterialTopTabNavigator<TopTabParamList>();
 export const TasksNavigator = () => {
   const {t} = useTranslation();
 
-  const TodoTasksScreenComponent = () => TasksScreen({isTodoScreen: true});
-  const DoneTasksScreenComponent = () => TasksScreen({isTodoScreen: false});
-
   return (
     <Navigator
       initialRouteName={'ToDo'}
@@ -29,7 +26,7 @@ export const TasksNavigator = () => {
       })}>
       <Screen
         name={'ToDo'}
-        component={TodoTasksScreenComponent}
+        component={() => TasksScreen(true)}
         options={() => ({
           tabBarLabel: `${t('tasksScreen.TodoTasksTab')}`,
           tabBarIcon: ({focused}) => (
@@ -43,7 +40,7 @@ export const TasksNavigator = () => {
       />
       <Screen
         name={'Done'}
-        component={DoneTasksScreenComponent}
+        component={() => TasksScreen(false)}
         options={() => ({
           tabBarLabel: `${t('tasksScreen.DoneTasksTab')}`,
           tabBarIcon: ({focused}) => (
