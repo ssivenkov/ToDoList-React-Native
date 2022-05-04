@@ -5,14 +5,14 @@ import {
 } from '@store/reducers/authReducer/types';
 import {AppRootStateType} from '@store/store';
 
-export const getUserID = (state: AppRootStateType): UserIDType => {
+export const userIDSelector = (state: AppRootStateType): UserIDType => {
   return state.auth.userID;
 };
 
-export const getUserData = (state: AppRootStateType): UserDataType => {
+export const userDataSelector = (state: AppRootStateType): UserDataType => {
   return state.auth.userData;
 };
 
-export const getChannelID = (state: AppRootStateType): ChannelIDType => {
+export const channelIDSelector = (state: AppRootStateType): ChannelIDType => {
   return state.auth.channelID;
 };

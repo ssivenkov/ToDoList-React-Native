@@ -3,7 +3,7 @@ import {Loader} from '@components/common/loader/loader';
 import {styles} from '@root/screens/accountScreen/styles';
 import {signOutAction} from '@store/actions/authSagaActions/signOutAction';
 import {UserDataType} from '@store/reducers/authReducer/types';
-import {getUserData} from '@store/selectors/authSelectors';
+import {userDataSelector} from '@store/selectors/authSelectors';
 import {AppRootStateType} from '@store/store';
 import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
@@ -15,7 +15,9 @@ export const AccountScreen = () => {
 
   const {t} = useTranslation();
 
-  const userData = useSelector<AppRootStateType, UserDataType>(getUserData);
+  const userData = useSelector<AppRootStateType, UserDataType>(
+    userDataSelector,
+  );
   const [waitingSignOut, setWaitingSignOut] = useState<boolean>(false);
 
   const onSignOutPress = (): void => {
