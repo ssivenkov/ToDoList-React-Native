@@ -55,8 +55,6 @@ export function* deleteTaskSaga(action: DeleteTaskSagaActionReturnType) {
     yield call(action.payload.setModalVisible, false);
   } catch (error) {
     yield call(action.payload.setIsLoading, false);
-    if (error instanceof Error) {
-      errorAlert(error);
-    }
+    errorAlert(error);
   }
 }

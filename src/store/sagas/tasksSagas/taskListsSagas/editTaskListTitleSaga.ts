@@ -50,8 +50,6 @@ export function* editTaskListTitleSaga(
     );
   } catch (error) {
     yield call(action.payload.setIsLoading, false);
-    if (error instanceof Error) {
-      errorAlert(error);
-    }
+    errorAlert(error);
   }
 }
