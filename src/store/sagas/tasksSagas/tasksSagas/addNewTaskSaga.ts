@@ -82,8 +82,6 @@ export function* addNewTaskSaga(action: AddNewTaskSagaActionReturnType) {
     yield call(action.payload.setNewTaskTitle, '');
   } catch (error) {
     yield call(action.payload.setIsLoading, false);
-    if (error instanceof Error) {
-      errorAlert(error);
-    }
+    errorAlert(error);
   }
 }

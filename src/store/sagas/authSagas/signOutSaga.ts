@@ -26,8 +26,6 @@ export function* signOutSaga() {
     yield put(setAuthStateAction({authState: initialAuthState}));
     yield put(setTaskListsAction({taskLists: []}));
   } catch (error) {
-    if (error instanceof Error) {
-      errorAlert(error);
-    }
+    errorAlert(error);
   }
 }

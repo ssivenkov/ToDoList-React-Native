@@ -30,9 +30,7 @@ export function* googleSignInSaga(
     };
     yield call(signInWithCredential, googleCredential);
   } catch (error) {
-    if (error instanceof Error) {
-      setWaitingUserData(false);
-      errorAlert(error);
-    }
+    setWaitingUserData(false);
+    errorAlert(error);
   }
 }
