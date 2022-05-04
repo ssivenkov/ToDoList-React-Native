@@ -6,10 +6,8 @@ type CreateTaskListButtonStylesType = {
   icon: FontAwesomeIconStyle;
 };
 
-const {WHITE} = COLORS;
-
 export const styles = StyleSheet.create<CreateTaskListButtonStylesType>({
   icon: {
-    color: WHITE,
+    color: COLORS.WHITE,
   },
 });
