@@ -1,4 +1,3 @@
-import {SIGN_SIN, WITH_AUTH} from '@constants/constants';
 import {RootStackParamList} from '@navigation/types';
 import {WithAuthNavigator} from '@navigation/withAuthNavigator/WithAuthNavigator';
 import auth from '@react-native-firebase/auth';
@@ -25,7 +24,7 @@ const {Navigator, Screen} = createNativeStackNavigator<RootStackParamList>();
 export const Navigation = () => {
   const dispatch = useDispatch();
 
-  const isUserAuth = !!useSelector(userIDSelector);
+  const userID = useSelector(userIDSelector);
   const channelID = useSelector(channelIDSelector);
 
   const [firebaseInitializing, setFirebaseInitializing] =
@@ -63,15 +62,15 @@ export const Navigation = () => {
     <SafeAreaProvider>
       <NavigationContainer>
         <Navigator>
-          {isUserAuth ? (
+          {userID ? (
             <Screen
-              name={WITH_AUTH}
+              name={'WithAuth'}
               component={WithAuthNavigator}
               options={{headerShown: false}}
             />
           ) : (
             <Screen
-              name={SIGN_SIN}
+              name={'SignIn'}
               component={SignInScreen}
               options={{headerShown: false}}
             />

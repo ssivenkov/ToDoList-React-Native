@@ -7,6 +7,3 @@ export const FACEBOOK_TITLE = 'Facebook';
 export const USERS = 'Users';
 export const TASK_LISTS = 'taskLists';
 export const TASKS = 'tasks';
-export const ACCOUNT = 'Account';
-export const WITH_AUTH = 'WithAuth';
-export const SIGN_SIN = 'SignIn';
