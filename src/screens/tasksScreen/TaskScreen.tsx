@@ -1,27 +1,20 @@
 import {TaskList} from '@components/common/taskList/TaskList';
-import {sortingTaskLists} from '@components/screens/tasksScreen/helpers/sorting';
-import {TodoTasksScreenPropsType} from '@components/screens/tasksScreen/types';
-import {TaskListInterface} from '@store/reducers/tasksReducer/types';
+import {sortingTaskLists} from '@root/screens/tasksScreen/helpers/sorting';
+import {TodoTasksScreenPropsType} from '@root/screens/tasksScreen/types';
 import {getTaskLists} from '@store/selectors/tasksSelectors';
-import {AppRootStateType} from '@store/store';
 import React from 'react';
 import {useTranslation} from 'react-i18next';
-import {Text, View, ScrollView} from 'react-native';
+import {ScrollView, Text, View} from 'react-native';
 import {useSelector} from 'react-redux';
 import {styles} from './styles';
 
 export const TasksScreen = (props: TodoTasksScreenPropsType) => {
   const {isTodoScreen} = props;
-  const {t} = useTranslation();
-  const taskLists = useSelector<AppRootStateType, TaskListInterface[]>(
-    getTaskLists,
-  );
 
-  const toDoTaskLists = taskLists.filter((taskList) => {
-    if (taskList.showInToDo) {
-      return true;
-    }
-  });
+  const {t} = useTranslation();
+
+  const taskLists = useSelector(getTaskLists);
+  const toDoTaskLists = taskLists.filter(({showInToDo}) => showInToDo);
 
   const doneTaskLists = taskLists.filter((taskList) => {
     if (taskList.tasks && taskList.tasks.length > 0) {

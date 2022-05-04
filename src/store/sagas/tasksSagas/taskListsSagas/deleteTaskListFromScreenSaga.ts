@@ -1,4 +1,4 @@
-import {taskLists, tasks, Users} from '@constants/constants';
+import {TASK_LISTS, TASKS, USERS} from '@constants/constants';
 import NetInfo, {NetInfoState} from '@react-native-community/netinfo';
 import {DB} from '@root/api/DB';
 import {errorAlert} from '@root/helpers/alertHelper';
@@ -46,11 +46,11 @@ export function* deleteTaskListFromScreenSaga(
       const modifiedTaskList = {...payload.fullTaskList};
 
       if (payload.deleteTodoTask) {
-        DB.ref(`${Users}/${userID}/${taskLists}/${modifiedTaskList.id}`).update(
-          {
-            showInToDo: false,
-          },
-        );
+        DB.ref(
+          `${USERS}/${userID}/${TASK_LISTS}/${modifiedTaskList.id}`,
+        ).update({
+          showInToDo: false,
+        });
 
         if (modifiedTaskList.tasks && modifiedTaskList.tasks.length > 0) {
           modifiedTaskList.tasks.forEach((task) => {
@@ -90,7 +90,7 @@ export function* deleteTaskListFromScreenSaga(
           );
 
         return DB.ref(
-          `${Users}/${userID}/${taskLists}/${modifiedTaskList.id}/${tasks}`,
+          `${USERS}/${userID}/${TASK_LISTS}/${modifiedTaskList.id}/${TASKS}`,
         ).set(convertedTasksForFirebase);
       }
     };

@@ -1,4 +1,4 @@
-import {TASKS_SAGA_ACTIONS} from '@enums/tasksSagaEnum';
+import {TASKS_SAGA_ACTION} from '@enums/tasksSagaEnum';
 import {SetStateType} from '@root/types/common/types';
 import {TaskListWithTaskType} from '@store/reducers/tasksReducer/types';
 
@@ -10,7 +10,7 @@ export type AddNewTaskListSagaPayloadType = {
 };
 
 export type AddNewTaskListSagaActionReturnType = {
-  type: TASKS_SAGA_ACTIONS.ADD_NEW_TASK_LIST;
+  type: TASKS_SAGA_ACTION.ADD_NEW_TASK_LIST;
   payload: AddNewTaskListSagaPayloadType;
 };
 
@@ -19,6 +19,6 @@ export type AddNewTaskListActionType = (
 ) => AddNewTaskListSagaActionReturnType;
 
 export const addNewTaskListAction: AddNewTaskListActionType = (payload) => ({
-  type: TASKS_SAGA_ACTIONS.ADD_NEW_TASK_LIST,
+  type: TASKS_SAGA_ACTION.ADD_NEW_TASK_LIST,
   payload,
 });

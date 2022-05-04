@@ -1,4 +1,4 @@
-import {taskLists, Users} from '@constants/constants';
+import {TASK_LISTS, USERS} from '@constants/constants';
 import NetInfo, {NetInfoState} from '@react-native-community/netinfo';
 import {DB} from '@root/api/DB';
 import {errorAlert} from '@root/helpers/alertHelper';
@@ -37,7 +37,7 @@ export function* deleteTaskListFullSaga(
       payload: DeleteTaskListFullSagaPayloadType,
     ): Promise<void> => {
       return DB.ref(
-        `${Users}/${userID}/${taskLists}/${payload.taskListId}`,
+        `${USERS}/${userID}/${TASK_LISTS}/${payload.taskListId}`,
       ).remove();
     };
     yield call(deleteTaskListInFirebase, action.payload);

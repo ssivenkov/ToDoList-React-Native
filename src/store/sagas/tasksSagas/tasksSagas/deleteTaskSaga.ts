@@ -1,4 +1,4 @@
-import {taskLists, tasks, Users} from '@constants/constants';
+import {TASK_LISTS, TASKS, USERS} from '@constants/constants';
 import NetInfo, {NetInfoState} from '@react-native-community/netinfo';
 import {DB} from '@root/api/DB';
 import {errorAlert} from '@root/helpers/alertHelper';
@@ -30,7 +30,7 @@ export function* deleteTaskSaga(action: DeleteTaskSagaActionReturnType) {
     const userID: UserIDType = yield select(getUserID);
     const deleteTaskInFirebase = (payload: DeleteTaskSagaPayloadType) => {
       return DB.ref(
-        `${Users}/${userID}/${taskLists}/${payload.taskListId}/${tasks}/${payload.taskId}`,
+        `${USERS}/${userID}/${TASK_LISTS}/${payload.taskListId}/${TASKS}/${payload.taskId}`,
       ).remove();
     };
     yield call(deleteTaskInFirebase, action.payload);

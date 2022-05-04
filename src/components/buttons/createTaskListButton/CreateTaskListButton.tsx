@@ -1,6 +1,6 @@
 import {CustomInput} from '@components/common/input/CustomInput';
 import {ModalIcon} from '@components/common/modals/ModalIcon';
-import {iconSizeLarge} from '@constants/constants';
+import {ICON_SIZE_LARGE} from '@constants/constants';
 import {faPlus} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {createDate} from '@root/helpers/generateDateHelper';
@@ -56,7 +56,7 @@ export const CreateTaskListButton = () => {
       buttonIcon={
         <FontAwesomeIcon
           icon={faPlus}
-          size={iconSizeLarge}
+          size={ICON_SIZE_LARGE}
           style={styles.icon}
         />
       }>

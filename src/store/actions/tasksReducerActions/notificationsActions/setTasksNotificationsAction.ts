@@ -1,11 +1,11 @@
-import {TASKS_ACTIONS} from '@enums/tasksEnum';
+import {TASKS_ACTION} from '@enums/tasksEnum';
 
 type SetTasksNotificationsActionPayloadType = {
   notificationTaskIDs: string[];
 };
 
 export type SetTasksNotificationsActionReturnType = {
-  type: TASKS_ACTIONS.SET_TASKS_NOTIFICATIONS;
+  type: TASKS_ACTION.SET_TASKS_NOTIFICATIONS;
   payload: SetTasksNotificationsActionPayloadType;
 };
 
@@ -16,6 +16,6 @@ export type SetTasksNotificationsActionType = (
 export const setTasksNotificationsAction: SetTasksNotificationsActionType = (
   payload,
 ) => ({
-  type: TASKS_ACTIONS.SET_TASKS_NOTIFICATIONS,
+  type: TASKS_ACTION.SET_TASKS_NOTIFICATIONS,
   payload,
 });

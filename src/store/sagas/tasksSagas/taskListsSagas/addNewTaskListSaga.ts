@@ -1,4 +1,4 @@
-import {taskLists, Users} from '@constants/constants';
+import {TASK_LISTS, USERS} from '@constants/constants';
 import NetInfo, {NetInfoState} from '@react-native-community/netinfo';
 import {DB} from '@root/api/DB';
 import {errorAlert} from '@root/helpers/alertHelper';
@@ -25,7 +25,7 @@ export function* addNewTaskListSaga(
     yield call(action.payload.setIsLoading, true);
     const userID: UserIDType = yield select(getUserID);
     const addNewTaskListToFirebase = (newTaskList: TaskListInterface) => {
-      return DB.ref(`${Users}/${userID}/${taskLists}/${newTaskList.id}`).set(
+      return DB.ref(`${USERS}/${userID}/${TASK_LISTS}/${newTaskList.id}`).set(
         newTaskList,
       );
     };

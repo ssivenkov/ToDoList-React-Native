@@ -1,5 +1,5 @@
 import {ModalIcon} from '@components/common/modals/ModalIcon';
-import {iconSizeSmall} from '@constants/constants';
+import {ICON_SIZE_SMALL} from '@constants/constants';
 import {faTrash} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {SetStateType} from '@root/types/common/types';
@@ -65,7 +65,7 @@ export const DeleteTaskListButton = (props: DeleteTaskListButtonPropsType) => {
   return (
     <ModalIcon
       okHandler={removeTaskList}
-      buttonIcon={<FontAwesomeIcon icon={faTrash} size={iconSizeSmall} />}>
+      buttonIcon={<FontAwesomeIcon icon={faTrash} size={ICON_SIZE_SMALL} />}>
       <Text style={styles.warnText}>
         <Trans i18nKey="tasksScreen.DeleteQuestionButtonTitle">
           <Text style={styles.redHighlightTask}>{{text: taskListTitle}}</Text>

@@ -1,4 +1,4 @@
-import {Users} from '@constants/constants';
+import {USERS} from '@constants/constants';
 import {DB} from '@root/api/DB';
 import {errorAlert} from '@root/helpers/alertHelper';
 import {setNotificationsAction} from '@store/actions/tasksReducerActions/notificationsActions/setNotificationsAction';
@@ -15,10 +15,10 @@ import {put, select} from 'redux-saga/effects';
 export function* syncUserTaskListsSaga() {
   try {
     const userID: UserIDType = yield select(getUserID);
-    const snapshot: SnapshotType = yield DB.ref(`${Users}/${userID}`).once(
+    const snapshot: SnapshotType = yield DB.ref(`${USERS}/${userID}`).once(
       'value',
     );
-    const hasTaskLists = Object.keys(snapshot.val()?.taskLists).length > 0;
+    const hasTaskLists = !!Object.keys(snapshot.val()?.taskLists).length;
 
     if (hasTaskLists) {
       const userTaskListsObject = snapshot.val().taskLists;
@@ -33,9 +33,11 @@ export function* syncUserTaskListsSaga() {
               ...taskList,
               tasks: Object.values(taskList.tasks),
             };
+
             return taskListWithTasksAsArray;
           } else {
             const oldTaskList: TaskListWithTaskType = {...taskList};
+
             return oldTaskList;
           }
         },

@@ -12,7 +12,7 @@ export const createNotificationHelper = (
   props: createNotificationHelperPropsType,
 ) => {
   const {channelId, date, notificationID, taskTitle} = props;
-  const message: string = `${t('tasksScreen.TaskNotification')} ${taskTitle}`;
+  const message = `${t('tasksScreen.TaskNotification')} ${taskTitle}`;
 
   PushNotification.localNotificationSchedule({
     channelId,

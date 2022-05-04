@@ -1,4 +1,4 @@
-import {TASKS_ACTIONS} from '@enums/tasksEnum';
+import {TASKS_ACTION} from '@enums/tasksEnum';
 import {AddTaskNotificationActionReturnType} from '@store/actions/tasksReducerActions/notificationsActions/addTaskNotificationAction';
 import {DeleteTaskNotificationActionReturnType} from '@store/actions/tasksReducerActions/notificationsActions/deleteTaskNotificationAction';
 import {EditTaskNotificationActionReturnType} from '@store/actions/tasksReducerActions/notificationsActions/editTaskNotificationAction';
@@ -41,29 +41,27 @@ export const tasksReducer = (
   action: TasksActionsType,
 ): TasksStateType => {
   switch (action.type) {
-    case TASKS_ACTIONS.SET_TASK_LISTS:
+    case TASKS_ACTION.SET_TASK_LISTS:
       return {...state, taskLists: action.payload.taskLists};
 
-    case TASKS_ACTIONS.SET_NOTIFICATIONS:
+    case TASKS_ACTION.SET_NOTIFICATIONS:
       return {...state, notifications: action.payload.notifications};
 
-    case TASKS_ACTIONS.DELETE_TASK_NOTIFICATION:
+    case TASKS_ACTION.DELETE_TASK_NOTIFICATION:
       return {
         ...state,
-        notifications: [
-          ...state.notifications.filter((notification) => {
-            return notification.taskID !== action.payload.taskID;
-          }),
-        ],
+        notifications: state.notifications.filter((notification) => {
+          return notification.taskID !== action.payload.taskID;
+        }),
       };
 
-    case TASKS_ACTIONS.ADD_NEW_TASK_LIST:
+    case TASKS_ACTION.ADD_NEW_TASK_LIST:
       return {
         ...state,
         taskLists: [action.payload.taskList, ...state.taskLists],
       };
 
-    case TASKS_ACTIONS.ADD_NEW_TASK:
+    case TASKS_ACTION.ADD_NEW_TASK:
       return {
         ...state,
         taskLists: [
@@ -75,7 +73,7 @@ export const tasksReducer = (
         ],
       };
 
-    case TASKS_ACTIONS.SET_TASKS_NOTIFICATIONS:
+    case TASKS_ACTION.SET_TASKS_NOTIFICATIONS:
       return {
         ...state,
         notifications: [
@@ -89,13 +87,13 @@ export const tasksReducer = (
         ],
       };
 
-    case TASKS_ACTIONS.ADD_TASK_NOTIFICATION:
+    case TASKS_ACTION.ADD_TASK_NOTIFICATION:
       return {
         ...state,
         notifications: [...state.notifications, action.payload.notification],
       };
 
-    case TASKS_ACTIONS.EDIT_TASK_NOTIFICATION:
+    case TASKS_ACTION.EDIT_TASK_NOTIFICATION:
       return {
         ...state,
         notifications: [
@@ -106,7 +104,7 @@ export const tasksReducer = (
         ],
       };
 
-    case TASKS_ACTIONS.DELETE_TASK_LIST_FROM_SCREEN:
+    case TASKS_ACTION.DELETE_TASK_LIST_FROM_SCREEN:
       return {
         ...state,
         taskLists: [
@@ -138,7 +136,7 @@ export const tasksReducer = (
         ],
       };
 
-    case TASKS_ACTIONS.DELETE_TASK_LIST_FULL:
+    case TASKS_ACTION.DELETE_TASK_LIST_FULL:
       return {
         ...state,
         taskLists: [
@@ -148,7 +146,7 @@ export const tasksReducer = (
         ],
       };
 
-    case TASKS_ACTIONS.EDIT_TASK_LIST_TITLE:
+    case TASKS_ACTION.EDIT_TASK_LIST_TITLE:
       return {
         ...state,
         taskLists: [
@@ -162,30 +160,30 @@ export const tasksReducer = (
         ],
       };
 
-    case TASKS_ACTIONS.SET_TASK_DONE:
+    case TASKS_ACTION.SET_TASK_DONE:
       return {
         ...state,
-        taskLists: [
-          ...state.taskLists.map((taskList) => {
-            if (taskList.id === action.payload.taskListId) {
-              const targetTaskList = {...taskList};
+        taskLists: state.taskLists.map((taskList) => {
+          if (taskList.id === action.payload.taskListId) {
+            const targetTaskList = {...taskList};
 
-              if (targetTaskList.tasks) {
-                targetTaskList.tasks = targetTaskList.tasks.map((task) => {
-                  if (task.id === action.payload.doneTaskId) {
-                    const doneTask = {...task};
-                    doneTask.isDone = true;
-                    return doneTask;
-                  } else return task;
-                });
-              }
-              return targetTaskList;
-            } else return taskList;
-          }),
-        ],
+            if (targetTaskList.tasks) {
+              targetTaskList.tasks = targetTaskList.tasks.map((task) => {
+                if (task.id === action.payload.doneTaskId) {
+                  const doneTask = {...task};
+
+                  doneTask.isDone = true;
+
+                  return doneTask;
+                } else return task;
+              });
+            }
+            return targetTaskList;
+          } else return taskList;
+        }),
       };
 
-    case TASKS_ACTIONS.EDIT_TASK_TITLE:
+    case TASKS_ACTION.EDIT_TASK_TITLE:
       return {
         ...state,
         taskLists: [
@@ -209,7 +207,7 @@ export const tasksReducer = (
         ],
       };
 
-    case TASKS_ACTIONS.DELETE_TASK:
+    case TASKS_ACTION.DELETE_TASK:
       return {
         ...state,
         taskLists: [

@@ -1,4 +1,4 @@
-import {taskLists, Users} from '@constants/constants';
+import {TASK_LISTS, USERS} from '@constants/constants';
 import NetInfo, {NetInfoState} from '@react-native-community/netinfo';
 import {DB} from '@root/api/DB';
 import {errorAlert} from '@root/helpers/alertHelper';
@@ -30,7 +30,7 @@ export function* editTaskListTitleSaga(
       payload: EditTaskListTitleSagaPayloadType,
     ) => {
       return DB.ref(
-        `${Users}/${userID}/${taskLists}/${payload.taskListId}`,
+        `${USERS}/${userID}/${TASK_LISTS}/${payload.taskListId}`,
       ).update({
         title: payload.editedTaskListTitle,
       });
