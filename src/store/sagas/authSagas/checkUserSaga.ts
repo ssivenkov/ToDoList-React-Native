@@ -20,8 +20,6 @@ export function* checkUserSaga() {
       yield put(syncUserTaskListsAction());
     }
   } catch (error) {
-    if (error instanceof Error) {
-      errorAlert(error);
-    }
+    errorAlert(error);
   }
 }

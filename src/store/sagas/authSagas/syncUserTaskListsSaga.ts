@@ -49,8 +49,6 @@ export function* syncUserTaskListsSaga() {
       yield put(setNotificationsAction({notifications: []}));
     }
   } catch (error) {
-    if (error instanceof Error) {
-      errorAlert(error);
-    }
+    errorAlert(error);
   }
 }

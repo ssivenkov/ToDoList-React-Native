@@ -35,9 +35,7 @@ export function* facebookSignInSaga(
     };
     yield call(signInWithCredential, facebookCredential);
   } catch (error) {
-    if (error instanceof Error) {
-      errorAlert(error);
-      setWaitingUserData(false);
-    }
+    errorAlert(error);
+    setWaitingUserData(false);
   }
 }

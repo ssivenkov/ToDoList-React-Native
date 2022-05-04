@@ -27,8 +27,6 @@ export function* createChannelSaga() {
     yield call(createChannel);
     yield put(setChannelIDAction({channelID}));
   } catch (error) {
-    if (error instanceof Error) {
-      errorAlert(error);
-    }
+    errorAlert(error);
   }
 }
