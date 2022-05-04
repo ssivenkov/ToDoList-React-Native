@@ -9,7 +9,6 @@ import {DB} from '@root/api/DB';
 import {errorAlert} from '@root/helpers/alertHelper';
 import {cancelNotificationHelper} from '@root/helpers/cancelNotificationHelper';
 import {createNotificationHelper} from '@root/helpers/createNotificationHelper';
-import {delayHelper} from '@root/helpers/delayHelper';
 import {generateRandomNumberHelper} from '@root/helpers/generateRandomNumberHelper';
 import {editTaskNotificationAction} from '@store/actions/tasksReducerActions/notificationsActions/editTaskNotificationAction';
 import {setEditedTaskAction} from '@store/actions/tasksReducerActions/tasksActions/setEditedTaskAction';
@@ -22,7 +21,7 @@ import {NotificationType} from '@store/reducers/tasksReducer/types';
 import {getChannelID, getUserID} from '@store/selectors/authSelectors';
 import {getNotifications} from '@store/selectors/tasksSelectors';
 import {t} from 'i18next';
-import {call, put, select} from 'redux-saga/effects';
+import {call, delay, put, select} from 'redux-saga/effects';
 
 export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
   try {
@@ -31,7 +30,7 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
       errorAlert(t('common.NoInternetConnection'));
       return;
     }
-    yield call(delayHelper, 10);
+    yield delay(10);
 
     yield call(action.payload.setIsLoading, true);
     const userID: UserIDType = yield select(getUserID);
