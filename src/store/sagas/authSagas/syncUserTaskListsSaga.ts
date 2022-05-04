@@ -18,7 +18,7 @@ export function* syncUserTaskListsSaga() {
     const snapshot: SnapshotType = yield DB.ref(`${USERS}/${userID}`).once(
       'value',
     );
-    const hasTaskLists = !!Object.keys(snapshot.val()?.taskLists).length;
+    const hasTaskLists = snapshot.val().taskLists;
 
     if (hasTaskLists) {
       const userTaskListsObject = snapshot.val().taskLists;
