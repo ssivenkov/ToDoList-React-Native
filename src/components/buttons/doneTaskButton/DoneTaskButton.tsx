@@ -1,5 +1,5 @@
 import {ModalIcon} from '@components/common/modals/ModalIcon';
-import {iconSizeSmall} from '@constants/constants';
+import {ICON_SIZE_SMALL} from '@constants/constants';
 import {faCheck} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {SetStateType} from '@root/types/common/types';
@@ -35,7 +35,7 @@ export const DoneTaskButton = ({
   return (
     <ModalIcon
       okHandler={setDoneTask}
-      buttonIcon={<FontAwesomeIcon icon={faCheck} size={iconSizeSmall} />}>
+      buttonIcon={<FontAwesomeIcon icon={faCheck} size={ICON_SIZE_SMALL} />}>
       <Text style={styles.warnText}>
         <Trans i18nKey="tasksScreen.DoneButton">
           <Text style={styles.greenHighlightTask}>

@@ -7,9 +7,7 @@ import {call, put} from 'redux-saga/effects';
 
 export function* createChannelSaga() {
   try {
-    const getChannelID = () => {
-      return messaging().getToken();
-    };
+    const getChannelID = () => messaging().getToken();
     const channelID: ChannelIDType = yield call(getChannelID);
     const createChannel = () => {
       PushNotification.createChannel(

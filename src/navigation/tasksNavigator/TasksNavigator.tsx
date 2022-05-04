@@ -1,24 +1,25 @@
 import {COLORS} from '@colors/colors';
-import {TasksScreen} from '@components/screens/tasksScreen/TaskScreen';
-import {iconSizeLarge, Done, ToDo} from '@constants/constants';
+import {ICON_SIZE_LARGE} from '@constants/constants';
 import {faCheck, faListCheck} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {TopTabParamList} from '@navigation/tasksNavigation/types';
+import {TopTabParamList} from '@navigation/tasksNavigator/types';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
+import {TasksScreen} from '@root/screens/tasksScreen/TaskScreen';
 import React from 'react';
 import {useTranslation} from 'react-i18next';
 import {styles} from './styles';
 
 const {Navigator, Screen} = createMaterialTopTabNavigator<TopTabParamList>();
 
-export const TasksNavigation = () => {
+export const TasksNavigator = () => {
   const {t} = useTranslation();
+
   const TodoTasksScreenComponent = () => TasksScreen({isTodoScreen: true});
   const DoneTasksScreenComponent = () => TasksScreen({isTodoScreen: false});
 
   return (
     <Navigator
-      initialRouteName={ToDo}
+      initialRouteName={'ToDo'}
       screenOptions={() => ({
         tabBarStyle: styles.tabBarContainer,
         tabBarItemStyle: styles.tabBarItem,
@@ -27,7 +28,7 @@ export const TasksNavigation = () => {
         tabBarIndicatorStyle: styles.tabBarIndicator,
       })}>
       <Screen
-        name={ToDo}
+        name={'ToDo'}
         component={TodoTasksScreenComponent}
         options={() => ({
           tabBarLabel: `${t('tasksScreen.TodoTasksTab')}`,
@@ -35,13 +36,13 @@ export const TasksNavigation = () => {
             <FontAwesomeIcon
               style={focused ? styles.tabLightIcon : styles.tabDarkIcon}
               icon={faListCheck}
-              size={iconSizeLarge}
+              size={ICON_SIZE_LARGE}
             />
           ),
         })}
       />
       <Screen
-        name={Done}
+        name={'Done'}
         component={DoneTasksScreenComponent}
         options={() => ({
           tabBarLabel: `${t('tasksScreen.DoneTasksTab')}`,
@@ -49,7 +50,7 @@ export const TasksNavigation = () => {
             <FontAwesomeIcon
               style={focused ? styles.tabLightIcon : styles.tabDarkIcon}
               icon={faCheck}
-              size={iconSizeLarge}
+              size={ICON_SIZE_LARGE}
             />
           ),
         })}

@@ -1,6 +1,6 @@
 import {CustomTextButton} from '@components/common/buttons/CustomTextButton';
 import {Loader} from '@components/common/loader/loader';
-import {styles} from '@components/screens/accountScreen/styles';
+import {styles} from '@root/screens/accountScreen/styles';
 import {signOutAction} from '@store/actions/authSagaActions/signOutAction';
 import {UserDataType} from '@store/reducers/authReducer/types';
 import {getUserData} from '@store/selectors/authSelectors';
@@ -12,12 +12,15 @@ import {useDispatch, useSelector} from 'react-redux';
 
 export const AccountScreen = () => {
   const dispatch = useDispatch();
+
   const {t} = useTranslation();
+
   const userData = useSelector<AppRootStateType, UserDataType>(getUserData);
   const [waitingSignOut, setWaitingSignOut] = useState<boolean>(false);
 
   const onSignOutPress = (): void => {
     setWaitingSignOut(true);
+
     dispatch(signOutAction());
   };
 

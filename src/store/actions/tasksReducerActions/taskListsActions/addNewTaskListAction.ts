@@ -1,4 +1,4 @@
-import {TASKS_ACTIONS} from '@enums/tasksEnum';
+import {TASKS_ACTION} from '@enums/tasksEnum';
 import {TaskListInterface} from '@store/reducers/tasksReducer/types';
 
 type DeleteTaskActionPayloadType = {
@@ -6,7 +6,7 @@ type DeleteTaskActionPayloadType = {
 };
 
 export type AddNewTaskListActionReturnType = {
-  type: TASKS_ACTIONS.ADD_NEW_TASK_LIST;
+  type: TASKS_ACTION.ADD_NEW_TASK_LIST;
   payload: DeleteTaskActionPayloadType;
 };
 
@@ -15,6 +15,6 @@ export type AddNewTaskListActionType = (
 ) => AddNewTaskListActionReturnType;
 
 export const addNewTaskListAction: AddNewTaskListActionType = (payload) => ({
-  type: TASKS_ACTIONS.ADD_NEW_TASK_LIST,
+  type: TASKS_ACTION.ADD_NEW_TASK_LIST,
   payload,
 });

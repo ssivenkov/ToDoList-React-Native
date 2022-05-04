@@ -1,8 +1,8 @@
 import {
-  notificationIdMaxLength,
-  taskLists,
-  tasks,
-  Users,
+  NOTIFICATION_ID_MAX_LENGTH,
+  TASK_LISTS,
+  TASKS,
+  USERS,
 } from '@constants/constants';
 import NetInfo, {NetInfoState} from '@react-native-community/netinfo';
 import {DB} from '@root/api/DB';
@@ -34,11 +34,11 @@ export function* addNewTaskSaga(action: AddNewTaskSagaActionReturnType) {
     const userID: UserIDType = yield select(getUserID);
     const channelId: ChannelIDType = yield select(getChannelID);
     const notificationID = generateRandomNumberHelper(
-      notificationIdMaxLength,
+      NOTIFICATION_ID_MAX_LENGTH,
     ).toString();
     const addNewTaskToFirebase = (payload: AddNewTaskSagaPayloadType) => {
       return DB.ref(
-        `${Users}/${userID}/${taskLists}/${payload.taskListId}/${tasks}/${payload.newTask.id}`,
+        `${USERS}/${userID}/${TASK_LISTS}/${payload.taskListId}/${TASKS}/${payload.newTask.id}`,
       ).set(payload.newTask);
     };
     yield call(addNewTaskToFirebase, action.payload);

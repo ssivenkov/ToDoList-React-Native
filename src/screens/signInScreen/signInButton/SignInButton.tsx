@@ -1,4 +1,4 @@
-import {iconSizeMedium} from '@constants/constants';
+import {ICON_SIZE_MEDIUM} from '@constants/constants';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import React from 'react';
 import {Trans} from 'react-i18next';
@@ -19,7 +19,7 @@ export const SignInButton = (props: SignInButtonPropsType) => {
       disabled={disabled}>
       <FontAwesomeIcon
         icon={icon}
-        size={iconSizeMedium}
+        size={ICON_SIZE_MEDIUM}
         style={signInStyles.icon}
       />
       <Text style={signInStyles.text}>

@@ -1,8 +1,8 @@
 import {Loader} from '@components/common/loader/loader';
-import {SignInButton} from '@components/screens/signInScreen/signInButton/SignInButton';
-import {signInStyles} from '@components/screens/signInScreen/signInButton/styles';
-import {FacebookTitle, GoogleTitle} from '@constants/constants';
+import {FACEBOOK_TITLE, GOOGLE_TITLE} from '@constants/constants';
 import {faFacebook, faGoogle} from '@fortawesome/free-brands-svg-icons';
+import {SignInButton} from '@root/screens/signInScreen/signInButton/SignInButton';
+import {signInStyles} from '@root/screens/signInScreen/signInButton/styles';
 import {FacebookSignInAction} from '@store/actions/authSagaActions/FacebookSignInAction';
 import {GoogleSignInAction} from '@store/actions/authSagaActions/GoogleSignInAction';
 import React, {useState} from 'react';
@@ -13,7 +13,9 @@ import {styles} from './styles';
 
 export const SignInScreen = () => {
   const dispatch = useDispatch();
+
   const {t} = useTranslation();
+
   const [waitingUserData, setWaitingUserData] = useState<boolean>(false);
 
   const onGoogleButtonPress = (): void => {
@@ -32,26 +34,20 @@ export const SignInScreen = () => {
     <View style={styles.signInWrapper}>
       <View style={styles.signInContainer}>
         <Text style={styles.screenTitle}>{t('signInScreen.SignIn')}</Text>
-        {waitingUserData ? (
-          <Loader />
-        ) : (
-          <>
-            <SignInButton
-              onPress={onGoogleButtonPress}
-              serviceTitle={GoogleTitle}
-              icon={faGoogle}
-              colorStyle={signInStyles.googleStyle}
-              disabled={waitingUserData}
-            />
-            <SignInButton
-              onPress={onFacebookButtonPress}
-              serviceTitle={FacebookTitle}
-              icon={faFacebook}
-              colorStyle={signInStyles.facebookStyle}
-              disabled={waitingUserData}
-            />
-          </>
-        )}
+        <SignInButton
+          onPress={onGoogleButtonPress}
+          serviceTitle={GOOGLE_TITLE}
+          icon={faGoogle}
+          colorStyle={signInStyles.googleStyle}
+          disabled={waitingUserData}
+        />
+        <SignInButton
+          onPress={onFacebookButtonPress}
+          serviceTitle={FACEBOOK_TITLE}
+          icon={faFacebook}
+          colorStyle={signInStyles.facebookStyle}
+          disabled={waitingUserData}
+        />
       </View>
     </View>
   );

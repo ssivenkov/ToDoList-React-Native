@@ -1,5 +1,5 @@
-import {AUTH_SAGA_ACTIONS} from '@enums/authSagaEnum';
-import {TASKS_SAGA_ACTIONS} from '@enums/tasksSagaEnum';
+import {AUTH_SAGA_ACTION} from '@enums/authSagaEnum';
+import {TASKS_SAGA_ACTION} from '@enums/tasksSagaEnum';
 import {checkUserSaga} from '@store/sagas/authSagas/checkUserSaga';
 import {createChannelSaga} from '@store/sagas/authSagas/createChannelSaga';
 import {facebookSignInSaga} from '@store/sagas/authSagas/facebookSignInSaga';
@@ -17,31 +17,31 @@ import {setTaskIsDoneSaga} from '@store/sagas/tasksSagas/tasksSagas/setTaskIsDon
 import {takeEvery, takeLatest} from 'redux-saga/effects';
 
 export function* rootWatcher() {
-  yield takeLatest(AUTH_SAGA_ACTIONS.GOOGLE_SIGN_IN_SAGA, googleSignInSaga);
-  yield takeLatest(AUTH_SAGA_ACTIONS.FACEBOOK_SIGN_IN_SAGA, facebookSignInSaga);
-  yield takeLatest(AUTH_SAGA_ACTIONS.SIGN_OUT_SAGA, signOutSaga);
-  yield takeLatest(AUTH_SAGA_ACTIONS.CREATE_CHANNEL_SAGA, createChannelSaga);
-  yield takeEvery(AUTH_SAGA_ACTIONS.CHECK_USER, checkUserSaga);
+  yield takeLatest(AUTH_SAGA_ACTION.GOOGLE_SIGN_IN_SAGA, googleSignInSaga);
+  yield takeLatest(AUTH_SAGA_ACTION.FACEBOOK_SIGN_IN_SAGA, facebookSignInSaga);
+  yield takeLatest(AUTH_SAGA_ACTION.SIGN_OUT_SAGA, signOutSaga);
+  yield takeLatest(AUTH_SAGA_ACTION.CREATE_CHANNEL_SAGA, createChannelSaga);
+  yield takeEvery(AUTH_SAGA_ACTION.CHECK_USER, checkUserSaga);
   yield takeLatest(
-    AUTH_SAGA_ACTIONS.SYNC_USER_TASK_LISTS,
+    AUTH_SAGA_ACTION.SYNC_USER_TASK_LISTS,
     syncUserTaskListsSaga,
   );
 
-  yield takeLatest(TASKS_SAGA_ACTIONS.ADD_NEW_TASK_LIST, addNewTaskListSaga);
-  yield takeLatest(TASKS_SAGA_ACTIONS.ADD_NEW_TASK, addNewTaskSaga);
+  yield takeLatest(TASKS_SAGA_ACTION.ADD_NEW_TASK_LIST, addNewTaskListSaga);
+  yield takeLatest(TASKS_SAGA_ACTION.ADD_NEW_TASK, addNewTaskSaga);
   yield takeLatest(
-    TASKS_SAGA_ACTIONS.EDIT_TASK_LIST_TITLE,
+    TASKS_SAGA_ACTION.EDIT_TASK_LIST_TITLE,
     editTaskListTitleSaga,
   );
   yield takeLatest(
-    TASKS_SAGA_ACTIONS.DELETE_TASK_LIST_FULL,
+    TASKS_SAGA_ACTION.DELETE_TASK_LIST_FULL,
     deleteTaskListFullSaga,
   );
   yield takeLatest(
-    TASKS_SAGA_ACTIONS.DELETE_TASK_LIST_FROM_SCREEN,
+    TASKS_SAGA_ACTION.DELETE_TASK_LIST_FROM_SCREEN,
     deleteTaskListFromScreenSaga,
   );
-  yield takeLatest(TASKS_SAGA_ACTIONS.SET_TASK_IS_DONE, setTaskIsDoneSaga);
-  yield takeLatest(TASKS_SAGA_ACTIONS.SET_EDITED_TASK, editTaskSaga);
-  yield takeLatest(TASKS_SAGA_ACTIONS.DELETE_TASK, deleteTaskSaga);
+  yield takeLatest(TASKS_SAGA_ACTION.SET_TASK_IS_DONE, setTaskIsDoneSaga);
+  yield takeLatest(TASKS_SAGA_ACTION.SET_EDITED_TASK, editTaskSaga);
+  yield takeLatest(TASKS_SAGA_ACTION.DELETE_TASK, deleteTaskSaga);
 }

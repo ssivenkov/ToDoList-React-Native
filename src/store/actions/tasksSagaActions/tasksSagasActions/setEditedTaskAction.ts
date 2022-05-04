@@ -1,4 +1,4 @@
-import {TASKS_SAGA_ACTIONS} from '@enums/tasksSagaEnum';
+import {TASKS_SAGA_ACTION} from '@enums/tasksSagaEnum';
 import {Nullable, SetStateType} from '@root/types/common/types';
 import {TaskListInterface, TaskType} from '@store/reducers/tasksReducer/types';
 
@@ -14,7 +14,7 @@ export type SetEditedTaskSagaPayloadType = {
 };
 
 export type SetEditedTaskActionSagaReturnType = {
-  type: TASKS_SAGA_ACTIONS.SET_EDITED_TASK;
+  type: TASKS_SAGA_ACTION.SET_EDITED_TASK;
   payload: SetEditedTaskSagaPayloadType;
 };
 
@@ -23,6 +23,6 @@ export type SetEditedTaskSagaActionType = (
 ) => SetEditedTaskActionSagaReturnType;
 
 export const setEditedTaskAction: SetEditedTaskSagaActionType = (payload) => ({
-  type: TASKS_SAGA_ACTIONS.SET_EDITED_TASK,
+  type: TASKS_SAGA_ACTION.SET_EDITED_TASK,
   payload,
 });

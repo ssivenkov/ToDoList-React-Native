@@ -1,11 +1,11 @@
-import {AUTH_SAGA_ACTIONS} from '@enums/authSagaEnum';
+import {AUTH_SAGA_ACTION} from '@enums/authSagaEnum';
 
 export type CheckUserSagaActionReturnType = {
-  type: AUTH_SAGA_ACTIONS.CHECK_USER;
+  type: AUTH_SAGA_ACTION.CHECK_USER;
 };
 
 export type CheckUserSagaActionType = () => CheckUserSagaActionReturnType;
 
 export const checkUserAction: CheckUserSagaActionType = () => ({
-  type: AUTH_SAGA_ACTIONS.CHECK_USER,
+  type: AUTH_SAGA_ACTION.CHECK_USER,
 });

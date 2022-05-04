@@ -1,4 +1,4 @@
-import {AUTH_ACTIONS} from '@enums/authEnum';
+import {AUTH_ACTION} from '@enums/authEnum';
 import {SetAuthStateActionReturnType} from '@store/actions/authReducerActions/setAuthStateAction';
 import {SetChannelIDActionReturnType} from '@store/actions/authReducerActions/setChannelIDAction';
 import {SetUserDataActionReturnType} from '@store/actions/authReducerActions/setUserDataAction';
@@ -22,13 +22,13 @@ export const authReducer = (
   action: AuthActionsType,
 ): AuthStateType => {
   switch (action.type) {
-    case AUTH_ACTIONS.SET_CHANNEL_ID:
+    case AUTH_ACTION.SET_CHANNEL_ID:
       return {...state, channelID: action.payload.channelID};
-    case AUTH_ACTIONS.SET_USER_DATA:
+    case AUTH_ACTION.SET_USER_DATA:
       return {...state, userData: action.payload.userData};
-    case AUTH_ACTIONS.SET_USER_ID:
+    case AUTH_ACTION.SET_USER_ID:
       return {...state, userID: action.payload.userID};
-    case AUTH_ACTIONS.SET_AUTH_STATE:
+    case AUTH_ACTION.SET_AUTH_STATE:
       return {...state, ...action.payload.authState};
     default:
       return state;

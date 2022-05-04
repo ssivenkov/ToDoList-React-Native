@@ -1,4 +1,4 @@
-export enum TASKS_SAGA_ACTIONS {
+export enum TASKS_SAGA_ACTION {
   ADD_NEW_TASK_LIST = 'tasksSaga/ADD_NEW_TASK_LIST',
   ADD_NEW_TASK = 'tasksSaga/ADD_NEW_TASK',
   EDIT_TASK_LIST_TITLE = 'tasksSaga/EDIT_TASK_LIST_TITLE',
