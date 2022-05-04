@@ -1,4 +1,4 @@
-export enum AUTH_SAGA_ACTIONS {
+export enum AUTH_SAGA_ACTION {
   CHECK_USER = 'authReducer/CHECK_USER',
   SYNC_USER_TASK_LISTS = 'authReducer/SYNC_USER_TASK_LISTS',
   GOOGLE_SIGN_IN_SAGA = 'authSaga/GOOGLE_SIGN_IN_SAGA',

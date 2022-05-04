@@ -1,4 +1,4 @@
-import {TASKS_SAGA_ACTIONS} from '@enums/tasksSagaEnum';
+import {TASKS_SAGA_ACTION} from '@enums/tasksSagaEnum';
 import {SetStateType} from '@root/types/common/types';
 import {TaskListInterface} from '@store/reducers/tasksReducer/types';
 
@@ -9,7 +9,7 @@ export type DeleteTaskListFullSagaPayloadType = {
 };
 
 export type DeleteTaskListFullSagaActionReturnType = {
-  type: TASKS_SAGA_ACTIONS.DELETE_TASK_LIST_FULL;
+  type: TASKS_SAGA_ACTION.DELETE_TASK_LIST_FULL;
   payload: DeleteTaskListFullSagaPayloadType;
 };
 
@@ -20,6 +20,6 @@ export type DeleteTaskListFullSagaActionType = (
 export const deleteTaskListFullAction: DeleteTaskListFullSagaActionType = (
   payload,
 ) => ({
-  type: TASKS_SAGA_ACTIONS.DELETE_TASK_LIST_FULL,
+  type: TASKS_SAGA_ACTION.DELETE_TASK_LIST_FULL,
   payload,
 });

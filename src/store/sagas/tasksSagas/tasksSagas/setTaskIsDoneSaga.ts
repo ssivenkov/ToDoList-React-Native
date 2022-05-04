@@ -1,4 +1,4 @@
-import {taskLists, tasks, Users} from '@constants/constants';
+import {TASK_LISTS, TASKS, USERS} from '@constants/constants';
 import NetInfo, {NetInfoState} from '@react-native-community/netinfo';
 import {DB} from '@root/api/DB';
 import {errorAlert} from '@root/helpers/alertHelper';
@@ -30,7 +30,7 @@ export function* setTaskIsDoneSaga(action: SetTaskIsDoneSagaActionReturnType) {
     const userID: UserIDType = yield select(getUserID);
     const setTaskIsDoneInFirebase = (payload: SetTaskIsDoneSagaPayloadType) => {
       return DB.ref(
-        `${Users}/${userID}/${taskLists}/${payload.taskListId}/${tasks}/${payload.doneTaskId}`,
+        `${USERS}/${userID}/${TASK_LISTS}/${payload.taskListId}/${TASKS}/${payload.doneTaskId}`,
       ).update({isDone: true});
     };
     yield call(setTaskIsDoneInFirebase, action.payload);

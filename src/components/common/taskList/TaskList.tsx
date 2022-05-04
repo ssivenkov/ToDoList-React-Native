@@ -2,7 +2,7 @@ import {CreateTaskButton} from '@components/buttons/createTaskButton/CreateTaskB
 import {DeleteTaskListButton} from '@components/buttons/deleteTaskListButton/DeleteTaskListButton';
 import {EditTaskListTitleButton} from '@components/buttons/editTaskListTitleButton/EditTaskListTitleButton';
 import {Task} from '@components/common/task/Task';
-import {sortingTasks} from '@components/screens/tasksScreen/helpers/sorting';
+import {sortingTasks} from '@root/screens/tasksScreen/helpers/sorting';
 import React from 'react';
 import {Text, View} from 'react-native';
 import {styles} from './styles';

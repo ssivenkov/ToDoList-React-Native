@@ -1,4 +1,4 @@
-import {TASKS_SAGA_ACTIONS} from '@enums/tasksSagaEnum';
+import {TASKS_SAGA_ACTION} from '@enums/tasksSagaEnum';
 import {SetStateType} from '@root/types/common/types';
 import {TaskListInterface} from '@store/reducers/tasksReducer/types';
 
@@ -11,7 +11,7 @@ export type EditTaskListTitleSagaPayloadType = {
 };
 
 export type EditTaskListTitleSagaActionReturnType = {
-  type: TASKS_SAGA_ACTIONS.EDIT_TASK_LIST_TITLE;
+  type: TASKS_SAGA_ACTION.EDIT_TASK_LIST_TITLE;
   payload: EditTaskListTitleSagaPayloadType;
 };
 
@@ -22,6 +22,6 @@ export type EditTaskListTitleSagaActionType = (
 export const editTaskListTitleAction: EditTaskListTitleSagaActionType = (
   payload,
 ) => ({
-  type: TASKS_SAGA_ACTIONS.EDIT_TASK_LIST_TITLE,
+  type: TASKS_SAGA_ACTION.EDIT_TASK_LIST_TITLE,
   payload,
 });

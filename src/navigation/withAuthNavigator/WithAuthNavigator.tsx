@@ -1,12 +1,12 @@
-import {COLORS} from '@colors/colors';
 import {CreateTaskListButton} from '@components/buttons/createTaskListButton/CreateTaskListButton';
-import {AccountScreen} from '@components/screens/accountScreen/AccountScreen';
-import {Account, iconSizeMedium, Tasks} from '@constants/constants';
+import {ACCOUNT, ICON_SIZE_MEDIUM} from '@constants/constants';
 import {faFile, faUser} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {TasksNavigation} from '@navigation/tasksNavigation/TasksNavigation';
-import {BottomTabParamList} from '@navigation/withAuthNavigation/types';
+import {TasksNavigator} from '@navigation/tasksNavigator/TasksNavigator';
+import {navigatorOptions} from '@navigation/withAuthNavigator/settings';
+import {BottomTabParamList} from '@navigation/withAuthNavigator/types';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {AccountScreen} from '@root/screens/accountScreen/AccountScreen';
 import {syncUserTaskListsAction} from '@store/actions/authSagaActions/syncUserTaskListsAction';
 import React, {useEffect} from 'react';
 import {useTranslation} from 'react-i18next';
@@ -16,8 +16,9 @@ import {styles} from './styles';
 
 const {Navigator, Screen} = createBottomTabNavigator<BottomTabParamList>();
 
-export const WithAuthNavigation = () => {
+export const WithAuthNavigator = () => {
   const dispatch = useDispatch();
+
   const {t} = useTranslation();
 
   useEffect(() => {
@@ -25,21 +26,11 @@ export const WithAuthNavigation = () => {
   }, []);
 
   return (
-    <Navigator
-      initialRouteName={Tasks}
-      screenOptions={() => ({
-        headerShown: false,
-        tabBarStyle: styles.tabBarContainer,
-        tabBarActiveBackgroundColor: COLORS.FRESH_EGGPLANT,
-        tabBarActiveTintColor: COLORS.WHITE,
-        tabBarInactiveTintColor: COLORS.BLACK,
-        tabBarIconStyle: styles.icon,
-        tabBarLabelStyle: styles.title,
-      })}>
+    <Navigator initialRouteName={'Tasks'} screenOptions={navigatorOptions}>
       <Screen
-        name={Tasks}
-        component={TasksNavigation}
-        options={() => ({
+        name={'Tasks'}
+        component={TasksNavigator}
+        options={{
           headerShown: true,
           headerStyle: styles.header,
           headerTitle: `${t('tasksScreen.Tasks')}`,
@@ -54,15 +45,15 @@ export const WithAuthNavigation = () => {
             <FontAwesomeIcon
               style={focused ? styles.tabLightIcon : styles.tabDarkIcon}
               icon={faFile}
-              size={iconSizeMedium}
+              size={ICON_SIZE_MEDIUM}
             />
           ),
-        })}
+        }}
       />
       <Screen
-        name={Account}
+        name={ACCOUNT}
         component={AccountScreen}
-        options={() => ({
+        options={{
           headerShown: true,
           headerStyle: styles.header,
           headerTitle: `${t('accountScreen.Account')}`,
@@ -72,10 +63,10 @@ export const WithAuthNavigation = () => {
             <FontAwesomeIcon
               style={focused ? styles.tabLightIcon : styles.tabDarkIcon}
               icon={faUser}
-              size={iconSizeMedium}
+              size={ICON_SIZE_MEDIUM}
             />
           ),
-        })}
+        }}
       />
     </Navigator>
   );

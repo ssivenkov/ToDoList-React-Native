@@ -1,8 +1,8 @@
 import {
-  notificationIdMaxLength,
-  taskLists,
-  tasks,
-  Users,
+  NOTIFICATION_ID_MAX_LENGTH,
+  TASK_LISTS,
+  TASKS,
+  USERS,
 } from '@constants/constants';
 import NetInfo, {NetInfoState} from '@react-native-community/netinfo';
 import {DB} from '@root/api/DB';
@@ -38,14 +38,14 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
     const channelId: ChannelIDType = yield select(getChannelID);
     const editTaskTitleInFirebase = (payload: SetEditedTaskSagaPayloadType) => {
       return DB.ref(
-        `${Users}/${userID}/${taskLists}/${payload.taskListId}/${tasks}/${payload.taskId}`,
+        `${USERS}/${userID}/${TASK_LISTS}/${payload.taskListId}/${TASKS}/${payload.taskId}`,
       ).update({title: payload.editedTaskTitle});
     };
     yield call(editTaskTitleInFirebase, action.payload);
 
     if (action.payload.shouldCreateNotification && action.payload.date) {
       const notificationID = generateRandomNumberHelper(
-        notificationIdMaxLength,
+        NOTIFICATION_ID_MAX_LENGTH,
       ).toString();
 
       yield call(createNotificationHelper, {

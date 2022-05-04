@@ -1,14 +1,15 @@
-import {SignInScreen} from '@components/screens/signInScreen/SignInScreen';
-import {SignIn, WithAuth} from '@constants/constants';
+import {SIGN_SIN, WITH_AUTH} from '@constants/constants';
 import {RootStackParamList} from '@navigation/types';
-import {WithAuthNavigation} from '@navigation/withAuthNavigation/WithAuthNavigation';
+import {WithAuthNavigator} from '@navigation/withAuthNavigator/WithAuthNavigator';
 import auth from '@react-native-firebase/auth';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {GoogleWebClientId} from '@root/api/config';
+import {SignInScreen} from '@root/screens/signInScreen/SignInScreen';
 import {setUserDataAction} from '@store/actions/authReducerActions/setUserDataAction';
 import {setUserIDAction} from '@store/actions/authReducerActions/setUserIDAction';
+import {checkUserAction} from '@store/actions/authSagaActions/checkUserAction';
 import {createChannelAction} from '@store/actions/authSagaActions/createChannelAction';
 import {UserDataType} from '@store/reducers/authReducer/types';
 import {getChannelID, getUserID} from '@store/selectors/authSelectors';
@@ -20,15 +21,18 @@ const {Navigator, Screen} = createNativeStackNavigator<RootStackParamList>();
 
 export const Navigation = () => {
   const dispatch = useDispatch();
+
   const isUserAuth = !!useSelector(getUserID);
+  const channelID = useSelector(getChannelID);
+
   const [firebaseInitializing, setFirebaseInitializing] =
     useState<boolean>(true);
-  const channelID: string = useSelector(getChannelID);
 
   const onAuthStateChanged = (userData: UserDataType) => {
-    dispatch(setUserDataAction({userData: userData}));
+    dispatch(setUserDataAction({userData}));
 
     if (userData) {
+      dispatch(checkUserAction());
       dispatch(setUserIDAction({userID: userData.uid}));
     } else {
       dispatch(setUserIDAction({userID: null}));
@@ -58,13 +62,13 @@ export const Navigation = () => {
         <Navigator>
           {isUserAuth ? (
             <Screen
-              name={WithAuth}
-              component={WithAuthNavigation}
+              name={WITH_AUTH}
+              component={WithAuthNavigator}
               options={{headerShown: false}}
             />
           ) : (
             <Screen
-              name={SignIn}
+              name={SIGN_SIN}
               component={SignInScreen}
               options={{headerShown: false}}
             />
