@@ -11,8 +11,8 @@ import {
 } from '@store/actions/tasksSagaActions/tasksSagasActions/deleteTaskAction';
 import {UserIDType} from '@store/reducers/authReducer/types';
 import {NotificationType} from '@store/reducers/tasksReducer/types';
-import {getUserID} from '@store/selectors/authSelectors';
-import {getNotifications} from '@store/selectors/tasksSelectors';
+import {userIDSelector} from '@store/selectors/authSelectors';
+import {notificationsSelector} from '@store/selectors/tasksSelectors';
 import {t} from 'i18next';
 import {call, delay, put, select} from 'redux-saga/effects';
 
@@ -26,7 +26,7 @@ export function* deleteTaskSaga(action: DeleteTaskSagaActionReturnType) {
     yield delay(10);
 
     yield call(action.payload.setIsLoading, true);
-    const userID: UserIDType = yield select(getUserID);
+    const userID: UserIDType = yield select(userIDSelector);
     const deleteTaskInFirebase = (payload: DeleteTaskSagaPayloadType) => {
       return DB.ref(
         `${USERS}/${userID}/${TASK_LISTS}/${payload.taskListId}/${TASKS}/${payload.taskId}`,
@@ -34,7 +34,9 @@ export function* deleteTaskSaga(action: DeleteTaskSagaActionReturnType) {
     };
     yield call(deleteTaskInFirebase, action.payload);
 
-    const notifications: NotificationType[] = yield select(getNotifications);
+    const notifications: NotificationType[] = yield select(
+      notificationsSelector,
+    );
     const taskNotification = notifications.find((item) => {
       return action.payload.taskId === item.taskID;
     });

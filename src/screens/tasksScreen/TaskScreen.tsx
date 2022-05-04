@@ -1,7 +1,7 @@
 import {TaskList} from '@components/common/taskList/TaskList';
 import {sortingTaskLists} from '@root/screens/tasksScreen/helpers/sorting';
 import {TodoTasksScreenPropsType} from '@root/screens/tasksScreen/types';
-import {getTaskLists} from '@store/selectors/tasksSelectors';
+import {taskListsSelector} from '@store/selectors/tasksSelectors';
 import React from 'react';
 import {useTranslation} from 'react-i18next';
 import {ScrollView, Text, View} from 'react-native';
@@ -13,7 +13,7 @@ export const TasksScreen = (props: TodoTasksScreenPropsType) => {
 
   const {t} = useTranslation();
 
-  const taskLists = useSelector(getTaskLists);
+  const taskLists = useSelector(taskListsSelector);
   const toDoTaskLists = taskLists.filter(({showInToDo}) => showInToDo);
 
   const doneTaskLists = taskLists.filter((taskList) => {

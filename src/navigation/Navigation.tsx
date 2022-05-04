@@ -12,7 +12,10 @@ import {setUserIDAction} from '@store/actions/authReducerActions/setUserIDAction
 import {checkUserAction} from '@store/actions/authSagaActions/checkUserAction';
 import {createChannelAction} from '@store/actions/authSagaActions/createChannelAction';
 import {UserDataType} from '@store/reducers/authReducer/types';
-import {getChannelID, getUserID} from '@store/selectors/authSelectors';
+import {
+  channelIDSelector,
+  userIDSelector,
+} from '@store/selectors/authSelectors';
 import React, {useEffect, useState} from 'react';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {useDispatch, useSelector} from 'react-redux';
@@ -22,8 +25,8 @@ const {Navigator, Screen} = createNativeStackNavigator<RootStackParamList>();
 export const Navigation = () => {
   const dispatch = useDispatch();
 
-  const isUserAuth = !!useSelector(getUserID);
-  const channelID = useSelector(getChannelID);
+  const isUserAuth = !!useSelector(userIDSelector);
+  const channelID = useSelector(channelIDSelector);
 
   const [firebaseInitializing, setFirebaseInitializing] =
     useState<boolean>(true);
