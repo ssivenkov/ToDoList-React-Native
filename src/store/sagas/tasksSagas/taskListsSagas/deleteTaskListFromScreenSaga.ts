@@ -3,7 +3,6 @@ import NetInfo, {NetInfoState} from '@react-native-community/netinfo';
 import {DB} from '@root/api/DB';
 import {errorAlert} from '@root/helpers/alertHelper';
 import {cancelNotificationHelper} from '@root/helpers/cancelNotificationHelper';
-import {delayHelper} from '@root/helpers/delayHelper';
 import {setTasksNotificationsAction} from '@store/actions/tasksReducerActions/notificationsActions/setTasksNotificationsAction';
 import {deleteTaskListFromScreenAction} from '@store/actions/tasksReducerActions/taskListsActions/deleteTaskListFromScreenAction';
 import {
@@ -18,7 +17,7 @@ import {
 import {getUserID} from '@store/selectors/authSelectors';
 import {getNotifications} from '@store/selectors/tasksSelectors';
 import {t} from 'i18next';
-import {call, put, select} from 'redux-saga/effects';
+import {call, delay, put, select} from 'redux-saga/effects';
 
 export function* deleteTaskListFromScreenSaga(
   action: DeleteTaskListFromScreenSagaActionReturnType,
@@ -29,7 +28,7 @@ export function* deleteTaskListFromScreenSaga(
       errorAlert(t('common.NoInternetConnection'));
       return;
     }
-    yield call(delayHelper, 10);
+    yield delay(10);
 
     yield call(action.payload.setIsLoading, true);
     const userID: UserIDType = yield select(getUserID);
