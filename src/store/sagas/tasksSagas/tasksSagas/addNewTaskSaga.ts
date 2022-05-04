@@ -8,7 +8,6 @@ import NetInfo, {NetInfoState} from '@react-native-community/netinfo';
 import {DB} from '@root/api/DB';
 import {errorAlert} from '@root/helpers/alertHelper';
 import {createNotificationHelper} from '@root/helpers/createNotificationHelper';
-import {delayHelper} from '@root/helpers/delayHelper';
 import {generateRandomNumberHelper} from '@root/helpers/generateRandomNumberHelper';
 import {addTaskNotificationAction} from '@store/actions/tasksReducerActions/notificationsActions/addTaskNotificationAction';
 import {addNewTaskAction} from '@store/actions/tasksReducerActions/tasksActions/addNewTaskAction';
@@ -19,7 +18,7 @@ import {
 import {ChannelIDType, UserIDType} from '@store/reducers/authReducer/types';
 import {getChannelID, getUserID} from '@store/selectors/authSelectors';
 import {t} from 'i18next';
-import {call, put, select} from 'redux-saga/effects';
+import {call, delay, put, select} from 'redux-saga/effects';
 
 export function* addNewTaskSaga(action: AddNewTaskSagaActionReturnType) {
   try {
@@ -28,7 +27,7 @@ export function* addNewTaskSaga(action: AddNewTaskSagaActionReturnType) {
       errorAlert(t('common.NoInternetConnection'));
       return;
     }
-    yield call(delayHelper, 10);
+    yield delay(10);
 
     yield call(action.payload.setIsLoading, true);
     const userID: UserIDType = yield select(getUserID);

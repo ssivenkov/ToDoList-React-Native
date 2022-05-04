@@ -2,14 +2,13 @@ import {TASK_LISTS, USERS} from '@constants/constants';
 import NetInfo, {NetInfoState} from '@react-native-community/netinfo';
 import {DB} from '@root/api/DB';
 import {errorAlert} from '@root/helpers/alertHelper';
-import {delayHelper} from '@root/helpers/delayHelper';
 import {addNewTaskListAction} from '@store/actions/tasksReducerActions/taskListsActions/addNewTaskListAction';
 import {AddNewTaskListSagaActionReturnType} from '@store/actions/tasksSagaActions/taskListsSagasActions/addNewTaskListAction';
 import {UserIDType} from '@store/reducers/authReducer/types';
 import {TaskListInterface} from '@store/reducers/tasksReducer/types';
 import {getUserID} from '@store/selectors/authSelectors';
 import {t} from 'i18next';
-import {call, put, select} from 'redux-saga/effects';
+import {call, delay, put, select} from 'redux-saga/effects';
 
 export function* addNewTaskListSaga(
   action: AddNewTaskListSagaActionReturnType,
@@ -20,7 +19,7 @@ export function* addNewTaskListSaga(
       errorAlert(t('common.NoInternetConnection'));
       return;
     }
-    yield call(delayHelper, 10);
+    yield delay(10);
 
     yield call(action.payload.setIsLoading, true);
     const userID: UserIDType = yield select(getUserID);

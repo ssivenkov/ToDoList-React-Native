@@ -1,10 +1,9 @@
 import auth from '@react-native-firebase/auth';
 import {errorAlert} from '@root/helpers/alertHelper';
-import {delayHelper} from '@root/helpers/delayHelper';
 import {GetFacebookUserDataSagaActionReturnType} from '@store/actions/authSagaActions/FacebookSignInAction';
 import {AuthCredentialType} from '@store/sagas/authSagas/googleSignInSaga';
 import {AccessToken, LoginManager} from 'react-native-fbsdk-next';
-import {call} from 'redux-saga/effects';
+import {call, delay} from 'redux-saga/effects';
 
 export function* facebookSignInSaga(
   action: GetFacebookUserDataSagaActionReturnType,
@@ -12,7 +11,7 @@ export function* facebookSignInSaga(
   const setWaitingUserData = action.payload.setWaitingUserData;
   try {
     yield call(setWaitingUserData, true);
-    yield call(delayHelper, 10);
+    yield delay(10);
 
     const {isCancelled} = yield call(LoginManager.logInWithPermissions, [
       'public_profile',

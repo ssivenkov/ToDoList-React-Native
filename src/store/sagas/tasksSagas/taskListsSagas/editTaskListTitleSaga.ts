@@ -2,7 +2,6 @@ import {TASK_LISTS, USERS} from '@constants/constants';
 import NetInfo, {NetInfoState} from '@react-native-community/netinfo';
 import {DB} from '@root/api/DB';
 import {errorAlert} from '@root/helpers/alertHelper';
-import {delayHelper} from '@root/helpers/delayHelper';
 import {setEditedTaskListTitleAction} from '@store/actions/tasksReducerActions/taskListsActions/setEditedTaskListTitleAction';
 import {
   EditTaskListTitleSagaActionReturnType,
@@ -11,7 +10,7 @@ import {
 import {UserIDType} from '@store/reducers/authReducer/types';
 import {getUserID} from '@store/selectors/authSelectors';
 import {t} from 'i18next';
-import {call, put, select} from 'redux-saga/effects';
+import {call, delay, put, select} from 'redux-saga/effects';
 
 export function* editTaskListTitleSaga(
   action: EditTaskListTitleSagaActionReturnType,
@@ -22,7 +21,7 @@ export function* editTaskListTitleSaga(
       errorAlert(t('common.NoInternetConnection'));
       return;
     }
-    yield call(delayHelper, 10);
+    yield delay(10);
 
     yield call(action.payload.setIsLoading, true);
     const userID: UserIDType = yield select(getUserID);
