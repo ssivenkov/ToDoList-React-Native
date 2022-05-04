@@ -8,8 +8,6 @@ type TodoTasksScreenStylesType = {
   nullContentText: TextStyle;
 };
 
-const {BLACK} = COLORS;
-
 export const styles = StyleSheet.create<TodoTasksScreenStylesType>({
   tasksListContainer: {
     marginVertical: TaskListMarginVertical,
@@ -23,7 +21,7 @@ export const styles = StyleSheet.create<TodoTasksScreenStylesType>({
 
   nullContentText: {
     fontSize: 22,
-    color: BLACK,
+    color: COLORS.BLACK,
     textAlign: 'center',
   },
 });

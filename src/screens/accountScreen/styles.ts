@@ -9,7 +9,6 @@ type UserScreenStylesType = {
   buttonContainer: ViewStyle;
 };
 
-const {BLACK} = COLORS;
 const AvatarSize = 130;
 
 export const styles = StyleSheet.create<UserScreenStylesType>({
@@ -29,13 +28,13 @@ export const styles = StyleSheet.create<UserScreenStylesType>({
   name: {
     fontSize: 30,
     fontWeight: '500',
-    color: BLACK,
+    color: COLORS.BLACK,
     marginBottom: 10,
   },
 
   text: {
     fontSize: 22,
-    color: BLACK,
+    color: COLORS.BLACK,
     marginBottom: 10,
   },
 
