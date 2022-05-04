@@ -9,12 +9,12 @@ import {
   TaskListInterface,
   TaskListWithTaskType,
 } from '@store/reducers/tasksReducer/types';
-import {getUserID} from '@store/selectors/authSelectors';
+import {userIDSelector} from '@store/selectors/authSelectors';
 import {put, select} from 'redux-saga/effects';
 
 export function* syncUserTaskListsSaga() {
   try {
-    const userID: UserIDType = yield select(getUserID);
+    const userID: UserIDType = yield select(userIDSelector);
     const snapshot: SnapshotType = yield DB.ref(`${USERS}/${userID}`).once(
       'value',
     );

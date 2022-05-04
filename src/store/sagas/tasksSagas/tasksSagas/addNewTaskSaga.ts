@@ -16,7 +16,10 @@ import {
   AddNewTaskSagaPayloadType,
 } from '@store/actions/tasksSagaActions/tasksSagasActions/addNewTaskAction';
 import {ChannelIDType, UserIDType} from '@store/reducers/authReducer/types';
-import {getChannelID, getUserID} from '@store/selectors/authSelectors';
+import {
+  channelIDSelector,
+  userIDSelector,
+} from '@store/selectors/authSelectors';
 import {t} from 'i18next';
 import {call, delay, put, select} from 'redux-saga/effects';
 
@@ -30,8 +33,8 @@ export function* addNewTaskSaga(action: AddNewTaskSagaActionReturnType) {
     yield delay(10);
 
     yield call(action.payload.setIsLoading, true);
-    const userID: UserIDType = yield select(getUserID);
-    const channelId: ChannelIDType = yield select(getChannelID);
+    const userID: UserIDType = yield select(userIDSelector);
+    const channelId: ChannelIDType = yield select(channelIDSelector);
     const notificationID = generateRandomNumberHelper(
       NOTIFICATION_ID_MAX_LENGTH,
     ).toString();

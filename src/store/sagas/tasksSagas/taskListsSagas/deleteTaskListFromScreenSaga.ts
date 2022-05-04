@@ -14,8 +14,8 @@ import {
   ConvertedTasksForFirebaseType,
   NotificationType,
 } from '@store/reducers/tasksReducer/types';
-import {getUserID} from '@store/selectors/authSelectors';
-import {getNotifications} from '@store/selectors/tasksSelectors';
+import {userIDSelector} from '@store/selectors/authSelectors';
+import {notificationsSelector} from '@store/selectors/tasksSelectors';
 import {t} from 'i18next';
 import {call, delay, put, select} from 'redux-saga/effects';
 
@@ -31,8 +31,10 @@ export function* deleteTaskListFromScreenSaga(
     yield delay(10);
 
     yield call(action.payload.setIsLoading, true);
-    const userID: UserIDType = yield select(getUserID);
-    const notifications: NotificationType[] = yield select(getNotifications);
+    const userID: UserIDType = yield select(userIDSelector);
+    const notifications: NotificationType[] = yield select(
+      notificationsSelector,
+    );
     const findNotificationItem = (taskID: string) => {
       return notifications.find((item) => item.taskID === taskID);
     };

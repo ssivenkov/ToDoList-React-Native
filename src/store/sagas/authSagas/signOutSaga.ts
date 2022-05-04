@@ -5,7 +5,7 @@ import {setAuthStateAction} from '@store/actions/authReducerActions/setAuthState
 import {setTaskListsAction} from '@store/actions/tasksReducerActions/taskListsActions/setTaskListsAction';
 import {initialAuthState} from '@store/reducers/authReducer/authReducer';
 import {UserDataType} from '@store/reducers/authReducer/types';
-import {getUserData} from '@store/selectors/authSelectors';
+import {userDataSelector} from '@store/selectors/authSelectors';
 import {call, delay, put, select} from 'redux-saga/effects';
 
 export function* signOutSaga() {
@@ -13,7 +13,7 @@ export function* signOutSaga() {
     const signOut = () => {
       return auth().signOut();
     };
-    const userData: UserDataType = yield select(getUserData);
+    const userData: UserDataType = yield select(userDataSelector);
     const providerId = userData?.providerData[0]?.providerId;
     yield delay(10);
 

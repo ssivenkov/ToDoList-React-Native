@@ -6,7 +6,7 @@ import {addNewTaskListAction} from '@store/actions/tasksReducerActions/taskLists
 import {AddNewTaskListSagaActionReturnType} from '@store/actions/tasksSagaActions/taskListsSagasActions/addNewTaskListAction';
 import {UserIDType} from '@store/reducers/authReducer/types';
 import {TaskListInterface} from '@store/reducers/tasksReducer/types';
-import {getUserID} from '@store/selectors/authSelectors';
+import {userIDSelector} from '@store/selectors/authSelectors';
 import {t} from 'i18next';
 import {call, delay, put, select} from 'redux-saga/effects';
 
@@ -22,7 +22,7 @@ export function* addNewTaskListSaga(
     yield delay(10);
 
     yield call(action.payload.setIsLoading, true);
-    const userID: UserIDType = yield select(getUserID);
+    const userID: UserIDType = yield select(userIDSelector);
     const addNewTaskListToFirebase = (newTaskList: TaskListInterface) => {
       return DB.ref(`${USERS}/${userID}/${TASK_LISTS}/${newTaskList.id}`).set(
         newTaskList,

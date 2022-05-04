@@ -3,12 +3,12 @@ import {DB} from '@root/api/DB';
 import {errorAlert} from '@root/helpers/alertHelper';
 import {syncUserTaskListsAction} from '@store/actions/authSagaActions/syncUserTaskListsAction';
 import {SnapshotType, UserIDType} from '@store/reducers/authReducer/types';
-import {getUserID} from '@store/selectors/authSelectors';
+import {userIDSelector} from '@store/selectors/authSelectors';
 import {put, select} from 'redux-saga/effects';
 
 export function* checkUserSaga() {
   try {
-    const userID: UserIDType = yield select(getUserID);
+    const userID: UserIDType = yield select(userIDSelector);
     const snapshot: SnapshotType = yield DB.ref(`${USERS}/${userID}`).once(
       'value',
     );

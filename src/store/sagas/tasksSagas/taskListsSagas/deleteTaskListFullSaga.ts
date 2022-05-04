@@ -14,8 +14,11 @@ import {
   NotificationType,
   TaskListInterface,
 } from '@store/reducers/tasksReducer/types';
-import {getUserID} from '@store/selectors/authSelectors';
-import {getNotifications, getTaskLists} from '@store/selectors/tasksSelectors';
+import {userIDSelector} from '@store/selectors/authSelectors';
+import {
+  notificationsSelector,
+  taskListsSelector,
+} from '@store/selectors/tasksSelectors';
 import {t} from 'i18next';
 import {call, delay, put, select} from 'redux-saga/effects';
 
@@ -31,7 +34,7 @@ export function* deleteTaskListFullSaga(
     yield delay(10);
 
     yield call(action.payload.setIsLoading, true);
-    const userID: UserIDType = yield select(getUserID);
+    const userID: UserIDType = yield select(userIDSelector);
     const deleteTaskListInFirebase = (
       payload: DeleteTaskListFullSagaPayloadType,
     ): Promise<void> => {
@@ -41,8 +44,10 @@ export function* deleteTaskListFullSaga(
     };
     yield call(deleteTaskListInFirebase, action.payload);
 
-    const taskListsArr: TaskListInterface[] = yield select(getTaskLists);
-    const notifications: NotificationType[] = yield select(getNotifications);
+    const taskListsArr: TaskListInterface[] = yield select(taskListsSelector);
+    const notifications: NotificationType[] = yield select(
+      notificationsSelector,
+    );
     const taskList = taskListsArr.find(
       (taskList) => taskList.id === action.payload.taskListId,
     );
