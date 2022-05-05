@@ -5,10 +5,7 @@ import {errorAlert} from '@root/helpers/alertHelper';
 import {cancelNotificationHelper} from '@root/helpers/cancelNotificationHelper';
 import {deleteTaskNotificationAction} from '@store/actions/tasksReducerActions/notificationsActions/deleteTaskNotificationAction';
 import {deleteTaskAction} from '@store/actions/tasksReducerActions/tasksActions/deleteTaskAction';
-import {
-  DeleteTaskSagaActionReturnType,
-  DeleteTaskSagaPayloadType,
-} from '@store/actions/tasksSagaActions/tasksSagasActions/deleteTaskAction';
+import {DeleteTaskSagaActionReturnType} from '@store/actions/tasksSagaActions/tasksSagasActions/deleteTaskAction';
 import {UserIDType} from '@store/reducers/authReducer/types';
 import {NotificationType} from '@store/reducers/tasksReducer/types';
 import {userIDSelector} from '@store/selectors/authSelectors';
@@ -17,6 +14,7 @@ import {t} from 'i18next';
 import {call, delay, put, select} from 'redux-saga/effects';
 
 export function* deleteTaskSaga(action: DeleteTaskSagaActionReturnType) {
+  const {setIsLoading, setModalVisible, taskListID, taskID} = action.payload;
   try {
     const connectionStatus: NetInfoState = yield NetInfo.fetch();
     if (!connectionStatus.isInternetReachable) {
@@ -25,37 +23,41 @@ export function* deleteTaskSaga(action: DeleteTaskSagaActionReturnType) {
     }
     yield delay(10);
 
-    yield call(action.payload.setIsLoading, true);
+    yield call(setIsLoading, true);
     const userID: UserIDType = yield select(userIDSelector);
-    const deleteTaskInFirebase = (payload: DeleteTaskSagaPayloadType) => {
+    const deleteTaskInFirebase = () => {
       return DB.ref(
-        `${USERS}/${userID}/${TASK_LISTS}/${payload.taskListId}/${TASKS}/${payload.taskId}`,
+        `${USERS}/${userID}/${TASK_LISTS}/${taskListID}/${TASKS}/${taskID}`,
       ).remove();
     };
-    yield call(deleteTaskInFirebase, action.payload);
+
+    yield call(deleteTaskInFirebase);
 
     const notifications: NotificationType[] = yield select(
       notificationsSelector,
     );
     const taskNotification = notifications.find((item) => {
-      return action.payload.taskId === item.taskID;
+      return taskID === item.taskID;
     });
+    const notificationID = taskNotification?.notificationID;
 
-    if (taskNotification && taskNotification.notificationID) {
-      cancelNotificationHelper(taskNotification.notificationID);
+    if (taskNotification && notificationID) {
+      cancelNotificationHelper(notificationID);
     }
-    yield put(deleteTaskNotificationAction({taskID: action.payload.taskId}));
+
+    yield put(deleteTaskNotificationAction({taskID}));
 
     yield put(
       deleteTaskAction({
-        taskId: action.payload.taskId,
-        taskListId: action.payload.taskListId,
+        taskID,
+        taskListID,
       }),
     );
-    yield call(action.payload.setIsLoading, false);
-    yield call(action.payload.setModalVisible, false);
+
+    yield call(setIsLoading, false);
+    yield call(setModalVisible, false);
   } catch (error) {
-    yield call(action.payload.setIsLoading, false);
+    yield call(setIsLoading, false);
     errorAlert(error);
   }
 }

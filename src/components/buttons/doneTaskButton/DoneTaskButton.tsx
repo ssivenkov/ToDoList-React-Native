@@ -12,8 +12,8 @@ import {styles} from './styles';
 import {DoneTaskButtonPropsType} from './types';
 
 export const DoneTaskButton = ({
-  taskListId,
-  doneTaskId,
+  taskListID,
+  doneTaskID,
   completedTaskTitle,
 }: DoneTaskButtonPropsType) => {
   const dispatch = useDispatch();
@@ -24,8 +24,8 @@ export const DoneTaskButton = ({
   ): void => {
     dispatch(
       setTaskIsDoneAction({
-        taskListId,
-        doneTaskId,
+        taskListID,
+        doneTaskID,
         setIsLoading,
         setModalVisible,
       }),

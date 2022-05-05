@@ -8,13 +8,10 @@ import NetInfo, {NetInfoState} from '@react-native-community/netinfo';
 import {DB} from '@root/api/DB';
 import {errorAlert} from '@root/helpers/alertHelper';
 import {createNotificationHelper} from '@root/helpers/createNotificationHelper';
-import {generateRandomNumberHelper} from '@root/helpers/generateRandomNumberHelper';
+import {generateNumberIDHelper} from '@root/helpers/generateNumberIDHelper';
 import {addTaskNotificationAction} from '@store/actions/tasksReducerActions/notificationsActions/addTaskNotificationAction';
 import {addNewTaskAction} from '@store/actions/tasksReducerActions/tasksActions/addNewTaskAction';
-import {
-  AddNewTaskSagaActionReturnType,
-  AddNewTaskSagaPayloadType,
-} from '@store/actions/tasksSagaActions/tasksSagasActions/addNewTaskAction';
+import {AddNewTaskSagaActionReturnType} from '@store/actions/tasksSagaActions/tasksSagasActions/addNewTaskAction';
 import {ChannelIDType, UserIDType} from '@store/reducers/authReducer/types';
 import {
   channelIDSelector,
@@ -24,6 +21,18 @@ import {t} from 'i18next';
 import {call, delay, put, select} from 'redux-saga/effects';
 
 export function* addNewTaskSaga(action: AddNewTaskSagaActionReturnType) {
+  const {
+    setIsLoading,
+    setModalVisible,
+    setIsOn,
+    setNewTaskTitle,
+    newTask,
+    date,
+    modifiedTaskList,
+    shouldCreateNotification,
+  } = action.payload;
+  const {id: taskID, title: taskTitle} = newTask;
+  const {id: taskListID} = modifiedTaskList;
   try {
     const connectionStatus: NetInfoState = yield NetInfo.fetch();
     if (!connectionStatus.isInternetReachable) {
@@ -32,58 +41,63 @@ export function* addNewTaskSaga(action: AddNewTaskSagaActionReturnType) {
     }
     yield delay(10);
 
-    yield call(action.payload.setIsLoading, true);
+    yield call(setIsLoading, true);
+
     const userID: UserIDType = yield select(userIDSelector);
     const channelId: ChannelIDType = yield select(channelIDSelector);
-    const notificationID = generateRandomNumberHelper(
-      NOTIFICATION_ID_MAX_LENGTH,
-    ).toString();
-    const addNewTaskToFirebase = (payload: AddNewTaskSagaPayloadType) => {
+    const notificationID = generateNumberIDHelper(NOTIFICATION_ID_MAX_LENGTH);
+    const addNewTaskToFirebase = () => {
       return DB.ref(
-        `${USERS}/${userID}/${TASK_LISTS}/${payload.taskListId}/${TASKS}/${payload.newTask.id}`,
-      ).set(payload.newTask);
+        `${USERS}/${userID}/${TASK_LISTS}/${taskListID}/${TASKS}/${taskID}`,
+      ).set(newTask);
     };
-    yield call(addNewTaskToFirebase, action.payload);
 
-    if (action.payload.shouldCreateNotification && action.payload.date) {
+    yield call(addNewTaskToFirebase);
+
+    if (shouldCreateNotification && date) {
       yield call(createNotificationHelper, {
         channelId,
-        date: action.payload.date,
+        date,
         notificationID,
-        taskTitle: action.payload.newTask.title,
+        taskTitle,
       });
+
+      const notification = {
+        taskID,
+        notificationID,
+        date,
+        taskTitle,
+      };
 
       yield put(
         addTaskNotificationAction({
-          notification: {
-            taskID: action.payload.newTask.id,
-            notificationID,
-            date: action.payload.date,
-          },
+          notification,
         }),
       );
     } else {
+      const notification = {
+        taskID,
+      };
+
       yield put(
         addTaskNotificationAction({
-          notification: {
-            taskID: action.payload.newTask.id,
-          },
+          notification,
         }),
       );
     }
 
     yield put(
       addNewTaskAction({
-        taskListId: action.payload.taskListId,
-        modifiedTaskList: action.payload.modifiedTaskList,
+        modifiedTaskList,
       }),
     );
-    yield call(action.payload.setIsLoading, false);
-    yield call(action.payload.setModalVisible, false);
-    yield call(action.payload.setIsOn, false);
-    yield call(action.payload.setNewTaskTitle, '');
+
+    yield call(setIsLoading, false);
+    yield call(setModalVisible, false);
+    yield call(setIsOn, false);
+    yield call(setNewTaskTitle, '');
   } catch (error) {
-    yield call(action.payload.setIsLoading, false);
+    yield call(setIsLoading, false);
     errorAlert(error);
   }
 }

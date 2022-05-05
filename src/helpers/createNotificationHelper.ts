@@ -9,9 +9,9 @@ type createNotificationHelperPropsType = {
 };
 
 export const createNotificationHelper = (
-  props: createNotificationHelperPropsType,
+  params: createNotificationHelperPropsType,
 ) => {
-  const {channelId, date, notificationID, taskTitle} = props;
+  const {channelId, date, notificationID, taskTitle} = params;
   const message = `${t('tasksScreen.TaskNotification')} ${taskTitle}`;
 
   PushNotification.localNotificationSchedule({

@@ -8,7 +8,7 @@ import {call, delay} from 'redux-saga/effects';
 export function* facebookSignInSaga(
   action: GetFacebookUserDataSagaActionReturnType,
 ) {
-  const setWaitingUserData = action.payload.setWaitingUserData;
+  const {setWaitingUserData} = action.payload;
   try {
     yield call(setWaitingUserData, true);
     yield delay(10);

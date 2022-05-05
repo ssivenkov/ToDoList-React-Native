@@ -2,9 +2,7 @@ import {CustomTextButton} from '@components/common/buttons/CustomTextButton';
 import {Loader} from '@components/common/loader/loader';
 import {styles} from '@root/screens/accountScreen/styles';
 import {signOutAction} from '@store/actions/authSagaActions/signOutAction';
-import {UserDataType} from '@store/reducers/authReducer/types';
 import {userDataSelector} from '@store/selectors/authSelectors';
-import {AppRootStateType} from '@store/store';
 import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
 import {Image, Text, View} from 'react-native';
@@ -15,15 +13,11 @@ export const AccountScreen = () => {
 
   const {t} = useTranslation();
 
-  const userData = useSelector<AppRootStateType, UserDataType>(
-    userDataSelector,
-  );
+  const userData = useSelector(userDataSelector);
   const [waitingSignOut, setWaitingSignOut] = useState<boolean>(false);
 
   const onSignOutPress = (): void => {
-    setWaitingSignOut(true);
-
-    dispatch(signOutAction());
+    dispatch(signOutAction({setWaitingSignOut}));
   };
 
   if (userData && !waitingSignOut) {

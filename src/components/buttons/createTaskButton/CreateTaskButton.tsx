@@ -16,9 +16,11 @@ import {useDispatch} from 'react-redux';
 import {CreateTaskButtonPropsType} from './types';
 
 export const CreateTaskButton = (props: CreateTaskButtonPropsType) => {
-  const {taskListId, taskListDate, taskListTitle, fullTaskList} = props;
+  const {taskListID, taskListDate, taskListTitle, fullTaskList} = props;
+
   const {t} = useTranslation();
   const dispatch = useDispatch();
+
   const [newTaskTitle, setNewTaskTitle] = useState<TaskType['title']>('');
   const [date, setDate] = useState<Date>(new Date());
   const [isOn, setIsOn] = useState<boolean>(false);
@@ -46,23 +48,22 @@ export const CreateTaskButton = (props: CreateTaskButtonPropsType) => {
       title: newTaskTitle,
     };
 
-    const newTaskListNewTasks = fullTaskList.tasks
+    const tasks = fullTaskList.tasks
       ? [...fullTaskList.tasks, newTask]
       : [newTask];
 
     const modifiedTaskList: TaskListInterface = {
-      id: taskListId,
+      id: taskListID,
       date: taskListDate,
       title: taskListTitle,
       showInToDo: true,
-      tasks: newTaskListNewTasks,
+      tasks,
     };
 
     if (newTaskTitle) {
       dispatch(
         addNewTaskAction({
           modifiedTaskList,
-          taskListId,
           newTask,
           shouldCreateNotification: isOn,
           date,

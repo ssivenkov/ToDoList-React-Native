@@ -2,7 +2,7 @@ import {TASKS_ACTION} from '@enums/tasksEnum';
 import {TaskListInterface} from '@store/reducers/tasksReducer/types';
 
 type EditTaskListTitleActionPayloadType = {
-  taskListId: TaskListInterface['id'];
+  taskListID: TaskListInterface['id'];
   editedTaskListTitle: TaskListInterface['title'];
 };
 

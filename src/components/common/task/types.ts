@@ -2,8 +2,8 @@ import {TaskListInterface, TaskType} from '@store/reducers/tasksReducer/types';
 
 export type TaskPropsType = {
   isTodo: boolean;
-  taskListId: string;
+  taskListID: string;
   taskTitle: TaskType['title'];
-  taskId: TaskType['id'];
+  taskID: TaskType['id'];
   fullTaskList: TaskListInterface;
 };

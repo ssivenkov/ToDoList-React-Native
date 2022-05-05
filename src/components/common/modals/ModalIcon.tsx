@@ -16,7 +16,9 @@ export const ModalIcon = (props: ModalIconPropsType) => {
     okDisable,
     closeHandler,
   } = props;
+
   const {t} = useTranslation();
+
   const [modalVisible, setModalVisible] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 

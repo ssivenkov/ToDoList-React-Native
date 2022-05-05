@@ -3,12 +3,10 @@ import NetInfo, {NetInfoState} from '@react-native-community/netinfo';
 import {DB} from '@root/api/DB';
 import {errorAlert} from '@root/helpers/alertHelper';
 import {cancelNotificationHelper} from '@root/helpers/cancelNotificationHelper';
-import {setTasksNotificationsAction} from '@store/actions/tasksReducerActions/notificationsActions/setTasksNotificationsAction';
+import {findNotification} from '@root/helpers/findNotification';
+import {setNotificationsAction} from '@store/actions/tasksReducerActions/notificationsActions/setNotificationsAction';
 import {deleteTaskListFromScreenAction} from '@store/actions/tasksReducerActions/taskListsActions/deleteTaskListFromScreenAction';
-import {
-  DeleteTaskListFromScreenSagaActionReturnType,
-  DeleteTaskListFromScreenSagaPayloadType,
-} from '@store/actions/tasksSagaActions/taskListsSagasActions/deleteTaskListFromScreenAction';
+import {DeleteTaskListFromScreenSagaActionReturnType} from '@store/actions/tasksSagaActions/taskListsSagasActions/deleteTaskListFromScreenAction';
 import {UserIDType} from '@store/reducers/authReducer/types';
 import {
   ConvertedTasksForFirebaseType,
@@ -22,6 +20,13 @@ import {call, delay, put, select} from 'redux-saga/effects';
 export function* deleteTaskListFromScreenSaga(
   action: DeleteTaskListFromScreenSagaActionReturnType,
 ) {
+  const {
+    setIsLoading,
+    fullTaskList,
+    deleteTodoTask,
+    deleteDoneTask,
+    setModalVisible,
+  } = action.payload;
   try {
     const connectionStatus: NetInfoState = yield NetInfo.fetch();
     if (!connectionStatus.isInternetReachable) {
@@ -30,87 +35,77 @@ export function* deleteTaskListFromScreenSaga(
     }
     yield delay(10);
 
-    yield call(action.payload.setIsLoading, true);
+    yield call(setIsLoading, true);
     const userID: UserIDType = yield select(userIDSelector);
     const notifications: NotificationType[] = yield select(
       notificationsSelector,
     );
-    const findNotificationItem = (taskID: string) => {
-      return notifications.find((item) => item.taskID === taskID);
-    };
-
     const notificationTaskIDs: string[] = [];
 
-    const deleteTaskListFromScreenInFirebase = (
-      payload: DeleteTaskListFromScreenSagaPayloadType,
-    ) => {
-      const modifiedTaskList = {...payload.fullTaskList};
+    const deleteTaskListFromScreenInFirebase = () => {
+      const taskList = {...fullTaskList};
+      const {tasks, id: taskListID} = taskList;
 
-      if (payload.deleteTodoTask) {
-        DB.ref(
-          `${USERS}/${userID}/${TASK_LISTS}/${modifiedTaskList.id}`,
-        ).update({
+      if (deleteTodoTask) {
+        DB.ref(`${USERS}/${userID}/${TASK_LISTS}/${taskListID}`).update({
           showInToDo: false,
         });
 
-        if (modifiedTaskList.tasks && modifiedTaskList.tasks.length > 0) {
-          modifiedTaskList.tasks.forEach((task) => {
-            if (!task.isDone) notificationTaskIDs.push(task.id);
+        if (tasks && tasks.length > 0) {
+          tasks.forEach((task) => {
+            const {isDone, id: taskID} = task;
+            const notificationItem = findNotification(taskID, notifications);
+            const notificationID = notificationItem?.notificationID;
 
-            const notificationItem = findNotificationItem(task.id);
+            if (!isDone) notificationTaskIDs.push(taskID);
 
-            if (notificationItem && notificationItem.notificationID) {
-              cancelNotificationHelper(notificationItem.notificationID);
-            }
+            if (notificationID) cancelNotificationHelper(notificationID);
           });
 
-          modifiedTaskList.tasks = modifiedTaskList.tasks.filter(
-            (task) => task.isDone,
-          );
+          taskList.tasks = tasks.filter((task) => task.isDone);
         }
       }
 
-      if (payload.deleteDoneTask) {
-        if (modifiedTaskList.tasks && modifiedTaskList.tasks.length > 0) {
-          modifiedTaskList.tasks = modifiedTaskList.tasks.filter(
-            (task) => !task.isDone,
-          );
-        }
+      if (deleteDoneTask && tasks && tasks.length > 0) {
+        taskList.tasks = tasks.filter((task) => !task.isDone);
       }
 
-      if (modifiedTaskList.tasks && modifiedTaskList.tasks.length > 0) {
+      if (taskList.tasks && taskList.tasks.length > 0) {
         const convertedTasksForFirebase: ConvertedTasksForFirebaseType =
-          modifiedTaskList.tasks.reduce(
-            (acc: ConvertedTasksForFirebaseType, task) => {
-              return {
-                ...acc,
-                [task.id]: task,
-              };
-            },
-            {},
-          );
+          taskList.tasks.reduce((acc: ConvertedTasksForFirebaseType, task) => {
+            return {
+              ...acc,
+              [task.id]: task,
+            };
+          }, {});
 
         return DB.ref(
-          `${USERS}/${userID}/${TASK_LISTS}/${modifiedTaskList.id}/${TASKS}`,
+          `${USERS}/${userID}/${TASK_LISTS}/${taskListID}/${TASKS}`,
         ).set(convertedTasksForFirebase);
       }
     };
 
-    yield call(deleteTaskListFromScreenInFirebase, action.payload);
+    yield call(deleteTaskListFromScreenInFirebase);
 
-    yield put(setTasksNotificationsAction({notificationTaskIDs}));
+    const filteredNotifications = notifications.filter((notification) => {
+      const notificationToDelete =
+        notificationTaskIDs.join(',').indexOf(notification.taskID) > -1;
 
+      if (!notificationToDelete) return true;
+    });
+
+    yield put(setNotificationsAction({notifications: filteredNotifications}));
     yield put(
       deleteTaskListFromScreenAction({
-        deleteTodoTask: action.payload.deleteTodoTask,
-        deleteDoneTask: action.payload.deleteDoneTask,
-        fullTaskList: action.payload.fullTaskList,
+        deleteTodoTask,
+        deleteDoneTask,
+        fullTaskList,
       }),
     );
-    yield call(action.payload.setIsLoading, false);
-    yield call(action.payload.setModalVisible, false);
+    yield call(setIsLoading, false);
+    yield call(setModalVisible, false);
   } catch (error) {
-    yield call(action.payload.setIsLoading, false);
+    yield call(setIsLoading, false);
     errorAlert(error);
   }
 }

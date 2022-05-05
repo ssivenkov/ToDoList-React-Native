@@ -14,13 +14,15 @@ import {useDispatch, useSelector} from 'react-redux';
 import {EditTaskTitleButtonPropsType} from './types';
 
 export const EditTaskButton = (props: EditTaskTitleButtonPropsType) => {
-  const {taskListId, taskId, oldTaskTitle, isTodo} = props;
+  const {taskListID, taskID, oldTaskTitle, isTodo} = props;
+
   const {t} = useTranslation();
   const dispatch = useDispatch();
+
+  const notifications = useSelector(notificationsSelector);
+  const taskNotification = notifications.find((item) => item.taskID === taskID);
   const [editedTaskTitle, setEditedTaskTitle] =
     useState<TaskType['title']>(oldTaskTitle);
-  const notifications = useSelector(notificationsSelector);
-  const taskNotification = notifications.find((item) => item.taskID === taskId);
   const [date, setDate] = useState<Nullable<Date>>(
     taskNotification?.date ?? null,
   );
@@ -49,8 +51,8 @@ export const EditTaskButton = (props: EditTaskTitleButtonPropsType) => {
     if (editedTaskTitle.length > 0) {
       dispatch(
         setEditedTaskAction({
-          taskListId,
-          taskId,
+          taskListID,
+          taskID,
           editedTaskTitle,
           shouldCreateNotification: isOn,
           date,

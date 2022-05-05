@@ -13,10 +13,11 @@ import {EditTaskListTitleButtonPropsType} from './types';
 
 export const EditTaskListTitleButton = ({
   oldTaskListTitle,
-  taskListId,
+  taskListID,
 }: EditTaskListTitleButtonPropsType) => {
   const {t} = useTranslation();
   const dispatch = useDispatch();
+
   const [editedTaskListTitle, setEditedTaskListTitleState] =
     useState<TaskListInterface['title']>(oldTaskListTitle);
 
@@ -27,7 +28,7 @@ export const EditTaskListTitleButton = ({
     if (editedTaskListTitle.length > 0) {
       dispatch(
         editTaskListTitleAction({
-          taskListId,
+          taskListID,
           editedTaskListTitle,
           setIsLoading,
           setModalVisible,

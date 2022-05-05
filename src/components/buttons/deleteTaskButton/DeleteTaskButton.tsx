@@ -14,14 +14,13 @@ import {styles} from './styles';
 import {DeleteTaskButtonPropsType} from './types';
 
 export const DeleteTaskButton = (props: DeleteTaskButtonPropsType) => {
-  const {isTodoTaskList, taskId, taskTitle, fullTaskList} = props;
+  const {isTodoTaskList, taskID, taskTitle, fullTaskList} = props;
+  const {tasks} = fullTaskList;
+
   const dispatch = useDispatch();
-  const toDoTasks = fullTaskList.tasks
-    ? fullTaskList.tasks.filter((task) => !task.isDone)
-    : [];
-  const doneTasks = fullTaskList.tasks
-    ? fullTaskList.tasks.filter((task) => task.isDone)
-    : [];
+
+  const toDoTasks = tasks ? tasks.filter((task) => !task.isDone) : [];
+  const doneTasks = tasks ? tasks.filter((task) => task.isDone) : [];
 
   const removeTask = (
     setIsLoading: SetStateType<boolean>,
@@ -44,7 +43,7 @@ export const DeleteTaskButton = (props: DeleteTaskButtonPropsType) => {
     ) {
       dispatch(
         deleteTaskListFullAction({
-          taskListId: fullTaskList.id,
+          taskListID: fullTaskList.id,
           setIsLoading,
           setModalVisible,
         }),
@@ -52,8 +51,8 @@ export const DeleteTaskButton = (props: DeleteTaskButtonPropsType) => {
     } else {
       dispatch(
         deleteTaskAction({
-          taskListId: fullTaskList.id,
-          taskId,
+          taskListID: fullTaskList.id,
+          taskID,
           setIsLoading,
           setModalVisible,
         }),

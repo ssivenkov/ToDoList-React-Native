@@ -9,6 +9,7 @@ import ToggleSwitch from 'toggle-switch-react-native';
 
 export const Notification = (props: NotificationPropsType) => {
   const {isOn, toggleSwitcher, date, setDate} = props;
+
   const {t} = useTranslation();
 
   return (

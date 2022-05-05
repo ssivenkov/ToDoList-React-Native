@@ -2,8 +2,8 @@ import {TASKS_ACTION} from '@enums/tasksEnum';
 import {TaskListInterface, TaskType} from '@store/reducers/tasksReducer/types';
 
 type SetTaskIsDoneActionPayloadType = {
-  taskListId: TaskListInterface['id'];
-  doneTaskId: TaskType['id'];
+  taskListID: TaskListInterface['id'];
+  doneTaskID: TaskType['id'];
 };
 
 export type SetTaskIsDoneActionReturnType = {

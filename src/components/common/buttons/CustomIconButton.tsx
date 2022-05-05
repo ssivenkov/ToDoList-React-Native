@@ -1,9 +1,9 @@
 import {CustomIconButtonPropsType} from '@components/common/buttons/type';
-import React, {FC} from 'react';
+import React from 'react';
 import {Text, TouchableOpacity} from 'react-native';
 import {styles} from './styles';
 
-export const CustomIconButton: FC<CustomIconButtonPropsType> = (props) => {
+export const CustomIconButton = (props: CustomIconButtonPropsType) => {
   const {icon, onPress, disable} = props;
 
   return (

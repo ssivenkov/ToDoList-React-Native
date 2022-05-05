@@ -1,12 +1,8 @@
 import {TASKS_ACTION} from '@root/enums/tasksEnum';
-import {
-  TaskListInterface,
-  TaskListWithTaskType,
-} from '@store/reducers/tasksReducer/types';
+import {TaskListInterface} from '@store/reducers/tasksReducer/types';
 
 type AddNewTaskActionPayloadType = {
   modifiedTaskList: TaskListInterface;
-  taskListId: TaskListWithTaskType['id'];
 };
 
 export type AddNewTaskActionReturnType = {
