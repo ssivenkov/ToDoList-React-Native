@@ -3,10 +3,10 @@ import {SetStateType} from '@root/types/common/types';
 import {TaskListWithTaskType} from '@store/reducers/tasksReducer/types';
 
 export type AddNewTaskListSagaPayloadType = {
-  newTaskList: TaskListWithTaskType;
+  taskList: TaskListWithTaskType;
   setIsLoading: SetStateType<boolean>;
   setModalVisible: SetStateType<boolean>;
-  setNewTaskListTitle: SetStateType<string>;
+  setTaskListTitle: SetStateType<string>;
 };
 
 export type AddNewTaskListSagaActionReturnType = {

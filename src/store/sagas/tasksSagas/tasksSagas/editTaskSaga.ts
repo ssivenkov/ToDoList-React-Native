@@ -9,13 +9,10 @@ import {DB} from '@root/api/DB';
 import {errorAlert} from '@root/helpers/alertHelper';
 import {cancelNotificationHelper} from '@root/helpers/cancelNotificationHelper';
 import {createNotificationHelper} from '@root/helpers/createNotificationHelper';
-import {generateRandomNumberHelper} from '@root/helpers/generateRandomNumberHelper';
+import {generateNumberIDHelper} from '@root/helpers/generateNumberIDHelper';
 import {editTaskNotificationAction} from '@store/actions/tasksReducerActions/notificationsActions/editTaskNotificationAction';
 import {setEditedTaskAction} from '@store/actions/tasksReducerActions/tasksActions/setEditedTaskAction';
-import {
-  SetEditedTaskActionSagaReturnType,
-  SetEditedTaskSagaPayloadType,
-} from '@store/actions/tasksSagaActions/tasksSagasActions/setEditedTaskAction';
+import {SetEditedTaskActionSagaReturnType} from '@store/actions/tasksSagaActions/tasksSagasActions/setEditedTaskAction';
 import {ChannelIDType, UserIDType} from '@store/reducers/authReducer/types';
 import {NotificationType} from '@store/reducers/tasksReducer/types';
 import {
@@ -27,6 +24,16 @@ import {t} from 'i18next';
 import {call, delay, put, select} from 'redux-saga/effects';
 
 export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
+  const {
+    setIsLoading,
+    setModalVisible,
+    editedTaskTitle,
+    setEditedTaskTitle,
+    taskID,
+    taskListID,
+    date,
+    shouldCreateNotification,
+  } = action.payload;
   try {
     const connectionStatus: NetInfoState = yield NetInfo.fetch();
     if (!connectionStatus.isInternetReachable) {
@@ -35,34 +42,32 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
     }
     yield delay(10);
 
-    yield call(action.payload.setIsLoading, true);
+    yield call(setIsLoading, true);
     const userID: UserIDType = yield select(userIDSelector);
     const channelId: ChannelIDType = yield select(channelIDSelector);
-    const editTaskTitleInFirebase = (payload: SetEditedTaskSagaPayloadType) => {
+    const editTaskTitleInFirebase = () => {
       return DB.ref(
-        `${USERS}/${userID}/${TASK_LISTS}/${payload.taskListId}/${TASKS}/${payload.taskId}`,
-      ).update({title: payload.editedTaskTitle});
+        `${USERS}/${userID}/${TASK_LISTS}/${taskListID}/${TASKS}/${taskID}`,
+      ).update({title: editedTaskTitle});
     };
-    yield call(editTaskTitleInFirebase, action.payload);
+    yield call(editTaskTitleInFirebase);
 
-    if (action.payload.shouldCreateNotification && action.payload.date) {
-      const notificationID = generateRandomNumberHelper(
-        NOTIFICATION_ID_MAX_LENGTH,
-      ).toString();
+    if (shouldCreateNotification && date) {
+      const notificationID = generateNumberIDHelper(NOTIFICATION_ID_MAX_LENGTH);
 
       yield call(createNotificationHelper, {
         channelId,
-        date: action.payload.date,
+        date,
         notificationID,
-        taskTitle: action.payload.editedTaskTitle,
+        taskTitle: editedTaskTitle,
       });
 
       yield put(
         editTaskNotificationAction({
           notification: {
-            taskID: action.payload.taskId,
+            taskID,
             notificationID,
-            date: action.payload.date,
+            date,
           },
         }),
       );
@@ -72,17 +77,18 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
       );
 
       const taskNotification = notifications.find((item) => {
-        return action.payload.taskId === item.taskID;
+        return taskID === item.taskID;
       });
+      const notificationID = taskNotification?.notificationID;
 
-      if (taskNotification && taskNotification.notificationID) {
-        cancelNotificationHelper(taskNotification.notificationID);
+      if (taskNotification && notificationID) {
+        cancelNotificationHelper(notificationID);
       }
 
       yield put(
         editTaskNotificationAction({
           notification: {
-            taskID: action.payload.taskId,
+            taskID,
           },
         }),
       );
@@ -90,19 +96,16 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
 
     yield put(
       setEditedTaskAction({
-        taskListId: action.payload.taskListId,
-        taskId: action.payload.taskId,
-        editedTaskTitle: action.payload.editedTaskTitle,
+        taskListID,
+        taskID,
+        editedTaskTitle,
       }),
     );
-    yield call(action.payload.setIsLoading, false);
-    yield call(action.payload.setModalVisible, false);
-    yield call(
-      action.payload.setEditedTaskTitle,
-      action.payload.editedTaskTitle,
-    );
+    yield call(setIsLoading, false);
+    yield call(setModalVisible, false);
+    yield call(setEditedTaskTitle, editedTaskTitle);
   } catch (error) {
-    yield call(action.payload.setIsLoading, false);
+    yield call(setIsLoading, false);
     errorAlert(error);
   }
 }

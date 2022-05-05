@@ -28,10 +28,12 @@ export function* syncUserTaskListsSaga() {
       // convert tasks object in every taskLists to tasks array in every taskLists
       const taskLists: TaskListInterface[] = userTaskListsBeforeConvert.map(
         (taskList) => {
-          if (taskList.tasks) {
+          const {tasks} = taskList;
+
+          if (tasks) {
             const taskListWithTasksAsArray: TaskListInterface = {
               ...taskList,
-              tasks: Object.values(taskList.tasks),
+              tasks: Object.values(tasks),
             };
 
             return taskListWithTasksAsArray;

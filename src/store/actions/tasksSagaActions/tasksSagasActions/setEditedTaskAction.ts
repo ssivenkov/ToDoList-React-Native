@@ -3,8 +3,8 @@ import {Nullable, SetStateType} from '@root/types/common/types';
 import {TaskListInterface, TaskType} from '@store/reducers/tasksReducer/types';
 
 export type SetEditedTaskSagaPayloadType = {
-  taskListId: TaskListInterface['id'];
-  taskId: TaskType['id'];
+  taskListID: TaskListInterface['id'];
+  taskID: TaskType['id'];
   editedTaskTitle: TaskType['title'];
   shouldCreateNotification: boolean;
   date: Nullable<Date>;

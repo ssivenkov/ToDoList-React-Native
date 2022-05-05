@@ -3,8 +3,8 @@ import {SetStateType} from '@root/types/common/types';
 import {TaskListInterface, TaskType} from '@store/reducers/tasksReducer/types';
 
 export type DeleteTaskSagaPayloadType = {
-  taskListId: TaskListInterface['id'];
-  taskId: TaskType['id'];
+  taskListID: TaskListInterface['id'];
+  taskID: TaskType['id'];
   setIsLoading: SetStateType<boolean>;
   setModalVisible: SetStateType<boolean>;
 };

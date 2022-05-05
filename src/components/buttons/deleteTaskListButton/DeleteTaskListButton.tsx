@@ -14,6 +14,7 @@ import {DeleteTaskListButtonPropsType} from './types';
 
 export const DeleteTaskListButton = (props: DeleteTaskListButtonPropsType) => {
   const {taskListTitle, isTodoTaskList, fullTaskList} = props;
+
   const dispatch = useDispatch();
 
   const removeTaskList = (
@@ -34,7 +35,7 @@ export const DeleteTaskListButton = (props: DeleteTaskListButtonPropsType) => {
     ) {
       dispatch(
         deleteTaskListFullAction({
-          taskListId: fullTaskList.id,
+          taskListID: fullTaskList.id,
           setIsLoading,
           setModalVisible,
         }),
