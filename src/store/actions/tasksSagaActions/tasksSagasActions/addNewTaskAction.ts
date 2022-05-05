@@ -4,7 +4,6 @@ import {TaskListInterface, TaskType} from '@store/reducers/tasksReducer/types';
 
 export type AddNewTaskSagaPayloadType = {
   modifiedTaskList: TaskListInterface;
-  taskListId: TaskListInterface['id'];
   newTask: TaskType;
   shouldCreateNotification: boolean;
   date: Nullable<Date>;

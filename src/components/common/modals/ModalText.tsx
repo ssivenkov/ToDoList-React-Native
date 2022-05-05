@@ -7,7 +7,9 @@ import {ModalTextPropsType} from './types';
 
 export const ModalText = (props: ModalTextPropsType) => {
   const {children, description, buttonTitle, okHandler} = props;
+
   const {t} = useTranslation();
+
   const [modalVisible, setModalVisible] = useState(false);
 
   const onModalButtonPress = (): void => {

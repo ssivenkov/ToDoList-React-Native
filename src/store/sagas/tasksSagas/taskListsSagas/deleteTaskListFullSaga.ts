@@ -3,12 +3,10 @@ import NetInfo, {NetInfoState} from '@react-native-community/netinfo';
 import {DB} from '@root/api/DB';
 import {errorAlert} from '@root/helpers/alertHelper';
 import {cancelNotificationHelper} from '@root/helpers/cancelNotificationHelper';
-import {setTasksNotificationsAction} from '@store/actions/tasksReducerActions/notificationsActions/setTasksNotificationsAction';
+import {findNotification} from '@root/helpers/findNotification';
+import {setNotificationsAction} from '@store/actions/tasksReducerActions/notificationsActions/setNotificationsAction';
 import {deleteTaskListFullAction} from '@store/actions/tasksReducerActions/taskListsActions/deleteTaskListFullAction';
-import {
-  DeleteTaskListFullSagaActionReturnType,
-  DeleteTaskListFullSagaPayloadType,
-} from '@store/actions/tasksSagaActions/taskListsSagasActions/deleteTaskListFullAction';
+import {DeleteTaskListFullSagaActionReturnType} from '@store/actions/tasksSagaActions/taskListsSagasActions/deleteTaskListFullAction';
 import {UserIDType} from '@store/reducers/authReducer/types';
 import {
   NotificationType,
@@ -25,6 +23,7 @@ import {call, delay, put, select} from 'redux-saga/effects';
 export function* deleteTaskListFullSaga(
   action: DeleteTaskListFullSagaActionReturnType,
 ) {
+  const {setIsLoading, setModalVisible, taskListID} = action.payload;
   try {
     const connectionStatus: NetInfoState = yield NetInfo.fetch();
     if (!connectionStatus.isInternetReachable) {
@@ -33,51 +32,53 @@ export function* deleteTaskListFullSaga(
     }
     yield delay(10);
 
-    yield call(action.payload.setIsLoading, true);
+    yield call(setIsLoading, true);
     const userID: UserIDType = yield select(userIDSelector);
-    const deleteTaskListInFirebase = (
-      payload: DeleteTaskListFullSagaPayloadType,
-    ): Promise<void> => {
-      return DB.ref(
-        `${USERS}/${userID}/${TASK_LISTS}/${payload.taskListId}`,
-      ).remove();
-    };
-    yield call(deleteTaskListInFirebase, action.payload);
-
-    const taskListsArr: TaskListInterface[] = yield select(taskListsSelector);
     const notifications: NotificationType[] = yield select(
       notificationsSelector,
     );
-    const taskList = taskListsArr.find(
-      (taskList) => taskList.id === action.payload.taskListId,
-    );
-    const findNotificationItem = (taskID: string) => {
-      return notifications.find((item) => item.taskID === taskID);
+    const taskLists: TaskListInterface[] = yield select(taskListsSelector);
+    const taskList = taskLists.find((taskList) => taskList.id === taskListID);
+
+    const deleteTaskListInFirebase = () => {
+      return DB.ref(`${USERS}/${userID}/${TASK_LISTS}/${taskListID}`).remove();
     };
 
-    if (taskList && taskList.tasks) {
-      const notificationTaskIDs: string[] = [];
-      taskList.tasks.forEach((task) => {
-        notificationTaskIDs.push(task.id);
-        const notificationItem = findNotificationItem(task.id);
+    yield call(deleteTaskListInFirebase);
 
-        if (notificationItem && notificationItem.notificationID) {
-          cancelNotificationHelper(notificationItem.notificationID);
-        }
+    if (taskList && taskList.tasks) {
+      const {tasks} = taskList;
+      const notificationTaskIDs: string[] = [];
+
+      tasks.forEach((task) => {
+        const {id: taskID} = task;
+        const notificationItem = findNotification(taskID, notifications);
+        const notificationID = notificationItem?.notificationID;
+
+        notificationTaskIDs.push(taskID);
+
+        if (notificationID) cancelNotificationHelper(notificationID);
       });
 
-      yield put(setTasksNotificationsAction({notificationTaskIDs}));
+      const filteredNotifications = notifications.filter((notification) => {
+        const notificationToDelete =
+          notificationTaskIDs.join(',').indexOf(notification.taskID) > -1;
+
+        if (!notificationToDelete) return true;
+      });
+
+      yield put(setNotificationsAction({notifications: filteredNotifications}));
     }
 
     yield put(
       deleteTaskListFullAction({
-        taskListId: action.payload.taskListId,
+        taskListID,
       }),
     );
-    yield call(action.payload.setIsLoading, false);
-    yield call(action.payload.setModalVisible, false);
+    yield call(setIsLoading, false);
+    yield call(setModalVisible, false);
   } catch (error) {
-    yield call(action.payload.setIsLoading, false);
+    yield call(setIsLoading, false);
     errorAlert(error);
   }
 }

@@ -17,31 +17,32 @@ import {styles} from './styles';
 export const CreateTaskListButton = () => {
   const dispatch = useDispatch();
   const {t} = useTranslation();
-  const [newTaskListTitle, setNewTaskListTitle] =
+
+  const [taskListTitle, setTaskListTitle] =
     useState<TaskListInterface['title']>('');
 
   const onClosePress = (): void => {
-    setNewTaskListTitle('');
+    setTaskListTitle('');
   };
 
   const createTaskList = (
     setIsLoading: SetStateType<boolean>,
     setModalVisible: SetStateType<boolean>,
   ): void => {
-    if (newTaskListTitle.length > 0) {
-      const newTaskList: TaskListInterface = {
+    if (taskListTitle.length > 0) {
+      const taskList: TaskListInterface = {
         id: nanoid(),
         date: createDate(),
-        title: newTaskListTitle,
+        title: taskListTitle,
         showInToDo: true,
       };
 
       dispatch(
         addNewTaskListAction({
-          newTaskList,
+          taskList,
           setIsLoading,
           setModalVisible,
-          setNewTaskListTitle,
+          setTaskListTitle,
         }),
       );
     }
@@ -51,7 +52,7 @@ export const CreateTaskListButton = () => {
     <ModalIcon
       okHandler={createTaskList}
       closeHandler={onClosePress}
-      okDisable={!newTaskListTitle}
+      okDisable={!taskListTitle}
       description={`${t('tasksScreen.CreateTaskListButtonTitle')}`}
       buttonIcon={
         <FontAwesomeIcon
@@ -60,10 +61,7 @@ export const CreateTaskListButton = () => {
           style={styles.icon}
         />
       }>
-      <CustomInput
-        value={newTaskListTitle}
-        onValueChange={setNewTaskListTitle}
-      />
+      <CustomInput value={taskListTitle} onValueChange={setTaskListTitle} />
     </ModalIcon>
   );
 };
