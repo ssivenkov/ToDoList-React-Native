@@ -7,7 +7,6 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {GoogleWebClientId} from '@root/api/config';
 import {SignInScreen} from '@root/screens/signInScreen/SignInScreen';
 import {setUserDataAction} from '@store/actions/authReducerActions/setUserDataAction';
-import {setUserIDAction} from '@store/actions/authReducerActions/setUserIDAction';
 import {checkUserAction} from '@store/actions/authSagaActions/checkUserAction';
 import {createChannelAction} from '@store/actions/authSagaActions/createChannelAction';
 import {UserDataType} from '@store/reducers/authReducer/types';
@@ -26,24 +25,18 @@ export const Navigation = () => {
 
   const userID = useSelector(userIDSelector);
   const channelID = useSelector(channelIDSelector);
-
   const [firebaseInitializing, setFirebaseInitializing] =
     useState<boolean>(true);
 
   const onAuthStateChanged = (userData: UserDataType) => {
     dispatch(setUserDataAction({userData}));
 
-    if (userData) {
-      dispatch(checkUserAction());
-      dispatch(setUserIDAction({userID: userData.uid}));
-    } else {
-      dispatch(setUserIDAction({userID: null}));
-    }
-
-    if (firebaseInitializing) {
-      setFirebaseInitializing(false);
-    }
+    if (firebaseInitializing) setFirebaseInitializing(false);
   };
+
+  useEffect(() => {
+    if (userID) dispatch(checkUserAction());
+  }, [userID]);
 
   useEffect(() => {
     if (!channelID) dispatch(createChannelAction());

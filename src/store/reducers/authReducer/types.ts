@@ -9,6 +9,5 @@ export type ChannelIDType = string;
 
 export type AuthStateType = {
   userData: UserDataType;
-  userID: UserIDType;
   channelID: ChannelIDType;
 };
