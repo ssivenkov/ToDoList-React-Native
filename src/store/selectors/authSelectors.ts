@@ -6,7 +6,7 @@ import {
 import {AppRootStateType} from '@store/store';
 
 export const userIDSelector = (state: AppRootStateType): UserIDType => {
-  return state.auth.userID;
+  return state.auth.userData?.uid ?? null;
 };
 
 export const userDataSelector = (state: AppRootStateType): UserDataType => {
