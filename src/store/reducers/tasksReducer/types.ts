@@ -5,7 +5,7 @@ export type TaskType = {
   title: string;
 };
 
-export type TaskListWithTaskType = {
+export type TaskListWithoutTasksType = {
   id: string;
   date: string;
   title: string;
@@ -16,11 +16,12 @@ type TasksObjectType = {
   [key: string]: TaskType;
 };
 
-export interface TaskListBeforeConvertInterface extends TaskListWithTaskType {
+export interface TaskListBeforeConvertInterface
+  extends TaskListWithoutTasksType {
   tasks?: TasksObjectType;
 }
 
-export interface TaskListInterface extends TaskListWithTaskType {
+export interface TaskListInterface extends TaskListWithoutTasksType {
   tasks?: TaskType[];
 }
 

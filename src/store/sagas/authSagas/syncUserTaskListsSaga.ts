@@ -7,7 +7,7 @@ import {SnapshotType, UserIDType} from '@store/reducers/authReducer/types';
 import {
   TaskListBeforeConvertInterface,
   TaskListInterface,
-  TaskListWithTaskType,
+  TaskListWithoutTasksType,
 } from '@store/reducers/tasksReducer/types';
 import {userIDSelector} from '@store/selectors/authSelectors';
 import {put, select} from 'redux-saga/effects';
@@ -38,7 +38,7 @@ export function* syncUserTaskListsSaga() {
 
             return taskListWithTasksAsArray;
           } else {
-            const oldTaskList: TaskListWithTaskType = {...taskList};
+            const oldTaskList: TaskListWithoutTasksType = {...taskList};
 
             return oldTaskList;
           }
