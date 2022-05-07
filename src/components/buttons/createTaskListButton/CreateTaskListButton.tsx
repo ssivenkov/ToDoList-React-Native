@@ -1,11 +1,11 @@
 import {CustomInput} from '@components/common/input/CustomInput';
 import {ModalIcon} from '@components/common/modals/ModalIcon';
-import {iconSizeLarge} from '@constants/constants';
+import {ICON_SIZE_LARGE} from '@constants/constants';
 import {faPlus} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {createDate} from '@root/helpers/generateDate';
+import {createDate} from '@root/helpers/generateDateHelper';
 import {SetStateType} from '@root/types/common/types';
-import {addNewTaskList} from '@store/actions/tasksSagaActions/tasksSagaActions';
+import {addNewTaskListAction} from '@store/actions/tasksSagaActions/taskListsSagasActions/addNewTaskListAction';
 import {TaskListInterface} from '@store/reducers/tasksReducer/types';
 import {nanoid} from 'nanoid';
 import React, {useState} from 'react';
@@ -17,30 +17,32 @@ import {styles} from './styles';
 export const CreateTaskListButton = () => {
   const dispatch = useDispatch();
   const {t} = useTranslation();
-  const [newTaskListTitle, setNewTaskListTitle] = useState<string>('');
+
+  const [taskListTitle, setTaskListTitle] =
+    useState<TaskListInterface['title']>('');
 
   const onClosePress = (): void => {
-    setNewTaskListTitle('');
+    setTaskListTitle('');
   };
 
   const createTaskList = (
     setIsLoading: SetStateType<boolean>,
     setModalVisible: SetStateType<boolean>,
   ): void => {
-    if (newTaskListTitle.length > 0) {
-      const newTaskList: TaskListInterface = {
+    if (taskListTitle.length > 0) {
+      const taskList: TaskListInterface = {
         id: nanoid(),
         date: createDate(),
-        title: newTaskListTitle,
+        title: taskListTitle,
         showInToDo: true,
       };
 
       dispatch(
-        addNewTaskList({
-          newTaskList,
+        addNewTaskListAction({
+          taskList,
           setIsLoading,
           setModalVisible,
-          setNewTaskListTitle,
+          setTaskListTitle,
         }),
       );
     }
@@ -50,19 +52,16 @@ export const CreateTaskListButton = () => {
     <ModalIcon
       okHandler={createTaskList}
       closeHandler={onClosePress}
-      okDisable={!newTaskListTitle}
+      okDisable={!taskListTitle}
       description={`${t('tasksScreen.CreateTaskListButtonTitle')}`}
       buttonIcon={
         <FontAwesomeIcon
           icon={faPlus}
-          size={iconSizeLarge}
+          size={ICON_SIZE_LARGE}
           style={styles.icon}
         />
       }>
-      <CustomInput
-        value={newTaskListTitle}
-        onValueChange={setNewTaskListTitle}
-      />
+      <CustomInput value={taskListTitle} onValueChange={setTaskListTitle} />
     </ModalIcon>
   );
 };
