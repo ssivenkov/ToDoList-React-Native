@@ -6,6 +6,7 @@ import {InputPropsType} from './types';
 
 export const CustomInput = (props: InputPropsType) => {
   const {value, onValueChange, placeholder} = props;
+
   return (
     <View style={styles.container}>
       <TextInput

@@ -1,10 +1,37 @@
-import {TASKS_ACTIONS} from '@enums/tasksEnum';
-import {TasksActionsType} from '@store/actions/tasksActions/types';
+import {TASKS_ACTION} from '@enums/tasksEnum';
+import {AddTaskNotificationActionReturnType} from '@store/actions/tasksReducerActions/notificationsActions/addTaskNotificationAction';
+import {DeleteTaskNotificationActionReturnType} from '@store/actions/tasksReducerActions/notificationsActions/deleteTaskNotificationAction';
+import {EditTaskNotificationActionReturnType} from '@store/actions/tasksReducerActions/notificationsActions/editTaskNotificationAction';
+import {SetNotificationsActionReturnType} from '@store/actions/tasksReducerActions/notificationsActions/setNotificationsAction';
+import {AddNewTaskListActionReturnType} from '@store/actions/tasksReducerActions/taskListsActions/addNewTaskListAction';
+import {DeleteTaskListFromScreenActionReturnType} from '@store/actions/tasksReducerActions/taskListsActions/deleteTaskListFromScreenAction';
+import {DeleteTaskListFullActionReturnType} from '@store/actions/tasksReducerActions/taskListsActions/deleteTaskListFullAction';
+import {EditTaskListTitleActionReturnType} from '@store/actions/tasksReducerActions/taskListsActions/setEditedTaskListTitleAction';
+import {SetTaskListsActionReturnType} from '@store/actions/tasksReducerActions/taskListsActions/setTaskListsAction';
+import {AddNewTaskActionReturnType} from '@store/actions/tasksReducerActions/tasksActions/addNewTaskAction';
+import {DeleteTaskActionReturnType} from '@store/actions/tasksReducerActions/tasksActions/deleteTaskAction';
+import {SetEditedTaskActionReturnType} from '@store/actions/tasksReducerActions/tasksActions/setEditedTaskAction';
+import {SetTaskIsDoneActionReturnType} from '@store/actions/tasksReducerActions/tasksActions/setTaskIsDoneAction';
 import {TasksStateType} from '@store/reducers/tasksReducer/types';
+
+type TasksActionsType =
+  | SetTaskListsActionReturnType
+  | SetNotificationsActionReturnType
+  | AddTaskNotificationActionReturnType
+  | DeleteTaskNotificationActionReturnType
+  | EditTaskNotificationActionReturnType
+  | AddNewTaskListActionReturnType
+  | DeleteTaskListFromScreenActionReturnType
+  | DeleteTaskListFullActionReturnType
+  | EditTaskListTitleActionReturnType
+  | AddNewTaskActionReturnType
+  | DeleteTaskActionReturnType
+  | SetEditedTaskActionReturnType
+  | SetTaskIsDoneActionReturnType;
 
 const initialTasksState: TasksStateType = {
   taskLists: [],
-  notificationIDs: [],
+  notifications: [],
 };
 
 export const tasksReducer = (
@@ -12,78 +39,69 @@ export const tasksReducer = (
   action: TasksActionsType,
 ): TasksStateType => {
   switch (action.type) {
-    case TASKS_ACTIONS.SET_TASK_LISTS:
-      return {...state, taskLists: action.taskLists};
+    case TASKS_ACTION.SET_NOTIFICATIONS:
+      return {...state, notifications: action.payload.notifications};
 
-    case TASKS_ACTIONS.SET_NOTIFICATIONS:
-      return {...state, notificationIDs: action.notifications};
-
-    case TASKS_ACTIONS.ADD_NEW_TASK_LIST:
+    case TASKS_ACTION.ADD_TASK_NOTIFICATION:
       return {
         ...state,
-        taskLists: [action.newTaskList, ...state.taskLists],
+        notifications: [...state.notifications, action.payload.notification],
       };
 
-    case TASKS_ACTIONS.ADD_NEW_TASK:
+    case TASKS_ACTION.EDIT_TASK_NOTIFICATION:
+      return {
+        ...state,
+        notifications: [
+          ...state.notifications.filter((notification) => {
+            return notification.taskID !== action.payload.notification.taskID;
+          }),
+          action.payload.notification,
+        ],
+      };
+
+    case TASKS_ACTION.DELETE_TASK_NOTIFICATION:
+      return {
+        ...state,
+        notifications: state.notifications.filter((notification) => {
+          return notification.taskID !== action.payload.taskID;
+        }),
+      };
+
+    case TASKS_ACTION.SET_TASK_LISTS:
+      return {...state, taskLists: action.payload.taskLists};
+
+    case TASKS_ACTION.ADD_NEW_TASK_LIST:
+      return {
+        ...state,
+        taskLists: [action.payload.taskList, ...state.taskLists],
+      };
+
+    case TASKS_ACTION.ADD_NEW_TASK:
       return {
         ...state,
         taskLists: [
           ...state.taskLists.map((taskList) => {
-            if (taskList.id === action.taskListId) {
-              return action.modifiedTaskList;
+            const {modifiedTaskList} = action.payload;
+
+            if (taskList.id === modifiedTaskList.id) {
+              return modifiedTaskList;
             } else return taskList;
           }),
         ],
       };
 
-    case TASKS_ACTIONS.SET_TASKS_NOTIFICATIONS:
-      return {
-        ...state,
-        notificationIDs: [
-          ...state.notificationIDs.filter((notification) => {
-            const notificationToDelete =
-              action.tasksIDArr.join(',').indexOf(notification.taskID) > -1;
-            if (!notificationToDelete) return true;
-          }),
-        ],
-      };
-
-    case TASKS_ACTIONS.ADD_TASK_NOTIFICATION:
-      return {
-        ...state,
-        notificationIDs: [...state.notificationIDs, action.payload],
-      };
-
-    case TASKS_ACTIONS.EDIT_TASK_NOTIFICATION:
-      return {
-        ...state,
-        notificationIDs: [
-          ...state.notificationIDs.filter((notification) => {
-            return notification.taskID !== action.payload.taskID;
-          }),
-          action.payload,
-        ],
-      };
-
-    case TASKS_ACTIONS.DELETE_TASK_NOTIFICATION:
-      return {
-        ...state,
-        notificationIDs: [
-          ...state.notificationIDs.filter((notification) => {
-            return notification.taskID !== action.taskID;
-          }),
-        ],
-      };
-
-    case TASKS_ACTIONS.DELETE_TASK_LIST_FROM_SCREEN:
+    case TASKS_ACTION.DELETE_TASK_LIST_FROM_SCREEN:
       return {
         ...state,
         taskLists: [
           ...state.taskLists.map((taskList) => {
-            if (taskList.id === action.fullTaskList.id) {
+            const {fullTaskList, deleteTodoTask, deleteDoneTask} =
+              action.payload;
+
+            if (taskList.id === fullTaskList.id) {
               const targetTaskList = {...taskList};
 
-              if (action.deleteTodoTask) {
+              if (deleteTodoTask) {
                 targetTaskList.showInToDo = false;
 
                 if (targetTaskList.tasks) {
@@ -92,7 +110,8 @@ export const tasksReducer = (
                   );
                 }
               }
-              if (action.deleteDoneTask) {
+
+              if (deleteDoneTask) {
                 targetTaskList.showInToDo = true;
 
                 if (targetTaskList.tasks) {
@@ -101,96 +120,102 @@ export const tasksReducer = (
                   );
                 }
               }
+
               return targetTaskList;
             } else return taskList;
           }),
         ],
       };
 
-    case TASKS_ACTIONS.DELETE_TASK_LIST_FULL:
+    case TASKS_ACTION.DELETE_TASK_LIST_FULL:
       return {
         ...state,
         taskLists: [
           ...state.taskLists.filter(
-            (taskList) => taskList.id !== action.taskListId,
+            (taskList) => taskList.id !== action.payload.taskListID,
           ),
         ],
       };
 
-    case TASKS_ACTIONS.EDIT_TASK_LIST_TITLE:
+    case TASKS_ACTION.EDIT_TASK_LIST_TITLE:
       return {
         ...state,
         taskLists: [
           ...state.taskLists.map((taskList) => {
-            if (taskList.id === action.taskListId) {
-              const editedTaskList = {...taskList};
-              editedTaskList.title = action.editedTaskListTitle;
-              return editedTaskList;
+            const {taskListID, editedTaskListTitle} = action.payload;
+
+            if (taskList.id === taskListID) {
+              return {...taskList, title: editedTaskListTitle};
             } else return taskList;
           }),
         ],
       };
 
-    case TASKS_ACTIONS.SET_TASK_DONE:
+    case TASKS_ACTION.SET_TASK_DONE:
+      return {
+        ...state,
+        taskLists: state.taskLists.map((taskList) => {
+          const {taskListID, doneTaskID} = action.payload;
+
+          if (taskList.id === taskListID) {
+            const targetTaskList = {...taskList};
+            const {tasks} = targetTaskList;
+
+            if (tasks) {
+              targetTaskList.tasks = tasks.map((task) => {
+                if (task.id === doneTaskID) {
+                  return {...task, isDone: true};
+                } else return task;
+              });
+            }
+
+            return targetTaskList;
+          } else return taskList;
+        }),
+      };
+
+    case TASKS_ACTION.EDIT_TASK_TITLE:
       return {
         ...state,
         taskLists: [
           ...state.taskLists.map((taskList) => {
-            if (taskList.id === action.taskListId) {
-              const targetTaskList = {...taskList};
+            const {taskListID, taskID, editedTaskTitle} = action.payload;
 
-              if (targetTaskList.tasks) {
-                targetTaskList.tasks = targetTaskList.tasks.map((task) => {
-                  if (task.id === action.doneTaskId) {
-                    const doneTask = {...task};
-                    doneTask.isDone = true;
-                    return doneTask;
+            if (taskList.id === taskListID) {
+              const targetTaskList = {...taskList};
+              const {tasks} = targetTaskList;
+
+              if (tasks) {
+                targetTaskList.tasks = tasks.map((task) => {
+                  if (task.id === taskID) {
+                    return {...task, title: editedTaskTitle};
                   } else return task;
                 });
               }
+
               return targetTaskList;
             } else return taskList;
           }),
         ],
       };
 
-    case TASKS_ACTIONS.EDIT_TASK_TITLE:
+    case TASKS_ACTION.DELETE_TASK:
       return {
         ...state,
         taskLists: [
           ...state.taskLists.map((taskList) => {
-            if (taskList.id === action.taskListId) {
-              const targetTaskList = {...taskList};
+            const {taskListID, taskID} = action.payload;
 
-              if (targetTaskList.tasks) {
-                targetTaskList.tasks = targetTaskList.tasks.map((task) => {
-                  if (task.id === action.taskId) {
-                    const editedTask = {...task};
-                    editedTask.title = action.editedTaskTitle;
-                    return editedTask;
-                  }
-                  return task;
-                });
-              }
-              return targetTaskList;
-            } else return taskList;
-          }),
-        ],
-      };
-
-    case TASKS_ACTIONS.DELETE_TASK:
-      return {
-        ...state,
-        taskLists: [
-          ...state.taskLists.map((taskList) => {
-            if (taskList.id === action.taskListId) {
+            if (taskList.id === taskListID) {
               const editedTaskList = {...taskList};
+              const {tasks} = editedTaskList;
 
-              if (editedTaskList.tasks) {
-                editedTaskList.tasks = editedTaskList.tasks.filter(
-                  (task) => task.id !== action.taskId,
+              if (tasks) {
+                editedTaskList.tasks = tasks.filter(
+                  (task) => task.id !== taskID,
                 );
               }
+
               return editedTaskList;
             } else return taskList;
           }),

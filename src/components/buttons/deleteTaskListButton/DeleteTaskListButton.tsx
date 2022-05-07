@@ -1,12 +1,10 @@
 import {ModalIcon} from '@components/common/modals/ModalIcon';
-import {iconSizeSmall} from '@constants/constants';
+import {ICON_SIZE_SMALL} from '@constants/constants';
 import {faTrash} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {SetStateType} from '@root/types/common/types';
-import {
-  deleteTaskListFromScreen,
-  deleteTaskListFull,
-} from '@store/actions/tasksSagaActions/tasksSagaActions';
+import {deleteTaskListFromScreenAction} from '@store/actions/tasksSagaActions/taskListsSagasActions/deleteTaskListFromScreenAction';
+import {deleteTaskListFullAction} from '@store/actions/tasksSagaActions/taskListsSagasActions/deleteTaskListFullAction';
 import React from 'react';
 import {Trans} from 'react-i18next';
 import {Text} from 'react-native';
@@ -16,6 +14,7 @@ import {DeleteTaskListButtonPropsType} from './types';
 
 export const DeleteTaskListButton = (props: DeleteTaskListButtonPropsType) => {
   const {taskListTitle, isTodoTaskList, fullTaskList} = props;
+
   const dispatch = useDispatch();
 
   const removeTaskList = (
@@ -35,15 +34,15 @@ export const DeleteTaskListButton = (props: DeleteTaskListButtonPropsType) => {
       (toDoTasks.length === 0 && doneTasks.length === 0)
     ) {
       dispatch(
-        deleteTaskListFull({
-          taskListId: fullTaskList.id,
+        deleteTaskListFullAction({
+          taskListID: fullTaskList.id,
           setIsLoading,
           setModalVisible,
         }),
       );
     } else if (isTodoTaskList) {
       dispatch(
-        deleteTaskListFromScreen({
+        deleteTaskListFromScreenAction({
           fullTaskList,
           deleteTodoTask: true,
           deleteDoneTask: false,
@@ -53,7 +52,7 @@ export const DeleteTaskListButton = (props: DeleteTaskListButtonPropsType) => {
       );
     } else if (!isTodoTaskList) {
       dispatch(
-        deleteTaskListFromScreen({
+        deleteTaskListFromScreenAction({
           fullTaskList,
           deleteTodoTask: false,
           deleteDoneTask: true,
@@ -67,7 +66,7 @@ export const DeleteTaskListButton = (props: DeleteTaskListButtonPropsType) => {
   return (
     <ModalIcon
       okHandler={removeTaskList}
-      buttonIcon={<FontAwesomeIcon icon={faTrash} size={iconSizeSmall} />}>
+      buttonIcon={<FontAwesomeIcon icon={faTrash} size={ICON_SIZE_SMALL} />}>
       <Text style={styles.warnText}>
         <Trans i18nKey="tasksScreen.DeleteQuestionButtonTitle">
           <Text style={styles.redHighlightTask}>{{text: taskListTitle}}</Text>

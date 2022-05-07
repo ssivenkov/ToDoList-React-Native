@@ -1,12 +1,12 @@
 import {CustomInput} from '@components/common/input/CustomInput';
 import {ModalIcon} from '@components/common/modals/ModalIcon';
 import {Notification} from '@components/common/notification/Notification';
-import {iconSizeSmall} from '@constants/constants';
+import {ICON_SIZE_SMALL} from '@constants/constants';
 import {faPlus} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {createDate} from '@root/helpers/generateDate';
+import {createDate} from '@root/helpers/generateDateHelper';
 import {SetStateType} from '@root/types/common/types';
-import {addNewTask} from '@store/actions/tasksSagaActions/tasksSagaActions';
+import {addNewTaskAction} from '@store/actions/tasksSagaActions/tasksSagasActions/addNewTaskAction';
 import {TaskListInterface, TaskType} from '@store/reducers/tasksReducer/types';
 import {nanoid} from 'nanoid';
 import React, {useState} from 'react';
@@ -16,10 +16,12 @@ import {useDispatch} from 'react-redux';
 import {CreateTaskButtonPropsType} from './types';
 
 export const CreateTaskButton = (props: CreateTaskButtonPropsType) => {
-  const {taskListId, taskListDate, taskListTitle, fullTaskList} = props;
+  const {taskListID, taskListDate, taskListTitle, fullTaskList} = props;
+
   const {t} = useTranslation();
   const dispatch = useDispatch();
-  const [newTaskTitle, setNewTaskTitle] = useState<string>('');
+
+  const [newTaskTitle, setNewTaskTitle] = useState<TaskType['title']>('');
   const [date, setDate] = useState<Date>(new Date());
   const [isOn, setIsOn] = useState<boolean>(false);
 
@@ -46,23 +48,22 @@ export const CreateTaskButton = (props: CreateTaskButtonPropsType) => {
       title: newTaskTitle,
     };
 
-    const newTaskListNewTasks = fullTaskList.tasks
+    const tasks = fullTaskList.tasks
       ? [...fullTaskList.tasks, newTask]
       : [newTask];
 
     const modifiedTaskList: TaskListInterface = {
-      id: taskListId,
+      id: taskListID,
       date: taskListDate,
       title: taskListTitle,
       showInToDo: true,
-      tasks: newTaskListNewTasks,
+      tasks,
     };
 
     if (newTaskTitle) {
       dispatch(
-        addNewTask({
+        addNewTaskAction({
           modifiedTaskList,
-          taskListId,
           newTask,
           shouldCreateNotification: isOn,
           date,
@@ -81,7 +82,7 @@ export const CreateTaskButton = (props: CreateTaskButtonPropsType) => {
       closeHandler={onClosePress}
       okDisable={!newTaskTitle}
       description={`${t('tasksScreen.CreateTaskButtonTitle')}`}
-      buttonIcon={<FontAwesomeIcon icon={faPlus} size={iconSizeSmall} />}>
+      buttonIcon={<FontAwesomeIcon icon={faPlus} size={ICON_SIZE_SMALL} />}>
       <CustomInput value={newTaskTitle} onValueChange={setNewTaskTitle} />
       <Notification
         isOn={isOn}

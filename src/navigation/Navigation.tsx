@@ -1,18 +1,19 @@
-import {SignInScreen} from '@components/screens/signInScreen/SignInScreen';
-import {SignIn, WithAuth} from '@constants/constants';
 import {RootStackParamList} from '@navigation/types';
-import {WithAuthNavigation} from '@navigation/withAuthNavigation/WithAuthNavigation';
-import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
+import {WithAuthNavigator} from '@navigation/withAuthNavigator/WithAuthNavigator';
+import auth from '@react-native-firebase/auth';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {GoogleWebClientId} from '@root/api/config';
-import {Nullable} from '@root/types/common/types';
-import {setUserData} from '@store/actions/authActions/authActions';
-import {createChannel} from '@store/actions/authSagaActions/authSagaActions';
-import {checkUser} from '@store/actions/tasksSagaActions/tasksSagaActions';
-import {getChannelID, getUserAuthStatus} from '@store/selectors/authSelectors';
-import {AppRootStateType} from '@store/store';
+import {SignInScreen} from '@root/screens/signInScreen/SignInScreen';
+import {setUserDataAction} from '@store/actions/authReducerActions/setUserDataAction';
+import {checkUserAction} from '@store/actions/authSagaActions/checkUserAction';
+import {createChannelAction} from '@store/actions/authSagaActions/createChannelAction';
+import {UserDataType} from '@store/reducers/authReducer/types';
+import {
+  channelIDSelector,
+  userIDSelector,
+} from '@store/selectors/authSelectors';
 import React, {useEffect, useState} from 'react';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {useDispatch, useSelector} from 'react-redux';
@@ -21,25 +22,24 @@ const {Navigator, Screen} = createNativeStackNavigator<RootStackParamList>();
 
 export const Navigation = () => {
   const dispatch = useDispatch();
-  const isUserAuth = useSelector<AppRootStateType, boolean>(getUserAuthStatus);
+
+  const userID = useSelector(userIDSelector);
+  const channelID = useSelector(channelIDSelector);
   const [firebaseInitializing, setFirebaseInitializing] =
     useState<boolean>(true);
-  const channelID: string = useSelector(getChannelID);
 
-  const onAuthStateChanged = (user: Nullable<FirebaseAuthTypes.User>) => {
-    dispatch(setUserData(user));
+  const onAuthStateChanged = (userData: UserDataType) => {
+    dispatch(setUserDataAction({userData}));
 
-    if (user) {
-      dispatch(checkUser());
-    }
-
-    if (firebaseInitializing) {
-      setFirebaseInitializing(false);
-    }
+    if (firebaseInitializing) setFirebaseInitializing(false);
   };
 
   useEffect(() => {
-    if (!channelID) dispatch(createChannel());
+    if (userID) dispatch(checkUserAction());
+  }, [userID]);
+
+  useEffect(() => {
+    if (!channelID) dispatch(createChannelAction());
 
     GoogleSignin.configure({
       webClientId: GoogleWebClientId,
@@ -55,15 +55,15 @@ export const Navigation = () => {
     <SafeAreaProvider>
       <NavigationContainer>
         <Navigator>
-          {isUserAuth ? (
+          {userID ? (
             <Screen
-              name={WithAuth}
-              component={WithAuthNavigation}
+              name={'WithAuth'}
+              component={WithAuthNavigator}
               options={{headerShown: false}}
             />
           ) : (
             <Screen
-              name={SignIn}
+              name={'SignIn'}
               component={SignInScreen}
               options={{headerShown: false}}
             />
