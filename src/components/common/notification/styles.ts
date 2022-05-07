@@ -7,8 +7,6 @@ type DeleteTaskListButtonStylesType = {
   dateTimePickerContainer: ViewStyle;
 };
 
-const {BLACK} = COLORS;
-
 export const styles = StyleSheet.create<DeleteTaskListButtonStylesType>({
   notificationContainer: {
     marginTop: 23,
@@ -18,7 +16,7 @@ export const styles = StyleSheet.create<DeleteTaskListButtonStylesType>({
   },
 
   text: {
-    color: BLACK,
+    color: COLORS.BLACK,
     fontSize: 20,
     marginBottom: 2,
   },

@@ -1,8 +1,8 @@
 import {TaskListInterface} from '@store/reducers/tasksReducer/types';
 
 export type CreateTaskButtonPropsType = {
-  taskListId: string;
-  taskListDate: string;
-  taskListTitle: string;
+  taskListID: TaskListInterface['id'];
+  taskListDate: TaskListInterface['date'];
+  taskListTitle: TaskListInterface['title'];
   fullTaskList: TaskListInterface;
 };

@@ -1,13 +1,13 @@
 import {DeleteTaskButton} from '@components/buttons/deleteTaskButton/DeleteTaskButton';
 import {DoneTaskButton} from '@components/buttons/doneTaskButton/DoneTaskButton';
 import {EditTaskButton} from '@components/buttons/editTaskButton/EditTaskButton';
-import React, {FC} from 'react';
+import React from 'react';
 import {Text, View} from 'react-native';
 import {styles} from './styles';
 import {TaskPropsType} from './types';
 
-export const Task: FC<TaskPropsType> = (props) => {
-  const {isTodo, taskListId, taskTitle, taskId, fullTaskList} = props;
+export const Task = (props: TaskPropsType) => {
+  const {isTodo, taskListID, taskTitle, taskID, fullTaskList} = props;
 
   return (
     <View style={styles.container}>
@@ -16,19 +16,19 @@ export const Task: FC<TaskPropsType> = (props) => {
         {isTodo && (
           <DoneTaskButton
             completedTaskTitle={taskTitle}
-            taskListId={taskListId}
-            doneTaskId={taskId}
+            taskListID={taskListID}
+            doneTaskID={taskID}
           />
         )}
         <EditTaskButton
-          taskListId={taskListId}
-          taskId={taskId}
+          taskListID={taskListID}
+          taskID={taskID}
           oldTaskTitle={taskTitle}
           isTodo={isTodo}
         />
         <DeleteTaskButton
           isTodoTaskList={isTodo}
-          taskId={taskId}
+          taskID={taskID}
           taskTitle={taskTitle}
           fullTaskList={fullTaskList}
         />

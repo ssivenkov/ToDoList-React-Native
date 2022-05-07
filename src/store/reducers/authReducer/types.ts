@@ -1,10 +1,13 @@
 import {FirebaseAuthTypes} from '@react-native-firebase/auth';
+import {FirebaseDatabaseTypes} from '@react-native-firebase/database';
 import {Nullable} from '@root/types/common/types';
 
+export type SnapshotType = FirebaseDatabaseTypes.DataSnapshot;
 export type UserDataType = Nullable<FirebaseAuthTypes.User>;
+export type UserIDType = Nullable<FirebaseAuthTypes.User['uid']>;
+export type ChannelIDType = string;
 
-export type InitialAuthStateType = {
-  authStatus: boolean;
+export type AuthStateType = {
   userData: UserDataType;
-  channelID: string;
+  channelID: ChannelIDType;
 };
