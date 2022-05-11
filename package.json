@@ -12,9 +12,9 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.1.1",
-    "@fortawesome/free-brands-svg-icons": "^6.1.1",
-    "@fortawesome/free-solid-svg-icons": "^6.1.1",
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-brands-svg-icons": "^5.15.4",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/react-native-fontawesome": "^0.2.7",
     "@react-native-async-storage/async-storage": "^1.16.1",
     "@react-native-community/netinfo": "^8.2.0",
@@ -70,7 +70,6 @@
     "@types/react-native-push-notification": "^8.1.0",
     "@types/react-redux": "^7.1.23",
     "@types/react-test-renderer": "^17.0.1",
-    "@types/uuid": "^8.3.4",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",
     "babel-jest": "^27.5.1",
