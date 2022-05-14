@@ -1,6 +1,6 @@
 import {COLORS} from '@colors/colors';
 import {ICON_SIZE_LARGE} from '@constants/constants';
-import {faCheck, faListCheck} from '@fortawesome/free-solid-svg-icons';
+import {faCheck, faList} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {styles} from '@navigation/tasksNavigator/styles';
 import {MaterialTopTabNavigationOptions} from '@react-navigation/material-top-tabs/lib/typescript/src/types';
@@ -20,7 +20,7 @@ export const toDoScreenOptions: MaterialTopTabNavigationOptions = {
   tabBarIcon: ({focused}) => (
     <FontAwesomeIcon
       style={focused ? styles.tabLightIcon : styles.tabDarkIcon}
-      icon={faListCheck}
+      icon={faList}
       size={ICON_SIZE_LARGE}
     />
   ),
