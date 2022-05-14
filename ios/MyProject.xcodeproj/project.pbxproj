@@ -11,7 +11,7 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		2FA871C4282C08C400A6CC0C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2FA871C3282C08C400A6CC0C /* GoogleService-Info.plist */; };
+		2F401DFB282F958C008BF214 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F401DFA282F958C008BF214 /* GoogleService-Info.plist */; };
 		39B0E5F6E792393B2D0C0DBC /* libPods-MyProject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 149B2047A4989FCB395FF53C /* libPods-MyProject.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		AD0B6E57CBB513431E67A6AC /* libPods-MyProject-MyProjectTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 756084EBD9A994D5BEBE48E7 /* libPods-MyProject-MyProjectTests.a */; };
@@ -40,7 +40,7 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = MyProject/main.m; sourceTree = "<group>"; };
 		149B2047A4989FCB395FF53C /* libPods-MyProject.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyProject.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C383330D74B1E7A9EAF282F /* Pods-MyProject-MyProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyProject-MyProjectTests.release.xcconfig"; path = "Target Support Files/Pods-MyProject-MyProjectTests/Pods-MyProject-MyProjectTests.release.xcconfig"; sourceTree = "<group>"; };
-		2FA871C3282C08C400A6CC0C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2F401DFA282F958C008BF214 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		756084EBD9A994D5BEBE48E7 /* libPods-MyProject-MyProjectTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyProject-MyProjectTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = MyProject/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A496BC6D6037EFDE73DD0018 /* Pods-MyProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyProject.release.xcconfig"; path = "Target Support Files/Pods-MyProject/Pods-MyProject.release.xcconfig"; sourceTree = "<group>"; };
@@ -88,7 +88,6 @@
 		13B07FAE1A68108700A75B9A /* MyProject */ = {
 			isa = PBXGroup;
 			children = (
-				2FA871C3282C08C400A6CC0C /* GoogleService-Info.plist */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -130,6 +129,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				2F401DFA282F958C008BF214 /* GoogleService-Info.plist */,
 				13B07FAE1A68108700A75B9A /* MyProject */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* MyProjectTests */,
@@ -252,7 +252,7 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				2FA871C4282C08C400A6CC0C /* GoogleService-Info.plist in Resources */,
+				2F401DFB282F958C008BF214 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
