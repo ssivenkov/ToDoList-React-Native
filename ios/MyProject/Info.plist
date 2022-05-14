@@ -30,9 +30,28 @@
 				<string>com.googleusercontent.apps.39222740250-6f1gtp4972o64ari61gipmoi0p8hua7f</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb511330980374300</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>FacebookAppID</key>
+	<string>511330980374300</string>
+	<key>FacebookClientToken</key>
+	<string>b7812155021966b2e7869eae37416839</string>
+	<key>FacebookDisplayName</key>
+	<string>Todolist</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fbapi</string>
+		<string>fb-messenger-share-api</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
