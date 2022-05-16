@@ -3,7 +3,8 @@
     "common": {
       "Ok": "Ок",
       "Close": "Закрыть",
-      "NoInternetConnection": "Отсутствует подключение к интернету"
+      "NoInternetConnection": "Отсутствует подключение к интернету",
+      "NoIOSNotificationsPermission": "Отсутствует разрешение для уведомлений. Предоставьте приложению разрешение на показ уведомлений"
     },
     "tasksScreen": {
       "Tasks": "Задачи",
