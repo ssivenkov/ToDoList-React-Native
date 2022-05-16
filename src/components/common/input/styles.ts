@@ -17,7 +17,7 @@ export const styles = StyleSheet.create<InputStylesType>({
     width: '100%',
     alignContent: 'center',
     fontSize: 20,
-    paddingHorizontal: 10,
+    padding: 10,
     color: BLACK,
     backgroundColor: ALTO,
     borderRadius: 8,

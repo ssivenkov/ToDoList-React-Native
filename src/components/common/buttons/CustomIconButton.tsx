@@ -1,6 +1,6 @@
 import {CustomIconButtonPropsType} from '@components/common/buttons/type';
 import React from 'react';
-import {Text, TouchableOpacity} from 'react-native';
+import {TouchableOpacity} from 'react-native';
 import {styles} from './styles';
 
 export const CustomIconButton = (props: CustomIconButtonPropsType) => {
@@ -8,7 +8,7 @@ export const CustomIconButton = (props: CustomIconButtonPropsType) => {
 
   return (
     <TouchableOpacity style={styles.icon} onPress={onPress} disabled={disable}>
-      <Text style={styles.text}>{icon}</Text>
+      {icon}
     </TouchableOpacity>
   );
 };
