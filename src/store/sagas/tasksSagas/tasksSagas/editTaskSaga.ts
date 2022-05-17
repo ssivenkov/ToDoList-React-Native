@@ -10,6 +10,7 @@ import {errorAlert} from '@root/helpers/alertHelper';
 import {cancelNotificationHelper} from '@root/helpers/cancelNotificationHelper';
 import {createNotificationHelper} from '@root/helpers/createNotificationHelper';
 import {generateNumberIDHelper} from '@root/helpers/generateNumberIDHelper';
+import {hasInternetConnectionHelper} from '@root/helpers/hasInternetConnectionHelper';
 import {editTaskNotificationAction} from '@store/actions/tasksReducerActions/notificationsActions/editTaskNotificationAction';
 import {setEditedTaskAction} from '@store/actions/tasksReducerActions/tasksActions/setEditedTaskAction';
 import {SetEditedTaskActionSagaReturnType} from '@store/actions/tasksSagaActions/tasksSagasActions/setEditedTaskAction';
@@ -36,7 +37,7 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
   } = action.payload;
   try {
     const connectionStatus: NetInfoState = yield NetInfo.fetch();
-    if (!connectionStatus.isInternetReachable) {
+    if (!hasInternetConnectionHelper(connectionStatus)) {
       errorAlert(t('common.NoInternetConnection'));
       return;
     }

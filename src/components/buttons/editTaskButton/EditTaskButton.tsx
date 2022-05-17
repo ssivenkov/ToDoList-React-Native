@@ -4,6 +4,8 @@ import {Notification} from '@components/common/notification/Notification';
 import {ICON_SIZE_SMALL} from '@constants/constants';
 import {faPen} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {errorAlert} from '@root/helpers/alertHelper';
+import {requestIOSNotificationsPermissionHelper} from '@root/helpers/requestIOSNotificationsPermissionHelper';
 import {Nullable, SetStateType} from '@root/types/common/types';
 import {setEditedTaskAction} from '@store/actions/tasksSagaActions/tasksSagasActions/setEditedTaskAction';
 import {TaskType} from '@store/reducers/tasksReducer/types';
@@ -33,8 +35,14 @@ export const EditTaskButton = (props: EditTaskTitleButtonPropsType) => {
       setIsOn(false);
       setDate(null);
     } else {
-      setIsOn(true);
-      setDate(new Date());
+      requestIOSNotificationsPermissionHelper().then((hasPermission) => {
+        if (hasPermission) {
+          setIsOn(true);
+          setDate(new Date());
+        } else {
+          errorAlert(t('common.NoIOSNotificationsPermission'));
+        }
+      });
     }
   };
 

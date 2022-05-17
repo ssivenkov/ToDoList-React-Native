@@ -31,6 +31,8 @@ export const styles = StyleSheet.create<TaskListStylesType>({
 
   buttonsContainer: {
     flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 
   title: {
