@@ -2,6 +2,7 @@ import {TASK_LISTS, USERS} from '@constants/constants';
 import NetInfo, {NetInfoState} from '@react-native-community/netinfo';
 import {DB} from '@root/api/DB';
 import {errorAlert} from '@root/helpers/alertHelper';
+import {hasInternetConnectionHelper} from '@root/helpers/hasInternetConnectionHelper';
 import {setEditedTaskListTitleAction} from '@store/actions/tasksReducerActions/taskListsActions/setEditedTaskListTitleAction';
 import {EditTaskListTitleSagaActionReturnType} from '@store/actions/tasksSagaActions/taskListsSagasActions/editTaskListTitleAction';
 import {UserIDType} from '@store/reducers/authReducer/types';
@@ -21,7 +22,7 @@ export function* editTaskListTitleSaga(
   } = action.payload;
   try {
     const connectionStatus: NetInfoState = yield NetInfo.fetch();
-    if (!connectionStatus.isInternetReachable) {
+    if (!hasInternetConnectionHelper(connectionStatus)) {
       errorAlert(t('common.NoInternetConnection'));
       return;
     }

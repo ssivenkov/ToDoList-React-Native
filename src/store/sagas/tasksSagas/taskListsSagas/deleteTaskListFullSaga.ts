@@ -4,6 +4,7 @@ import {DB} from '@root/api/DB';
 import {errorAlert} from '@root/helpers/alertHelper';
 import {cancelNotificationHelper} from '@root/helpers/cancelNotificationHelper';
 import {findNotification} from '@root/helpers/findNotification';
+import {hasInternetConnectionHelper} from '@root/helpers/hasInternetConnectionHelper';
 import {setNotificationsAction} from '@store/actions/tasksReducerActions/notificationsActions/setNotificationsAction';
 import {deleteTaskListFullAction} from '@store/actions/tasksReducerActions/taskListsActions/deleteTaskListFullAction';
 import {DeleteTaskListFullSagaActionReturnType} from '@store/actions/tasksSagaActions/taskListsSagasActions/deleteTaskListFullAction';
@@ -26,7 +27,7 @@ export function* deleteTaskListFullSaga(
   const {setIsLoading, setModalVisible, taskListID} = action.payload;
   try {
     const connectionStatus: NetInfoState = yield NetInfo.fetch();
-    if (!connectionStatus.isInternetReachable) {
+    if (!hasInternetConnectionHelper(connectionStatus)) {
       errorAlert(t('common.NoInternetConnection'));
       return;
     }
