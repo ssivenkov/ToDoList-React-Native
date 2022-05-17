@@ -5,7 +5,7 @@ import english from './english.json';
 import russian from './russian.json';
 
 i18next.use(initReactI18next).init({
-  lng: NativeModules.I18nManager?.localeIdentifier.split('_')[0],
+  lng: NativeModules.I18nManager?.localeIdentifier?.split('_')[0] || 'en',
   resources: {
     en: english,
     ru: russian,
