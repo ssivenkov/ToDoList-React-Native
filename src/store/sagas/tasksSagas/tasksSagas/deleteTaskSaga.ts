@@ -3,6 +3,7 @@ import NetInfo, {NetInfoState} from '@react-native-community/netinfo';
 import {DB} from '@root/api/DB';
 import {errorAlert} from '@root/helpers/alertHelper';
 import {cancelNotificationHelper} from '@root/helpers/cancelNotificationHelper';
+import {hasInternetConnectionHelper} from '@root/helpers/hasInternetConnectionHelper';
 import {deleteTaskNotificationAction} from '@store/actions/tasksReducerActions/notificationsActions/deleteTaskNotificationAction';
 import {deleteTaskAction} from '@store/actions/tasksReducerActions/tasksActions/deleteTaskAction';
 import {DeleteTaskSagaActionReturnType} from '@store/actions/tasksSagaActions/tasksSagasActions/deleteTaskAction';
@@ -17,7 +18,7 @@ export function* deleteTaskSaga(action: DeleteTaskSagaActionReturnType) {
   const {setIsLoading, setModalVisible, taskListID, taskID} = action.payload;
   try {
     const connectionStatus: NetInfoState = yield NetInfo.fetch();
-    if (!connectionStatus.isInternetReachable) {
+    if (!hasInternetConnectionHelper(connectionStatus)) {
       errorAlert(t('common.NoInternetConnection'));
       return;
     }

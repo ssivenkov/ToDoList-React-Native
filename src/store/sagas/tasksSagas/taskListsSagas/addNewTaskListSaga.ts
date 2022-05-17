@@ -2,6 +2,7 @@ import {TASK_LISTS, USERS} from '@constants/constants';
 import NetInfo, {NetInfoState} from '@react-native-community/netinfo';
 import {DB} from '@root/api/DB';
 import {errorAlert} from '@root/helpers/alertHelper';
+import {hasInternetConnectionHelper} from '@root/helpers/hasInternetConnectionHelper';
 import {addNewTaskListAction} from '@store/actions/tasksReducerActions/taskListsActions/addNewTaskListAction';
 import {AddNewTaskListSagaActionReturnType} from '@store/actions/tasksSagaActions/taskListsSagasActions/addNewTaskListAction';
 import {UserIDType} from '@store/reducers/authReducer/types';
@@ -17,7 +18,7 @@ export function* addNewTaskListSaga(
   const {id: taskListID} = taskList;
   try {
     const connectionStatus: NetInfoState = yield NetInfo.fetch();
-    if (!connectionStatus.isInternetReachable) {
+    if (!hasInternetConnectionHelper(connectionStatus)) {
       errorAlert(t('common.NoInternetConnection'));
       return;
     }
