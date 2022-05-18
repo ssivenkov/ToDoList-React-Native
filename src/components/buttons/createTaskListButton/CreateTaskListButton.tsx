@@ -60,7 +60,8 @@ export const CreateTaskListButton = () => {
           size={ICON_SIZE_LARGE}
           style={styles.icon}
         />
-      }>
+      }
+      isOn={false}>
       <CustomInput value={taskListTitle} onValueChange={setTaskListTitle} />
     </ModalIcon>
   );

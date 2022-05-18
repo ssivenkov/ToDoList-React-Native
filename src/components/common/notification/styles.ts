@@ -3,12 +3,18 @@ import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
 
 type DeleteTaskListButtonStylesType = {
   notificationContainer: ViewStyle;
+  switchNotificationContainer: ViewStyle;
   text: TextStyle;
   dateTimePickerContainer: ViewStyle;
 };
 
 export const styles = StyleSheet.create<DeleteTaskListButtonStylesType>({
   notificationContainer: {
+    width: '100%',
+    overflow: 'hidden',
+  },
+
+  switchNotificationContainer: {
     marginTop: 23,
     marginBottom: 10,
     flexDirection: 'row',

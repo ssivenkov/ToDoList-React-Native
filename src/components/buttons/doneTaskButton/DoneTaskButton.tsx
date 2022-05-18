@@ -35,7 +35,8 @@ export const DoneTaskButton = ({
   return (
     <ModalIcon
       okHandler={setDoneTask}
-      buttonIcon={<FontAwesomeIcon icon={faCheck} size={ICON_SIZE_SMALL} />}>
+      buttonIcon={<FontAwesomeIcon icon={faCheck} size={ICON_SIZE_SMALL} />}
+      isOn={false}>
       <Text style={styles.warnText}>
         <Trans i18nKey="tasksScreen.DoneButton">
           <Text style={styles.greenHighlightTask}>

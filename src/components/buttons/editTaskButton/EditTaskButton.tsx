@@ -30,7 +30,7 @@ export const EditTaskButton = (props: EditTaskTitleButtonPropsType) => {
   );
   const [isOn, setIsOn] = useState<boolean>(!!taskNotification?.date ?? false);
 
-  const toggleSwitcher = (isOn: boolean) => {
+  const handleToggleSwitcherClick = (isOn: boolean) => {
     if (!isOn) {
       setIsOn(false);
       setDate(null);
@@ -79,12 +79,13 @@ export const EditTaskButton = (props: EditTaskTitleButtonPropsType) => {
       closeHandler={onClosePress}
       okDisable={!editedTaskTitle}
       description={`${t('tasksScreen.EditTaskButton')}`}
-      buttonIcon={<FontAwesomeIcon icon={faPen} size={ICON_SIZE_SMALL} />}>
+      buttonIcon={<FontAwesomeIcon icon={faPen} size={ICON_SIZE_SMALL} />}
+      isOn={false}>
       <CustomInput value={editedTaskTitle} onValueChange={setEditedTaskTitle} />
       {isTodo && (
         <Notification
-          isOn={isOn}
-          toggleSwitcher={toggleSwitcher}
+          isSwitcherOn={isOn}
+          onToggleSwitcherClick={handleToggleSwitcherClick}
           date={date}
           setDate={setDate}
         />
