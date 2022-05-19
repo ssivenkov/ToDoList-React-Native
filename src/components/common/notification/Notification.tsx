@@ -3,7 +3,7 @@ import {styles} from '@components/common/notification/styles';
 import {NotificationPropsType} from '@components/common/notification/types';
 import React, {useRef} from 'react';
 import {useTranslation} from 'react-i18next';
-import {Text, View, Animated} from 'react-native';
+import {Text, View, Animated, Platform} from 'react-native';
 import DatePicker from 'react-native-date-picker';
 import ToggleSwitch from 'toggle-switch-react-native';
 
@@ -12,17 +12,17 @@ export const Notification = (props: NotificationPropsType) => {
 
   const {t} = useTranslation();
 
-  const datepickerHeight = 210;
+  const datePickerHeight = Platform.OS === 'ios' ? 210 : 190;
   const datePickerDate = date ? new Date(date) : new Date();
 
   const heightAnim = useRef(
-    new Animated.Value(isSwitcherOn ? datepickerHeight : 0),
+    new Animated.Value(isSwitcherOn ? datePickerHeight : 0),
   ).current;
 
   const showDatepicker = (isOn: boolean) => {
     onToggleSwitcherClick(isOn);
     Animated.timing(heightAnim, {
-      toValue: datepickerHeight,
+      toValue: datePickerHeight,
       duration: 250,
       useNativeDriver: false,
     }).start();
