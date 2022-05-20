@@ -37,26 +37,28 @@ export const ModalIcon = (props: ModalIconPropsType) => {
 
   return (
     <View>
-      <Modal transparent visible={modalVisible}>
-        <View style={styles.centeredView}>
-          <View style={styles.modalView}>
-            {description && <Text style={styles.text}>{description}</Text>}
-            {children && <View>{children}</View>}
-            <View style={styles.buttonsContainer}>
-              <CustomTextButton
-                onPress={onOkButtonPress}
-                title={`${t('common.Ok')}`}
-                disable={okDisable}
-              />
-              <CustomTextButton
-                onPress={onCancelButtonPress}
-                title={`${t('common.Close')}`}
-              />
+      <View>
+        <Modal transparent visible={modalVisible}>
+          <View style={styles.centeredView}>
+            <View style={styles.modalView}>
+              {description && <Text style={styles.text}>{description}</Text>}
+              {children && <View>{children}</View>}
+              <View style={styles.buttonsContainer}>
+                <CustomTextButton
+                  onPress={onOkButtonPress}
+                  title={`${t('common.Ok')}`}
+                  disable={okDisable}
+                />
+                <CustomTextButton
+                  onPress={onCancelButtonPress}
+                  title={`${t('common.Close')}`}
+                />
+              </View>
             </View>
           </View>
-        </View>
-        {isLoading && <Loader />}
-      </Modal>
+          {isLoading && <Loader />}
+        </Modal>
+      </View>
       <CustomIconButton onPress={onButtonPress} icon={buttonIcon} />
     </View>
   );

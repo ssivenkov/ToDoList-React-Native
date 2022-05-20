@@ -30,7 +30,7 @@ export const EditTaskButton = (props: EditTaskTitleButtonPropsType) => {
   );
   const [isOn, setIsOn] = useState<boolean>(!!taskNotification?.date ?? false);
 
-  const toggleSwitcher = (isOn: boolean) => {
+  const handleToggleSwitcherClick = (isOn: boolean) => {
     if (!isOn) {
       setIsOn(false);
       setDate(null);
@@ -83,8 +83,8 @@ export const EditTaskButton = (props: EditTaskTitleButtonPropsType) => {
       <CustomInput value={editedTaskTitle} onValueChange={setEditedTaskTitle} />
       {isTodo && (
         <Notification
-          isOn={isOn}
-          toggleSwitcher={toggleSwitcher}
+          isSwitcherOn={isOn}
+          onToggleSwitcherClick={handleToggleSwitcherClick}
           date={date}
           setDate={setDate}
         />

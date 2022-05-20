@@ -27,7 +27,7 @@ export const CreateTaskButton = (props: CreateTaskButtonPropsType) => {
   const [date, setDate] = useState<Date>(new Date());
   const [isOn, setIsOn] = useState<boolean>(false);
 
-  const toggleSwitcher = (isOn: boolean) => {
+  const handleToggleSwitcherClick = (isOn: boolean) => {
     if (!isOn) {
       setIsOn(false);
       setDate(new Date());
@@ -95,8 +95,8 @@ export const CreateTaskButton = (props: CreateTaskButtonPropsType) => {
       buttonIcon={<FontAwesomeIcon icon={faPlus} size={ICON_SIZE_SMALL} />}>
       <CustomInput value={newTaskTitle} onValueChange={setNewTaskTitle} />
       <Notification
-        isOn={isOn}
-        toggleSwitcher={toggleSwitcher}
+        isSwitcherOn={isOn}
+        onToggleSwitcherClick={handleToggleSwitcherClick}
         date={date}
         setDate={setDate}
       />
