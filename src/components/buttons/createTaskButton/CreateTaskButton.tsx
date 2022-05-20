@@ -1,5 +1,6 @@
 import {CustomInput} from '@components/common/input/CustomInput';
 import {ModalIcon} from '@components/common/modals/ModalIcon';
+import {Notification} from '@components/common/notification/Notification';
 import {ICON_SIZE_SMALL} from '@constants/constants';
 import {faPlus} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
@@ -91,13 +92,14 @@ export const CreateTaskButton = (props: CreateTaskButtonPropsType) => {
       closeHandler={onClosePress}
       okDisable={!newTaskTitle}
       description={`${t('tasksScreen.CreateTaskButtonTitle')}`}
-      buttonIcon={<FontAwesomeIcon icon={faPlus} size={ICON_SIZE_SMALL} />}
-      hasNotification={true}
-      isOn={isOn}
-      onToggleSwitcherClick={handleToggleSwitcherClick}
-      date={date}
-      setDate={setDate}>
+      buttonIcon={<FontAwesomeIcon icon={faPlus} size={ICON_SIZE_SMALL} />}>
       <CustomInput value={newTaskTitle} onValueChange={setNewTaskTitle} />
+      <Notification
+        isSwitcherOn={isOn}
+        onToggleSwitcherClick={handleToggleSwitcherClick}
+        date={date}
+        setDate={setDate}
+      />
     </ModalIcon>
   );
 };

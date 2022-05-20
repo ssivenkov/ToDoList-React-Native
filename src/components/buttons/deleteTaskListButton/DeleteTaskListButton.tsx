@@ -66,8 +66,7 @@ export const DeleteTaskListButton = (props: DeleteTaskListButtonPropsType) => {
   return (
     <ModalIcon
       okHandler={removeTaskList}
-      buttonIcon={<FontAwesomeIcon icon={faTrash} size={ICON_SIZE_SMALL} />}
-      isOn={false}>
+      buttonIcon={<FontAwesomeIcon icon={faTrash} size={ICON_SIZE_SMALL} />}>
       <Text style={styles.warnText}>
         <Trans i18nKey="tasksScreen.DeleteQuestionButtonTitle">
           <Text style={styles.redHighlightTask}>{{text: taskListTitle}}</Text>
