@@ -48,8 +48,7 @@ export const EditTaskListTitleButton = ({
       closeHandler={onClosePress}
       okDisable={!editedTaskListTitle}
       description={`${t('tasksScreen.EditTaskListButtonTitle')}`}
-      buttonIcon={<FontAwesomeIcon icon={faPen} size={ICON_SIZE_SMALL} />}
-      isOn={false}>
+      buttonIcon={<FontAwesomeIcon icon={faPen} size={ICON_SIZE_SMALL} />}>
       <CustomInput
         value={editedTaskListTitle}
         onValueChange={setEditedTaskListTitleState}

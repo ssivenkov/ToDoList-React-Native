@@ -19,7 +19,7 @@ export const Notification = (props: NotificationPropsType) => {
     new Animated.Value(isSwitcherOn ? datePickerHeight : 0),
   ).current;
 
-  const showDatepicker = (isOn: boolean) => {
+  const showDatePicker = (isOn: boolean) => {
     onToggleSwitcherClick(isOn);
     Animated.timing(heightAnim, {
       toValue: datePickerHeight,
@@ -28,7 +28,7 @@ export const Notification = (props: NotificationPropsType) => {
     }).start();
   };
 
-  const hideDatepicker = (isOn: boolean) => {
+  const hideDatePicker = (isOn: boolean) => {
     Animated.timing(heightAnim, {
       toValue: 0,
       duration: 180,
@@ -39,7 +39,7 @@ export const Notification = (props: NotificationPropsType) => {
   };
 
   const switching = (isOn: boolean) => {
-    isOn ? showDatepicker(isOn) : hideDatepicker(isOn);
+    isOn ? showDatePicker(isOn) : hideDatePicker(isOn);
   };
 
   return (
@@ -55,13 +55,7 @@ export const Notification = (props: NotificationPropsType) => {
           animationSpeed={250}
         />
       </View>
-      <Animated.View
-        style={[
-          isSwitcherOn && styles.dateTimePickerContainer,
-          {
-            height: heightAnim,
-          },
-        ]}>
+      <Animated.View style={{height: heightAnim}}>
         <DatePicker date={datePickerDate} onDateChange={setDate} />
       </Animated.View>
     </View>

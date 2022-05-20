@@ -1,4 +1,4 @@
-import {Nullable, SetStateType} from '@root/types/common/types';
+import {SetStateType} from '@root/types/common/types';
 
 export type ModalTextPropsType = {
   buttonTitle: string;
@@ -19,9 +19,4 @@ export type ModalIconPropsType = {
   description?: string;
   okDisable?: boolean;
   closeHandler?: () => void;
-  hasNotification?: boolean;
-  isOn: boolean;
-  onToggleSwitcherClick?: (isOn: boolean) => void;
-  date?: Date;
-  setDate?: SetStateType<Nullable<Date>> | SetStateType<Date>;
 };
