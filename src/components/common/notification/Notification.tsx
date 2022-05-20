@@ -15,31 +15,23 @@ export const Notification = (props: NotificationPropsType) => {
   const datePickerHeight = Platform.OS === 'ios' ? 210 : 190;
   const datePickerDate = date ? new Date(date) : new Date();
 
-  const heightAnim = useRef(
+  const heightAnimation = useRef(
     new Animated.Value(isSwitcherOn ? datePickerHeight : 0),
   ).current;
 
-  const showDatePicker = (isOn: boolean) => {
+  const datePickerAnimation = (isOn: boolean, value: number) => {
     onToggleSwitcherClick(isOn);
-    Animated.timing(heightAnim, {
-      toValue: datePickerHeight,
+    Animated.timing(heightAnimation, {
+      toValue: value,
       duration: 250,
       useNativeDriver: false,
     }).start();
   };
 
-  const hideDatePicker = (isOn: boolean) => {
-    Animated.timing(heightAnim, {
-      toValue: 0,
-      duration: 180,
-      useNativeDriver: false,
-    }).start(() => {
-      onToggleSwitcherClick(isOn);
-    });
-  };
-
   const switching = (isOn: boolean) => {
-    isOn ? showDatePicker(isOn) : hideDatePicker(isOn);
+    isOn
+      ? datePickerAnimation(isOn, datePickerHeight)
+      : datePickerAnimation(isOn, 0);
   };
 
   return (
@@ -55,7 +47,7 @@ export const Notification = (props: NotificationPropsType) => {
           animationSpeed={250}
         />
       </View>
-      <Animated.View style={{height: heightAnim}}>
+      <Animated.View style={{height: heightAnimation}}>
         <DatePicker date={datePickerDate} onDateChange={setDate} />
       </Animated.View>
     </View>
