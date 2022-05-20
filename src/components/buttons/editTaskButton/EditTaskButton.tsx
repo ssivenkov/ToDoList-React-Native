@@ -79,8 +79,7 @@ export const EditTaskButton = (props: EditTaskTitleButtonPropsType) => {
       closeHandler={onClosePress}
       okDisable={!editedTaskTitle}
       description={`${t('tasksScreen.EditTaskButton')}`}
-      buttonIcon={<FontAwesomeIcon icon={faPen} size={ICON_SIZE_SMALL} />}
-      isOn={false}>
+      buttonIcon={<FontAwesomeIcon icon={faPen} size={ICON_SIZE_SMALL} />}>
       <CustomInput value={editedTaskTitle} onValueChange={setEditedTaskTitle} />
       {isTodo && (
         <Notification
