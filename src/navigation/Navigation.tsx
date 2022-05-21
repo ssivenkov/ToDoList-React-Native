@@ -1,5 +1,4 @@
-import {COLORS} from '@colors/colors';
-import {RootStackParamList} from '@navigation/types';
+import {RootStackParamList, RootStackScreens} from '@navigation/types';
 import {WithAuthNavigator} from '@navigation/withAuthNavigator/WithAuthNavigator';
 import auth from '@react-native-firebase/auth';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
@@ -16,7 +15,6 @@ import {
   userIDSelector,
 } from '@store/selectors/authSelectors';
 import React, {useEffect, useState} from 'react';
-import {SafeAreaView} from 'react-native';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {useDispatch, useSelector} from 'react-redux';
 
@@ -54,26 +52,24 @@ export const Navigation = () => {
   if (firebaseInitializing) return null;
 
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: COLORS.POMPADOUR}}>
-      <SafeAreaProvider>
-        <NavigationContainer>
-          <Navigator>
-            {userID ? (
-              <Screen
-                name={'WithAuth'}
-                component={WithAuthNavigator}
-                options={{headerShown: false}}
-              />
-            ) : (
-              <Screen
-                name={'SignIn'}
-                component={SignInScreen}
-                options={{headerShown: false}}
-              />
-            )}
-          </Navigator>
-        </NavigationContainer>
-      </SafeAreaProvider>
-    </SafeAreaView>
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <Navigator>
+          {userID ? (
+            <Screen
+              name={RootStackScreens.WITH_AUTH}
+              component={WithAuthNavigator}
+              options={{headerShown: false}}
+            />
+          ) : (
+            <Screen
+              name={RootStackScreens.SIGN_IN}
+              component={SignInScreen}
+              options={{headerShown: false}}
+            />
+          )}
+        </Navigator>
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 };

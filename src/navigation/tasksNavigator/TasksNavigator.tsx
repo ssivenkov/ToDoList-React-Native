@@ -3,29 +3,35 @@ import {
   tasksNavigatorOptions,
   toDoScreenOptions,
 } from '@navigation/tasksNavigator/settings';
-import {TopTabParamList} from '@navigation/tasksNavigator/types';
+import {
+  TaskNavigatorScreens,
+  TopTabParamList,
+} from '@navigation/tasksNavigator/types';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import {TasksScreen} from '@root/screens/tasksScreen/TaskScreen';
 import React from 'react';
 
 const {Navigator, Screen} = createMaterialTopTabNavigator<TopTabParamList>();
 
-const createTasksScreenComponent = (isTodoScreen: boolean) =>
-  function TasksScreenComponent() {
-    return <TasksScreen isTodoScreen={isTodoScreen} />;
-  };
-
 export const TasksNavigator = () => {
   return (
-    <Navigator initialRouteName={'ToDo'} screenOptions={tasksNavigatorOptions}>
+    <Navigator
+      initialRouteName={TaskNavigatorScreens.TODO}
+      screenOptions={tasksNavigatorOptions}>
       <Screen
-        name={'ToDo'}
-        component={createTasksScreenComponent(true)}
+        name={TaskNavigatorScreens.TODO}
+        component={TasksScreen}
+        initialParams={{
+          isTodoScreen: true,
+        }}
         options={toDoScreenOptions}
       />
       <Screen
-        name={'Done'}
-        component={createTasksScreenComponent(false)}
+        name={TaskNavigatorScreens.DONE}
+        component={TasksScreen}
+        initialParams={{
+          isTodoScreen: false,
+        }}
         options={doneScreenOptions}
       />
     </Navigator>

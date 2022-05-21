@@ -1,4 +1,8 @@
+export enum RootStackScreens {
+  WITH_AUTH = 'WithAuth',
+  SIGN_IN = 'SignIn',
+}
+
 export type RootStackParamList = {
-  WithAuth: undefined;
-  SignIn: undefined;
+  [K in RootStackScreens]: undefined;
 };

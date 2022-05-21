@@ -1,4 +1,8 @@
+export enum withAuthNavigatorScreens {
+  TASKS = 'Tasks',
+  ACCOUNT = 'Account',
+}
+
 export type BottomTabParamList = {
-  Tasks: undefined;
-  Account: undefined;
+  [K in withAuthNavigatorScreens]: undefined;
 };
