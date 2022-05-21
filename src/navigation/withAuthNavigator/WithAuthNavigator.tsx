@@ -4,7 +4,10 @@ import {
   tasksNavigatorOptions,
   withAuthNavigatorOptions,
 } from '@navigation/withAuthNavigator/settings';
-import {BottomTabParamList} from '@navigation/withAuthNavigator/types';
+import {
+  BottomTabParamList,
+  withAuthNavigatorScreens,
+} from '@navigation/withAuthNavigator/types';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {AccountScreen} from '@root/screens/accountScreen/AccountScreen';
 import React from 'react';
@@ -14,15 +17,15 @@ const {Navigator, Screen} = createBottomTabNavigator<BottomTabParamList>();
 export const WithAuthNavigator = () => {
   return (
     <Navigator
-      initialRouteName={'Tasks'}
+      initialRouteName={withAuthNavigatorScreens.TASKS}
       screenOptions={withAuthNavigatorOptions}>
       <Screen
-        name={'Tasks'}
+        name={withAuthNavigatorScreens.TASKS}
         component={TasksNavigator}
         options={tasksNavigatorOptions}
       />
       <Screen
-        name={'Account'}
+        name={withAuthNavigatorScreens.ACCOUNT}
         component={AccountScreen}
         options={accountScreenOptions}
       />
