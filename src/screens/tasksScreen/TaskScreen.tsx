@@ -1,6 +1,7 @@
 import {TaskList} from '@components/common/taskList/TaskList';
+import {useRoute} from '@react-navigation/native';
 import {sortingTaskLists} from '@root/helpers/sorting';
-import {TasksScreenType} from '@root/screens/tasksScreen/types';
+import {TaskScreenRouteType} from '@root/screens/tasksScreen/types';
 import {taskListsSelector} from '@store/selectors/tasksSelectors';
 import React from 'react';
 import {useTranslation} from 'react-i18next';
@@ -8,10 +9,10 @@ import {ScrollView, Text, View} from 'react-native';
 import {useSelector} from 'react-redux';
 import {styles} from './styles';
 
-export const TasksScreen = (props: TasksScreenType) => {
-  const {isTodoScreen} = props;
-
+export const TasksScreen = () => {
   const {t} = useTranslation();
+
+  const {isTodoScreen} = useRoute<TaskScreenRouteType>().params;
 
   const taskLists = useSelector(taskListsSelector);
   const toDoTaskLists = taskLists.filter(({showInToDo}) => showInToDo);
