@@ -12,6 +12,7 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2F401DFB282F958C008BF214 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F401DFA282F958C008BF214 /* GoogleService-Info.plist */; };
+		2FA12F1E2837D4DF008ED537 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		39B0E5F6E792393B2D0C0DBC /* libPods-MyProject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 149B2047A4989FCB395FF53C /* libPods-MyProject.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		AD0B6E57CBB513431E67A6AC /* libPods-MyProject-MyProjectTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 756084EBD9A994D5BEBE48E7 /* libPods-MyProject-MyProjectTests.a */; };
@@ -241,6 +242,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FA12F1E2837D4DF008ED537 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,6 +1,6 @@
 import {COLORS} from '@colors/colors';
 import {FontAwesomeIconStyle} from '@fortawesome/react-native-fontawesome';
-import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
+import {Platform, StyleSheet, TextStyle, ViewStyle} from 'react-native';
 
 type WithAuthNavigationStylesType = {
   header: ViewStyle;
@@ -26,7 +26,7 @@ export const styles = StyleSheet.create<WithAuthNavigationStylesType>({
   },
 
   tabBarContainer: {
-    height: 55,
+    height: Platform.OS === 'ios' ? 87 : 58,
     backgroundColor: WHITE,
   },
 
@@ -48,5 +48,6 @@ export const styles = StyleSheet.create<WithAuthNavigationStylesType>({
 
   title: {
     fontSize: 16,
+    marginBottom: 2,
   },
 });

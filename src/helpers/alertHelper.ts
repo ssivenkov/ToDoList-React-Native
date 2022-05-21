@@ -1,5 +1,5 @@
 import {Alert} from 'react-native';
 
-export const errorAlert = (error: Error | string) => {
+export const errorAlert = (error: any) => {
   Alert.alert(error.toString());
 };
