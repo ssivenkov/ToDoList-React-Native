@@ -3,7 +3,7 @@
     "common": {
       "Ok": "Ok",
       "Close": "Close",
-      "NoInternetConnection": "No internet connection",
+      "NoInternetConnection": "No internet connection. Please connect to the Internet",
       "NoIOSNotificationsPermission": "No permission for notifications. Grant the app permission to show notifications"
     },
     "tasksScreen": {

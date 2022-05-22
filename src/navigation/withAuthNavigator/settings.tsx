@@ -24,6 +24,7 @@ export const tasksNavigatorOptions: BottomTabNavigationOptions = {
   headerStyle: styles.header,
   headerTitle: `${t('tasksScreen.Tasks')}`,
   headerTitleStyle: styles.headerTitleStyle,
+  headerTitleAlign: 'center',
   tabBarLabel: `${t('tasksScreen.Tasks')}`,
   headerRight: () => (
     <View style={styles.buttonContainer}>
@@ -44,6 +45,7 @@ export const accountScreenOptions: BottomTabNavigationOptions = {
   headerStyle: styles.header,
   headerTitle: `${t('accountScreen.Account')}`,
   headerTitleStyle: styles.headerTitleStyle,
+  headerTitleAlign: 'center',
   tabBarLabel: `${t('accountScreen.Account')}`,
   tabBarIcon: ({focused}) => (
     <FontAwesomeIcon
