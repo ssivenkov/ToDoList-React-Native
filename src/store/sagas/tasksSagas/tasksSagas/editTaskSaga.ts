@@ -37,10 +37,13 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
   } = action.payload;
   try {
     const connectionStatus: NetInfoState = yield NetInfo.fetch();
+
     if (!hasInternetConnectionHelper(connectionStatus)) {
       errorAlert(t('common.NoInternetConnection'));
+
       return;
     }
+
     yield delay(10);
 
     yield call(setIsLoading, true);
