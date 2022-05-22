@@ -22,7 +22,7 @@ export const styles = StyleSheet.create<WithAuthNavigationStylesType>({
 
   headerTitleStyle: {
     color: WHITE,
-    fontSize: 22,
+    fontSize: 24,
   },
 
   tabBarContainer: {
