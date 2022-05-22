@@ -4,9 +4,7 @@ import {Notification} from '@components/common/notification/Notification';
 import {ICON_SIZE_SMALL} from '@constants/constants';
 import {faPlus} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {errorAlert} from '@root/helpers/alertHelper';
 import {createDate} from '@root/helpers/generateDateHelper';
-import {requestIOSNotificationsPermissionHelper} from '@root/helpers/requestIOSNotificationsPermissionHelper';
 import {SetStateType} from '@root/types/common/types';
 import {addNewTaskAction} from '@store/actions/tasksSagaActions/tasksSagasActions/addNewTaskAction';
 import {TaskListInterface, TaskType} from '@store/reducers/tasksReducer/types';
@@ -31,15 +29,7 @@ export const CreateTaskButton = (props: CreateTaskButtonPropsType) => {
     if (!isOn) {
       setIsOn(false);
       setDate(new Date());
-    } else {
-      requestIOSNotificationsPermissionHelper().then((hasPermission) => {
-        if (hasPermission) {
-          setIsOn(true);
-        } else {
-          errorAlert(t('common.NoIOSNotificationsPermission'));
-        }
-      });
-    }
+    } else setIsOn(true);
   };
 
   const onClosePress = (): void => {

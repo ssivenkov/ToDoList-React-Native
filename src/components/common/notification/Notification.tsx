@@ -1,6 +1,8 @@
 import {COLORS} from '@colors/colors';
 import {styles} from '@components/common/notification/styles';
 import {NotificationPropsType} from '@components/common/notification/types';
+import {errorAlert} from '@root/helpers/alertHelper';
+import {requestIOSNotificationsPermissionHelper} from '@root/helpers/requestIOSNotificationsPermissionHelper';
 import React, {useRef} from 'react';
 import {useTranslation} from 'react-i18next';
 import {Text, View, Animated, Platform} from 'react-native';
@@ -29,9 +31,17 @@ export const Notification = (props: NotificationPropsType) => {
   };
 
   const switching = (isOn: boolean) => {
-    isOn
-      ? datePickerAnimation(isOn, datePickerHeight)
-      : datePickerAnimation(isOn, 0);
+    requestIOSNotificationsPermissionHelper().then((hasPermission) => {
+      if (!hasPermission) {
+        errorAlert(t('common.NoIOSNotificationsPermission'));
+
+        return;
+      }
+
+      isOn
+        ? datePickerAnimation(isOn, datePickerHeight)
+        : datePickerAnimation(isOn, 0);
+    });
   };
 
   return (
