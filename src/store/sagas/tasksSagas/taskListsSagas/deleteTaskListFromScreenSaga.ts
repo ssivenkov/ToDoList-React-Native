@@ -1,4 +1,9 @@
-import {TASK_LISTS, TASKS, USERS} from '@constants/constants';
+import {
+  START_ANIMATION_DELAY,
+  TASK_LISTS,
+  TASKS,
+  USERS,
+} from '@constants/constants';
 import {DB} from '@root/api/DB';
 import {errorAlert} from '@root/helpers/alertHelper';
 import {cancelNotificationHelper} from '@root/helpers/cancelNotificationHelper';
@@ -30,7 +35,7 @@ export function* deleteTaskListFromScreenSaga(
     const internetIsOn: boolean = yield call(checkInternetConnectionHelper);
     if (!internetIsOn) return;
 
-    yield delay(10);
+    yield delay(START_ANIMATION_DELAY);
     yield call(setIsLoading, true);
     const userID: UserIDType = yield select(userIDSelector);
     const notifications: NotificationType[] = yield select(
