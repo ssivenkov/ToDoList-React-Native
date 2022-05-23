@@ -1,6 +1,7 @@
 import {Loader} from '@components/common/loader/loader';
 import {ModalText} from '@components/common/modals/ModalText';
 import {styles} from '@root/screens/accountScreen/styles';
+import {deleteAccountAction} from '@store/actions/authSagaActions/deleteAccountAction';
 import {signOutAction} from '@store/actions/authSagaActions/signOutAction';
 import {userDataSelector} from '@store/selectors/authSelectors';
 import React, {useState} from 'react';
@@ -14,19 +15,17 @@ export const AccountScreen = () => {
   const {t} = useTranslation();
 
   const userData = useSelector(userDataSelector);
-  const [waitingSignOut, setWaitingSignOut] = useState<boolean>(false);
-  const [waitingAccountDeletion, setWaitingAccountDeletion] =
-    useState<boolean>(false);
+  const [waitingProcess, setWaitingProcess] = useState<boolean>(false);
 
   const signOutHandler = (): void => {
-    dispatch(signOutAction({setWaitingSignOut}));
+    dispatch(signOutAction({setWaitingProcess}));
   };
 
   const deleteAccountHandler = (): void => {
-    setWaitingAccountDeletion(true);
+    dispatch(deleteAccountAction({setWaitingProcess}));
   };
 
-  if (userData && !waitingSignOut) {
+  if (userData && !waitingProcess) {
     return (
       <View style={styles.screenContainer}>
         {userData.photoURL && (
@@ -44,14 +43,14 @@ export const AccountScreen = () => {
           description={t('signInScreen.SignOutWarning')}
           buttonTitle={t('signInScreen.SignOut')}
           buttonStyle={styles.buttonContainer}
-          disable={waitingSignOut}
+          disable={waitingProcess}
         />
         <ModalText
           okHandler={deleteAccountHandler}
           description={t('signInScreen.DeleteAccountWarning')}
           buttonTitle={t('signInScreen.DeleteAccount')}
           buttonStyle={styles.buttonContainer}
-          disable={waitingAccountDeletion}
+          disable={waitingProcess}
         />
       </View>
     );
