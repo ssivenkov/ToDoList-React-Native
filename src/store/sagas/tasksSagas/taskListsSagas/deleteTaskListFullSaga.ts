@@ -1,4 +1,4 @@
-import {TASK_LISTS, USERS} from '@constants/constants';
+import {START_ANIMATION_DELAY, TASK_LISTS, USERS} from '@constants/constants';
 import {DB} from '@root/api/DB';
 import {errorAlert} from '@root/helpers/alertHelper';
 import {cancelNotificationHelper} from '@root/helpers/cancelNotificationHelper';
@@ -27,8 +27,8 @@ export function* deleteTaskListFullSaga(
     const internetIsOn: boolean = yield call(checkInternetConnectionHelper);
     if (!internetIsOn) return;
 
-    yield delay(10);
     yield call(setIsLoading, true);
+    yield delay(START_ANIMATION_DELAY);
     const userID: UserIDType = yield select(userIDSelector);
     const notifications: NotificationType[] = yield select(
       notificationsSelector,
