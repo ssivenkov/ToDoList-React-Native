@@ -23,6 +23,8 @@
     "signInScreen": {
       "SignIn": "Sign in",
       "SignOut": "Sign out",
+      "DeleteAccount": "Delete account",
+      "DeleteAccountWarning": "Are you sure you want delete your account with all your data?",
       "SignInWith": "Sign in with <0>{{text}}</0>"
     },
     "accountScreen": {

@@ -6,7 +6,8 @@ import {styles} from './styles';
 import {ModalTextPropsType} from './types';
 
 export const ModalText = (props: ModalTextPropsType) => {
-  const {children, description, buttonTitle, okHandler} = props;
+  const {children, description, buttonTitle, buttonStyle, okHandler, disable} =
+    props;
 
   const {t} = useTranslation();
 
@@ -51,7 +52,13 @@ export const ModalText = (props: ModalTextPropsType) => {
           </View>
         </View>
       </Modal>
-      <CustomTextButton onPress={onModalButtonPress} title={buttonTitle} />
+      <View style={buttonStyle && buttonStyle}>
+        <CustomTextButton
+          onPress={onModalButtonPress}
+          title={buttonTitle}
+          disable={disable}
+        />
+      </View>
     </View>
   );
 };
