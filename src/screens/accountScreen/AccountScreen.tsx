@@ -1,4 +1,3 @@
-import {CustomTextButton} from '@components/common/buttons/CustomTextButton';
 import {Loader} from '@components/common/loader/loader';
 import {ModalText} from '@components/common/modals/ModalText';
 import {styles} from '@root/screens/accountScreen/styles';
@@ -40,13 +39,13 @@ export const AccountScreen = () => {
         {userData.phoneNumber && (
           <Text style={styles.text}>{userData.phoneNumber}</Text>
         )}
-        <View style={styles.buttonContainer}>
-          <CustomTextButton
-            title={t('signInScreen.SignOut')}
-            onPress={signOutHandler}
-            disable={waitingSignOut}
-          />
-        </View>
+        <ModalText
+          okHandler={signOutHandler}
+          description={t('signInScreen.SignOutWarning')}
+          buttonTitle={t('signInScreen.SignOut')}
+          buttonStyle={styles.buttonContainer}
+          disable={waitingSignOut}
+        />
         <ModalText
           okHandler={deleteAccountHandler}
           description={t('signInScreen.DeleteAccountWarning')}
