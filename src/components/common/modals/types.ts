@@ -1,11 +1,14 @@
 import {SetStateType} from '@root/types/common/types';
+import {ViewStyle} from 'react-native';
 
 export type ModalTextPropsType = {
   buttonTitle: string;
 
+  buttonStyle?: ViewStyle;
   children?: any;
   description?: string;
   okHandler?: () => void;
+  disable?: boolean;
 };
 
 export type ModalIconPropsType = {
