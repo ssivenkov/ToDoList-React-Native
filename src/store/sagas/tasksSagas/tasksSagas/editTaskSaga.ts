@@ -1,16 +1,16 @@
 import {
   NOTIFICATION_ID_MAX_LENGTH,
+  START_ANIMATION_DELAY,
   TASK_LISTS,
   TASKS,
   USERS,
 } from '@constants/constants';
-import NetInfo, {NetInfoState} from '@react-native-community/netinfo';
 import {DB} from '@root/api/DB';
 import {errorAlert} from '@root/helpers/alertHelper';
 import {cancelNotificationHelper} from '@root/helpers/cancelNotificationHelper';
 import {createNotificationHelper} from '@root/helpers/createNotificationHelper';
 import {generateNumberIDHelper} from '@root/helpers/generateNumberIDHelper';
-import {hasInternetConnectionHelper} from '@root/helpers/hasInternetConnectionHelper';
+import {checkInternetConnectionHelper} from '@root/helpers/hasInternetConnectionHelper';
 import {editTaskNotificationAction} from '@store/actions/tasksReducerActions/notificationsActions/editTaskNotificationAction';
 import {setEditedTaskAction} from '@store/actions/tasksReducerActions/tasksActions/setEditedTaskAction';
 import {SetEditedTaskActionSagaReturnType} from '@store/actions/tasksSagaActions/tasksSagasActions/setEditedTaskAction';
@@ -21,7 +21,6 @@ import {
   userIDSelector,
 } from '@store/selectors/authSelectors';
 import {notificationsSelector} from '@store/selectors/tasksSelectors';
-import {t} from 'i18next';
 import {call, delay, put, select} from 'redux-saga/effects';
 
 export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
@@ -36,17 +35,11 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
     shouldCreateNotification,
   } = action.payload;
   try {
-    const connectionStatus: NetInfoState = yield NetInfo.fetch();
-
-    if (!hasInternetConnectionHelper(connectionStatus)) {
-      errorAlert(t('common.NoInternetConnection'));
-
-      return;
-    }
-
-    yield delay(10);
+    const internetIsOn: boolean = yield call(checkInternetConnectionHelper);
+    if (!internetIsOn) return;
 
     yield call(setIsLoading, true);
+    yield delay(START_ANIMATION_DELAY);
     const userID: UserIDType = yield select(userIDSelector);
     const channelId: ChannelIDType = yield select(channelIDSelector);
     const editTaskTitleInFirebase = () => {
