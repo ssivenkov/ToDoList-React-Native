@@ -13,7 +13,7 @@ import {t} from 'i18next';
 import {call, delay, put, select} from 'redux-saga/effects';
 
 export function* signOutSaga(action: SignOutSagaActionReturnType) {
-  const setWaitingSignOut = action.payload.setWaitingSignOut;
+  const setWaitingProcess = action.payload.setWaitingProcess;
   try {
     const connectionStatus: NetInfoState = yield NetInfo.fetch();
 
@@ -23,7 +23,7 @@ export function* signOutSaga(action: SignOutSagaActionReturnType) {
       return;
     }
 
-    yield call(setWaitingSignOut, true);
+    yield call(setWaitingProcess, true);
     yield delay(10);
 
     const signOut = () => {
