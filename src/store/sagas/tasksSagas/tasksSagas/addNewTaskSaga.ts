@@ -1,15 +1,15 @@
 import {
   NOTIFICATION_ID_MAX_LENGTH,
+  START_ANIMATION_DELAY,
   TASK_LISTS,
   TASKS,
   USERS,
 } from '@constants/constants';
-import NetInfo, {NetInfoState} from '@react-native-community/netinfo';
 import {DB} from '@root/api/DB';
 import {errorAlert} from '@root/helpers/alertHelper';
 import {createNotificationHelper} from '@root/helpers/createNotificationHelper';
 import {generateNumberIDHelper} from '@root/helpers/generateNumberIDHelper';
-import {hasInternetConnectionHelper} from '@root/helpers/hasInternetConnectionHelper';
+import {checkInternetConnectionHelper} from '@root/helpers/hasInternetConnectionHelper';
 import {addTaskNotificationAction} from '@store/actions/tasksReducerActions/notificationsActions/addTaskNotificationAction';
 import {addNewTaskAction} from '@store/actions/tasksReducerActions/tasksActions/addNewTaskAction';
 import {AddNewTaskSagaActionReturnType} from '@store/actions/tasksSagaActions/tasksSagasActions/addNewTaskAction';
@@ -18,7 +18,6 @@ import {
   channelIDSelector,
   userIDSelector,
 } from '@store/selectors/authSelectors';
-import {t} from 'i18next';
 import {call, delay, put, select} from 'redux-saga/effects';
 
 export function* addNewTaskSaga(action: AddNewTaskSagaActionReturnType) {
@@ -35,18 +34,11 @@ export function* addNewTaskSaga(action: AddNewTaskSagaActionReturnType) {
   const {id: taskID, title: taskTitle} = newTask;
   const {id: taskListID} = modifiedTaskList;
   try {
-    const connectionStatus: NetInfoState = yield NetInfo.fetch();
-
-    if (!hasInternetConnectionHelper(connectionStatus)) {
-      errorAlert(t('common.NoInternetConnection'));
-
-      return;
-    }
-
-    yield delay(10);
+    const internetIsOn: boolean = yield call(checkInternetConnectionHelper);
+    if (!internetIsOn) return;
 
     yield call(setIsLoading, true);
-
+    yield delay(START_ANIMATION_DELAY);
     const userID: UserIDType = yield select(userIDSelector);
     const channelId: ChannelIDType = yield select(channelIDSelector);
     const notificationID = generateNumberIDHelper(NOTIFICATION_ID_MAX_LENGTH);
