@@ -1,13 +1,11 @@
-import {TASK_LISTS, USERS} from '@constants/constants';
-import NetInfo, {NetInfoState} from '@react-native-community/netinfo';
+import {START_ANIMATION_DELAY, TASK_LISTS, USERS} from '@constants/constants';
 import {DB} from '@root/api/DB';
 import {errorAlert} from '@root/helpers/alertHelper';
-import {hasInternetConnectionHelper} from '@root/helpers/hasInternetConnectionHelper';
+import {checkInternetConnectionHelper} from '@root/helpers/hasInternetConnectionHelper';
 import {setEditedTaskListTitleAction} from '@store/actions/tasksReducerActions/taskListsActions/setEditedTaskListTitleAction';
 import {EditTaskListTitleSagaActionReturnType} from '@store/actions/tasksSagaActions/taskListsSagasActions/editTaskListTitleAction';
 import {UserIDType} from '@store/reducers/authReducer/types';
 import {userIDSelector} from '@store/selectors/authSelectors';
-import {t} from 'i18next';
 import {call, delay, put, select} from 'redux-saga/effects';
 
 export function* editTaskListTitleSaga(
@@ -21,17 +19,11 @@ export function* editTaskListTitleSaga(
     setEditedTaskListTitleState,
   } = action.payload;
   try {
-    const connectionStatus: NetInfoState = yield NetInfo.fetch();
-
-    if (!hasInternetConnectionHelper(connectionStatus)) {
-      errorAlert(t('common.NoInternetConnection'));
-
-      return;
-    }
-
-    yield delay(10);
+    const internetIsOn: boolean = yield call(checkInternetConnectionHelper);
+    if (!internetIsOn) return;
 
     yield call(setIsLoading, true);
+    yield delay(START_ANIMATION_DELAY);
     const userID: UserIDType = yield select(userIDSelector);
     const sendModifiedTaskListToFirebase = () => {
       return DB.ref(`${USERS}/${userID}/${TASK_LISTS}/${taskListID}`).update({
