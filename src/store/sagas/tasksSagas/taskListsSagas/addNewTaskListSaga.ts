@@ -1,13 +1,11 @@
 import {TASK_LISTS, USERS} from '@constants/constants';
-import NetInfo, {NetInfoState} from '@react-native-community/netinfo';
 import {DB} from '@root/api/DB';
 import {errorAlert} from '@root/helpers/alertHelper';
-import {hasInternetConnectionHelper} from '@root/helpers/hasInternetConnectionHelper';
+import {checkInternetConnectionHelper} from '@root/helpers/hasInternetConnectionHelper';
 import {addNewTaskListAction} from '@store/actions/tasksReducerActions/taskListsActions/addNewTaskListAction';
 import {AddNewTaskListSagaActionReturnType} from '@store/actions/tasksSagaActions/taskListsSagasActions/addNewTaskListAction';
 import {UserIDType} from '@store/reducers/authReducer/types';
 import {userIDSelector} from '@store/selectors/authSelectors';
-import {t} from 'i18next';
 import {call, delay, put, select} from 'redux-saga/effects';
 
 export function* addNewTaskListSaga(
@@ -17,16 +15,10 @@ export function* addNewTaskListSaga(
     action.payload;
   const {id: taskListID} = taskList;
   try {
-    const connectionStatus: NetInfoState = yield NetInfo.fetch();
-
-    if (!hasInternetConnectionHelper(connectionStatus)) {
-      errorAlert(t('common.NoInternetConnection'));
-
-      return;
-    }
+    const internetIsOn: boolean = yield call(checkInternetConnectionHelper);
+    if (!internetIsOn) return;
 
     yield delay(10);
-
     yield call(setIsLoading, true);
     const userID: UserIDType = yield select(userIDSelector);
     const addNewTaskListToFirebase = () => {

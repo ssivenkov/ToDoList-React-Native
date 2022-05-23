@@ -1,10 +1,9 @@
 import {TASK_LISTS, USERS} from '@constants/constants';
-import NetInfo, {NetInfoState} from '@react-native-community/netinfo';
 import {DB} from '@root/api/DB';
 import {errorAlert} from '@root/helpers/alertHelper';
 import {cancelNotificationHelper} from '@root/helpers/cancelNotificationHelper';
 import {findNotification} from '@root/helpers/findNotification';
-import {hasInternetConnectionHelper} from '@root/helpers/hasInternetConnectionHelper';
+import {checkInternetConnectionHelper} from '@root/helpers/hasInternetConnectionHelper';
 import {setNotificationsAction} from '@store/actions/tasksReducerActions/notificationsActions/setNotificationsAction';
 import {deleteTaskListFullAction} from '@store/actions/tasksReducerActions/taskListsActions/deleteTaskListFullAction';
 import {DeleteTaskListFullSagaActionReturnType} from '@store/actions/tasksSagaActions/taskListsSagasActions/deleteTaskListFullAction';
@@ -18,7 +17,6 @@ import {
   notificationsSelector,
   taskListsSelector,
 } from '@store/selectors/tasksSelectors';
-import {t} from 'i18next';
 import {call, delay, put, select} from 'redux-saga/effects';
 
 export function* deleteTaskListFullSaga(
@@ -26,16 +24,10 @@ export function* deleteTaskListFullSaga(
 ) {
   const {setIsLoading, setModalVisible, taskListID} = action.payload;
   try {
-    const connectionStatus: NetInfoState = yield NetInfo.fetch();
-
-    if (!hasInternetConnectionHelper(connectionStatus)) {
-      errorAlert(t('common.NoInternetConnection'));
-
-      return;
-    }
+    const internetIsOn: boolean = yield call(checkInternetConnectionHelper);
+    if (!internetIsOn) return;
 
     yield delay(10);
-
     yield call(setIsLoading, true);
     const userID: UserIDType = yield select(userIDSelector);
     const notifications: NotificationType[] = yield select(
