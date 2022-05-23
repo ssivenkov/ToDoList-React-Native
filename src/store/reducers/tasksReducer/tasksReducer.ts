@@ -1,4 +1,4 @@
-import {TASKS_ACTION} from '@enums/tasksEnum';
+import {TASKS_REDUCER_ACTION} from '@enums/tasksReducerEnum';
 import {AddTaskNotificationActionReturnType} from '@store/actions/tasksReducerActions/notificationsActions/addTaskNotificationAction';
 import {DeleteTaskNotificationActionReturnType} from '@store/actions/tasksReducerActions/notificationsActions/deleteTaskNotificationAction';
 import {EditTaskNotificationActionReturnType} from '@store/actions/tasksReducerActions/notificationsActions/editTaskNotificationAction';
@@ -39,16 +39,16 @@ export const tasksReducer = (
   action: TasksActionsType,
 ): TasksStateType => {
   switch (action.type) {
-    case TASKS_ACTION.SET_NOTIFICATIONS:
+    case TASKS_REDUCER_ACTION.SET_NOTIFICATIONS:
       return {...state, notifications: action.payload.notifications};
 
-    case TASKS_ACTION.ADD_TASK_NOTIFICATION:
+    case TASKS_REDUCER_ACTION.ADD_TASK_NOTIFICATION:
       return {
         ...state,
         notifications: [...state.notifications, action.payload.notification],
       };
 
-    case TASKS_ACTION.EDIT_TASK_NOTIFICATION:
+    case TASKS_REDUCER_ACTION.EDIT_TASK_NOTIFICATION:
       return {
         ...state,
         notifications: [
@@ -59,7 +59,7 @@ export const tasksReducer = (
         ],
       };
 
-    case TASKS_ACTION.DELETE_TASK_NOTIFICATION:
+    case TASKS_REDUCER_ACTION.DELETE_TASK_NOTIFICATION:
       return {
         ...state,
         notifications: state.notifications.filter((notification) => {
@@ -67,16 +67,16 @@ export const tasksReducer = (
         }),
       };
 
-    case TASKS_ACTION.SET_TASK_LISTS:
+    case TASKS_REDUCER_ACTION.SET_TASK_LISTS:
       return {...state, taskLists: action.payload.taskLists};
 
-    case TASKS_ACTION.ADD_NEW_TASK_LIST:
+    case TASKS_REDUCER_ACTION.ADD_NEW_TASK_LIST:
       return {
         ...state,
         taskLists: [action.payload.taskList, ...state.taskLists],
       };
 
-    case TASKS_ACTION.ADD_NEW_TASK:
+    case TASKS_REDUCER_ACTION.ADD_NEW_TASK:
       return {
         ...state,
         taskLists: [
@@ -90,7 +90,7 @@ export const tasksReducer = (
         ],
       };
 
-    case TASKS_ACTION.DELETE_TASK_LIST_FROM_SCREEN:
+    case TASKS_REDUCER_ACTION.DELETE_TASK_LIST_FROM_SCREEN:
       return {
         ...state,
         taskLists: [
@@ -127,7 +127,7 @@ export const tasksReducer = (
         ],
       };
 
-    case TASKS_ACTION.DELETE_TASK_LIST_FULL:
+    case TASKS_REDUCER_ACTION.DELETE_TASK_LIST_FULL:
       return {
         ...state,
         taskLists: [
@@ -137,7 +137,7 @@ export const tasksReducer = (
         ],
       };
 
-    case TASKS_ACTION.EDIT_TASK_LIST_TITLE:
+    case TASKS_REDUCER_ACTION.EDIT_TASK_LIST_TITLE:
       return {
         ...state,
         taskLists: [
@@ -151,7 +151,7 @@ export const tasksReducer = (
         ],
       };
 
-    case TASKS_ACTION.SET_TASK_DONE:
+    case TASKS_REDUCER_ACTION.SET_TASK_DONE:
       return {
         ...state,
         taskLists: state.taskLists.map((taskList) => {
@@ -174,7 +174,7 @@ export const tasksReducer = (
         }),
       };
 
-    case TASKS_ACTION.EDIT_TASK_TITLE:
+    case TASKS_REDUCER_ACTION.EDIT_TASK_TITLE:
       return {
         ...state,
         taskLists: [
@@ -199,7 +199,7 @@ export const tasksReducer = (
         ],
       };
 
-    case TASKS_ACTION.DELETE_TASK:
+    case TASKS_REDUCER_ACTION.DELETE_TASK:
       return {
         ...state,
         taskLists: [

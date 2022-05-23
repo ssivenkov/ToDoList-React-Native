@@ -1,4 +1,4 @@
-import {TASKS_ACTION} from '@enums/tasksEnum';
+import {TASKS_REDUCER_ACTION} from '@enums/tasksReducerEnum';
 import {NotificationType} from '@store/reducers/tasksReducer/types';
 
 type SetNotificationsActionPayloadType = {
@@ -6,7 +6,7 @@ type SetNotificationsActionPayloadType = {
 };
 
 export type SetNotificationsActionReturnType = {
-  type: TASKS_ACTION.SET_NOTIFICATIONS;
+  type: TASKS_REDUCER_ACTION.SET_NOTIFICATIONS;
   payload: SetNotificationsActionPayloadType;
 };
 
@@ -17,6 +17,6 @@ export type SetNotificationsActionType = (
 export const setNotificationsAction: SetNotificationsActionType = (
   payload,
 ) => ({
-  type: TASKS_ACTION.SET_NOTIFICATIONS,
+  type: TASKS_REDUCER_ACTION.SET_NOTIFICATIONS,
   payload,
 });
