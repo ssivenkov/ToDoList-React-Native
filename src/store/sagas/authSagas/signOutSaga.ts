@@ -1,3 +1,4 @@
+import {START_ANIMATION_DELAY} from '@constants/constants';
 import auth from '@react-native-firebase/auth';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import {errorAlert} from '@root/helpers/alertHelper';
@@ -17,14 +18,14 @@ export function* signOutSaga(action: SignOutSagaActionReturnType) {
     if (!internetIsOn) return;
 
     yield call(setWaitingProcess, true);
-    yield delay(10);
+    yield delay(START_ANIMATION_DELAY);
 
     const signOut = () => {
       return auth().signOut();
     };
     const userData: UserDataType = yield select(userDataSelector);
     const providerId = userData?.providerData[0]?.providerId;
-    yield delay(10);
+    yield delay(START_ANIMATION_DELAY);
 
     yield call(signOut);
 

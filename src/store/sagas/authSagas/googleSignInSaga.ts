@@ -1,3 +1,4 @@
+import {START_ANIMATION_DELAY} from '@constants/constants';
 import auth from '@react-native-firebase/auth';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import {errorAlert} from '@root/helpers/alertHelper';
@@ -20,7 +21,7 @@ export function* googleSignInSaga(
     if (!internetIsOn) return;
 
     yield call(setWaitingUserData, true);
-    yield delay(10);
+    yield delay(START_ANIMATION_DELAY);
 
     const {idToken} = yield call(GoogleSignin.signIn);
     const googleCredential: AuthCredentialType = yield call(

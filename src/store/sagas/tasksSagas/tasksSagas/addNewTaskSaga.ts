@@ -1,5 +1,6 @@
 import {
   NOTIFICATION_ID_MAX_LENGTH,
+  START_ANIMATION_DELAY,
   TASK_LISTS,
   TASKS,
   USERS,
@@ -36,8 +37,8 @@ export function* addNewTaskSaga(action: AddNewTaskSagaActionReturnType) {
     const internetIsOn: boolean = yield call(checkInternetConnectionHelper);
     if (!internetIsOn) return;
 
-    yield delay(10);
     yield call(setIsLoading, true);
+    yield delay(START_ANIMATION_DELAY);
     const userID: UserIDType = yield select(userIDSelector);
     const channelId: ChannelIDType = yield select(channelIDSelector);
     const notificationID = generateNumberIDHelper(NOTIFICATION_ID_MAX_LENGTH);
