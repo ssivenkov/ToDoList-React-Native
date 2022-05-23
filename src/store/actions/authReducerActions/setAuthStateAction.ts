@@ -1,4 +1,4 @@
-import {AUTH_ACTION} from '@enums/authEnum';
+import {AUTH_REDUCER_ACTION} from '@enums/authReducerEnum';
 import {AuthStateType} from '@store/reducers/authReducer/types';
 
 type SetAuthStateActionPayloadType = {
@@ -6,7 +6,7 @@ type SetAuthStateActionPayloadType = {
 };
 
 export type SetAuthStateActionReturnType = {
-  type: AUTH_ACTION.SET_AUTH_STATE;
+  type: AUTH_REDUCER_ACTION.SET_AUTH_STATE;
   payload: SetAuthStateActionPayloadType;
 };
 
@@ -15,6 +15,6 @@ export type SetAuthStateActionType = (
 ) => SetAuthStateActionReturnType;
 
 export const setAuthStateAction: SetAuthStateActionType = (payload) => ({
-  type: AUTH_ACTION.SET_AUTH_STATE,
+  type: AUTH_REDUCER_ACTION.SET_AUTH_STATE,
   payload,
 });
