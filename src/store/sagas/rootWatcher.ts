@@ -2,6 +2,7 @@ import {AUTH_SAGA_ACTION} from '@enums/authSagaEnum';
 import {TASKS_SAGA_ACTION} from '@enums/tasksSagaEnum';
 import {checkUserSaga} from '@store/sagas/authSagas/checkUserSaga';
 import {createChannelSaga} from '@store/sagas/authSagas/createChannelSaga';
+import {deleteAccountSaga} from '@store/sagas/authSagas/deleteAccountSaga';
 import {facebookSignInSaga} from '@store/sagas/authSagas/facebookSignInSaga';
 import {googleSignInSaga} from '@store/sagas/authSagas/googleSignInSaga';
 import {signOutSaga} from '@store/sagas/authSagas/signOutSaga';
@@ -17,10 +18,11 @@ import {setTaskIsDoneSaga} from '@store/sagas/tasksSagas/tasksSagas/setTaskIsDon
 import {takeEvery, takeLatest} from 'redux-saga/effects';
 
 export function* rootWatcher() {
-  yield takeLatest(AUTH_SAGA_ACTION.GOOGLE_SIGN_IN_SAGA, googleSignInSaga);
-  yield takeLatest(AUTH_SAGA_ACTION.FACEBOOK_SIGN_IN_SAGA, facebookSignInSaga);
-  yield takeLatest(AUTH_SAGA_ACTION.SIGN_OUT_SAGA, signOutSaga);
-  yield takeLatest(AUTH_SAGA_ACTION.CREATE_CHANNEL_SAGA, createChannelSaga);
+  yield takeLatest(AUTH_SAGA_ACTION.GOOGLE_SIGN_IN, googleSignInSaga);
+  yield takeLatest(AUTH_SAGA_ACTION.FACEBOOK_SIGN_IN, facebookSignInSaga);
+  yield takeLatest(AUTH_SAGA_ACTION.SIGN_OUT, signOutSaga);
+  yield takeLatest(AUTH_SAGA_ACTION.DELETE_ACCOUNT, deleteAccountSaga);
+  yield takeLatest(AUTH_SAGA_ACTION.CREATE_CHANNEL, createChannelSaga);
   yield takeEvery(AUTH_SAGA_ACTION.CHECK_USER, checkUserSaga);
   yield takeLatest(
     AUTH_SAGA_ACTION.SYNC_USER_TASK_LISTS,

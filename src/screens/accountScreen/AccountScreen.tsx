@@ -1,6 +1,7 @@
-import {CustomTextButton} from '@components/common/buttons/CustomTextButton';
 import {Loader} from '@components/common/loader/loader';
+import {ModalText} from '@components/common/modals/ModalText';
 import {styles} from '@root/screens/accountScreen/styles';
+import {deleteAccountAction} from '@store/actions/authSagaActions/deleteAccountAction';
 import {signOutAction} from '@store/actions/authSagaActions/signOutAction';
 import {userDataSelector} from '@store/selectors/authSelectors';
 import React, {useState} from 'react';
@@ -14,13 +15,17 @@ export const AccountScreen = () => {
   const {t} = useTranslation();
 
   const userData = useSelector(userDataSelector);
-  const [waitingSignOut, setWaitingSignOut] = useState<boolean>(false);
+  const [waitingProcess, setWaitingProcess] = useState<boolean>(false);
 
-  const onSignOutPress = (): void => {
-    dispatch(signOutAction({setWaitingSignOut}));
+  const signOutHandler = (): void => {
+    dispatch(signOutAction({setWaitingProcess}));
   };
 
-  if (userData && !waitingSignOut) {
+  const deleteAccountHandler = (): void => {
+    dispatch(deleteAccountAction({setWaitingProcess}));
+  };
+
+  if (userData && !waitingProcess) {
     return (
       <View style={styles.screenContainer}>
         {userData.photoURL && (
@@ -33,13 +38,20 @@ export const AccountScreen = () => {
         {userData.phoneNumber && (
           <Text style={styles.text}>{userData.phoneNumber}</Text>
         )}
-        <View style={styles.buttonContainer}>
-          <CustomTextButton
-            title={t('signInScreen.SignOut')}
-            onPress={onSignOutPress}
-            disable={waitingSignOut}
-          />
-        </View>
+        <ModalText
+          okHandler={signOutHandler}
+          description={t('signInScreen.SignOutWarning')}
+          buttonTitle={t('signInScreen.SignOut')}
+          buttonStyle={styles.buttonContainer}
+          disable={waitingProcess}
+        />
+        <ModalText
+          okHandler={deleteAccountHandler}
+          description={t('signInScreen.DeleteAccountWarning')}
+          buttonTitle={t('signInScreen.DeleteAccount')}
+          buttonStyle={styles.buttonContainer}
+          disable={waitingProcess}
+        />
       </View>
     );
   }
