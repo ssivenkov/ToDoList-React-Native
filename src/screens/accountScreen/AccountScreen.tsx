@@ -1,5 +1,6 @@
 import {CustomTextButton} from '@components/common/buttons/CustomTextButton';
 import {Loader} from '@components/common/loader/loader';
+import {ModalText} from '@components/common/modals/ModalText';
 import {styles} from '@root/screens/accountScreen/styles';
 import {signOutAction} from '@store/actions/authSagaActions/signOutAction';
 import {userDataSelector} from '@store/selectors/authSelectors';
@@ -15,9 +16,15 @@ export const AccountScreen = () => {
 
   const userData = useSelector(userDataSelector);
   const [waitingSignOut, setWaitingSignOut] = useState<boolean>(false);
+  const [waitingAccountDeletion, setWaitingAccountDeletion] =
+    useState<boolean>(false);
 
-  const onSignOutPress = (): void => {
+  const signOutHandler = (): void => {
     dispatch(signOutAction({setWaitingSignOut}));
+  };
+
+  const deleteAccountHandler = (): void => {
+    setWaitingAccountDeletion(true);
   };
 
   if (userData && !waitingSignOut) {
@@ -36,10 +43,17 @@ export const AccountScreen = () => {
         <View style={styles.buttonContainer}>
           <CustomTextButton
             title={t('signInScreen.SignOut')}
-            onPress={onSignOutPress}
+            onPress={signOutHandler}
             disable={waitingSignOut}
           />
         </View>
+        <ModalText
+          okHandler={deleteAccountHandler}
+          description={t('signInScreen.DeleteAccountWarning')}
+          buttonTitle={t('signInScreen.DeleteAccount')}
+          buttonStyle={styles.buttonContainer}
+          disable={waitingAccountDeletion}
+        />
       </View>
     );
   }
