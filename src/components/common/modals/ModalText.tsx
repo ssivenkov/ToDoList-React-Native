@@ -52,13 +52,12 @@ export const ModalText = (props: ModalTextPropsType) => {
           </View>
         </View>
       </Modal>
-      <View style={buttonStyle && buttonStyle}>
-        <CustomTextButton
-          onPress={onModalButtonPress}
-          title={buttonTitle}
-          disable={disable}
-        />
-      </View>
+      <CustomTextButton
+        containerStyle={buttonStyle && buttonStyle}
+        onPress={onModalButtonPress}
+        title={buttonTitle}
+        disable={disable}
+      />
     </View>
   );
 };

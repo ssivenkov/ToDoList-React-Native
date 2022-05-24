@@ -14,13 +14,13 @@ import {checkInternetConnectionHelper} from '@root/helpers/hasInternetConnection
 import {editTaskNotificationAction} from '@store/actions/tasksReducerActions/notificationsActions/editTaskNotificationAction';
 import {setEditedTaskAction} from '@store/actions/tasksReducerActions/tasksActions/setEditedTaskAction';
 import {SetEditedTaskActionSagaReturnType} from '@store/actions/tasksSagaActions/tasksSagasActions/setEditedTaskAction';
-import {ChannelIDType, UserIDType} from '@store/reducers/authReducer/types';
 import {NotificationType} from '@store/reducers/tasksReducer/types';
+import {ChannelIDType, UserIDType} from '@store/reducers/userReducer/types';
+import {notificationsSelector} from '@store/selectors/tasksSelectors';
 import {
   channelIDSelector,
   userIDSelector,
-} from '@store/selectors/authSelectors';
-import {notificationsSelector} from '@store/selectors/tasksSelectors';
+} from '@store/selectors/userSelectors';
 import {call, delay, put, select} from 'redux-saga/effects';
 
 export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {

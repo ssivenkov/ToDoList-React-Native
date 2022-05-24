@@ -11,10 +11,10 @@ import {checkInternetConnectionHelper} from '@root/helpers/hasInternetConnection
 import {deleteTaskNotificationAction} from '@store/actions/tasksReducerActions/notificationsActions/deleteTaskNotificationAction';
 import {setTaskIsDoneAction} from '@store/actions/tasksReducerActions/tasksActions/setTaskIsDoneAction';
 import {SetTaskIsDoneSagaActionReturnType} from '@store/actions/tasksSagaActions/tasksSagasActions/setTaskIsDoneAction';
-import {UserIDType} from '@store/reducers/authReducer/types';
 import {NotificationType} from '@store/reducers/tasksReducer/types';
-import {userIDSelector} from '@store/selectors/authSelectors';
+import {UserIDType} from '@store/reducers/userReducer/types';
 import {notificationsSelector} from '@store/selectors/tasksSelectors';
+import {userIDSelector} from '@store/selectors/userSelectors';
 import {call, delay, put, select} from 'redux-saga/effects';
 
 export function* setTaskIsDoneSaga(action: SetTaskIsDoneSagaActionReturnType) {

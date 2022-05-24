@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {authReducer} from '@store/reducers/authReducer/authReducer';
 import {tasksReducer} from '@store/reducers/tasksReducer/tasksReducer';
+import {userReducer} from '@store/reducers/userReducer/userReducer';
 import {rootWatcher} from '@store/sagas/rootWatcher';
 import {applyMiddleware, combineReducers, createStore, compose} from 'redux';
 import {persistStore, persistReducer} from 'redux-persist';
@@ -9,7 +9,7 @@ import createSagaMiddleware from 'redux-saga';
 
 const rootReducer = combineReducers({
   tasks: tasksReducer,
-  auth: authReducer,
+  user: userReducer,
 });
 
 const persistConfig = {

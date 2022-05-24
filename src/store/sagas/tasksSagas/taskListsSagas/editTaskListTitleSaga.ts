@@ -4,8 +4,8 @@ import {errorAlert} from '@root/helpers/alertHelper';
 import {checkInternetConnectionHelper} from '@root/helpers/hasInternetConnectionHelper';
 import {setEditedTaskListTitleAction} from '@store/actions/tasksReducerActions/taskListsActions/setEditedTaskListTitleAction';
 import {EditTaskListTitleSagaActionReturnType} from '@store/actions/tasksSagaActions/taskListsSagasActions/editTaskListTitleAction';
-import {UserIDType} from '@store/reducers/authReducer/types';
-import {userIDSelector} from '@store/selectors/authSelectors';
+import {UserIDType} from '@store/reducers/userReducer/types';
+import {userIDSelector} from '@store/selectors/userSelectors';
 import {call, delay, put, select} from 'redux-saga/effects';
 
 export function* editTaskListTitleSaga(
