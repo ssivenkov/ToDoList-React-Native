@@ -1,12 +1,12 @@
-import {AUTH_REDUCER_ACTION} from '@enums/authReducerEnum';
-import {ChannelIDType} from '@store/reducers/authReducer/types';
+import {USER_REDUCER_ACTION} from '@enums/userReducerEnum';
+import {ChannelIDType} from '@store/reducers/userReducer/types';
 
 type SetChannelIDActionPayloadType = {
   channelID: ChannelIDType;
 };
 
 export type SetChannelIDActionReturnType = {
-  type: AUTH_REDUCER_ACTION.SET_CHANNEL_ID;
+  type: USER_REDUCER_ACTION.SET_CHANNEL_ID;
   payload: SetChannelIDActionPayloadType;
 };
 
@@ -15,6 +15,6 @@ export type SetChannelIDActionType = (
 ) => SetChannelIDActionReturnType;
 
 export const setChannelIDAction: SetChannelIDActionType = (payload) => ({
-  type: AUTH_REDUCER_ACTION.SET_CHANNEL_ID,
+  type: USER_REDUCER_ACTION.SET_CHANNEL_ID,
   payload,
 });

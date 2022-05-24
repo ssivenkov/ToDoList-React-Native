@@ -3,11 +3,11 @@ import auth from '@react-native-firebase/auth';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import {errorAlert} from '@root/helpers/alertHelper';
 import {checkInternetConnectionHelper} from '@root/helpers/hasInternetConnectionHelper';
-import {setAuthStateAction} from '@store/actions/authReducerActions/setAuthStateAction';
-import {SignOutSagaActionReturnType} from '@store/actions/authSagaActions/signOutAction';
 import {setTaskListsAction} from '@store/actions/tasksReducerActions/taskListsActions/setTaskListsAction';
-import {UserDataType} from '@store/reducers/authReducer/types';
-import {userDataSelector} from '@store/selectors/authSelectors';
+import {setAuthStateAction} from '@store/actions/userReducerActions/setAuthStateAction';
+import {SignOutSagaActionReturnType} from '@store/actions/userSagaActions/signOutAction';
+import {UserDataType} from '@store/reducers/userReducer/types';
+import {userDataSelector} from '@store/selectors/userSelectors';
 import {call, delay, put, select} from 'redux-saga/effects';
 
 export function* signOutSaga(action: SignOutSagaActionReturnType) {

@@ -8,7 +8,7 @@ export type UserIDType = Nullable<FirebaseAuthTypes.User['uid']>;
 export type ChannelIDType = string;
 export type LanguageType = string;
 
-export type AuthStateType = {
+export type UserReducerStateType = {
   userData: UserDataType;
   channelID: ChannelIDType;
   language: LanguageType;

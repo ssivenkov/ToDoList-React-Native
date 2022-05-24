@@ -7,16 +7,16 @@ import {checkInternetConnectionHelper} from '@root/helpers/hasInternetConnection
 import {setNotificationsAction} from '@store/actions/tasksReducerActions/notificationsActions/setNotificationsAction';
 import {deleteTaskListFullAction} from '@store/actions/tasksReducerActions/taskListsActions/deleteTaskListFullAction';
 import {DeleteTaskListFullSagaActionReturnType} from '@store/actions/tasksSagaActions/taskListsSagasActions/deleteTaskListFullAction';
-import {UserIDType} from '@store/reducers/authReducer/types';
 import {
   NotificationType,
   TaskListInterface,
 } from '@store/reducers/tasksReducer/types';
-import {userIDSelector} from '@store/selectors/authSelectors';
+import {UserIDType} from '@store/reducers/userReducer/types';
 import {
   notificationsSelector,
   taskListsSelector,
 } from '@store/selectors/tasksSelectors';
+import {userIDSelector} from '@store/selectors/userSelectors';
 import {call, delay, put, select} from 'redux-saga/effects';
 
 export function* deleteTaskListFullSaga(

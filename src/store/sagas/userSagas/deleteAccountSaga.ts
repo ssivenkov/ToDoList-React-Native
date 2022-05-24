@@ -2,10 +2,10 @@ import {USERS} from '@constants/constants';
 import {DB} from '@root/api/DB';
 import {errorAlert} from '@root/helpers/alertHelper';
 import {checkInternetConnectionHelper} from '@root/helpers/hasInternetConnectionHelper';
-import {DeleteAccountSagaActionReturnType} from '@store/actions/authSagaActions/deleteAccountAction';
-import {signOutAction} from '@store/actions/authSagaActions/signOutAction';
-import {UserIDType} from '@store/reducers/authReducer/types';
-import {userIDSelector} from '@store/selectors/authSelectors';
+import {DeleteAccountSagaActionReturnType} from '@store/actions/userSagaActions/deleteAccountAction';
+import {signOutAction} from '@store/actions/userSagaActions/signOutAction';
+import {UserIDType} from '@store/reducers/userReducer/types';
+import {userIDSelector} from '@store/selectors/userSelectors';
 import {call, putResolve, select} from 'redux-saga/effects';
 
 export function* deleteAccountSaga(action: DeleteAccountSagaActionReturnType) {

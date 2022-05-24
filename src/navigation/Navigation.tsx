@@ -6,14 +6,14 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {GoogleWebClientId} from '@root/api/config';
 import {SignInScreen} from '@root/screens/signInScreen/SignInScreen';
-import {setUserDataAction} from '@store/actions/authReducerActions/setUserDataAction';
-import {checkUserAction} from '@store/actions/authSagaActions/checkUserAction';
-import {createChannelAction} from '@store/actions/authSagaActions/createChannelAction';
-import {UserDataType} from '@store/reducers/authReducer/types';
+import {setUserDataAction} from '@store/actions/userReducerActions/setUserDataAction';
+import {checkUserAction} from '@store/actions/userSagaActions/checkUserAction';
+import {createChannelAction} from '@store/actions/userSagaActions/createChannelAction';
+import {UserDataType} from '@store/reducers/userReducer/types';
 import {
   channelIDSelector,
   userIDSelector,
-} from '@store/selectors/authSelectors';
+} from '@store/selectors/userSelectors';
 import React, {useEffect, useState} from 'react';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {useDispatch, useSelector} from 'react-redux';

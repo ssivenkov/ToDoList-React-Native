@@ -1,4 +1,4 @@
-import {AUTH_SAGA_ACTION} from '@enums/authSagaEnum';
+import {USER_SAGA_ACTION} from '@enums/userSagaEnum';
 import {SetStateType} from '@root/types/common/types';
 
 export type DeleteAccountSagaActionPayloadType = {
@@ -6,7 +6,7 @@ export type DeleteAccountSagaActionPayloadType = {
 };
 
 export type DeleteAccountSagaActionReturnType = {
-  type: AUTH_SAGA_ACTION.DELETE_ACCOUNT;
+  type: USER_SAGA_ACTION.DELETE_ACCOUNT;
   payload: DeleteAccountSagaActionPayloadType;
 };
 
@@ -15,6 +15,6 @@ export type DeleteAccountSagaActionType = (
 ) => DeleteAccountSagaActionReturnType;
 
 export const deleteAccountAction: DeleteAccountSagaActionType = (payload) => ({
-  type: AUTH_SAGA_ACTION.DELETE_ACCOUNT,
+  type: USER_SAGA_ACTION.DELETE_ACCOUNT,
   payload,
 });

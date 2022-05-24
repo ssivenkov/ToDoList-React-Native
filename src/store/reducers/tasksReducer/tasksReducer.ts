@@ -12,7 +12,7 @@ import {AddNewTaskActionReturnType} from '@store/actions/tasksReducerActions/tas
 import {DeleteTaskActionReturnType} from '@store/actions/tasksReducerActions/tasksActions/deleteTaskAction';
 import {SetEditedTaskActionReturnType} from '@store/actions/tasksReducerActions/tasksActions/setEditedTaskAction';
 import {SetTaskIsDoneActionReturnType} from '@store/actions/tasksReducerActions/tasksActions/setTaskIsDoneAction';
-import {TasksStateType} from '@store/reducers/tasksReducer/types';
+import {TasksReducerStateType} from '@store/reducers/tasksReducer/types';
 
 type TasksActionsType =
   | SetTaskListsActionReturnType
@@ -29,15 +29,15 @@ type TasksActionsType =
   | SetEditedTaskActionReturnType
   | SetTaskIsDoneActionReturnType;
 
-const initialTasksState: TasksStateType = {
+const initialTasksState: TasksReducerStateType = {
   taskLists: [],
   notifications: [],
 };
 
 export const tasksReducer = (
-  state: TasksStateType = initialTasksState,
+  state: TasksReducerStateType = initialTasksState,
   action: TasksActionsType,
-): TasksStateType => {
+): TasksReducerStateType => {
   switch (action.type) {
     case TASKS_REDUCER_ACTION.SET_NOTIFICATIONS:
       return {...state, notifications: action.payload.notifications};

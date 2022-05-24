@@ -32,7 +32,7 @@ export type NotificationType = {
   date?: Date;
 };
 
-export type TasksStateType = {
+export type TasksReducerStateType = {
   taskLists: TaskListInterface[];
   notifications: NotificationType[];
 };
