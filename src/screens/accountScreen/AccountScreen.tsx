@@ -1,6 +1,9 @@
+import {CustomTextButton} from '@components/common/buttons/CustomTextButton';
 import {Loader} from '@components/common/loader/loader';
 import {ModalText} from '@components/common/modals/ModalText';
+import {EN, ENGLISH, RU, RUSSIAN} from '@constants/constants';
 import {styles} from '@root/screens/accountScreen/styles';
+import {changeLanguageAction} from '@store/actions/authSagaActions/changeLanguageAction';
 import {deleteAccountAction} from '@store/actions/authSagaActions/deleteAccountAction';
 import {signOutAction} from '@store/actions/authSagaActions/signOutAction';
 import {userDataSelector} from '@store/selectors/authSelectors';
@@ -16,6 +19,10 @@ export const AccountScreen = () => {
 
   const userData = useSelector(userDataSelector);
   const [waitingProcess, setWaitingProcess] = useState<boolean>(false);
+
+  const changeLanguage = (language: string) => {
+    dispatch(changeLanguageAction({language}));
+  };
 
   const signOutHandler = (): void => {
     dispatch(signOutAction({setWaitingProcess}));
@@ -38,6 +45,18 @@ export const AccountScreen = () => {
         {userData.phoneNumber && (
           <Text style={styles.text}>{userData.phoneNumber}</Text>
         )}
+        <View style={styles.buttonsContainer}>
+          <CustomTextButton
+            onPress={() => changeLanguage(EN)}
+            title={ENGLISH}
+            containerStyle={styles.buttonContainer}
+          />
+          <CustomTextButton
+            onPress={() => changeLanguage(RU)}
+            title={RUSSIAN}
+            containerStyle={styles.buttonContainer}
+          />
+        </View>
         <ModalText
           okHandler={signOutHandler}
           description={t('signInScreen.SignOutWarning')}
