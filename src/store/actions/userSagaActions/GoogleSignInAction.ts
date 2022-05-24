@@ -1,4 +1,4 @@
-import {AUTH_SAGA_ACTION} from '@enums/authSagaEnum';
+import {USER_SAGA_ACTION} from '@enums/userSagaEnum';
 import {SetStateType} from '@root/types/common/types';
 
 export type GetUserDataSagaActionPayloadType = {
@@ -6,7 +6,7 @@ export type GetUserDataSagaActionPayloadType = {
 };
 
 export type GetGoogleUserDataSagaActionReturnType = {
-  type: AUTH_SAGA_ACTION.GOOGLE_SIGN_IN;
+  type: USER_SAGA_ACTION.GOOGLE_SIGN_IN;
   payload: GetUserDataSagaActionPayloadType;
 };
 
@@ -17,6 +17,6 @@ export type GetGoogleUserDataSagaActionType = (
 export const GoogleSignInAction: GetGoogleUserDataSagaActionType = (
   payload,
 ) => ({
-  type: AUTH_SAGA_ACTION.GOOGLE_SIGN_IN,
+  type: USER_SAGA_ACTION.GOOGLE_SIGN_IN,
   payload,
 });

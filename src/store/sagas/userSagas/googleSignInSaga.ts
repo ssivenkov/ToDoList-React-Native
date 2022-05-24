@@ -3,7 +3,7 @@ import auth from '@react-native-firebase/auth';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import {errorAlert} from '@root/helpers/alertHelper';
 import {checkInternetConnectionHelper} from '@root/helpers/hasInternetConnectionHelper';
-import {GetGoogleUserDataSagaActionReturnType} from '@store/actions/authSagaActions/GoogleSignInAction';
+import {GetGoogleUserDataSagaActionReturnType} from '@store/actions/userSagaActions/GoogleSignInAction';
 import {call, delay} from 'redux-saga/effects';
 
 export type AuthCredentialType = {
