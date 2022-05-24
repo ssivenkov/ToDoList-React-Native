@@ -1,4 +1,4 @@
-import {AUTH_SAGA_ACTION} from '@enums/authSagaEnum';
+import {USER_SAGA_ACTION} from '@enums/userSagaEnum';
 import {SetStateType} from '@root/types/common/types';
 
 export type SignOutSagaActionPayloadType = {
@@ -6,7 +6,7 @@ export type SignOutSagaActionPayloadType = {
 };
 
 export type SignOutSagaActionReturnType = {
-  type: AUTH_SAGA_ACTION.SIGN_OUT;
+  type: USER_SAGA_ACTION.SIGN_OUT;
   payload: SignOutSagaActionPayloadType;
 };
 
@@ -15,6 +15,6 @@ export type SignOutActionType = (
 ) => SignOutSagaActionReturnType;
 
 export const signOutAction: SignOutActionType = (payload) => ({
-  type: AUTH_SAGA_ACTION.SIGN_OUT,
+  type: USER_SAGA_ACTION.SIGN_OUT,
   payload,
 });

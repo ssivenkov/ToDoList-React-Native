@@ -1,12 +1,12 @@
-import {AUTH_REDUCER_ACTION} from '@enums/authReducerEnum';
-import {LanguageType} from '@store/reducers/authReducer/types';
+import {USER_REDUCER_ACTION} from '@enums/userReducerEnum';
+import {LanguageType} from '@store/reducers/userReducer/types';
 
 type SetLanguageActionPayloadType = {
   language: LanguageType;
 };
 
 export type SetLanguageActionReturnType = {
-  type: AUTH_REDUCER_ACTION.SET_LANGUAGE;
+  type: USER_REDUCER_ACTION.SET_LANGUAGE;
   payload: SetLanguageActionPayloadType;
 };
 
@@ -15,6 +15,6 @@ export type SetLanguageActionType = (
 ) => SetLanguageActionReturnType;
 
 export const setLanguageAction: SetLanguageActionType = (payload) => ({
-  type: AUTH_REDUCER_ACTION.SET_LANGUAGE,
+  type: USER_REDUCER_ACTION.SET_LANGUAGE,
   payload,
 });

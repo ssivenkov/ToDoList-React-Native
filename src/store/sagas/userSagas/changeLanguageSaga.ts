@@ -1,6 +1,6 @@
 import {errorAlert} from '@root/helpers/alertHelper';
-import {setLanguageAction} from '@store/actions/authReducerActions/setLanguageAction';
-import {ChangeLanguageSagaActionReturnType} from '@store/actions/authSagaActions/changeLanguageAction';
+import {setLanguageAction} from '@store/actions/userReducerActions/setLanguageAction';
+import {ChangeLanguageSagaActionReturnType} from '@store/actions/userSagaActions/changeLanguageAction';
 import i18next from 'i18next';
 import {put} from 'redux-saga/effects';
 

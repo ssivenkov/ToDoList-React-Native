@@ -10,8 +10,8 @@ import {
 } from '@navigation/withAuthNavigator/types';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {AccountScreen} from '@root/screens/accountScreen/AccountScreen';
-import {changeLanguageAction} from '@store/actions/authSagaActions/changeLanguageAction';
-import {languageSelector} from '@store/selectors/authSelectors';
+import {changeLanguageAction} from '@store/actions/userSagaActions/changeLanguageAction';
+import {languageSelector} from '@store/selectors/userSelectors';
 import i18next, {t} from 'i18next';
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';

@@ -12,13 +12,13 @@ import {checkInternetConnectionHelper} from '@root/helpers/hasInternetConnection
 import {setNotificationsAction} from '@store/actions/tasksReducerActions/notificationsActions/setNotificationsAction';
 import {deleteTaskListFromScreenAction} from '@store/actions/tasksReducerActions/taskListsActions/deleteTaskListFromScreenAction';
 import {DeleteTaskListFromScreenSagaActionReturnType} from '@store/actions/tasksSagaActions/taskListsSagasActions/deleteTaskListFromScreenAction';
-import {UserIDType} from '@store/reducers/authReducer/types';
 import {
   ConvertedTasksForFirebaseType,
   NotificationType,
 } from '@store/reducers/tasksReducer/types';
-import {userIDSelector} from '@store/selectors/authSelectors';
+import {UserIDType} from '@store/reducers/userReducer/types';
 import {notificationsSelector} from '@store/selectors/tasksSelectors';
+import {userIDSelector} from '@store/selectors/userSelectors';
 import {call, delay, put, select} from 'redux-saga/effects';
 
 export function* deleteTaskListFromScreenSaga(

@@ -1,8 +1,8 @@
 import messaging from '@react-native-firebase/messaging';
 import {errorAlert} from '@root/helpers/alertHelper';
 import {checkInternetConnectionHelper} from '@root/helpers/hasInternetConnectionHelper';
-import {setChannelIDAction} from '@store/actions/authReducerActions/setChannelIDAction';
-import {ChannelIDType} from '@store/reducers/authReducer/types';
+import {setChannelIDAction} from '@store/actions/userReducerActions/setChannelIDAction';
+import {ChannelIDType} from '@store/reducers/userReducer/types';
 import PushNotification from 'react-native-push-notification';
 import {call, put} from 'redux-saga/effects';
 

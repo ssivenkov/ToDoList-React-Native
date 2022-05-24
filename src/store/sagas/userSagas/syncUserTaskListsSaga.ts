@@ -4,13 +4,13 @@ import {errorAlert} from '@root/helpers/alertHelper';
 import {checkInternetConnectionHelper} from '@root/helpers/hasInternetConnectionHelper';
 import {setNotificationsAction} from '@store/actions/tasksReducerActions/notificationsActions/setNotificationsAction';
 import {setTaskListsAction} from '@store/actions/tasksReducerActions/taskListsActions/setTaskListsAction';
-import {SnapshotType, UserIDType} from '@store/reducers/authReducer/types';
 import {
   TaskListBeforeConvertInterface,
   TaskListInterface,
   TaskListWithoutTasksType,
 } from '@store/reducers/tasksReducer/types';
-import {userIDSelector} from '@store/selectors/authSelectors';
+import {SnapshotType, UserIDType} from '@store/reducers/userReducer/types';
+import {userIDSelector} from '@store/selectors/userSelectors';
 import {call, put, select} from 'redux-saga/effects';
 
 export function* syncUserTaskListsSaga() {

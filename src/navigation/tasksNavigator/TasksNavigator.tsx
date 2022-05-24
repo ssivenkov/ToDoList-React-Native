@@ -9,7 +9,7 @@ import {
 } from '@navigation/tasksNavigator/types';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import {TasksScreen} from '@root/screens/tasksScreen/TaskScreen';
-import {languageSelector} from '@store/selectors/authSelectors';
+import {languageSelector} from '@store/selectors/userSelectors';
 import i18next, {t} from 'i18next';
 import React, {useEffect, useState} from 'react';
 import {useSelector} from 'react-redux';
