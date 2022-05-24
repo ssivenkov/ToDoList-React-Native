@@ -2,8 +2,8 @@ import {START_ANIMATION_DELAY} from '@constants/constants';
 import auth from '@react-native-firebase/auth';
 import {errorAlert} from '@root/helpers/alertHelper';
 import {checkInternetConnectionHelper} from '@root/helpers/hasInternetConnectionHelper';
-import {GetFacebookUserDataSagaActionReturnType} from '@store/actions/authSagaActions/FacebookSignInAction';
-import {AuthCredentialType} from '@store/sagas/authSagas/googleSignInSaga';
+import {GetFacebookUserDataSagaActionReturnType} from '@store/actions/userSagaActions/FacebookSignInAction';
+import {AuthCredentialType} from '@store/sagas/userSagas/googleSignInSaga';
 import {AccessToken, LoginManager} from 'react-native-fbsdk-next';
 import {call, delay} from 'redux-saga/effects';
 

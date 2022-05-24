@@ -13,11 +13,11 @@ import {checkInternetConnectionHelper} from '@root/helpers/hasInternetConnection
 import {addTaskNotificationAction} from '@store/actions/tasksReducerActions/notificationsActions/addTaskNotificationAction';
 import {addNewTaskAction} from '@store/actions/tasksReducerActions/tasksActions/addNewTaskAction';
 import {AddNewTaskSagaActionReturnType} from '@store/actions/tasksSagaActions/tasksSagasActions/addNewTaskAction';
-import {ChannelIDType, UserIDType} from '@store/reducers/authReducer/types';
+import {ChannelIDType, UserIDType} from '@store/reducers/userReducer/types';
 import {
   channelIDSelector,
   userIDSelector,
-} from '@store/selectors/authSelectors';
+} from '@store/selectors/userSelectors';
 import {call, delay, put, select} from 'redux-saga/effects';
 
 export function* addNewTaskSaga(action: AddNewTaskSagaActionReturnType) {

@@ -1,12 +1,12 @@
-import {AUTH_SAGA_ACTION} from '@enums/authSagaEnum';
-import {LanguageType} from '@store/reducers/authReducer/types';
+import {USER_SAGA_ACTION} from '@enums/userSagaEnum';
+import {LanguageType} from '@store/reducers/userReducer/types';
 
 export type ChangeLanguageSagaActionPayloadType = {
   language: LanguageType;
 };
 
 export type ChangeLanguageSagaActionReturnType = {
-  type: AUTH_SAGA_ACTION.CHANGE_LANGUAGE;
+  type: USER_SAGA_ACTION.CHANGE_LANGUAGE;
   payload: ChangeLanguageSagaActionPayloadType;
 };
 
@@ -17,6 +17,6 @@ export type ChangeLanguageSagaActionType = (
 export const changeLanguageAction: ChangeLanguageSagaActionType = (
   payload,
 ) => ({
-  type: AUTH_SAGA_ACTION.CHANGE_LANGUAGE,
+  type: USER_SAGA_ACTION.CHANGE_LANGUAGE,
   payload,
 });

@@ -4,8 +4,8 @@ import {errorAlert} from '@root/helpers/alertHelper';
 import {checkInternetConnectionHelper} from '@root/helpers/hasInternetConnectionHelper';
 import {addNewTaskListAction} from '@store/actions/tasksReducerActions/taskListsActions/addNewTaskListAction';
 import {AddNewTaskListSagaActionReturnType} from '@store/actions/tasksSagaActions/taskListsSagasActions/addNewTaskListAction';
-import {UserIDType} from '@store/reducers/authReducer/types';
-import {userIDSelector} from '@store/selectors/authSelectors';
+import {UserIDType} from '@store/reducers/userReducer/types';
+import {userIDSelector} from '@store/selectors/userSelectors';
 import {call, delay, put, select} from 'redux-saga/effects';
 
 export function* addNewTaskListSaga(
