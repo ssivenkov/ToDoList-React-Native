@@ -10,11 +10,27 @@ import {
 } from '@navigation/withAuthNavigator/types';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {AccountScreen} from '@root/screens/accountScreen/AccountScreen';
-import React from 'react';
+import {changeLanguageAction} from '@store/actions/authSagaActions/changeLanguageAction';
+import {languageSelector} from '@store/selectors/authSelectors';
+import i18next, {t} from 'i18next';
+import React, {useEffect, useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 
 const {Navigator, Screen} = createBottomTabNavigator<BottomTabParamList>();
 
 export const WithAuthNavigator = () => {
+  const dispatch = useDispatch();
+  const languageInState = useSelector(languageSelector);
+  const [rerender, setRerender] = useState<string>('');
+
+  // need for rerender with correct translations for navigator
+  useEffect(() => {
+    if (i18next.language !== languageInState) {
+      dispatch(changeLanguageAction({language: languageInState}));
+      setRerender(languageInState);
+    }
+  }, [rerender]);
+
   return (
     <Navigator
       initialRouteName={withAuthNavigatorScreens.TASKS}
@@ -22,12 +38,20 @@ export const WithAuthNavigator = () => {
       <Screen
         name={withAuthNavigatorScreens.TASKS}
         component={TasksNavigator}
-        options={tasksNavigatorOptions}
+        options={{
+          ...tasksNavigatorOptions,
+          headerTitle: `${t('tasksScreen.Tasks')}`,
+          tabBarLabel: `${t('tasksScreen.Tasks')}`,
+        }}
       />
       <Screen
         name={withAuthNavigatorScreens.ACCOUNT}
         component={AccountScreen}
-        options={accountScreenOptions}
+        options={{
+          ...accountScreenOptions,
+          headerTitle: `${t('accountScreen.Account')}`,
+          tabBarLabel: `${t('accountScreen.Account')}`,
+        }}
       />
     </Navigator>
   );

@@ -1,5 +1,6 @@
 import {AUTH_SAGA_ACTION} from '@enums/authSagaEnum';
 import {TASKS_SAGA_ACTION} from '@enums/tasksSagaEnum';
+import {changeLanguageSaga} from '@store/sagas/authSagas/changeLanguageSaga';
 import {checkUserSaga} from '@store/sagas/authSagas/checkUserSaga';
 import {createChannelSaga} from '@store/sagas/authSagas/createChannelSaga';
 import {deleteAccountSaga} from '@store/sagas/authSagas/deleteAccountSaga';
@@ -18,6 +19,7 @@ import {setTaskIsDoneSaga} from '@store/sagas/tasksSagas/tasksSagas/setTaskIsDon
 import {takeEvery, takeLatest} from 'redux-saga/effects';
 
 export function* rootWatcher() {
+  yield takeLatest(AUTH_SAGA_ACTION.CHANGE_LANGUAGE, changeLanguageSaga);
   yield takeLatest(AUTH_SAGA_ACTION.GOOGLE_SIGN_IN, googleSignInSaga);
   yield takeLatest(AUTH_SAGA_ACTION.FACEBOOK_SIGN_IN, facebookSignInSaga);
   yield takeLatest(AUTH_SAGA_ACTION.SIGN_OUT, signOutSaga);

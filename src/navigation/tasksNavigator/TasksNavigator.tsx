@@ -9,11 +9,24 @@ import {
 } from '@navigation/tasksNavigator/types';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import {TasksScreen} from '@root/screens/tasksScreen/TaskScreen';
-import React from 'react';
+import {languageSelector} from '@store/selectors/authSelectors';
+import i18next, {t} from 'i18next';
+import React, {useEffect, useState} from 'react';
+import {useSelector} from 'react-redux';
 
 const {Navigator, Screen} = createMaterialTopTabNavigator<TopTabParamList>();
 
 export const TasksNavigator = () => {
+  const languageInState = useSelector(languageSelector);
+  const [rerender, setRerender] = useState<string>('');
+
+  // need for rerender with correct translations for navigator
+  useEffect(() => {
+    if (i18next.language !== languageInState) {
+      setRerender(languageInState);
+    }
+  }, [rerender]);
+
   return (
     <Navigator
       initialRouteName={TaskNavigatorScreens.TODO}
@@ -24,7 +37,10 @@ export const TasksNavigator = () => {
         initialParams={{
           isTodoScreen: true,
         }}
-        options={toDoScreenOptions}
+        options={{
+          ...toDoScreenOptions,
+          tabBarLabel: `${t('tasksScreen.TodoTasksTab')}`,
+        }}
       />
       <Screen
         name={TaskNavigatorScreens.DONE}
@@ -32,7 +48,10 @@ export const TasksNavigator = () => {
         initialParams={{
           isTodoScreen: false,
         }}
-        options={doneScreenOptions}
+        options={{
+          ...doneScreenOptions,
+          tabBarLabel: `${t('tasksScreen.DoneTasksTab')}`,
+        }}
       />
     </Navigator>
   );
