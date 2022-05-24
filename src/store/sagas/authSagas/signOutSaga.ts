@@ -6,7 +6,6 @@ import {checkInternetConnectionHelper} from '@root/helpers/hasInternetConnection
 import {setAuthStateAction} from '@store/actions/authReducerActions/setAuthStateAction';
 import {SignOutSagaActionReturnType} from '@store/actions/authSagaActions/signOutAction';
 import {setTaskListsAction} from '@store/actions/tasksReducerActions/taskListsActions/setTaskListsAction';
-import {initialAuthState} from '@store/reducers/authReducer/authReducer';
 import {UserDataType} from '@store/reducers/authReducer/types';
 import {userDataSelector} from '@store/selectors/authSelectors';
 import {call, delay, put, select} from 'redux-saga/effects';
@@ -32,7 +31,7 @@ export function* signOutSaga(action: SignOutSagaActionReturnType) {
     if (providerId === 'google.com') {
       yield call(GoogleSignin.signOut);
     }
-    yield put(setAuthStateAction({authState: initialAuthState}));
+    yield put(setAuthStateAction({userData: null, channelID: ''}));
     yield put(setTaskListsAction({taskLists: []}));
   } catch (error) {
     errorAlert(error);

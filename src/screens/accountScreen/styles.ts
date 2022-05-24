@@ -7,9 +7,11 @@ type UserScreenStylesType = {
   name: TextStyle;
   text: TextStyle;
   buttonContainer: ViewStyle;
+  buttonsContainer: ViewStyle;
 };
 
-const AvatarSize = 130;
+const avatarSize = 130;
+const topMargin = 20;
 
 export const styles = StyleSheet.create<UserScreenStylesType>({
   screenContainer: {
@@ -19,26 +21,31 @@ export const styles = StyleSheet.create<UserScreenStylesType>({
   },
 
   avatar: {
-    width: AvatarSize,
-    height: AvatarSize,
+    width: avatarSize,
+    height: avatarSize,
     borderRadius: 100,
-    marginBottom: 20,
   },
 
   name: {
     fontSize: 30,
     fontWeight: '500',
     color: COLORS.BLACK,
-    marginBottom: 10,
+    marginTop: topMargin,
   },
 
   text: {
     fontSize: 22,
     color: COLORS.BLACK,
-    marginBottom: 10,
+    marginTop: 10,
   },
 
   buttonContainer: {
-    marginTop: 20,
+    marginTop: topMargin,
+    marginHorizontal: 15,
+  },
+
+  buttonsContainer: {
+    flexDirection: 'row',
+    marginTop: topMargin,
   },
 });

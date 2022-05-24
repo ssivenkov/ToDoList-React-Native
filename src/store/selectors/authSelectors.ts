@@ -1,5 +1,6 @@
 import {
   ChannelIDType,
+  LanguageType,
   UserDataType,
   UserIDType,
 } from '@store/reducers/authReducer/types';
@@ -15,4 +16,8 @@ export const userDataSelector = (state: AppRootStateType): UserDataType => {
 
 export const channelIDSelector = (state: AppRootStateType): ChannelIDType => {
   return state.auth.channelID;
+};
+
+export const languageSelector = (state: AppRootStateType): LanguageType => {
+  return state.auth.language;
 };
