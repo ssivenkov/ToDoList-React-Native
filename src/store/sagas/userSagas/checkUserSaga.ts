@@ -2,9 +2,9 @@ import {USERS} from '@constants/constants';
 import {DB} from '@root/api/DB';
 import {errorAlert} from '@root/helpers/alertHelper';
 import {checkInternetConnectionHelper} from '@root/helpers/hasInternetConnectionHelper';
-import {syncUserTaskListsAction} from '@store/actions/authSagaActions/syncUserTaskListsAction';
-import {SnapshotType, UserIDType} from '@store/reducers/authReducer/types';
-import {userIDSelector} from '@store/selectors/authSelectors';
+import {syncUserTaskListsAction} from '@store/actions/userSagaActions/syncUserTaskListsAction';
+import {SnapshotType, UserIDType} from '@store/reducers/userReducer/types';
+import {userIDSelector} from '@store/selectors/userSelectors';
 import {call, put, select} from 'redux-saga/effects';
 
 export function* checkUserSaga() {

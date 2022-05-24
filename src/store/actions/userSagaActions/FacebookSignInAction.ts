@@ -1,8 +1,8 @@
-import {AUTH_SAGA_ACTION} from '@enums/authSagaEnum';
-import {GetUserDataSagaActionPayloadType} from '@store/actions/authSagaActions/GoogleSignInAction';
+import {USER_SAGA_ACTION} from '@enums/userSagaEnum';
+import {GetUserDataSagaActionPayloadType} from '@store/actions/userSagaActions/GoogleSignInAction';
 
 export type GetFacebookUserDataSagaActionReturnType = {
-  type: AUTH_SAGA_ACTION.FACEBOOK_SIGN_IN;
+  type: USER_SAGA_ACTION.FACEBOOK_SIGN_IN;
   payload: GetUserDataSagaActionPayloadType;
 };
 
@@ -13,6 +13,6 @@ export type GetFacebookUserDataSagaActionType = (
 export const FacebookSignInAction: GetFacebookUserDataSagaActionType = (
   payload,
 ) => ({
-  type: AUTH_SAGA_ACTION.FACEBOOK_SIGN_IN,
+  type: USER_SAGA_ACTION.FACEBOOK_SIGN_IN,
   payload,
 });
