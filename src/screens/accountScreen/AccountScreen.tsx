@@ -1,6 +1,7 @@
 import {CustomTextButton} from '@components/common/buttons/CustomTextButton';
 import {Loader} from '@components/common/loader/loader';
 import {ModalText} from '@components/common/modals/ModalText';
+import {Switcher} from '@components/common/switcher/Switcher';
 import {EN, ENGLISH, RU, RUSSIAN} from '@constants/constants';
 import {styles} from '@root/screens/accountScreen/styles';
 import {changeLanguageAction} from '@store/actions/userSagaActions/changeLanguageAction';
@@ -23,6 +24,11 @@ export const AccountScreen = () => {
   const userData = useSelector(userDataSelector);
   const userAvatar = useSelector(userAvatarSelector);
   const [waitingProcess, setWaitingProcess] = useState<boolean>(false);
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
+
+  const changeDarkMode = (mode: boolean) => {
+    setIsDarkMode(mode);
+  };
 
   const changeLanguage = (language: string) => {
     dispatch(changeLanguageAction({language}));
@@ -49,6 +55,15 @@ export const AccountScreen = () => {
         {userData.phoneNumber && (
           <Text style={styles.text}>{userData.phoneNumber}</Text>
         )}
+        <Switcher
+          isOn={isDarkMode}
+          size={'large'}
+          switcherText={t('accountScreen.DarkMode')}
+          onToggleSwitcherClick={changeDarkMode}
+          containerStyle={styles.buttonsContainer}
+          textStyle={styles.text}
+          textMargin={6}
+        />
         <View style={styles.buttonsContainer}>
           <CustomTextButton
             onPress={() => changeLanguage(EN)}
@@ -65,14 +80,14 @@ export const AccountScreen = () => {
           okHandler={signOutHandler}
           description={t('accountScreen.SignOutWarning')}
           buttonTitle={t('accountScreen.SignOut')}
-          buttonStyle={styles.buttonContainer}
+          buttonContainerStyle={styles.buttonsContainer}
           disable={waitingProcess}
         />
         <ModalText
           okHandler={deleteAccountHandler}
           description={t('accountScreen.DeleteAccountWarning')}
           buttonTitle={t('accountScreen.DeleteAccount')}
-          buttonStyle={styles.buttonContainer}
+          buttonContainerStyle={styles.buttonsContainer}
           disable={waitingProcess}
         />
       </View>

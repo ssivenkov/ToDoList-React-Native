@@ -31,20 +31,20 @@ export const styles = StyleSheet.create<UserScreenStylesType>({
     fontWeight: '500',
     color: COLORS.BLACK,
     marginTop: topMargin,
+    marginBottom: 10,
   },
 
   text: {
     fontSize: 22,
     color: COLORS.BLACK,
-    marginTop: 10,
   },
 
   buttonContainer: {
-    marginTop: topMargin,
     marginHorizontal: 15,
   },
 
   buttonsContainer: {
+    width: '70%',
     flexDirection: 'row',
     marginTop: topMargin,
   },
