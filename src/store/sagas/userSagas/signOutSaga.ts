@@ -1,4 +1,8 @@
-import {START_ANIMATION_DELAY} from '@constants/constants';
+import {
+  FACEBOOK_PROVIDER_ID,
+  GOOGLE_PROVIDER_ID,
+  START_ANIMATION_DELAY,
+} from '@constants/constants';
 import auth from '@react-native-firebase/auth';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import {errorAlert} from '@root/helpers/alertHelper';
@@ -6,8 +10,9 @@ import {checkInternetConnectionHelper} from '@root/helpers/hasInternetConnection
 import {setTaskListsAction} from '@store/actions/tasksReducerActions/taskListsActions/setTaskListsAction';
 import {setAuthStateAction} from '@store/actions/userReducerActions/setAuthStateAction';
 import {SignOutSagaActionReturnType} from '@store/actions/userSagaActions/signOutAction';
-import {UserDataType} from '@store/reducers/userReducer/types';
-import {userDataSelector} from '@store/selectors/userSelectors';
+import {ProviderIDType} from '@store/reducers/userReducer/types';
+import {providerIDSelector} from '@store/selectors/userSelectors';
+import {LoginManager} from 'react-native-fbsdk-next';
 import {call, delay, put, select} from 'redux-saga/effects';
 
 export function* signOutSaga(action: SignOutSagaActionReturnType) {
@@ -19,19 +24,25 @@ export function* signOutSaga(action: SignOutSagaActionReturnType) {
     yield call(setWaitingProcess, true);
     yield delay(START_ANIMATION_DELAY);
 
+    const providerID: ProviderIDType = yield select(providerIDSelector);
+
     const signOut = () => {
       return auth().signOut();
     };
-    const userData: UserDataType = yield select(userDataSelector);
-    const providerId = userData?.providerData[0]?.providerId;
-    yield delay(START_ANIMATION_DELAY);
 
+    yield delay(START_ANIMATION_DELAY);
     yield call(signOut);
 
-    if (providerId === 'google.com') {
+    if (providerID === GOOGLE_PROVIDER_ID) {
       yield call(GoogleSignin.signOut);
     }
-    yield put(setAuthStateAction({userData: null, channelID: ''}));
+
+    if (providerID === FACEBOOK_PROVIDER_ID) {
+      yield call(LoginManager.logOut);
+    }
+
+    yield put(setAuthStateAction({userData: null, providerID: null}));
+
     yield put(setTaskListsAction({taskLists: []}));
   } catch (error) {
     errorAlert(error);

@@ -7,9 +7,13 @@ export type UserDataType = Nullable<FirebaseAuthTypes.User>;
 export type UserIDType = Nullable<FirebaseAuthTypes.User['uid']>;
 export type ChannelIDType = string;
 export type LanguageType = string;
+export type ProviderIDType = Nullable<string>;
+export type UserAvatarType = Nullable<string>;
 
 export type UserReducerStateType = {
+  providerID: ProviderIDType;
   userData: UserDataType;
   channelID: ChannelIDType;
   language: LanguageType;
+  userAvatar: UserAvatarType;
 };

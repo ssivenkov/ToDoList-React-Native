@@ -3,4 +3,6 @@ export enum USER_REDUCER_ACTION {
   SET_AUTH_STATE = 'userReducer/SET_AUTH_STATE',
   SET_CHANNEL_ID = 'userReducer/SET_CHANNEL_ID',
   SET_LANGUAGE = 'userReducer/SET_LANGUAGE',
+  SET_PROVIDER_ID = 'userReducer/SET_PROVIDER_ID',
+  SET_USER_AVATAR = 'userReducer/SET_USER_AVATAR',
 }
