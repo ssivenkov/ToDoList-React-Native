@@ -1,9 +1,9 @@
 import {USER_REDUCER_ACTION} from '@enums/userReducerEnum';
-import {ChannelIDType, UserDataType} from '@store/reducers/userReducer/types';
+import {ProviderIDType, UserDataType} from '@store/reducers/userReducer/types';
 
 type SetAuthStateActionPayloadType = {
   userData: UserDataType;
-  channelID: ChannelIDType;
+  providerID: ProviderIDType;
 };
 
 export type SetAuthStateActionReturnType = {

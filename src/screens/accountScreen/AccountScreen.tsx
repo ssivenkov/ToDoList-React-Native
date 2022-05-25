@@ -6,7 +6,10 @@ import {styles} from '@root/screens/accountScreen/styles';
 import {changeLanguageAction} from '@store/actions/userSagaActions/changeLanguageAction';
 import {deleteAccountAction} from '@store/actions/userSagaActions/deleteAccountAction';
 import {signOutAction} from '@store/actions/userSagaActions/signOutAction';
-import {userDataSelector} from '@store/selectors/userSelectors';
+import {
+  userAvatarSelector,
+  userDataSelector,
+} from '@store/selectors/userSelectors';
 import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
 import {Image, Text, View} from 'react-native';
@@ -18,6 +21,7 @@ export const AccountScreen = () => {
   const {t} = useTranslation();
 
   const userData = useSelector(userDataSelector);
+  const userAvatar = useSelector(userAvatarSelector);
   const [waitingProcess, setWaitingProcess] = useState<boolean>(false);
 
   const changeLanguage = (language: string) => {
@@ -35,8 +39,8 @@ export const AccountScreen = () => {
   if (userData && !waitingProcess) {
     return (
       <View style={styles.screenContainer}>
-        {userData.photoURL && (
-          <Image source={{uri: userData.photoURL}} style={styles.avatar} />
+        {userAvatar && (
+          <Image source={{uri: userAvatar}} style={styles.avatar} />
         )}
         {userData.displayName && (
           <Text style={styles.name}>{userData.displayName}</Text>
