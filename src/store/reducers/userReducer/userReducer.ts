@@ -3,6 +3,8 @@ import {USER_REDUCER_ACTION} from '@enums/userReducerEnum';
 import {SetAuthStateActionReturnType} from '@store/actions/userReducerActions/setAuthStateAction';
 import {SetChannelIDActionReturnType} from '@store/actions/userReducerActions/setChannelIDAction';
 import {SetLanguageActionReturnType} from '@store/actions/userReducerActions/setLanguageAction';
+import {SetProviderIDActionReturnType} from '@store/actions/userReducerActions/setProviderIDAction';
+import {SetUserAvatarActionReturnType} from '@store/actions/userReducerActions/setUserAvatarAction';
 import {SetUserDataActionReturnType} from '@store/actions/userReducerActions/setUserDataAction';
 import {UserReducerStateType} from '@store/reducers/userReducer/types';
 
@@ -10,12 +12,16 @@ export type UserActionsType =
   | SetAuthStateActionReturnType
   | SetUserDataActionReturnType
   | SetChannelIDActionReturnType
-  | SetLanguageActionReturnType;
+  | SetLanguageActionReturnType
+  | SetProviderIDActionReturnType
+  | SetUserAvatarActionReturnType;
 
 export const initialAuthState: UserReducerStateType = {
+  providerID: null,
   userData: null,
   channelID: '',
   language: EN,
+  userAvatar: null,
 };
 
 export const userReducer = (
@@ -31,10 +37,14 @@ export const userReducer = (
       return {
         ...state,
         userData: action.payload.userData,
-        channelID: action.payload.channelID,
+        providerID: action.payload.providerID,
       };
+    case USER_REDUCER_ACTION.SET_PROVIDER_ID:
+      return {...state, providerID: action.payload.providerID};
     case USER_REDUCER_ACTION.SET_LANGUAGE:
       return {...state, language: action.payload.language};
+    case USER_REDUCER_ACTION.SET_USER_AVATAR:
+      return {...state, userAvatar: action.payload.userAvatar};
     default:
       return state;
   }

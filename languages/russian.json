@@ -26,7 +26,9 @@
       "SignOutWarning": "Вы уверены, что хотите выйти из учетной записи?",
       "DeleteAccount": "Удалить аккаунт",
       "DeleteAccountWarning": "Вы уверены, что хотите удалить свою учетную запись со всеми вашими данными?",
-      "SignInWith": "Вход через <0>{{text}}</0>"
+      "SignInWith": "Вход через <0>{{text}}</0>",
+      "CancelAuthProcess": "Процесс входа отменен пользователем",
+      "ErrorGettingAccessToken": "Ошибка получения токена авторизации"
     },
     "accountScreen": {
       "Account": "Аккаунт"

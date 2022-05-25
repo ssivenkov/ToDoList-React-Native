@@ -13,6 +13,7 @@ import {checkUserSaga} from '@store/sagas/userSagas/checkUserSaga';
 import {createChannelSaga} from '@store/sagas/userSagas/createChannelSaga';
 import {deleteAccountSaga} from '@store/sagas/userSagas/deleteAccountSaga';
 import {facebookSignInSaga} from '@store/sagas/userSagas/facebookSignInSaga';
+import {getUserDataSaga} from '@store/sagas/userSagas/getUserDataSaga';
 import {googleSignInSaga} from '@store/sagas/userSagas/googleSignInSaga';
 import {signOutSaga} from '@store/sagas/userSagas/signOutSaga';
 import {syncUserTaskListsSaga} from '@store/sagas/userSagas/syncUserTaskListsSaga';
@@ -22,6 +23,7 @@ export function* rootWatcher() {
   yield takeLatest(USER_SAGA_ACTION.CHANGE_LANGUAGE, changeLanguageSaga);
   yield takeLatest(USER_SAGA_ACTION.GOOGLE_SIGN_IN, googleSignInSaga);
   yield takeLatest(USER_SAGA_ACTION.FACEBOOK_SIGN_IN, facebookSignInSaga);
+  yield takeLatest(USER_SAGA_ACTION.GET_USER_DATA, getUserDataSaga);
   yield takeLatest(USER_SAGA_ACTION.SIGN_OUT, signOutSaga);
   yield takeLatest(USER_SAGA_ACTION.DELETE_ACCOUNT, deleteAccountSaga);
   yield takeLatest(USER_SAGA_ACTION.CREATE_CHANNEL, createChannelSaga);
