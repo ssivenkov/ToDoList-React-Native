@@ -63,15 +63,15 @@ export const AccountScreen = () => {
         </View>
         <ModalText
           okHandler={signOutHandler}
-          description={t('signInScreen.SignOutWarning')}
-          buttonTitle={t('signInScreen.SignOut')}
+          description={t('accountScreen.SignOutWarning')}
+          buttonTitle={t('accountScreen.SignOut')}
           buttonStyle={styles.buttonContainer}
           disable={waitingProcess}
         />
         <ModalText
           okHandler={deleteAccountHandler}
-          description={t('signInScreen.DeleteAccountWarning')}
-          buttonTitle={t('signInScreen.DeleteAccount')}
+          description={t('accountScreen.DeleteAccountWarning')}
+          buttonTitle={t('accountScreen.DeleteAccount')}
           buttonStyle={styles.buttonContainer}
           disable={waitingProcess}
         />
