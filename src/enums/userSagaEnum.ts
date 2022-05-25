@@ -7,4 +7,5 @@ export enum USER_SAGA_ACTION {
   SIGN_OUT = 'userSaga/SIGN_OUT',
   DELETE_ACCOUNT = 'userSaga/DELETE_ACCOUNT',
   CREATE_CHANNEL = 'userSaga/CREATE_CHANNEL',
+  GET_USER_DATA = 'userSaga/GET_USER_DATA',
 }

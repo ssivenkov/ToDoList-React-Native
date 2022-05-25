@@ -1,6 +1,8 @@
 import {
   ChannelIDType,
   LanguageType,
+  ProviderIDType,
+  UserAvatarType,
   UserDataType,
   UserIDType,
 } from '@store/reducers/userReducer/types';
@@ -20,4 +22,12 @@ export const channelIDSelector = (state: AppRootStateType): ChannelIDType => {
 
 export const languageSelector = (state: AppRootStateType): LanguageType => {
   return state.user.language;
+};
+
+export const providerIDSelector = (state: AppRootStateType): ProviderIDType => {
+  return state.user.providerID;
+};
+
+export const userAvatarSelector = (state: AppRootStateType): UserAvatarType => {
+  return state.user.userAvatar;
 };

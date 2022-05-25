@@ -22,14 +22,16 @@
     },
     "signInScreen": {
       "SignIn": "Sign in",
+      "SignInWith": "Sign in with <0>{{text}}</0>",
+      "CancelAuthProcess": "User cancelled the login process",
+      "ErrorGettingAccessToken": "Something went wrong obtaining access token"
+    },
+    "accountScreen": {
+      "Account": "Account",
       "SignOut": "Sign out",
       "SignOutWarning": "Are you sure you want to sign out?",
       "DeleteAccount": "Delete account",
-      "DeleteAccountWarning": "Are you sure you want to delete your account with all your data?",
-      "SignInWith": "Sign in with <0>{{text}}</0>"
-    },
-    "accountScreen": {
-      "Account": "Account"
+      "DeleteAccountWarning": "Are you sure you want to delete your account with all your data?"
     }
   }
 }
