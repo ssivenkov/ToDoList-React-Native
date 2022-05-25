@@ -4,7 +4,7 @@ import {ViewStyle} from 'react-native';
 export type ModalTextPropsType = {
   buttonTitle: string;
 
-  buttonStyle?: ViewStyle;
+  buttonContainerStyle?: ViewStyle;
   children?: any;
   description?: string;
   okHandler?: () => void;
