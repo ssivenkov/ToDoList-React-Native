@@ -6,9 +6,9 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {GoogleWebClientId} from '@root/api/config';
 import {SignInScreen} from '@root/screens/signInScreen/SignInScreen';
-import {setUserDataAction} from '@store/actions/userReducerActions/setUserDataAction';
 import {checkUserAction} from '@store/actions/userSagaActions/checkUserAction';
 import {createChannelAction} from '@store/actions/userSagaActions/createChannelAction';
+import {getUserDataAction} from '@store/actions/userSagaActions/getUserDataAction';
 import {UserDataType} from '@store/reducers/userReducer/types';
 import {
   channelIDSelector,
@@ -29,7 +29,7 @@ export const Navigation = () => {
     useState<boolean>(true);
 
   const onAuthStateChanged = (userData: UserDataType) => {
-    dispatch(setUserDataAction({userData}));
+    dispatch(getUserDataAction({userData}));
 
     if (firebaseInitializing) setFirebaseInitializing(false);
   };
