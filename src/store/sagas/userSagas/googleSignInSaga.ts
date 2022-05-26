@@ -1,4 +1,4 @@
-import {START_ANIMATION_DELAY} from '@constants/constants';
+import {GOOGLE_PROVIDER_ID, START_ANIMATION_DELAY} from '@constants/constants';
 import {GoogleSignInCancelError} from '@constants/errorMessages';
 import auth from '@react-native-firebase/auth';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
@@ -37,7 +37,7 @@ export function* googleSignInSaga(
       idToken,
     );
 
-    const providerID = auth.GoogleAuthProvider.PROVIDER_ID;
+    const providerID = GOOGLE_PROVIDER_ID;
     yield putResolve(setProviderIDAction({providerID}));
 
     const signInWithCredential = (credential: AuthCredentialType) => {

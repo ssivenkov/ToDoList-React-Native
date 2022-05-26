@@ -1,4 +1,3 @@
-import {COLORS} from '@colors/colors';
 import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
 
 type CreateTaskButtonStylesType = {
@@ -16,7 +15,6 @@ export const styles = StyleSheet.create<CreateTaskButtonStylesType>({
   },
 
   text: {
-    color: COLORS.BLACK,
     fontSize: 20,
     marginBottom: 2,
   },

@@ -7,7 +7,10 @@ export const CustomIconButton = (props: CustomIconButtonPropsType) => {
   const {icon, onPress, disable} = props;
 
   return (
-    <TouchableOpacity style={styles.icon} onPress={onPress} disabled={disable}>
+    <TouchableOpacity
+      style={styles().icon}
+      onPress={onPress}
+      disabled={disable}>
       {icon}
     </TouchableOpacity>
   );

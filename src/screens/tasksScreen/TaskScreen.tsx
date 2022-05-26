@@ -3,6 +3,7 @@ import {useRoute} from '@react-navigation/native';
 import {sortingTaskLists} from '@root/helpers/sorting';
 import {TaskScreenRouteType} from '@root/screens/tasksScreen/types';
 import {taskListsSelector} from '@store/selectors/tasksSelectors';
+import {themeSelector} from '@store/selectors/userSelectors';
 import React from 'react';
 import {useTranslation} from 'react-i18next';
 import {ScrollView, Text, View} from 'react-native';
@@ -15,6 +16,7 @@ export const TasksScreen = () => {
   const {isTodoScreen} = useRoute<TaskScreenRouteType>().params;
 
   const taskLists = useSelector(taskListsSelector);
+  const theme = useSelector(themeSelector);
   const toDoTaskLists = taskLists.filter(({showInToDo}) => showInToDo);
   const doneTaskLists = taskLists.filter((taskList) => {
     const {tasks} = taskList;
@@ -31,7 +33,7 @@ export const TasksScreen = () => {
 
   if (isTodoScreen && sortedToDoTaskLists.length > 0) {
     return (
-      <ScrollView style={styles.tasksListContainer}>
+      <ScrollView style={styles().tasksListContainer}>
         {sortedToDoTaskLists.map((toDoTaskList) => {
           const {id, date, title, tasks} = toDoTaskList;
           const toDoTasks = tasks && tasks.filter((task) => !task.isDone);
@@ -54,7 +56,7 @@ export const TasksScreen = () => {
 
   if (!isTodoScreen && sortedDoneTaskLists.length > 0) {
     return (
-      <ScrollView style={styles.tasksListContainer}>
+      <ScrollView style={styles().tasksListContainer}>
         {sortedDoneTaskLists.map((doneTaskList) => {
           const {id, date, title, tasks} = doneTaskList;
           const doneTasks = tasks && tasks.filter((task) => task.isDone);
@@ -76,8 +78,8 @@ export const TasksScreen = () => {
   }
 
   return (
-    <View style={styles.nullContentContainer}>
-      <Text style={styles.nullContentText}>
+    <View style={styles().nullContentContainer}>
+      <Text style={styles(theme).nullContentText}>
         {t('tasksScreen.NoTaskListsFound')}
       </Text>
     </View>

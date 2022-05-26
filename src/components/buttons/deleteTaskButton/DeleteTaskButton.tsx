@@ -6,10 +6,11 @@ import {SetStateType} from '@root/types/common/types';
 import {deleteTaskListFromScreenAction} from '@store/actions/tasksSagaActions/taskListsSagasActions/deleteTaskListFromScreenAction';
 import {deleteTaskListFullAction} from '@store/actions/tasksSagaActions/taskListsSagasActions/deleteTaskListFullAction';
 import {deleteTaskAction} from '@store/actions/tasksSagaActions/tasksSagasActions/deleteTaskAction';
+import {themeSelector} from '@store/selectors/userSelectors';
 import React from 'react';
 import {Trans} from 'react-i18next';
 import {Text} from 'react-native';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {styles} from './styles';
 import {DeleteTaskButtonPropsType} from './types';
 
@@ -18,6 +19,8 @@ export const DeleteTaskButton = (props: DeleteTaskButtonPropsType) => {
   const {tasks} = fullTaskList;
 
   const dispatch = useDispatch();
+
+  const theme = useSelector(themeSelector);
 
   const toDoTasks = tasks ? tasks.filter((task) => !task.isDone) : [];
   const doneTasks = tasks ? tasks.filter((task) => task.isDone) : [];
@@ -64,9 +67,9 @@ export const DeleteTaskButton = (props: DeleteTaskButtonPropsType) => {
     <ModalIcon
       okHandler={removeTask}
       buttonIcon={<FontAwesomeIcon icon={faTrash} size={ICON_SIZE_SMALL} />}>
-      <Text style={styles.warnText}>
+      <Text style={styles(theme).warnText}>
         <Trans i18nKey="tasksScreen.DeleteQuestionButtonTitle">
-          <Text style={styles.redHighlightTask}>{{text: taskTitle}}</Text>
+          <Text style={styles().redHighlightTask}>{{text: taskTitle}}</Text>
         </Trans>
       </Text>
     </ModalIcon>
