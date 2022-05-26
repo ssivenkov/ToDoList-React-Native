@@ -1,4 +1,5 @@
 import {COLORS} from '@colors/colors';
+import {ThemeType} from '@store/reducers/userReducer/types';
 import {StyleSheet, TextStyle} from 'react-native';
 
 type DeleteTaskListButtonStylesType = {
@@ -6,17 +7,18 @@ type DeleteTaskListButtonStylesType = {
   redHighlightTask: TextStyle;
 };
 
-const {BLACK, RED} = COLORS;
+const {RED} = COLORS;
 
-export const styles = StyleSheet.create<DeleteTaskListButtonStylesType>({
-  warnText: {
-    marginBottom: 15,
-    color: BLACK,
-    fontSize: 20,
-  },
+export const styles = (props?: ThemeType) =>
+  StyleSheet.create<DeleteTaskListButtonStylesType>({
+    warnText: {
+      marginBottom: 15,
+      fontSize: 20,
+      color: props?.TEXT_COLOR,
+    },
 
-  redHighlightTask: {
-    color: RED,
-    fontWeight: '500',
-  },
-});
+    redHighlightTask: {
+      color: RED,
+      fontWeight: '500',
+    },
+  });

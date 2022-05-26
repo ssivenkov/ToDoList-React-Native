@@ -3,15 +3,19 @@ import {NotificationPropsType} from '@components/common/notification/types';
 import {Switcher} from '@components/common/switcher/Switcher';
 import {errorAlert} from '@root/helpers/alertHelper';
 import {requestIOSNotificationsPermissionHelper} from '@root/helpers/requestIOSNotificationsPermissionHelper';
+import {themeSelector} from '@store/selectors/userSelectors';
 import React, {useRef} from 'react';
 import {useTranslation} from 'react-i18next';
 import {Animated, Platform, View} from 'react-native';
 import DatePicker from 'react-native-date-picker';
+import {useSelector} from 'react-redux';
 
 export const Notification = (props: NotificationPropsType) => {
   const {isSwitcherOn, onToggleSwitcherClick, date, setDate} = props;
 
   const {t} = useTranslation();
+
+  const theme = useSelector(themeSelector);
 
   const datePickerHeight = Platform.OS === 'ios' ? 210 : 190;
   const datePickerDate = date ? new Date(date) : new Date();
@@ -44,18 +48,22 @@ export const Notification = (props: NotificationPropsType) => {
   };
 
   return (
-    <View style={styles.notificationContainer}>
+    <View style={styles().notificationContainer}>
       <Switcher
         isOn={isSwitcherOn}
         size={'medium'}
         switcherText={t('tasksScreen.EnableNotification')}
         onToggleSwitcherClick={switching}
-        containerStyle={styles.switcherContainer}
-        textStyle={styles.text}
+        containerStyle={styles().switcherContainer}
+        textStyle={styles(theme).text}
         textMargin={1}
       />
       <Animated.View style={{height: heightAnimation}}>
-        <DatePicker date={datePickerDate} onDateChange={setDate} />
+        <DatePicker
+          date={datePickerDate}
+          onDateChange={setDate}
+          textColor={theme.TEXT_COLOR}
+        />
       </Animated.View>
     </View>
   );

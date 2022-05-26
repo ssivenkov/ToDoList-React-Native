@@ -9,7 +9,7 @@ import {
 } from '@navigation/tasksNavigator/types';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import {TasksScreen} from '@root/screens/tasksScreen/TaskScreen';
-import {languageSelector} from '@store/selectors/userSelectors';
+import {languageSelector, themeSelector} from '@store/selectors/userSelectors';
 import i18next, {t} from 'i18next';
 import React, {useEffect, useState} from 'react';
 import {useSelector} from 'react-redux';
@@ -18,6 +18,7 @@ const {Navigator, Screen} = createMaterialTopTabNavigator<TopTabParamList>();
 
 export const TasksNavigator = () => {
   const languageInState = useSelector(languageSelector);
+  const theme = useSelector(themeSelector);
   const [rerender, setRerender] = useState<string>('');
 
   // need for rerender with correct translations for navigator
@@ -30,6 +31,7 @@ export const TasksNavigator = () => {
   return (
     <Navigator
       initialRouteName={TaskNavigatorScreens.TODO}
+      sceneContainerStyle={{backgroundColor: theme.BACKGROUND_COLOR}}
       screenOptions={tasksNavigatorOptions}>
       <Screen
         name={TaskNavigatorScreens.TODO}

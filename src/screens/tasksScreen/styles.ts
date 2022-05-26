@@ -1,5 +1,5 @@
-import {COLORS} from '@colors/colors';
 import {TaskListMarginVertical} from '@components/common/taskList/styles';
+import {ThemeType} from '@store/reducers/userReducer/types';
 import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
 
 type TodoTasksScreenStylesType = {
@@ -8,20 +8,21 @@ type TodoTasksScreenStylesType = {
   nullContentText: TextStyle;
 };
 
-export const styles = StyleSheet.create<TodoTasksScreenStylesType>({
-  tasksListContainer: {
-    marginVertical: TaskListMarginVertical,
-  },
+export const styles = (props?: ThemeType) =>
+  StyleSheet.create<TodoTasksScreenStylesType>({
+    tasksListContainer: {
+      marginVertical: TaskListMarginVertical,
+    },
 
-  nullContentContainer: {
-    height: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    nullContentContainer: {
+      height: '100%',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
 
-  nullContentText: {
-    fontSize: 22,
-    color: COLORS.BLACK,
-    textAlign: 'center',
-  },
-});
+    nullContentText: {
+      fontSize: 22,
+      textAlign: 'center',
+      color: props?.TEXT_COLOR,
+    },
+  });
