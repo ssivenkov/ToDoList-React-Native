@@ -1,4 +1,4 @@
-import {COLORS} from '@colors/colors';
+import {ThemeType} from '@store/reducers/userReducer/types';
 import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
 
 type TasksScreenStylesType = {
@@ -7,27 +7,26 @@ type TasksScreenStylesType = {
   screenTitle: TextStyle;
 };
 
-const {BLACK, WHITE} = COLORS;
+export const styles = (props?: ThemeType) =>
+  StyleSheet.create<TasksScreenStylesType>({
+    signInWrapper: {
+      height: '100%',
+      justifyContent: 'center',
+      alignItems: 'center',
+      paddingHorizontal: 50,
+      backgroundColor: props?.BACKGROUND_COLOR,
+    },
 
-export const styles = StyleSheet.create<TasksScreenStylesType>({
-  signInWrapper: {
-    height: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingHorizontal: 50,
-    backgroundColor: WHITE,
-  },
+    signInContainer: {
+      width: '100%',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
 
-  signInContainer: {
-    width: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-
-  screenTitle: {
-    fontSize: 30,
-    fontWeight: '500',
-    color: BLACK,
-    marginBottom: 25,
-  },
-});
+    screenTitle: {
+      fontSize: 30,
+      fontWeight: '500',
+      marginBottom: 25,
+      color: props?.TEXT_COLOR,
+    },
+  });

@@ -1,50 +1,37 @@
 import {COLORS} from '@colors/colors';
+import {ThemeType} from '@store/reducers/userReducer/types';
 import {StyleSheet, ViewStyle, TextStyle} from 'react-native';
 
 type CustomButtonStylesType = {
-  bigButton: ViewStyle;
-  disable: ViewStyle;
   textButton: ViewStyle;
   textButtonDisable: ViewStyle;
   text: TextStyle;
   icon: ViewStyle;
 };
 
-const {BLUE_GEM, CELTIC, ALTO, WHITE} = COLORS;
+const {WHITE} = COLORS;
 
-export const styles = StyleSheet.create<CustomButtonStylesType>({
-  bigButton: {
-    paddingHorizontal: 12,
-    paddingVertical: 12,
-    borderRadius: 5,
-    backgroundColor: BLUE_GEM,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
+export const styles = (props?: ThemeType) =>
+  StyleSheet.create<CustomButtonStylesType>({
+    textButton: {
+      paddingHorizontal: 16,
+      paddingVertical: 8,
+      borderRadius: 8,
+      backgroundColor: props?.BUTTON_COLOR,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
 
-  disable: {
-    opacity: 0.4,
-  },
+    textButtonDisable: {
+      opacity: 0.3,
+    },
 
-  textButton: {
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    borderRadius: 8,
-    backgroundColor: CELTIC,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
+    text: {
+      fontSize: 20,
+      color: WHITE,
+    },
 
-  textButtonDisable: {
-    backgroundColor: ALTO,
-  },
-
-  text: {
-    fontSize: 20,
-    color: WHITE,
-  },
-
-  icon: {
-    marginHorizontal: 4,
-  },
-});
+    icon: {
+      marginHorizontal: 4,
+    },
+  });

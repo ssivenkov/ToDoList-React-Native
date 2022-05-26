@@ -11,7 +11,7 @@ import {
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {AccountScreen} from '@root/screens/accountScreen/AccountScreen';
 import {changeLanguageAction} from '@store/actions/userSagaActions/changeLanguageAction';
-import {languageSelector} from '@store/selectors/userSelectors';
+import {languageSelector, themeSelector} from '@store/selectors/userSelectors';
 import i18next, {t} from 'i18next';
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
@@ -21,6 +21,7 @@ const {Navigator, Screen} = createBottomTabNavigator<BottomTabParamList>();
 export const WithAuthNavigator = () => {
   const dispatch = useDispatch();
   const languageInState = useSelector(languageSelector);
+  const theme = useSelector(themeSelector);
   const [rerender, setRerender] = useState<string>('');
 
   // need for rerender with correct translations for navigator
@@ -34,6 +35,7 @@ export const WithAuthNavigator = () => {
   return (
     <Navigator
       initialRouteName={withAuthNavigatorScreens.TASKS}
+      sceneContainerStyle={{backgroundColor: theme.BACKGROUND_COLOR}}
       screenOptions={withAuthNavigatorOptions}>
       <Screen
         name={withAuthNavigatorScreens.TASKS}

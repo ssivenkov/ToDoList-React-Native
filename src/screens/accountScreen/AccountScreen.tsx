@@ -4,10 +4,14 @@ import {ModalText} from '@components/common/modals/ModalText';
 import {Switcher} from '@components/common/switcher/Switcher';
 import {EN, ENGLISH, RU, RUSSIAN} from '@constants/constants';
 import {styles} from '@root/screens/accountScreen/styles';
+import {darkTheme, lightTheme} from '@root/themes/theme';
+import {setThemeAction} from '@store/actions/userReducerActions/setThemeAction';
 import {changeLanguageAction} from '@store/actions/userSagaActions/changeLanguageAction';
 import {deleteAccountAction} from '@store/actions/userSagaActions/deleteAccountAction';
 import {signOutAction} from '@store/actions/userSagaActions/signOutAction';
+import {LanguageType} from '@store/reducers/userReducer/types';
 import {
+  themeSelector,
   userAvatarSelector,
   userDataSelector,
 } from '@store/selectors/userSelectors';
@@ -23,14 +27,16 @@ export const AccountScreen = () => {
 
   const userData = useSelector(userDataSelector);
   const userAvatar = useSelector(userAvatarSelector);
+  const theme = useSelector(themeSelector);
   const [waitingProcess, setWaitingProcess] = useState<boolean>(false);
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
 
-  const changeDarkMode = (mode: boolean) => {
-    setIsDarkMode(mode);
+  const changeTheme = (isDarkMode: boolean) => {
+    if (isDarkMode) {
+      dispatch(setThemeAction({theme: darkTheme}));
+    } else dispatch(setThemeAction({theme: lightTheme}));
   };
 
-  const changeLanguage = (language: string) => {
+  const changeLanguage = (language: LanguageType) => {
     dispatch(changeLanguageAction({language}));
   };
 
@@ -44,50 +50,52 @@ export const AccountScreen = () => {
 
   if (userData && !waitingProcess) {
     return (
-      <View style={styles.screenContainer}>
+      <View style={styles(theme).screenContainer}>
         {userAvatar && (
-          <Image source={{uri: userAvatar}} style={styles.avatar} />
+          <Image source={{uri: userAvatar}} style={styles().avatar} />
         )}
         {userData.displayName && (
-          <Text style={styles.name}>{userData.displayName}</Text>
+          <Text style={styles(theme).name}>{userData.displayName}</Text>
         )}
-        {userData.email && <Text style={styles.text}>{userData.email}</Text>}
+        {userData.email && (
+          <Text style={styles(theme).text}>{userData.email}</Text>
+        )}
         {userData.phoneNumber && (
-          <Text style={styles.text}>{userData.phoneNumber}</Text>
+          <Text style={styles(theme).text}>{userData.phoneNumber}</Text>
         )}
         <Switcher
-          isOn={isDarkMode}
+          isOn={theme.darkMode}
           size={'large'}
           switcherText={t('accountScreen.DarkMode')}
-          onToggleSwitcherClick={changeDarkMode}
-          containerStyle={styles.buttonsContainer}
-          textStyle={styles.text}
+          onToggleSwitcherClick={changeTheme}
+          containerStyle={styles().buttonsContainer}
+          textStyle={styles(theme).text}
           textMargin={6}
         />
-        <View style={styles.buttonsContainer}>
+        <View style={styles().buttonsContainer}>
           <CustomTextButton
             onPress={() => changeLanguage(EN)}
             title={ENGLISH}
-            containerStyle={styles.buttonContainer}
+            containerStyle={styles().buttonContainer}
           />
           <CustomTextButton
             onPress={() => changeLanguage(RU)}
             title={RUSSIAN}
-            containerStyle={styles.buttonContainer}
+            containerStyle={styles().buttonContainer}
           />
         </View>
         <ModalText
           okHandler={signOutHandler}
           description={t('accountScreen.SignOutWarning')}
           buttonTitle={t('accountScreen.SignOut')}
-          buttonContainerStyle={styles.buttonsContainer}
+          buttonContainerStyle={styles().buttonsContainer}
           disable={waitingProcess}
         />
         <ModalText
           okHandler={deleteAccountHandler}
           description={t('accountScreen.DeleteAccountWarning')}
           buttonTitle={t('accountScreen.DeleteAccount')}
-          buttonContainerStyle={styles.buttonsContainer}
+          buttonContainerStyle={styles().buttonsContainer}
           disable={waitingProcess}
         />
       </View>

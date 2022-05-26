@@ -1,9 +1,11 @@
 import {CustomIconButton} from '@components/common/buttons/CustomIconButton';
 import {CustomTextButton} from '@components/common/buttons/CustomTextButton';
 import {Loader} from '@components/common/loader/loader';
+import {themeSelector} from '@store/selectors/userSelectors';
 import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
 import {Modal, View, Text} from 'react-native';
+import {useSelector} from 'react-redux';
 import {styles} from './styles';
 import {ModalIconPropsType} from './types';
 
@@ -19,6 +21,7 @@ export const ModalIcon = (props: ModalIconPropsType) => {
 
   const {t} = useTranslation();
 
+  const theme = useSelector(themeSelector);
   const [modalVisible, setModalVisible] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -39,11 +42,13 @@ export const ModalIcon = (props: ModalIconPropsType) => {
     <View>
       <View>
         <Modal transparent visible={modalVisible}>
-          <View style={styles.centeredView}>
-            <View style={styles.modalView}>
-              {description && <Text style={styles.text}>{description}</Text>}
+          <View style={styles().centeredView}>
+            <View style={styles(theme).modalView}>
+              {description && (
+                <Text style={styles(theme).text}>{description}</Text>
+              )}
               {children && <View>{children}</View>}
-              <View style={styles.buttonsContainer}>
+              <View style={styles().buttonsContainer}>
                 <CustomTextButton
                   onPress={onOkButtonPress}
                   title={`${t('common.Ok')}`}

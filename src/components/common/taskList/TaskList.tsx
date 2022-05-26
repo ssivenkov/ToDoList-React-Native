@@ -3,8 +3,10 @@ import {DeleteTaskListButton} from '@components/buttons/deleteTaskListButton/Del
 import {EditTaskListTitleButton} from '@components/buttons/editTaskListTitleButton/EditTaskListTitleButton';
 import {Task} from '@components/common/task/Task';
 import {sortingTasks} from '@root/helpers/sorting';
+import {themeSelector} from '@store/selectors/userSelectors';
 import React from 'react';
 import {Text, View} from 'react-native';
+import {useSelector} from 'react-redux';
 import {styles} from './styles';
 import {TaskListPropsType} from './types';
 
@@ -18,13 +20,14 @@ export const TaskList = (props: TaskListPropsType) => {
     fullTaskList,
   } = props;
 
+  const theme = useSelector(themeSelector);
   const sortedTasks = sortingTasks(taskListTasks);
 
   return (
-    <View style={styles.container}>
-      <View style={styles.controlsContainer}>
-        <Text style={styles.title}>{taskListTitle}</Text>
-        <View style={styles.buttonsContainer}>
+    <View style={styles(theme).container}>
+      <View style={styles().controlsContainer}>
+        <Text style={styles(theme).title}>{taskListTitle}</Text>
+        <View style={styles().buttonsContainer}>
           {isTodoTaskList && (
             <CreateTaskButton
               taskListID={taskListID}
@@ -45,7 +48,7 @@ export const TaskList = (props: TaskListPropsType) => {
         </View>
       </View>
       {sortedTasks.length > 0 && (
-        <View style={styles.tasksContainer}>
+        <View style={styles().tasksContainer}>
           {sortedTasks.map((task) => {
             const {id: taskID, title: taskTitle} = task;
 

@@ -1,7 +1,5 @@
-import {COLORS} from '@colors/colors';
+import {ThemeType} from '@store/reducers/userReducer/types';
 import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
-
-const {BLACK, WHITE} = COLORS;
 
 type ModalStylesType = {
   centeredView: ViewStyle;
@@ -10,33 +8,34 @@ type ModalStylesType = {
   buttonsContainer: ViewStyle;
 };
 
-export const styles = StyleSheet.create<ModalStylesType>({
-  centeredView: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'rgba(0,0,0,0.85)',
-  },
+export const styles = (props?: ThemeType) =>
+  StyleSheet.create<ModalStylesType>({
+    centeredView: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: 'rgba(0,0,0,0.85)',
+    },
 
-  modalView: {
-    width: '90%',
-    alignItems: 'center',
-    margin: 20,
-    borderRadius: 20,
-    padding: 25,
-    backgroundColor: WHITE,
-  },
+    modalView: {
+      width: '90%',
+      alignItems: 'center',
+      margin: 20,
+      borderRadius: 20,
+      padding: 25,
+      backgroundColor: props?.BACKGROUND_COLOR,
+    },
 
-  text: {
-    fontSize: 20,
-    color: BLACK,
-    marginBottom: 12,
-  },
+    text: {
+      fontSize: 20,
+      marginBottom: 12,
+      color: props?.TEXT_COLOR,
+    },
 
-  buttonsContainer: {
-    width: '100%',
-    justifyContent: 'space-evenly',
-    flexDirection: 'row',
-    marginTop: 13,
-  },
-});
+    buttonsContainer: {
+      width: '100%',
+      justifyContent: 'space-evenly',
+      flexDirection: 'row',
+      marginTop: 13,
+    },
+  });
