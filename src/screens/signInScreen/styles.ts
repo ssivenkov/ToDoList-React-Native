@@ -7,14 +7,14 @@ type TasksScreenStylesType = {
   screenTitle: TextStyle;
 };
 
-export const styles = (props?: ThemeType) =>
+export const styles = (props: ThemeType) =>
   StyleSheet.create<TasksScreenStylesType>({
     signInWrapper: {
       height: '100%',
       justifyContent: 'center',
       alignItems: 'center',
       paddingHorizontal: 50,
-      backgroundColor: props?.BACKGROUND_COLOR,
+      backgroundColor: props.BACKGROUND_COLOR,
     },
 
     signInContainer: {
@@ -27,6 +27,6 @@ export const styles = (props?: ThemeType) =>
       fontSize: 30,
       fontWeight: '500',
       marginBottom: 25,
-      color: props?.TEXT_COLOR,
+      color: props.TEXT_COLOR,
     },
   });

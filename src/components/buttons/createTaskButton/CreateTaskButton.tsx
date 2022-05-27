@@ -1,3 +1,4 @@
+import {styles} from '@components/buttons/createTaskButton/styles';
 import {CustomInput} from '@components/common/input/CustomInput';
 import {ModalIcon} from '@components/common/modals/ModalIcon';
 import {Notification} from '@components/common/notification/Notification';
@@ -5,6 +6,7 @@ import {ICON_SIZE_SMALL} from '@constants/constants';
 import {faPlus} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {createDate} from '@root/helpers/generateDateHelper';
+import {useStyles} from '@root/hooks/useStyles';
 import {SetStateType} from '@root/types/common/types';
 import {addNewTaskAction} from '@store/actions/tasksSagaActions/tasksSagasActions/addNewTaskAction';
 import {TaskListInterface, TaskType} from '@store/reducers/tasksReducer/types';
@@ -18,6 +20,7 @@ import {CreateTaskButtonPropsType} from './types';
 export const CreateTaskButton = (props: CreateTaskButtonPropsType) => {
   const {taskListID, taskListDate, taskListTitle, fullTaskList} = props;
 
+  const style = useStyles(styles);
   const {t} = useTranslation();
   const dispatch = useDispatch();
 
@@ -82,7 +85,13 @@ export const CreateTaskButton = (props: CreateTaskButtonPropsType) => {
       closeHandler={onClosePress}
       okDisable={!newTaskTitle}
       description={`${t('tasksScreen.CreateTaskButtonTitle')}`}
-      buttonIcon={<FontAwesomeIcon icon={faPlus} size={ICON_SIZE_SMALL} />}>
+      buttonIcon={
+        <FontAwesomeIcon
+          icon={faPlus}
+          size={ICON_SIZE_SMALL}
+          style={style.icon}
+        />
+      }>
       <CustomInput value={newTaskTitle} onValueChange={setNewTaskTitle} />
       <Notification
         isSwitcherOn={isOn}

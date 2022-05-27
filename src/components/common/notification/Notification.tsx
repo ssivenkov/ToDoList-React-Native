@@ -3,6 +3,7 @@ import {NotificationPropsType} from '@components/common/notification/types';
 import {Switcher} from '@components/common/switcher/Switcher';
 import {errorAlert} from '@root/helpers/alertHelper';
 import {requestIOSNotificationsPermissionHelper} from '@root/helpers/requestIOSNotificationsPermissionHelper';
+import {useStyles} from '@root/hooks/useStyles';
 import {themeSelector} from '@store/selectors/userSelectors';
 import React, {useRef} from 'react';
 import {useTranslation} from 'react-i18next';
@@ -13,8 +14,8 @@ import {useSelector} from 'react-redux';
 export const Notification = (props: NotificationPropsType) => {
   const {isSwitcherOn, onToggleSwitcherClick, date, setDate} = props;
 
+  const style = useStyles(styles);
   const {t} = useTranslation();
-
   const theme = useSelector(themeSelector);
 
   const datePickerHeight = Platform.OS === 'ios' ? 210 : 190;
@@ -48,14 +49,14 @@ export const Notification = (props: NotificationPropsType) => {
   };
 
   return (
-    <View style={styles().notificationContainer}>
+    <View style={style.notificationContainer}>
       <Switcher
         isOn={isSwitcherOn}
         size={'medium'}
         switcherText={t('tasksScreen.EnableNotification')}
         onToggleSwitcherClick={switching}
-        containerStyle={styles().switcherContainer}
-        textStyle={styles(theme).text}
+        containerStyle={style.switcherContainer}
+        textStyle={style.text}
         textMargin={1}
       />
       <Animated.View style={{height: heightAnimation}}>

@@ -11,13 +11,13 @@ type CustomButtonStylesType = {
 
 const {WHITE} = COLORS;
 
-export const styles = (props?: ThemeType) =>
+export const styles = (props: ThemeType) =>
   StyleSheet.create<CustomButtonStylesType>({
     textButton: {
       paddingHorizontal: 16,
       paddingVertical: 8,
       borderRadius: 8,
-      backgroundColor: props?.BUTTON_COLOR,
+      backgroundColor: props.BUTTON_COLOR,
       justifyContent: 'center',
       alignItems: 'center',
     },
