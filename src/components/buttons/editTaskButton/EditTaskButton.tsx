@@ -1,9 +1,11 @@
+import {styles} from '@components/buttons/editTaskButton/styles';
 import {CustomInput} from '@components/common/input/CustomInput';
 import {ModalIcon} from '@components/common/modals/ModalIcon';
 import {Notification} from '@components/common/notification/Notification';
 import {ICON_SIZE_SMALL} from '@constants/constants';
 import {faPen} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {useStyles} from '@root/hooks/useStyles';
 import {Nullable, SetStateType} from '@root/types/common/types';
 import {setEditedTaskAction} from '@store/actions/tasksSagaActions/tasksSagasActions/setEditedTaskAction';
 import {TaskType} from '@store/reducers/tasksReducer/types';
@@ -15,7 +17,7 @@ import {EditTaskTitleButtonPropsType} from './types';
 
 export const EditTaskButton = (props: EditTaskTitleButtonPropsType) => {
   const {taskListID, taskID, oldTaskTitle, isTodo} = props;
-
+  const style = useStyles(styles);
   const {t} = useTranslation();
   const dispatch = useDispatch();
 
@@ -71,7 +73,13 @@ export const EditTaskButton = (props: EditTaskTitleButtonPropsType) => {
       closeHandler={onClosePress}
       okDisable={!editedTaskTitle}
       description={`${t('tasksScreen.EditTaskButton')}`}
-      buttonIcon={<FontAwesomeIcon icon={faPen} size={ICON_SIZE_SMALL} />}>
+      buttonIcon={
+        <FontAwesomeIcon
+          icon={faPen}
+          size={ICON_SIZE_SMALL}
+          style={style.icon}
+        />
+      }>
       <CustomInput value={editedTaskTitle} onValueChange={setEditedTaskTitle} />
       {isTodo && (
         <Notification

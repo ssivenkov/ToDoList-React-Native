@@ -5,12 +5,12 @@ type TasksScreenStylesType = {
   loaderContainer: ViewStyle;
 };
 
-export const styles = (props?: ThemeType) =>
+export const styles = (props: ThemeType) =>
   StyleSheet.create<TasksScreenStylesType>({
     loaderContainer: {
       justifyContent: 'center',
       alignItems: 'center',
       zIndex: 10,
-      backgroundColor: props?.BACKGROUND_COLOR,
+      backgroundColor: props.BACKGROUND_COLOR,
     },
   });

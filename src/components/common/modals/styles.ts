@@ -8,7 +8,7 @@ type ModalStylesType = {
   buttonsContainer: ViewStyle;
 };
 
-export const styles = (props?: ThemeType) =>
+export const styles = (props: ThemeType) =>
   StyleSheet.create<ModalStylesType>({
     centeredView: {
       flex: 1,
@@ -23,13 +23,13 @@ export const styles = (props?: ThemeType) =>
       margin: 20,
       borderRadius: 20,
       padding: 25,
-      backgroundColor: props?.BACKGROUND_COLOR,
+      backgroundColor: props.BACKGROUND_COLOR,
     },
 
     text: {
       fontSize: 20,
       marginBottom: 12,
-      color: props?.TEXT_COLOR,
+      color: props.TEXT_COLOR,
     },
 
     buttonsContainer: {

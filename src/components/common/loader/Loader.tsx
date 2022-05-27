@@ -1,16 +1,14 @@
 import {styles} from '@components/common/loader/styles';
-import {themeSelector} from '@store/selectors/userSelectors';
+import {useStyles} from '@root/hooks/useStyles';
 import LottieView from 'lottie-react-native';
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
-import {useSelector} from 'react-redux';
 
 export const Loader = () => {
-  const theme = useSelector(themeSelector);
+  const style = useStyles(styles);
 
   return (
-    <View
-      style={[StyleSheet.absoluteFillObject, styles(theme).loaderContainer]}>
+    <View style={[StyleSheet.absoluteFillObject, style.loaderContainer]}>
       <LottieView
         autoPlay
         source={require('../../../assets/images/loader.json')}
