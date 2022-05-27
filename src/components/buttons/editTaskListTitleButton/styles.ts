@@ -9,6 +9,6 @@ type EditTaskListTitleButtonStylesType = {
 export const styles = (props: ThemeType) =>
   StyleSheet.create<EditTaskListTitleButtonStylesType>({
     icon: {
-      color: props.TEXT_COLOR,
+      color: props.ICON_BUTTON_COLOR,
     },
   });

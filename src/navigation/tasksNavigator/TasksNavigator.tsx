@@ -32,7 +32,7 @@ export const TasksNavigator = () => {
     <Navigator
       initialRouteName={TaskNavigatorScreens.TODO}
       sceneContainerStyle={{backgroundColor: theme.BACKGROUND_COLOR}}
-      screenOptions={tasksNavigatorOptions}>
+      screenOptions={tasksNavigatorOptions()}>
       <Screen
         name={TaskNavigatorScreens.TODO}
         component={TasksScreen}
@@ -40,7 +40,7 @@ export const TasksNavigator = () => {
           isTodoScreen: true,
         }}
         options={{
-          ...toDoScreenOptions,
+          ...toDoScreenOptions(),
           tabBarLabel: `${t('tasksScreen.TodoTasksTab')}`,
         }}
       />
@@ -51,7 +51,7 @@ export const TasksNavigator = () => {
           isTodoScreen: false,
         }}
         options={{
-          ...doneScreenOptions,
+          ...doneScreenOptions(),
           tabBarLabel: `${t('tasksScreen.DoneTasksTab')}`,
         }}
       />

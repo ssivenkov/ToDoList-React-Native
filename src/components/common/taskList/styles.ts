@@ -40,7 +40,7 @@ export const styles = (props: ThemeType) =>
     title: {
       flex: 1,
       color: props.TEXT_COLOR,
-      fontSize: 22,
+      fontSize: 25.5,
     },
 
     warnText: {
