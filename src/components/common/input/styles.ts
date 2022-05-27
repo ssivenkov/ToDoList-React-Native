@@ -6,7 +6,7 @@ type InputStylesType = {
   input: TextStyle;
 };
 
-export const styles = (props?: ThemeType) =>
+export const styles = (props: ThemeType) =>
   StyleSheet.create<InputStylesType>({
     container: {
       flexDirection: 'row',
@@ -17,8 +17,8 @@ export const styles = (props?: ThemeType) =>
       alignContent: 'center',
       fontSize: 20,
       padding: 10,
-      color: props?.TEXT_COLOR,
-      backgroundColor: props?.PLACEHOLDER_COLOR,
+      color: props.TEXT_COLOR,
+      backgroundColor: props.PLACEHOLDER_COLOR,
       borderRadius: 8,
     },
   });

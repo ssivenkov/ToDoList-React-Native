@@ -13,7 +13,7 @@ type UserScreenStylesType = {
 const avatarSize = 130;
 const topMargin = 20;
 
-export const styles = (props?: ThemeType) =>
+export const styles = (props: ThemeType) =>
   StyleSheet.create<UserScreenStylesType>({
     screenContainer: {
       marginHorizontal: 15,
@@ -30,14 +30,14 @@ export const styles = (props?: ThemeType) =>
     name: {
       fontSize: 30,
       fontWeight: '500',
-      color: props?.TEXT_COLOR,
+      color: props.TEXT_COLOR,
       marginTop: topMargin,
       marginBottom: 10,
     },
 
     text: {
       fontSize: 22,
-      color: props?.TEXT_COLOR,
+      color: props.TEXT_COLOR,
     },
 
     buttonContainer: {

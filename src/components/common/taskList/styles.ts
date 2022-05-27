@@ -15,10 +15,10 @@ type TaskListStylesType = {
 export const TaskListMarginVertical = 8;
 const {RED} = COLORS;
 
-export const styles = (props?: ThemeType) =>
+export const styles = (props: ThemeType) =>
   StyleSheet.create<TaskListStylesType>({
     container: {
-      backgroundColor: props?.TASK_LIST_COLOR,
+      backgroundColor: props.TASK_LIST_COLOR,
       padding: 10,
       marginHorizontal: 15,
       marginVertical: TaskListMarginVertical,
@@ -39,7 +39,7 @@ export const styles = (props?: ThemeType) =>
 
     title: {
       flex: 1,
-      color: props?.TEXT_COLOR,
+      color: props.TEXT_COLOR,
       fontSize: 22,
     },
 

@@ -1,22 +1,21 @@
 import {DeleteTaskButton} from '@components/buttons/deleteTaskButton/DeleteTaskButton';
 import {DoneTaskButton} from '@components/buttons/doneTaskButton/DoneTaskButton';
 import {EditTaskButton} from '@components/buttons/editTaskButton/EditTaskButton';
-import {themeSelector} from '@store/selectors/userSelectors';
+import {useStyles} from '@root/hooks/useStyles';
 import React from 'react';
 import {Text, View} from 'react-native';
-import {useSelector} from 'react-redux';
 import {styles} from './styles';
 import {TaskPropsType} from './types';
 
 export const Task = (props: TaskPropsType) => {
   const {isTodo, taskListID, taskTitle, taskID, fullTaskList} = props;
 
-  const theme = useSelector(themeSelector);
+  const style = useStyles(styles);
 
   return (
-    <View style={styles(theme).container}>
-      <Text style={styles(theme).text}>{taskTitle}</Text>
-      <View style={styles().buttonsContainer}>
+    <View style={style.container}>
+      <Text style={style.text}>{taskTitle}</Text>
+      <View style={style.buttonsContainer}>
         {isTodo && (
           <DoneTaskButton
             completedTaskTitle={taskTitle}

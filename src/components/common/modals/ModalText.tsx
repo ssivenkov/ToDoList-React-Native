@@ -1,4 +1,5 @@
 import {CustomTextButton} from '@components/common/buttons/CustomTextButton';
+import {useStyles} from '@root/hooks/useStyles';
 import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
 import {Modal, View, Text} from 'react-native';
@@ -15,6 +16,7 @@ export const ModalText = (props: ModalTextPropsType) => {
     disable,
   } = props;
 
+  const style = useStyles(styles);
   const {t} = useTranslation();
 
   const [modalVisible, setModalVisible] = useState(false);
@@ -39,11 +41,11 @@ export const ModalText = (props: ModalTextPropsType) => {
   return (
     <View>
       <Modal transparent visible={modalVisible} onRequestClose={onRequestClose}>
-        <View style={styles.centeredView}>
-          <View style={styles.modalView}>
-            {description && <Text style={styles.text}>{description}</Text>}
+        <View style={style.centeredView}>
+          <View style={style.modalView}>
+            {description && <Text style={style.text}>{description}</Text>}
             {children && <View>{children}</View>}
-            <View style={styles.buttonsContainer}>
+            <View style={style.buttonsContainer}>
               {okHandler && (
                 <CustomTextButton
                   onPress={onOkButtonPress}

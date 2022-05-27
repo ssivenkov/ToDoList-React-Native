@@ -14,7 +14,7 @@ type TaskStylesType = {
 const {BLACK, RED, COD_GRAY} = COLORS;
 const textSize = 20;
 
-export const styles = (props?: ThemeType) =>
+export const styles = (props: ThemeType) =>
   StyleSheet.create<TaskStylesType>({
     container: {
       justifyContent: 'space-between',
@@ -23,12 +23,12 @@ export const styles = (props?: ThemeType) =>
       paddingVertical: 5,
       marginVertical: 3,
       borderRadius: 7,
-      backgroundColor: props?.TASK_COLOR,
+      backgroundColor: props.TASK_COLOR,
     },
 
     text: {
       flex: 1,
-      color: props?.TEXT_COLOR,
+      color: props.TEXT_COLOR,
       fontSize: textSize,
     },
 

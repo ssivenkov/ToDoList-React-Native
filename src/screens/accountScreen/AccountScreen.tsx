@@ -1,8 +1,9 @@
 import {CustomTextButton} from '@components/common/buttons/CustomTextButton';
-import {Loader} from '@components/common/loader/loader';
+import {Loader} from '@components/common/loader/Loader';
 import {ModalText} from '@components/common/modals/ModalText';
 import {Switcher} from '@components/common/switcher/Switcher';
 import {EN, ENGLISH, RU, RUSSIAN} from '@constants/constants';
+import {useStyles} from '@root/hooks/useStyles';
 import {styles} from '@root/screens/accountScreen/styles';
 import {darkTheme, lightTheme} from '@root/themes/theme';
 import {setThemeAction} from '@store/actions/userReducerActions/setThemeAction';
@@ -22,7 +23,7 @@ import {useDispatch, useSelector} from 'react-redux';
 
 export const AccountScreen = () => {
   const dispatch = useDispatch();
-
+  const style = useStyles(styles);
   const {t} = useTranslation();
 
   const userData = useSelector(userDataSelector);
@@ -50,52 +51,50 @@ export const AccountScreen = () => {
 
   if (userData && !waitingProcess) {
     return (
-      <View style={styles(theme).screenContainer}>
+      <View style={style.screenContainer}>
         {userAvatar && (
-          <Image source={{uri: userAvatar}} style={styles().avatar} />
+          <Image source={{uri: userAvatar}} style={style.avatar} />
         )}
         {userData.displayName && (
-          <Text style={styles(theme).name}>{userData.displayName}</Text>
+          <Text style={style.name}>{userData.displayName}</Text>
         )}
-        {userData.email && (
-          <Text style={styles(theme).text}>{userData.email}</Text>
-        )}
+        {userData.email && <Text style={style.text}>{userData.email}</Text>}
         {userData.phoneNumber && (
-          <Text style={styles(theme).text}>{userData.phoneNumber}</Text>
+          <Text style={style.text}>{userData.phoneNumber}</Text>
         )}
         <Switcher
           isOn={theme.darkMode}
           size={'large'}
           switcherText={t('accountScreen.DarkMode')}
           onToggleSwitcherClick={changeTheme}
-          containerStyle={styles().buttonsContainer}
-          textStyle={styles(theme).text}
+          containerStyle={style.buttonsContainer}
+          textStyle={style.text}
           textMargin={6}
         />
-        <View style={styles().buttonsContainer}>
+        <View style={style.buttonsContainer}>
           <CustomTextButton
             onPress={() => changeLanguage(EN)}
             title={ENGLISH}
-            containerStyle={styles().buttonContainer}
+            containerStyle={style.buttonContainer}
           />
           <CustomTextButton
             onPress={() => changeLanguage(RU)}
             title={RUSSIAN}
-            containerStyle={styles().buttonContainer}
+            containerStyle={style.buttonContainer}
           />
         </View>
         <ModalText
           okHandler={signOutHandler}
           description={t('accountScreen.SignOutWarning')}
           buttonTitle={t('accountScreen.SignOut')}
-          buttonContainerStyle={styles().buttonsContainer}
+          buttonContainerStyle={style.buttonsContainer}
           disable={waitingProcess}
         />
         <ModalText
           okHandler={deleteAccountHandler}
           description={t('accountScreen.DeleteAccountWarning')}
           buttonTitle={t('accountScreen.DeleteAccount')}
-          buttonContainerStyle={styles().buttonsContainer}
+          buttonContainerStyle={style.buttonsContainer}
           disable={waitingProcess}
         />
       </View>

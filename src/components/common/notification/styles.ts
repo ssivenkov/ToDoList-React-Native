@@ -7,7 +7,7 @@ type DeleteTaskListButtonStylesType = {
   text: TextStyle;
 };
 
-export const styles = (props?: ThemeType) =>
+export const styles = (props: ThemeType) =>
   StyleSheet.create<DeleteTaskListButtonStylesType>({
     notificationContainer: {
       width: '100%',
@@ -22,7 +22,7 @@ export const styles = (props?: ThemeType) =>
     },
 
     text: {
-      color: props?.TEXT_COLOR,
+      color: props.TEXT_COLOR,
       fontSize: 20,
     },
   });
