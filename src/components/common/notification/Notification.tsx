@@ -64,6 +64,7 @@ export const Notification = (props: NotificationPropsType) => {
           date={datePickerDate}
           onDateChange={setDate}
           textColor={theme.TEXT_COLOR}
+          androidVariant={'nativeAndroid'}
         />
       </Animated.View>
     </View>

@@ -1,35 +1,58 @@
 import {COLORS} from '@colors/colors';
 import {FontAwesomeIconStyle} from '@fortawesome/react-native-fontawesome';
-import {StyleSheet, ViewStyle} from 'react-native';
+import {ThemeType} from '@store/reducers/userReducer/types';
+import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
 
 type TasksNavigationStylesType = {
   tabBarContainer: ViewStyle;
   tabBarItem: ViewStyle;
-  tabLightIcon: FontAwesomeIconStyle;
-  tabDarkIcon: FontAwesomeIconStyle;
+  tabFocusIcon: FontAwesomeIconStyle;
+  tabIcon: FontAwesomeIconStyle;
   tabBarIndicator: ViewStyle;
+  headerTitleStyle: TextStyle;
+  buttonContainer: ViewStyle;
+  icon: TextStyle;
+  title: TextStyle;
 };
 
-const {BLACK, WHITE, FRESH_EGGPLANT} = COLORS;
+const {WHITE} = COLORS;
 
-export const styles = StyleSheet.create<TasksNavigationStylesType>({
-  tabBarContainer: {
-    backgroundColor: WHITE,
-  },
+export const styles = (props: ThemeType) =>
+  StyleSheet.create<TasksNavigationStylesType>({
+    tabBarContainer: {
+      backgroundColor: props.TAB_BAR_BACKGROUND_COLOR,
+    },
 
-  tabBarItem: {
-    height: 60,
-  },
+    tabBarItem: {
+      height: 60,
+    },
 
-  tabLightIcon: {
-    color: FRESH_EGGPLANT,
-  },
+    tabFocusIcon: {
+      color: props.TAB_BAR_FOCUS_ICON_COLOR,
+    },
 
-  tabDarkIcon: {
-    color: BLACK,
-  },
+    tabIcon: {
+      color: props.TAB_BAR_ICON_COLOR,
+    },
 
-  tabBarIndicator: {
-    backgroundColor: FRESH_EGGPLANT,
-  },
-});
+    tabBarIndicator: {
+      backgroundColor: props.TAB_BAR_INDICATOR_COLOR,
+    },
+
+    headerTitleStyle: {
+      color: WHITE,
+      fontSize: 24,
+    },
+
+    buttonContainer: {
+      marginRight: 10,
+    },
+
+    icon: {
+      marginTop: 2,
+    },
+
+    title: {
+      marginTop: 8,
+    },
+  });

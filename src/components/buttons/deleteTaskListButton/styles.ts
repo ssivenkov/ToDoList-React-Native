@@ -25,6 +25,6 @@ export const styles = (props: ThemeType) =>
     },
 
     icon: {
-      color: props.TEXT_COLOR,
+      color: props.ICON_BUTTON_COLOR,
     },
   });
