@@ -17,7 +17,7 @@ export const styles = (props: ThemeType) =>
       paddingHorizontal: 16,
       paddingVertical: 8,
       borderRadius: 8,
-      backgroundColor: props.BUTTON_COLOR,
+      backgroundColor: props.TEXT_BUTTON_COLOR,
       justifyContent: 'center',
       alignItems: 'center',
     },
