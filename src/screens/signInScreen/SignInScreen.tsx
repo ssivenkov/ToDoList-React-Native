@@ -1,6 +1,7 @@
-import {Loader} from '@components/common/loader/loader';
+import {Loader} from '@components/common/loader/Loader';
 import {FACEBOOK_TITLE, GOOGLE_TITLE} from '@constants/constants';
 import {faFacebook, faGoogle} from '@fortawesome/free-brands-svg-icons';
+import {useStyles} from '@root/hooks/useStyles';
 import {SignInButton} from '@root/screens/signInScreen/signInButton/SignInButton';
 import {signInStyles} from '@root/screens/signInScreen/signInButton/styles';
 import {FacebookSignInAction} from '@store/actions/userSagaActions/FacebookSignInAction';
@@ -13,7 +14,7 @@ import {styles} from './styles';
 
 export const SignInScreen = () => {
   const dispatch = useDispatch();
-
+  const style = useStyles(styles);
   const {t} = useTranslation();
 
   const [waitingUserData, setWaitingUserData] = useState<boolean>(false);
@@ -31,9 +32,9 @@ export const SignInScreen = () => {
   }
 
   return (
-    <View style={styles.signInWrapper}>
-      <View style={styles.signInContainer}>
-        <Text style={styles.screenTitle}>{t('signInScreen.SignIn')}</Text>
+    <View style={style.signInWrapper}>
+      <View style={style.signInContainer}>
+        <Text style={style.screenTitle}>{t('signInScreen.SignIn')}</Text>
         <SignInButton
           onPress={onGoogleButtonPress}
           serviceTitle={GOOGLE_TITLE}

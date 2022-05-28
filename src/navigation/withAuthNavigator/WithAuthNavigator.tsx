@@ -34,12 +34,12 @@ export const WithAuthNavigator = () => {
   return (
     <Navigator
       initialRouteName={withAuthNavigatorScreens.TASKS}
-      screenOptions={withAuthNavigatorOptions}>
+      screenOptions={withAuthNavigatorOptions()}>
       <Screen
         name={withAuthNavigatorScreens.TASKS}
         component={TasksNavigator}
         options={{
-          ...tasksNavigatorOptions,
+          ...tasksNavigatorOptions(),
           headerTitle: `${t('tasksScreen.Tasks')}`,
           tabBarLabel: `${t('tasksScreen.Tasks')}`,
         }}
@@ -48,7 +48,7 @@ export const WithAuthNavigator = () => {
         name={withAuthNavigatorScreens.ACCOUNT}
         component={AccountScreen}
         options={{
-          ...accountScreenOptions,
+          ...accountScreenOptions(),
           headerTitle: `${t('accountScreen.Account')}`,
           tabBarLabel: `${t('accountScreen.Account')}`,
         }}

@@ -2,6 +2,7 @@ import {ModalIcon} from '@components/common/modals/ModalIcon';
 import {ICON_SIZE_SMALL} from '@constants/constants';
 import {faTrash} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {useStyles} from '@root/hooks/useStyles';
 import {SetStateType} from '@root/types/common/types';
 import {deleteTaskListFromScreenAction} from '@store/actions/tasksSagaActions/taskListsSagasActions/deleteTaskListFromScreenAction';
 import {deleteTaskListFullAction} from '@store/actions/tasksSagaActions/taskListsSagasActions/deleteTaskListFullAction';
@@ -17,6 +18,7 @@ export const DeleteTaskButton = (props: DeleteTaskButtonPropsType) => {
   const {isTodoTaskList, taskID, taskTitle, fullTaskList} = props;
   const {tasks} = fullTaskList;
 
+  const style = useStyles(styles);
   const dispatch = useDispatch();
 
   const toDoTasks = tasks ? tasks.filter((task) => !task.isDone) : [];
@@ -63,10 +65,16 @@ export const DeleteTaskButton = (props: DeleteTaskButtonPropsType) => {
   return (
     <ModalIcon
       okHandler={removeTask}
-      buttonIcon={<FontAwesomeIcon icon={faTrash} size={ICON_SIZE_SMALL} />}>
-      <Text style={styles.warnText}>
+      buttonIcon={
+        <FontAwesomeIcon
+          icon={faTrash}
+          size={ICON_SIZE_SMALL}
+          style={style.icon}
+        />
+      }>
+      <Text style={style.warnText}>
         <Trans i18nKey="tasksScreen.DeleteQuestionButtonTitle">
-          <Text style={styles.redHighlightTask}>{{text: taskTitle}}</Text>
+          <Text style={style.redHighlightTask}>{{text: taskTitle}}</Text>
         </Trans>
       </Text>
     </ModalIcon>
