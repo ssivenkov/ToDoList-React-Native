@@ -9,20 +9,21 @@ import {t} from 'i18next';
 import React from 'react';
 import {useSelector} from 'react-redux';
 
-export const tasksNavigatorOptions = () => {
-  const style = useStyles(styles);
-  const theme = useSelector(themeSelector);
+export const tasksNavigatorOptions: () => MaterialTopTabNavigationOptions =
+  () => {
+    const style = useStyles(styles);
+    const theme = useSelector(themeSelector);
 
-  return {
-    tabBarStyle: style.tabBarContainer,
-    tabBarItemStyle: style.tabBarItem,
-    tabBarActiveTintColor: theme.TAB_BAR_FOCUS_TEXT_COLOR,
-    tabBarInactiveTintColor: theme.TAB_BAR_TEXT_COLOR,
-    tabBarIndicatorStyle: style.tabBarIndicator,
-    tabBarIconStyle: style.icon,
-    tabBarLabelStyle: style.title,
+    return {
+      tabBarStyle: style.tabBarContainer,
+      tabBarItemStyle: style.tabBarItem,
+      tabBarActiveTintColor: theme.TAB_BAR_FOCUS_TEXT_COLOR,
+      tabBarInactiveTintColor: theme.TAB_BAR_TEXT_COLOR,
+      tabBarIndicatorStyle: style.tabBarIndicator,
+      tabBarIconStyle: style.icon,
+      tabBarLabelStyle: style.title,
+    };
   };
-};
 
 export const toDoScreenOptions: () => MaterialTopTabNavigationOptions = () => {
   const style = useStyles(styles);

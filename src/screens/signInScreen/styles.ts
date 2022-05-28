@@ -14,7 +14,6 @@ export const styles = (props: ThemeType) =>
       justifyContent: 'center',
       alignItems: 'center',
       paddingHorizontal: 50,
-      backgroundColor: props.BACKGROUND_COLOR,
     },
 
     signInContainer: {

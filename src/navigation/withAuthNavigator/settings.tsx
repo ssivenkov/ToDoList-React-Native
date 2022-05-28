@@ -11,19 +11,20 @@ import React from 'react';
 import {View} from 'react-native';
 import {useSelector} from 'react-redux';
 
-export const withAuthNavigatorOptions = () => {
-  const style = useStyles(styles);
-  const theme = useSelector(themeSelector);
+export const withAuthNavigatorOptions: () => BottomTabNavigationOptions =
+  () => {
+    const style = useStyles(styles);
+    const theme = useSelector(themeSelector);
 
-  return {
-    headerShown: false,
-    tabBarStyle: style.tabBarContainer,
-    tabBarActiveTintColor: theme.TAB_BAR_FOCUS_TEXT_COLOR,
-    tabBarInactiveTintColor: theme.TAB_BAR_TEXT_COLOR,
-    tabBarIconStyle: style.icon,
-    tabBarLabelStyle: style.title,
+    return {
+      headerShown: false,
+      tabBarStyle: style.tabBarContainer,
+      tabBarActiveTintColor: theme.TAB_BAR_FOCUS_TEXT_COLOR,
+      tabBarInactiveTintColor: theme.TAB_BAR_TEXT_COLOR,
+      tabBarIconStyle: style.icon,
+      tabBarLabelStyle: style.title,
+    };
   };
-};
 
 export const tasksNavigatorOptions: () => BottomTabNavigationOptions = () => {
   const style = useStyles(styles);
