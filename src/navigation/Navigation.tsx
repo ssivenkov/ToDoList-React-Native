@@ -2,8 +2,9 @@ import {RootStackParamList, RootStackScreens} from '@navigation/types';
 import {WithAuthNavigator} from '@navigation/withAuthNavigator/WithAuthNavigator';
 import auth from '@react-native-firebase/auth';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
-import {NavigationContainer} from '@react-navigation/native';
+import {NavigationContainer, DefaultTheme} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {Theme} from '@react-navigation/native/src/types';
 import {GoogleWebClientId} from '@root/api/config';
 import {SignInScreen} from '@root/screens/signInScreen/SignInScreen';
 import {checkUserAction} from '@store/actions/userSagaActions/checkUserAction';
@@ -12,6 +13,7 @@ import {getUserDataAction} from '@store/actions/userSagaActions/getUserDataActio
 import {UserDataType} from '@store/reducers/userReducer/types';
 import {
   channelIDSelector,
+  themeSelector,
   userIDSelector,
 } from '@store/selectors/userSelectors';
 import React, {useEffect, useState} from 'react';
@@ -22,11 +24,18 @@ const {Navigator, Screen} = createNativeStackNavigator<RootStackParamList>();
 
 export const Navigation = () => {
   const dispatch = useDispatch();
-
+  const theme = useSelector(themeSelector);
   const userID = useSelector(userIDSelector);
   const channelID = useSelector(channelIDSelector);
   const [firebaseInitializing, setFirebaseInitializing] =
     useState<boolean>(true);
+  const backgroundTheme: Theme = {
+    ...DefaultTheme,
+    colors: {
+      ...DefaultTheme.colors,
+      background: theme.BACKGROUND_COLOR,
+    },
+  };
 
   const onAuthStateChanged = (userData: UserDataType) => {
     dispatch(getUserDataAction({userData}));
@@ -53,7 +62,7 @@ export const Navigation = () => {
 
   return (
     <SafeAreaProvider>
-      <NavigationContainer>
+      <NavigationContainer theme={backgroundTheme}>
         <Navigator>
           {userID ? (
             <Screen
