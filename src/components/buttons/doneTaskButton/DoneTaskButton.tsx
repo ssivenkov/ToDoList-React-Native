@@ -2,6 +2,7 @@ import {ModalIcon} from '@components/common/modals/ModalIcon';
 import {ICON_SIZE_SMALL} from '@constants/constants';
 import {faCheck} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {useStyles} from '@root/hooks/useStyles';
 import {SetStateType} from '@root/types/common/types';
 import {setTaskIsDoneAction} from '@store/actions/tasksSagaActions/tasksSagasActions/setTaskIsDoneAction';
 import React from 'react';
@@ -17,6 +18,7 @@ export const DoneTaskButton = ({
   completedTaskTitle,
 }: DoneTaskButtonPropsType) => {
   const dispatch = useDispatch();
+  const style = useStyles(styles);
 
   const setDoneTask = (
     setIsLoading: SetStateType<boolean>,
@@ -35,10 +37,16 @@ export const DoneTaskButton = ({
   return (
     <ModalIcon
       okHandler={setDoneTask}
-      buttonIcon={<FontAwesomeIcon icon={faCheck} size={ICON_SIZE_SMALL} />}>
-      <Text style={styles.warnText}>
+      buttonIcon={
+        <FontAwesomeIcon
+          icon={faCheck}
+          size={ICON_SIZE_SMALL}
+          style={style.icon}
+        />
+      }>
+      <Text style={style.warnText}>
         <Trans i18nKey="tasksScreen.DoneButton">
-          <Text style={styles.greenHighlightTask}>
+          <Text style={style.greenHighlightTask}>
             {{text: completedTaskTitle}}
           </Text>
         </Trans>

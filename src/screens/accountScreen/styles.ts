@@ -1,4 +1,4 @@
-import {COLORS} from '@colors/colors';
+import {ThemeType} from '@store/reducers/userReducer/types';
 import {ImageStyle, StyleSheet, TextStyle, ViewStyle} from 'react-native';
 
 type UserScreenStylesType = {
@@ -13,39 +13,40 @@ type UserScreenStylesType = {
 const avatarSize = 130;
 const topMargin = 20;
 
-export const styles = StyleSheet.create<UserScreenStylesType>({
-  screenContainer: {
-    marginHorizontal: 15,
-    marginTop: 50,
-    alignItems: 'center',
-  },
+export const styles = (props: ThemeType) =>
+  StyleSheet.create<UserScreenStylesType>({
+    screenContainer: {
+      marginHorizontal: 15,
+      marginTop: 50,
+      alignItems: 'center',
+    },
 
-  avatar: {
-    width: avatarSize,
-    height: avatarSize,
-    borderRadius: 100,
-  },
+    avatar: {
+      width: avatarSize,
+      height: avatarSize,
+      borderRadius: 100,
+    },
 
-  name: {
-    fontSize: 30,
-    fontWeight: '500',
-    color: COLORS.BLACK,
-    marginTop: topMargin,
-  },
+    name: {
+      fontSize: 30,
+      fontWeight: '500',
+      color: props.TEXT_COLOR,
+      marginTop: topMargin,
+      marginBottom: 10,
+    },
 
-  text: {
-    fontSize: 22,
-    color: COLORS.BLACK,
-    marginTop: 10,
-  },
+    text: {
+      fontSize: 22,
+      color: props.TEXT_COLOR,
+    },
 
-  buttonContainer: {
-    marginTop: topMargin,
-    marginHorizontal: 15,
-  },
+    buttonContainer: {
+      marginHorizontal: 15,
+    },
 
-  buttonsContainer: {
-    flexDirection: 'row',
-    marginTop: topMargin,
-  },
-});
+    buttonsContainer: {
+      width: '70%',
+      flexDirection: 'row',
+      marginTop: topMargin,
+    },
+  });

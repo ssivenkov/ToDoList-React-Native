@@ -2,6 +2,7 @@ import {
   ChannelIDType,
   LanguageType,
   ProviderIDType,
+  ThemeType,
   UserAvatarType,
   UserDataType,
   UserIDType,
@@ -30,4 +31,8 @@ export const providerIDSelector = (state: AppRootStateType): ProviderIDType => {
 
 export const userAvatarSelector = (state: AppRootStateType): UserAvatarType => {
   return state.user.userAvatar;
+};
+
+export const themeSelector = (state: AppRootStateType): ThemeType => {
+  return state.user.theme;
 };

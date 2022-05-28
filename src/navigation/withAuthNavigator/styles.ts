@@ -1,53 +1,56 @@
 import {COLORS} from '@colors/colors';
 import {FontAwesomeIconStyle} from '@fortawesome/react-native-fontawesome';
+import {ThemeType} from '@store/reducers/userReducer/types';
 import {Platform, StyleSheet, TextStyle, ViewStyle} from 'react-native';
 
 type WithAuthNavigationStylesType = {
   header: ViewStyle;
   headerTitleStyle: TextStyle;
   tabBarContainer: ViewStyle;
-  tabLightIcon: FontAwesomeIconStyle;
-  tabDarkIcon: FontAwesomeIconStyle;
+  tabFocusIcon: FontAwesomeIconStyle;
+  tabIcon: FontAwesomeIconStyle;
   buttonContainer: ViewStyle;
   icon: TextStyle;
   title: TextStyle;
 };
 
-const {BLACK, WHITE, POMPADOUR} = COLORS;
+const {WHITE, POMPADOUR} = COLORS;
 
-export const styles = StyleSheet.create<WithAuthNavigationStylesType>({
-  header: {
-    backgroundColor: POMPADOUR,
-  },
+export const styles = (props: ThemeType) =>
+  StyleSheet.create<WithAuthNavigationStylesType>({
+    header: {
+      backgroundColor: POMPADOUR,
+    },
 
-  headerTitleStyle: {
-    color: WHITE,
-    fontSize: 24,
-  },
+    headerTitleStyle: {
+      color: WHITE,
+      fontSize: 24,
+    },
 
-  tabBarContainer: {
-    height: Platform.OS === 'ios' ? 87 : 58,
-    backgroundColor: WHITE,
-  },
+    tabBarContainer: {
+      height: Platform.OS === 'ios' ? 87 : 58,
+      backgroundColor: props.TAB_BAR_BACKGROUND_COLOR,
+    },
 
-  tabLightIcon: {
-    color: WHITE,
-  },
+    tabFocusIcon: {
+      color: props.TAB_BAR_FOCUS_ICON_COLOR,
+    },
 
-  tabDarkIcon: {
-    color: BLACK,
-  },
+    tabIcon: {
+      color: props.TAB_BAR_ICON_COLOR,
+    },
 
-  buttonContainer: {
-    marginRight: 10,
-  },
+    buttonContainer: {
+      marginRight: 10,
+    },
 
-  icon: {
-    marginTop: 5,
-  },
+    icon: {
+      marginTop: 5,
+    },
 
-  title: {
-    fontSize: 16,
-    marginBottom: 2,
-  },
-});
+    title: {
+      fontSize: 16,
+      fontWeight: '500',
+      marginBottom: 2,
+    },
+  });

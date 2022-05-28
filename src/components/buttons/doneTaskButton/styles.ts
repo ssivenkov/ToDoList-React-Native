@@ -1,22 +1,30 @@
 import {COLORS} from '@colors/colors';
+import {FontAwesomeIconStyle} from '@fortawesome/react-native-fontawesome';
+import {ThemeType} from '@store/reducers/userReducer/types';
 import {StyleSheet, TextStyle} from 'react-native';
 
-type DeleteTaskListButtonStylesType = {
+type DoneTaskButtonStylesType = {
   warnText: TextStyle;
+  icon: FontAwesomeIconStyle;
   greenHighlightTask: TextStyle;
 };
 
-const {BLACK, JAPANESE_LAUREL} = COLORS;
+const {JAPANESE_LAUREL} = COLORS;
 
-export const styles = StyleSheet.create<DeleteTaskListButtonStylesType>({
-  warnText: {
-    marginBottom: 15,
-    color: BLACK,
-    fontSize: 20,
-  },
+export const styles = (props: ThemeType) =>
+  StyleSheet.create<DoneTaskButtonStylesType>({
+    warnText: {
+      marginBottom: 15,
+      fontSize: 20,
+      color: props.TEXT_COLOR,
+    },
 
-  greenHighlightTask: {
-    color: JAPANESE_LAUREL,
-    fontWeight: '500',
-  },
-});
+    icon: {
+      color: props.ICON_BUTTON_COLOR,
+    },
+
+    greenHighlightTask: {
+      color: JAPANESE_LAUREL,
+      fontWeight: '500',
+    },
+  });
