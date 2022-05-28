@@ -1,10 +1,10 @@
 import {StyleSheet, ViewStyle} from 'react-native';
 
-type TasksScreenStylesType = {
+type LoaderStylesType = {
   loaderContainer: ViewStyle;
 };
 
-export const styles = StyleSheet.create<TasksScreenStylesType>({
+export const styles = StyleSheet.create<LoaderStylesType>({
   loaderContainer: {
     justifyContent: 'center',
     alignItems: 'center',

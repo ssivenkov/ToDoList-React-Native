@@ -1,4 +1,7 @@
-import {START_ANIMATION_DELAY} from '@constants/constants';
+import {
+  FACEBOOK_PROVIDER_ID,
+  START_ANIMATION_DELAY,
+} from '@constants/constants';
 import auth from '@react-native-firebase/auth';
 import {errorAlert} from '@root/helpers/alertHelper';
 import {checkInternetConnectionHelper} from '@root/helpers/hasInternetConnectionHelper';
@@ -40,7 +43,7 @@ export function* facebookSignInSaga(
       accessToken,
     );
 
-    const providerID = auth.FacebookAuthProvider.PROVIDER_ID;
+    const providerID = FACEBOOK_PROVIDER_ID;
     yield putResolve(setProviderIDAction({providerID}));
 
     const signInWithCredential = (credential: AuthCredentialType) => {
