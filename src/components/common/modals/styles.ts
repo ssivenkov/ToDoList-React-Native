@@ -20,7 +20,6 @@ export const styles = (props: ThemeType) =>
     modalView: {
       width: '90%',
       alignItems: 'center',
-      margin: 20,
       borderRadius: 20,
       padding: 25,
       backgroundColor: props.BACKGROUND_COLOR,
