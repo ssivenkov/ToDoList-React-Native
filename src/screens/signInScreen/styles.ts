@@ -13,7 +13,7 @@ export const styles = (props: ThemeType) =>
       height: '100%',
       justifyContent: 'center',
       alignItems: 'center',
-      paddingHorizontal: 50,
+      marginHorizontal: 30,
     },
 
     signInContainer: {
