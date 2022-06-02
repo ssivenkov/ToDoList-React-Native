@@ -19,6 +19,8 @@ export const SignInScreen = () => {
 
   const [waitingUserData, setWaitingUserData] = useState<boolean>(false);
 
+  const isDeveloperMode = __DEV__;
+
   const onGoogleButtonPress = (): void => {
     dispatch(GoogleSignInAction({setWaitingUserData}));
   };
@@ -42,13 +44,15 @@ export const SignInScreen = () => {
           colorStyle={signInStyles.googleStyle}
           disabled={waitingUserData}
         />
-        <SignInButton
-          onPress={onFacebookButtonPress}
-          serviceTitle={FACEBOOK_TITLE}
-          icon={faFacebook}
-          colorStyle={signInStyles.facebookStyle}
-          disabled={waitingUserData}
-        />
+        {isDeveloperMode && (
+          <SignInButton
+            onPress={onFacebookButtonPress}
+            serviceTitle={FACEBOOK_TITLE}
+            icon={faFacebook}
+            colorStyle={signInStyles.facebookStyle}
+            disabled={waitingUserData}
+          />
+        )}
       </View>
     </View>
   );
