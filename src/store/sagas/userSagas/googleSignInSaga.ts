@@ -1,5 +1,8 @@
 import {GOOGLE_PROVIDER_ID, START_ANIMATION_DELAY} from '@constants/constants';
-import {GoogleSignInCancelError} from '@constants/errorMessages';
+import {
+  GoogleSignInCancelError,
+  signInActionCanceled,
+} from '@constants/errorMessages';
 import auth from '@react-native-firebase/auth';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import {errorAlert} from '@root/helpers/alertHelper';
@@ -47,7 +50,10 @@ export function* googleSignInSaga(
   } catch (error: any) {
     setWaitingUserData(false);
 
-    if (error.message === GoogleSignInCancelError) {
+    if (
+      error.message === GoogleSignInCancelError ||
+      error.message === signInActionCanceled
+    ) {
       return errorAlert(t('signInScreen.CancelAuthProcess'));
     }
 
