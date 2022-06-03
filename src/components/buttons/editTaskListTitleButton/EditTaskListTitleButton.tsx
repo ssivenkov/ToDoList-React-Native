@@ -1,23 +1,22 @@
-import {styles} from '@components/buttons/editTaskListTitleButton/styles';
 import {CustomInput} from '@components/common/input/CustomInput';
 import {ModalIcon} from '@components/common/modals/ModalIcon';
 import {ICON_SIZE_SMALL} from '@constants/constants';
 import {faPen} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {useStyles} from '@root/hooks/useStyles';
 import {SetStateType} from '@root/types/common/types';
 import {editTaskListTitleAction} from '@store/actions/tasksSagaActions/taskListsSagasActions/editTaskListTitleAction';
 import {TaskListInterface} from '@store/reducers/tasksReducer/types';
+import {themeSelector} from '@store/selectors/userSelectors';
 import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {EditTaskListTitleButtonPropsType} from './types';
 
 export const EditTaskListTitleButton = ({
   oldTaskListTitle,
   taskListID,
 }: EditTaskListTitleButtonPropsType) => {
-  const style = useStyles(styles);
+  const theme = useSelector(themeSelector);
   const {t} = useTranslation();
   const dispatch = useDispatch();
 
@@ -55,7 +54,7 @@ export const EditTaskListTitleButton = ({
         <FontAwesomeIcon
           icon={faPen}
           size={ICON_SIZE_SMALL}
-          style={style.icon}
+          color={theme.ICON_BUTTON_COLOR}
         />
       }>
       <CustomInput

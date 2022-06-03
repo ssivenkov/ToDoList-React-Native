@@ -1,3 +1,4 @@
+import {COLORS} from '@colors/colors';
 import {CustomInput} from '@components/common/input/CustomInput';
 import {ModalIcon} from '@components/common/modals/ModalIcon';
 import {ICON_SIZE_LARGE} from '@constants/constants';
@@ -12,7 +13,6 @@ import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
 import 'react-native-get-random-values';
 import {useDispatch} from 'react-redux';
-import {styles} from './styles';
 
 export const CreateTaskListButton = () => {
   const dispatch = useDispatch();
@@ -58,7 +58,7 @@ export const CreateTaskListButton = () => {
         <FontAwesomeIcon
           icon={faPlus}
           size={ICON_SIZE_LARGE}
-          style={styles.icon}
+          color={COLORS.WHITE}
         />
       }>
       <CustomInput value={taskListTitle} onValueChange={setTaskListTitle} />

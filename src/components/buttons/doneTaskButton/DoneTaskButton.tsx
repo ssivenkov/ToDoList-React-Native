@@ -5,10 +5,11 @@ import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {useStyles} from '@root/hooks/useStyles';
 import {SetStateType} from '@root/types/common/types';
 import {setTaskIsDoneAction} from '@store/actions/tasksSagaActions/tasksSagasActions/setTaskIsDoneAction';
+import {themeSelector} from '@store/selectors/userSelectors';
 import React from 'react';
 import {Trans} from 'react-i18next';
 import {Text} from 'react-native';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {styles} from './styles';
 import {DoneTaskButtonPropsType} from './types';
 
@@ -18,6 +19,7 @@ export const DoneTaskButton = ({
   completedTaskTitle,
 }: DoneTaskButtonPropsType) => {
   const dispatch = useDispatch();
+  const theme = useSelector(themeSelector);
   const style = useStyles(styles);
 
   const setDoneTask = (
@@ -41,7 +43,7 @@ export const DoneTaskButton = ({
         <FontAwesomeIcon
           icon={faCheck}
           size={ICON_SIZE_SMALL}
-          style={style.icon}
+          color={theme.ICON_BUTTON_COLOR}
         />
       }>
       <Text style={style.warnText}>
