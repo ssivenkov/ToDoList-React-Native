@@ -1,3 +1,4 @@
+import {ColorPickerButton} from '@components/buttons/colorPickerButton/ColorPickerButton';
 import {CustomTextButton} from '@components/common/buttons/CustomTextButton';
 import {Loader} from '@components/common/loader/Loader';
 import {ModalText} from '@components/common/modals/ModalText';
@@ -18,7 +19,7 @@ import {
 } from '@store/selectors/userSelectors';
 import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
-import {Image, Text, View} from 'react-native';
+import {Image, ScrollView, Text, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 
 export const AccountScreen = () => {
@@ -51,53 +52,56 @@ export const AccountScreen = () => {
 
   if (userData && !waitingProcess) {
     return (
-      <View style={style.screenContainer}>
-        {userAvatar && (
-          <Image source={{uri: userAvatar}} style={style.avatar} />
-        )}
-        {userData.displayName && (
-          <Text style={style.name}>{userData.displayName}</Text>
-        )}
-        {userData.email && <Text style={style.text}>{userData.email}</Text>}
-        {userData.phoneNumber && (
-          <Text style={style.text}>{userData.phoneNumber}</Text>
-        )}
-        <Switcher
-          isOn={theme.darkMode}
-          size={'large'}
-          switcherText={t('accountScreen.DarkMode')}
-          onToggleSwitcherClick={changeTheme}
-          containerStyle={style.buttonsContainer}
-          textStyle={style.text}
-          textMargin={6}
-        />
-        <View style={style.buttonsContainer}>
-          <CustomTextButton
-            onPress={() => changeLanguage(EN)}
-            title={ENGLISH}
-            containerStyle={style.buttonContainer}
+      <ScrollView>
+        <View style={style.screenContainer}>
+          {userAvatar && (
+            <Image source={{uri: userAvatar}} style={style.avatar} />
+          )}
+          {userData.displayName && (
+            <Text style={style.name}>{userData.displayName}</Text>
+          )}
+          {userData.email && <Text style={style.text}>{userData.email}</Text>}
+          {userData.phoneNumber && (
+            <Text style={style.text}>{userData.phoneNumber}</Text>
+          )}
+          <Switcher
+            isOn={theme.darkMode}
+            size={'large'}
+            switcherText={t('accountScreen.DarkMode')}
+            onToggleSwitcherClick={changeTheme}
+            containerStyle={style.buttonsContainer}
+            textStyle={style.text}
+            textMargin={6}
           />
-          <CustomTextButton
-            onPress={() => changeLanguage(RU)}
-            title={RUSSIAN}
-            containerStyle={style.buttonContainer}
+          <ColorPickerButton />
+          <View style={style.buttonsContainer}>
+            <CustomTextButton
+              onPress={() => changeLanguage(EN)}
+              title={ENGLISH}
+              containerStyle={style.buttonContainer}
+            />
+            <CustomTextButton
+              onPress={() => changeLanguage(RU)}
+              title={RUSSIAN}
+              containerStyle={style.buttonContainer}
+            />
+          </View>
+          <ModalText
+            okHandler={signOutHandler}
+            description={t('accountScreen.SignOutWarning')}
+            buttonTitle={t('accountScreen.SignOut')}
+            buttonContainerStyle={style.buttonsContainer}
+            disable={waitingProcess}
+          />
+          <ModalText
+            okHandler={deleteAccountHandler}
+            description={t('accountScreen.DeleteAccountWarning')}
+            buttonTitle={t('accountScreen.DeleteAccount')}
+            buttonContainerStyle={style.buttonsContainer}
+            disable={waitingProcess}
           />
         </View>
-        <ModalText
-          okHandler={signOutHandler}
-          description={t('accountScreen.SignOutWarning')}
-          buttonTitle={t('accountScreen.SignOut')}
-          buttonContainerStyle={style.buttonsContainer}
-          disable={waitingProcess}
-        />
-        <ModalText
-          okHandler={deleteAccountHandler}
-          description={t('accountScreen.DeleteAccountWarning')}
-          buttonTitle={t('accountScreen.DeleteAccount')}
-          buttonContainerStyle={style.buttonsContainer}
-          disable={waitingProcess}
-        />
-      </View>
+      </ScrollView>
     );
   }
 
