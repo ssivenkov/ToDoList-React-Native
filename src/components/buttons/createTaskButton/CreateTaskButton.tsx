@@ -1,4 +1,3 @@
-import {styles} from '@components/buttons/createTaskButton/styles';
 import {CustomInput} from '@components/common/input/CustomInput';
 import {ModalIcon} from '@components/common/modals/ModalIcon';
 import {Notification} from '@components/common/notification/Notification';
@@ -6,21 +5,21 @@ import {ICON_SIZE_SMALL} from '@constants/constants';
 import {faPlus} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {createDate} from '@root/helpers/generateDateHelper';
-import {useStyles} from '@root/hooks/useStyles';
 import {SetStateType} from '@root/types/common/types';
 import {addNewTaskAction} from '@store/actions/tasksSagaActions/tasksSagasActions/addNewTaskAction';
 import {TaskListInterface, TaskType} from '@store/reducers/tasksReducer/types';
+import {themeSelector} from '@store/selectors/userSelectors';
 import {nanoid} from 'nanoid';
 import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
 import 'react-native-get-random-values';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {CreateTaskButtonPropsType} from './types';
 
 export const CreateTaskButton = (props: CreateTaskButtonPropsType) => {
   const {taskListID, taskListDate, taskListTitle, fullTaskList} = props;
 
-  const style = useStyles(styles);
+  const theme = useSelector(themeSelector);
   const {t} = useTranslation();
   const dispatch = useDispatch();
 
@@ -89,7 +88,7 @@ export const CreateTaskButton = (props: CreateTaskButtonPropsType) => {
         <FontAwesomeIcon
           icon={faPlus}
           size={ICON_SIZE_SMALL}
-          style={style.icon}
+          color={theme.ICON_BUTTON_COLOR}
         />
       }>
       <CustomInput value={newTaskTitle} onValueChange={setNewTaskTitle} />

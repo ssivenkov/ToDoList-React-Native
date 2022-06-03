@@ -1,15 +1,14 @@
-import {styles} from '@components/buttons/editTaskButton/styles';
 import {CustomInput} from '@components/common/input/CustomInput';
 import {ModalIcon} from '@components/common/modals/ModalIcon';
 import {Notification} from '@components/common/notification/Notification';
 import {ICON_SIZE_SMALL} from '@constants/constants';
 import {faPen} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {useStyles} from '@root/hooks/useStyles';
 import {Nullable, SetStateType} from '@root/types/common/types';
 import {setEditedTaskAction} from '@store/actions/tasksSagaActions/tasksSagasActions/setEditedTaskAction';
 import {TaskType} from '@store/reducers/tasksReducer/types';
 import {notificationsSelector} from '@store/selectors/tasksSelectors';
+import {themeSelector} from '@store/selectors/userSelectors';
 import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
 import {useDispatch, useSelector} from 'react-redux';
@@ -17,7 +16,8 @@ import {EditTaskTitleButtonPropsType} from './types';
 
 export const EditTaskButton = (props: EditTaskTitleButtonPropsType) => {
   const {taskListID, taskID, oldTaskTitle, isTodo} = props;
-  const style = useStyles(styles);
+
+  const theme = useSelector(themeSelector);
   const {t} = useTranslation();
   const dispatch = useDispatch();
 
@@ -77,7 +77,7 @@ export const EditTaskButton = (props: EditTaskTitleButtonPropsType) => {
         <FontAwesomeIcon
           icon={faPen}
           size={ICON_SIZE_SMALL}
-          style={style.icon}
+          color={theme.ICON_BUTTON_COLOR}
         />
       }>
       <CustomInput value={editedTaskTitle} onValueChange={setEditedTaskTitle} />

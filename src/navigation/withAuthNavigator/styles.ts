@@ -33,7 +33,7 @@ export const styles = (props: ThemeType) =>
     },
 
     tabFocusIcon: {
-      color: props.TAB_BAR_FOCUS_ICON_COLOR,
+      color: props.ACCENT_COLOR,
     },
 
     tabIcon: {
@@ -50,7 +50,6 @@ export const styles = (props: ThemeType) =>
 
     title: {
       fontSize: 16,
-      fontWeight: '500',
       marginBottom: 2,
     },
   });

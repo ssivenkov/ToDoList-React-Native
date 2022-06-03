@@ -28,7 +28,7 @@ export const styles = (props: ThemeType) =>
     },
 
     tabFocusIcon: {
-      color: props.TAB_BAR_FOCUS_ICON_COLOR,
+      color: props.ACCENT_COLOR,
     },
 
     tabIcon: {
@@ -36,7 +36,7 @@ export const styles = (props: ThemeType) =>
     },
 
     tabBarIndicator: {
-      backgroundColor: props.TAB_BAR_INDICATOR_COLOR,
+      backgroundColor: props.ACCENT_COLOR,
     },
 
     headerTitleStyle: {
@@ -50,6 +50,7 @@ export const styles = (props: ThemeType) =>
 
     icon: {
       marginTop: 2,
+      marginRight: 6,
     },
 
     title: {

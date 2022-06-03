@@ -1,11 +1,9 @@
 import {COLORS} from '@colors/colors';
-import {FontAwesomeIconStyle} from '@fortawesome/react-native-fontawesome';
 import {ThemeType} from '@store/reducers/userReducer/types';
 import {StyleSheet, TextStyle} from 'react-native';
 
 type DeleteTaskListButtonStylesType = {
   warnText: TextStyle;
-  icon: FontAwesomeIconStyle;
   redHighlightTask: TextStyle;
 };
 
@@ -22,9 +20,5 @@ export const styles = (props: ThemeType) =>
     redHighlightTask: {
       color: RED,
       fontWeight: '500',
-    },
-
-    icon: {
-      color: props.ICON_BUTTON_COLOR,
     },
   });

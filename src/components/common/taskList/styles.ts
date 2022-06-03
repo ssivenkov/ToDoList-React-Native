@@ -13,7 +13,6 @@ type TaskListStylesType = {
 };
 
 export const TaskListMarginVertical = 8;
-const {RED} = COLORS;
 
 export const styles = (props: ThemeType) =>
   StyleSheet.create<TaskListStylesType>({
@@ -40,7 +39,7 @@ export const styles = (props: ThemeType) =>
     title: {
       flex: 1,
       color: props.TEXT_COLOR,
-      fontSize: 25.5,
+      fontSize: 25,
     },
 
     warnText: {
@@ -48,7 +47,7 @@ export const styles = (props: ThemeType) =>
     },
 
     redHighlightTask: {
-      color: RED,
+      color: COLORS.RED,
       fontWeight: '500',
     },
 

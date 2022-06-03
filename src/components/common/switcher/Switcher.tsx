@@ -24,7 +24,7 @@ export const Switcher = (props: SwitcherPropsType) => {
       <ToggleSwitch
         isOn={isOn}
         onColor={COLORS.JAPANESE_LAUREL}
-        offColor={COLORS.SILVER_CHALICE}
+        offColor={COLORS.SILVER_CHALICE1}
         size={size}
         onToggle={(isOn) => onToggleSwitcherClick(isOn)}
         animationSpeed={250}
