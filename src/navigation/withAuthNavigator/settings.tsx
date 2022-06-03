@@ -19,7 +19,7 @@ export const withAuthNavigatorOptions: () => BottomTabNavigationOptions =
     return {
       headerShown: false,
       tabBarStyle: style.tabBarContainer,
-      tabBarActiveTintColor: theme.TAB_BAR_FOCUS_TEXT_COLOR,
+      tabBarActiveTintColor: theme.ACCENT_COLOR,
       tabBarInactiveTintColor: theme.TAB_BAR_TEXT_COLOR,
       tabBarIconStyle: style.icon,
       tabBarLabelStyle: style.title,

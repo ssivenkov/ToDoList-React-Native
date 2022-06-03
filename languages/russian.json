@@ -7,7 +7,7 @@
       "NoIOSNotificationsPermission": "Отсутствует разрешение для уведомлений. Предоставьте приложению разрешение на показ уведомлений"
     },
     "tasksScreen": {
-      "Tasks": "Задачи",
+      "Tasks": "Списки задач",
       "CreateTaskButtonTitle": "Название новой задачи:",
       "CreateTaskListButtonTitle": "Название нового списка задач:",
       "DeleteQuestionButtonTitle": "Удалить <0>{{text}}</0>?",

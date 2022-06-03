@@ -7,7 +7,7 @@
       "NoIOSNotificationsPermission": "No permission for notifications. Grant the app permission to show notifications"
     },
     "tasksScreen": {
-      "Tasks": "Tasks",
+      "Tasks": "Task lists",
       "CreateTaskButtonTitle": "Enter new task title:",
       "CreateTaskListButtonTitle": "Enter new task list title:",
       "DeleteQuestionButtonTitle": "Are you sure to delete <0>{{text}}</0>?",
