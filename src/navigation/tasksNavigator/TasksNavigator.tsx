@@ -39,7 +39,7 @@ export const TasksNavigator = () => {
         }}
         options={{
           ...toDoScreenOptions(),
-          tabBarLabel: `${t('tasksScreen.TodoTasksTab')}`,
+          tabBarLabel: t('tasksScreen.TodoTasksTab'),
         }}
       />
       <Screen
@@ -50,7 +50,7 @@ export const TasksNavigator = () => {
         }}
         options={{
           ...doneScreenOptions(),
-          tabBarLabel: `${t('tasksScreen.DoneTasksTab')}`,
+          tabBarLabel: t('tasksScreen.DoneTasksTab'),
         }}
       />
     </Navigator>

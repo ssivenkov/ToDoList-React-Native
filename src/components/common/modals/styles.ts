@@ -1,4 +1,4 @@
-import {ThemeType} from '@store/reducers/userReducer/types';
+import {ExtendedStylesPropsType} from '@root/hooks/useStyles';
 import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
 
 type ModalStylesType = {
@@ -8,7 +8,7 @@ type ModalStylesType = {
   buttonsContainer: ViewStyle;
 };
 
-export const styles = (props: ThemeType) =>
+export const styles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<ModalStylesType>({
     centeredView: {
       flex: 1,

@@ -1,4 +1,4 @@
-import {ThemeType} from '@store/reducers/userReducer/types';
+import {ExtendedStylesPropsType} from '@root/hooks/useStyles';
 import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
 
 type InputStylesType = {
@@ -6,7 +6,7 @@ type InputStylesType = {
   input: TextStyle;
 };
 
-export const styles = (props: ThemeType) =>
+export const styles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<InputStylesType>({
     container: {
       flexDirection: 'row',

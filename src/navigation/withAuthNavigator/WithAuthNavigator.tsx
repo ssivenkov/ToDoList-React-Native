@@ -40,8 +40,8 @@ export const WithAuthNavigator = () => {
         component={TasksNavigator}
         options={{
           ...tasksNavigatorOptions(),
-          headerTitle: `${t('tasksScreen.Tasks')}`,
-          tabBarLabel: `${t('tasksScreen.Tasks')}`,
+          headerTitle: t('tasksScreen.Tasks'),
+          tabBarLabel: t('tasksScreen.Tasks'),
         }}
       />
       <Screen
@@ -49,8 +49,8 @@ export const WithAuthNavigator = () => {
         component={AccountScreen}
         options={{
           ...accountScreenOptions(),
-          headerTitle: `${t('accountScreen.Account')}`,
-          tabBarLabel: `${t('accountScreen.Account')}`,
+          headerTitle: t('accountScreen.Account'),
+          tabBarLabel: t('accountScreen.Account'),
         }}
       />
     </Navigator>

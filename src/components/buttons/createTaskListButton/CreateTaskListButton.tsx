@@ -53,7 +53,7 @@ export const CreateTaskListButton = () => {
       okHandler={createTaskList}
       closeHandler={onClosePress}
       okDisable={!taskListTitle}
-      description={`${t('tasksScreen.CreateTaskListButtonTitle')}`}
+      description={t('tasksScreen.CreateTaskListButtonTitle')}
       buttonIcon={
         <FontAwesomeIcon
           icon={faPlus}

@@ -7,7 +7,7 @@ export type ModalTextPropsType = {
   buttonContainerStyle?: ViewStyle;
   children?: any;
   description?: string;
-  okHandler?: () => void;
+  okHandler?: (arg?: any) => void;
   disable?: boolean;
 };
 

@@ -48,12 +48,12 @@ export const ModalIcon = (props: ModalIconPropsType) => {
               <View style={style.buttonsContainer}>
                 <CustomTextButton
                   onPress={onOkButtonPress}
-                  title={`${t('common.Ok')}`}
+                  title={t('common.Ok')}
                   disable={okDisable}
                 />
                 <CustomTextButton
                   onPress={onCancelButtonPress}
-                  title={`${t('common.Close')}`}
+                  title={t('common.Close')}
                 />
               </View>
             </View>

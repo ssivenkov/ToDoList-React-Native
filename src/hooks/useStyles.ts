@@ -1,11 +1,21 @@
-import {ThemeType} from '@store/reducers/userReducer/types';
-import {themeSelector} from '@store/selectors/userSelectors';
+import {AccentColorType, ThemeType} from '@store/reducers/userReducer/types';
+import {
+  accentColorSelector,
+  themeSelector,
+} from '@store/selectors/userSelectors';
 import {useSelector} from 'react-redux';
 
+export interface ExtendedStylesPropsType extends ThemeType {
+  ACCENT_COLOR: AccentColorType;
+}
+
 export const useStyles = <TStyles, ArgType>(
-  fn: (theme: ThemeType, ...args: ArgType[]) => TStyles,
+  fn: (props: ExtendedStylesPropsType, ...args: ArgType[]) => TStyles,
 ): TStyles => {
   const theme = useSelector(themeSelector);
+  const accentColor = useSelector(accentColorSelector);
 
-  return fn(theme);
+  const props: ExtendedStylesPropsType = {...theme, ACCENT_COLOR: accentColor};
+
+  return fn(props);
 };

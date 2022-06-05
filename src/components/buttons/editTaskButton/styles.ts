@@ -9,8 +9,6 @@ type EditTaskButtonStylesType = {
   dateTimePickerContainer: ViewStyle;
 };
 
-const {RED} = COLORS;
-
 export const styles = StyleSheet.create<EditTaskButtonStylesType>({
   warnText: {
     marginBottom: 15,
@@ -18,7 +16,7 @@ export const styles = StyleSheet.create<EditTaskButtonStylesType>({
   },
 
   redHighlightTask: {
-    color: RED,
+    color: COLORS.RED,
     fontWeight: '500',
   },
 

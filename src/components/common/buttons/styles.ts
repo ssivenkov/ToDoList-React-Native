@@ -1,6 +1,6 @@
 import {COLORS} from '@colors/colors';
-import {ThemeType} from '@store/reducers/userReducer/types';
-import {StyleSheet, ViewStyle, TextStyle} from 'react-native';
+import {ExtendedStylesPropsType} from '@root/hooks/useStyles';
+import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
 
 type CustomButtonStylesType = {
   textButton: ViewStyle;
@@ -9,9 +9,7 @@ type CustomButtonStylesType = {
   icon: ViewStyle;
 };
 
-const {WHITE} = COLORS;
-
-export const styles = (props: ThemeType) =>
+export const styles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<CustomButtonStylesType>({
     textButton: {
       paddingHorizontal: 16,
@@ -28,7 +26,7 @@ export const styles = (props: ThemeType) =>
 
     text: {
       fontSize: 20,
-      color: WHITE,
+      color: COLORS.WHITE,
     },
 
     icon: {

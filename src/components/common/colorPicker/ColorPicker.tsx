@@ -1,22 +1,25 @@
+import {ColorPickerComponentPropsType} from '@components/common/colorPicker/types';
+import {AccentColorType} from '@store/reducers/userReducer/types';
+import {accentColorSelector} from '@store/selectors/userSelectors';
 import React from 'react';
 import {View} from 'react-native';
 import ColorPicker from 'react-native-wheel-color-picker';
+import {useSelector} from 'react-redux';
 
-export const ColorPickerComponent = () => {
-  const onColorChangeComplete = (color: string) => {
-    console.log('onColorChangeComplete: ', color);
-  };
+export const ColorPickerComponent = (props: ColorPickerComponentPropsType) => {
+  const {selectAccentColor} = props;
 
-  const onColorChange = (color: string) => {
-    console.log('onColorChange: ', color);
+  const initialAccentColor = useSelector(accentColorSelector);
+
+  const onColorChangeComplete = (color: AccentColorType) => {
+    selectAccentColor(color);
   };
 
   return (
     <View style={{maxHeight: 200, alignItems: 'center'}}>
       <ColorPicker
-        color={'#990000'}
+        color={initialAccentColor}
         swatchesOnly={false}
-        onColorChange={(color) => onColorChange(color)}
         onColorChangeComplete={(color) => onColorChangeComplete(color)}
         thumbSize={40}
         sliderSize={40}

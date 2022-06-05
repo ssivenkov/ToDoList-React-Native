@@ -49,7 +49,7 @@ export const EditTaskListTitleButton = ({
       okHandler={onOkPress}
       closeHandler={onClosePress}
       okDisable={!editedTaskListTitle}
-      description={`${t('tasksScreen.EditTaskListButtonTitle')}`}
+      description={t('tasksScreen.EditTaskListButtonTitle')}
       buttonIcon={
         <FontAwesomeIcon
           icon={faPen}

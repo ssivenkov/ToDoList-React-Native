@@ -1,5 +1,5 @@
 import {COLORS} from '@colors/colors';
-import {ThemeType} from '@store/reducers/userReducer/types';
+import {ExtendedStylesPropsType} from '@root/hooks/useStyles';
 import {StyleSheet, TextStyle} from 'react-native';
 
 type DeleteTaskButtonStylesType = {
@@ -9,7 +9,7 @@ type DeleteTaskButtonStylesType = {
 
 const {RED} = COLORS;
 
-export const styles = (props: ThemeType) =>
+export const styles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<DeleteTaskButtonStylesType>({
     warnText: {
       marginBottom: 15,

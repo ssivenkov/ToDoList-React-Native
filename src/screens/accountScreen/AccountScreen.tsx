@@ -7,11 +7,12 @@ import {EN, ENGLISH, RU, RUSSIAN} from '@constants/constants';
 import {useStyles} from '@root/hooks/useStyles';
 import {styles} from '@root/screens/accountScreen/styles';
 import {darkTheme, lightTheme} from '@root/themes/theme';
+import {setAccentColorAction} from '@store/actions/userReducerActions/setAccentColorAction';
 import {setThemeAction} from '@store/actions/userReducerActions/setThemeAction';
 import {changeLanguageAction} from '@store/actions/userSagaActions/changeLanguageAction';
 import {deleteAccountAction} from '@store/actions/userSagaActions/deleteAccountAction';
 import {signOutAction} from '@store/actions/userSagaActions/signOutAction';
-import {LanguageType} from '@store/reducers/userReducer/types';
+import {AccentColorType, LanguageType} from '@store/reducers/userReducer/types';
 import {
   themeSelector,
   userAvatarSelector,
@@ -36,6 +37,10 @@ export const AccountScreen = () => {
     if (isDarkMode) {
       dispatch(setThemeAction({theme: darkTheme}));
     } else dispatch(setThemeAction({theme: lightTheme}));
+  };
+
+  const setAccentColor = (accentColor: AccentColorType): void => {
+    dispatch(setAccentColorAction({accentColor}));
   };
 
   const changeLanguage = (language: LanguageType) => {
@@ -73,7 +78,12 @@ export const AccountScreen = () => {
             textStyle={style.text}
             textMargin={6}
           />
-          <ColorPickerButton />
+          <ColorPickerButton
+            setAccentColor={setAccentColor}
+            description={'accountScreen.AccentColorDescription'}
+            buttonTitle={'accountScreen.AccentColorButtonTitle'}
+            containerStyle={style.buttonsContainer}
+          />
           <View style={style.buttonsContainer}>
             <CustomTextButton
               onPress={() => changeLanguage(EN)}

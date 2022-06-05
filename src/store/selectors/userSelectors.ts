@@ -1,4 +1,5 @@
 import {
+  AccentColorType,
   ChannelIDType,
   LanguageType,
   ProviderIDType,
@@ -35,4 +36,10 @@ export const userAvatarSelector = (state: AppRootStateType): UserAvatarType => {
 
 export const themeSelector = (state: AppRootStateType): ThemeType => {
   return state.user.theme;
+};
+
+export const accentColorSelector = (
+  state: AppRootStateType,
+): AccentColorType => {
+  return state.user.accentColor;
 };

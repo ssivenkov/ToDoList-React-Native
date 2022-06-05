@@ -72,7 +72,7 @@ export const EditTaskButton = (props: EditTaskTitleButtonPropsType) => {
       okHandler={editTask}
       closeHandler={onClosePress}
       okDisable={!editedTaskTitle}
-      description={`${t('tasksScreen.EditTaskButton')}`}
+      description={t('tasksScreen.EditTaskButton')}
       buttonIcon={
         <FontAwesomeIcon
           icon={faPen}

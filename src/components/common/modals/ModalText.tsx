@@ -49,12 +49,12 @@ export const ModalText = (props: ModalTextPropsType) => {
               {okHandler && (
                 <CustomTextButton
                   onPress={onOkButtonPress}
-                  title={`${t('common.Ok')}`}
+                  title={t('common.Ok')}
                 />
               )}
               <CustomTextButton
                 onPress={onClosePress}
-                title={`${t('common.Close')}`}
+                title={t('common.Close')}
               />
             </View>
           </View>
