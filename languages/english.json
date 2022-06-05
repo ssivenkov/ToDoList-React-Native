@@ -32,7 +32,9 @@
       "SignOut": "Sign out",
       "SignOutWarning": "Are you sure you want to sign out?",
       "DeleteAccount": "Delete account",
-      "DeleteAccountWarning": "Are you sure you want to delete your account with all your data?"
+      "DeleteAccountWarning": "Are you sure you want to delete your account with all your data?",
+      "AccentColorDescription": "Select accent color:",
+      "AccentColorButtonTitle": "Accent color"
     }
   }
 }

@@ -83,7 +83,7 @@ export const CreateTaskButton = (props: CreateTaskButtonPropsType) => {
       okHandler={createTask}
       closeHandler={onClosePress}
       okDisable={!newTaskTitle}
-      description={`${t('tasksScreen.CreateTaskButtonTitle')}`}
+      description={t('tasksScreen.CreateTaskButtonTitle')}
       buttonIcon={
         <FontAwesomeIcon
           icon={faPlus}

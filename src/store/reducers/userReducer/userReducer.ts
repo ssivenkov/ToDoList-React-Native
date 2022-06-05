@@ -1,6 +1,8 @@
+import {COLORS} from '@colors/colors';
 import {EN} from '@constants/constants';
 import {USER_REDUCER_ACTION} from '@enums/userReducerEnum';
 import {lightTheme} from '@root/themes/theme';
+import {SetAccentColorActionReturnType} from '@store/actions/userReducerActions/setAccentColorAction';
 import {SetAuthStateActionReturnType} from '@store/actions/userReducerActions/setAuthStateAction';
 import {SetChannelIDActionReturnType} from '@store/actions/userReducerActions/setChannelIDAction';
 import {SetLanguageActionReturnType} from '@store/actions/userReducerActions/setLanguageAction';
@@ -17,7 +19,8 @@ export type UserActionsType =
   | SetLanguageActionReturnType
   | SetProviderIDActionReturnType
   | SetUserAvatarActionReturnType
-  | SetThemeActionReturnType;
+  | SetThemeActionReturnType
+  | SetAccentColorActionReturnType;
 
 export const initialAuthState: UserReducerStateType = {
   providerID: null,
@@ -26,6 +29,7 @@ export const initialAuthState: UserReducerStateType = {
   userAvatar: null,
   language: EN,
   theme: lightTheme,
+  accentColor: COLORS.FLIRT,
 };
 
 export const userReducer = (
@@ -51,6 +55,8 @@ export const userReducer = (
       return {...state, language: action.payload.language};
     case USER_REDUCER_ACTION.SET_THEME:
       return {...state, theme: action.payload.theme};
+    case USER_REDUCER_ACTION.SET_ACCENT_COLOR:
+      return {...state, accentColor: action.payload.accentColor};
     default:
       return state;
   }

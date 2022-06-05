@@ -1,5 +1,5 @@
 import {COLORS} from '@colors/colors';
-import {ThemeType} from '@store/reducers/userReducer/types';
+import {ExtendedStylesPropsType} from '@root/hooks/useStyles';
 import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
 
 type TaskStylesType = {
@@ -11,10 +11,10 @@ type TaskStylesType = {
   greenHighlightTask: TextStyle;
 };
 
-const {BLACK, RED, COD_GRAY} = COLORS;
+const {RED, COD_GRAY} = COLORS;
 const textSize = 20;
 
-export const styles = (props: ThemeType) =>
+export const styles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<TaskStylesType>({
     container: {
       justifyContent: 'space-between',
@@ -38,7 +38,6 @@ export const styles = (props: ThemeType) =>
     },
 
     warnText: {
-      color: BLACK,
       fontSize: textSize,
     },
 
