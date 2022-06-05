@@ -1,4 +1,4 @@
-import {ThemeType} from '@store/reducers/userReducer/types';
+import {ExtendedStylesPropsType} from '@root/hooks/useStyles';
 import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
 
 type DeleteTaskListButtonStylesType = {
@@ -7,7 +7,7 @@ type DeleteTaskListButtonStylesType = {
   text: TextStyle;
 };
 
-export const styles = (props: ThemeType) =>
+export const styles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<DeleteTaskListButtonStylesType>({
     notificationContainer: {
       width: '100%',

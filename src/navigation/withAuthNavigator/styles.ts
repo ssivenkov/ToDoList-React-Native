@@ -1,6 +1,6 @@
 import {COLORS} from '@colors/colors';
 import {FontAwesomeIconStyle} from '@fortawesome/react-native-fontawesome';
-import {ThemeType} from '@store/reducers/userReducer/types';
+import {ExtendedStylesPropsType} from '@root/hooks/useStyles';
 import {Platform, StyleSheet, TextStyle, ViewStyle} from 'react-native';
 
 type WithAuthNavigationStylesType = {
@@ -14,16 +14,16 @@ type WithAuthNavigationStylesType = {
   title: TextStyle;
 };
 
-const {WHITE, POMPADOUR} = COLORS;
-
-export const styles = (props: ThemeType) =>
+export const styles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<WithAuthNavigationStylesType>({
     header: {
-      backgroundColor: POMPADOUR,
+      backgroundColor: props.darkMode
+        ? `${props.ACCENT_COLOR}CC`
+        : props.ACCENT_COLOR,
     },
 
     headerTitleStyle: {
-      color: WHITE,
+      color: COLORS.WHITE,
       fontSize: 24,
     },
 

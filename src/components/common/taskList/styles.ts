@@ -1,5 +1,5 @@
 import {COLORS} from '@colors/colors';
-import {ThemeType} from '@store/reducers/userReducer/types';
+import {ExtendedStylesPropsType} from '@root/hooks/useStyles';
 import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
 
 type TaskListStylesType = {
@@ -14,7 +14,7 @@ type TaskListStylesType = {
 
 export const TaskListMarginVertical = 8;
 
-export const styles = (props: ThemeType) =>
+export const styles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<TaskListStylesType>({
     container: {
       backgroundColor: props.TASK_LIST_COLOR,
