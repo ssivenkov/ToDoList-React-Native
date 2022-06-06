@@ -23,6 +23,6 @@ export const styles = (props: ExtendedStylesPropsType) =>
 
     text: {
       color: props.TEXT_COLOR,
-      fontSize: 20,
+      fontSize: 18,
     },
   });
