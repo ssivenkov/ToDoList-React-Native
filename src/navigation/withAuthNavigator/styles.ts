@@ -20,15 +20,16 @@ export const styles = (props: ExtendedStylesPropsType) =>
       backgroundColor: props.darkMode
         ? `${props.ACCENT_COLOR}CC`
         : props.ACCENT_COLOR,
+      height: Platform.OS === 'ios' ? 90 : 50,
     },
 
     headerTitleStyle: {
       color: COLORS.WHITE,
-      fontSize: 24,
+      fontSize: 22,
     },
 
     tabBarContainer: {
-      height: Platform.OS === 'ios' ? 87 : 58,
+      height: Platform.OS === 'ios' ? 82 : 50,
       backgroundColor: props.TAB_BAR_BACKGROUND_COLOR,
     },
 
@@ -41,7 +42,7 @@ export const styles = (props: ExtendedStylesPropsType) =>
     },
 
     buttonContainer: {
-      marginRight: 10,
+      marginRight: 12,
     },
 
     icon: {
@@ -49,7 +50,7 @@ export const styles = (props: ExtendedStylesPropsType) =>
     },
 
     title: {
-      fontSize: 16,
+      fontSize: 14,
       marginBottom: 2,
     },
   });

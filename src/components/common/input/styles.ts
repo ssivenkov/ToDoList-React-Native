@@ -15,7 +15,7 @@ export const styles = (props: ExtendedStylesPropsType) =>
     input: {
       width: '100%',
       alignContent: 'center',
-      fontSize: 20,
+      fontSize: 18,
       padding: 10,
       color: props.TEXT_COLOR,
       backgroundColor: props.PLACEHOLDER_COLOR,

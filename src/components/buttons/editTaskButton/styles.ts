@@ -12,7 +12,7 @@ type EditTaskButtonStylesType = {
 export const styles = StyleSheet.create<EditTaskButtonStylesType>({
   warnText: {
     marginBottom: 15,
-    fontSize: 20,
+    fontSize: 18,
   },
 
   redHighlightTask: {

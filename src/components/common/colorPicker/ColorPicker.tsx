@@ -1,3 +1,4 @@
+import {styles} from '@components/common/colorPicker/styles';
 import {ColorPickerComponentPropsType} from '@components/common/colorPicker/types';
 import {AccentColorType} from '@store/reducers/userReducer/types';
 import {accentColorSelector} from '@store/selectors/userSelectors';
@@ -16,7 +17,7 @@ export const ColorPickerComponent = (props: ColorPickerComponentPropsType) => {
   };
 
   return (
-    <View style={{maxHeight: 200, alignItems: 'center'}}>
+    <View style={styles.container}>
       <ColorPicker
         color={initialAccentColor}
         swatchesOnly={false}
