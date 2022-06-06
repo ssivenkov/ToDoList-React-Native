@@ -20,6 +20,7 @@ export const CustomInput = (props: InputPropsType) => {
           onValueChange(text);
         }}
         value={value}
+        maxLength={100}
       />
     </View>
   );
