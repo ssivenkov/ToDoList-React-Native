@@ -12,8 +12,8 @@ type CustomButtonStylesType = {
 export const styles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<CustomButtonStylesType>({
     textButton: {
-      paddingHorizontal: 16,
-      paddingVertical: 8,
+      paddingHorizontal: 12,
+      paddingVertical: 6,
       borderRadius: 8,
       backgroundColor: props.TEXT_BUTTON_COLOR,
       justifyContent: 'center',
@@ -25,7 +25,7 @@ export const styles = (props: ExtendedStylesPropsType) =>
     },
 
     text: {
-      fontSize: 20,
+      fontSize: 18,
       color: COLORS.WHITE,
     },
 

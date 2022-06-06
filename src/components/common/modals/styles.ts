@@ -21,12 +21,13 @@ export const styles = (props: ExtendedStylesPropsType) =>
       width: '90%',
       alignItems: 'center',
       borderRadius: 20,
-      padding: 25,
+      paddingHorizontal: 25,
+      paddingVertical: 20,
       backgroundColor: props.BACKGROUND_COLOR,
     },
 
     text: {
-      fontSize: 20,
+      fontSize: 18,
       marginBottom: 12,
       color: props.TEXT_COLOR,
     },
@@ -35,6 +36,6 @@ export const styles = (props: ExtendedStylesPropsType) =>
       width: '100%',
       justifyContent: 'space-evenly',
       flexDirection: 'row',
-      marginTop: 13,
+      marginTop: 12,
     },
   });
