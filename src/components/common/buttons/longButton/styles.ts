@@ -1,7 +1,7 @@
 import {ExtendedStylesPropsType} from '@root/hooks/useStyles';
 import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
 
-type CustomLongButtonStylesType = {
+type LongButtonStylesType = {
   longButtonContainer: ViewStyle;
   contentContainer: ViewStyle;
   icon: ViewStyle;
@@ -9,7 +9,7 @@ type CustomLongButtonStylesType = {
 };
 
 export const styles = (props: ExtendedStylesPropsType) =>
-  StyleSheet.create<CustomLongButtonStylesType>({
+  StyleSheet.create<LongButtonStylesType>({
     longButtonContainer: {
       width: props.appWidth,
       flexDirection: 'row',
