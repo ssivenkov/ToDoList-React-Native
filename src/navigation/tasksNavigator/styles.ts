@@ -24,7 +24,7 @@ export const styles = (props: ExtendedStylesPropsType) =>
     },
 
     tabBarItem: {
-      height: 60,
+      height: 50,
     },
 
     tabFocusIcon: {
@@ -49,11 +49,11 @@ export const styles = (props: ExtendedStylesPropsType) =>
     },
 
     icon: {
-      marginTop: 2,
-      marginRight: 6,
+      marginTop: 1,
     },
 
     title: {
-      marginTop: 8,
+      fontSize: 12,
+      marginTop: 0,
     },
   });

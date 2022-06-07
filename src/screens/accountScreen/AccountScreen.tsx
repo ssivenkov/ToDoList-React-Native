@@ -71,12 +71,11 @@ export const AccountScreen = () => {
           )}
           <Switcher
             isOn={theme.darkMode}
-            size={'large'}
+            size={'medium'}
             switcherText={t('accountScreen.DarkMode')}
             onToggleSwitcherClick={changeTheme}
             containerStyle={style.buttonsContainer}
             textStyle={style.text}
-            textMargin={6}
           />
           <ColorPickerButton
             setAccentColor={setAccentColor}

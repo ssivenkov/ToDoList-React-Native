@@ -15,7 +15,7 @@ export const styles = StyleSheet.create<CreateTaskButtonStylesType>({
   },
 
   text: {
-    fontSize: 20,
+    fontSize: 18,
     marginBottom: 2,
   },
 
