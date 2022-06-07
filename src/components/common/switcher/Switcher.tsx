@@ -16,17 +16,23 @@ export const Switcher = (props: SwitcherPropsType) => {
     textMargin,
   } = props;
 
+  const toggle = (isOn: boolean) => {
+    onToggleSwitcherClick && onToggleSwitcherClick(isOn);
+  };
+
   return (
     <View style={[styles.contentDefaultContainer, containerStyle]}>
-      <Text style={[{marginBottom: textMargin}, textStyle]}>
-        {switcherText}
-      </Text>
+      {switcherText && (
+        <Text style={[{marginBottom: textMargin}, textStyle]}>
+          {switcherText}
+        </Text>
+      )}
       <ToggleSwitch
         isOn={isOn}
         onColor={COLORS.JAPANESE_LAUREL}
         offColor={COLORS.SILVER_CHALICE1}
         size={size}
-        onToggle={(isOn) => onToggleSwitcherClick(isOn)}
+        onToggle={(isOn) => toggle(isOn)}
         animationSpeed={250}
       />
     </View>
