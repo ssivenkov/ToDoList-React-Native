@@ -31,6 +31,8 @@
       "DarkMode": "Dark mode",
       "SignOut": "Sign out",
       "SignOutWarning": "Are you sure you want to sign out?",
+      "ChangeLanguageButtonTitle": "Language",
+      "ChangeLanguageButtonDescription": "Select app language:",
       "DeleteAccount": "Delete account",
       "DeleteAccountWarning": "Are you sure you want to delete your account with all your data?",
       "AccentColorDescription": "Select accent color:",

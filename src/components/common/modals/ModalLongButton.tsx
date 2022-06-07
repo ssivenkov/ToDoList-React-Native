@@ -1,18 +1,20 @@
 import {CustomTextButton} from '@components/common/buttons/CustomTextButton';
+import {CustomLongButton} from '@components/common/buttons/customLongButton/CustomLongButton';
 import {useStyles} from '@root/hooks/useStyles';
 import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
-import {Modal, View, Text} from 'react-native';
+import {Modal, Text, View} from 'react-native';
 import {styles} from './styles';
-import {ModalTextPropsType} from './types';
+import {ModalLongButtonPropsType} from './types';
 
-export const ModalText = (props: ModalTextPropsType) => {
+export const ModalLongButton = (props: ModalLongButtonPropsType) => {
   const {
     children,
     description,
+    buttonIcon,
     buttonTitle,
-    buttonContainerStyle,
     okHandler,
+    rightComponent,
     disable,
   } = props;
 
@@ -60,11 +62,12 @@ export const ModalText = (props: ModalTextPropsType) => {
           </View>
         </View>
       </Modal>
-      <CustomTextButton
-        containerStyle={buttonContainerStyle && buttonContainerStyle}
+      <CustomLongButton
+        icon={buttonIcon}
         onPress={onModalButtonPress}
         title={buttonTitle}
         disable={disable}
+        rightComponent={rightComponent}
       />
     </View>
   );
