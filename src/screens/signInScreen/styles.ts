@@ -1,11 +1,20 @@
 import {ExtendedStylesPropsType} from '@root/hooks/useStyles';
-import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
+import {
+  ImageStyle,
+  Platform,
+  StyleSheet,
+  TextStyle,
+  ViewStyle,
+} from 'react-native';
 
 type TasksScreenStylesType = {
   signInWrapper: ViewStyle;
   signInContainer: ViewStyle;
   screenTitle: TextStyle;
+  appIcon: ImageStyle;
 };
+
+const appIconDivider = Platform.OS === 'ios' ? 2.25 : 2.4;
 
 export const styles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<TasksScreenStylesType>({
@@ -25,7 +34,16 @@ export const styles = (props: ExtendedStylesPropsType) =>
     screenTitle: {
       fontSize: 30,
       fontWeight: '500',
-      marginBottom: 25,
+      marginBottom: 10,
       color: props.TEXT_COLOR,
+    },
+
+    appIcon: {
+      width: props.appWidth / appIconDivider,
+      height: props.appWidth / appIconDivider,
+      borderRadius:
+        Platform.OS === 'ios' ? props.appWidth / 18 : props.appWidth / 10,
+      marginBottom: 40,
+      resizeMode: 'contain',
     },
   });
