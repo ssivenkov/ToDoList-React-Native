@@ -1,3 +1,4 @@
+import {COLORS} from '@colors/colors';
 import {ExtendedStylesPropsType} from '@root/hooks/useStyles';
 import {
   ImageStyle,
@@ -35,7 +36,7 @@ export const styles = (props: ExtendedStylesPropsType) =>
       fontSize: 30,
       fontWeight: '500',
       marginBottom: 10,
-      color: props.TEXT_COLOR,
+      color: COLORS.WHITE,
     },
 
     appIcon: {
