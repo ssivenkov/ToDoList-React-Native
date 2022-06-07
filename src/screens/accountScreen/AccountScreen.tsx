@@ -1,20 +1,14 @@
-import {ColorPickerButton} from '@components/buttons/colorPickerButton/ColorPickerButton';
-import {CustomTextButton} from '@components/common/buttons/CustomTextButton';
+import {ChangeLanguageButton} from '@components/buttons/changeLanguageButton/ChangeLanguageButton';
+import {DarkModeButton} from '@components/buttons/darkModeButton/DarkModeButton';
+import {SelectAccentColorButton} from '@components/buttons/selectAccentColorButton/SelectAccentColorButton';
 import {Loader} from '@components/common/loader/Loader';
-import {ModalText} from '@components/common/modals/ModalText';
-import {Switcher} from '@components/common/switcher/Switcher';
-import {EN, ENGLISH, RU, RUSSIAN} from '@constants/constants';
+import {ModalLongButton} from '@components/common/modals/ModalLongButton';
+import {faArrowRight, faTrash} from '@fortawesome/free-solid-svg-icons';
 import {useStyles} from '@root/hooks/useStyles';
 import {styles} from '@root/screens/accountScreen/styles';
-import {darkTheme, lightTheme} from '@root/themes/theme';
-import {setAccentColorAction} from '@store/actions/userReducerActions/setAccentColorAction';
-import {setThemeAction} from '@store/actions/userReducerActions/setThemeAction';
-import {changeLanguageAction} from '@store/actions/userSagaActions/changeLanguageAction';
 import {deleteAccountAction} from '@store/actions/userSagaActions/deleteAccountAction';
 import {signOutAction} from '@store/actions/userSagaActions/signOutAction';
-import {AccentColorType, LanguageType} from '@store/reducers/userReducer/types';
 import {
-  themeSelector,
   userAvatarSelector,
   userDataSelector,
 } from '@store/selectors/userSelectors';
@@ -30,22 +24,7 @@ export const AccountScreen = () => {
 
   const userData = useSelector(userDataSelector);
   const userAvatar = useSelector(userAvatarSelector);
-  const theme = useSelector(themeSelector);
   const [waitingProcess, setWaitingProcess] = useState<boolean>(false);
-
-  const changeTheme = (isDarkMode: boolean) => {
-    if (isDarkMode) {
-      dispatch(setThemeAction({theme: darkTheme}));
-    } else dispatch(setThemeAction({theme: lightTheme}));
-  };
-
-  const setAccentColor = (accentColor: AccentColorType): void => {
-    dispatch(setAccentColorAction({accentColor}));
-  };
-
-  const changeLanguage = (language: LanguageType) => {
-    dispatch(changeLanguageAction({language}));
-  };
 
   const signOutHandler = (): void => {
     dispatch(signOutAction({setWaitingProcess}));
@@ -59,56 +38,37 @@ export const AccountScreen = () => {
     return (
       <ScrollView>
         <View style={style.screenContainer}>
-          {userAvatar && (
-            <Image source={{uri: userAvatar}} style={style.avatar} />
-          )}
-          {userData.displayName && (
-            <Text style={style.name}>{userData.displayName}</Text>
-          )}
-          {userData.email && <Text style={style.text}>{userData.email}</Text>}
-          {userData.phoneNumber && (
-            <Text style={style.text}>{userData.phoneNumber}</Text>
-          )}
-          <Switcher
-            isOn={theme.darkMode}
-            size={'medium'}
-            switcherText={t('accountScreen.DarkMode')}
-            onToggleSwitcherClick={changeTheme}
-            containerStyle={style.buttonsContainer}
-            textStyle={style.text}
-          />
-          <ColorPickerButton
-            setAccentColor={setAccentColor}
-            description={'accountScreen.AccentColorDescription'}
-            buttonTitle={'accountScreen.AccentColorButtonTitle'}
-            containerStyle={style.buttonsContainer}
-          />
-          <View style={style.buttonsContainer}>
-            <CustomTextButton
-              onPress={() => changeLanguage(EN)}
-              title={ENGLISH}
-              containerStyle={style.buttonContainer}
+          <View style={style.userInfoContainer}>
+            {userAvatar && (
+              <Image source={{uri: userAvatar}} style={style.avatar} />
+            )}
+            {userData.displayName && (
+              <Text style={style.name}>{userData.displayName}</Text>
+            )}
+            {userData.email && <Text style={style.text}>{userData.email}</Text>}
+            {userData.phoneNumber && (
+              <Text style={style.text}>{userData.phoneNumber}</Text>
+            )}
+          </View>
+          <View>
+            <ChangeLanguageButton />
+            <DarkModeButton />
+            <SelectAccentColorButton />
+            <ModalLongButton
+              buttonIcon={faArrowRight}
+              okHandler={signOutHandler}
+              description={t('accountScreen.SignOutWarning')}
+              buttonTitle={t('accountScreen.SignOut')}
+              disable={waitingProcess}
             />
-            <CustomTextButton
-              onPress={() => changeLanguage(RU)}
-              title={RUSSIAN}
-              containerStyle={style.buttonContainer}
+            <ModalLongButton
+              buttonIcon={faTrash}
+              okHandler={deleteAccountHandler}
+              description={t('accountScreen.DeleteAccountWarning')}
+              buttonTitle={t('accountScreen.DeleteAccount')}
+              disable={waitingProcess}
             />
           </View>
-          <ModalText
-            okHandler={signOutHandler}
-            description={t('accountScreen.SignOutWarning')}
-            buttonTitle={t('accountScreen.SignOut')}
-            buttonContainerStyle={style.buttonsContainer}
-            disable={waitingProcess}
-          />
-          <ModalText
-            okHandler={deleteAccountHandler}
-            description={t('accountScreen.DeleteAccountWarning')}
-            buttonTitle={t('accountScreen.DeleteAccount')}
-            buttonContainerStyle={style.buttonsContainer}
-            disable={waitingProcess}
-          />
         </View>
       </ScrollView>
     );

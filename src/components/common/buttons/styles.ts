@@ -7,6 +7,7 @@ type CustomButtonStylesType = {
   textButtonDisable: ViewStyle;
   text: TextStyle;
   icon: ViewStyle;
+  longButtonContainer: ViewStyle;
 };
 
 export const styles = (props: ExtendedStylesPropsType) =>
@@ -31,5 +32,12 @@ export const styles = (props: ExtendedStylesPropsType) =>
 
     icon: {
       marginHorizontal: 4,
+    },
+
+    longButtonContainer: {
+      flexDirection: 'row',
+      width: props.appWidth,
+      padding: 5,
+      backgroundColor: 'skyblue',
     },
   });
