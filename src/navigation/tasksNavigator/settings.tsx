@@ -1,4 +1,4 @@
-import {ICON_SIZE_LARGE} from '@constants/constants';
+import {ICON_SIZE_HALF_MEDIUM} from '@constants/constants';
 import {faCheck, faList} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {styles} from '@navigation/tasksNavigator/styles';
@@ -38,7 +38,7 @@ export const toDoScreenOptions: () => MaterialTopTabNavigationOptions = () => {
       <FontAwesomeIcon
         style={focused ? style.tabFocusIcon : style.tabIcon}
         icon={faList}
-        size={ICON_SIZE_LARGE}
+        size={ICON_SIZE_HALF_MEDIUM}
       />
     ),
   };
@@ -53,7 +53,7 @@ export const doneScreenOptions: () => MaterialTopTabNavigationOptions = () => {
       <FontAwesomeIcon
         style={focused ? style.tabFocusIcon : style.tabIcon}
         icon={faCheck}
-        size={ICON_SIZE_LARGE}
+        size={ICON_SIZE_HALF_MEDIUM}
       />
     ),
   };
