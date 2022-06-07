@@ -12,7 +12,6 @@ const {RED} = COLORS;
 export const styles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<DeleteTaskListButtonStylesType>({
     warnText: {
-      marginBottom: 15,
       fontSize: 18,
       color: props.TEXT_COLOR,
     },

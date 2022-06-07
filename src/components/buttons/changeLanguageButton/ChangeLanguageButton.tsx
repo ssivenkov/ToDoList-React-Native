@@ -1,5 +1,5 @@
 import {styles} from '@components/buttons/changeLanguageButton/styles';
-import {CustomTextButton} from '@components/common/buttons/CustomTextButton';
+import {TextButton} from '@components/common/buttons/textButton/TextButton';
 import {ModalLongButton} from '@components/common/modals/ModalLongButton';
 import {EN, ENGLISH, RU, RUSSIAN} from '@constants/constants';
 import {faLanguage} from '@fortawesome/free-solid-svg-icons';
@@ -37,12 +37,12 @@ export const ChangeLanguageButton = () => {
       buttonTitle={t('accountScreen.ChangeLanguageButtonTitle')}
       rightComponent={languageIndicator}>
       <View style={style.buttonsContainer}>
-        <CustomTextButton
+        <TextButton
           onPress={() => changeLanguage(EN)}
           title={`${ENGLISH}  🇺🇸`}
           containerStyle={style.buttonContainer}
         />
-        <CustomTextButton
+        <TextButton
           onPress={() => changeLanguage(RU)}
           title={`${RUSSIAN}  🇷🇺`}
           containerStyle={style.buttonContainer}

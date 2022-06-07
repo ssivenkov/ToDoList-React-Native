@@ -11,7 +11,7 @@ type CustomButtonStylesType = {
   facebookStyle: ViewStyle;
 };
 
-const {WHITE, CORNFLOWER_BLUE, CHAMBRAY, COD_GRAY} = COLORS;
+const {WHITE, CORNFLOWER_BLUE, CHAMBRAY, DUSTY_GRAY} = COLORS;
 
 export const signInStyles = StyleSheet.create<CustomButtonStylesType>({
   button: {
@@ -46,6 +46,6 @@ export const signInStyles = StyleSheet.create<CustomButtonStylesType>({
   },
 
   disabled: {
-    backgroundColor: COD_GRAY,
+    backgroundColor: DUSTY_GRAY,
   },
 });

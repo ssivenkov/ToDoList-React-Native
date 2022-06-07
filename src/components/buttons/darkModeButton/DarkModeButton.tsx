@@ -1,5 +1,5 @@
 import {styles} from '@components/buttons/darkModeButton/styles';
-import {CustomLongButton} from '@components/common/buttons/customLongButton/CustomLongButton';
+import {LongButton} from '@components/common/buttons/longButton/LongButton';
 import {Switcher} from '@components/common/switcher/Switcher';
 import {faMoon} from '@fortawesome/free-solid-svg-icons';
 import {useStyles} from '@root/hooks/useStyles';
@@ -42,7 +42,7 @@ export const DarkModeButton = () => {
   );
 
   return (
-    <CustomLongButton
+    <LongButton
       icon={faMoon}
       title={t('accountScreen.DarkMode')}
       onPress={() => changeTheme(theme.darkMode)}
