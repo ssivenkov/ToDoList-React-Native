@@ -10,7 +10,7 @@ type UserScreenStylesType = {
   buttonsContainer: ViewStyle;
 };
 
-const avatarSize = 130;
+const avatarSize = 100;
 const topMargin = 20;
 
 export const styles = (props: ExtendedStylesPropsType) =>
@@ -28,15 +28,15 @@ export const styles = (props: ExtendedStylesPropsType) =>
     },
 
     name: {
-      fontSize: 30,
+      fontSize: 22,
       fontWeight: '500',
       color: props.TEXT_COLOR,
       marginTop: topMargin,
-      marginBottom: 10,
+      marginBottom: 5,
     },
 
     text: {
-      fontSize: 22,
+      fontSize: 18,
       color: props.TEXT_COLOR,
     },
 

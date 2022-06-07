@@ -12,13 +12,15 @@ type TaskListStylesType = {
   tasksContainer: ViewStyle;
 };
 
-export const TaskListMarginVertical = 8;
+export const TaskListMarginVertical = 4;
 
 export const styles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<TaskListStylesType>({
     container: {
       backgroundColor: props.TASK_LIST_COLOR,
-      padding: 10,
+      paddingTop: 6,
+      paddingBottom: 7,
+      paddingHorizontal: 10,
       marginHorizontal: 15,
       marginVertical: TaskListMarginVertical,
       borderRadius: 10,
@@ -39,7 +41,7 @@ export const styles = (props: ExtendedStylesPropsType) =>
     title: {
       flex: 1,
       color: props.TEXT_COLOR,
-      fontSize: 25,
+      fontSize: 21,
     },
 
     warnText: {

@@ -1,5 +1,5 @@
 import {CreateTaskListButton} from '@components/buttons/createTaskListButton/CreateTaskListButton';
-import {ICON_SIZE_MEDIUM} from '@constants/constants';
+import {ICON_SIZE_HALF_MEDIUM} from '@constants/constants';
 import {faFile, faUser} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {styles} from '@navigation/withAuthNavigator/styles';
@@ -49,7 +49,7 @@ export const tasksNavigatorOptions: () => BottomTabNavigationOptions = () => {
       <FontAwesomeIcon
         style={focused ? style.tabFocusIcon : style.tabIcon}
         icon={faFile}
-        size={ICON_SIZE_MEDIUM}
+        size={ICON_SIZE_HALF_MEDIUM}
       />
     ),
   };
@@ -69,7 +69,7 @@ export const accountScreenOptions: () => BottomTabNavigationOptions = () => {
       <FontAwesomeIcon
         style={focused ? style.tabFocusIcon : style.tabIcon}
         icon={faUser}
-        size={ICON_SIZE_MEDIUM}
+        size={ICON_SIZE_HALF_MEDIUM}
       />
     ),
   };
