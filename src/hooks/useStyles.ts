@@ -3,10 +3,13 @@ import {
   accentColorSelector,
   themeSelector,
 } from '@store/selectors/userSelectors';
+import {useWindowDimensions} from 'react-native';
 import {useSelector} from 'react-redux';
 
 export interface ExtendedStylesPropsType extends ThemeType {
   ACCENT_COLOR: AccentColorType;
+  appWidth: number;
+  appHeight: number;
 }
 
 export const useStyles = <TStyles, ArgType>(
@@ -14,8 +17,16 @@ export const useStyles = <TStyles, ArgType>(
 ): TStyles => {
   const theme = useSelector(themeSelector);
   const accentColor = useSelector(accentColorSelector);
+  const {width, height} = useWindowDimensions();
+  const appWidth = Math.floor(width);
+  const appHeight = Math.floor(height);
 
-  const props: ExtendedStylesPropsType = {...theme, ACCENT_COLOR: accentColor};
+  const props: ExtendedStylesPropsType = {
+    ...theme,
+    ACCENT_COLOR: accentColor,
+    appWidth,
+    appHeight,
+  };
 
   return fn(props);
 };

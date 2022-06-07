@@ -8,7 +8,7 @@ import {FacebookSignInAction} from '@store/actions/userSagaActions/FacebookSignI
 import {GoogleSignInAction} from '@store/actions/userSagaActions/GoogleSignInAction';
 import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
-import {Text, View} from 'react-native';
+import {Image, Text, View} from 'react-native';
 import {useDispatch} from 'react-redux';
 import {styles} from './styles';
 
@@ -36,6 +36,10 @@ export const SignInScreen = () => {
   return (
     <View style={style.signInWrapper}>
       <View style={style.signInContainer}>
+        <Image
+          style={style.appIcon}
+          source={require('../../assets/images/icons/appIcon.png')}
+        />
         <Text style={style.screenTitle}>{t('signInScreen.SignIn')}</Text>
         <SignInButton
           onPress={onGoogleButtonPress}
