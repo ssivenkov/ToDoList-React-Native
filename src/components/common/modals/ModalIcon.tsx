@@ -1,5 +1,8 @@
-import {CustomIconButton} from '@components/common/buttons/CustomIconButton';
-import {CustomTextButton} from '@components/common/buttons/CustomTextButton';
+import {IconButton} from '@components/common/buttons/iconButton/IconButton';
+import {
+  ModalMenuButton,
+  Separator,
+} from '@components/common/buttons/modalMenuButton/ModalMenuButton';
 import {Loader} from '@components/common/loader/Loader';
 import {useStyles} from '@root/hooks/useStyles';
 import React, {useState} from 'react';
@@ -43,17 +46,24 @@ export const ModalIcon = (props: ModalIconPropsType) => {
         <Modal transparent visible={modalVisible}>
           <View style={style.centeredView}>
             <View style={style.modalView}>
-              {description && <Text style={style.text}>{description}</Text>}
-              {children && <View>{children}</View>}
+              <View style={style.content}>
+                {description && <Text style={style.text}>{description}</Text>}
+                {children && <View>{children}</View>}
+              </View>
               <View style={style.buttonsContainer}>
-                <CustomTextButton
+                <ModalMenuButton
                   onPress={onOkButtonPress}
                   title={t('common.Ok')}
                   disable={okDisable}
+                  leftRounding={true}
+                  rightRounding={false}
                 />
-                <CustomTextButton
+                <Separator />
+                <ModalMenuButton
                   onPress={onCancelButtonPress}
                   title={t('common.Close')}
+                  leftRounding={false}
+                  rightRounding={true}
                 />
               </View>
             </View>
@@ -61,7 +71,7 @@ export const ModalIcon = (props: ModalIconPropsType) => {
           {isLoading && <Loader />}
         </Modal>
       </View>
-      <CustomIconButton onPress={onButtonPress} icon={buttonIcon} />
+      <IconButton onPress={onButtonPress} icon={buttonIcon} />
     </View>
   );
 };

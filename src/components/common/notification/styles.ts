@@ -16,7 +16,6 @@ export const styles = (props: ExtendedStylesPropsType) =>
 
     switcherContainer: {
       marginTop: 23,
-      marginBottom: 10,
       flexDirection: 'row',
       justifyContent: 'space-between',
     },

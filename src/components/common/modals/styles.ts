@@ -4,9 +4,12 @@ import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
 type ModalStylesType = {
   centeredView: ViewStyle;
   modalView: ViewStyle;
+  content: ViewStyle;
   text: TextStyle;
   buttonsContainer: ViewStyle;
 };
+
+export const modalBorderRadius = 20;
 
 export const styles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<ModalStylesType>({
@@ -19,11 +22,14 @@ export const styles = (props: ExtendedStylesPropsType) =>
 
     modalView: {
       width: '90%',
-      alignItems: 'center',
-      borderRadius: 20,
-      paddingHorizontal: 25,
-      paddingVertical: 20,
+      borderRadius: modalBorderRadius,
+      paddingTop: 20,
       backgroundColor: props.BACKGROUND_COLOR,
+    },
+
+    content: {
+      alignItems: 'center',
+      paddingHorizontal: 25,
     },
 
     text: {
@@ -33,9 +39,8 @@ export const styles = (props: ExtendedStylesPropsType) =>
     },
 
     buttonsContainer: {
-      width: '100%',
-      justifyContent: 'space-evenly',
+      maxWidth: '100%',
       flexDirection: 'row',
-      marginTop: 12,
+      marginTop: 20,
     },
   });

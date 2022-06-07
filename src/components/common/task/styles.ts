@@ -11,7 +11,7 @@ type TaskStylesType = {
   greenHighlightTask: TextStyle;
 };
 
-const {RED, COD_GRAY} = COLORS;
+const {RED, DUSTY_GRAY} = COLORS;
 const textSize = 18;
 
 export const styles = (props: ExtendedStylesPropsType) =>
@@ -48,7 +48,7 @@ export const styles = (props: ExtendedStylesPropsType) =>
     },
 
     greenHighlightTask: {
-      color: COD_GRAY,
+      color: DUSTY_GRAY,
       fontWeight: '500',
     },
   });

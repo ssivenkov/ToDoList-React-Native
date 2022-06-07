@@ -1,5 +1,8 @@
-import {CustomTextButton} from '@components/common/buttons/CustomTextButton';
-import {CustomLongButton} from '@components/common/buttons/customLongButton/CustomLongButton';
+import {LongButton} from '@components/common/buttons/longButton/LongButton';
+import {
+  ModalMenuButton,
+  Separator,
+} from '@components/common/buttons/modalMenuButton/ModalMenuButton';
 import {useStyles} from '@root/hooks/useStyles';
 import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
@@ -45,24 +48,33 @@ export const ModalLongButton = (props: ModalLongButtonPropsType) => {
       <Modal transparent visible={modalVisible} onRequestClose={onRequestClose}>
         <View style={style.centeredView}>
           <View style={style.modalView}>
-            {description && <Text style={style.text}>{description}</Text>}
-            {children && <View>{children}</View>}
+            <View style={style.content}>
+              {description && <Text style={style.text}>{description}</Text>}
+              {children && <View>{children}</View>}
+            </View>
             <View style={style.buttonsContainer}>
               {okHandler && (
-                <CustomTextButton
-                  onPress={onOkButtonPress}
-                  title={t('common.Ok')}
-                />
+                <>
+                  <ModalMenuButton
+                    onPress={onOkButtonPress}
+                    title={t('common.Ok')}
+                    leftRounding={true}
+                    rightRounding={false}
+                  />
+                  <Separator />
+                </>
               )}
-              <CustomTextButton
+              <ModalMenuButton
                 onPress={onClosePress}
                 title={t('common.Close')}
+                leftRounding={!okHandler}
+                rightRounding={true}
               />
             </View>
           </View>
         </View>
       </Modal>
-      <CustomLongButton
+      <LongButton
         icon={buttonIcon}
         onPress={onModalButtonPress}
         title={buttonTitle}

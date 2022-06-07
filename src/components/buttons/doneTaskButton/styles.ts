@@ -12,7 +12,6 @@ const {JAPANESE_LAUREL} = COLORS;
 export const styles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<DoneTaskButtonStylesType>({
     warnText: {
-      marginBottom: 15,
       fontSize: 18,
       color: props.TEXT_COLOR,
     },

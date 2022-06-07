@@ -2,16 +2,14 @@ import {COLORS} from '@colors/colors';
 import {ExtendedStylesPropsType} from '@root/hooks/useStyles';
 import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
 
-type CustomButtonStylesType = {
+type TextButtonStylesType = {
   textButton: ViewStyle;
   textButtonDisable: ViewStyle;
   text: TextStyle;
-  icon: ViewStyle;
-  longButtonContainer: ViewStyle;
 };
 
 export const styles = (props: ExtendedStylesPropsType) =>
-  StyleSheet.create<CustomButtonStylesType>({
+  StyleSheet.create<TextButtonStylesType>({
     textButton: {
       paddingHorizontal: 12,
       paddingVertical: 6,
@@ -28,16 +26,5 @@ export const styles = (props: ExtendedStylesPropsType) =>
     text: {
       fontSize: 18,
       color: COLORS.WHITE,
-    },
-
-    icon: {
-      marginHorizontal: 4,
-    },
-
-    longButtonContainer: {
-      flexDirection: 'row',
-      width: props.appWidth,
-      padding: 5,
-      backgroundColor: 'skyblue',
     },
   });

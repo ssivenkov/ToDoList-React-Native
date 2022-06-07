@@ -1,5 +1,5 @@
 import {COLORS} from '@colors/colors';
-import {CustomLongButtonPropsType} from '@components/common/buttons/customLongButton/type';
+import {LongButtonPropsType} from '@components/common/buttons/longButton/type';
 import {ICON_SIZE_MEDIUM} from '@constants/constants';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {useStyles} from '@root/hooks/useStyles';
@@ -10,7 +10,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import {useSelector} from 'react-redux';
 import {styles} from './styles';
 
-export const CustomLongButton = (props: CustomLongButtonPropsType) => {
+export const LongButton = (props: LongButtonPropsType) => {
   const {icon, title, onPress, rightComponent, disable} = props;
 
   const style = useStyles(styles);
