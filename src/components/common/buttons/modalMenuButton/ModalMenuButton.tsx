@@ -23,7 +23,7 @@ export const ModalMenuButton = (props: ModalMenuButtonPropsType) => {
 
   const buttonGradient = theme.darkMode
     ? [COLORS.OUTER_SPACE1, COLORS.MINE_SHAFT2]
-    : [COLORS.WHITE, COLORS.DUSTY_GRAY];
+    : [COLORS.WHITE, COLORS.SILVER_CHALICE1];
 
   return (
     <LinearGradient colors={buttonGradient} style={buttonStyle}>
