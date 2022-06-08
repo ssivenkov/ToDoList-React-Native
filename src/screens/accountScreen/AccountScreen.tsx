@@ -51,9 +51,9 @@ export const AccountScreen = () => {
             )}
           </View>
           <View>
-            <ChangeLanguageButton />
-            <DarkModeButton />
-            <SelectAccentColorButton />
+            <ChangeLanguageButton setIsLoading={setWaitingProcess} />
+            <DarkModeButton setIsLoading={setWaitingProcess} />
+            <SelectAccentColorButton setIsLoading={setWaitingProcess} />
             <ModalLongButton
               buttonIcon={faArrowRight}
               okHandler={signOutHandler}
