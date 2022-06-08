@@ -1,4 +1,5 @@
 import {styles} from '@components/buttons/changeLanguageButton/styles';
+import {ChangeLanguageButtonPropsType} from '@components/buttons/changeLanguageButton/types';
 import {TextButton} from '@components/common/buttons/textButton/TextButton';
 import {ModalLongButton} from '@components/common/modals/ModalLongButton';
 import {EN, ENGLISH, RU, RUSSIAN} from '@constants/constants';
@@ -13,7 +14,9 @@ import {Text, View} from 'react-native';
 import 'react-native-get-random-values';
 import {useDispatch, useSelector} from 'react-redux';
 
-export const ChangeLanguageButton = () => {
+export const ChangeLanguageButton = (props: ChangeLanguageButtonPropsType) => {
+  const {setIsLoading} = props;
+
   const {t} = useTranslation();
 
   const dispatch = useDispatch();
@@ -27,7 +30,7 @@ export const ChangeLanguageButton = () => {
   );
 
   const changeLanguage = (language: LanguageType) => {
-    dispatch(changeLanguageAction({language}));
+    dispatch(changeLanguageAction({language, setIsLoading}));
   };
 
   return (
