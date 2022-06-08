@@ -8,6 +8,8 @@ import {addNewTaskSaga} from '@store/sagas/tasksSagas/tasksSagas/addNewTaskSaga'
 import {deleteTaskSaga} from '@store/sagas/tasksSagas/tasksSagas/deleteTaskSaga';
 import {editTaskSaga} from '@store/sagas/tasksSagas/tasksSagas/editTaskSaga';
 import {setTaskIsDoneSaga} from '@store/sagas/tasksSagas/tasksSagas/setTaskIsDoneSaga';
+import {changeAccentColorSaga} from '@store/sagas/userSagas/changeAccentColorSaga';
+import {changeDarkModeSaga} from '@store/sagas/userSagas/changeDarkModeSaga';
 import {changeLanguageSaga} from '@store/sagas/userSagas/changeLanguageSaga';
 import {checkUserSaga} from '@store/sagas/userSagas/checkUserSaga';
 import {createChannelSaga} from '@store/sagas/userSagas/createChannelSaga';
@@ -16,11 +18,13 @@ import {facebookSignInSaga} from '@store/sagas/userSagas/facebookSignInSaga';
 import {getUserDataSaga} from '@store/sagas/userSagas/getUserDataSaga';
 import {googleSignInSaga} from '@store/sagas/userSagas/googleSignInSaga';
 import {signOutSaga} from '@store/sagas/userSagas/signOutSaga';
-import {syncUserTaskListsSaga} from '@store/sagas/userSagas/syncUserTaskListsSaga';
+import {syncUserDataSaga} from '@store/sagas/userSagas/syncUserDataSaga';
 import {takeEvery, takeLatest} from 'redux-saga/effects';
 
 export function* rootWatcher() {
   yield takeLatest(USER_SAGA_ACTION.CHANGE_LANGUAGE, changeLanguageSaga);
+  yield takeLatest(USER_SAGA_ACTION.CHANGE_ACCENT_COLOR, changeAccentColorSaga);
+  yield takeLatest(USER_SAGA_ACTION.CHANGE_DARK_MODE, changeDarkModeSaga);
   yield takeLatest(USER_SAGA_ACTION.GOOGLE_SIGN_IN, googleSignInSaga);
   yield takeLatest(USER_SAGA_ACTION.FACEBOOK_SIGN_IN, facebookSignInSaga);
   yield takeLatest(USER_SAGA_ACTION.GET_USER_DATA, getUserDataSaga);
@@ -28,10 +32,7 @@ export function* rootWatcher() {
   yield takeLatest(USER_SAGA_ACTION.DELETE_ACCOUNT, deleteAccountSaga);
   yield takeLatest(USER_SAGA_ACTION.CREATE_CHANNEL, createChannelSaga);
   yield takeEvery(USER_SAGA_ACTION.CHECK_USER, checkUserSaga);
-  yield takeLatest(
-    USER_SAGA_ACTION.SYNC_USER_TASK_LISTS,
-    syncUserTaskListsSaga,
-  );
+  yield takeLatest(USER_SAGA_ACTION.SYNC_USER_DATA, syncUserDataSaga);
 
   yield takeLatest(TASKS_SAGA_ACTION.ADD_NEW_TASK_LIST, addNewTaskListSaga);
   yield takeLatest(TASKS_SAGA_ACTION.ADD_NEW_TASK, addNewTaskSaga);

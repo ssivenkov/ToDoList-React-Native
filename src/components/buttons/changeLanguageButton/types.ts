@@ -1,10 +1,5 @@
-import {AccentColorType} from '@store/reducers/userReducer/types';
-import {ViewStyle} from 'react-native';
+import {SetStateType} from '@root/types/common/types';
 
-export type ColorPickerButtonPropsType = {
-  setAccentColor: (accentColor: AccentColorType) => void;
-  description: string;
-  buttonTitle: string;
-
-  containerStyle?: ViewStyle;
+export type ChangeLanguageButtonPropsType = {
+  setIsLoading: SetStateType<boolean>;
 };

@@ -9,23 +9,26 @@ import {
 } from '@navigation/tasksNavigator/types';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import {TasksScreen} from '@root/screens/tasksScreen/TaskScreen';
+import {changeLanguageAction} from '@store/actions/userSagaActions/changeLanguageAction';
 import {languageSelector} from '@store/selectors/userSelectors';
 import i18next, {t} from 'i18next';
 import React, {useEffect, useState} from 'react';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 
 const {Navigator, Screen} = createMaterialTopTabNavigator<TopTabParamList>();
 
 export const TasksNavigator = () => {
+  const dispatch = useDispatch();
   const languageInState = useSelector(languageSelector);
   const [rerender, setRerender] = useState<string>('');
 
   // need for rerender with correct translations for navigator
   useEffect(() => {
     if (i18next.language !== languageInState) {
+      dispatch(changeLanguageAction({language: languageInState}));
       setRerender(languageInState);
     }
-  }, [rerender]);
+  }, [rerender, languageInState]);
 
   return (
     <Navigator

@@ -32,7 +32,6 @@ export const ModalLongButton = (props: ModalLongButtonPropsType) => {
 
   const onOkButtonPress = (): void => {
     okHandler && okHandler();
-    setModalVisible(false);
   };
 
   const onRequestClose = (): void => {

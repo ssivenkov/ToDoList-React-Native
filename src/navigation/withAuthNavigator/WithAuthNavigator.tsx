@@ -26,10 +26,11 @@ export const WithAuthNavigator = () => {
   // need for rerender with correct translations for navigator
   useEffect(() => {
     if (i18next.language !== languageInState) {
+      i18next.changeLanguage(languageInState);
       dispatch(changeLanguageAction({language: languageInState}));
       setRerender(languageInState);
     }
-  }, [rerender]);
+  }, [rerender, languageInState]);
 
   return (
     <Navigator

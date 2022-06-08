@@ -2,8 +2,12 @@ import {USERS} from '@constants/constants';
 import {DB} from '@root/api/DB';
 import {errorAlert} from '@root/helpers/alertHelper';
 import {checkInternetConnectionHelper} from '@root/helpers/hasInternetConnectionHelper';
+import {darkTheme, lightTheme} from '@root/themes/theme';
 import {setNotificationsAction} from '@store/actions/tasksReducerActions/notificationsActions/setNotificationsAction';
 import {setTaskListsAction} from '@store/actions/tasksReducerActions/taskListsActions/setTaskListsAction';
+import {setAccentColorAction} from '@store/actions/userReducerActions/setAccentColorAction';
+import {setLanguageAction} from '@store/actions/userReducerActions/setLanguageAction';
+import {setThemeAction} from '@store/actions/userReducerActions/setThemeAction';
 import {
   TaskListBeforeConvertInterface,
   TaskListInterface,
@@ -13,7 +17,7 @@ import {SnapshotType, UserIDType} from '@store/reducers/userReducer/types';
 import {userIDSelector} from '@store/selectors/userSelectors';
 import {call, put, select} from 'redux-saga/effects';
 
-export function* syncUserTaskListsSaga() {
+export function* syncUserDataSaga() {
   try {
     const internetIsOn: boolean = yield call(checkInternetConnectionHelper);
     if (!internetIsOn) return;
@@ -22,9 +26,18 @@ export function* syncUserTaskListsSaga() {
     const snapshot: SnapshotType = yield DB.ref(`${USERS}/${userID}`).once(
       'value',
     );
-    const hasTaskLists = snapshot.val() && snapshot.val().taskLists;
+    const userData = snapshot.val() && snapshot.val();
 
-    if (hasTaskLists) {
+    yield put(setLanguageAction({language: userData.language}));
+    yield put(
+      setAccentColorAction({
+        accentColor: userData.accentColor,
+      }),
+    );
+    const theme = userData.darkMode ? darkTheme : lightTheme;
+    yield put(setThemeAction({theme}));
+
+    if (userData.taskLists) {
       const userTaskListsObject = snapshot.val().taskLists;
       // convert taskLists object to taskLists array
       const userTaskListsBeforeConvert: TaskListBeforeConvertInterface[] =
