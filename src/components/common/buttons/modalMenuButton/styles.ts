@@ -17,7 +17,7 @@ export const styles = (props: ExtendedStylesPropsType) =>
     modalMenuButton: {
       alignItems: 'center',
       justifyContent: 'space-between',
-      padding: 15,
+      padding: 10,
     },
 
     modalMenuButtonDisable: {
