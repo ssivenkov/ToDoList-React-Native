@@ -1,6 +1,6 @@
 import {FACEBOOK_PROVIDER_ID} from '@constants/constants';
-import {errorAlert} from '@root/helpers/alertHelper';
 import {Nullable} from '@root/types/common/types';
+import {setModalErrorMessageAction} from '@store/actions/userReducerActions/setModalErrorMessageAction';
 import {setUserAvatarAction} from '@store/actions/userReducerActions/setUserAvatarAction';
 import {setUserDataAction} from '@store/actions/userReducerActions/setUserDataAction';
 import {GetUserDataSagaActionReturnType} from '@store/actions/userSagaActions/getUserDataAction';
@@ -29,6 +29,8 @@ export function* getUserDataSaga(action: GetUserDataSagaActionReturnType) {
 
     yield put(setUserDataAction({userData}));
   } catch (error) {
-    errorAlert(error);
+    if (error instanceof Error) {
+      yield put(setModalErrorMessageAction({errorModalMessage: error.message}));
+    }
   }
 }
