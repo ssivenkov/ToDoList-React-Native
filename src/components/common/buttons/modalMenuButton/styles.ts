@@ -40,7 +40,7 @@ export const styles = (props: ExtendedStylesPropsType) =>
     },
 
     separator: {
-      width: 1.5,
+      width: 1,
       backgroundColor: props.darkMode ? COLORS.WOODSMOKE2 : COLORS.WHITE,
     },
   });

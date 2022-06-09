@@ -14,3 +14,4 @@ export const FACEBOOK_PROVIDER_ID = 'facebook.com';
 export const USERS = 'Users';
 export const TASK_LISTS = 'taskLists';
 export const TASKS = 'tasks';
+export const ONLINE = 'online';

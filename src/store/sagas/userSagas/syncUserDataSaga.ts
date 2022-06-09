@@ -1,12 +1,12 @@
-import {USERS} from '@constants/constants';
+import {ONLINE, USERS} from '@constants/constants';
 import {DB} from '@root/api/DB';
-import {errorAlert} from '@root/helpers/alertHelper';
-import {checkInternetConnectionHelper} from '@root/helpers/hasInternetConnectionHelper';
+import {checkInternetConnectionHelper} from '@root/helpers/checkInternetConnectionHelper';
 import {darkTheme, lightTheme} from '@root/themes/theme';
 import {setNotificationsAction} from '@store/actions/tasksReducerActions/notificationsActions/setNotificationsAction';
 import {setTaskListsAction} from '@store/actions/tasksReducerActions/taskListsActions/setTaskListsAction';
 import {setAccentColorAction} from '@store/actions/userReducerActions/setAccentColorAction';
 import {setLanguageAction} from '@store/actions/userReducerActions/setLanguageAction';
+import {setModalErrorMessageAction} from '@store/actions/userReducerActions/setModalErrorMessageAction';
 import {setThemeAction} from '@store/actions/userReducerActions/setThemeAction';
 import {
   TaskListBeforeConvertInterface,
@@ -19,8 +19,13 @@ import {call, put, select} from 'redux-saga/effects';
 
 export function* syncUserDataSaga() {
   try {
-    const internetIsOn: boolean = yield call(checkInternetConnectionHelper);
-    if (!internetIsOn) return;
+    const internetConnectionStatus: string = yield call(
+      checkInternetConnectionHelper,
+    );
+
+    if (internetConnectionStatus !== ONLINE) {
+      throw Error(internetConnectionStatus);
+    }
 
     const userID: UserIDType = yield select(userIDSelector);
     const snapshot: SnapshotType = yield DB.ref(`${USERS}/${userID}`).once(
@@ -68,6 +73,8 @@ export function* syncUserDataSaga() {
       yield put(setNotificationsAction({notifications: []}));
     }
   } catch (error) {
-    errorAlert(error);
+    if (error instanceof Error) {
+      yield put(setModalErrorMessageAction({errorModalMessage: error.message}));
+    }
   }
 }

@@ -1,16 +1,20 @@
-import {GOOGLE_PROVIDER_ID, START_ANIMATION_DELAY} from '@constants/constants';
+import {
+  GOOGLE_PROVIDER_ID,
+  ONLINE,
+  START_ANIMATION_DELAY,
+} from '@constants/constants';
 import {
   GoogleSignInCancelError,
   signInActionCanceled,
 } from '@constants/errorMessages';
 import auth from '@react-native-firebase/auth';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
-import {errorAlert} from '@root/helpers/alertHelper';
-import {checkInternetConnectionHelper} from '@root/helpers/hasInternetConnectionHelper';
+import {checkInternetConnectionHelper} from '@root/helpers/checkInternetConnectionHelper';
+import {setModalErrorMessageAction} from '@store/actions/userReducerActions/setModalErrorMessageAction';
 import {setProviderIDAction} from '@store/actions/userReducerActions/setProviderIDAction';
 import {GetGoogleUserDataSagaActionReturnType} from '@store/actions/userSagaActions/GoogleSignInAction';
 import {t} from 'i18next';
-import {call, delay, putResolve} from 'redux-saga/effects';
+import {call, delay, put, putResolve} from 'redux-saga/effects';
 
 export type AuthCredentialType = {
   providerId: string;
@@ -23,8 +27,13 @@ export function* googleSignInSaga(
 ) {
   const {setWaitingUserData} = action.payload;
   try {
-    const internetIsOn: boolean = yield call(checkInternetConnectionHelper);
-    if (!internetIsOn) return;
+    const internetConnectionStatus: string = yield call(
+      checkInternetConnectionHelper,
+    );
+
+    if (internetConnectionStatus !== ONLINE) {
+      throw Error(internetConnectionStatus);
+    }
 
     yield call(setWaitingUserData, true);
     yield delay(START_ANIMATION_DELAY);
@@ -47,16 +56,22 @@ export function* googleSignInSaga(
       return auth().signInWithCredential(credential);
     };
     yield call(signInWithCredential, googleCredential);
-  } catch (error: any) {
+  } catch (error) {
     setWaitingUserData(false);
 
     if (
-      error.message === GoogleSignInCancelError ||
-      error.message === signInActionCanceled
+      (error instanceof Error && error.message === GoogleSignInCancelError) ||
+      (error instanceof Error && error.message === signInActionCanceled)
     ) {
-      return errorAlert(t('signInScreen.CancelAuthProcess'));
+      yield put(
+        setModalErrorMessageAction({
+          errorModalMessage: t('signInScreen.CancelAuthProcess'),
+        }),
+      );
     }
 
-    errorAlert(error);
+    if (error instanceof Error) {
+      yield put(setModalErrorMessageAction({errorModalMessage: error.message}));
+    }
   }
 }

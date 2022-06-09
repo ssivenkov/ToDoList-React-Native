@@ -1,19 +1,20 @@
 import {
   NOTIFICATION_ID_MAX_LENGTH,
+  ONLINE,
   START_ANIMATION_DELAY,
   TASK_LISTS,
   TASKS,
   USERS,
 } from '@constants/constants';
 import {DB} from '@root/api/DB';
-import {errorAlert} from '@root/helpers/alertHelper';
 import {cancelNotificationHelper} from '@root/helpers/cancelNotificationHelper';
+import {checkInternetConnectionHelper} from '@root/helpers/checkInternetConnectionHelper';
 import {createNotificationHelper} from '@root/helpers/createNotificationHelper';
 import {generateNumberIDHelper} from '@root/helpers/generateNumberIDHelper';
-import {checkInternetConnectionHelper} from '@root/helpers/hasInternetConnectionHelper';
 import {editTaskNotificationAction} from '@store/actions/tasksReducerActions/notificationsActions/editTaskNotificationAction';
 import {setEditedTaskAction} from '@store/actions/tasksReducerActions/tasksActions/setEditedTaskAction';
 import {SetEditedTaskActionSagaReturnType} from '@store/actions/tasksSagaActions/tasksSagasActions/setEditedTaskAction';
+import {setModalErrorMessageAction} from '@store/actions/userReducerActions/setModalErrorMessageAction';
 import {NotificationType} from '@store/reducers/tasksReducer/types';
 import {ChannelIDType, UserIDType} from '@store/reducers/userReducer/types';
 import {notificationsSelector} from '@store/selectors/tasksSelectors';
@@ -35,8 +36,13 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
     shouldCreateNotification,
   } = action.payload;
   try {
-    const internetIsOn: boolean = yield call(checkInternetConnectionHelper);
-    if (!internetIsOn) return;
+    const internetConnectionStatus: string = yield call(
+      checkInternetConnectionHelper,
+    );
+
+    if (internetConnectionStatus !== ONLINE) {
+      throw Error(internetConnectionStatus);
+    }
 
     yield call(setIsLoading, true);
     yield delay(START_ANIMATION_DELAY);
@@ -103,6 +109,9 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
     yield call(setEditedTaskTitle, editedTaskTitle);
   } catch (error) {
     yield call(setIsLoading, false);
-    errorAlert(error);
+
+    if (error instanceof Error) {
+      yield put(setModalErrorMessageAction({errorModalMessage: error.message}));
+    }
   }
 }

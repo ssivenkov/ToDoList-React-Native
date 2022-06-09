@@ -1,16 +1,17 @@
 import {
+  ONLINE,
   START_ANIMATION_DELAY,
   TASK_LISTS,
   TASKS,
   USERS,
 } from '@constants/constants';
 import {DB} from '@root/api/DB';
-import {errorAlert} from '@root/helpers/alertHelper';
 import {cancelNotificationHelper} from '@root/helpers/cancelNotificationHelper';
-import {checkInternetConnectionHelper} from '@root/helpers/hasInternetConnectionHelper';
+import {checkInternetConnectionHelper} from '@root/helpers/checkInternetConnectionHelper';
 import {deleteTaskNotificationAction} from '@store/actions/tasksReducerActions/notificationsActions/deleteTaskNotificationAction';
 import {setTaskIsDoneAction} from '@store/actions/tasksReducerActions/tasksActions/setTaskIsDoneAction';
 import {SetTaskIsDoneSagaActionReturnType} from '@store/actions/tasksSagaActions/tasksSagasActions/setTaskIsDoneAction';
+import {setModalErrorMessageAction} from '@store/actions/userReducerActions/setModalErrorMessageAction';
 import {NotificationType} from '@store/reducers/tasksReducer/types';
 import {UserIDType} from '@store/reducers/userReducer/types';
 import {notificationsSelector} from '@store/selectors/tasksSelectors';
@@ -21,8 +22,13 @@ export function* setTaskIsDoneSaga(action: SetTaskIsDoneSagaActionReturnType) {
   const {setIsLoading, setModalVisible, doneTaskID, taskListID} =
     action.payload;
   try {
-    const internetIsOn: boolean = yield call(checkInternetConnectionHelper);
-    if (!internetIsOn) return;
+    const internetConnectionStatus: string = yield call(
+      checkInternetConnectionHelper,
+    );
+
+    if (internetConnectionStatus !== ONLINE) {
+      throw Error(internetConnectionStatus);
+    }
 
     yield call(setIsLoading, true);
     yield delay(START_ANIMATION_DELAY);
@@ -57,6 +63,9 @@ export function* setTaskIsDoneSaga(action: SetTaskIsDoneSagaActionReturnType) {
     yield call(setModalVisible, false);
   } catch (error) {
     yield call(setIsLoading, false);
-    errorAlert(error);
+
+    if (error instanceof Error) {
+      yield put(setModalErrorMessageAction({errorModalMessage: error.message}));
+    }
   }
 }

@@ -1,6 +1,7 @@
 import {
   AccentColorType,
   ChannelIDType,
+  ErrorModalMessageType,
   LanguageType,
   ProviderIDType,
   ThemeType,
@@ -42,4 +43,10 @@ export const accentColorSelector = (
   state: AppRootStateType,
 ): AccentColorType => {
   return state.user.accentColor;
+};
+
+export const errorModalMessageSelector = (
+  state: AppRootStateType,
+): ErrorModalMessageType => {
+  return state.user.errorModalMessage;
 };

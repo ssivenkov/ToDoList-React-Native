@@ -31,6 +31,7 @@ export type ThemeType = {
   PLACEHOLDER_COLOR: string;
 };
 export type AccentColorType = string;
+export type ErrorModalMessageType = string;
 
 export type UserReducerStateType = {
   providerID: ProviderIDType;
@@ -40,4 +41,5 @@ export type UserReducerStateType = {
   language: LanguageType;
   theme: ThemeType;
   accentColor: AccentColorType;
+  errorModalMessage: ErrorModalMessageType;
 };
