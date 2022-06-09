@@ -1,24 +1,30 @@
 import {
   FACEBOOK_PROVIDER_ID,
+  ONLINE,
   START_ANIMATION_DELAY,
 } from '@constants/constants';
 import auth from '@react-native-firebase/auth';
-import {errorAlert} from '@root/helpers/alertHelper';
-import {checkInternetConnectionHelper} from '@root/helpers/hasInternetConnectionHelper';
+import {checkInternetConnectionHelper} from '@root/helpers/checkInternetConnectionHelper';
+import {setModalErrorMessageAction} from '@store/actions/userReducerActions/setModalErrorMessageAction';
 import {setProviderIDAction} from '@store/actions/userReducerActions/setProviderIDAction';
 import {GetFacebookUserDataSagaActionReturnType} from '@store/actions/userSagaActions/FacebookSignInAction';
 import {AuthCredentialType} from '@store/sagas/userSagas/googleSignInSaga';
 import {t} from 'i18next';
 import {AccessToken, LoginManager} from 'react-native-fbsdk-next';
-import {call, delay, putResolve} from 'redux-saga/effects';
+import {call, delay, put, putResolve} from 'redux-saga/effects';
 
 export function* facebookSignInSaga(
   action: GetFacebookUserDataSagaActionReturnType,
 ) {
   const {setWaitingUserData} = action.payload;
   try {
-    const internetIsOn: boolean = yield call(checkInternetConnectionHelper);
-    if (!internetIsOn) return;
+    const internetConnectionStatus: string = yield call(
+      checkInternetConnectionHelper,
+    );
+
+    if (internetConnectionStatus !== ONLINE) {
+      throw Error(internetConnectionStatus);
+    }
 
     yield call(setWaitingUserData, true);
     yield delay(START_ANIMATION_DELAY);
@@ -52,7 +58,10 @@ export function* facebookSignInSaga(
 
     yield call(signInWithCredential, facebookCredential);
   } catch (error) {
-    errorAlert(error);
+    if (error instanceof Error) {
+      yield put(setModalErrorMessageAction({errorModalMessage: error.message}));
+    }
+
     setWaitingUserData(false);
   }
 }

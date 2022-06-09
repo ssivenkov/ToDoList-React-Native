@@ -1,5 +1,5 @@
+import {ONLINE} from '@constants/constants';
 import NetInfo, {NetInfoState} from '@react-native-community/netinfo';
-import {errorAlert} from '@root/helpers/alertHelper';
 import {t} from 'i18next';
 
 const hasInternetConnection = (connectionStatus: NetInfoState) => {
@@ -14,11 +14,9 @@ export const checkInternetConnectionHelper = async () => {
     const connectionStatus: NetInfoState = await NetInfo.fetch();
 
     if (!hasInternetConnection(connectionStatus)) {
-      errorAlert(t('common.NoInternetConnection'));
-
-      return false;
+      return t('common.NoInternetConnection');
     } else {
-      return true;
+      return ONLINE;
     }
   } catch (error) {
     return false;

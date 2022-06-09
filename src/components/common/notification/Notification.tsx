@@ -37,9 +37,7 @@ export const Notification = (props: NotificationPropsType) => {
   const switching = (isOn: boolean) => {
     requestIOSNotificationsPermissionHelper().then((hasPermission) => {
       if (!hasPermission) {
-        errorAlert(t('common.NoIOSNotificationsPermission'));
-
-        return;
+        return errorAlert(t('common.NoIOSNotificationsPermission'));
       }
 
       isOn
