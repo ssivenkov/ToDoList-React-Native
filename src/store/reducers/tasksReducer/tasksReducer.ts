@@ -174,12 +174,13 @@ export const tasksReducer = (
         }),
       };
 
-    case TASKS_REDUCER_ACTION.EDIT_TASK_TITLE:
+    case TASKS_REDUCER_ACTION.EDIT_TASK:
       return {
         ...state,
         taskLists: [
           ...state.taskLists.map((taskList) => {
-            const {taskListID, taskID, editedTaskTitle} = action.payload;
+            const {taskListID, taskID, editedTaskTitle, colorMark} =
+              action.payload;
 
             if (taskList.id === taskListID) {
               const targetTaskList = {...taskList};
@@ -188,7 +189,21 @@ export const tasksReducer = (
               if (tasks) {
                 targetTaskList.tasks = tasks.map((task) => {
                   if (task.id === taskID) {
-                    return {...task, title: editedTaskTitle};
+                    if (colorMark) {
+                      return {
+                        ...task,
+                        title: editedTaskTitle,
+                        colorMark,
+                      };
+                    } else {
+                      const modifiedTask = {
+                        ...task,
+                        title: editedTaskTitle,
+                      };
+                      delete modifiedTask.colorMark;
+
+                      return modifiedTask;
+                    }
                   } else return task;
                 });
               }

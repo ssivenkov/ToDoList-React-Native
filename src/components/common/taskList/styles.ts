@@ -1,5 +1,5 @@
 import {COLORS} from '@colors/colors';
-import {ThemeType} from '@store/reducers/userReducer/types';
+import {ExtendedStylesPropsType} from '@root/hooks/useStyles';
 import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
 
 type TaskListStylesType = {
@@ -12,15 +12,16 @@ type TaskListStylesType = {
   tasksContainer: ViewStyle;
 };
 
-export const TaskListMarginVertical = 8;
-const {RED} = COLORS;
+export const TaskListMarginVertical = 4;
 
-export const styles = (props: ThemeType) =>
+export const styles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<TaskListStylesType>({
     container: {
       backgroundColor: props.TASK_LIST_COLOR,
-      padding: 10,
-      marginHorizontal: 15,
+      paddingTop: 6,
+      paddingBottom: 7,
+      paddingHorizontal: 9,
+      marginHorizontal: 10,
       marginVertical: TaskListMarginVertical,
       borderRadius: 10,
     },
@@ -40,7 +41,8 @@ export const styles = (props: ThemeType) =>
     title: {
       flex: 1,
       color: props.TEXT_COLOR,
-      fontSize: 25.5,
+      fontSize: 21,
+      marginLeft: 6,
     },
 
     warnText: {
@@ -48,7 +50,7 @@ export const styles = (props: ThemeType) =>
     },
 
     redHighlightTask: {
-      color: RED,
+      color: COLORS.RED,
       fontWeight: '500',
     },
 

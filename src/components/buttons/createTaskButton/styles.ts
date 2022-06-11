@@ -1,33 +1,24 @@
-import {FontAwesomeIconStyle} from '@fortawesome/react-native-fontawesome';
-import {ThemeType} from '@store/reducers/userReducer/types';
+import {ExtendedStylesPropsType} from '@root/hooks/useStyles';
 import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
 
 type CreateTaskButtonStylesType = {
-  notificationContainer: ViewStyle;
-  text: TextStyle;
-  icon: FontAwesomeIconStyle;
-  dateTimePickerContainer: ViewStyle;
+  colorSwitcherComponentContainer: ViewStyle;
+  colorSwitcherContainer: ViewStyle;
+  colorSwitcherText: TextStyle;
 };
 
-export const styles = (props: ThemeType) =>
+export const styles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<CreateTaskButtonStylesType>({
-    notificationContainer: {
-      marginTop: 23,
-      marginBottom: 10,
-      flexDirection: 'row',
-      justifyContent: 'space-between',
+    colorSwitcherComponentContainer: {
+      overflow: 'hidden',
     },
 
-    text: {
-      fontSize: 20,
-      marginBottom: 2,
+    colorSwitcherContainer: {
+      marginTop: 14,
     },
 
-    icon: {
-      color: props.ICON_BUTTON_COLOR,
-    },
-
-    dateTimePickerContainer: {
-      marginVertical: 10,
+    colorSwitcherText: {
+      color: props.TEXT_COLOR,
+      fontSize: 18,
     },
   });

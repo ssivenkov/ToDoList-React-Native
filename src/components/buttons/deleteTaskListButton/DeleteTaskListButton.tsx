@@ -6,16 +6,18 @@ import {useStyles} from '@root/hooks/useStyles';
 import {SetStateType} from '@root/types/common/types';
 import {deleteTaskListFromScreenAction} from '@store/actions/tasksSagaActions/taskListsSagasActions/deleteTaskListFromScreenAction';
 import {deleteTaskListFullAction} from '@store/actions/tasksSagaActions/taskListsSagasActions/deleteTaskListFullAction';
+import {themeSelector} from '@store/selectors/userSelectors';
 import React from 'react';
 import {Trans} from 'react-i18next';
 import {Text} from 'react-native';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {styles} from './styles';
 import {DeleteTaskListButtonPropsType} from './types';
 
 export const DeleteTaskListButton = (props: DeleteTaskListButtonPropsType) => {
   const {taskListTitle, isTodoTaskList, fullTaskList} = props;
 
+  const theme = useSelector(themeSelector);
   const style = useStyles(styles);
   const dispatch = useDispatch();
 
@@ -72,7 +74,7 @@ export const DeleteTaskListButton = (props: DeleteTaskListButtonPropsType) => {
         <FontAwesomeIcon
           icon={faTrash}
           size={ICON_SIZE_SMALL}
-          style={style.icon}
+          color={theme.ICON_BUTTON_COLOR}
         />
       }>
       <Text style={style.warnText}>

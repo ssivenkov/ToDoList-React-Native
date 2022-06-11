@@ -1,9 +1,10 @@
 import {COLORS} from '@colors/colors';
-import {ThemeType} from '@store/reducers/userReducer/types';
+import {ExtendedStylesPropsType} from '@root/hooks/useStyles';
 import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
 
 type TaskStylesType = {
   container: ViewStyle;
+  mark: ViewStyle;
   text: TextStyle;
   buttonsContainer: ViewStyle;
   warnText: TextStyle;
@@ -11,25 +12,32 @@ type TaskStylesType = {
   greenHighlightTask: TextStyle;
 };
 
-const {BLACK, RED, COD_GRAY} = COLORS;
-const textSize = 20;
+const {RED, DUSTY_GRAY} = COLORS;
+const textSize = 18;
 
-export const styles = (props: ThemeType) =>
+export const styles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<TaskStylesType>({
     container: {
       justifyContent: 'space-between',
       flexDirection: 'row',
-      paddingHorizontal: 10,
-      paddingVertical: 5,
+      paddingRight: 5,
       marginVertical: 3,
+      overflow: 'hidden',
       borderRadius: 7,
       backgroundColor: props.TASK_COLOR,
+    },
+
+    mark: {
+      height: '100%',
+      width: 6,
     },
 
     text: {
       flex: 1,
       color: props.TEXT_COLOR,
       fontSize: textSize,
+      paddingVertical: 4,
+      paddingLeft: 7,
     },
 
     buttonsContainer: {
@@ -38,7 +46,6 @@ export const styles = (props: ThemeType) =>
     },
 
     warnText: {
-      color: BLACK,
       fontSize: textSize,
     },
 
@@ -48,7 +55,7 @@ export const styles = (props: ThemeType) =>
     },
 
     greenHighlightTask: {
-      color: COD_GRAY,
+      color: DUSTY_GRAY,
       fontWeight: '500',
     },
   });

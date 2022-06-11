@@ -1,6 +1,6 @@
 import {COLORS} from '@colors/colors';
 import {FontAwesomeIconStyle} from '@fortawesome/react-native-fontawesome';
-import {ThemeType} from '@store/reducers/userReducer/types';
+import {ExtendedStylesPropsType} from '@root/hooks/useStyles';
 import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
 
 type TasksNavigationStylesType = {
@@ -17,18 +17,18 @@ type TasksNavigationStylesType = {
 
 const {WHITE} = COLORS;
 
-export const styles = (props: ThemeType) =>
+export const styles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<TasksNavigationStylesType>({
     tabBarContainer: {
       backgroundColor: props.TAB_BAR_BACKGROUND_COLOR,
     },
 
     tabBarItem: {
-      height: 60,
+      height: 50,
     },
 
     tabFocusIcon: {
-      color: props.TAB_BAR_FOCUS_ICON_COLOR,
+      color: props.ACCENT_COLOR,
     },
 
     tabIcon: {
@@ -36,7 +36,7 @@ export const styles = (props: ThemeType) =>
     },
 
     tabBarIndicator: {
-      backgroundColor: props.TAB_BAR_INDICATOR_COLOR,
+      backgroundColor: props.ACCENT_COLOR,
     },
 
     headerTitleStyle: {
@@ -49,10 +49,11 @@ export const styles = (props: ThemeType) =>
     },
 
     icon: {
-      marginTop: 2,
+      marginTop: 1,
     },
 
     title: {
-      marginTop: 8,
+      fontSize: 12,
+      marginTop: 0,
     },
   });

@@ -1,48 +1,24 @@
-import {COLORS} from '@colors/colors';
-import {FontAwesomeIconStyle} from '@fortawesome/react-native-fontawesome';
-import {ThemeType} from '@store/reducers/userReducer/types';
+import {ExtendedStylesPropsType} from '@root/hooks/useStyles';
 import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
 
 type EditTaskButtonStylesType = {
-  warnText: TextStyle;
-  redHighlightTask: TextStyle;
-  notificationContainer: ViewStyle;
-  text: TextStyle;
-  icon: FontAwesomeIconStyle;
-  dateTimePickerContainer: ViewStyle;
+  colorSwitcherComponentContainer: ViewStyle;
+  colorSwitcherContainer: ViewStyle;
+  colorSwitcherText: TextStyle;
 };
 
-const {RED} = COLORS;
-
-export const styles = (props: ThemeType) =>
+export const styles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<EditTaskButtonStylesType>({
-    warnText: {
-      marginBottom: 15,
-      fontSize: 20,
+    colorSwitcherComponentContainer: {
+      overflow: 'hidden',
     },
 
-    redHighlightTask: {
-      color: RED,
-      fontWeight: '500',
+    colorSwitcherContainer: {
+      marginTop: 14,
     },
 
-    notificationContainer: {
-      marginTop: 23,
-      marginBottom: 10,
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-    },
-
-    text: {
-      fontSize: 20,
-      marginBottom: 2,
-    },
-
-    icon: {
-      color: props.ICON_BUTTON_COLOR,
-    },
-
-    dateTimePickerContainer: {
-      marginVertical: 10,
+    colorSwitcherText: {
+      color: props.TEXT_COLOR,
+      fontSize: 18,
     },
   });

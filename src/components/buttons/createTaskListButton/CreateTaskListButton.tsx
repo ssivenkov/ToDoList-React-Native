@@ -1,6 +1,7 @@
+import {COLORS} from '@colors/colors';
 import {CustomInput} from '@components/common/input/CustomInput';
 import {ModalIcon} from '@components/common/modals/ModalIcon';
-import {ICON_SIZE_LARGE} from '@constants/constants';
+import {ICON_SIZE_MEDIUM} from '@constants/constants';
 import {faPlus} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {createDate} from '@root/helpers/generateDateHelper';
@@ -12,7 +13,6 @@ import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
 import 'react-native-get-random-values';
 import {useDispatch} from 'react-redux';
-import {styles} from './styles';
 
 export const CreateTaskListButton = () => {
   const dispatch = useDispatch();
@@ -53,12 +53,12 @@ export const CreateTaskListButton = () => {
       okHandler={createTaskList}
       closeHandler={onClosePress}
       okDisable={!taskListTitle}
-      description={`${t('tasksScreen.CreateTaskListButtonTitle')}`}
+      description={t('tasksScreen.CreateTaskListButtonTitle')}
       buttonIcon={
         <FontAwesomeIcon
           icon={faPlus}
-          size={ICON_SIZE_LARGE}
-          style={styles.icon}
+          size={ICON_SIZE_MEDIUM}
+          color={COLORS.WHITE}
         />
       }>
       <CustomInput value={taskListTitle} onValueChange={setTaskListTitle} />

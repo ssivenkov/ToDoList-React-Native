@@ -1,16 +1,17 @@
 import {
+  ONLINE,
   START_ANIMATION_DELAY,
   TASK_LISTS,
   TASKS,
   USERS,
 } from '@constants/constants';
 import {DB} from '@root/api/DB';
-import {errorAlert} from '@root/helpers/alertHelper';
 import {cancelNotificationHelper} from '@root/helpers/cancelNotificationHelper';
-import {checkInternetConnectionHelper} from '@root/helpers/hasInternetConnectionHelper';
+import {checkInternetConnectionHelper} from '@root/helpers/checkInternetConnectionHelper';
 import {deleteTaskNotificationAction} from '@store/actions/tasksReducerActions/notificationsActions/deleteTaskNotificationAction';
 import {deleteTaskAction} from '@store/actions/tasksReducerActions/tasksActions/deleteTaskAction';
 import {DeleteTaskSagaActionReturnType} from '@store/actions/tasksSagaActions/tasksSagasActions/deleteTaskAction';
+import {setModalErrorMessageAction} from '@store/actions/userReducerActions/setModalErrorMessageAction';
 import {NotificationType} from '@store/reducers/tasksReducer/types';
 import {UserIDType} from '@store/reducers/userReducer/types';
 import {notificationsSelector} from '@store/selectors/tasksSelectors';
@@ -20,8 +21,13 @@ import {call, delay, put, select} from 'redux-saga/effects';
 export function* deleteTaskSaga(action: DeleteTaskSagaActionReturnType) {
   const {setIsLoading, setModalVisible, taskListID, taskID} = action.payload;
   try {
-    const internetIsOn: boolean = yield call(checkInternetConnectionHelper);
-    if (!internetIsOn) return;
+    const internetConnectionStatus: string = yield call(
+      checkInternetConnectionHelper,
+    );
+
+    if (internetConnectionStatus !== ONLINE) {
+      throw Error(internetConnectionStatus);
+    }
 
     yield call(setIsLoading, true);
     yield delay(START_ANIMATION_DELAY);
@@ -59,6 +65,9 @@ export function* deleteTaskSaga(action: DeleteTaskSagaActionReturnType) {
     yield call(setModalVisible, false);
   } catch (error) {
     yield call(setIsLoading, false);
-    errorAlert(error);
+
+    if (error instanceof Error) {
+      yield put(setModalErrorMessageAction({errorModalMessage: error.message}));
+    }
   }
 }

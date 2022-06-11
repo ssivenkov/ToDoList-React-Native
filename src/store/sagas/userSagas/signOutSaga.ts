@@ -1,14 +1,15 @@
 import {
   FACEBOOK_PROVIDER_ID,
   GOOGLE_PROVIDER_ID,
+  ONLINE,
   START_ANIMATION_DELAY,
 } from '@constants/constants';
 import auth from '@react-native-firebase/auth';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
-import {errorAlert} from '@root/helpers/alertHelper';
-import {checkInternetConnectionHelper} from '@root/helpers/hasInternetConnectionHelper';
+import {checkInternetConnectionHelper} from '@root/helpers/checkInternetConnectionHelper';
 import {setTaskListsAction} from '@store/actions/tasksReducerActions/taskListsActions/setTaskListsAction';
 import {setAuthStateAction} from '@store/actions/userReducerActions/setAuthStateAction';
+import {setModalErrorMessageAction} from '@store/actions/userReducerActions/setModalErrorMessageAction';
 import {SignOutSagaActionReturnType} from '@store/actions/userSagaActions/signOutAction';
 import {ProviderIDType} from '@store/reducers/userReducer/types';
 import {providerIDSelector} from '@store/selectors/userSelectors';
@@ -18,8 +19,13 @@ import {call, delay, put, select} from 'redux-saga/effects';
 export function* signOutSaga(action: SignOutSagaActionReturnType) {
   const setWaitingProcess = action.payload.setWaitingProcess;
   try {
-    const internetIsOn: boolean = yield call(checkInternetConnectionHelper);
-    if (!internetIsOn) return;
+    const internetConnectionStatus: string = yield call(
+      checkInternetConnectionHelper,
+    );
+
+    if (internetConnectionStatus !== ONLINE) {
+      throw Error(internetConnectionStatus);
+    }
 
     yield call(setWaitingProcess, true);
     yield delay(START_ANIMATION_DELAY);
@@ -45,6 +51,8 @@ export function* signOutSaga(action: SignOutSagaActionReturnType) {
 
     yield put(setTaskListsAction({taskLists: []}));
   } catch (error) {
-    errorAlert(error);
+    if (error instanceof Error) {
+      yield put(setModalErrorMessageAction({errorModalMessage: error.message}));
+    }
   }
 }

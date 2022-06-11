@@ -1,52 +1,47 @@
-import {ThemeType} from '@store/reducers/userReducer/types';
+import {ExtendedStylesPropsType} from '@root/hooks/useStyles';
 import {ImageStyle, StyleSheet, TextStyle, ViewStyle} from 'react-native';
 
 type UserScreenStylesType = {
   screenContainer: ViewStyle;
+  userInfoContainer: ViewStyle;
   avatar: ImageStyle;
   name: TextStyle;
   text: TextStyle;
-  buttonContainer: ViewStyle;
-  buttonsContainer: ViewStyle;
 };
 
-const avatarSize = 130;
-const topMargin = 20;
+const avatarSize = 100;
 
-export const styles = (props: ThemeType) =>
+export const styles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<UserScreenStylesType>({
     screenContainer: {
-      marginHorizontal: 15,
+      alignItems: 'center',
+      marginHorizontal: 1,
+    },
+
+    userInfoContainer: {
       marginTop: 50,
       alignItems: 'center',
+      marginBottom: 30,
     },
 
     avatar: {
       width: avatarSize,
       height: avatarSize,
       borderRadius: 100,
+      borderWidth: 1.5,
+      borderColor: props.TEXT_COLOR,
     },
 
     name: {
-      fontSize: 30,
+      fontSize: 22,
       fontWeight: '500',
       color: props.TEXT_COLOR,
-      marginTop: topMargin,
-      marginBottom: 10,
+      marginTop: 20,
+      marginBottom: 5,
     },
 
     text: {
-      fontSize: 22,
+      fontSize: 18,
       color: props.TEXT_COLOR,
-    },
-
-    buttonContainer: {
-      marginHorizontal: 15,
-    },
-
-    buttonsContainer: {
-      width: '70%',
-      flexDirection: 'row',
-      marginTop: topMargin,
     },
   });

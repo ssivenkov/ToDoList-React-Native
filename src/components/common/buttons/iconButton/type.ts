@@ -10,7 +10,7 @@ export type CustomTextButtonPropsType = {
   disable?: boolean;
 };
 
-export type CustomIconButtonPropsType = {
+export type IconButtonPropsType = {
   icon: JSX.Element;
 
   onPress?: () => void;

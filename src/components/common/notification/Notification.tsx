@@ -18,7 +18,7 @@ export const Notification = (props: NotificationPropsType) => {
   const {t} = useTranslation();
   const theme = useSelector(themeSelector);
 
-  const datePickerHeight = Platform.OS === 'ios' ? 210 : 190;
+  const datePickerHeight = Platform.OS === 'ios' ? 210 : 170;
   const datePickerDate = date ? new Date(date) : new Date();
 
   const heightAnimation = useRef(
@@ -37,9 +37,7 @@ export const Notification = (props: NotificationPropsType) => {
   const switching = (isOn: boolean) => {
     requestIOSNotificationsPermissionHelper().then((hasPermission) => {
       if (!hasPermission) {
-        errorAlert(t('common.NoIOSNotificationsPermission'));
-
-        return;
+        return errorAlert(t('common.NoIOSNotificationsPermission'));
       }
 
       isOn

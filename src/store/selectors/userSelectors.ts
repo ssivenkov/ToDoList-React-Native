@@ -1,5 +1,7 @@
 import {
+  ColorType,
   ChannelIDType,
+  ErrorModalMessageType,
   LanguageType,
   ProviderIDType,
   ThemeType,
@@ -35,4 +37,14 @@ export const userAvatarSelector = (state: AppRootStateType): UserAvatarType => {
 
 export const themeSelector = (state: AppRootStateType): ThemeType => {
   return state.user.theme;
+};
+
+export const accentColorSelector = (state: AppRootStateType): ColorType => {
+  return state.user.accentColor;
+};
+
+export const errorModalMessageSelector = (
+  state: AppRootStateType,
+): ErrorModalMessageType => {
+  return state.user.errorModalMessage;
 };
