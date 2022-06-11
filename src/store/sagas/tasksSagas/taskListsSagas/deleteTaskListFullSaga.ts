@@ -1,12 +1,17 @@
-import {START_ANIMATION_DELAY, TASK_LISTS, USERS} from '@constants/constants';
+import {
+  ONLINE,
+  START_ANIMATION_DELAY,
+  TASK_LISTS,
+  USERS,
+} from '@constants/constants';
 import {DB} from '@root/api/DB';
-import {errorAlert} from '@root/helpers/alertHelper';
 import {cancelNotificationHelper} from '@root/helpers/cancelNotificationHelper';
+import {checkInternetConnectionHelper} from '@root/helpers/checkInternetConnectionHelper';
 import {findNotification} from '@root/helpers/findNotification';
-import {checkInternetConnectionHelper} from '@root/helpers/hasInternetConnectionHelper';
 import {setNotificationsAction} from '@store/actions/tasksReducerActions/notificationsActions/setNotificationsAction';
 import {deleteTaskListFullAction} from '@store/actions/tasksReducerActions/taskListsActions/deleteTaskListFullAction';
 import {DeleteTaskListFullSagaActionReturnType} from '@store/actions/tasksSagaActions/taskListsSagasActions/deleteTaskListFullAction';
+import {setModalErrorMessageAction} from '@store/actions/userReducerActions/setModalErrorMessageAction';
 import {
   NotificationType,
   TaskListInterface,
@@ -24,8 +29,13 @@ export function* deleteTaskListFullSaga(
 ) {
   const {setIsLoading, setModalVisible, taskListID} = action.payload;
   try {
-    const internetIsOn: boolean = yield call(checkInternetConnectionHelper);
-    if (!internetIsOn) return;
+    const internetConnectionStatus: string = yield call(
+      checkInternetConnectionHelper,
+    );
+
+    if (internetConnectionStatus !== ONLINE) {
+      throw Error(internetConnectionStatus);
+    }
 
     yield call(setIsLoading, true);
     yield delay(START_ANIMATION_DELAY);
@@ -75,6 +85,9 @@ export function* deleteTaskListFullSaga(
     yield call(setModalVisible, false);
   } catch (error) {
     yield call(setIsLoading, false);
-    errorAlert(error);
+
+    if (error instanceof Error) {
+      yield put(setModalErrorMessageAction({errorModalMessage: error.message}));
+    }
   }
 }

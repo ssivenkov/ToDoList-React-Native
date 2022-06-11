@@ -1,14 +1,17 @@
-import {ThemeType} from '@store/reducers/userReducer/types';
+import {ExtendedStylesPropsType} from '@root/hooks/useStyles';
 import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
 
 type ModalStylesType = {
   centeredView: ViewStyle;
   modalView: ViewStyle;
+  content: ViewStyle;
   text: TextStyle;
   buttonsContainer: ViewStyle;
 };
 
-export const styles = (props: ThemeType) =>
+export const modalBorderRadius = 20;
+
+export const styles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<ModalStylesType>({
     centeredView: {
       flex: 1,
@@ -19,22 +22,25 @@ export const styles = (props: ThemeType) =>
 
     modalView: {
       width: '90%',
-      alignItems: 'center',
-      borderRadius: 20,
-      padding: 25,
+      borderRadius: modalBorderRadius,
+      paddingTop: 20,
       backgroundColor: props.BACKGROUND_COLOR,
     },
 
+    content: {
+      alignItems: 'center',
+      marginHorizontal: 16,
+    },
+
     text: {
-      fontSize: 20,
+      fontSize: 18,
       marginBottom: 12,
       color: props.TEXT_COLOR,
     },
 
     buttonsContainer: {
-      width: '100%',
-      justifyContent: 'space-evenly',
+      maxWidth: '100%',
       flexDirection: 'row',
-      marginTop: 13,
+      marginTop: 20,
     },
   });

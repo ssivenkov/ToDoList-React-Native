@@ -1,18 +1,19 @@
 import {
   NOTIFICATION_ID_MAX_LENGTH,
+  ONLINE,
   START_ANIMATION_DELAY,
   TASK_LISTS,
   TASKS,
   USERS,
 } from '@constants/constants';
 import {DB} from '@root/api/DB';
-import {errorAlert} from '@root/helpers/alertHelper';
+import {checkInternetConnectionHelper} from '@root/helpers/checkInternetConnectionHelper';
 import {createNotificationHelper} from '@root/helpers/createNotificationHelper';
 import {generateNumberIDHelper} from '@root/helpers/generateNumberIDHelper';
-import {checkInternetConnectionHelper} from '@root/helpers/hasInternetConnectionHelper';
 import {addTaskNotificationAction} from '@store/actions/tasksReducerActions/notificationsActions/addTaskNotificationAction';
 import {addNewTaskAction} from '@store/actions/tasksReducerActions/tasksActions/addNewTaskAction';
 import {AddNewTaskSagaActionReturnType} from '@store/actions/tasksSagaActions/tasksSagasActions/addNewTaskAction';
+import {setModalErrorMessageAction} from '@store/actions/userReducerActions/setModalErrorMessageAction';
 import {ChannelIDType, UserIDType} from '@store/reducers/userReducer/types';
 import {
   channelIDSelector,
@@ -24,7 +25,7 @@ export function* addNewTaskSaga(action: AddNewTaskSagaActionReturnType) {
   const {
     setIsLoading,
     setModalVisible,
-    setIsOn,
+    setIsNotificationSwitcherOn,
     setNewTaskTitle,
     newTask,
     date,
@@ -34,21 +35,26 @@ export function* addNewTaskSaga(action: AddNewTaskSagaActionReturnType) {
   const {id: taskID, title: taskTitle} = newTask;
   const {id: taskListID} = modifiedTaskList;
   try {
-    const internetIsOn: boolean = yield call(checkInternetConnectionHelper);
-    if (!internetIsOn) return;
+    const internetConnectionStatus: string = yield call(
+      checkInternetConnectionHelper,
+    );
+
+    if (internetConnectionStatus !== ONLINE) {
+      throw Error(internetConnectionStatus);
+    }
 
     yield call(setIsLoading, true);
     yield delay(START_ANIMATION_DELAY);
     const userID: UserIDType = yield select(userIDSelector);
     const channelId: ChannelIDType = yield select(channelIDSelector);
     const notificationID = generateNumberIDHelper(NOTIFICATION_ID_MAX_LENGTH);
-    const addNewTaskToFirebase = () => {
+    const sendNewTaskToFirebase = () => {
       return DB.ref(
         `${USERS}/${userID}/${TASK_LISTS}/${taskListID}/${TASKS}/${taskID}`,
       ).set(newTask);
     };
 
-    yield call(addNewTaskToFirebase);
+    yield call(sendNewTaskToFirebase);
 
     if (shouldCreateNotification && date) {
       yield call(createNotificationHelper, {
@@ -90,10 +96,13 @@ export function* addNewTaskSaga(action: AddNewTaskSagaActionReturnType) {
 
     yield call(setIsLoading, false);
     yield call(setModalVisible, false);
-    yield call(setIsOn, false);
+    yield call(setIsNotificationSwitcherOn, false);
     yield call(setNewTaskTitle, '');
   } catch (error) {
     yield call(setIsLoading, false);
-    errorAlert(error);
+
+    if (error instanceof Error) {
+      yield put(setModalErrorMessageAction({errorModalMessage: error.message}));
+    }
   }
 }

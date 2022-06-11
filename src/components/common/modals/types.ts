@@ -1,15 +1,5 @@
+import {IconProp} from '@fortawesome/fontawesome-svg-core';
 import {SetStateType} from '@root/types/common/types';
-import {ViewStyle} from 'react-native';
-
-export type ModalTextPropsType = {
-  buttonTitle: string;
-
-  buttonContainerStyle?: ViewStyle;
-  children?: any;
-  description?: string;
-  okHandler?: () => void;
-  disable?: boolean;
-};
 
 export type ModalIconPropsType = {
   buttonIcon: JSX.Element;
@@ -22,4 +12,18 @@ export type ModalIconPropsType = {
   description?: string;
   okDisable?: boolean;
   closeHandler?: () => void;
+  modalVisibleFromProps?: boolean;
+  setModalVisibleFromProps?: SetStateType<boolean>;
+};
+
+export type ModalLongButtonPropsType = {
+  buttonTitle: string;
+  buttonIcon: IconProp;
+
+  children?: any;
+  description?: string;
+  okHandler?: (arg?: any) => void;
+  rightComponent?: Element;
+  closeHandler?: (arg?: any) => void;
+  disable?: boolean;
 };

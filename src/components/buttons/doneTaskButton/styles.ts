@@ -1,26 +1,19 @@
 import {COLORS} from '@colors/colors';
-import {FontAwesomeIconStyle} from '@fortawesome/react-native-fontawesome';
-import {ThemeType} from '@store/reducers/userReducer/types';
+import {ExtendedStylesPropsType} from '@root/hooks/useStyles';
 import {StyleSheet, TextStyle} from 'react-native';
 
 type DoneTaskButtonStylesType = {
   warnText: TextStyle;
-  icon: FontAwesomeIconStyle;
   greenHighlightTask: TextStyle;
 };
 
 const {JAPANESE_LAUREL} = COLORS;
 
-export const styles = (props: ThemeType) =>
+export const styles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<DoneTaskButtonStylesType>({
     warnText: {
-      marginBottom: 15,
-      fontSize: 20,
+      fontSize: 18,
       color: props.TEXT_COLOR,
-    },
-
-    icon: {
-      color: props.ICON_BUTTON_COLOR,
     },
 
     greenHighlightTask: {

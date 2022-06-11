@@ -26,10 +26,11 @@ export const WithAuthNavigator = () => {
   // need for rerender with correct translations for navigator
   useEffect(() => {
     if (i18next.language !== languageInState) {
+      i18next.changeLanguage(languageInState);
       dispatch(changeLanguageAction({language: languageInState}));
       setRerender(languageInState);
     }
-  }, [rerender]);
+  }, [rerender, languageInState]);
 
   return (
     <Navigator
@@ -40,8 +41,8 @@ export const WithAuthNavigator = () => {
         component={TasksNavigator}
         options={{
           ...tasksNavigatorOptions(),
-          headerTitle: `${t('tasksScreen.Tasks')}`,
-          tabBarLabel: `${t('tasksScreen.Tasks')}`,
+          headerTitle: t('tasksScreen.Tasks'),
+          tabBarLabel: t('tasksScreen.Tasks'),
         }}
       />
       <Screen
@@ -49,8 +50,8 @@ export const WithAuthNavigator = () => {
         component={AccountScreen}
         options={{
           ...accountScreenOptions(),
-          headerTitle: `${t('accountScreen.Account')}`,
-          tabBarLabel: `${t('accountScreen.Account')}`,
+          headerTitle: t('accountScreen.Account'),
+          tabBarLabel: t('accountScreen.Account'),
         }}
       />
     </Navigator>
