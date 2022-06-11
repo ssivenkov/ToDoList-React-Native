@@ -17,8 +17,10 @@ export const ModalIcon = (props: ModalIconPropsType) => {
     description,
     buttonIcon,
     okHandler,
-    okDisable,
     closeHandler,
+    modalVisibleFromProps,
+    setModalVisibleFromProps,
+    okDisable,
   } = props;
 
   const style = useStyles(styles);
@@ -27,13 +29,25 @@ export const ModalIcon = (props: ModalIconPropsType) => {
   const [modalVisible, setModalVisible] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
+  const modalByPropsControlCondition =
+    typeof modalVisibleFromProps === 'boolean' && !!setModalVisibleFromProps;
+
   const onButtonPress = (): void => {
-    !modalVisible && setModalVisible(true);
+    if (modalByPropsControlCondition) {
+      !modalVisibleFromProps && setModalVisibleFromProps(true);
+    } else {
+      !modalVisible && setModalVisible(true);
+    }
   };
 
   const onCancelButtonPress = (): void => {
     closeHandler && closeHandler();
-    setModalVisible(false);
+
+    if (modalByPropsControlCondition) {
+      setModalVisibleFromProps(false);
+    } else {
+      setModalVisible(false);
+    }
   };
 
   const onOkButtonPress = (): void => {
@@ -43,7 +57,7 @@ export const ModalIcon = (props: ModalIconPropsType) => {
   return (
     <View>
       <View>
-        <Modal transparent visible={modalVisible}>
+        <Modal transparent visible={modalVisibleFromProps ?? modalVisible}>
           <View style={style.centeredView}>
             <View style={style.modalView}>
               <View style={style.content}>

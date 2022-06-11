@@ -1,9 +1,9 @@
 import {USER_SAGA_ACTION} from '@enums/userSagaEnum';
 import {SetStateType} from '@root/types/common/types';
-import {AccentColorType} from '@store/reducers/userReducer/types';
+import {ColorType} from '@store/reducers/userReducer/types';
 
 export type ChangeAccentColorSagaPayloadType = {
-  accentColor: AccentColorType;
+  accentColor: ColorType;
   setIsLoading: SetStateType<boolean>;
 };
 

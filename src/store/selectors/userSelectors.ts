@@ -1,5 +1,5 @@
 import {
-  AccentColorType,
+  ColorType,
   ChannelIDType,
   ErrorModalMessageType,
   LanguageType,
@@ -39,9 +39,7 @@ export const themeSelector = (state: AppRootStateType): ThemeType => {
   return state.user.theme;
 };
 
-export const accentColorSelector = (
-  state: AppRootStateType,
-): AccentColorType => {
+export const accentColorSelector = (state: AppRootStateType): ColorType => {
   return state.user.accentColor;
 };
 

@@ -4,6 +4,7 @@ import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
 
 type TaskStylesType = {
   container: ViewStyle;
+  mark: ViewStyle;
   text: TextStyle;
   buttonsContainer: ViewStyle;
   warnText: TextStyle;
@@ -19,18 +20,24 @@ export const styles = (props: ExtendedStylesPropsType) =>
     container: {
       justifyContent: 'space-between',
       flexDirection: 'row',
-      paddingLeft: 10,
       paddingRight: 5,
-      paddingVertical: 4,
       marginVertical: 3,
+      overflow: 'hidden',
       borderRadius: 7,
       backgroundColor: props.TASK_COLOR,
+    },
+
+    mark: {
+      height: '100%',
+      width: 6,
     },
 
     text: {
       flex: 1,
       color: props.TEXT_COLOR,
       fontSize: textSize,
+      paddingVertical: 4,
+      paddingLeft: 7,
     },
 
     buttonsContainer: {
