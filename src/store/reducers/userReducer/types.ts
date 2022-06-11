@@ -28,11 +28,10 @@ export type ThemeType = {
   TAB_BAR_ICON_COLOR: string;
   TAB_BAR_TEXT_COLOR: string;
   ICON_BUTTON_COLOR: string;
-  TAB_BAR_FOCUS_ICON_COLOR: string;
-  TAB_BAR_INDICATOR_COLOR: string;
-  TAB_BAR_FOCUS_TEXT_COLOR: string;
   PLACEHOLDER_COLOR: string;
 };
+export type ColorType = string;
+export type ErrorModalMessageType = string;
 
 export type UserReducerStateType = {
   providerID: ProviderIDType;
@@ -41,4 +40,6 @@ export type UserReducerStateType = {
   userAvatar: UserAvatarType;
   language: LanguageType;
   theme: ThemeType;
+  accentColor: ColorType;
+  errorModalMessage: ErrorModalMessageType;
 };

@@ -1,13 +1,23 @@
-import {ThemeType} from '@store/reducers/userReducer/types';
-import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
+import {COLORS} from '@colors/colors';
+import {ExtendedStylesPropsType} from '@root/hooks/useStyles';
+import {
+  ImageStyle,
+  Platform,
+  StyleSheet,
+  TextStyle,
+  ViewStyle,
+} from 'react-native';
 
 type TasksScreenStylesType = {
   signInWrapper: ViewStyle;
   signInContainer: ViewStyle;
   screenTitle: TextStyle;
+  appIcon: ImageStyle;
 };
 
-export const styles = (props: ThemeType) =>
+const appIconDivider = Platform.OS === 'ios' ? 2.25 : 2.4;
+
+export const styles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<TasksScreenStylesType>({
     signInWrapper: {
       height: '100%',
@@ -25,7 +35,16 @@ export const styles = (props: ThemeType) =>
     screenTitle: {
       fontSize: 30,
       fontWeight: '500',
-      marginBottom: 25,
-      color: props.TEXT_COLOR,
+      marginBottom: 10,
+      color: COLORS.WHITE,
+    },
+
+    appIcon: {
+      width: props.appWidth / appIconDivider,
+      height: props.appWidth / appIconDivider,
+      borderRadius:
+        Platform.OS === 'ios' ? props.appWidth / 18 : props.appWidth / 10,
+      marginBottom: 40,
+      resizeMode: 'contain',
     },
   });

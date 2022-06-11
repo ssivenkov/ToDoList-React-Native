@@ -1,13 +1,13 @@
 {
   "translation": {
     "common": {
-      "Ok": "Ок",
+      "Ok": "Да",
       "Close": "Закрыть",
       "NoInternetConnection": "Отсутствует подключение к интернету. Пожалуйста, подключитесь к интернету",
       "NoIOSNotificationsPermission": "Отсутствует разрешение для уведомлений. Предоставьте приложению разрешение на показ уведомлений"
     },
     "tasksScreen": {
-      "Tasks": "Задачи",
+      "Tasks": "Списки задач",
       "CreateTaskButtonTitle": "Название новой задачи:",
       "CreateTaskListButtonTitle": "Название нового списка задач:",
       "DeleteQuestionButtonTitle": "Удалить <0>{{text}}</0>?",
@@ -18,6 +18,7 @@
       "DoneTasksTab": "Выполненные",
       "NoTaskListsFound": "Списков задач не найдено",
       "EnableNotification": "Напомнить о задаче",
+      "EnableMarkColor": "Цвет задачи",
       "TaskNotification": "Выполните задачу"
     },
     "signInScreen": {
@@ -31,8 +32,12 @@
       "DarkMode": "Темная тема",
       "SignOut": "Выход",
       "SignOutWarning": "Вы уверены, что хотите выйти из учетной записи?",
+      "ChangeLanguageButtonTitle": "Язык",
+      "ChangeLanguageButtonDescription": "Выберите язык приложения:",
       "DeleteAccount": "Удалить аккаунт",
-      "DeleteAccountWarning": "Вы уверены, что хотите удалить свою учетную запись со всеми вашими данными?"
+      "DeleteAccountWarning": "Вы уверены, что хотите удалить свою учетную запись со всеми вашими данными?",
+      "AccentColorDescription": "Выберите цвет акцента:",
+      "AccentColorButtonTitle": "Цвет акцента"
     }
   }
 }
