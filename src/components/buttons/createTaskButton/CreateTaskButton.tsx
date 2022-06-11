@@ -45,8 +45,8 @@ export const CreateTaskButton = (props: CreateTaskButtonPropsType) => {
   const handleNotificationSwitcherClick = (isOn: boolean) => {
     if (!isOn) {
       setIsNotificationSwitcherOn(false);
-      setDate(new Date());
     } else {
+      setDate(new Date());
       setIsNotificationSwitcherOn(true);
     }
   };
@@ -60,6 +60,8 @@ export const CreateTaskButton = (props: CreateTaskButtonPropsType) => {
   };
 
   const onClosePress = (): void => {
+    setIsColorPickerSwitcherOn(false);
+    setColor(accentColor);
     setNewTaskTitle('');
     setIsNotificationSwitcherOn(false);
     setIsColorPickerSwitcherOn(false);
@@ -75,7 +77,12 @@ export const CreateTaskButton = (props: CreateTaskButtonPropsType) => {
       date: createDate(),
       isDone: false,
       title: newTaskTitle,
+      colorMark: color,
     };
+
+    if (!isColorPickerSwitcherOn) {
+      delete newTask.colorMark;
+    }
 
     const tasks = fullTaskList.tasks
       ? [...fullTaskList.tasks, newTask]

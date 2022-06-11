@@ -54,8 +54,8 @@ export const EditTaskButton = (props: EditTaskTitleButtonPropsType) => {
       setIsNotificationSwitcherOn(false);
       setDate(null);
     } else {
-      setIsNotificationSwitcherOn(true);
       setDate(new Date());
+      setIsNotificationSwitcherOn(true);
     }
   };
 
