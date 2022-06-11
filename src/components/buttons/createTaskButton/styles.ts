@@ -14,7 +14,7 @@ export const styles = (props: ExtendedStylesPropsType) =>
     },
 
     colorSwitcherContainer: {
-      marginTop: 23,
+      marginTop: 14,
     },
 
     colorSwitcherText: {
