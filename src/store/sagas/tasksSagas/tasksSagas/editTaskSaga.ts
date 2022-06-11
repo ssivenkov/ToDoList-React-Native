@@ -1,4 +1,5 @@
 import {
+  COLOR_MARK,
   NOTIFICATION_ID_MAX_LENGTH,
   ONLINE,
   START_ANIMATION_DELAY,
@@ -15,8 +16,12 @@ import {editTaskNotificationAction} from '@store/actions/tasksReducerActions/not
 import {setEditedTaskAction} from '@store/actions/tasksReducerActions/tasksActions/setEditedTaskAction';
 import {SetEditedTaskActionSagaReturnType} from '@store/actions/tasksSagaActions/tasksSagasActions/setEditedTaskAction';
 import {setModalErrorMessageAction} from '@store/actions/userReducerActions/setModalErrorMessageAction';
-import {NotificationType} from '@store/reducers/tasksReducer/types';
-import {ChannelIDType, UserIDType} from '@store/reducers/userReducer/types';
+import {NotificationType, TaskType} from '@store/reducers/tasksReducer/types';
+import {
+  ChannelIDType,
+  SnapshotType,
+  UserIDType,
+} from '@store/reducers/userReducer/types';
 import {notificationsSelector} from '@store/selectors/tasksSelectors';
 import {
   channelIDSelector,
@@ -34,6 +39,9 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
     taskListID,
     date,
     shouldCreateNotification,
+    colorMark,
+    shouldSetColor,
+    setColorInModal,
   } = action.payload;
   try {
     const internetConnectionStatus: string = yield call(
@@ -48,12 +56,70 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
     yield delay(START_ANIMATION_DELAY);
     const userID: UserIDType = yield select(userIDSelector);
     const channelId: ChannelIDType = yield select(channelIDSelector);
-    const editTaskTitleInFirebase = () => {
+
+    if (shouldSetColor && colorMark) {
+      const colorMarkSnapshot: SnapshotType = yield DB.ref(
+        `${USERS}/${userID}/${TASK_LISTS}/${taskListID}/${TASKS}/${taskID}/${COLOR_MARK}`,
+      ).once('value');
+
+      const isColorMarkExist = typeof colorMarkSnapshot.val() === 'string';
+
+      if (isColorMarkExist) {
+        const sendTaskColorToFirebase = () => {
+          return DB.ref(
+            `${USERS}/${userID}/${TASK_LISTS}/${taskListID}/${TASKS}/${taskID}`,
+          ).update({colorMark: colorMark});
+        };
+
+        yield call(sendTaskColorToFirebase);
+      } else {
+        const taskSnapshot: SnapshotType = yield DB.ref(
+          `${USERS}/${userID}/${TASK_LISTS}/${taskListID}/${TASKS}/${taskID}`,
+        ).once('value');
+
+        const modifiedTask: TaskType = {
+          ...taskSnapshot.val(),
+          colorMark: colorMark,
+        };
+
+        const sendModifiedTaskToFirebase = () => {
+          return DB.ref(
+            `${USERS}/${userID}/${TASK_LISTS}/${taskListID}/${TASKS}/${taskID}`,
+          ).set(modifiedTask);
+        };
+
+        yield call(sendModifiedTaskToFirebase);
+      }
+    } else {
+      const taskSnapshot: SnapshotType = yield DB.ref(
+        `${USERS}/${userID}/${TASK_LISTS}/${taskListID}/${TASKS}/${taskID}`,
+      ).once('value');
+
+      const modifiedTask: TaskType = {...taskSnapshot.val()};
+      const colorMarkProperty = Object.keys(modifiedTask).find(
+        (item) => item === COLOR_MARK,
+      );
+
+      if (colorMarkProperty) {
+        const taskWithoutColorMark = {...modifiedTask};
+        delete taskWithoutColorMark.colorMark;
+        const sendTaskWithoutColorMarkToFirebase = () => {
+          return DB.ref(
+            `${USERS}/${userID}/${TASK_LISTS}/${taskListID}/${TASKS}/${taskID}`,
+          ).set(taskWithoutColorMark);
+        };
+
+        yield call(sendTaskWithoutColorMarkToFirebase);
+      }
+    }
+
+    const sendTaskTitleToFirebase = () => {
       return DB.ref(
         `${USERS}/${userID}/${TASK_LISTS}/${taskListID}/${TASKS}/${taskID}`,
       ).update({title: editedTaskTitle});
     };
-    yield call(editTaskTitleInFirebase);
+
+    yield call(sendTaskTitleToFirebase);
 
     if (shouldCreateNotification && date) {
       const notificationID = generateNumberIDHelper(NOTIFICATION_ID_MAX_LENGTH);
@@ -97,16 +163,29 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
       );
     }
 
-    yield put(
-      setEditedTaskAction({
-        taskListID,
-        taskID,
-        editedTaskTitle,
-      }),
-    );
+    if (shouldSetColor) {
+      yield put(
+        setEditedTaskAction({
+          taskListID,
+          taskID,
+          editedTaskTitle,
+          colorMark,
+        }),
+      );
+    } else {
+      yield put(
+        setEditedTaskAction({
+          taskListID,
+          taskID,
+          editedTaskTitle,
+        }),
+      );
+    }
+
     yield call(setIsLoading, false);
     yield call(setModalVisible, false);
     yield call(setEditedTaskTitle, editedTaskTitle);
+    yield call(setColorInModal, colorMark);
   } catch (error) {
     yield call(setIsLoading, false);
 

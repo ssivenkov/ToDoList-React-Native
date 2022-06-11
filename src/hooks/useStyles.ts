@@ -1,4 +1,4 @@
-import {AccentColorType, ThemeType} from '@store/reducers/userReducer/types';
+import {ColorType, ThemeType} from '@store/reducers/userReducer/types';
 import {
   accentColorSelector,
   themeSelector,
@@ -7,7 +7,7 @@ import {useWindowDimensions} from 'react-native';
 import {useSelector} from 'react-redux';
 
 export interface ExtendedStylesPropsType extends ThemeType {
-  ACCENT_COLOR: AccentColorType;
+  ACCENT_COLOR: ColorType;
   appWidth: number;
   appHeight: number;
 }

@@ -1,6 +1,7 @@
 import {TASKS_SAGA_ACTION} from '@enums/tasksSagaEnum';
 import {Nullable, SetStateType} from '@root/types/common/types';
 import {TaskListInterface, TaskType} from '@store/reducers/tasksReducer/types';
+import {ColorType} from '@store/reducers/userReducer/types';
 
 export type SetEditedTaskSagaPayloadType = {
   taskListID: TaskListInterface['id'];
@@ -11,6 +12,9 @@ export type SetEditedTaskSagaPayloadType = {
   setIsLoading: SetStateType<boolean>;
   setModalVisible: SetStateType<boolean>;
   setEditedTaskTitle: SetStateType<string>;
+  colorMark: ColorType;
+  shouldSetColor: boolean;
+  setColorInModal: SetStateType<ColorType>;
 };
 
 export type SetEditedTaskActionSagaReturnType = {

@@ -1,8 +1,8 @@
 import {USER_REDUCER_ACTION} from '@enums/userReducerEnum';
-import {AccentColorType} from '@store/reducers/userReducer/types';
+import {ColorType} from '@store/reducers/userReducer/types';
 
 type SetAccentColorActionPayloadType = {
-  accentColor: AccentColorType;
+  accentColor: ColorType;
 };
 
 export type SetAccentColorActionReturnType = {

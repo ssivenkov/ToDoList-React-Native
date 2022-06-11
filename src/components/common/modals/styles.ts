@@ -29,7 +29,7 @@ export const styles = (props: ExtendedStylesPropsType) =>
 
     content: {
       alignItems: 'center',
-      paddingHorizontal: 25,
+      marginHorizontal: 16,
     },
 
     text: {

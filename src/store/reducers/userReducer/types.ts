@@ -30,7 +30,7 @@ export type ThemeType = {
   ICON_BUTTON_COLOR: string;
   PLACEHOLDER_COLOR: string;
 };
-export type AccentColorType = string;
+export type ColorType = string;
 export type ErrorModalMessageType = string;
 
 export type UserReducerStateType = {
@@ -40,6 +40,6 @@ export type UserReducerStateType = {
   userAvatar: UserAvatarType;
   language: LanguageType;
   theme: ThemeType;
-  accentColor: AccentColorType;
+  accentColor: ColorType;
   errorModalMessage: ErrorModalMessageType;
 };

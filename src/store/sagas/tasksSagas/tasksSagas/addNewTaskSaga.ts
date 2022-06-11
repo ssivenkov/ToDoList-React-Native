@@ -25,7 +25,7 @@ export function* addNewTaskSaga(action: AddNewTaskSagaActionReturnType) {
   const {
     setIsLoading,
     setModalVisible,
-    setIsOn,
+    setIsNotificationSwitcherOn,
     setNewTaskTitle,
     newTask,
     date,
@@ -48,13 +48,13 @@ export function* addNewTaskSaga(action: AddNewTaskSagaActionReturnType) {
     const userID: UserIDType = yield select(userIDSelector);
     const channelId: ChannelIDType = yield select(channelIDSelector);
     const notificationID = generateNumberIDHelper(NOTIFICATION_ID_MAX_LENGTH);
-    const addNewTaskToFirebase = () => {
+    const sendNewTaskToFirebase = () => {
       return DB.ref(
         `${USERS}/${userID}/${TASK_LISTS}/${taskListID}/${TASKS}/${taskID}`,
       ).set(newTask);
     };
 
-    yield call(addNewTaskToFirebase);
+    yield call(sendNewTaskToFirebase);
 
     if (shouldCreateNotification && date) {
       yield call(createNotificationHelper, {
@@ -96,7 +96,7 @@ export function* addNewTaskSaga(action: AddNewTaskSagaActionReturnType) {
 
     yield call(setIsLoading, false);
     yield call(setModalVisible, false);
-    yield call(setIsOn, false);
+    yield call(setIsNotificationSwitcherOn, false);
     yield call(setNewTaskTitle, '');
   } catch (error) {
     yield call(setIsLoading, false);

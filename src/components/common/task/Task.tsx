@@ -8,12 +8,16 @@ import {styles} from './styles';
 import {TaskPropsType} from './types';
 
 export const Task = (props: TaskPropsType) => {
-  const {isTodo, taskListID, taskTitle, taskID, fullTaskList} = props;
+  const {isTodo, taskListID, taskTitle, taskID, fullTaskList, colorMark} =
+    props;
 
   const style = useStyles(styles);
 
   return (
     <View style={style.container}>
+      <View
+        style={[style.mark, {backgroundColor: colorMark || 'transparent'}]}
+      />
       <Text style={style.text}>{taskTitle}</Text>
       <View style={style.buttonsContainer}>
         {isTodo && (
@@ -27,6 +31,7 @@ export const Task = (props: TaskPropsType) => {
           taskListID={taskListID}
           taskID={taskID}
           oldTaskTitle={taskTitle}
+          colorMark={colorMark}
           isTodo={isTodo}
         />
         <DeleteTaskButton

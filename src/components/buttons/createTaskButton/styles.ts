@@ -1,23 +1,23 @@
 import {ExtendedStylesPropsType} from '@root/hooks/useStyles';
 import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
 
-type NotificationStylesType = {
-  notificationContainer: ViewStyle;
-  switcherContainer: ViewStyle;
-  text: TextStyle;
+type CreateTaskButtonStylesType = {
+  colorSwitcherComponentContainer: ViewStyle;
+  colorSwitcherContainer: ViewStyle;
+  colorSwitcherText: TextStyle;
 };
 
 export const styles = (props: ExtendedStylesPropsType) =>
-  StyleSheet.create<NotificationStylesType>({
-    notificationContainer: {
+  StyleSheet.create<CreateTaskButtonStylesType>({
+    colorSwitcherComponentContainer: {
       overflow: 'hidden',
     },
 
-    switcherContainer: {
+    colorSwitcherContainer: {
       marginTop: 23,
     },
 
-    text: {
+    colorSwitcherText: {
       color: props.TEXT_COLOR,
       fontSize: 18,
     },

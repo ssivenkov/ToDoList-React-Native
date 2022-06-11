@@ -17,6 +17,7 @@ export const ModalLongButton = (props: ModalLongButtonPropsType) => {
     buttonIcon,
     buttonTitle,
     okHandler,
+    closeHandler,
     rightComponent,
     disable,
   } = props;
@@ -34,17 +35,14 @@ export const ModalLongButton = (props: ModalLongButtonPropsType) => {
     okHandler && okHandler();
   };
 
-  const onRequestClose = (): void => {
-    setModalVisible(!modalVisible);
-  };
-
   const onClosePress = (): void => {
+    closeHandler && closeHandler();
     setModalVisible(false);
   };
 
   return (
     <View>
-      <Modal transparent visible={modalVisible} onRequestClose={onRequestClose}>
+      <Modal transparent visible={modalVisible} onRequestClose={onClosePress}>
         <View style={style.centeredView}>
           <View style={style.modalView}>
             <View style={style.content}>

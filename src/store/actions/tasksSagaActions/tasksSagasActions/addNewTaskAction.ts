@@ -10,7 +10,7 @@ export type AddNewTaskSagaPayloadType = {
   setIsLoading: SetStateType<boolean>;
   setModalVisible: SetStateType<boolean>;
   setNewTaskTitle: SetStateType<string>;
-  setIsOn: SetStateType<boolean>;
+  setIsNotificationSwitcherOn: SetStateType<boolean>;
 };
 
 export type AddNewTaskSagaActionReturnType = {

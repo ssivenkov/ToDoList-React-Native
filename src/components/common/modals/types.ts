@@ -12,6 +12,8 @@ export type ModalIconPropsType = {
   description?: string;
   okDisable?: boolean;
   closeHandler?: () => void;
+  modalVisibleFromProps?: boolean;
+  setModalVisibleFromProps?: SetStateType<boolean>;
 };
 
 export type ModalLongButtonPropsType = {
@@ -22,5 +24,6 @@ export type ModalLongButtonPropsType = {
   description?: string;
   okHandler?: (arg?: any) => void;
   rightComponent?: Element;
+  closeHandler?: (arg?: any) => void;
   disable?: boolean;
 };
