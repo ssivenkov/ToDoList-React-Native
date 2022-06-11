@@ -3,6 +3,8 @@ export type TaskType = {
   date: string;
   isDone: boolean;
   title: string;
+
+  colorMark?: string;
 };
 
 export type TaskListWithoutTasksType = {

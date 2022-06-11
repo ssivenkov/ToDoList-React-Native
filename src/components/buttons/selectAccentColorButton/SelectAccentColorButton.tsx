@@ -5,7 +5,7 @@ import {ModalLongButton} from '@components/common/modals/ModalLongButton';
 import {faPalette} from '@fortawesome/free-solid-svg-icons';
 import {useStyles} from '@root/hooks/useStyles';
 import {changeAccentColorAction} from '@store/actions/userSagaActions/changeAccentColorAction';
-import {AccentColorType} from '@store/reducers/userReducer/types';
+import {ColorType} from '@store/reducers/userReducer/types';
 import {accentColorSelector} from '@store/selectors/userSelectors';
 import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
@@ -26,7 +26,7 @@ export const SelectAccentColorButton = (
 
   const initialAccentColor = useSelector(accentColorSelector);
 
-  const [color, setColor] = useState<AccentColorType>(initialAccentColor);
+  const [color, setColor] = useState<ColorType>(initialAccentColor);
 
   const colorIndicator = <View style={style.colorIndicator} />;
 
@@ -39,14 +39,19 @@ export const SelectAccentColorButton = (
     );
   };
 
+  const setInitialAccentColor = () => {
+    setColor(initialAccentColor);
+  };
+
   return (
     <ModalLongButton
       buttonIcon={faPalette}
       okHandler={setAccentColor}
+      closeHandler={setInitialAccentColor}
       description={t('accountScreen.AccentColorDescription')}
       buttonTitle={t('accountScreen.AccentColorButtonTitle')}
       rightComponent={colorIndicator}>
-      <ColorPickerComponent selectAccentColor={setColor} />
+      <ColorPickerComponent color={color} selectColor={setColor} />
     </ModalLongButton>
   );
 };

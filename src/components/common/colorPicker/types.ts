@@ -1,6 +1,10 @@
 import {SetStateType} from '@root/types/common/types';
-import {AccentColorType} from '@store/reducers/userReducer/types';
+import {ColorType} from '@store/reducers/userReducer/types';
 
 export type ColorPickerComponentPropsType = {
-  selectAccentColor: SetStateType<AccentColorType>;
+  color: ColorType;
+  selectColor: SetStateType<ColorType>;
+
+  marginTop?: number;
+  marginRight?: number;
 };

@@ -49,7 +49,7 @@ export const TaskList = (props: TaskListPropsType) => {
       {sortedTasks.length > 0 && (
         <View style={style.tasksContainer}>
           {sortedTasks.map((task) => {
-            const {id: taskID, title: taskTitle} = task;
+            const {id: taskID, title: taskTitle, colorMark} = task;
 
             return (
               <Task
@@ -57,6 +57,7 @@ export const TaskList = (props: TaskListPropsType) => {
                 isTodo={isTodoTaskList}
                 taskListID={taskListID}
                 taskTitle={taskTitle}
+                colorMark={colorMark}
                 taskID={taskID}
                 fullTaskList={fullTaskList}
               />

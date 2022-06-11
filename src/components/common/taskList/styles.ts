@@ -20,8 +20,8 @@ export const styles = (props: ExtendedStylesPropsType) =>
       backgroundColor: props.TASK_LIST_COLOR,
       paddingTop: 6,
       paddingBottom: 7,
-      paddingHorizontal: 10,
-      marginHorizontal: 15,
+      paddingHorizontal: 9,
+      marginHorizontal: 10,
       marginVertical: TaskListMarginVertical,
       borderRadius: 10,
     },
@@ -42,6 +42,7 @@ export const styles = (props: ExtendedStylesPropsType) =>
       flex: 1,
       color: props.TEXT_COLOR,
       fontSize: 21,
+      marginLeft: 6,
     },
 
     warnText: {

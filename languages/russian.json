@@ -18,6 +18,7 @@
       "DoneTasksTab": "Выполненные",
       "NoTaskListsFound": "Списков задач не найдено",
       "EnableNotification": "Напомнить о задаче",
+      "EnableMarkColor": "Цвет задачи",
       "TaskNotification": "Выполните задачу"
     },
     "signInScreen": {

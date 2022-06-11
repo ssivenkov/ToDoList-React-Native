@@ -18,6 +18,7 @@
       "DoneTasksTab": "Done tasks",
       "NoTaskListsFound": "No task lists found",
       "EnableNotification": "Remind of the task",
+      "EnableMarkColor": "Task color",
       "TaskNotification": "Perform task"
     },
     "signInScreen": {
