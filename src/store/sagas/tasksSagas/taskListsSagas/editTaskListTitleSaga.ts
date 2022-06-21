@@ -1,21 +1,14 @@
-import {
-  ONLINE,
-  START_ANIMATION_DELAY,
-  TASK_LISTS,
-  USERS,
-} from '@constants/constants';
-import {DB} from '@root/api/DB';
-import {checkInternetConnectionHelper} from '@root/helpers/checkInternetConnectionHelper';
-import {setEditedTaskListTitleAction} from '@store/actions/tasksReducerActions/taskListsActions/setEditedTaskListTitleAction';
-import {EditTaskListTitleSagaActionReturnType} from '@store/actions/tasksSagaActions/taskListsSagasActions/editTaskListTitleAction';
-import {setModalErrorMessageAction} from '@store/actions/userReducerActions/setModalErrorMessageAction';
-import {UserIDType} from '@store/reducers/userReducer/types';
-import {userIDSelector} from '@store/selectors/userSelectors';
-import {call, delay, put, select} from 'redux-saga/effects';
+import { ONLINE, START_ANIMATION_DELAY, TASK_LISTS, USERS } from '@constants/constants';
+import { DB } from '@root/api/DB';
+import { checkInternetConnectionHelper } from '@root/helpers/checkInternetConnectionHelper';
+import { setEditedTaskListTitleAction } from '@store/actions/tasksReducerActions/taskListsActions/setEditedTaskListTitleAction';
+import { EditTaskListTitleSagaActionReturnType } from '@store/actions/tasksSagaActions/taskListsSagasActions/editTaskListTitleAction';
+import { setModalErrorMessageAction } from '@store/actions/userReducerActions/setModalErrorMessageAction';
+import { UserIDType } from '@store/reducers/userReducer/types';
+import { userIDSelector } from '@store/selectors/userSelectors';
+import { call, delay, put, select } from 'redux-saga/effects';
 
-export function* editTaskListTitleSaga(
-  action: EditTaskListTitleSagaActionReturnType,
-) {
+export function* editTaskListTitleSaga(action: EditTaskListTitleSagaActionReturnType) {
   const {
     setIsLoading,
     setModalVisible,
@@ -23,10 +16,9 @@ export function* editTaskListTitleSaga(
     editedTaskListTitle,
     setEditedTaskListTitleState,
   } = action.payload;
+
   try {
-    const internetConnectionStatus: string = yield call(
-      checkInternetConnectionHelper,
-    );
+    const internetConnectionStatus: string = yield call(checkInternetConnectionHelper);
 
     if (internetConnectionStatus !== ONLINE) {
       throw Error(internetConnectionStatus);
@@ -55,7 +47,7 @@ export function* editTaskListTitleSaga(
     yield call(setIsLoading, false);
 
     if (error instanceof Error) {
-      yield put(setModalErrorMessageAction({errorModalMessage: error.message}));
+      yield put(setModalErrorMessageAction({ errorModalMessage: error.message }));
     }
   }
 }

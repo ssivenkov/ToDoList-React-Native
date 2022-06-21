@@ -1,17 +1,19 @@
-import {ModalIcon} from '@components/common/modals/ModalIcon';
-import {ICON_SIZE_SMALL} from '@constants/constants';
-import {faCheck} from '@fortawesome/free-solid-svg-icons';
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {useStyles} from '@root/hooks/useStyles';
-import {SetStateType} from '@root/types/common/types';
-import {setTaskIsDoneAction} from '@store/actions/tasksSagaActions/tasksSagasActions/setTaskIsDoneAction';
-import {themeSelector} from '@store/selectors/userSelectors';
 import React from 'react';
-import {Trans} from 'react-i18next';
-import {Text} from 'react-native';
-import {useDispatch, useSelector} from 'react-redux';
-import {styles} from './styles';
-import {DoneTaskButtonPropsType} from './types';
+
+import { ModalIcon } from '@components/common/modals/ModalIcon';
+import { ICON_SIZE_SMALL } from '@constants/constants';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { useStyles } from '@root/hooks/useStyles';
+import { SetStateType } from '@root/types/common/types';
+import { setTaskIsDoneAction } from '@store/actions/tasksSagaActions/tasksSagasActions/setTaskIsDoneAction';
+import { themeSelector } from '@store/selectors/userSelectors';
+import { Trans } from 'react-i18next';
+import { Text } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { styles } from './styles';
+import { DoneTaskButtonPropsType } from './types';
 
 export const DoneTaskButton = ({
   taskListID,
@@ -38,19 +40,18 @@ export const DoneTaskButton = ({
 
   return (
     <ModalIcon
-      okHandler={setDoneTask}
       buttonIcon={
         <FontAwesomeIcon
+          color={theme.ICON_BUTTON_COLOR}
           icon={faCheck}
           size={ICON_SIZE_SMALL}
-          color={theme.ICON_BUTTON_COLOR}
         />
-      }>
+      }
+      okHandler={setDoneTask}
+    >
       <Text style={style.warnText}>
-        <Trans i18nKey="tasksScreen.DoneButton">
-          <Text style={style.greenHighlightTask}>
-            {{text: completedTaskTitle}}
-          </Text>
+        <Trans i18nKey='tasksScreen.DoneButton'>
+          <Text style={style.greenHighlightTask}>{{ text: completedTaskTitle }}</Text>
         </Trans>
       </Text>
     </ModalIcon>

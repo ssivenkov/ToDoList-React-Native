@@ -1,5 +1,5 @@
-import {TASKS_REDUCER_ACTION} from '@enums/tasksReducerEnum';
-import {TaskListInterface} from '@store/reducers/tasksReducer/types';
+import { TASKS_REDUCER_ACTION } from '@enums/tasksReducerEnum';
+import { TaskListInterface } from '@store/reducers/tasksReducer/types';
 
 type DeleteTaskListFullActionPayloadType = {
   taskListID: TaskListInterface['id'];
@@ -14,9 +14,7 @@ export type DeleteTaskListFullActionType = (
   payload: DeleteTaskListFullActionPayloadType,
 ) => DeleteTaskListFullActionReturnType;
 
-export const deleteTaskListFullAction: DeleteTaskListFullActionType = (
-  payload,
-) => ({
+export const deleteTaskListFullAction: DeleteTaskListFullActionType = (payload) => ({
   type: TASKS_REDUCER_ACTION.DELETE_TASK_LIST_FULL,
   payload,
 });

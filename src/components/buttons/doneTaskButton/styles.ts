@@ -1,13 +1,13 @@
-import {COLORS} from '@colors/colors';
-import {ExtendedStylesPropsType} from '@root/hooks/useStyles';
-import {StyleSheet, TextStyle} from 'react-native';
+import { COLORS } from '@colors/colors';
+import { ExtendedStylesPropsType } from '@root/hooks/useStyles';
+import { StyleSheet, TextStyle } from 'react-native';
 
 type DoneTaskButtonStylesType = {
   warnText: TextStyle;
   greenHighlightTask: TextStyle;
 };
 
-const {JAPANESE_LAUREL} = COLORS;
+const { JAPANESE_LAUREL } = COLORS;
 
 export const styles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<DoneTaskButtonStylesType>({

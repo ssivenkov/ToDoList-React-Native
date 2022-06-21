@@ -1,15 +1,15 @@
-import {IconButton} from '@components/common/buttons/iconButton/IconButton';
-import {
-  ModalMenuButton,
-  Separator,
-} from '@components/common/buttons/modalMenuButton/ModalMenuButton';
-import {Loader} from '@components/common/loader/Loader';
-import {useStyles} from '@root/hooks/useStyles';
-import React, {useState} from 'react';
-import {useTranslation} from 'react-i18next';
-import {Modal, Text, View} from 'react-native';
-import {styles} from './styles';
-import {ModalIconPropsType} from './types';
+import React, { useState } from 'react';
+
+import { IconButton } from '@components/common/buttons/iconButton/IconButton';
+import { ModalMenuButton } from '@components/common/buttons/modalMenuButton/ModalMenuButton';
+import { Separator } from '@components/common/buttons/modalMenuButton/Separator';
+import { Loader } from '@components/common/loader/Loader';
+import { useStyles } from '@root/hooks/useStyles';
+import { useTranslation } from 'react-i18next';
+import { Modal, Text, View } from 'react-native';
+
+import { styles } from './styles';
+import { ModalIconPropsType } from './types';
 
 export const ModalIcon = (props: ModalIconPropsType) => {
   const {
@@ -24,7 +24,7 @@ export const ModalIcon = (props: ModalIconPropsType) => {
   } = props;
 
   const style = useStyles(styles);
-  const {t} = useTranslation();
+  const { t } = useTranslation();
 
   const [modalVisible, setModalVisible] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -33,21 +33,19 @@ export const ModalIcon = (props: ModalIconPropsType) => {
     typeof modalVisibleFromProps === 'boolean' && !!setModalVisibleFromProps;
 
   const onButtonPress = (): void => {
-    if (modalByPropsControlCondition) {
-      !modalVisibleFromProps && setModalVisibleFromProps(true);
-    } else {
-      !modalVisible && setModalVisible(true);
+    if (modalByPropsControlCondition && !modalVisibleFromProps) {
+      setModalVisibleFromProps(true);
     }
+
+    if (!modalVisible) setModalVisible(true);
   };
 
   const onCancelButtonPress = (): void => {
-    closeHandler && closeHandler();
+    if (closeHandler) closeHandler();
 
     if (modalByPropsControlCondition) {
       setModalVisibleFromProps(false);
-    } else {
-      setModalVisible(false);
-    }
+    } else setModalVisible(false);
   };
 
   const onOkButtonPress = (): void => {
@@ -66,18 +64,18 @@ export const ModalIcon = (props: ModalIconPropsType) => {
               </View>
               <View style={style.buttonsContainer}>
                 <ModalMenuButton
-                  onPress={onOkButtonPress}
-                  title={t('common.Ok')}
                   disable={okDisable}
-                  leftRounding={true}
+                  leftRounding
+                  onPress={onOkButtonPress}
                   rightRounding={false}
+                  title={t('common.Ok')}
                 />
                 <Separator />
                 <ModalMenuButton
-                  onPress={onCancelButtonPress}
-                  title={t('common.Close')}
                   leftRounding={false}
-                  rightRounding={true}
+                  onPress={onCancelButtonPress}
+                  rightRounding
+                  title={t('common.Close')}
                 />
               </View>
             </View>
@@ -85,7 +83,7 @@ export const ModalIcon = (props: ModalIconPropsType) => {
           {isLoading && <Loader />}
         </Modal>
       </View>
-      <IconButton onPress={onButtonPress} icon={buttonIcon} />
+      <IconButton icon={buttonIcon} onPress={onButtonPress} />
     </View>
   );
 };

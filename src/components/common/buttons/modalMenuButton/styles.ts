@@ -1,7 +1,7 @@
-import {COLORS} from '@colors/colors';
-import {modalBorderRadius} from '@components/common/modals/styles';
-import {ExtendedStylesPropsType} from '@root/hooks/useStyles';
-import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
+import { COLORS } from '@colors/colors';
+import { modalBorderRadius } from '@components/common/modals/styles';
+import { ExtendedStylesPropsType } from '@root/hooks/useStyles';
+import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
 type ModalMenuButtonStylesType = {
   modalMenuButton: ViewStyle;

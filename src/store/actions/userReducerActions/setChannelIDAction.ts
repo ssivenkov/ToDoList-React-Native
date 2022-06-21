@@ -1,5 +1,5 @@
-import {USER_REDUCER_ACTION} from '@enums/userReducerEnum';
-import {ChannelIDType} from '@store/reducers/userReducer/types';
+import { USER_REDUCER_ACTION } from '@enums/userReducerEnum';
+import { ChannelIDType } from '@store/reducers/userReducer/types';
 
 type SetChannelIDActionPayloadType = {
   channelID: ChannelIDType;

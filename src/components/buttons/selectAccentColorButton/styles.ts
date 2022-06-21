@@ -1,5 +1,5 @@
-import {ExtendedStylesPropsType} from '@root/hooks/useStyles';
-import {StyleSheet, ViewStyle} from 'react-native';
+import { ExtendedStylesPropsType } from '@root/hooks/useStyles';
+import { StyleSheet, ViewStyle } from 'react-native';
 
 type DarkModeButtonStylesType = {
   colorIndicator: ViewStyle;
