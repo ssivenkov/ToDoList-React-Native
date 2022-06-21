@@ -1,12 +1,6 @@
-import {COLORS} from '@colors/colors';
-import {ExtendedStylesPropsType} from '@root/hooks/useStyles';
-import {
-  ImageStyle,
-  Platform,
-  StyleSheet,
-  TextStyle,
-  ViewStyle,
-} from 'react-native';
+import { COLORS } from '@colors/colors';
+import { ExtendedStylesPropsType } from '@root/hooks/useStyles';
+import { ImageStyle, Platform, StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
 type TasksScreenStylesType = {
   signInWrapper: ViewStyle;
@@ -15,7 +9,11 @@ type TasksScreenStylesType = {
   appIcon: ImageStyle;
 };
 
-const appIconDivider = Platform.OS === 'ios' ? 2.25 : 2.4;
+const iOSAppIconDivider = 2.25;
+const androidAppIconDivider = 2.4;
+const iOSBorderRadiusDivider = 18;
+const androidBorderRadiusDivider = 10;
+const appIconDivider = Platform.OS === 'ios' ? iOSAppIconDivider : androidAppIconDivider;
 
 export const styles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<TasksScreenStylesType>({
@@ -43,7 +41,9 @@ export const styles = (props: ExtendedStylesPropsType) =>
       width: props.appWidth / appIconDivider,
       height: props.appWidth / appIconDivider,
       borderRadius:
-        Platform.OS === 'ios' ? props.appWidth / 18 : props.appWidth / 10,
+        Platform.OS === 'ios'
+          ? props.appWidth / iOSBorderRadiusDivider
+          : props.appWidth / androidBorderRadiusDivider,
       marginBottom: 40,
       resizeMode: 'contain',
     },

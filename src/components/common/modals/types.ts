@@ -1,14 +1,14 @@
-import {IconProp} from '@fortawesome/fontawesome-svg-core';
-import {SetStateType} from '@root/types/common/types';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { SetStateType } from '@root/types/common/types';
 
 export type ModalIconPropsType = {
-  buttonIcon: JSX.Element;
+  buttonIcon: Element;
   okHandler: (
     setIsLoading: SetStateType<boolean>,
     setModalVisible: SetStateType<boolean>,
   ) => void;
 
-  children?: any;
+  children?: Element;
   description?: string;
   okDisable?: boolean;
   closeHandler?: () => void;
@@ -20,10 +20,10 @@ export type ModalLongButtonPropsType = {
   buttonTitle: string;
   buttonIcon: IconProp;
 
-  children?: any;
+  children?: Element;
   description?: string;
-  okHandler?: (arg?: any) => void;
+  okHandler?: () => void;
   rightComponent?: Element;
-  closeHandler?: (arg?: any) => void;
+  closeHandler?: () => void;
   disable?: boolean;
 };

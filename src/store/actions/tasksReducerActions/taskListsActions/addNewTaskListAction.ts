@@ -1,5 +1,5 @@
-import {TASKS_REDUCER_ACTION} from '@enums/tasksReducerEnum';
-import {TaskListInterface} from '@store/reducers/tasksReducer/types';
+import { TASKS_REDUCER_ACTION } from '@enums/tasksReducerEnum';
+import { TaskListInterface } from '@store/reducers/tasksReducer/types';
 
 type DeleteTaskActionPayloadType = {
   taskList: TaskListInterface;

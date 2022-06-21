@@ -1,33 +1,35 @@
-import {Loader} from '@components/common/loader/Loader';
-import {FACEBOOK_TITLE, GOOGLE_TITLE} from '@constants/constants';
-import {faFacebook, faGoogle} from '@fortawesome/free-brands-svg-icons';
-import {useStyles} from '@root/hooks/useStyles';
-import {SignInButton} from '@root/screens/signInScreen/signInButton/SignInButton';
-import {signInStyles} from '@root/screens/signInScreen/signInButton/styles';
-import {FacebookSignInAction} from '@store/actions/userSagaActions/FacebookSignInAction';
-import {GoogleSignInAction} from '@store/actions/userSagaActions/GoogleSignInAction';
-import React, {useState} from 'react';
-import {useTranslation} from 'react-i18next';
-import {Image, Text, View} from 'react-native';
+import React, { useState } from 'react';
+
+import { Loader } from '@components/common/loader/Loader';
+import { FACEBOOK_TITLE, GOOGLE_TITLE } from '@constants/constants';
+import { faFacebook, faGoogle } from '@fortawesome/free-brands-svg-icons';
+import { useStyles } from '@root/hooks/useStyles';
+import { SignInButton } from '@root/screens/signInScreen/signInButton/SignInButton';
+import { signInStyles } from '@root/screens/signInScreen/signInButton/styles';
+import { facebookSignInAction } from '@store/actions/userSagaActions/FacebookSignInAction';
+import { googleSignInAction } from '@store/actions/userSagaActions/GoogleSignInAction';
+import { useTranslation } from 'react-i18next';
+import { Image, Text, View } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import {useDispatch} from 'react-redux';
-import {styles} from './styles';
+import { useDispatch } from 'react-redux';
+
+import { styles } from './styles';
 
 export const SignInScreen = () => {
   const dispatch = useDispatch();
   const style = useStyles(styles);
-  const {t} = useTranslation();
+  const { t } = useTranslation();
 
   const [waitingUserData, setWaitingUserData] = useState<boolean>(false);
 
   const isDeveloperMode = __DEV__;
 
   const onGoogleButtonPress = (): void => {
-    dispatch(GoogleSignInAction({setWaitingUserData}));
+    dispatch(googleSignInAction({ setWaitingUserData }));
   };
 
   const onFacebookButtonPress = (): void => {
-    dispatch(FacebookSignInAction({setWaitingUserData}));
+    dispatch(facebookSignInAction({ setWaitingUserData }));
   };
 
   return (
@@ -38,24 +40,24 @@ export const SignInScreen = () => {
         ) : (
           <View style={style.signInContainer}>
             <Image
-              style={style.appIcon}
               source={require('../../assets/images/icons/appIcon.png')}
+              style={style.appIcon}
             />
             <Text style={style.screenTitle}>{t('signInScreen.SignIn')}</Text>
             <SignInButton
-              onPress={onGoogleButtonPress}
-              serviceTitle={GOOGLE_TITLE}
-              icon={faGoogle}
               colorStyle={signInStyles.googleStyle}
               disabled={waitingUserData}
+              icon={faGoogle}
+              onPress={onGoogleButtonPress}
+              serviceTitle={GOOGLE_TITLE}
             />
             {isDeveloperMode && (
               <SignInButton
-                onPress={onFacebookButtonPress}
-                serviceTitle={FACEBOOK_TITLE}
-                icon={faFacebook}
                 colorStyle={signInStyles.facebookStyle}
                 disabled={waitingUserData}
+                icon={faFacebook}
+                onPress={onFacebookButtonPress}
+                serviceTitle={FACEBOOK_TITLE}
               />
             )}
           </View>

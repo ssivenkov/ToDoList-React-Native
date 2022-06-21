@@ -1,6 +1,6 @@
-import {COLORS} from '@colors/colors';
-import {FontAwesomeIconStyle} from '@fortawesome/react-native-fontawesome';
-import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
+import { COLORS } from '@colors/colors';
+import { FontAwesomeIconStyle } from '@fortawesome/react-native-fontawesome';
+import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
 type CustomButtonStylesType = {
   button: ViewStyle;
@@ -11,7 +11,7 @@ type CustomButtonStylesType = {
   facebookStyle: ViewStyle;
 };
 
-const {WHITE, CORNFLOWER_BLUE, CHAMBRAY, DUSTY_GRAY} = COLORS;
+const { WHITE, CORNFLOWER_BLUE, CHAMBRAY, DUSTY_GRAY } = COLORS;
 
 export const signInStyles = StyleSheet.create<CustomButtonStylesType>({
   button: {

@@ -7,27 +7,24 @@ import {
   TASKS,
   USERS,
 } from '@constants/constants';
-import {DB} from '@root/api/DB';
-import {cancelNotificationHelper} from '@root/helpers/cancelNotificationHelper';
-import {checkInternetConnectionHelper} from '@root/helpers/checkInternetConnectionHelper';
-import {createNotificationHelper} from '@root/helpers/createNotificationHelper';
-import {generateNumberIDHelper} from '@root/helpers/generateNumberIDHelper';
-import {editTaskNotificationAction} from '@store/actions/tasksReducerActions/notificationsActions/editTaskNotificationAction';
-import {setEditedTaskAction} from '@store/actions/tasksReducerActions/tasksActions/setEditedTaskAction';
-import {SetEditedTaskActionSagaReturnType} from '@store/actions/tasksSagaActions/tasksSagasActions/setEditedTaskAction';
-import {setModalErrorMessageAction} from '@store/actions/userReducerActions/setModalErrorMessageAction';
-import {NotificationType, TaskType} from '@store/reducers/tasksReducer/types';
+import { DB } from '@root/api/DB';
+import { cancelNotificationHelper } from '@root/helpers/cancelNotificationHelper';
+import { checkInternetConnectionHelper } from '@root/helpers/checkInternetConnectionHelper';
+import { createNotificationHelper } from '@root/helpers/createNotificationHelper';
+import { generateNumberIDHelper } from '@root/helpers/generateNumberIDHelper';
+import { editTaskNotificationAction } from '@store/actions/tasksReducerActions/notificationsActions/editTaskNotificationAction';
+import { setEditedTaskAction } from '@store/actions/tasksReducerActions/tasksActions/setEditedTaskAction';
+import { SetEditedTaskActionSagaReturnType } from '@store/actions/tasksSagaActions/tasksSagasActions/setEditedTaskAction';
+import { setModalErrorMessageAction } from '@store/actions/userReducerActions/setModalErrorMessageAction';
+import { NotificationType, TaskType } from '@store/reducers/tasksReducer/types';
 import {
   ChannelIDType,
   SnapshotType,
   UserIDType,
 } from '@store/reducers/userReducer/types';
-import {notificationsSelector} from '@store/selectors/tasksSelectors';
-import {
-  channelIDSelector,
-  userIDSelector,
-} from '@store/selectors/userSelectors';
-import {call, delay, put, select} from 'redux-saga/effects';
+import { notificationsSelector } from '@store/selectors/tasksSelectors';
+import { channelIDSelector, userIDSelector } from '@store/selectors/userSelectors';
+import { call, delay, put, select } from 'redux-saga/effects';
 
 export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
   const {
@@ -43,10 +40,9 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
     shouldSetColor,
     setColorInModal,
   } = action.payload;
+
   try {
-    const internetConnectionStatus: string = yield call(
-      checkInternetConnectionHelper,
-    );
+    const internetConnectionStatus: string = yield call(checkInternetConnectionHelper);
 
     if (internetConnectionStatus !== ONLINE) {
       throw Error(internetConnectionStatus);
@@ -68,7 +64,7 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
         const sendTaskColorToFirebase = () => {
           return DB.ref(
             `${USERS}/${userID}/${TASK_LISTS}/${taskListID}/${TASKS}/${taskID}`,
-          ).update({colorMark: colorMark});
+          ).update({ colorMark: colorMark });
         };
 
         yield call(sendTaskColorToFirebase);
@@ -95,13 +91,14 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
         `${USERS}/${userID}/${TASK_LISTS}/${taskListID}/${TASKS}/${taskID}`,
       ).once('value');
 
-      const modifiedTask: TaskType = {...taskSnapshot.val()};
+      const modifiedTask: TaskType = { ...taskSnapshot.val() };
       const colorMarkProperty = Object.keys(modifiedTask).find(
         (item) => item === COLOR_MARK,
       );
 
       if (colorMarkProperty) {
-        const taskWithoutColorMark = {...modifiedTask};
+        const taskWithoutColorMark = { ...modifiedTask };
+
         delete taskWithoutColorMark.colorMark;
         const sendTaskWithoutColorMarkToFirebase = () => {
           return DB.ref(
@@ -116,7 +113,7 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
     const sendTaskTitleToFirebase = () => {
       return DB.ref(
         `${USERS}/${userID}/${TASK_LISTS}/${taskListID}/${TASKS}/${taskID}`,
-      ).update({title: editedTaskTitle});
+      ).update({ title: editedTaskTitle });
     };
 
     yield call(sendTaskTitleToFirebase);
@@ -141,9 +138,7 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
         }),
       );
     } else {
-      const notifications: NotificationType[] = yield select(
-        notificationsSelector,
-      );
+      const notifications: NotificationType[] = yield select(notificationsSelector);
 
       const taskNotification = notifications.find((item) => {
         return taskID === item.taskID;
@@ -190,7 +185,7 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
     yield call(setIsLoading, false);
 
     if (error instanceof Error) {
-      yield put(setModalErrorMessageAction({errorModalMessage: error.message}));
+      yield put(setModalErrorMessageAction({ errorModalMessage: error.message }));
     }
   }
 }

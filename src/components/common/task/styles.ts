@@ -1,6 +1,6 @@
-import {COLORS} from '@colors/colors';
-import {ExtendedStylesPropsType} from '@root/hooks/useStyles';
-import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
+import { COLORS } from '@colors/colors';
+import { ExtendedStylesPropsType } from '@root/hooks/useStyles';
+import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
 type TaskStylesType = {
   container: ViewStyle;
@@ -12,7 +12,7 @@ type TaskStylesType = {
   greenHighlightTask: TextStyle;
 };
 
-const {RED, DUSTY_GRAY} = COLORS;
+const { RED, DUSTY_GRAY } = COLORS;
 const textSize = 18;
 
 export const styles = (props: ExtendedStylesPropsType) =>

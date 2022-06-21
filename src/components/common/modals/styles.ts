@@ -1,5 +1,6 @@
-import {ExtendedStylesPropsType} from '@root/hooks/useStyles';
-import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
+import { COLORS } from '@colors/colors';
+import { ExtendedStylesPropsType } from '@root/hooks/useStyles';
+import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
 type ModalStylesType = {
   centeredView: ViewStyle;
@@ -17,7 +18,7 @@ export const styles = (props: ExtendedStylesPropsType) =>
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: 'rgba(0,0,0,0.85)',
+      backgroundColor: COLORS.SLIGHT_TRANSPARENCY,
     },
 
     modalView: {

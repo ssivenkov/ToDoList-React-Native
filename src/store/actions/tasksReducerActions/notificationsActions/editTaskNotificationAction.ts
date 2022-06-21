@@ -1,5 +1,5 @@
-import {TASKS_REDUCER_ACTION} from '@enums/tasksReducerEnum';
-import {NotificationType} from '@store/reducers/tasksReducer/types';
+import { TASKS_REDUCER_ACTION } from '@enums/tasksReducerEnum';
+import { NotificationType } from '@store/reducers/tasksReducer/types';
 
 type EditTaskNotificationActionPayloadType = {
   notification: NotificationType;
@@ -14,9 +14,7 @@ export type EditTaskNotificationsActionType = (
   payload: EditTaskNotificationActionPayloadType,
 ) => EditTaskNotificationActionReturnType;
 
-export const editTaskNotificationAction: EditTaskNotificationsActionType = (
-  payload,
-) => ({
+export const editTaskNotificationAction: EditTaskNotificationsActionType = (payload) => ({
   type: TASKS_REDUCER_ACTION.EDIT_TASK_NOTIFICATION,
   payload,
 });

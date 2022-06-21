@@ -1,6 +1,6 @@
 export type ModalMenuButtonPropsType = {
   title: string;
-  onPress: (arg?: any) => void;
+  onPress: () => void;
   leftRounding: boolean;
   rightRounding: boolean;
 

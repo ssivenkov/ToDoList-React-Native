@@ -1,14 +1,14 @@
-import {LongButton} from '@components/common/buttons/longButton/LongButton';
-import {
-  ModalMenuButton,
-  Separator,
-} from '@components/common/buttons/modalMenuButton/ModalMenuButton';
-import {useStyles} from '@root/hooks/useStyles';
-import React, {useState} from 'react';
-import {useTranslation} from 'react-i18next';
-import {Modal, Text, View} from 'react-native';
-import {styles} from './styles';
-import {ModalLongButtonPropsType} from './types';
+import React, { useState } from 'react';
+
+import { LongButton } from '@components/common/buttons/longButton/LongButton';
+import { ModalMenuButton } from '@components/common/buttons/modalMenuButton/ModalMenuButton';
+import { Separator } from '@components/common/buttons/modalMenuButton/Separator';
+import { useStyles } from '@root/hooks/useStyles';
+import { useTranslation } from 'react-i18next';
+import { Modal, Text, View } from 'react-native';
+
+import { styles } from './styles';
+import { ModalLongButtonPropsType } from './types';
 
 export const ModalLongButton = (props: ModalLongButtonPropsType) => {
   const {
@@ -23,7 +23,7 @@ export const ModalLongButton = (props: ModalLongButtonPropsType) => {
   } = props;
 
   const style = useStyles(styles);
-  const {t} = useTranslation();
+  const { t } = useTranslation();
 
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -32,17 +32,18 @@ export const ModalLongButton = (props: ModalLongButtonPropsType) => {
   };
 
   const onOkButtonPress = (): void => {
-    okHandler && okHandler();
+    if (okHandler) okHandler();
   };
 
   const onClosePress = (): void => {
-    closeHandler && closeHandler();
+    if (closeHandler) closeHandler();
+
     setModalVisible(false);
   };
 
   return (
     <View>
-      <Modal transparent visible={modalVisible} onRequestClose={onClosePress}>
+      <Modal onRequestClose={onClosePress} transparent visible={modalVisible}>
         <View style={style.centeredView}>
           <View style={style.modalView}>
             <View style={style.content}>
@@ -53,30 +54,30 @@ export const ModalLongButton = (props: ModalLongButtonPropsType) => {
               {okHandler && (
                 <>
                   <ModalMenuButton
+                    leftRounding
                     onPress={onOkButtonPress}
-                    title={t('common.Ok')}
-                    leftRounding={true}
                     rightRounding={false}
+                    title={t('common.Ok')}
                   />
                   <Separator />
                 </>
               )}
               <ModalMenuButton
-                onPress={onClosePress}
-                title={t('common.Close')}
                 leftRounding={!okHandler}
-                rightRounding={true}
+                onPress={onClosePress}
+                rightRounding
+                title={t('common.Close')}
               />
             </View>
           </View>
         </View>
       </Modal>
       <LongButton
+        disable={disable}
         icon={buttonIcon}
         onPress={onModalButtonPress}
-        title={buttonTitle}
-        disable={disable}
         rightComponent={rightComponent}
+        title={buttonTitle}
       />
     </View>
   );

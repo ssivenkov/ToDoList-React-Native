@@ -1,9 +1,9 @@
-import {COLORS} from '@colors/colors';
-import {FontAwesomeIconStyle} from '@fortawesome/react-native-fontawesome';
-import {ExtendedStylesPropsType} from '@root/hooks/useStyles';
-import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
+import { COLORS } from '@colors/colors';
+import { FontAwesomeIconStyle } from '@fortawesome/react-native-fontawesome';
+import { ExtendedStylesPropsType } from '@root/hooks/useStyles';
+import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
-type TasksNavigationStylesType = {
+export type TasksNavigationStylesType = {
   tabBarContainer: ViewStyle;
   tabBarItem: ViewStyle;
   tabFocusIcon: FontAwesomeIconStyle;
@@ -15,7 +15,7 @@ type TasksNavigationStylesType = {
   title: TextStyle;
 };
 
-const {WHITE} = COLORS;
+const { WHITE } = COLORS;
 
 export const styles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<TasksNavigationStylesType>({

@@ -1,4 +1,4 @@
-import {Nullable, SetStateType} from '@root/types/common/types';
+import { Nullable, SetStateType } from '@root/types/common/types';
 
 export type NotificationPropsType = {
   isSwitcherOn: boolean;

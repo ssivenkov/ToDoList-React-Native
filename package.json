@@ -2,17 +2,6 @@
   "name": "todolist",
   "version": "1.0.0",
   "private": true,
-  "scripts": {
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
-    "start without cache": "react-native start --reset-cache",
-    "start": "react-native start",
-    "metro connect": "adb -s 1243dcd2 reverse tcp:8081 tcp:8081",
-    "gradle clean MacOS": "cd android && ./gradlew clean && cd ..",
-    "gradle clean Windows": "cd android && gradlew clean && cd ..",
-    "android assembly MacOS": "cd android && ./gradlew assembleRelease && cd ..",
-    "android assembly Windows": "cd android && gradlew assembleRelease && cd .."
-  },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
@@ -31,10 +20,6 @@
     "@react-navigation/native": "^6.0.8",
     "@react-navigation/native-stack": "^6.6.1",
     "@react-navigation/stack": "^6.2.1",
-    "appcenter": "4.4.4",
-    "appcenter-analytics": "4.4.4",
-    "appcenter-crashes": "4.4.4",
-    "babel-plugin-module-resolver": "^4.1.0",
     "hermes-engine": "^0.11.0",
     "i18next": "^21.6.14",
     "intl-pluralrules": "^1.3.1",
@@ -67,12 +52,13 @@
   },
   "devDependencies": {
     "@babel/core": "^7.17.5",
+    "@babel/eslint-parser": "^7.18.2",
     "@babel/runtime": "^7.17.2",
     "@react-native-community/eslint-config": "^3.0.1",
     "@redux-devtools/extension": "^3.2.2",
-    "@trivago/prettier-plugin-sort-imports": "^3.2.0",
     "@types/jest": "^27.4.1",
     "@types/lodash": "^4.14.181",
+    "@types/node": "^18.0.0",
     "@types/react": "^17.0.39",
     "@types/react-native": "^0.67.1",
     "@types/react-native-push-notification": "^8.1.0",
@@ -81,14 +67,48 @@
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",
     "babel-jest": "^27.5.1",
+    "babel-plugin-module-resolver": "^4.1.0",
     "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-import-resolver-typescript": "^2.7.1",
+    "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-react": "^7.26.1",
-    "jest": "^27.5.1",
+    "eslint-plugin-react": "^7.30.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-native": "^4.0.0",
+    "husky": "^8.0.1",
+    "jest": "^28.1.1",
+    "lint-staged": "^13.0.2",
     "metro-react-native-babel-preset": "^0.69.1",
     "prettier": "2.6.0",
     "react-test-renderer": "17.0.2",
-    "typescript": "^4.6.2"
+    "typescript": "4.5.5"
+  },
+  "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "start without cache": "react-native start --reset-cache",
+    "start": "react-native start",
+    "lint": "eslint ./src --color",
+    "lint-fix": "npm run lint -- --fix",
+    "metro connect": "adb -s 1243dcd2 reverse tcp:8081 tcp:8081",
+    "gradle clean MacOS": "cd android && ./gradlew clean && cd ..",
+    "gradle clean Windows": "cd android && gradlew clean && cd ..",
+    "android assembly MacOS": "cd android && ./gradlew assembleRelease && cd ..",
+    "android assembly Windows": "cd android && gradlew assembleRelease && cd ..",
+    "husky-install": "husky install"
+  },
+  "lint-staged": {
+    "*.(js|jsx|ts|tsx)": [
+      "npm run lint-fix",
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged --relative"
+    }
   },
   "jest": {
     "preset": "react-native"

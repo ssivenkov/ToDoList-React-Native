@@ -1,6 +1,6 @@
-import {TaskListMarginVertical} from '@components/common/taskList/styles';
-import {ExtendedStylesPropsType} from '@root/hooks/useStyles';
-import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
+import { TaskListMarginVertical } from '@components/common/taskList/styles';
+import { ExtendedStylesPropsType } from '@root/hooks/useStyles';
+import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
 type TodoTasksScreenStylesType = {
   tasksListContainer: ViewStyle;
