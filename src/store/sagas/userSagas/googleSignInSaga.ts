@@ -1,20 +1,13 @@
-import {
-  GOOGLE_PROVIDER_ID,
-  ONLINE,
-  START_ANIMATION_DELAY,
-} from '@constants/constants';
-import {
-  GoogleSignInCancelError,
-  signInActionCanceled,
-} from '@constants/errorMessages';
+import { GOOGLE_PROVIDER_ID, ONLINE, START_ANIMATION_DELAY } from '@constants/constants';
+import { GoogleSignInCancelError, signInActionCanceled } from '@constants/errorMessages';
 import auth from '@react-native-firebase/auth';
-import {GoogleSignin} from '@react-native-google-signin/google-signin';
-import {checkInternetConnectionHelper} from '@root/helpers/checkInternetConnectionHelper';
-import {setModalErrorMessageAction} from '@store/actions/userReducerActions/setModalErrorMessageAction';
-import {setProviderIDAction} from '@store/actions/userReducerActions/setProviderIDAction';
-import {GetGoogleUserDataSagaActionReturnType} from '@store/actions/userSagaActions/GoogleSignInAction';
-import {t} from 'i18next';
-import {call, delay, put, putResolve} from 'redux-saga/effects';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import { checkInternetConnectionHelper } from '@root/helpers/checkInternetConnectionHelper';
+import { setModalErrorMessageAction } from '@store/actions/userReducerActions/setModalErrorMessageAction';
+import { setProviderIDAction } from '@store/actions/userReducerActions/setProviderIDAction';
+import { GetGoogleUserDataSagaActionReturnType } from '@store/actions/userSagaActions/GoogleSignInAction';
+import { t } from 'i18next';
+import { call, delay, put, putResolve } from 'redux-saga/effects';
 
 export type AuthCredentialType = {
   providerId: string;
@@ -22,14 +15,11 @@ export type AuthCredentialType = {
   secret: string;
 };
 
-export function* googleSignInSaga(
-  action: GetGoogleUserDataSagaActionReturnType,
-) {
-  const {setWaitingUserData} = action.payload;
+export function* googleSignInSaga(action: GetGoogleUserDataSagaActionReturnType) {
+  const { setWaitingUserData } = action.payload;
+
   try {
-    const internetConnectionStatus: string = yield call(
-      checkInternetConnectionHelper,
-    );
+    const internetConnectionStatus: string = yield call(checkInternetConnectionHelper);
 
     if (internetConnectionStatus !== ONLINE) {
       throw Error(internetConnectionStatus);
@@ -38,7 +28,7 @@ export function* googleSignInSaga(
     yield call(setWaitingUserData, true);
     yield delay(START_ANIMATION_DELAY);
 
-    const {idToken} = yield call(GoogleSignin.signIn);
+    const { idToken } = yield call(GoogleSignin.signIn);
 
     if (!idToken) {
       throw t('signInScreen.ErrorGettingAccessToken');
@@ -50,11 +40,13 @@ export function* googleSignInSaga(
     );
 
     const providerID = GOOGLE_PROVIDER_ID;
-    yield putResolve(setProviderIDAction({providerID}));
+
+    yield putResolve(setProviderIDAction({ providerID }));
 
     const signInWithCredential = (credential: AuthCredentialType) => {
       return auth().signInWithCredential(credential);
     };
+
     yield call(signInWithCredential, googleCredential);
   } catch (error) {
     setWaitingUserData(false);
@@ -71,7 +63,7 @@ export function* googleSignInSaga(
     }
 
     if (error instanceof Error) {
-      yield put(setModalErrorMessageAction({errorModalMessage: error.message}));
+      yield put(setModalErrorMessageAction({ errorModalMessage: error.message }));
     }
   }
 }

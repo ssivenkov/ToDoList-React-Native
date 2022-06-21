@@ -2,6 +2,7 @@
   "compilerOptions": {
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
+    "baseUrl": "./",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "incremental": true,
@@ -10,16 +11,6 @@
     "lib": ["es6"],
     "moduleResolution": "node",
     "noEmit": true,
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitAny": true,
-    "noImplicitThis": true,
-    "noUncheckedIndexedAccess": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "resolveJsonModule": true,
-    "strict": true,
-    "target": "esnext",
-    "baseUrl": "./",
     "paths": {
       "@root/*": ["src/*"],
       "@colors/*": ["src/colors/*"],
@@ -30,14 +21,11 @@
       "@navigation/*": ["src/navigation/*"],
       "@store/*": ["src/store/*"],
     },
-    "plugins": [
-      {
-        "name": "ts-graphql-plugin",
-        "schema": "./src/graphql/__generated__/schema.json",
-        "tag": "gql"
-      }
-    ]
+    "resolveJsonModule": true,
+    "strict": true,
+    "target": "esnext"
   },
+  "include": ["src"],
   "exclude": [
     "node_modules",
     "babel.config.js",
