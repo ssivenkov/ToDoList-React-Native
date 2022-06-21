@@ -1,13 +1,15 @@
-import {CreateTaskButton} from '@components/buttons/createTaskButton/CreateTaskButton';
-import {DeleteTaskListButton} from '@components/buttons/deleteTaskListButton/DeleteTaskListButton';
-import {EditTaskListTitleButton} from '@components/buttons/editTaskListTitleButton/EditTaskListTitleButton';
-import {Task} from '@components/common/task/Task';
-import {sortingTasks} from '@root/helpers/sorting';
-import {useStyles} from '@root/hooks/useStyles';
 import React from 'react';
-import {Text, View} from 'react-native';
-import {styles} from './styles';
-import {TaskListPropsType} from './types';
+
+import { CreateTaskButton } from '@components/buttons/createTaskButton/CreateTaskButton';
+import { DeleteTaskListButton } from '@components/buttons/deleteTaskListButton/DeleteTaskListButton';
+import { EditTaskListTitleButton } from '@components/buttons/editTaskListTitleButton/EditTaskListTitleButton';
+import { Task } from '@components/common/task/Task';
+import { sortingTasks } from '@root/helpers/sorting';
+import { useStyles } from '@root/hooks/useStyles';
+import { Text, View } from 'react-native';
+
+import { styles } from './styles';
+import { TaskListPropsType } from './types';
 
 export const TaskList = (props: TaskListPropsType) => {
   const {
@@ -29,10 +31,10 @@ export const TaskList = (props: TaskListPropsType) => {
         <View style={style.buttonsContainer}>
           {isTodoTaskList && (
             <CreateTaskButton
-              taskListID={taskListID}
-              taskListDate={taskListDate}
-              taskListTitle={taskListTitle}
               fullTaskList={fullTaskList}
+              taskListDate={taskListDate}
+              taskListID={taskListID}
+              taskListTitle={taskListTitle}
             />
           )}
           <EditTaskListTitleButton
@@ -40,26 +42,26 @@ export const TaskList = (props: TaskListPropsType) => {
             taskListID={taskListID}
           />
           <DeleteTaskListButton
-            taskListTitle={taskListTitle}
-            isTodoTaskList={isTodoTaskList}
             fullTaskList={fullTaskList}
+            isTodoTaskList={isTodoTaskList}
+            taskListTitle={taskListTitle}
           />
         </View>
       </View>
       {sortedTasks.length > 0 && (
         <View style={style.tasksContainer}>
           {sortedTasks.map((task) => {
-            const {id: taskID, title: taskTitle, colorMark} = task;
+            const { id: taskID, title: taskTitle, colorMark } = task;
 
             return (
               <Task
-                key={taskID}
+                colorMark={colorMark}
+                fullTaskList={fullTaskList}
                 isTodo={isTodoTaskList}
+                key={taskID}
+                taskID={taskID}
                 taskListID={taskListID}
                 taskTitle={taskTitle}
-                colorMark={colorMark}
-                taskID={taskID}
-                fullTaskList={fullTaskList}
               />
             );
           })}

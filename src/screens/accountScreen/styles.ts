@@ -1,5 +1,5 @@
-import {ExtendedStylesPropsType} from '@root/hooks/useStyles';
-import {ImageStyle, StyleSheet, TextStyle, ViewStyle} from 'react-native';
+import { ExtendedStylesPropsType } from '@root/hooks/useStyles';
+import { ImageStyle, StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
 type UserScreenStylesType = {
   screenContainer: ViewStyle;

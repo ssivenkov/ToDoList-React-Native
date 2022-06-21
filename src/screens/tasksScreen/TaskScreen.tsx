@@ -1,30 +1,33 @@
-import {TaskList} from '@components/common/taskList/TaskList';
-import {useRoute} from '@react-navigation/native';
-import {sortingTaskLists} from '@root/helpers/sorting';
-import {useStyles} from '@root/hooks/useStyles';
-import {TaskScreenRouteType} from '@root/screens/tasksScreen/types';
-import {taskListsSelector} from '@store/selectors/tasksSelectors';
 import React from 'react';
-import {useTranslation} from 'react-i18next';
-import {ScrollView, Text, View} from 'react-native';
-import {useSelector} from 'react-redux';
-import {styles} from './styles';
+
+import { TaskList } from '@components/common/taskList/TaskList';
+import { useRoute } from '@react-navigation/native';
+import { sortingTaskLists } from '@root/helpers/sorting';
+import { useStyles } from '@root/hooks/useStyles';
+import { TaskScreenRouteType } from '@root/screens/tasksScreen/types';
+import { taskListsSelector } from '@store/selectors/tasksSelectors';
+import { useTranslation } from 'react-i18next';
+import { ScrollView, Text, View } from 'react-native';
+import { useSelector } from 'react-redux';
+
+import { styles } from './styles';
 
 export const TasksScreen = () => {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const style = useStyles(styles);
-  const {isTodoScreen} = useRoute<TaskScreenRouteType>().params;
+  const { isTodoScreen } = useRoute<TaskScreenRouteType>().params;
 
   const taskLists = useSelector(taskListsSelector);
-  const toDoTaskLists = taskLists.filter(({showInToDo}) => showInToDo);
+  const toDoTaskLists = taskLists.filter(({ showInToDo }) => showInToDo);
   const doneTaskLists = taskLists.filter((taskList) => {
-    const {tasks} = taskList;
+    const { tasks } = taskList;
 
     if (tasks && tasks.length > 0) {
-      const hasDoneTasks =
-        taskList.tasks && taskList.tasks.some((task) => task.isDone);
+      const hasDoneTasks = taskList.tasks && taskList.tasks.some((task) => task.isDone);
 
-      if (hasDoneTasks) return true;
+      if (hasDoneTasks) {
+        return true;
+      }
     }
   });
   const sortedToDoTaskLists = sortingTaskLists(toDoTaskLists);
@@ -34,18 +37,18 @@ export const TasksScreen = () => {
     return (
       <ScrollView style={style.tasksListContainer}>
         {sortedToDoTaskLists.map((toDoTaskList) => {
-          const {id, date, title, tasks} = toDoTaskList;
+          const { id, date, title, tasks } = toDoTaskList;
           const toDoTasks = tasks && tasks.filter((task) => !task.isDone);
 
           return (
             <TaskList
-              key={id}
-              isTodoTaskList={true}
-              taskListID={id}
-              taskListDate={date}
-              taskListTitle={title}
-              taskListTasks={toDoTasks}
               fullTaskList={toDoTaskList}
+              isTodoTaskList
+              key={id}
+              taskListDate={date}
+              taskListID={id}
+              taskListTasks={toDoTasks}
+              taskListTitle={title}
             />
           );
         })}
@@ -57,18 +60,18 @@ export const TasksScreen = () => {
     return (
       <ScrollView style={style.tasksListContainer}>
         {sortedDoneTaskLists.map((doneTaskList) => {
-          const {id, date, title, tasks} = doneTaskList;
+          const { id, date, title, tasks } = doneTaskList;
           const doneTasks = tasks && tasks.filter((task) => task.isDone);
 
           return (
             <TaskList
-              key={id}
-              isTodoTaskList={false}
-              taskListID={id}
-              taskListDate={date}
-              taskListTitle={title}
-              taskListTasks={doneTasks}
               fullTaskList={doneTaskList}
+              isTodoTaskList={false}
+              key={id}
+              taskListDate={date}
+              taskListID={id}
+              taskListTasks={doneTasks}
+              taskListTitle={title}
             />
           );
         })}
@@ -78,9 +81,7 @@ export const TasksScreen = () => {
 
   return (
     <View style={style.nullContentContainer}>
-      <Text style={style.nullContentText}>
-        {t('tasksScreen.NoTaskListsFound')}
-      </Text>
+      <Text style={style.nullContentText}>{t('tasksScreen.NoTaskListsFound')}</Text>
     </View>
   );
 };

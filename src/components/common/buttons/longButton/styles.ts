@@ -1,5 +1,5 @@
-import {ExtendedStylesPropsType} from '@root/hooks/useStyles';
-import {Platform, StyleSheet, TextStyle, ViewStyle} from 'react-native';
+import { ExtendedStylesPropsType } from '@root/hooks/useStyles';
+import { Platform, StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
 type LongButtonStylesType = {
   longButtonContainer: ViewStyle;
@@ -7,6 +7,8 @@ type LongButtonStylesType = {
   icon: ViewStyle;
   text: TextStyle;
 };
+
+const textMarginBottom = 1.5;
 
 export const styles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<LongButtonStylesType>({
@@ -32,6 +34,6 @@ export const styles = (props: ExtendedStylesPropsType) =>
       fontSize: 18,
       color: props.TEXT_COLOR,
       marginLeft: 20,
-      marginBottom: Platform.OS === 'ios' ? 0 : 1.5,
+      marginBottom: Platform.OS === 'ios' ? 0 : textMarginBottom,
     },
   });

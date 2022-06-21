@@ -1,8 +1,9 @@
-import {COLORS} from '@colors/colors';
-import {styles} from '@components/common/switcher/styles';
-import {SwitcherPropsType} from '@components/common/switcher/types';
 import React from 'react';
-import {Text, View} from 'react-native';
+
+import { COLORS } from '@colors/colors';
+import { styles } from '@components/common/switcher/styles';
+import { SwitcherPropsType } from '@components/common/switcher/types';
+import { Text, View } from 'react-native';
 import ToggleSwitch from 'toggle-switch-react-native';
 
 export const Switcher = (props: SwitcherPropsType) => {
@@ -17,23 +18,23 @@ export const Switcher = (props: SwitcherPropsType) => {
   } = props;
 
   const toggle = (isOn: boolean) => {
-    onToggleSwitcherClick && onToggleSwitcherClick(isOn);
+    if (onToggleSwitcherClick) {
+      onToggleSwitcherClick(isOn);
+    }
   };
 
   return (
     <View style={[styles.contentDefaultContainer, containerStyle]}>
       {switcherText && (
-        <Text style={[{marginBottom: textMargin}, textStyle]}>
-          {switcherText}
-        </Text>
+        <Text style={[{ marginBottom: textMargin }, textStyle]}>{switcherText}</Text>
       )}
       <ToggleSwitch
-        isOn={isOn}
-        onColor={COLORS.JAPANESE_LAUREL}
-        offColor={COLORS.SILVER_CHALICE1}
-        size={size}
-        onToggle={(isOn) => toggle(isOn)}
         animationSpeed={250}
+        isOn={isOn}
+        offColor={COLORS.SILVER_CHALICE1}
+        onColor={COLORS.JAPANESE_LAUREL}
+        onToggle={(isOn) => toggle(isOn)}
+        size={size}
       />
     </View>
   );

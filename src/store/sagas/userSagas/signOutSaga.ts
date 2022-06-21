@@ -5,23 +5,22 @@ import {
   START_ANIMATION_DELAY,
 } from '@constants/constants';
 import auth from '@react-native-firebase/auth';
-import {GoogleSignin} from '@react-native-google-signin/google-signin';
-import {checkInternetConnectionHelper} from '@root/helpers/checkInternetConnectionHelper';
-import {setTaskListsAction} from '@store/actions/tasksReducerActions/taskListsActions/setTaskListsAction';
-import {setAuthStateAction} from '@store/actions/userReducerActions/setAuthStateAction';
-import {setModalErrorMessageAction} from '@store/actions/userReducerActions/setModalErrorMessageAction';
-import {SignOutSagaActionReturnType} from '@store/actions/userSagaActions/signOutAction';
-import {ProviderIDType} from '@store/reducers/userReducer/types';
-import {providerIDSelector} from '@store/selectors/userSelectors';
-import {LoginManager} from 'react-native-fbsdk-next';
-import {call, delay, put, select} from 'redux-saga/effects';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import { checkInternetConnectionHelper } from '@root/helpers/checkInternetConnectionHelper';
+import { setTaskListsAction } from '@store/actions/tasksReducerActions/taskListsActions/setTaskListsAction';
+import { setAuthStateAction } from '@store/actions/userReducerActions/setAuthStateAction';
+import { setModalErrorMessageAction } from '@store/actions/userReducerActions/setModalErrorMessageAction';
+import { SignOutSagaActionReturnType } from '@store/actions/userSagaActions/signOutAction';
+import { ProviderIDType } from '@store/reducers/userReducer/types';
+import { providerIDSelector } from '@store/selectors/userSelectors';
+import { LoginManager } from 'react-native-fbsdk-next';
+import { call, delay, put, select } from 'redux-saga/effects';
 
 export function* signOutSaga(action: SignOutSagaActionReturnType) {
   const setWaitingProcess = action.payload.setWaitingProcess;
+
   try {
-    const internetConnectionStatus: string = yield call(
-      checkInternetConnectionHelper,
-    );
+    const internetConnectionStatus: string = yield call(checkInternetConnectionHelper);
 
     if (internetConnectionStatus !== ONLINE) {
       throw Error(internetConnectionStatus);
@@ -47,12 +46,12 @@ export function* signOutSaga(action: SignOutSagaActionReturnType) {
       yield call(LoginManager.logOut);
     }
 
-    yield put(setAuthStateAction({userData: null, providerID: null}));
+    yield put(setAuthStateAction({ userData: null, providerID: null }));
 
-    yield put(setTaskListsAction({taskLists: []}));
+    yield put(setTaskListsAction({ taskLists: [] }));
   } catch (error) {
     if (error instanceof Error) {
-      yield put(setModalErrorMessageAction({errorModalMessage: error.message}));
+      yield put(setModalErrorMessageAction({ errorModalMessage: error.message }));
     }
   }
 }

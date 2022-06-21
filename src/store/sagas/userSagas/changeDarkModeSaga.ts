@@ -1,21 +1,18 @@
-import {ONLINE, START_ANIMATION_DELAY, USERS} from '@constants/constants';
-import {DB} from '@root/api/DB';
-import {checkInternetConnectionHelper} from '@root/helpers/checkInternetConnectionHelper';
-import {setModalErrorMessageAction} from '@store/actions/userReducerActions/setModalErrorMessageAction';
-import {setThemeAction} from '@store/actions/userReducerActions/setThemeAction';
-import {ChangeDarkModeSagaActionReturnType} from '@store/actions/userSagaActions/changeDarkModeAction';
-import {UserIDType} from '@store/reducers/userReducer/types';
-import {userIDSelector} from '@store/selectors/userSelectors';
-import {call, delay, put, select} from 'redux-saga/effects';
+import { ONLINE, START_ANIMATION_DELAY, USERS } from '@constants/constants';
+import { DB } from '@root/api/DB';
+import { checkInternetConnectionHelper } from '@root/helpers/checkInternetConnectionHelper';
+import { setModalErrorMessageAction } from '@store/actions/userReducerActions/setModalErrorMessageAction';
+import { setThemeAction } from '@store/actions/userReducerActions/setThemeAction';
+import { ChangeDarkModeSagaActionReturnType } from '@store/actions/userSagaActions/changeDarkModeAction';
+import { UserIDType } from '@store/reducers/userReducer/types';
+import { userIDSelector } from '@store/selectors/userSelectors';
+import { call, delay, put, select } from 'redux-saga/effects';
 
-export function* changeDarkModeSaga(
-  action: ChangeDarkModeSagaActionReturnType,
-) {
-  const {darkMode, setIsLoading, theme} = action.payload;
+export function* changeDarkModeSaga(action: ChangeDarkModeSagaActionReturnType) {
+  const { darkMode, setIsLoading, theme } = action.payload;
+
   try {
-    const internetConnectionStatus: string = yield call(
-      checkInternetConnectionHelper,
-    );
+    const internetConnectionStatus: string = yield call(checkInternetConnectionHelper);
 
     if (internetConnectionStatus !== ONLINE) {
       throw Error(internetConnectionStatus);
@@ -41,7 +38,7 @@ export function* changeDarkModeSaga(
     yield call(setIsLoading, false);
 
     if (error instanceof Error) {
-      yield put(setModalErrorMessageAction({errorModalMessage: error.message}));
+      yield put(setModalErrorMessageAction({ errorModalMessage: error.message }));
     }
   }
 }

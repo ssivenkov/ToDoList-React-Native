@@ -1,18 +1,18 @@
-import {TASKS_REDUCER_ACTION} from '@enums/tasksReducerEnum';
-import {AddTaskNotificationActionReturnType} from '@store/actions/tasksReducerActions/notificationsActions/addTaskNotificationAction';
-import {DeleteTaskNotificationActionReturnType} from '@store/actions/tasksReducerActions/notificationsActions/deleteTaskNotificationAction';
-import {EditTaskNotificationActionReturnType} from '@store/actions/tasksReducerActions/notificationsActions/editTaskNotificationAction';
-import {SetNotificationsActionReturnType} from '@store/actions/tasksReducerActions/notificationsActions/setNotificationsAction';
-import {AddNewTaskListActionReturnType} from '@store/actions/tasksReducerActions/taskListsActions/addNewTaskListAction';
-import {DeleteTaskListFromScreenActionReturnType} from '@store/actions/tasksReducerActions/taskListsActions/deleteTaskListFromScreenAction';
-import {DeleteTaskListFullActionReturnType} from '@store/actions/tasksReducerActions/taskListsActions/deleteTaskListFullAction';
-import {EditTaskListTitleActionReturnType} from '@store/actions/tasksReducerActions/taskListsActions/setEditedTaskListTitleAction';
-import {SetTaskListsActionReturnType} from '@store/actions/tasksReducerActions/taskListsActions/setTaskListsAction';
-import {AddNewTaskActionReturnType} from '@store/actions/tasksReducerActions/tasksActions/addNewTaskAction';
-import {DeleteTaskActionReturnType} from '@store/actions/tasksReducerActions/tasksActions/deleteTaskAction';
-import {SetEditedTaskActionReturnType} from '@store/actions/tasksReducerActions/tasksActions/setEditedTaskAction';
-import {SetTaskIsDoneActionReturnType} from '@store/actions/tasksReducerActions/tasksActions/setTaskIsDoneAction';
-import {TasksReducerStateType} from '@store/reducers/tasksReducer/types';
+import { TASKS_REDUCER_ACTION } from '@enums/tasksReducerEnum';
+import { AddTaskNotificationActionReturnType } from '@store/actions/tasksReducerActions/notificationsActions/addTaskNotificationAction';
+import { DeleteTaskNotificationActionReturnType } from '@store/actions/tasksReducerActions/notificationsActions/deleteTaskNotificationAction';
+import { EditTaskNotificationActionReturnType } from '@store/actions/tasksReducerActions/notificationsActions/editTaskNotificationAction';
+import { SetNotificationsActionReturnType } from '@store/actions/tasksReducerActions/notificationsActions/setNotificationsAction';
+import { AddNewTaskListActionReturnType } from '@store/actions/tasksReducerActions/taskListsActions/addNewTaskListAction';
+import { DeleteTaskListFromScreenActionReturnType } from '@store/actions/tasksReducerActions/taskListsActions/deleteTaskListFromScreenAction';
+import { DeleteTaskListFullActionReturnType } from '@store/actions/tasksReducerActions/taskListsActions/deleteTaskListFullAction';
+import { EditTaskListTitleActionReturnType } from '@store/actions/tasksReducerActions/taskListsActions/setEditedTaskListTitleAction';
+import { SetTaskListsActionReturnType } from '@store/actions/tasksReducerActions/taskListsActions/setTaskListsAction';
+import { AddNewTaskActionReturnType } from '@store/actions/tasksReducerActions/tasksActions/addNewTaskAction';
+import { DeleteTaskActionReturnType } from '@store/actions/tasksReducerActions/tasksActions/deleteTaskAction';
+import { SetEditedTaskActionReturnType } from '@store/actions/tasksReducerActions/tasksActions/setEditedTaskAction';
+import { SetTaskIsDoneActionReturnType } from '@store/actions/tasksReducerActions/tasksActions/setTaskIsDoneAction';
+import { TasksReducerStateType } from '@store/reducers/tasksReducer/types';
 
 type TasksActionsType =
   | SetTaskListsActionReturnType
@@ -40,7 +40,7 @@ export const tasksReducer = (
 ): TasksReducerStateType => {
   switch (action.type) {
     case TASKS_REDUCER_ACTION.SET_NOTIFICATIONS:
-      return {...state, notifications: action.payload.notifications};
+      return { ...state, notifications: action.payload.notifications };
 
     case TASKS_REDUCER_ACTION.ADD_TASK_NOTIFICATION:
       return {
@@ -68,7 +68,7 @@ export const tasksReducer = (
       };
 
     case TASKS_REDUCER_ACTION.SET_TASK_LISTS:
-      return {...state, taskLists: action.payload.taskLists};
+      return { ...state, taskLists: action.payload.taskLists };
 
     case TASKS_REDUCER_ACTION.ADD_NEW_TASK_LIST:
       return {
@@ -81,11 +81,13 @@ export const tasksReducer = (
         ...state,
         taskLists: [
           ...state.taskLists.map((taskList) => {
-            const {modifiedTaskList} = action.payload;
+            const { modifiedTaskList } = action.payload;
 
             if (taskList.id === modifiedTaskList.id) {
               return modifiedTaskList;
-            } else return taskList;
+            } else {
+              return taskList;
+            }
           }),
         ],
       };
@@ -95,11 +97,10 @@ export const tasksReducer = (
         ...state,
         taskLists: [
           ...state.taskLists.map((taskList) => {
-            const {fullTaskList, deleteTodoTask, deleteDoneTask} =
-              action.payload;
+            const { fullTaskList, deleteTodoTask, deleteDoneTask } = action.payload;
 
             if (taskList.id === fullTaskList.id) {
-              const targetTaskList = {...taskList};
+              const targetTaskList = { ...taskList };
 
               if (deleteTodoTask) {
                 targetTaskList.showInToDo = false;
@@ -122,7 +123,9 @@ export const tasksReducer = (
               }
 
               return targetTaskList;
-            } else return taskList;
+            } else {
+              return taskList;
+            }
           }),
         ],
       };
@@ -142,11 +145,13 @@ export const tasksReducer = (
         ...state,
         taskLists: [
           ...state.taskLists.map((taskList) => {
-            const {taskListID, editedTaskListTitle} = action.payload;
+            const { taskListID, editedTaskListTitle } = action.payload;
 
             if (taskList.id === taskListID) {
-              return {...taskList, title: editedTaskListTitle};
-            } else return taskList;
+              return { ...taskList, title: editedTaskListTitle };
+            } else {
+              return taskList;
+            }
           }),
         ],
       };
@@ -155,22 +160,26 @@ export const tasksReducer = (
       return {
         ...state,
         taskLists: state.taskLists.map((taskList) => {
-          const {taskListID, doneTaskID} = action.payload;
+          const { taskListID, doneTaskID } = action.payload;
 
           if (taskList.id === taskListID) {
-            const targetTaskList = {...taskList};
-            const {tasks} = targetTaskList;
+            const targetTaskList = { ...taskList };
+            const { tasks } = targetTaskList;
 
             if (tasks) {
               targetTaskList.tasks = tasks.map((task) => {
                 if (task.id === doneTaskID) {
-                  return {...task, isDone: true};
-                } else return task;
+                  return { ...task, isDone: true };
+                } else {
+                  return task;
+                }
               });
             }
 
             return targetTaskList;
-          } else return taskList;
+          } else {
+            return taskList;
+          }
         }),
       };
 
@@ -179,12 +188,11 @@ export const tasksReducer = (
         ...state,
         taskLists: [
           ...state.taskLists.map((taskList) => {
-            const {taskListID, taskID, editedTaskTitle, colorMark} =
-              action.payload;
+            const { taskListID, taskID, editedTaskTitle, colorMark } = action.payload;
 
             if (taskList.id === taskListID) {
-              const targetTaskList = {...taskList};
-              const {tasks} = targetTaskList;
+              const targetTaskList = { ...taskList };
+              const { tasks } = targetTaskList;
 
               if (tasks) {
                 targetTaskList.tasks = tasks.map((task) => {
@@ -200,16 +208,21 @@ export const tasksReducer = (
                         ...task,
                         title: editedTaskTitle,
                       };
+
                       delete modifiedTask.colorMark;
 
                       return modifiedTask;
                     }
-                  } else return task;
+                  } else {
+                    return task;
+                  }
                 });
               }
 
               return targetTaskList;
-            } else return taskList;
+            } else {
+              return taskList;
+            }
           }),
         ],
       };
@@ -219,20 +232,20 @@ export const tasksReducer = (
         ...state,
         taskLists: [
           ...state.taskLists.map((taskList) => {
-            const {taskListID, taskID} = action.payload;
+            const { taskListID, taskID } = action.payload;
 
             if (taskList.id === taskListID) {
-              const editedTaskList = {...taskList};
-              const {tasks} = editedTaskList;
+              const editedTaskList = { ...taskList };
+              const { tasks } = editedTaskList;
 
               if (tasks) {
-                editedTaskList.tasks = tasks.filter(
-                  (task) => task.id !== taskID,
-                );
+                editedTaskList.tasks = tasks.filter((task) => task.id !== taskID);
               }
 
               return editedTaskList;
-            } else return taskList;
+            } else {
+              return taskList;
+            }
           }),
         ],
       };

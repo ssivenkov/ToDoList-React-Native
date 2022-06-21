@@ -1,4 +1,4 @@
-import {TaskListInterface, TaskType} from '@store/reducers/tasksReducer/types';
+import { TaskListInterface, TaskType } from '@store/reducers/tasksReducer/types';
 import orderBy from 'lodash/orderBy';
 
 export const sortingTaskLists = (

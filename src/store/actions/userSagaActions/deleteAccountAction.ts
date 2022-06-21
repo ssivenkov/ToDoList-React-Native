@@ -1,5 +1,5 @@
-import {USER_SAGA_ACTION} from '@enums/userSagaEnum';
-import {SetStateType} from '@root/types/common/types';
+import { USER_SAGA_ACTION } from '@enums/userSagaEnum';
+import { SetStateType } from '@root/types/common/types';
 
 export type DeleteAccountSagaActionPayloadType = {
   setWaitingProcess: SetStateType<boolean>;
