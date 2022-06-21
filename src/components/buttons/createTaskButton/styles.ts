@@ -1,5 +1,5 @@
-import {ExtendedStylesPropsType} from '@root/hooks/useStyles';
-import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
+import { ExtendedStylesPropsType } from '@root/hooks/useStyles';
+import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
 type CreateTaskButtonStylesType = {
   colorSwitcherComponentContainer: ViewStyle;

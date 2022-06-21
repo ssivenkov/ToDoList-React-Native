@@ -5,26 +5,24 @@ import {
   TASKS,
   USERS,
 } from '@constants/constants';
-import {DB} from '@root/api/DB';
-import {cancelNotificationHelper} from '@root/helpers/cancelNotificationHelper';
-import {checkInternetConnectionHelper} from '@root/helpers/checkInternetConnectionHelper';
-import {deleteTaskNotificationAction} from '@store/actions/tasksReducerActions/notificationsActions/deleteTaskNotificationAction';
-import {setTaskIsDoneAction} from '@store/actions/tasksReducerActions/tasksActions/setTaskIsDoneAction';
-import {SetTaskIsDoneSagaActionReturnType} from '@store/actions/tasksSagaActions/tasksSagasActions/setTaskIsDoneAction';
-import {setModalErrorMessageAction} from '@store/actions/userReducerActions/setModalErrorMessageAction';
-import {NotificationType} from '@store/reducers/tasksReducer/types';
-import {UserIDType} from '@store/reducers/userReducer/types';
-import {notificationsSelector} from '@store/selectors/tasksSelectors';
-import {userIDSelector} from '@store/selectors/userSelectors';
-import {call, delay, put, select} from 'redux-saga/effects';
+import { DB } from '@root/api/DB';
+import { cancelNotificationHelper } from '@root/helpers/cancelNotificationHelper';
+import { checkInternetConnectionHelper } from '@root/helpers/checkInternetConnectionHelper';
+import { deleteTaskNotificationAction } from '@store/actions/tasksReducerActions/notificationsActions/deleteTaskNotificationAction';
+import { setTaskIsDoneAction } from '@store/actions/tasksReducerActions/tasksActions/setTaskIsDoneAction';
+import { SetTaskIsDoneSagaActionReturnType } from '@store/actions/tasksSagaActions/tasksSagasActions/setTaskIsDoneAction';
+import { setModalErrorMessageAction } from '@store/actions/userReducerActions/setModalErrorMessageAction';
+import { NotificationType } from '@store/reducers/tasksReducer/types';
+import { UserIDType } from '@store/reducers/userReducer/types';
+import { notificationsSelector } from '@store/selectors/tasksSelectors';
+import { userIDSelector } from '@store/selectors/userSelectors';
+import { call, delay, put, select } from 'redux-saga/effects';
 
 export function* setTaskIsDoneSaga(action: SetTaskIsDoneSagaActionReturnType) {
-  const {setIsLoading, setModalVisible, doneTaskID, taskListID} =
-    action.payload;
+  const { setIsLoading, setModalVisible, doneTaskID, taskListID } = action.payload;
+
   try {
-    const internetConnectionStatus: string = yield call(
-      checkInternetConnectionHelper,
-    );
+    const internetConnectionStatus: string = yield call(checkInternetConnectionHelper);
 
     if (internetConnectionStatus !== ONLINE) {
       throw Error(internetConnectionStatus);
@@ -36,13 +34,12 @@ export function* setTaskIsDoneSaga(action: SetTaskIsDoneSagaActionReturnType) {
     const setTaskIsDoneInFirebase = () => {
       return DB.ref(
         `${USERS}/${userID}/${TASK_LISTS}/${taskListID}/${TASKS}/${doneTaskID}`,
-      ).update({isDone: true});
+      ).update({ isDone: true });
     };
+
     yield call(setTaskIsDoneInFirebase);
 
-    const notifications: NotificationType[] = yield select(
-      notificationsSelector,
-    );
+    const notifications: NotificationType[] = yield select(notificationsSelector);
     const taskNotification = notifications.find((item) => {
       return doneTaskID === item.taskID;
     });
@@ -51,7 +48,7 @@ export function* setTaskIsDoneSaga(action: SetTaskIsDoneSagaActionReturnType) {
     if (taskNotification && notificationID) {
       cancelNotificationHelper(notificationID);
     }
-    yield put(deleteTaskNotificationAction({taskID: doneTaskID}));
+    yield put(deleteTaskNotificationAction({ taskID: doneTaskID }));
 
     yield put(
       setTaskIsDoneAction({
@@ -65,7 +62,7 @@ export function* setTaskIsDoneSaga(action: SetTaskIsDoneSagaActionReturnType) {
     yield call(setIsLoading, false);
 
     if (error instanceof Error) {
-      yield put(setModalErrorMessageAction({errorModalMessage: error.message}));
+      yield put(setModalErrorMessageAction({ errorModalMessage: error.message }));
     }
   }
 }

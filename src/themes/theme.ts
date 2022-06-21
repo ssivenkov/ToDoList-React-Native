@@ -1,5 +1,5 @@
-import {COLORS} from '@colors/colors';
-import {ThemeType} from '@store/reducers/userReducer/types';
+import { COLORS } from '@colors/colors';
+import { ThemeType } from '@store/reducers/userReducer/types';
 
 export const lightTheme: ThemeType = {
   darkMode: false,

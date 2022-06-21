@@ -1,5 +1,5 @@
-import {USER_REDUCER_ACTION} from '@enums/userReducerEnum';
-import {ColorType} from '@store/reducers/userReducer/types';
+import { USER_REDUCER_ACTION } from '@enums/userReducerEnum';
+import { ColorType } from '@store/reducers/userReducer/types';
 
 type SetAccentColorActionPayloadType = {
   accentColor: ColorType;

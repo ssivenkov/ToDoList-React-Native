@@ -1,6 +1,6 @@
-import {ONLINE} from '@constants/constants';
-import NetInfo, {NetInfoState} from '@react-native-community/netinfo';
-import {t} from 'i18next';
+import { ONLINE } from '@constants/constants';
+import { fetch as netInfoFetch, NetInfoState } from '@react-native-community/netinfo';
+import { t } from 'i18next';
 
 const hasInternetConnection = (connectionStatus: NetInfoState) => {
   const isInternetReachable = !!connectionStatus.isInternetReachable;
@@ -11,7 +11,7 @@ const hasInternetConnection = (connectionStatus: NetInfoState) => {
 
 export const checkInternetConnectionHelper = async () => {
   try {
-    const connectionStatus: NetInfoState = await NetInfo.fetch();
+    const connectionStatus: NetInfoState = await netInfoFetch();
 
     if (!hasInternetConnection(connectionStatus)) {
       return t('common.NoInternetConnection');

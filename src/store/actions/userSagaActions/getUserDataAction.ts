@@ -1,5 +1,5 @@
-import {USER_SAGA_ACTION} from '@enums/userSagaEnum';
-import {UserDataType} from '@store/reducers/userReducer/types';
+import { USER_SAGA_ACTION } from '@enums/userSagaEnum';
+import { UserDataType } from '@store/reducers/userReducer/types';
 
 export type GetUserDataSagaActionPayloadType = {
   userData: UserDataType;

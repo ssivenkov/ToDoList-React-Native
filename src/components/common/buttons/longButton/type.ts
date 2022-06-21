@@ -1,8 +1,8 @@
-import {IconProp} from '@fortawesome/fontawesome-svg-core';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 export type LongButtonPropsType = {
   title: string;
-  onPress: (arg?: any) => void;
+  onPress: () => void;
   icon: IconProp;
 
   rightComponent?: Element;

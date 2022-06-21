@@ -1,6 +1,6 @@
-import {TASKS_SAGA_ACTION} from '@enums/tasksSagaEnum';
-import {SetStateType} from '@root/types/common/types';
-import {TaskListInterface, TaskType} from '@store/reducers/tasksReducer/types';
+import { TASKS_SAGA_ACTION } from '@enums/tasksSagaEnum';
+import { SetStateType } from '@root/types/common/types';
+import { TaskListInterface, TaskType } from '@store/reducers/tasksReducer/types';
 
 export type SetTaskIsDoneSagaPayloadType = {
   taskListID: TaskListInterface['id'];

@@ -1,17 +1,19 @@
-import {COLORS} from '@colors/colors';
-import {LongButtonPropsType} from '@components/common/buttons/longButton/type';
-import {ICON_SIZE_MEDIUM} from '@constants/constants';
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {useStyles} from '@root/hooks/useStyles';
-import {themeSelector} from '@store/selectors/userSelectors';
 import React from 'react';
-import {Text, TouchableOpacity, View} from 'react-native';
+
+import { COLORS } from '@colors/colors';
+import { LongButtonPropsType } from '@components/common/buttons/longButton/type';
+import { ICON_SIZE_MEDIUM } from '@constants/constants';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { useStyles } from '@root/hooks/useStyles';
+import { themeSelector } from '@store/selectors/userSelectors';
+import { Text, TouchableOpacity, View } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import {useSelector} from 'react-redux';
-import {styles} from './styles';
+import { useSelector } from 'react-redux';
+
+import { styles } from './styles';
 
 export const LongButton = (props: LongButtonPropsType) => {
-  const {icon, title, onPress, rightComponent, disable} = props;
+  const { icon, title, onPress, rightComponent, disable } = props;
 
   const style = useStyles(styles);
   const theme = useSelector(themeSelector);
@@ -23,15 +25,16 @@ export const LongButton = (props: LongButtonPropsType) => {
   return (
     <LinearGradient colors={buttonGradient}>
       <TouchableOpacity
-        style={style.longButtonContainer}
+        disabled={disable}
         onPress={onPress}
-        disabled={disable}>
+        style={style.longButtonContainer}
+      >
         <View style={style.contentContainer}>
           <View style={style.icon}>
             <FontAwesomeIcon
+              color={theme.TEXT_COLOR}
               icon={icon}
               size={ICON_SIZE_MEDIUM}
-              color={theme.TEXT_COLOR}
             />
           </View>
           <Text style={style.text}>{title}</Text>
