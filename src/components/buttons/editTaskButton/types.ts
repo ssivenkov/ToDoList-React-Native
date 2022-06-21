@@ -1,5 +1,5 @@
-import {TaskListInterface, TaskType} from '@store/reducers/tasksReducer/types';
-import {ColorType} from '@store/reducers/userReducer/types';
+import { TaskListInterface, TaskType } from '@store/reducers/tasksReducer/types';
+import { ColorType } from '@store/reducers/userReducer/types';
 
 export type EditTaskTitleButtonPropsType = {
   taskListID: TaskListInterface['id'];

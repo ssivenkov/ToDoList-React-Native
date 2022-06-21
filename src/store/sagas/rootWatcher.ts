@@ -1,25 +1,25 @@
-import {TASKS_SAGA_ACTION} from '@enums/tasksSagaEnum';
-import {USER_SAGA_ACTION} from '@enums/userSagaEnum';
-import {addNewTaskListSaga} from '@store/sagas/tasksSagas/taskListsSagas/addNewTaskListSaga';
-import {deleteTaskListFromScreenSaga} from '@store/sagas/tasksSagas/taskListsSagas/deleteTaskListFromScreenSaga';
-import {deleteTaskListFullSaga} from '@store/sagas/tasksSagas/taskListsSagas/deleteTaskListFullSaga';
-import {editTaskListTitleSaga} from '@store/sagas/tasksSagas/taskListsSagas/editTaskListTitleSaga';
-import {addNewTaskSaga} from '@store/sagas/tasksSagas/tasksSagas/addNewTaskSaga';
-import {deleteTaskSaga} from '@store/sagas/tasksSagas/tasksSagas/deleteTaskSaga';
-import {editTaskSaga} from '@store/sagas/tasksSagas/tasksSagas/editTaskSaga';
-import {setTaskIsDoneSaga} from '@store/sagas/tasksSagas/tasksSagas/setTaskIsDoneSaga';
-import {changeAccentColorSaga} from '@store/sagas/userSagas/changeAccentColorSaga';
-import {changeDarkModeSaga} from '@store/sagas/userSagas/changeDarkModeSaga';
-import {changeLanguageSaga} from '@store/sagas/userSagas/changeLanguageSaga';
-import {checkUserSaga} from '@store/sagas/userSagas/checkUserSaga';
-import {createChannelSaga} from '@store/sagas/userSagas/createChannelSaga';
-import {deleteAccountSaga} from '@store/sagas/userSagas/deleteAccountSaga';
-import {facebookSignInSaga} from '@store/sagas/userSagas/facebookSignInSaga';
-import {getUserDataSaga} from '@store/sagas/userSagas/getUserDataSaga';
-import {googleSignInSaga} from '@store/sagas/userSagas/googleSignInSaga';
-import {signOutSaga} from '@store/sagas/userSagas/signOutSaga';
-import {syncUserDataSaga} from '@store/sagas/userSagas/syncUserDataSaga';
-import {takeEvery, takeLatest} from 'redux-saga/effects';
+import { TASKS_SAGA_ACTION } from '@enums/tasksSagaEnum';
+import { USER_SAGA_ACTION } from '@enums/userSagaEnum';
+import { addNewTaskListSaga } from '@store/sagas/tasksSagas/taskListsSagas/addNewTaskListSaga';
+import { deleteTaskListFromScreenSaga } from '@store/sagas/tasksSagas/taskListsSagas/deleteTaskListFromScreenSaga';
+import { deleteTaskListFullSaga } from '@store/sagas/tasksSagas/taskListsSagas/deleteTaskListFullSaga';
+import { editTaskListTitleSaga } from '@store/sagas/tasksSagas/taskListsSagas/editTaskListTitleSaga';
+import { addNewTaskSaga } from '@store/sagas/tasksSagas/tasksSagas/addNewTaskSaga';
+import { deleteTaskSaga } from '@store/sagas/tasksSagas/tasksSagas/deleteTaskSaga';
+import { editTaskSaga } from '@store/sagas/tasksSagas/tasksSagas/editTaskSaga';
+import { setTaskIsDoneSaga } from '@store/sagas/tasksSagas/tasksSagas/setTaskIsDoneSaga';
+import { changeAccentColorSaga } from '@store/sagas/userSagas/changeAccentColorSaga';
+import { changeDarkModeSaga } from '@store/sagas/userSagas/changeDarkModeSaga';
+import { changeLanguageSaga } from '@store/sagas/userSagas/changeLanguageSaga';
+import { checkUserSaga } from '@store/sagas/userSagas/checkUserSaga';
+import { createChannelSaga } from '@store/sagas/userSagas/createChannelSaga';
+import { deleteAccountSaga } from '@store/sagas/userSagas/deleteAccountSaga';
+import { facebookSignInSaga } from '@store/sagas/userSagas/facebookSignInSaga';
+import { getUserDataSaga } from '@store/sagas/userSagas/getUserDataSaga';
+import { googleSignInSaga } from '@store/sagas/userSagas/googleSignInSaga';
+import { signOutSaga } from '@store/sagas/userSagas/signOutSaga';
+import { syncUserDataSaga } from '@store/sagas/userSagas/syncUserDataSaga';
+import { takeEvery, takeLatest } from 'redux-saga/effects';
 
 export function* rootWatcher() {
   yield takeLatest(USER_SAGA_ACTION.CHANGE_LANGUAGE, changeLanguageSaga);
@@ -36,14 +36,8 @@ export function* rootWatcher() {
 
   yield takeLatest(TASKS_SAGA_ACTION.ADD_NEW_TASK_LIST, addNewTaskListSaga);
   yield takeLatest(TASKS_SAGA_ACTION.ADD_NEW_TASK, addNewTaskSaga);
-  yield takeLatest(
-    TASKS_SAGA_ACTION.EDIT_TASK_LIST_TITLE,
-    editTaskListTitleSaga,
-  );
-  yield takeLatest(
-    TASKS_SAGA_ACTION.DELETE_TASK_LIST_FULL,
-    deleteTaskListFullSaga,
-  );
+  yield takeLatest(TASKS_SAGA_ACTION.EDIT_TASK_LIST_TITLE, editTaskListTitleSaga);
+  yield takeLatest(TASKS_SAGA_ACTION.DELETE_TASK_LIST_FULL, deleteTaskListFullSaga);
   yield takeLatest(
     TASKS_SAGA_ACTION.DELETE_TASK_LIST_FROM_SCREEN,
     deleteTaskListFromScreenSaga,

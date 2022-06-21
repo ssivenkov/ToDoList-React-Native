@@ -1,5 +1,6 @@
-/*import type {RouteProp} from '@react-navigation/native';
-import type {NativeStackNavigationProp} from '@react-navigation/native-stack';*/
+import { TasksNavigationStylesType } from '@navigation/tasksNavigator/styles';
+import { MaterialTopTabNavigationOptions } from '@react-navigation/material-top-tabs/lib/typescript/src/types';
+import { ColorType, ThemeType } from '@store/reducers/userReducer/types';
 
 export enum TaskNavigatorScreens {
   TODO = 'ToDo',
@@ -12,7 +13,12 @@ export type TopTabParamList = {
   };
 };
 
-/*export type TaskScreenPropsType<T extends keyof TopTabParamList> = {
-  navigation: NativeStackNavigationProp<TopTabParamList, T>;
-  route: RouteProp<TopTabParamList, T>;
-};*/
+export type NavigatorOptionsTypeParamsType = {
+  style: TasksNavigationStylesType;
+  theme: ThemeType;
+  accentColor: ColorType;
+};
+
+export type TasksNavigatorOptionsType = (
+  params: NavigatorOptionsTypeParamsType,
+) => MaterialTopTabNavigationOptions;

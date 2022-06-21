@@ -1,5 +1,5 @@
-import {TASKS_REDUCER_ACTION} from '@enums/tasksReducerEnum';
-import {NotificationType} from '@store/reducers/tasksReducer/types';
+import { TASKS_REDUCER_ACTION } from '@enums/tasksReducerEnum';
+import { NotificationType } from '@store/reducers/tasksReducer/types';
 
 type AddTaskNotificationActionPayloadType = {
   notification: NotificationType;

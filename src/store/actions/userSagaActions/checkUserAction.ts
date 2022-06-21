@@ -1,4 +1,4 @@
-import {USER_SAGA_ACTION} from '@enums/userSagaEnum';
+import { USER_SAGA_ACTION } from '@enums/userSagaEnum';
 
 export type CheckUserSagaActionReturnType = {
   type: USER_SAGA_ACTION.CHECK_USER;

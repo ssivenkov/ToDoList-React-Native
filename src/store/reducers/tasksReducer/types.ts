@@ -18,8 +18,7 @@ type TasksObjectType = {
   [key: string]: TaskType;
 };
 
-export interface TaskListBeforeConvertInterface
-  extends TaskListWithoutTasksType {
+export interface TaskListBeforeConvertInterface extends TaskListWithoutTasksType {
   tasks?: TasksObjectType;
 }
 
