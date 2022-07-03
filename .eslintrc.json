@@ -52,9 +52,7 @@
     "react/boolean-prop-naming": ["error", {
       "rule": "^(is|has)[A-Z]([A-Za-z0-9]?)+"
     }],
-    "react/button-has-type": "error",
     "react/destructuring-assignment": ["error", "always"],
-    "react/display-name": "error",
     "react/function-component-definition": ["error", {
       "namedComponents": "arrow-function",
       "unnamedComponents": "arrow-function"
