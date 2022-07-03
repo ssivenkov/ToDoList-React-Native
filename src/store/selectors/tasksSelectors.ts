@@ -1,5 +1,5 @@
 import { NotificationType, TaskListInterface } from '@store/reducers/tasksReducer/types';
-import { AppRootStateType } from '@store/store';
+import { AppRootStateType } from '@store/types';
 
 export const taskListsSelector = (state: AppRootStateType): TaskListInterface[] => {
   return state.tasks.taskLists;
