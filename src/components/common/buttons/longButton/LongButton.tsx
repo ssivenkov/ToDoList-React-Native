@@ -20,7 +20,7 @@ export const LongButton = (props: LongButtonPropsType) => {
 
   const buttonGradient = theme.darkMode
     ? [COLORS.OUTER_SPACE2, COLORS.MINE_SHAFT2]
-    : [COLORS.WHITE, COLORS.ALTO];
+    : [COLORS.WHITE, COLORS.ALTO3];
 
   return (
     <LinearGradient colors={buttonGradient}>
