@@ -9,7 +9,7 @@ import {
   UserDataType,
   UserIDType,
 } from '@store/reducers/userReducer/types';
-import { AppRootStateType } from '@store/store';
+import { AppRootStateType } from '@store/types';
 
 export const userIDSelector = (state: AppRootStateType): UserIDType => {
   return state.user.userData?.uid ?? null;
