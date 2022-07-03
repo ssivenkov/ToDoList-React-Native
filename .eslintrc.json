@@ -35,7 +35,7 @@
   ],
   "rules": {
     // prettier
-    "prettier/prettier": "error",
+    "prettier/prettier": ["error", { "endOfLine": "auto" }],
 
     // typescript
     "@typescript-eslint/no-var-requires": "error",
