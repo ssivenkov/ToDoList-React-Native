@@ -18,10 +18,9 @@ export const styles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<TaskListStylesType>({
     container: {
       backgroundColor: props.TASK_LIST_COLOR,
-      paddingTop: 6,
-      paddingBottom: 7,
+      paddingVertical: 6,
       paddingHorizontal: 9,
-      marginHorizontal: 10,
+      marginHorizontal: 9,
       marginVertical: TaskListMarginVertical,
       borderRadius: 10,
     },
@@ -55,6 +54,6 @@ export const styles = (props: ExtendedStylesPropsType) =>
     },
 
     tasksContainer: {
-      marginTop: TaskListMarginVertical,
+      marginTop: 2,
     },
   });
