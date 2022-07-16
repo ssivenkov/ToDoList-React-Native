@@ -5,7 +5,7 @@
     "baseUrl": "./",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "incremental": true,
+    "incremental": false,
     "isolatedModules": true,
     "jsx": "react",
     "lib": ["es6"],
@@ -22,14 +22,16 @@
       "@store/*": ["src/store/*"],
     },
     "resolveJsonModule": true,
+    "skipLibCheck": true,
     "strict": true,
-    "target": "esnext"
+    "target": "ESNext"
   },
-  "include": ["src"],
+  "include": ["./src", "./App.tsx", "index.js"],
   "exclude": [
     "node_modules",
     "babel.config.js",
     "metro.config.js",
-    "jest.config.js"
+    "jest.config.js",
+    "lint-staged.config.js",
   ]
 }
