@@ -7,24 +7,7 @@
     "node": true,
     "react-native/react-native": true
   },
-  "extends": [
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:react-hooks/recommended",
-    "plugin:import/errors",
-    "plugin:import/warnings",
-    "plugin:import/typescript",
-    "plugin:@typescript-eslint/recommended",
-    "prettier"
-  ],
-  "ignorePatterns": ["metro.config.js", "babel.config.js"],
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "ecmaFeatures": {"jsx": true},
-    "ecmaVersion": "latest",
-    "sourceType": "module",
-    "project": ["./tsconfig.json"]
-  },
+  "root": true,
   "plugins": [
     "react",
     "react-native",
@@ -33,6 +16,23 @@
     "@typescript-eslint",
     "prettier"
   ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript",
+    "prettier"
+  ],
+  "ignorePatterns": ["metro.config.js", "babel.config.js", "src/**/*.test.ts"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {"jsx": true},
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
   "rules": {
     // prettier
     "prettier/prettier": ["error", { "endOfLine": "auto" }],
