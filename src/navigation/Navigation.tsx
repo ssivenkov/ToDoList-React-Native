@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { ModalMenuButton } from '@components/common/buttons/modalMenuButton/ModalMenuButton';
 import { styles } from '@components/common/modals/styles';
+import { GOOGLE_WEB_CLIENT_ID } from '@env';
 import { RootStackParamList, RootStackScreens } from '@navigation/types';
 import { WithAuthNavigator } from '@navigation/withAuthNavigator/WithAuthNavigator';
 import auth from '@react-native-firebase/auth';
@@ -9,7 +10,6 @@ import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { DarkTheme, NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Theme } from '@react-navigation/native/src/types';
-import { GoogleWebClientId } from '@root/api/config';
 import { useStyles } from '@root/hooks/useStyles';
 import { SignInScreen } from '@root/screens/signInScreen/SignInScreen';
 import { setModalErrorMessageAction } from '@store/actions/userReducerActions/setModalErrorMessageAction';
@@ -73,7 +73,7 @@ export const Navigation = () => {
     }
 
     GoogleSignin.configure({
-      webClientId: GoogleWebClientId,
+      webClientId: GOOGLE_WEB_CLIENT_ID,
     });
 
     // subscriber

@@ -2,29 +2,12 @@ import { COLORS } from '@colors/colors';
 import { EN } from '@constants/constants';
 import { USER_REDUCER_ACTION } from '@enums/userReducerEnum';
 import { lightTheme } from '@root/themes/theme';
-import { SetAccentColorActionReturnType } from '@store/actions/userReducerActions/setAccentColorAction';
-import { SetAuthStateActionReturnType } from '@store/actions/userReducerActions/setAuthStateAction';
-import { SetChannelIDActionReturnType } from '@store/actions/userReducerActions/setChannelIDAction';
-import { SetLanguageActionReturnType } from '@store/actions/userReducerActions/setLanguageAction';
-import { SetErrorModalMessageActionReturnType } from '@store/actions/userReducerActions/setModalErrorMessageAction';
-import { SetProviderIDActionReturnType } from '@store/actions/userReducerActions/setProviderIDAction';
-import { SetThemeActionReturnType } from '@store/actions/userReducerActions/setThemeAction';
-import { SetUserAvatarActionReturnType } from '@store/actions/userReducerActions/setUserAvatarAction';
-import { SetUserDataActionReturnType } from '@store/actions/userReducerActions/setUserDataAction';
-import { UserReducerStateType } from '@store/reducers/userReducer/types';
+import {
+  UserReducerActionsType,
+  UserReducerStateType,
+} from '@store/reducers/userReducer/types';
 
-export type UserActionsType =
-  | SetAuthStateActionReturnType
-  | SetUserDataActionReturnType
-  | SetChannelIDActionReturnType
-  | SetLanguageActionReturnType
-  | SetProviderIDActionReturnType
-  | SetUserAvatarActionReturnType
-  | SetThemeActionReturnType
-  | SetAccentColorActionReturnType
-  | SetErrorModalMessageActionReturnType;
-
-export const initialAuthState: UserReducerStateType = {
+const initialAuthReducerState: UserReducerStateType = {
   providerID: null,
   userData: null,
   channelID: '',
@@ -36,8 +19,8 @@ export const initialAuthState: UserReducerStateType = {
 };
 
 export const userReducer = (
-  state: UserReducerStateType = initialAuthState,
-  action: UserActionsType,
+  state: UserReducerStateType = initialAuthReducerState,
+  action: UserReducerActionsType,
 ): UserReducerStateType => {
   switch (action.type) {
     case USER_REDUCER_ACTION.SET_CHANNEL_ID:
