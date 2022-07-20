@@ -4,8 +4,8 @@ import PushNotificationIOS from '@react-native-community/push-notification-ios';
 import { AppRegistry } from 'react-native';
 import PushNotification from 'react-native-push-notification';
 
-import { App } from './App';
 import { name as appName } from './app.json';
+import { App } from './src/App';
 import './src/languages/i18n';
 
 PushNotification.configure({

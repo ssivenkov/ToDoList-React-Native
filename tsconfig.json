@@ -24,9 +24,13 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "ESNext"
+    "target": "ESNext",
+    "typeRoots": [
+      "./node_modules/@types",
+      "./src/types/env"
+    ]
   },
-  "include": ["./src", "./App.tsx", "index.js"],
+  "include": ["./src", "index.js"],
   "exclude": [
     "node_modules",
     "babel.config.js",

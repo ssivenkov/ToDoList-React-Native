@@ -1,4 +1,4 @@
+import { DATABASE_LINK } from '@env';
 import { firebase } from '@react-native-firebase/database';
-import { DBLink } from '@root/api/config';
 
-export const DB = firebase.app().database(DBLink);
+export const DB = firebase.app().database(DATABASE_LINK);
