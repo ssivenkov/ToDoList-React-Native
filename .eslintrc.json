@@ -127,7 +127,9 @@
     "id-denylist": ["error", "data", "err", "e", "cb", "callback"],
     "new-cap": "error",
     "no-label-var": "error",
-    "no-underscore-dangle": "error",
+    "no-underscore-dangle": ["error", {
+      "allow": ["__REDUX_DEVTOOLS_EXTENSION_COMPOSE__"]
+    }],
     "no-useless-rename": "error",
     "no-magic-numbers": ["error", {"ignore": [-1, 0, 1]}],
 

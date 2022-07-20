@@ -2,6 +2,15 @@ import { EN, FACEBOOK_PROVIDER_ID, GOOGLE_PROVIDER_ID, RU } from '@constants/con
 import { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import { FirebaseDatabaseTypes } from '@react-native-firebase/database';
 import { Nullable } from '@root/types/common/types';
+import { SetAccentColorActionReturnType } from '@store/actions/userReducerActions/setAccentColorAction';
+import { SetAuthStateActionReturnType } from '@store/actions/userReducerActions/setAuthStateAction';
+import { SetChannelIDActionReturnType } from '@store/actions/userReducerActions/setChannelIDAction';
+import { SetLanguageActionReturnType } from '@store/actions/userReducerActions/setLanguageAction';
+import { SetErrorModalMessageActionReturnType } from '@store/actions/userReducerActions/setModalErrorMessageAction';
+import { SetProviderIDActionReturnType } from '@store/actions/userReducerActions/setProviderIDAction';
+import { SetThemeActionReturnType } from '@store/actions/userReducerActions/setThemeAction';
+import { SetUserAvatarActionReturnType } from '@store/actions/userReducerActions/setUserAvatarAction';
+import { SetUserDataActionReturnType } from '@store/actions/userReducerActions/setUserDataAction';
 
 export type SnapshotType = FirebaseDatabaseTypes.DataSnapshot;
 export type UserDataType = Nullable<FirebaseAuthTypes.User>;
@@ -38,3 +47,14 @@ export type UserReducerStateType = {
   accentColor: ColorType;
   errorModalMessage: ErrorModalMessageType;
 };
+
+export type UserReducerActionsType =
+  | SetAuthStateActionReturnType
+  | SetUserDataActionReturnType
+  | SetChannelIDActionReturnType
+  | SetLanguageActionReturnType
+  | SetProviderIDActionReturnType
+  | SetUserAvatarActionReturnType
+  | SetThemeActionReturnType
+  | SetAccentColorActionReturnType
+  | SetErrorModalMessageActionReturnType;

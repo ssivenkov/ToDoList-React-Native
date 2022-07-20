@@ -1,42 +1,17 @@
 import { TASKS_REDUCER_ACTION } from '@enums/tasksReducerEnum';
-import { AddTaskNotificationActionReturnType } from '@store/actions/tasksReducerActions/notificationsActions/addTaskNotificationAction';
-import { DeleteTaskNotificationActionReturnType } from '@store/actions/tasksReducerActions/notificationsActions/deleteTaskNotificationAction';
-import { EditTaskNotificationActionReturnType } from '@store/actions/tasksReducerActions/notificationsActions/editTaskNotificationAction';
-import { SetNotificationsActionReturnType } from '@store/actions/tasksReducerActions/notificationsActions/setNotificationsAction';
-import { AddNewTaskListActionReturnType } from '@store/actions/tasksReducerActions/taskListsActions/addNewTaskListAction';
-import { DeleteTaskListFromScreenActionReturnType } from '@store/actions/tasksReducerActions/taskListsActions/deleteTaskListFromScreenAction';
-import { DeleteTaskListFullActionReturnType } from '@store/actions/tasksReducerActions/taskListsActions/deleteTaskListFullAction';
-import { EditTaskListTitleActionReturnType } from '@store/actions/tasksReducerActions/taskListsActions/setEditedTaskListTitleAction';
-import { SetTaskListsActionReturnType } from '@store/actions/tasksReducerActions/taskListsActions/setTaskListsAction';
-import { AddNewTaskActionReturnType } from '@store/actions/tasksReducerActions/tasksActions/addNewTaskAction';
-import { DeleteTaskActionReturnType } from '@store/actions/tasksReducerActions/tasksActions/deleteTaskAction';
-import { SetEditedTaskActionReturnType } from '@store/actions/tasksReducerActions/tasksActions/setEditedTaskAction';
-import { SetTaskIsDoneActionReturnType } from '@store/actions/tasksReducerActions/tasksActions/setTaskIsDoneAction';
-import { TasksReducerStateType } from '@store/reducers/tasksReducer/types';
+import {
+  TasksReducerActionsType,
+  TasksReducerStateType,
+} from '@store/reducers/tasksReducer/types';
 
-type TasksActionsType =
-  | SetTaskListsActionReturnType
-  | SetNotificationsActionReturnType
-  | AddTaskNotificationActionReturnType
-  | DeleteTaskNotificationActionReturnType
-  | EditTaskNotificationActionReturnType
-  | AddNewTaskListActionReturnType
-  | DeleteTaskListFromScreenActionReturnType
-  | DeleteTaskListFullActionReturnType
-  | EditTaskListTitleActionReturnType
-  | AddNewTaskActionReturnType
-  | DeleteTaskActionReturnType
-  | SetEditedTaskActionReturnType
-  | SetTaskIsDoneActionReturnType;
-
-const initialTasksState: TasksReducerStateType = {
+const initialTasksReducerState: TasksReducerStateType = {
   taskLists: [],
   notifications: [],
 };
 
 export const tasksReducer = (
-  state: TasksReducerStateType = initialTasksState,
-  action: TasksActionsType,
+  state: TasksReducerStateType = initialTasksReducerState,
+  action: TasksReducerActionsType,
 ): TasksReducerStateType => {
   switch (action.type) {
     case TASKS_REDUCER_ACTION.SET_NOTIFICATIONS:
