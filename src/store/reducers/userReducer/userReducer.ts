@@ -7,7 +7,7 @@ import {
   UserReducerStateType,
 } from '@store/reducers/userReducer/types';
 
-const initialAuthReducerState: UserReducerStateType = {
+const authReducerState: UserReducerStateType = {
   providerID: null,
   userData: null,
   channelID: '',
@@ -19,7 +19,7 @@ const initialAuthReducerState: UserReducerStateType = {
 };
 
 export const userReducer = (
-  state: UserReducerStateType = initialAuthReducerState,
+  state: UserReducerStateType = authReducerState,
   action: UserReducerActionsType,
 ): UserReducerStateType => {
   switch (action.type) {
