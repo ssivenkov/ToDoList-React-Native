@@ -4,13 +4,13 @@ import {
   TasksReducerStateType,
 } from '@store/reducers/tasksReducer/types';
 
-const initialTasksReducerState: TasksReducerStateType = {
+const tasksReducerState: TasksReducerStateType = {
   taskLists: [],
   notifications: [],
 };
 
 export const tasksReducer = (
-  state: TasksReducerStateType = initialTasksReducerState,
+  state: TasksReducerStateType = tasksReducerState,
   action: TasksReducerActionsType,
 ): TasksReducerStateType => {
   switch (action.type) {
