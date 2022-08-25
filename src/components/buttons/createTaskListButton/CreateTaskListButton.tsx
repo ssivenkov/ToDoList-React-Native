@@ -21,6 +21,8 @@ export const CreateTaskListButton = () => {
 
   const [taskListTitle, setTaskListTitle] = useState<TaskListInterface['title']>('');
 
+  const notEmptyTaskListTitleCondition = taskListTitle.length > 0;
+
   const onClosePress = (): void => {
     setTaskListTitle('');
   };
@@ -29,7 +31,7 @@ export const CreateTaskListButton = () => {
     setIsLoading: SetStateType<boolean>,
     setModalVisible: SetStateType<boolean>,
   ): void => {
-    if (taskListTitle.length > 0) {
+    if (notEmptyTaskListTitleCondition) {
       const taskList: TaskListInterface = {
         id: nanoid(),
         date: createDate(),

@@ -8,7 +8,11 @@
     "incremental": false,
     "isolatedModules": true,
     "jsx": "react",
-    "lib": ["es6"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "es6"
+    ],
     "moduleResolution": "node",
     "noEmit": true,
     "paths": {
@@ -19,7 +23,7 @@
       "@constants/*": ["src/constants/*"],
       "@enums/*": ["src/enums/*"],
       "@navigation/*": ["src/navigation/*"],
-      "@store/*": ["src/store/*"],
+      "@store/*": ["src/store/*"]
     },
     "resolveJsonModule": true,
     "skipLibCheck": true,

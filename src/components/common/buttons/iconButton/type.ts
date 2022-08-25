@@ -1,5 +1,5 @@
 export type IconButtonPropsType = {
-  icon: Element;
+  icon: JSX.Element;
 
   onPress?: () => void;
   disable?: boolean;

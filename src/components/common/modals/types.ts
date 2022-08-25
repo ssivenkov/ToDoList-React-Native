@@ -2,13 +2,13 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { SetStateType } from '@root/types/common/types';
 
 export type ModalIconPropsType = {
-  buttonIcon: Element;
+  buttonIcon: JSX.Element;
   okHandler: (
     setIsLoading: SetStateType<boolean>,
     setModalVisible: SetStateType<boolean>,
   ) => void;
 
-  children?: Element;
+  children?: JSX.Element;
   description?: string;
   okDisable?: boolean;
   closeHandler?: () => void;
@@ -20,10 +20,10 @@ export type ModalLongButtonPropsType = {
   buttonTitle: string;
   buttonIcon: IconProp;
 
-  children?: Element;
+  children?: JSX.Element;
   description?: string;
   okHandler?: () => void;
-  rightComponent?: Element;
+  rightComponent?: JSX.Element;
   closeHandler?: () => void;
   disable?: boolean;
 };

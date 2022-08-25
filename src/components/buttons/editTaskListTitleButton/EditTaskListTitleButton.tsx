@@ -25,11 +25,13 @@ export const EditTaskListTitleButton = ({
   const [editedTaskListTitle, setEditedTaskListTitle] =
     useState<TaskListInterface['title']>(oldTaskListTitle);
 
+  const notEmptyTaskListTitleCondition = editedTaskListTitle.length > 0;
+
   const onOkPress = (
     setIsLoading: SetStateType<boolean>,
     setModalVisible: SetStateType<boolean>,
   ): void => {
-    if (editedTaskListTitle.length > 0) {
+    if (notEmptyTaskListTitleCondition) {
       dispatch(
         editTaskListTitleAction({
           taskListID,
