@@ -6,7 +6,7 @@ type ColorPickerStylesType = {
 
 export const styles = StyleSheet.create<ColorPickerStylesType>({
   container: {
-    maxHeight: 200,
+    maxHeight: 160,
     alignItems: 'center',
   },
 });

@@ -7,6 +7,7 @@ type ModalStylesType = {
   modalView: ViewStyle;
   content: ViewStyle;
   text: TextStyle;
+  contentContainer: ViewStyle;
   buttonsContainer: ViewStyle;
 };
 
@@ -37,6 +38,10 @@ export const styles = (props: ExtendedStylesPropsType) =>
       fontSize: 18,
       marginBottom: 12,
       color: props.TEXT_COLOR,
+    },
+
+    contentContainer: {
+      maxWidth: '100%',
     },
 
     buttonsContainer: {

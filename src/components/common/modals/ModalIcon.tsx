@@ -60,7 +60,7 @@ export const ModalIcon = (props: ModalIconPropsType) => {
             <View style={style.modalView}>
               <View style={style.content}>
                 {description && <Text style={style.text}>{description}</Text>}
-                {children && <View>{children}</View>}
+                {children && <View style={style.contentContainer}>{children}</View>}
               </View>
               <View style={style.buttonsContainer}>
                 <ModalMenuButton

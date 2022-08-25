@@ -35,6 +35,7 @@ export const styles = (props: ExtendedStylesPropsType) =>
       height:
         Platform.OS === 'ios' ? iOSTabBarContainerHeight : androidTabBarContainerHeight,
       backgroundColor: props.TAB_BAR_BACKGROUND_COLOR,
+      borderTopWidth: 0,
     },
 
     tabFocusIcon: {
