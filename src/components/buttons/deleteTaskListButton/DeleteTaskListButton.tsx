@@ -34,10 +34,14 @@ export const DeleteTaskListButton = (props: DeleteTaskListButtonPropsType) => {
       ? fullTaskList.tasks.filter((task) => task.isDone)
       : [];
 
+    const emptyDoneTasksCondition = isTodoTaskList && doneTasks.length === 0;
+    const emptyToDoTasksCondition = !isTodoTaskList && toDoTasks.length === 0;
+    const emptyAllTaskListsCondition = toDoTasks.length === 0 && doneTasks.length === 0;
+
     if (
-      (isTodoTaskList && doneTasks.length === 0) ||
-      (!isTodoTaskList && toDoTasks.length === 0) ||
-      (toDoTasks.length === 0 && doneTasks.length === 0)
+      emptyDoneTasksCondition ||
+      emptyToDoTasksCondition ||
+      emptyAllTaskListsCondition
     ) {
       dispatch(
         deleteTaskListFullAction({

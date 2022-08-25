@@ -44,8 +44,10 @@ export const EditTaskButton = (props: EditTaskTitleButtonPropsType) => {
   );
   const [color, setColor] = useState<ColorType>(colorMark ?? accentColor);
   const [modalVisible, setModalVisible] = useState<boolean>(false);
-  const conditionToShowColorPickerWithUserColor =
+  const showColorPickerWithUserColorCondition =
     isColorPickerSwitcherOn && !!colorMark && modalVisible;
+
+  const notEmptyTaskTitleCondition = editedTaskTitle.length > 0;
 
   const handleNotificationSwitcherClick = (isOn: boolean) => {
     if (!isOn) {
@@ -74,7 +76,7 @@ export const EditTaskButton = (props: EditTaskTitleButtonPropsType) => {
   };
 
   const editTask = (setIsLoading: SetStateType<boolean>): void => {
-    if (editedTaskTitle.length > 0) {
+    if (notEmptyTaskTitleCondition) {
       dispatch(
         setEditedTaskAction({
           taskListID,
@@ -96,7 +98,7 @@ export const EditTaskButton = (props: EditTaskTitleButtonPropsType) => {
   };
 
   useEffect(() => {
-    if (conditionToShowColorPickerWithUserColor) {
+    if (showColorPickerWithUserColorCondition) {
       setIsColorPickerSwitcherOn(false);
       setTimeout(() => {
         setIsColorPickerSwitcherOn(true);
@@ -120,43 +122,45 @@ export const EditTaskButton = (props: EditTaskTitleButtonPropsType) => {
       okHandler={editTask}
       setModalVisibleFromProps={setModalVisible}
     >
-      <CustomInput onValueChange={setEditedTaskTitle} value={editedTaskTitle} />
-      {isTodo && (
-        <Notification
-          date={date}
-          isSwitcherOn={isNotificationSwitcherOn}
-          onToggleSwitcherClick={handleNotificationSwitcherClick}
-          setDate={setDate}
-        />
-      )}
-      {/* The task color picker component is rendered on this place for the color picker library to work correctly */}
-      <View style={style.colorSwitcherComponentContainer}>
-        <Switcher
-          containerStyle={style.colorSwitcherContainer}
-          isOn={isColorPickerSwitcherOn}
-          onToggleSwitcherClick={handleColorPickerSwitcherClick}
-          size='medium'
-          switcherText={t('tasksScreen.EnableMarkColor')}
-          textMargin={1}
-          textStyle={style.colorSwitcherText}
-        />
-      </View>
-      {conditionToShowColorPickerWithUserColor && (
-        <ColorPickerComponent
-          color={color}
-          marginRight={20}
-          marginTop={20}
-          selectColor={setColor}
-        />
-      )}
-      {isColorPickerSwitcherOn && !colorMark && (
-        <ColorPickerComponent
-          color={color}
-          marginRight={20}
-          marginTop={20}
-          selectColor={setColor}
-        />
-      )}
+      <>
+        <CustomInput onValueChange={setEditedTaskTitle} value={editedTaskTitle} />
+        {isTodo && (
+          <Notification
+            date={date}
+            isSwitcherOn={isNotificationSwitcherOn}
+            onToggleSwitcherClick={handleNotificationSwitcherClick}
+            setDate={setDate}
+          />
+        )}
+        {/* The task color picker component is rendered on this place for the color picker library to work correctly */}
+        <View style={style.colorSwitcherComponentContainer}>
+          <Switcher
+            containerStyle={style.colorSwitcherContainer}
+            isOn={isColorPickerSwitcherOn}
+            onToggleSwitcherClick={handleColorPickerSwitcherClick}
+            size='medium'
+            switcherText={t('tasksScreen.EnableMarkColor')}
+            textMargin={1}
+            textStyle={style.colorSwitcherText}
+          />
+        </View>
+        {showColorPickerWithUserColorCondition && (
+          <ColorPickerComponent
+            color={color}
+            marginRight={20}
+            marginTop={20}
+            selectColor={setColor}
+          />
+        )}
+        {isColorPickerSwitcherOn && !colorMark && (
+          <ColorPickerComponent
+            color={color}
+            marginRight={20}
+            marginTop={20}
+            selectColor={setColor}
+          />
+        )}
+      </>
     </ModalIcon>
   );
 };

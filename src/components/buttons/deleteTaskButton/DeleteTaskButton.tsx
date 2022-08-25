@@ -28,11 +28,16 @@ export const DeleteTaskButton = (props: DeleteTaskButtonPropsType) => {
   const toDoTasks = tasks ? tasks.filter((task) => !task.isDone) : [];
   const doneTasks = tasks ? tasks.filter((task) => task.isDone) : [];
 
+  const removeFromScreenCondition =
+    !isTodoTaskList && toDoTasks.length > 0 && doneTasks.length === 1;
+  const fullRemoveTaskListCondition =
+    !isTodoTaskList && toDoTasks.length === 0 && doneTasks.length === 1;
+
   const removeTask = (
     setIsLoading: SetStateType<boolean>,
     setModalVisible: SetStateType<boolean>,
   ): void => {
-    if (!isTodoTaskList && toDoTasks.length > 0 && doneTasks.length === 1) {
+    if (removeFromScreenCondition) {
       dispatch(
         deleteTaskListFromScreenAction({
           fullTaskList,
@@ -42,7 +47,7 @@ export const DeleteTaskButton = (props: DeleteTaskButtonPropsType) => {
           setModalVisible,
         }),
       );
-    } else if (!isTodoTaskList && toDoTasks.length === 0 && doneTasks.length === 1) {
+    } else if (fullRemoveTaskListCondition) {
       dispatch(
         deleteTaskListFullAction({
           taskListID: fullTaskList.id,

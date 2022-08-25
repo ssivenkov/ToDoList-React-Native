@@ -122,33 +122,35 @@ export const CreateTaskButton = (props: CreateTaskButtonPropsType) => {
       okDisable={!newTaskTitle}
       okHandler={createTask}
     >
-      <CustomInput onValueChange={setNewTaskTitle} value={newTaskTitle} />
-      <Notification
-        date={date}
-        isSwitcherOn={isNotificationSwitcherOn}
-        onToggleSwitcherClick={handleNotificationSwitcherClick}
-        setDate={setDate}
-      />
-      {/* The task color picker component is rendered on this place for the color picker library to work correctly */}
-      <View style={style.colorSwitcherComponentContainer}>
-        <Switcher
-          containerStyle={style.colorSwitcherContainer}
-          isOn={isColorPickerSwitcherOn}
-          onToggleSwitcherClick={handleColorPickerSwitcherClick}
-          size='medium'
-          switcherText={t('tasksScreen.EnableMarkColor')}
-          textMargin={1}
-          textStyle={style.colorSwitcherText}
+      <>
+        <CustomInput onValueChange={setNewTaskTitle} value={newTaskTitle} />
+        <Notification
+          date={date}
+          isSwitcherOn={isNotificationSwitcherOn}
+          onToggleSwitcherClick={handleNotificationSwitcherClick}
+          setDate={setDate}
         />
-      </View>
-      {isColorPickerSwitcherOn && (
-        <ColorPickerComponent
-          color={color}
-          marginRight={20}
-          marginTop={20}
-          selectColor={setColor}
-        />
-      )}
+        {/* The task color picker component is rendered on this place for the color picker library to work correctly */}
+        <View style={style.colorSwitcherComponentContainer}>
+          <Switcher
+            containerStyle={style.colorSwitcherContainer}
+            isOn={isColorPickerSwitcherOn}
+            onToggleSwitcherClick={handleColorPickerSwitcherClick}
+            size='medium'
+            switcherText={t('tasksScreen.EnableMarkColor')}
+            textMargin={1}
+            textStyle={style.colorSwitcherText}
+          />
+        </View>
+        {isColorPickerSwitcherOn && (
+          <ColorPickerComponent
+            color={color}
+            marginRight={20}
+            marginTop={20}
+            selectColor={setColor}
+          />
+        )}
+      </>
     </ModalIcon>
   );
 };

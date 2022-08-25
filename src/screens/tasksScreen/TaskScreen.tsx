@@ -69,7 +69,7 @@ export const TasksScreen = () => {
             return (
               <TaskList
                 fullTaskList={item}
-                isTodoTaskList
+                isTodoTaskList={false}
                 key={id}
                 taskListDate={date}
                 taskListID={id}
