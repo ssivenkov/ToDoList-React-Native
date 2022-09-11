@@ -6,6 +6,7 @@ import { AddNewTaskListActionReturnType } from '@store/actions/tasksReducerActio
 import { DeleteTaskListFromScreenActionReturnType } from '@store/actions/tasksReducerActions/taskListsActions/deleteTaskListFromScreenAction';
 import { DeleteTaskListFullActionReturnType } from '@store/actions/tasksReducerActions/taskListsActions/deleteTaskListFullAction';
 import { EditTaskListTitleActionReturnType } from '@store/actions/tasksReducerActions/taskListsActions/setEditedTaskListTitleAction';
+import { SetCollapsedTaskListActionReturnType } from '@store/actions/tasksReducerActions/taskListsActions/setTaskListCollapsedAction';
 import { SetTaskListsActionReturnType } from '@store/actions/tasksReducerActions/taskListsActions/setTaskListsAction';
 import { AddNewTaskActionReturnType } from '@store/actions/tasksReducerActions/tasksActions/addNewTaskAction';
 import { DeleteTaskActionReturnType } from '@store/actions/tasksReducerActions/tasksActions/deleteTaskAction';
@@ -26,6 +27,9 @@ export type TaskListWithoutTasksType = {
   date: string;
   title: string;
   showInToDo: boolean;
+
+  isTodoCollapsed?: boolean;
+  isDoneCollapsed?: boolean;
 };
 
 type TasksObjectType = {
@@ -65,6 +69,7 @@ export type TasksReducerActionsType =
   | AddNewTaskListActionReturnType
   | DeleteTaskListFromScreenActionReturnType
   | DeleteTaskListFullActionReturnType
+  | SetCollapsedTaskListActionReturnType
   | EditTaskListTitleActionReturnType
   | AddNewTaskActionReturnType
   | DeleteTaskActionReturnType

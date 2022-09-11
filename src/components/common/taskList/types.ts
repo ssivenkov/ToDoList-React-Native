@@ -5,6 +5,8 @@ export type TaskListPropsType = {
   taskListDate: TaskListInterface['date'];
   taskListTitle: TaskListInterface['title'];
   isTodoTaskList: boolean;
+  isTodoCollapsed: boolean;
+  isDoneCollapsed: boolean;
   fullTaskList: TaskListInterface;
 
   taskListTasks?: TaskType[];

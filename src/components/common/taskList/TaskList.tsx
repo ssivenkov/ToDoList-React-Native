@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { CollapsingButton } from '@components/buttons/collapsingButton/CollapsingButton';
 import { CreateTaskButton } from '@components/buttons/createTaskButton/CreateTaskButton';
 import { DeleteTaskListButton } from '@components/buttons/deleteTaskListButton/DeleteTaskListButton';
 import { EditTaskListTitleButton } from '@components/buttons/editTaskListTitleButton/EditTaskListTitleButton';
@@ -18,15 +19,29 @@ export const TaskList = (props: TaskListPropsType) => {
     taskListDate,
     taskListTitle,
     taskListTasks = [],
+    isTodoCollapsed,
+    isDoneCollapsed,
     fullTaskList,
   } = props;
 
   const style = useStyles(styles);
+
   const sortedTasks = sortingTasks(taskListTasks);
+
+  const tasksCondition =
+    (sortedTasks.length > 0 && isTodoTaskList && !isTodoCollapsed) ||
+    (sortedTasks.length > 0 && !isTodoTaskList && !isDoneCollapsed);
 
   return (
     <View style={style.container}>
       <View style={style.controlsContainer}>
+        <CollapsingButton
+          isDoneCollapsed={isDoneCollapsed}
+          isTodoCollapsed={isTodoCollapsed}
+          isTodoTaskList={isTodoTaskList}
+          taskListID={taskListID}
+          taskListsCount={sortedTasks.length}
+        />
         <Text style={style.title}>{taskListTitle}</Text>
         <View style={style.buttonsContainer}>
           {isTodoTaskList && (
@@ -48,7 +63,7 @@ export const TaskList = (props: TaskListPropsType) => {
           />
         </View>
       </View>
-      {sortedTasks.length > 0 && (
+      {tasksCondition && (
         <View style={style.tasksContainer}>
           {sortedTasks.map((task) => {
             const { id: taskID, title: taskTitle, colorMark } = task;

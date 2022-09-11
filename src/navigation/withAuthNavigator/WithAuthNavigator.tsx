@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
+import { Loader } from '@components/common/loader/Loader';
 import { TasksNavigator } from '@navigation/tasksNavigator/TasksNavigator';
 import {
   accountScreenOptions,
@@ -17,6 +18,7 @@ import { AccountScreen } from '@root/screens/accountScreen/AccountScreen';
 import { changeLanguageAction } from '@store/actions/userSagaActions/changeLanguageAction';
 import {
   accentColorSelector,
+  globalLoaderSelector,
   languageSelector,
   themeSelector,
 } from '@store/selectors/userSelectors';
@@ -27,10 +29,14 @@ const { Navigator, Screen } = createBottomTabNavigator<BottomTabParamList>();
 
 export const WithAuthNavigator = () => {
   const dispatch = useDispatch();
+
   const style = useStyles(styles);
+
   const theme = useSelector(themeSelector);
   const accentColor = useSelector(accentColorSelector);
   const languageInState = useSelector(languageSelector);
+  const globalLoader = useSelector(globalLoaderSelector);
+
   const [rerender, setRerender] = useState<string>('');
 
   // need for rerender with correct translations for navigator
@@ -44,28 +50,31 @@ export const WithAuthNavigator = () => {
   }, [rerender, languageInState]);
 
   return (
-    <Navigator
-      initialRouteName={withAuthNavigatorScreens.TASKS}
-      screenOptions={withAuthNavigatorOptions({ style, theme, accentColor })}
-    >
-      <Screen
-        component={TasksNavigator}
-        name={withAuthNavigatorScreens.TASKS}
-        options={{
-          ...tasksNavigatorOptions({ style, theme, accentColor }),
-          headerTitle: t('tasksScreen.Tasks'),
-          tabBarLabel: t('tasksScreen.Tasks'),
-        }}
-      />
-      <Screen
-        component={AccountScreen}
-        name={withAuthNavigatorScreens.ACCOUNT}
-        options={{
-          ...accountScreenOptions({ style, theme, accentColor }),
-          headerTitle: t('accountScreen.Account'),
-          tabBarLabel: t('accountScreen.Account'),
-        }}
-      />
-    </Navigator>
+    <>
+      {globalLoader && <Loader />}
+      <Navigator
+        initialRouteName={withAuthNavigatorScreens.TASKS}
+        screenOptions={withAuthNavigatorOptions({ style, theme, accentColor })}
+      >
+        <Screen
+          component={TasksNavigator}
+          name={withAuthNavigatorScreens.TASKS}
+          options={{
+            ...tasksNavigatorOptions({ style, theme, accentColor }),
+            headerTitle: t('tasksScreen.Tasks'),
+            tabBarLabel: t('tasksScreen.Tasks'),
+          }}
+        />
+        <Screen
+          component={AccountScreen}
+          name={withAuthNavigatorScreens.ACCOUNT}
+          options={{
+            ...accountScreenOptions({ style, theme, accentColor }),
+            headerTitle: t('accountScreen.Account'),
+            tabBarLabel: t('accountScreen.Account'),
+          }}
+        />
+      </Navigator>
+    </>
   );
 };

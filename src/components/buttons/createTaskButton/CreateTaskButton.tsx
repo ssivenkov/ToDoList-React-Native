@@ -90,6 +90,8 @@ export const CreateTaskButton = (props: CreateTaskButtonPropsType) => {
       title: taskListTitle,
       showInToDo: true,
       tasks,
+      isTodoCollapsed: false,
+      isDoneCollapsed: false,
     };
 
     if (newTaskTitle) {

@@ -5,6 +5,7 @@ import { Nullable } from '@root/types/common/types';
 import { SetAccentColorActionReturnType } from '@store/actions/userReducerActions/setAccentColorAction';
 import { SetAuthStateActionReturnType } from '@store/actions/userReducerActions/setAuthStateAction';
 import { SetChannelIDActionReturnType } from '@store/actions/userReducerActions/setChannelIDAction';
+import { SetGlobalLoaderActionReturnType } from '@store/actions/userReducerActions/setGlobalLoaderAction';
 import { SetLanguageActionReturnType } from '@store/actions/userReducerActions/setLanguageAction';
 import { SetErrorModalMessageActionReturnType } from '@store/actions/userReducerActions/setModalErrorMessageAction';
 import { SetProviderIDActionReturnType } from '@store/actions/userReducerActions/setProviderIDAction';
@@ -45,6 +46,7 @@ export type UserReducerStateType = {
   language: LanguageType;
   theme: ThemeType;
   accentColor: ColorType;
+  globalLoader: boolean;
   errorModalMessage: ErrorModalMessageType;
 };
 
@@ -57,4 +59,5 @@ export type UserReducerActionsType =
   | SetUserAvatarActionReturnType
   | SetThemeActionReturnType
   | SetAccentColorActionReturnType
+  | SetGlobalLoaderActionReturnType
   | SetErrorModalMessageActionReturnType;

@@ -115,6 +115,26 @@ export const tasksReducer = (
         ],
       };
 
+    case TASKS_REDUCER_ACTION.SET_COLLAPSED_TASK_LIST:
+      return {
+        ...state,
+        taskLists: [
+          ...state.taskLists.map((taskList) => {
+            const { taskListID, isTodoCollapsed, isDoneCollapsed } = action.payload;
+
+            if (taskList.id === taskListID) {
+              return {
+                ...taskList,
+                isTodoCollapsed: isTodoCollapsed,
+                isDoneCollapsed: isDoneCollapsed,
+              };
+            } else {
+              return taskList;
+            }
+          }),
+        ],
+      };
+
     case TASKS_REDUCER_ACTION.EDIT_TASK_LIST_TITLE:
       return {
         ...state,

@@ -7,7 +7,7 @@ import {
   UserReducerStateType,
 } from '@store/reducers/userReducer/types';
 
-const authReducerState: UserReducerStateType = {
+const userReducerState: UserReducerStateType = {
   providerID: null,
   userData: null,
   channelID: '',
@@ -15,11 +15,12 @@ const authReducerState: UserReducerStateType = {
   language: EN,
   theme: lightTheme,
   accentColor: COLORS.FLIRT,
+  globalLoader: false,
   errorModalMessage: '',
 };
 
 export const userReducer = (
-  state: UserReducerStateType = authReducerState,
+  state: UserReducerStateType = userReducerState,
   action: UserReducerActionsType,
 ): UserReducerStateType => {
   switch (action.type) {
@@ -43,6 +44,8 @@ export const userReducer = (
       return { ...state, theme: action.payload.theme };
     case USER_REDUCER_ACTION.SET_ACCENT_COLOR:
       return { ...state, accentColor: action.payload.accentColor };
+    case USER_REDUCER_ACTION.SET_GLOBAL_LOADER:
+      return { ...state, globalLoader: action.payload.globalLoader };
     case USER_REDUCER_ACTION.SET_ERROR_MODAL_MESSAGE:
       return { ...state, errorModalMessage: action.payload.errorModalMessage };
     default:

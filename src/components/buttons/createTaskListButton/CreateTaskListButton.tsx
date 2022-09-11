@@ -37,6 +37,8 @@ export const CreateTaskListButton = () => {
         date: createDate(),
         title: taskListTitle,
         showInToDo: true,
+        isTodoCollapsed: false,
+        isDoneCollapsed: false,
       };
 
       dispatch(
