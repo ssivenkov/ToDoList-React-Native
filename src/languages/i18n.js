@@ -8,6 +8,7 @@ import russian from './russian.json';
 // eslint-disable-next-line import/no-named-as-default-member
 i18next.use(initReactI18next).init({
   lng: EN,
+  interpolation: { escapeValue: false },
   resources: {
     en: english,
     ru: russian,
