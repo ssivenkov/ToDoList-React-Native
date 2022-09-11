@@ -1,12 +1,14 @@
 import React from 'react';
 
 import { CollapsingButtonPropsType } from '@components/buttons/collapsingButton/types';
+import { commonButtonStyles } from '@components/buttons/common/styles/styles';
 import { IconButton } from '@components/common/buttons/iconButton/IconButton';
 import { ICON_SIZE_SMALL } from '@constants/constants';
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { setTaskListCollapsedAction } from '@store/actions/tasksSagaActions/taskListsSagasActions/setTaskListCollapsedAction';
 import { themeSelector } from '@store/selectors/userSelectors';
+import { View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 
 export const CollapsingButton = (props: CollapsingButtonPropsType) => {
@@ -66,11 +68,13 @@ export const CollapsingButton = (props: CollapsingButtonPropsType) => {
     return (
       <IconButton
         icon={
-          <FontAwesomeIcon
-            color={theme.ICON_BUTTON_COLOR}
-            icon={faChevronDown}
-            size={ICON_SIZE_SMALL}
-          />
+          <View style={commonButtonStyles.buttonContainer}>
+            <FontAwesomeIcon
+              color={theme.ICON_BUTTON_COLOR}
+              icon={faChevronDown}
+              size={ICON_SIZE_SMALL}
+            />
+          </View>
         }
         onPress={setTodoTaskListUnCollapsed}
       />
@@ -81,11 +85,13 @@ export const CollapsingButton = (props: CollapsingButtonPropsType) => {
     return (
       <IconButton
         icon={
-          <FontAwesomeIcon
-            color={theme.ICON_BUTTON_COLOR}
-            icon={faChevronUp}
-            size={ICON_SIZE_SMALL}
-          />
+          <View style={commonButtonStyles.buttonContainer}>
+            <FontAwesomeIcon
+              color={theme.ICON_BUTTON_COLOR}
+              icon={faChevronUp}
+              size={ICON_SIZE_SMALL}
+            />
+          </View>
         }
         onPress={setTodoTaskListCollapsed}
       />
@@ -96,11 +102,13 @@ export const CollapsingButton = (props: CollapsingButtonPropsType) => {
     return (
       <IconButton
         icon={
-          <FontAwesomeIcon
-            color={theme.ICON_BUTTON_COLOR}
-            icon={faChevronDown}
-            size={ICON_SIZE_SMALL}
-          />
+          <View style={commonButtonStyles.buttonContainer}>
+            <FontAwesomeIcon
+              color={theme.ICON_BUTTON_COLOR}
+              icon={faChevronDown}
+              size={ICON_SIZE_SMALL}
+            />
+          </View>
         }
         onPress={setDoneTaskListUnCollapsed}
       />
@@ -111,11 +119,13 @@ export const CollapsingButton = (props: CollapsingButtonPropsType) => {
     return (
       <IconButton
         icon={
-          <FontAwesomeIcon
-            color={theme.ICON_BUTTON_COLOR}
-            icon={faChevronUp}
-            size={ICON_SIZE_SMALL}
-          />
+          <View style={commonButtonStyles.buttonContainer}>
+            <FontAwesomeIcon
+              color={theme.ICON_BUTTON_COLOR}
+              icon={faChevronUp}
+              size={ICON_SIZE_SMALL}
+            />
+          </View>
         }
         onPress={setDoneTaskListCollapsed}
       />

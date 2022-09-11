@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+import { commonButtonStyles } from '@components/buttons/common/styles/styles';
 import { CustomInput } from '@components/common/input/CustomInput';
 import { ModalIcon } from '@components/common/modals/ModalIcon';
 import { ICON_SIZE_SMALL } from '@constants/constants';
@@ -10,6 +11,7 @@ import { editTaskListTitleAction } from '@store/actions/tasksSagaActions/taskLis
 import { TaskListInterface } from '@store/reducers/tasksReducer/types';
 import { themeSelector } from '@store/selectors/userSelectors';
 import { useTranslation } from 'react-i18next';
+import { View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { EditTaskListTitleButtonPropsType } from './types';
@@ -51,11 +53,13 @@ export const EditTaskListTitleButton = ({
   return (
     <ModalIcon
       buttonIcon={
-        <FontAwesomeIcon
-          color={theme.ICON_BUTTON_COLOR}
-          icon={faPen}
-          size={ICON_SIZE_SMALL}
-        />
+        <View style={commonButtonStyles.buttonContainer}>
+          <FontAwesomeIcon
+            color={theme.ICON_BUTTON_COLOR}
+            icon={faPen}
+            size={ICON_SIZE_SMALL}
+          />
+        </View>
       }
       closeHandler={onClosePress}
       description={t('tasksScreen.EditTaskListButtonTitle')}

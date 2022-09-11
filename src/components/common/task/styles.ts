@@ -13,6 +13,7 @@ type TaskStylesType = {
 };
 
 const { RED, DUSTY_GRAY } = COLORS;
+
 const textSize = 18;
 
 export const styles = (props: ExtendedStylesPropsType) =>

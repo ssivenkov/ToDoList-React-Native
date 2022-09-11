@@ -6,6 +6,6 @@ type CustomButtonStylesType = {
 
 export const styles = StyleSheet.create<CustomButtonStylesType>({
   icon: {
-    marginHorizontal: 4,
+    marginHorizontal: 0,
   },
 });
