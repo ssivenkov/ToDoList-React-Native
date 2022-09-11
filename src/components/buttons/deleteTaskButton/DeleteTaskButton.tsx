@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { commonButtonStyles } from '@components/buttons/common/styles/styles';
 import { ModalIcon } from '@components/common/modals/ModalIcon';
 import { ICON_SIZE_SMALL } from '@constants/constants';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
@@ -11,7 +12,7 @@ import { deleteTaskListFullAction } from '@store/actions/tasksSagaActions/taskLi
 import { deleteTaskAction } from '@store/actions/tasksSagaActions/tasksSagasActions/deleteTaskAction';
 import { themeSelector } from '@store/selectors/userSelectors';
 import { Trans } from 'react-i18next';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { styles } from './styles';
@@ -70,11 +71,13 @@ export const DeleteTaskButton = (props: DeleteTaskButtonPropsType) => {
   return (
     <ModalIcon
       buttonIcon={
-        <FontAwesomeIcon
-          color={theme.ICON_BUTTON_COLOR}
-          icon={faTrash}
-          size={ICON_SIZE_SMALL}
-        />
+        <View style={commonButtonStyles.buttonContainer}>
+          <FontAwesomeIcon
+            color={theme.ICON_BUTTON_COLOR}
+            icon={faTrash}
+            size={ICON_SIZE_SMALL}
+          />
+        </View>
       }
       okHandler={removeTask}
     >

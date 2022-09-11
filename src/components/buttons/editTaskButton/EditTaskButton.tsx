@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
+import { commonButtonStyles } from '@components/buttons/common/styles/styles';
 import { styles } from '@components/buttons/editTaskButton/styles';
 import { ColorPickerComponent } from '@components/common/colorPicker/ColorPicker';
 import { CustomInput } from '@components/common/input/CustomInput';
@@ -109,11 +110,13 @@ export const EditTaskButton = (props: EditTaskTitleButtonPropsType) => {
   return (
     <ModalIcon
       buttonIcon={
-        <FontAwesomeIcon
-          color={theme.ICON_BUTTON_COLOR}
-          icon={faPen}
-          size={ICON_SIZE_SMALL}
-        />
+        <View style={commonButtonStyles.buttonContainer}>
+          <FontAwesomeIcon
+            color={theme.ICON_BUTTON_COLOR}
+            icon={faPen}
+            size={ICON_SIZE_SMALL}
+          />
+        </View>
       }
       closeHandler={onClosePress}
       description={t('tasksScreen.EditTaskButton')}

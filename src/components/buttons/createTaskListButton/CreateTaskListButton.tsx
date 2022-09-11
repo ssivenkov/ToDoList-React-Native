@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import { COLORS } from '@colors/colors';
+import { commonButtonStyles } from '@components/buttons/common/styles/styles';
 import { CustomInput } from '@components/common/input/CustomInput';
 import { ModalIcon } from '@components/common/modals/ModalIcon';
 import { ICON_SIZE_MEDIUM } from '@constants/constants';
@@ -13,6 +14,7 @@ import { TaskListInterface } from '@store/reducers/tasksReducer/types';
 import { nanoid } from 'nanoid';
 import { useTranslation } from 'react-i18next';
 import 'react-native-get-random-values';
+import { View } from 'react-native';
 import { useDispatch } from 'react-redux';
 
 export const CreateTaskListButton = () => {
@@ -55,7 +57,9 @@ export const CreateTaskListButton = () => {
   return (
     <ModalIcon
       buttonIcon={
-        <FontAwesomeIcon color={COLORS.WHITE} icon={faPlus} size={ICON_SIZE_MEDIUM} />
+        <View style={commonButtonStyles.buttonContainer}>
+          <FontAwesomeIcon color={COLORS.WHITE} icon={faPlus} size={ICON_SIZE_MEDIUM} />
+        </View>
       }
       closeHandler={onClosePress}
       description={t('tasksScreen.CreateTaskListButtonTitle')}

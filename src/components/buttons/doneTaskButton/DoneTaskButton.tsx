@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { commonButtonStyles } from '@components/buttons/common/styles/styles';
 import { ModalIcon } from '@components/common/modals/ModalIcon';
 import { ICON_SIZE_SMALL } from '@constants/constants';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
@@ -9,7 +10,7 @@ import { SetStateType } from '@root/types/common/types';
 import { setTaskIsDoneAction } from '@store/actions/tasksSagaActions/tasksSagasActions/setTaskIsDoneAction';
 import { themeSelector } from '@store/selectors/userSelectors';
 import { Trans } from 'react-i18next';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { styles } from './styles';
@@ -41,11 +42,13 @@ export const DoneTaskButton = ({
   return (
     <ModalIcon
       buttonIcon={
-        <FontAwesomeIcon
-          color={theme.ICON_BUTTON_COLOR}
-          icon={faCheck}
-          size={ICON_SIZE_SMALL}
-        />
+        <View style={commonButtonStyles.buttonContainer}>
+          <FontAwesomeIcon
+            color={theme.ICON_BUTTON_COLOR}
+            icon={faCheck}
+            size={ICON_SIZE_SMALL}
+          />
+        </View>
       }
       okHandler={setDoneTask}
     >

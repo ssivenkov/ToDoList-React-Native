@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+import { commonButtonStyles } from '@components/buttons/common/styles/styles';
 import { styles } from '@components/buttons/createTaskButton/styles';
 import { ColorPickerComponent } from '@components/common/colorPicker/ColorPicker';
 import { CustomInput } from '@components/common/input/CustomInput';
@@ -113,11 +114,13 @@ export const CreateTaskButton = (props: CreateTaskButtonPropsType) => {
   return (
     <ModalIcon
       buttonIcon={
-        <FontAwesomeIcon
-          color={theme.ICON_BUTTON_COLOR}
-          icon={faPlus}
-          size={ICON_SIZE_SMALL}
-        />
+        <View style={commonButtonStyles.buttonContainer}>
+          <FontAwesomeIcon
+            color={theme.ICON_BUTTON_COLOR}
+            icon={faPlus}
+            size={ICON_SIZE_SMALL}
+          />
+        </View>
       }
       closeHandler={onClosePress}
       description={t('tasksScreen.CreateTaskButtonTitle')}
