@@ -4,6 +4,7 @@ import { addNewTaskListSaga } from '@store/sagas/tasksSagas/taskListsSagas/addNe
 import { deleteTaskListFromScreenSaga } from '@store/sagas/tasksSagas/taskListsSagas/deleteTaskListFromScreenSaga';
 import { deleteTaskListFullSaga } from '@store/sagas/tasksSagas/taskListsSagas/deleteTaskListFullSaga';
 import { editTaskListTitleSaga } from '@store/sagas/tasksSagas/taskListsSagas/editTaskListTitleSaga';
+import { setTaskListCollapsedSaga } from '@store/sagas/tasksSagas/taskListsSagas/setTaskListCollapsedSaga';
 import { addNewTaskSaga } from '@store/sagas/tasksSagas/tasksSagas/addNewTaskSaga';
 import { deleteTaskSaga } from '@store/sagas/tasksSagas/tasksSagas/deleteTaskSaga';
 import { editTaskSaga } from '@store/sagas/tasksSagas/tasksSagas/editTaskSaga';
@@ -35,6 +36,7 @@ export function* rootWatcher() {
   yield takeLatest(USER_SAGA_ACTION.SYNC_USER_DATA, syncUserDataSaga);
 
   yield takeLatest(TASKS_SAGA_ACTION.ADD_NEW_TASK_LIST, addNewTaskListSaga);
+  yield takeLatest(TASKS_SAGA_ACTION.SET_TASK_LIST_COLLAPSED, setTaskListCollapsedSaga);
   yield takeLatest(TASKS_SAGA_ACTION.ADD_NEW_TASK, addNewTaskSaga);
   yield takeLatest(TASKS_SAGA_ACTION.EDIT_TASK_LIST_TITLE, editTaskListTitleSaga);
   yield takeLatest(TASKS_SAGA_ACTION.DELETE_TASK_LIST_FULL, deleteTaskListFullSaga);

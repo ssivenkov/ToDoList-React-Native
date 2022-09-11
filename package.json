@@ -87,17 +87,19 @@
     "typescript": "4.5.5"
   },
   "scripts": {
-    "husky install": "husky install",
+    "husky_install": "husky install",
+    "start": "react-native start --reset-cache",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "start without cache": "react-native start --reset-cache",
-    "start": "react-native start",
     "lint": "eslint . --color && tsc --noEmit",
-    "metro connect": "adb -s 1243dcd2 reverse tcp:8081 tcp:8081",
-    "gradle clean MacOS": "cd android && ./gradlew clean && cd ..",
-    "gradle clean Windows": "cd android && gradlew clean && cd ..",
-    "android assembly MacOS": "cd android && ./gradlew assembleRelease && cd ..",
-    "android assembly Windows": "cd android && gradlew assembleRelease && cd .."
+    "fix_Exit_code_7": "adb uninstall com.myproject",
+    "metro_connect": "adb -s 18aeadf7 reverse tcp:8081 tcp:8081",
+    "gradle_clean_MacOS": "cd android && ./gradlew clean && cd ..",
+    "gradle_clean_Windows": "cd android && gradlew clean && cd ..",
+    "android_assembly_MacOS": "cd android && ./gradlew assembleRelease && cd ..",
+    "android_assembly_Windows": "cd android && gradlew assembleRelease && cd ..",
+    "app_dependencies_MacOS": "cd android && ./gradlew app:dependencies",
+    "app_dependencies_Windows": "cd android && gradlew app:dependencies"
   },
   "jest": {
     "preset": "react-native"

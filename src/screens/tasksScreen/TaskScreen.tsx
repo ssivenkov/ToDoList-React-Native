@@ -38,12 +38,14 @@ export const TasksScreen = () => {
       <ScrollView>
         <View style={style.tasksListContainer}>
           {sortedToDoTaskLists.map((item) => {
-            const { id, date, title, tasks } = item;
+            const { id, date, title, tasks, isTodoCollapsed, isDoneCollapsed } = item;
             const toDoTasks = tasks && tasks.filter((task) => !task.isDone);
 
             return (
               <TaskList
                 fullTaskList={item}
+                isDoneCollapsed={!!isDoneCollapsed}
+                isTodoCollapsed={!!isTodoCollapsed}
                 isTodoTaskList
                 key={id}
                 taskListDate={date}
@@ -63,12 +65,14 @@ export const TasksScreen = () => {
       <ScrollView>
         <View style={style.tasksListContainer}>
           {sortedDoneTaskLists.map((item) => {
-            const { id, date, title, tasks } = item;
+            const { id, date, title, tasks, isTodoCollapsed, isDoneCollapsed } = item;
             const doneTasks = tasks && tasks.filter((task) => task.isDone);
 
             return (
               <TaskList
                 fullTaskList={item}
+                isDoneCollapsed={!!isDoneCollapsed}
+                isTodoCollapsed={!!isTodoCollapsed}
                 isTodoTaskList={false}
                 key={id}
                 taskListDate={date}

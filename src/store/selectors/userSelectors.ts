@@ -49,6 +49,12 @@ export const accentColorSelector = (
   return state.user.accentColor;
 };
 
+export const globalLoaderSelector = (
+  state: AppRootStateType,
+): UserReducerStateType['globalLoader'] => {
+  return state.user.globalLoader;
+};
+
 export const errorModalMessageSelector = (
   state: AppRootStateType,
 ): ErrorModalMessageType => {
