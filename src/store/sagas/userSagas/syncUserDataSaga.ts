@@ -5,6 +5,7 @@ import { darkTheme, lightTheme } from '@root/themes/theme';
 import { setNotificationsAction } from '@store/actions/tasksReducerActions/notificationsActions/setNotificationsAction';
 import { setTaskListsAction } from '@store/actions/tasksReducerActions/taskListsActions/setTaskListsAction';
 import { setAccentColorAction } from '@store/actions/userReducerActions/setAccentColorAction';
+import { setGlobalLoaderAction } from '@store/actions/userReducerActions/setGlobalLoaderAction';
 import { setLanguageAction } from '@store/actions/userReducerActions/setLanguageAction';
 import { setModalErrorMessageAction } from '@store/actions/userReducerActions/setModalErrorMessageAction';
 import { setThemeAction } from '@store/actions/userReducerActions/setThemeAction';
@@ -24,6 +25,8 @@ export function* syncUserDataSaga() {
     if (internetConnectionStatus !== ONLINE) {
       throw Error(internetConnectionStatus);
     }
+
+    yield put(setGlobalLoaderAction({ globalLoader: true }));
 
     const userID: UserIDType = yield select(userIDSelector);
     const snapshot: SnapshotType = yield DB.ref(`${USERS}/${userID}`).once('value');
@@ -69,7 +72,11 @@ export function* syncUserDataSaga() {
       yield put(setTaskListsAction({ taskLists: [] }));
       yield put(setNotificationsAction({ notifications: [] }));
     }
+
+    yield put(setGlobalLoaderAction({ globalLoader: false }));
   } catch (error) {
+    yield put(setGlobalLoaderAction({ globalLoader: false }));
+
     if (error instanceof Error) {
       yield put(setModalErrorMessageAction({ errorModalMessage: error.message }));
     }
