@@ -6,6 +6,7 @@ import { setNotificationsAction } from '@store/actions/tasksReducerActions/notif
 import { setTaskListsAction } from '@store/actions/tasksReducerActions/taskListsActions/setTaskListsAction';
 import { setAccentColorAction } from '@store/actions/userReducerActions/setAccentColorAction';
 import { setGlobalLoaderAction } from '@store/actions/userReducerActions/setGlobalLoaderAction';
+import { setIsUserDataSynchronizedAction } from '@store/actions/userReducerActions/setIsUserDataSynchronized';
 import { setLanguageAction } from '@store/actions/userReducerActions/setLanguageAction';
 import { setModalErrorMessageAction } from '@store/actions/userReducerActions/setModalErrorMessageAction';
 import { setThemeAction } from '@store/actions/userReducerActions/setThemeAction';
@@ -73,6 +74,7 @@ export function* syncUserDataSaga() {
       yield put(setNotificationsAction({ notifications: [] }));
     }
 
+    yield put(setIsUserDataSynchronizedAction({ isUserDataSynchronized: true }));
     yield put(setGlobalLoaderAction({ globalLoader: false }));
   } catch (error) {
     yield put(setGlobalLoaderAction({ globalLoader: false }));

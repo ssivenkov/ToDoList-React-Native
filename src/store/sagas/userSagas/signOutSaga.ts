@@ -46,7 +46,13 @@ export function* signOutSaga(action: SignOutSagaActionReturnType) {
       yield call(LoginManager.logOut);
     }
 
-    yield put(setAuthStateAction({ userData: null, providerID: null }));
+    yield put(
+      setAuthStateAction({
+        userData: null,
+        providerID: null,
+        isUserDataSynchronized: false,
+      }),
+    );
 
     yield put(setTaskListsAction({ taskLists: [] }));
   } catch (error) {

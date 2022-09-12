@@ -4,8 +4,15 @@ import { DB } from '@root/api/DB';
 import { checkInternetConnectionHelper } from '@root/helpers/checkInternetConnectionHelper';
 import { setModalErrorMessageAction } from '@store/actions/userReducerActions/setModalErrorMessageAction';
 import { syncUserDataAction } from '@store/actions/userSagaActions/syncUserDataAction';
-import { SnapshotType, UserIDType } from '@store/reducers/userReducer/types';
-import { userIDSelector } from '@store/selectors/userSelectors';
+import {
+  SnapshotType,
+  UserIDType,
+  UserReducerStateType,
+} from '@store/reducers/userReducer/types';
+import {
+  isUserDataSynchronizedSelector,
+  userIDSelector,
+} from '@store/selectors/userSelectors';
 import { call, put, select } from 'redux-saga/effects';
 
 export function* checkUserSaga() {
@@ -17,6 +24,9 @@ export function* checkUserSaga() {
     }
 
     const userID: UserIDType = yield select(userIDSelector);
+    const isUserDataSynchronized: UserReducerStateType['isUserDataSynchronized'] =
+      yield select(isUserDataSynchronizedSelector);
+
     const snapshot: SnapshotType = yield DB.ref(`${USERS}/${userID}`).once('value');
     const isUserExist = snapshot.exists();
 
@@ -28,7 +38,9 @@ export function* checkUserSaga() {
         accentColor: COLORS.FLIRT,
       });
     } else {
-      yield put(syncUserDataAction());
+      if (!isUserDataSynchronized) {
+        yield put(syncUserDataAction());
+      }
     }
   } catch (error) {
     if (error instanceof Error) {

@@ -6,6 +6,7 @@ import { SetAccentColorActionReturnType } from '@store/actions/userReducerAction
 import { SetAuthStateActionReturnType } from '@store/actions/userReducerActions/setAuthStateAction';
 import { SetChannelIDActionReturnType } from '@store/actions/userReducerActions/setChannelIDAction';
 import { SetGlobalLoaderActionReturnType } from '@store/actions/userReducerActions/setGlobalLoaderAction';
+import { SetIsUserDataSynchronizedActionReturnType } from '@store/actions/userReducerActions/setIsUserDataSynchronized';
 import { SetLanguageActionReturnType } from '@store/actions/userReducerActions/setLanguageAction';
 import { SetErrorModalMessageActionReturnType } from '@store/actions/userReducerActions/setModalErrorMessageAction';
 import { SetProviderIDActionReturnType } from '@store/actions/userReducerActions/setProviderIDAction';
@@ -48,6 +49,7 @@ export type UserReducerStateType = {
   accentColor: ColorType;
   globalLoader: boolean;
   errorModalMessage: ErrorModalMessageType;
+  isUserDataSynchronized: boolean;
 };
 
 export type UserReducerActionsType =
@@ -60,4 +62,5 @@ export type UserReducerActionsType =
   | SetThemeActionReturnType
   | SetAccentColorActionReturnType
   | SetGlobalLoaderActionReturnType
-  | SetErrorModalMessageActionReturnType;
+  | SetErrorModalMessageActionReturnType
+  | SetIsUserDataSynchronizedActionReturnType;
