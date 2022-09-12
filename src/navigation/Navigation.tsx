@@ -32,10 +32,13 @@ const { Navigator, Screen } = createNativeStackNavigator<RootStackParamList>();
 
 export const Navigation = () => {
   const dispatch = useDispatch();
+
   const theme = useSelector(themeSelector);
   const userID = useSelector(userIDSelector);
   const channelID = useSelector(channelIDSelector);
+
   const { t } = useTranslation();
+
   const style = useStyles(styles);
 
   const [firebaseInitializing, setFirebaseInitializing] = useState<boolean>(true);

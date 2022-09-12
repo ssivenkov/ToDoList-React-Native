@@ -1,9 +1,10 @@
 import { USER_REDUCER_ACTION } from '@enums/userReducerEnum';
-import { ProviderIDType, UserDataType } from '@store/reducers/userReducer/types';
+import { UserReducerStateType } from '@store/reducers/userReducer/types';
 
 type SetAuthStateActionPayloadType = {
-  userData: UserDataType;
-  providerID: ProviderIDType;
+  userData: UserReducerStateType['userData'];
+  providerID: UserReducerStateType['providerID'];
+  isUserDataSynchronized: UserReducerStateType['isUserDataSynchronized'];
 };
 
 export type SetAuthStateActionReturnType = {

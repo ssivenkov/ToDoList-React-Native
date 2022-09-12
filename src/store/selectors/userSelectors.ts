@@ -60,3 +60,9 @@ export const errorModalMessageSelector = (
 ): ErrorModalMessageType => {
   return state.user.errorModalMessage;
 };
+
+export const isUserDataSynchronizedSelector = (
+  state: AppRootStateType,
+): UserReducerStateType['isUserDataSynchronized'] => {
+  return state.user.isUserDataSynchronized;
+};

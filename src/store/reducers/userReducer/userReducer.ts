@@ -17,6 +17,7 @@ const userReducerState: UserReducerStateType = {
   accentColor: COLORS.FLIRT,
   globalLoader: false,
   errorModalMessage: '',
+  isUserDataSynchronized: false,
 };
 
 export const userReducer = (
@@ -33,6 +34,7 @@ export const userReducer = (
         ...state,
         userData: action.payload.userData,
         providerID: action.payload.providerID,
+        isUserDataSynchronized: action.payload.isUserDataSynchronized,
       };
     case USER_REDUCER_ACTION.SET_PROVIDER_ID:
       return { ...state, providerID: action.payload.providerID };
@@ -48,6 +50,8 @@ export const userReducer = (
       return { ...state, globalLoader: action.payload.globalLoader };
     case USER_REDUCER_ACTION.SET_ERROR_MODAL_MESSAGE:
       return { ...state, errorModalMessage: action.payload.errorModalMessage };
+    case USER_REDUCER_ACTION.SET_IS_USER_DATA_SYNCHRONIZED:
+      return { ...state, isUserDataSynchronized: action.payload.isUserDataSynchronized };
     default:
       return state;
   }
