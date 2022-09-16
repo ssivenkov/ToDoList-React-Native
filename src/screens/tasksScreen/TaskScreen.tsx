@@ -6,6 +6,7 @@ import { sortingTaskLists } from '@root/helpers/sorting';
 import { useStyles } from '@root/hooks/useStyles';
 import { TaskScreenRouteType } from '@root/screens/tasksScreen/types';
 import { taskListsSelector } from '@store/selectors/tasksSelectors';
+import { globalLoaderSelector } from '@store/selectors/userSelectors';
 import { useTranslation } from 'react-i18next';
 import { ScrollView, Text, View } from 'react-native';
 import { useSelector } from 'react-redux';
@@ -18,6 +19,8 @@ export const TasksScreen = () => {
   const { isTodoScreen } = useRoute<TaskScreenRouteType>().params;
 
   const taskLists = useSelector(taskListsSelector);
+  const globalLoader = useSelector(globalLoaderSelector);
+
   const toDoTaskLists = taskLists.filter(({ showInToDo }) => showInToDo);
   const doneTaskLists = taskLists.filter((taskList) => {
     const { tasks } = taskList;
@@ -86,6 +89,8 @@ export const TasksScreen = () => {
       </ScrollView>
     );
   }
+
+  if (globalLoader) return null;
 
   return (
     <View style={style.nullContentContainer}>

@@ -13,10 +13,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { useStyles } from '@root/hooks/useStyles';
 import { Nullable, SetStateType } from '@root/types/common/types';
 import { setEditedTaskAction } from '@store/actions/tasksSagaActions/tasksSagasActions/setEditedTaskAction';
+import { setSelectedColorAction } from '@store/actions/userReducerActions/setSelectedColorAction';
 import { TaskType } from '@store/reducers/tasksReducer/types';
 import { ColorType } from '@store/reducers/userReducer/types';
 import { notificationsSelector } from '@store/selectors/tasksSelectors';
-import { accentColorSelector, themeSelector } from '@store/selectors/userSelectors';
+import { themeSelector } from '@store/selectors/userSelectors';
 import { useTranslation } from 'react-i18next';
 import { View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
@@ -27,9 +28,11 @@ export const EditTaskButton = (props: EditTaskTitleButtonPropsType) => {
   const { taskListID, taskID, oldTaskTitle, colorMark, isTodo } = props;
 
   const theme = useSelector(themeSelector);
-  const accentColor = useSelector(accentColorSelector);
-  const { t } = useTranslation();
+
   const dispatch = useDispatch();
+
+  const { t } = useTranslation();
+
   const style = useStyles(styles);
 
   const notifications = useSelector(notificationsSelector);
@@ -43,11 +46,12 @@ export const EditTaskButton = (props: EditTaskTitleButtonPropsType) => {
   const [isColorPickerSwitcherOn, setIsColorPickerSwitcherOn] = useState<boolean>(
     !!colorMark ?? false,
   );
-  const [color, setColor] = useState<ColorType>(colorMark ?? accentColor);
-  const [modalVisible, setModalVisible] = useState<boolean>(false);
-  const showColorPickerWithUserColorCondition =
-    isColorPickerSwitcherOn && !!colorMark && modalVisible;
 
+  const [tempColorMark, setTempColorMark] = useState<ColorType>(colorMark ?? '');
+  const [modalVisible, setModalVisible] = useState<boolean>(false);
+
+  const showColorPickerWithUserColorMarkCondition =
+    isColorPickerSwitcherOn && !!colorMark && modalVisible;
   const notEmptyTaskTitleCondition = editedTaskTitle.length > 0;
 
   const handleNotificationSwitcherClick = (isOn: boolean) => {
@@ -70,14 +74,17 @@ export const EditTaskButton = (props: EditTaskTitleButtonPropsType) => {
 
   const onClosePress = (): void => {
     setIsColorPickerSwitcherOn(!!colorMark ?? false);
-    setColor(colorMark ?? accentColor);
     setEditedTaskTitle(oldTaskTitle);
     setIsNotificationSwitcherOn(!!taskNotification?.date ?? false);
     setDate(taskNotification?.date ?? null);
   };
 
+  const setSelectedColor = (selectedColor: ColorType) => {
+    dispatch(setSelectedColorAction({ selectedColor }));
+  };
+
   const editTask = (setIsLoading: SetStateType<boolean>): void => {
-    if (notEmptyTaskTitleCondition) {
+    if (notEmptyTaskTitleCondition && tempColorMark) {
       dispatch(
         setEditedTaskAction({
           taskListID,
@@ -88,9 +95,26 @@ export const EditTaskButton = (props: EditTaskTitleButtonPropsType) => {
           setIsLoading,
           setModalVisible: setModalVisible,
           setEditedTaskTitle,
-          colorMark: color,
           shouldSetColor: isColorPickerSwitcherOn,
-          setColorInModal: setColor,
+          setColorMark: setTempColorMark,
+          colorMark: tempColorMark,
+        }),
+      );
+
+      setEditedTaskTitle(editedTaskTitle);
+    } else if (notEmptyTaskTitleCondition) {
+      dispatch(
+        setEditedTaskAction({
+          taskListID,
+          taskID,
+          editedTaskTitle,
+          shouldCreateNotification: isNotificationSwitcherOn,
+          date,
+          setIsLoading,
+          setModalVisible: setModalVisible,
+          setEditedTaskTitle,
+          shouldSetColor: isColorPickerSwitcherOn,
+          setColorMark: setTempColorMark,
         }),
       );
 
@@ -99,7 +123,7 @@ export const EditTaskButton = (props: EditTaskTitleButtonPropsType) => {
   };
 
   useEffect(() => {
-    if (showColorPickerWithUserColorCondition) {
+    if (showColorPickerWithUserColorMarkCondition) {
       setIsColorPickerSwitcherOn(false);
       setTimeout(() => {
         setIsColorPickerSwitcherOn(true);
@@ -147,20 +171,19 @@ export const EditTaskButton = (props: EditTaskTitleButtonPropsType) => {
             textStyle={style.colorSwitcherText}
           />
         </View>
-        {showColorPickerWithUserColorCondition && (
+        {showColorPickerWithUserColorMarkCondition && (
           <ColorPickerComponent
-            color={color}
+            color={colorMark}
             marginRight={20}
             marginTop={20}
-            selectColor={setColor}
+            setSelectedColor={setTempColorMark}
           />
         )}
         {isColorPickerSwitcherOn && !colorMark && (
           <ColorPickerComponent
-            color={color}
             marginRight={20}
             marginTop={20}
-            selectColor={setColor}
+            setSelectedColor={setSelectedColor}
           />
         )}
       </>

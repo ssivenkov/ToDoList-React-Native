@@ -1,10 +1,9 @@
-import { SetStateType } from '@root/types/common/types';
 import { ColorType } from '@store/reducers/userReducer/types';
 
 export type ColorPickerComponentPropsType = {
-  color: ColorType;
-  selectColor: SetStateType<ColorType>;
+  setSelectedColor: (color: ColorType) => void;
 
-  marginTop?: number;
+  color?: ColorType;
   marginRight?: number;
+  marginTop?: number;
 };
