@@ -7,6 +7,6 @@ Implemented: add task or task list, remove task or task list, rename task or tas
 
 **Before commit or push, please, run the script "husky install" once.**
 
-# [Download APK](https://drive.google.com/file/d/1inSXbgdNf5sVM-oS649DzsVeNQV2nv5R/view?usp=sharing "Link")
+# [Download APK v1.1.0](https://drive.google.com/file/d/1ZrzLdUFrLMXNdfgVDb7QcQbRcUOMfj3I/view?usp=sharing "Link")
 
 ![ToDo List preview](./preview.png)
