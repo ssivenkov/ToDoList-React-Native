@@ -49,6 +49,12 @@ export const accentColorSelector = (
   return state.user.accentColor;
 };
 
+export const selectedColorSelector = (
+  state: AppRootStateType,
+): UserReducerStateType['selectedColor'] => {
+  return state.user.selectedColor;
+};
+
 export const globalLoaderSelector = (
   state: AppRootStateType,
 ): UserReducerStateType['globalLoader'] => {

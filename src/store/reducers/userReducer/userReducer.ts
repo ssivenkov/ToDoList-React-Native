@@ -15,6 +15,7 @@ const userReducerState: UserReducerStateType = {
   language: EN,
   theme: lightTheme,
   accentColor: COLORS.FLIRT,
+  selectedColor: COLORS.FLIRT,
   globalLoader: false,
   errorModalMessage: '',
   isUserDataSynchronized: false,
@@ -35,6 +36,8 @@ export const userReducer = (
         userData: action.payload.userData,
         providerID: action.payload.providerID,
         isUserDataSynchronized: action.payload.isUserDataSynchronized,
+        accentColor: action.payload.accentColor,
+        selectedColor: action.payload.selectedColor,
       };
     case USER_REDUCER_ACTION.SET_PROVIDER_ID:
       return { ...state, providerID: action.payload.providerID };
@@ -46,6 +49,8 @@ export const userReducer = (
       return { ...state, theme: action.payload.theme };
     case USER_REDUCER_ACTION.SET_ACCENT_COLOR:
       return { ...state, accentColor: action.payload.accentColor };
+    case USER_REDUCER_ACTION.SET_SELECTED_COLOR:
+      return { ...state, selectedColor: action.payload.selectedColor };
     case USER_REDUCER_ACTION.SET_GLOBAL_LOADER:
       return { ...state, globalLoader: action.payload.globalLoader };
     case USER_REDUCER_ACTION.SET_ERROR_MODAL_MESSAGE:

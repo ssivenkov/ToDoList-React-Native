@@ -14,9 +14,10 @@ import { createDate } from '@root/helpers/generateDateHelper';
 import { useStyles } from '@root/hooks/useStyles';
 import { SetStateType } from '@root/types/common/types';
 import { addNewTaskAction } from '@store/actions/tasksSagaActions/tasksSagasActions/addNewTaskAction';
+import { setSelectedColorAction } from '@store/actions/userReducerActions/setSelectedColorAction';
 import { TaskListInterface, TaskType } from '@store/reducers/tasksReducer/types';
 import { ColorType } from '@store/reducers/userReducer/types';
-import { accentColorSelector, themeSelector } from '@store/selectors/userSelectors';
+import { selectedColorSelector, themeSelector } from '@store/selectors/userSelectors';
 import { nanoid } from 'nanoid';
 import { useTranslation } from 'react-i18next';
 import { View } from 'react-native';
@@ -29,9 +30,12 @@ export const CreateTaskButton = (props: CreateTaskButtonPropsType) => {
   const { taskListID, taskListDate, taskListTitle, fullTaskList } = props;
 
   const theme = useSelector(themeSelector);
-  const accentColor = useSelector(accentColorSelector);
-  const { t } = useTranslation();
+  const selectedColor = useSelector(selectedColorSelector);
+
   const dispatch = useDispatch();
+
+  const { t } = useTranslation();
+
   const style = useStyles(styles);
 
   const [newTaskTitle, setNewTaskTitle] = useState<TaskType['title']>('');
@@ -39,7 +43,6 @@ export const CreateTaskButton = (props: CreateTaskButtonPropsType) => {
   const [isNotificationSwitcherOn, setIsNotificationSwitcherOn] =
     useState<boolean>(false);
   const [isColorPickerSwitcherOn, setIsColorPickerSwitcherOn] = useState<boolean>(false);
-  const [color, setColor] = useState<ColorType>(accentColor);
 
   const handleNotificationSwitcherClick = (isOn: boolean) => {
     if (!isOn) {
@@ -60,11 +63,13 @@ export const CreateTaskButton = (props: CreateTaskButtonPropsType) => {
 
   const onClosePress = (): void => {
     setIsColorPickerSwitcherOn(false);
-    setColor(accentColor);
     setNewTaskTitle('');
     setIsNotificationSwitcherOn(false);
     setIsColorPickerSwitcherOn(false);
-    setColor(accentColor);
+  };
+
+  const setSelectedColor = (selectedColor: ColorType) => {
+    dispatch(setSelectedColorAction({ selectedColor }));
   };
 
   const createTask = (
@@ -76,7 +81,7 @@ export const CreateTaskButton = (props: CreateTaskButtonPropsType) => {
       date: createDate(),
       isDone: false,
       title: newTaskTitle,
-      colorMark: color,
+      colorMark: selectedColor,
     };
 
     if (!isColorPickerSwitcherOn) {
@@ -149,10 +154,10 @@ export const CreateTaskButton = (props: CreateTaskButtonPropsType) => {
         </View>
         {isColorPickerSwitcherOn && (
           <ColorPickerComponent
-            color={color}
+            color={selectedColor}
             marginRight={20}
             marginTop={20}
-            selectColor={setColor}
+            setSelectedColor={setSelectedColor}
           />
         )}
       </>

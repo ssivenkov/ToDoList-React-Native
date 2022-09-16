@@ -12,9 +12,10 @@ export type SetEditedTaskSagaPayloadType = {
   setIsLoading: SetStateType<boolean>;
   setModalVisible: SetStateType<boolean>;
   setEditedTaskTitle: SetStateType<string>;
-  colorMark: ColorType;
   shouldSetColor: boolean;
-  setColorInModal: SetStateType<ColorType>;
+  setColorMark: SetStateType<ColorType>;
+
+  colorMark?: ColorType;
 };
 
 export type SetEditedTaskActionSagaReturnType = {

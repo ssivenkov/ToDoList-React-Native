@@ -53,7 +53,7 @@ export const SelectAccentColorButton = (props: SelectAccentColorButtonPropsType)
         color={color}
         marginRight={10}
         marginTop={10}
-        selectColor={setColor}
+        setSelectedColor={setColor}
       />
     </ModalLongButton>
   );

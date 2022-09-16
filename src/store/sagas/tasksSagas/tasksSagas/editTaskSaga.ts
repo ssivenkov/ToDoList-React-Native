@@ -19,11 +19,16 @@ import { setModalErrorMessageAction } from '@store/actions/userReducerActions/se
 import { NotificationType, TaskType } from '@store/reducers/tasksReducer/types';
 import {
   ChannelIDType,
+  ColorType,
   SnapshotType,
   UserIDType,
 } from '@store/reducers/userReducer/types';
 import { notificationsSelector } from '@store/selectors/tasksSelectors';
-import { channelIDSelector, userIDSelector } from '@store/selectors/userSelectors';
+import {
+  channelIDSelector,
+  selectedColorSelector,
+  userIDSelector,
+} from '@store/selectors/userSelectors';
 import { call, delay, put, select } from 'redux-saga/effects';
 
 export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
@@ -38,7 +43,7 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
     shouldCreateNotification,
     colorMark,
     shouldSetColor,
-    setColorInModal,
+    setColorMark,
   } = action.payload;
 
   try {
@@ -52,8 +57,9 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
     yield delay(START_ANIMATION_DELAY);
     const userID: UserIDType = yield select(userIDSelector);
     const channelId: ChannelIDType = yield select(channelIDSelector);
+    const selectedColor: ColorType = yield select(selectedColorSelector);
 
-    if (shouldSetColor && colorMark) {
+    if (shouldSetColor && selectedColor) {
       const colorMarkSnapshot: SnapshotType = yield DB.ref(
         `${USERS}/${userID}/${TASK_LISTS}/${taskListID}/${TASKS}/${taskID}/${COLOR_MARK}`,
       ).once('value');
@@ -64,7 +70,7 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
         const sendTaskColorToFirebase = () => {
           return DB.ref(
             `${USERS}/${userID}/${TASK_LISTS}/${taskListID}/${TASKS}/${taskID}`,
-          ).update({ colorMark: colorMark });
+          ).update({ colorMark: colorMark ?? selectedColor });
         };
 
         yield call(sendTaskColorToFirebase);
@@ -75,7 +81,7 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
 
         const modifiedTask: TaskType = {
           ...taskSnapshot.val(),
-          colorMark: colorMark,
+          colorMark: colorMark ?? selectedColor,
         };
 
         const sendModifiedTaskToFirebase = () => {
@@ -158,15 +164,26 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
       );
     }
 
-    if (shouldSetColor) {
+    if (shouldSetColor && colorMark) {
       yield put(
         setEditedTaskAction({
           taskListID,
           taskID,
           editedTaskTitle,
-          colorMark,
+          colorMark: colorMark,
         }),
       );
+      yield call(setColorMark, colorMark);
+    } else if (shouldSetColor && !colorMark) {
+      yield put(
+        setEditedTaskAction({
+          taskListID,
+          taskID,
+          editedTaskTitle,
+          colorMark: selectedColor,
+        }),
+      );
+      yield call(setColorMark, selectedColor);
     } else {
       yield put(
         setEditedTaskAction({
@@ -175,12 +192,12 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
           editedTaskTitle,
         }),
       );
+      yield call(setColorMark, '');
     }
 
     yield call(setIsLoading, false);
     yield call(setModalVisible, false);
     yield call(setEditedTaskTitle, editedTaskTitle);
-    yield call(setColorInModal, colorMark);
   } catch (error) {
     yield call(setIsLoading, false);
 

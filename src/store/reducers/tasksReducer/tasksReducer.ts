@@ -196,7 +196,7 @@ export const tasksReducer = (
                       return {
                         ...task,
                         title: editedTaskTitle,
-                        colorMark,
+                        colorMark: colorMark,
                       };
                     } else {
                       const modifiedTask = {

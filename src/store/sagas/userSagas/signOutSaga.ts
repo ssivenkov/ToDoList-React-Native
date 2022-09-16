@@ -1,3 +1,4 @@
+import { COLORS } from '@colors/colors';
 import {
   FACEBOOK_PROVIDER_ID,
   GOOGLE_PROVIDER_ID,
@@ -51,6 +52,8 @@ export function* signOutSaga(action: SignOutSagaActionReturnType) {
         userData: null,
         providerID: null,
         isUserDataSynchronized: false,
+        selectedColor: COLORS.FLIRT,
+        accentColor: COLORS.FLIRT,
       }),
     );
 

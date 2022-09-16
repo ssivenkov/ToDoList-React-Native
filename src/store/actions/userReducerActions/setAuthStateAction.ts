@@ -5,6 +5,8 @@ type SetAuthStateActionPayloadType = {
   userData: UserReducerStateType['userData'];
   providerID: UserReducerStateType['providerID'];
   isUserDataSynchronized: UserReducerStateType['isUserDataSynchronized'];
+  accentColor: UserReducerStateType['accentColor'];
+  selectedColor: UserReducerStateType['selectedColor'];
 };
 
 export type SetAuthStateActionReturnType = {

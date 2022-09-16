@@ -10,6 +10,7 @@ import { SetIsUserDataSynchronizedActionReturnType } from '@store/actions/userRe
 import { SetLanguageActionReturnType } from '@store/actions/userReducerActions/setLanguageAction';
 import { SetErrorModalMessageActionReturnType } from '@store/actions/userReducerActions/setModalErrorMessageAction';
 import { SetProviderIDActionReturnType } from '@store/actions/userReducerActions/setProviderIDAction';
+import { SetSelectedColorActionReturnType } from '@store/actions/userReducerActions/setSelectedColorAction';
 import { SetThemeActionReturnType } from '@store/actions/userReducerActions/setThemeAction';
 import { SetUserAvatarActionReturnType } from '@store/actions/userReducerActions/setUserAvatarAction';
 import { SetUserDataActionReturnType } from '@store/actions/userReducerActions/setUserDataAction';
@@ -47,6 +48,7 @@ export type UserReducerStateType = {
   language: LanguageType;
   theme: ThemeType;
   accentColor: ColorType;
+  selectedColor: ColorType;
   globalLoader: boolean;
   errorModalMessage: ErrorModalMessageType;
   isUserDataSynchronized: boolean;
@@ -61,6 +63,7 @@ export type UserReducerActionsType =
   | SetUserAvatarActionReturnType
   | SetThemeActionReturnType
   | SetAccentColorActionReturnType
+  | SetSelectedColorActionReturnType
   | SetGlobalLoaderActionReturnType
   | SetErrorModalMessageActionReturnType
   | SetIsUserDataSynchronizedActionReturnType;
