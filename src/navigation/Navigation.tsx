@@ -20,6 +20,7 @@ import { UserDataType } from '@store/reducers/userReducer/types';
 import {
   channelIDSelector,
   errorModalMessageSelector,
+  isUserDataSynchronizedSelector,
   themeSelector,
   userIDSelector,
 } from '@store/selectors/userSelectors';
@@ -35,6 +36,7 @@ export const Navigation = () => {
 
   const theme = useSelector(themeSelector);
   const userID = useSelector(userIDSelector);
+  const isUserDataSynchronized = useSelector(isUserDataSynchronizedSelector);
   const channelID = useSelector(channelIDSelector);
 
   const { t } = useTranslation();
@@ -57,7 +59,7 @@ export const Navigation = () => {
   };
 
   useEffect(() => {
-    if (userID) {
+    if (userID && !isUserDataSynchronized) {
       dispatch(checkUserAction());
     }
   }, [userID]);
