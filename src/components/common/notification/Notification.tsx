@@ -16,7 +16,7 @@ export const Notification = (props: NotificationPropsType) => {
   const { isSwitcherOn, onToggleSwitcherClick, date, setDate } = props;
 
   const style = useStyles(styles);
-  const { t } = useTranslation();
+  const { i18n, t } = useTranslation();
   const theme = useSelector(themeSelector);
 
   const iOSDatePickerHeight = 210;
@@ -65,8 +65,9 @@ export const Notification = (props: NotificationPropsType) => {
       />
       <Animated.View style={{ height: heightAnimation }}>
         <DatePicker
-          androidVariant='nativeAndroid'
           date={datePickerDate}
+          fadeToColor='none'
+          locale={i18n.language}
           onDateChange={setDate}
           textColor={theme.TEXT_COLOR}
         />
