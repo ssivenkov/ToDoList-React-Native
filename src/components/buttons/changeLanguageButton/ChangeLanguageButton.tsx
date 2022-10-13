@@ -4,7 +4,7 @@ import { styles } from '@components/buttons/changeLanguageButton/styles';
 import { ChangeLanguageButtonPropsType } from '@components/buttons/changeLanguageButton/types';
 import { TextButton } from '@components/common/buttons/textButton/TextButton';
 import { ModalLongButton } from '@components/common/modals/ModalLongButton';
-import { EN, ENGLISH, RU, RUSSIAN } from '@constants/constants';
+import { BELARUSIAN, BY, EN, ENGLISH, RU, RUSSIAN } from '@constants/constants';
 import { faLanguage } from '@fortawesome/free-solid-svg-icons';
 import { useStyles } from '@root/hooks/useStyles';
 import { changeLanguageAction } from '@store/actions/userSagaActions/changeLanguageAction';
@@ -44,6 +44,11 @@ export const ChangeLanguageButton = (props: ChangeLanguageButtonPropsType) => {
           containerStyle={style.buttonContainer}
           onPress={() => changeLanguage(RU)}
           title={`${RUSSIAN}  🇷🇺`}
+        />
+        <TextButton
+          containerStyle={style.buttonContainer}
+          onPress={() => changeLanguage(BY)}
+          title={`${BELARUSIAN}  🇧🇾`}
         />
       </View>
     </ModalLongButton>
