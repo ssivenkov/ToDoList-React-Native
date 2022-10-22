@@ -11,7 +11,7 @@
       "CreateTaskButtonTitle": "Introduzca el título de la nueva tarea:",
       "CreateTaskListButtonTitle": "Introduzca el título de la nueva lista de tareas:",
       "DeleteQuestionButtonTitle": "¿Estás seguro de borrar <0>{{text}}</0>?",
-      "DoneButton": "¿Está seguro de la tarea <0>{{text}}</0> is completed?",
+      "DoneButton": "¿Está seguro de que la tarea <0>{{text}}</0> se ha completado?",
       "EditTaskListButtonTitle": "Editar el título de la lista de tareas:",
       "EditTaskButton": "Editar tarea:",
       "TodoTasksTab": "Tareas de todo tipo",

@@ -12,6 +12,8 @@ import {
   ES,
   FR,
   FRENCH,
+  IT,
+  ITALIAN,
   RU,
   RUSSIAN,
   SPANISH,
@@ -55,6 +57,11 @@ export const ChangeLanguageButton = (props: ChangeLanguageButtonPropsType) => {
           containerStyle={style.buttonContainer}
           onPress={() => changeLanguage(FR)}
           title={`${FRENCH}  🇫🇷`}
+        />
+        <TextButton
+          containerStyle={style.buttonContainer}
+          onPress={() => changeLanguage(IT)}
+          title={`${ITALIAN}  🇮🇹`}
         />
         <TextButton
           containerStyle={style.buttonContainer}
