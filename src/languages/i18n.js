@@ -10,6 +10,7 @@ import german from './german.json';
 import indonesian from './indonesian.json';
 import italian from './italian.json';
 import japanese from './japanese.json';
+import korean from './korean.json';
 import polish from './polish.json';
 import portuguese from './portuguese.json';
 import russian from './russian.json';
@@ -30,6 +31,7 @@ i18next.use(initReactI18next).init({
     id: indonesian,
     it: italian,
     jp: japanese,
+    kr: korean,
     pl: polish,
     pt: portuguese,
     ru: russian,
