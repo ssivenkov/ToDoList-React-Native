@@ -98,7 +98,7 @@ export const Navigation = () => {
       >
         <View style={style.centeredView}>
           <View style={style.modalView}>
-            <View style={style.content}>
+            <View style={style.contentWithBottomPadding}>
               <Text style={style.text}>{errorModalMessage}</Text>
             </View>
             <View style={style.buttonsContainer}>

@@ -1,5 +1,12 @@
+import {
+  androidHeaderHeight,
+  androidTabBarContainerHeight,
+  iOSHeaderHeight,
+  iOSTabBarContainerHeight,
+} from '@navigation/withAuthNavigator/styles';
 import { ExtendedStylesPropsType } from '@root/hooks/useStyles';
-import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
+import { Platform, StyleSheet, TextStyle, ViewStyle } from 'react-native';
+import { getStatusBarHeight } from 'react-native-status-bar-height';
 
 type DarkModeButtonStylesType = {
   buttonsContainer: ViewStyle;
@@ -7,12 +14,20 @@ type DarkModeButtonStylesType = {
   languageIndicatorText: TextStyle;
 };
 
+const statusBarHeightMultiplier = 2;
+
 export const styles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<DarkModeButtonStylesType>({
     buttonsContainer: {
-      flexDirection: 'row',
-      flexWrap: 'wrap',
-      justifyContent: 'center',
+      maxHeight:
+        props.appHeight -
+        (Platform.OS === 'ios'
+          ? getStatusBarHeight() * statusBarHeightMultiplier +
+            iOSHeaderHeight +
+            iOSTabBarContainerHeight
+          : getStatusBarHeight() * statusBarHeightMultiplier +
+            androidHeaderHeight +
+            androidTabBarContainerHeight),
     },
 
     buttonContainer: {

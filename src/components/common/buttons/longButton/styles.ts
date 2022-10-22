@@ -5,6 +5,7 @@ type LongButtonStylesType = {
   longButtonContainer: ViewStyle;
   contentContainer: ViewStyle;
   icon: ViewStyle;
+  stringIcon: TextStyle;
   text: TextStyle;
 };
 
@@ -28,6 +29,12 @@ export const styles = (props: ExtendedStylesPropsType) =>
 
     icon: {
       marginLeft: 15,
+    },
+
+    stringIcon: {
+      fontSize: 24,
+      color: props.TEXT_COLOR,
+      marginBottom: 1,
     },
 
     text: {
