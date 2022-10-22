@@ -15,6 +15,7 @@ import {
   PT,
   RU,
   TR,
+  UA,
 } from '@constants/constants';
 import { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import { FirebaseDatabaseTypes } from '@react-native-firebase/database';
@@ -50,7 +51,8 @@ export type LanguageType =
   | typeof PT
   | typeof JP
   | typeof CN
-  | typeof KR;
+  | typeof KR
+  | typeof UA;
 export type ProviderIDType = Nullable<
   typeof GOOGLE_PROVIDER_ID | typeof FACEBOOK_PROVIDER_ID
 >;

@@ -33,6 +33,8 @@ import {
   SPANISH,
   TR,
   TURKISH,
+  UA,
+  UKRAINIAN,
 } from '@constants/constants';
 import { faLanguage } from '@fortawesome/free-solid-svg-icons';
 import { useStyles } from '@root/hooks/useStyles';
@@ -118,6 +120,11 @@ export const ChangeLanguageButton = (props: ChangeLanguageButtonPropsType) => {
           containerStyle={style.buttonContainer}
           onPress={() => changeLanguage(BY)}
           title={`${BELARUSIAN}  🇧🇾`}
+        />
+        <TextButton
+          containerStyle={style.buttonContainer}
+          onPress={() => changeLanguage(UA)}
+          title={`${UKRAINIAN}  🇺🇦`}
         />
         <TextButton
           containerStyle={style.buttonContainer}

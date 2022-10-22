@@ -16,6 +16,7 @@ import portuguese from './portuguese.json';
 import russian from './russian.json';
 import spanish from './spanish.json';
 import turkish from './turkish.json';
+import ukrainian from './ukrainian.json';
 
 // eslint-disable-next-line import/no-named-as-default-member
 i18next.use(initReactI18next).init({
@@ -36,6 +37,7 @@ i18next.use(initReactI18next).init({
     pt: portuguese,
     ru: russian,
     tr: turkish,
+    ua: ukrainian,
   },
   react: {
     useSuspense: false,

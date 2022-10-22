@@ -1,0 +1,43 @@
+{
+  "translation": {
+    "common": {
+      "Ok": "Так",
+      "Close": "Закрити",
+      "NoInternetConnection": "Немає з'єднання з Інтернетом. Будь ласка, підключіться до Інтернету",
+      "NoIOSNotificationsPermission": "Немає дозволу на сповіщення. Надати додатку дозвіл на показ сповіщень"
+    },
+    "tasksScreen": {
+      "Tasks": "Списки завдань",
+      "CreateTaskButtonTitle": "Введіть нову назву завдання:",
+      "CreateTaskListButtonTitle": "Введіть новий заголовок списку завдань:",
+      "DeleteQuestionButtonTitle": "Ви впевнені, що хочете видалити <0>{{text}}</0>?",
+      "DoneButton": "Ви впевнені, що завдання <0>{{text}}</0> виконано?",
+      "EditTaskListButtonTitle": "Редагування назви списку завдань:",
+      "EditTaskButton": "Редагувати завдання:",
+      "TodoTasksTab": "Виконати",
+      "DoneTasksTab": "виконані",
+      "NoTaskListsFound": "Списки завдань не знайдено",
+      "EnableNotification": "Нагадуємо про завдання",
+      "EnableMarkColor": "Колір завдання",
+      "TaskNotification": "Виконати завдання"
+    },
+    "signInScreen": {
+      "SignIn": "Ввійти",
+      "SignInWith": "Увійти через <0>{{text}}</0>",
+      "CancelAuthProcess": "Користувач скасував процес входу в систему",
+      "ErrorGettingAccessToken": "Щось пішло не так при отриманні токену доступу"
+    },
+    "accountScreen": {
+      "Account": "Обліковий запис",
+      "DarkMode": "Темний режим",
+      "SignOut": "Вийдіть з системи",
+      "SignOutWarning": "Ви впевнені що хочете вийти з облікового запису?",
+      "ChangeLanguageButtonTitle": "Мова",
+      "ChangeLanguageButtonDescription": "Виберіть мову програми:",
+      "DeleteAccount": "Видалити обліковий запис",
+      "DeleteAccountWarning": "Ви впевнені, що хочете видалити свій обліковий запис з усіма даними?",
+      "AccentColorDescription": "Виберіть акцентний колір:",
+      "AccentColorButtonTitle": "Акцентний колір"
+    }
+  }
+}
