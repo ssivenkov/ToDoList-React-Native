@@ -18,6 +18,8 @@ import {
   INDONESIAN,
   IT,
   ITALIAN,
+  JAPANESE,
+  JP,
   PL,
   POLISH,
   PORTUGUESE,
@@ -112,6 +114,11 @@ export const ChangeLanguageButton = (props: ChangeLanguageButtonPropsType) => {
           containerStyle={style.buttonContainer}
           onPress={() => changeLanguage(BY)}
           title={`${BELARUSIAN}  🇧🇾`}
+        />
+        <TextButton
+          containerStyle={style.buttonContainer}
+          onPress={() => changeLanguage(JP)}
+          title={`${JAPANESE}  🇯🇵`}
         />
       </View>
     </ModalLongButton>

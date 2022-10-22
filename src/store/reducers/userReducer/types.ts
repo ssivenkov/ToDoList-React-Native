@@ -8,6 +8,7 @@ import {
   GOOGLE_PROVIDER_ID,
   ID,
   IT,
+  JP,
   PL,
   PT,
   RU,
@@ -44,7 +45,8 @@ export type LanguageType =
   | typeof TR
   | typeof ID
   | typeof PL
-  | typeof PT;
+  | typeof PT
+  | typeof JP;
 export type ProviderIDType = Nullable<
   typeof GOOGLE_PROVIDER_ID | typeof FACEBOOK_PROVIDER_ID
 >;
