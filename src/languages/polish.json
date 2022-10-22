@@ -14,7 +14,7 @@
       "DoneButton": "Czy na pewno zadanie <0>{{text}}</0> zostało zakończone?",
       "EditTaskListButtonTitle": "Edycja tytułu listy zadań:",
       "EditTaskButton": "Edycja zadania:",
-      "TodoTasksTab": "Zadania Todo",
+      "TodoTasksTab": "Zadania do wykonania",
       "DoneTasksTab": "Wykonane zadania",
       "NoTaskListsFound": "Nie znaleziono żadnych list zadań",
       "EnableNotification": "Przypomnij o zadaniu",

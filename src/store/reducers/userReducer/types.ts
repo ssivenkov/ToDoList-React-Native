@@ -9,6 +9,7 @@ import {
   ID,
   IT,
   PL,
+  PT,
   RU,
   TR,
 } from '@constants/constants';
@@ -42,7 +43,8 @@ export type LanguageType =
   | typeof DE
   | typeof TR
   | typeof ID
-  | typeof PL;
+  | typeof PL
+  | typeof PT;
 export type ProviderIDType = Nullable<
   typeof GOOGLE_PROVIDER_ID | typeof FACEBOOK_PROVIDER_ID
 >;

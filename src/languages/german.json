@@ -11,7 +11,7 @@
       "CreateTaskButtonTitle": "Neue Aufgabenbezeichnung eingeben:",
       "CreateTaskListButtonTitle": "Neuen Aufgabentitel eingeben:",
       "DeleteQuestionButtonTitle": "Sind Sie sicher, dass Sie <0>{{text}}</0> löschen wollen?",
-      "DoneButton": "Sind Sie sicher, dass die Aufgabe <0>{{Text}}</0> abgeschlossen ist?",
+      "DoneButton": "Sind Sie sicher, dass die Aufgabe <0>{{text}}</0> abgeschlossen ist?",
       "EditTaskListButtonTitle": "Titel der Aufgabenliste bearbeiten:",
       "EditTaskButton": "Aufgabe bearbeiten:",
       "TodoTasksTab": "Erledigte Aufgaben",
