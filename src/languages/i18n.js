@@ -8,6 +8,7 @@ import french from './french.json';
 import german from './german.json';
 import indonesian from './indonesian.json';
 import italian from './italian.json';
+import polish from './polish.json';
 import russian from './russian.json';
 import spanish from './spanish.json';
 import turkish from './turkish.json';
@@ -24,6 +25,7 @@ i18next.use(initReactI18next).init({
     fr: french,
     id: indonesian,
     it: italian,
+    pl: polish,
     ru: russian,
     tr: turkish,
   },
