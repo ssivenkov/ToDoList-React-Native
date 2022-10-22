@@ -1,0 +1,43 @@
+{
+  "translation": {
+    "common": {
+      "Ok": "Ok",
+      "Close": "Fermer",
+      "NoInternetConnection": "Pas de connexion Internet. Veuillez vous connecter à l'Internet",
+      "NoIOSNotificationsPermission": "Pas d'autorisation pour les notifications. Donnez à l'application la permission d'afficher des notifications"
+    },
+    "tasksScreen": {
+      "Tasks": "Listes de tâches",
+      "CreateTaskButtonTitle": "Entrez le nouveau titre de la tâche:",
+      "CreateTaskListButtonTitle": "Saisissez le nouveau titre de la liste de tâches:",
+      "DeleteQuestionButtonTitle": "Etes-vous sûr de vouloir supprimer <0>{{text}}</0>?",
+      "DoneButton": "Etes-vous sûr que la tâche <0>{{text}}</0> est terminée?",
+      "EditTaskListButtonTitle": "Modifier le titre de la liste des tâches:",
+      "EditTaskButton": "Modifier la tâche:",
+      "TodoTasksTab": "Tâches à faire",
+      "DoneTasksTab": "Tâches effectuées",
+      "NoTaskListsFound": "Aucune liste de tâches trouvée",
+      "EnableNotification": "Rappeler la tâche",
+      "EnableMarkColor": "Couleur de la tâche",
+      "TaskNotification": "Effectuer la tâche"
+    },
+    "signInScreen": {
+      "SignIn": "Se connecter",
+      "SignInWith": "Se connecter avec <0>{{text}}</0>",
+      "CancelAuthProcess": "L'utilisateur a annulé le processus de connexion",
+      "ErrorGettingAccessToken": "Un problème est survenu lors de l'obtention du jeton d'accès"
+    },
+    "accountScreen": {
+      "Account": "Compte",
+      "DarkMode": "Mode sombre",
+      "SignOut": "Se déconnecter",
+      "SignOutWarning": "Vous êtes sûr de vouloir vous déconnecter?",
+      "ChangeLanguageButtonTitle": "Langue",
+      "ChangeLanguageButtonDescription": "Sélectionnez la langue de l'application:",
+      "DeleteAccount": "Supprimer le compte",
+      "DeleteAccountWarning": "Êtes-vous sûr de vouloir supprimer votre compte avec toutes vos données?",
+      "AccentColorDescription": "Sélectionnez la couleur d'accentuation:",
+      "AccentColorButtonTitle": "Couleur d'accentuation"
+    }
+  }
+}
