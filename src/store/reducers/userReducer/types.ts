@@ -8,6 +8,7 @@ import {
   GOOGLE_PROVIDER_ID,
   IT,
   RU,
+  TR,
 } from '@constants/constants';
 import { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import { FirebaseDatabaseTypes } from '@react-native-firebase/database';
@@ -36,7 +37,8 @@ export type LanguageType =
   | typeof FR
   | typeof ES
   | typeof IT
-  | typeof DE;
+  | typeof DE
+  | typeof TR;
 export type ProviderIDType = Nullable<
   typeof GOOGLE_PROVIDER_ID | typeof FACEBOOK_PROVIDER_ID
 >;
