@@ -1,0 +1,43 @@
+{
+  "translation": {
+    "common": {
+      "Ok": "Ok",
+      "Close": "Schließen Sie",
+      "NoInternetConnection": "Keine Internetverbindung. Bitte stellen Sie eine Verbindung mit dem Internet her",
+      "NoIOSNotificationsPermission": "Keine Berechtigung für Benachrichtigungen. Erteilen Sie der App die Erlaubnis, Benachrichtigungen anzuzeigen"
+    },
+    "tasksScreen": {
+      "Tasks": "Aufgabenlisten",
+      "CreateTaskButtonTitle": "Neue Aufgabenbezeichnung eingeben:",
+      "CreateTaskListButtonTitle": "Neuen Aufgabentitel eingeben:",
+      "DeleteQuestionButtonTitle": "Sind Sie sicher, dass Sie <0>{{text}}</0> löschen wollen?",
+      "DoneButton": "Sind Sie sicher, dass die Aufgabe <0>{{Text}}</0> abgeschlossen ist?",
+      "EditTaskListButtonTitle": "Titel der Aufgabenliste bearbeiten:",
+      "EditTaskButton": "Aufgabe bearbeiten:",
+      "TodoTasksTab": "Erledigte Aufgaben",
+      "DoneTasksTab": "Erledigte Aufgaben",
+      "NoTaskListsFound": "Keine Aufgabenliste gefunden",
+      "EnableNotification": "Erinnern Sie an die Aufgabe",
+      "EnableMarkColor": "Farbe der Aufgabe",
+      "TaskNotification": "Aufgabe ausführen"
+    },
+    "signInScreen": {
+      "SignIn": "Eintragen",
+      "SignInWith": "Anmeldung mit <0>{{text}}</0>",
+      "CancelAuthProcess": "Benutzer hat den Anmeldevorgang abgebrochen",
+      "ErrorGettingAccessToken": "Beim Abrufen des Zugriffstokens ist etwas schief gelaufen"
+    },
+    "accountScreen": {
+      "Account": "Konto",
+      "DarkMode": "Dunkler Modus",
+      "SignOut": "Abmelden",
+      "SignOutWarning": "Sind Sie sicher, dass Sie sich abmelden wollen?",
+      "ChangeLanguageButtonTitle": "Sprache",
+      "ChangeLanguageButtonDescription": "Sprache der Anwendung wählen:",
+      "DeleteAccount": "Konto löschen",
+      "DeleteAccountWarning": "Sind Sie sicher, dass Sie Ihr Konto mit allen Daten löschen wollen?",
+      "AccentColorDescription": "Akzentfarbe auswählen:",
+      "AccentColorButtonTitle": "Akzentfarbe"
+    }
+  }
+}
