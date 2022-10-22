@@ -2,7 +2,7 @@ import React from 'react';
 
 import { styles } from '@components/buttons/changeLanguageButton/styles';
 import { ChangeLanguageButtonPropsType } from '@components/buttons/changeLanguageButton/types';
-import { TextButton } from '@components/common/buttons/textButton/TextButton';
+import { LongButton } from '@components/common/buttons/longButton/LongButton';
 import { ModalLongButton } from '@components/common/modals/ModalLongButton';
 import {
   BELARUSIAN,
@@ -42,7 +42,7 @@ import { changeLanguageAction } from '@store/actions/userSagaActions/changeLangu
 import { LanguageType } from '@store/reducers/userReducer/types';
 import { languageSelector } from '@store/selectors/userSelectors';
 import { useTranslation } from 'react-i18next';
-import { Text, View } from 'react-native';
+import { ScrollView, Text } from 'react-native';
 import 'react-native-get-random-values';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -63,85 +63,101 @@ export const ChangeLanguageButton = (props: ChangeLanguageButtonPropsType) => {
       buttonIcon={faLanguage}
       buttonTitle={t('accountScreen.ChangeLanguageButtonTitle')}
       description={t('accountScreen.ChangeLanguageButtonDescription')}
+      hasContentBottomPadding={false}
       rightComponent={<Text style={style.languageIndicatorText}>{language}</Text>}
     >
-      <View style={style.buttonsContainer}>
-        <TextButton
-          containerStyle={style.buttonContainer}
+      <ScrollView style={style.buttonsContainer}>
+        <LongButton
+          disable={false}
+          icon='🇺🇸'
           onPress={() => changeLanguage(EN)}
-          title={`${ENGLISH}  🇺🇸`}
+          title={ENGLISH}
         />
-        <TextButton
-          containerStyle={style.buttonContainer}
+        <LongButton
+          disable={false}
+          icon='🇫🇷'
           onPress={() => changeLanguage(FR)}
-          title={`${FRENCH}  🇫🇷`}
+          title={FRENCH}
         />
-        <TextButton
-          containerStyle={style.buttonContainer}
+        <LongButton
+          disable={false}
+          icon='🇩🇪'
           onPress={() => changeLanguage(DE)}
-          title={`${GERMAN}  🇩🇪`}
+          title={GERMAN}
         />
-        <TextButton
-          containerStyle={style.buttonContainer}
-          onPress={() => changeLanguage(ID)}
-          title={`${INDONESIAN}  🇮🇩`}
-        />
-        <TextButton
-          containerStyle={style.buttonContainer}
+        <LongButton
+          disable={false}
+          icon='🇮🇹'
           onPress={() => changeLanguage(IT)}
-          title={`${ITALIAN}  🇮🇹`}
+          title={ITALIAN}
         />
-        <TextButton
-          containerStyle={style.buttonContainer}
-          onPress={() => changeLanguage(PL)}
-          title={`${POLISH}  🇵🇱`}
-        />
-        <TextButton
-          containerStyle={style.buttonContainer}
+        <LongButton
+          disable={false}
+          icon='🇵🇹'
           onPress={() => changeLanguage(PT)}
-          title={`${PORTUGUESE}  🇵🇹`}
+          title={PORTUGUESE}
         />
-        <TextButton
-          containerStyle={style.buttonContainer}
+        <LongButton
+          disable={false}
+          icon='🇪🇸'
           onPress={() => changeLanguage(ES)}
-          title={`${SPANISH}  🇪🇸`}
+          title={SPANISH}
         />
-        <TextButton
-          containerStyle={style.buttonContainer}
+        <LongButton
+          disable={false}
+          icon='🇹🇷'
           onPress={() => changeLanguage(TR)}
-          title={`${TURKISH}  🇹🇷`}
+          title={TURKISH}
         />
-        <TextButton
-          containerStyle={style.buttonContainer}
-          onPress={() => changeLanguage(RU)}
-          title={`${RUSSIAN}  🇷🇺`}
+        <LongButton
+          disable={false}
+          icon='🇵🇱'
+          onPress={() => changeLanguage(PL)}
+          title={POLISH}
         />
-        <TextButton
-          containerStyle={style.buttonContainer}
-          onPress={() => changeLanguage(BY)}
-          title={`${BELARUSIAN}  🇧🇾`}
-        />
-        <TextButton
-          containerStyle={style.buttonContainer}
+        <LongButton
+          disable={false}
+          icon='🇺🇦'
           onPress={() => changeLanguage(UA)}
-          title={`${UKRAINIAN}  🇺🇦`}
+          title={UKRAINIAN}
         />
-        <TextButton
-          containerStyle={style.buttonContainer}
+        <LongButton
+          disable={false}
+          icon='🇧🇾'
+          onPress={() => changeLanguage(BY)}
+          title={BELARUSIAN}
+        />
+        <LongButton
+          disable={false}
+          icon='🇷🇺'
+          onPress={() => changeLanguage(RU)}
+          title={RUSSIAN}
+        />
+        <LongButton
+          disable={false}
+          icon='🇮🇩'
+          onPress={() => changeLanguage(ID)}
+          title={INDONESIAN}
+        />
+        <LongButton
+          disable={false}
+          icon='🇨🇳'
           onPress={() => changeLanguage(CN)}
-          title={`${CHINESE}  🇨🇳`}
+          title={CHINESE}
         />
-        <TextButton
-          containerStyle={style.buttonContainer}
+        <LongButton
+          disable={false}
+          icon='🇰🇷'
           onPress={() => changeLanguage(KR)}
-          title={`${KOREAN}  🇰🇷`}
+          title={KOREAN}
         />
-        <TextButton
-          containerStyle={style.buttonContainer}
+        <LongButton
+          disable={false}
+          icon='🇯🇵'
           onPress={() => changeLanguage(JP)}
-          title={`${JAPANESE}  🇯🇵`}
+          title={JAPANESE}
         />
-      </View>
+      </ScrollView>
     </ModalLongButton>
   );
 };

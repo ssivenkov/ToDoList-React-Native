@@ -8,5 +8,6 @@ export const styles = StyleSheet.create<ColorPickerStylesType>({
   container: {
     maxHeight: 160,
     alignItems: 'center',
+    marginBottom: 12,
   },
 });

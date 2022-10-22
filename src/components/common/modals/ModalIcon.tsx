@@ -58,7 +58,7 @@ export const ModalIcon = (props: ModalIconPropsType) => {
         <Modal transparent visible={modalVisibleFromProps ?? modalVisible}>
           <View style={style.centeredView}>
             <View style={style.modalView}>
-              <View style={style.content}>
+              <View style={style.contentWithBottomPadding}>
                 {description && <Text style={style.text}>{description}</Text>}
                 {children && <View style={style.contentContainer}>{children}</View>}
               </View>

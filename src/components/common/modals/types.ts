@@ -26,4 +26,5 @@ export type ModalLongButtonPropsType = {
   rightComponent?: JSX.Element;
   closeHandler?: () => void;
   disable?: boolean;
+  hasContentBottomPadding?: boolean;
 };

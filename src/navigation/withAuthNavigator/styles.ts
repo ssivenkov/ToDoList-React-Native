@@ -14,10 +14,10 @@ export type WithAuthNavigationStylesType = {
   title: TextStyle;
 };
 
-const iOSHeaderHeight = 90;
-const androidHeaderHeight = 50;
-const iOSTabBarContainerHeight = 82;
-const androidTabBarContainerHeight = 50;
+export const iOSHeaderHeight = 90;
+export const androidHeaderHeight = 50;
+export const iOSTabBarContainerHeight = 82;
+export const androidTabBarContainerHeight = 50;
 
 export const styles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<WithAuthNavigationStylesType>({

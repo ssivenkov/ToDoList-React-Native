@@ -20,6 +20,7 @@ export const ModalLongButton = (props: ModalLongButtonPropsType) => {
     closeHandler,
     rightComponent,
     disable,
+    hasContentBottomPadding = true,
   } = props;
 
   const style = useStyles(styles);
@@ -46,7 +47,13 @@ export const ModalLongButton = (props: ModalLongButtonPropsType) => {
       <Modal onRequestClose={onClosePress} transparent visible={modalVisible}>
         <View style={style.centeredView}>
           <View style={style.modalView}>
-            <View style={style.content}>
+            <View
+              style={
+                hasContentBottomPadding
+                  ? style.contentWithBottomPadding
+                  : style.contentWithoutBottomPadding
+              }
+            >
               {description && <Text style={style.text}>{description}</Text>}
               {children && <View>{children}</View>}
             </View>

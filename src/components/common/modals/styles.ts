@@ -5,7 +5,8 @@ import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 type ModalStylesType = {
   centeredView: ViewStyle;
   modalView: ViewStyle;
-  content: ViewStyle;
+  contentWithBottomPadding: ViewStyle;
+  contentWithoutBottomPadding: ViewStyle;
   text: TextStyle;
   contentContainer: ViewStyle;
   buttonsContainer: ViewStyle;
@@ -29,14 +30,20 @@ export const styles = (props: ExtendedStylesPropsType) =>
       backgroundColor: props.BACKGROUND_COLOR,
     },
 
-    content: {
+    contentWithBottomPadding: {
+      alignItems: 'center',
+      marginBottom: 16,
+      marginHorizontal: 16,
+    },
+
+    contentWithoutBottomPadding: {
       alignItems: 'center',
       marginHorizontal: 16,
     },
 
     text: {
       fontSize: 18,
-      marginBottom: 12,
+      paddingBottom: 4,
       color: props.TEXT_COLOR,
     },
 
@@ -47,6 +54,5 @@ export const styles = (props: ExtendedStylesPropsType) =>
     buttonsContainer: {
       maxWidth: '100%',
       flexDirection: 'row',
-      marginTop: 20,
     },
   });
