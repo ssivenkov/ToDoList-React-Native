@@ -1,0 +1,43 @@
+{
+  "translation": {
+    "common": {
+      "Ok": "Так",
+      "Close": "Закрыць",
+      "NoInternetConnection": "Адсутнічае падлучэнне да інтэрнэту. Калі ласка, падключыцеся да інтэрнэту",
+      "NoIOSNotificationsPermission": "Адсутнічае дазвол для апавяшчэнняў. Падайце дадатку дазвол на паказ апавяшчэнняў"
+    },
+    "tasksScreen": {
+      "Tasks": "Спісы задач",
+      "CreateTaskButtonTitle": "Назва новай задачы:",
+      "CreateTaskListButtonTitle": "Назва новага спісу задач:",
+      "DeleteQuestionButtonTitle": "Выдаліць <0>{{text}}</0>?",
+      "DoneButton": "Задача <0>{{text}}</0> выканана?",
+      "EditTaskListButtonTitle": "Назва спісу задач:",
+      "EditTaskButton": "Рэдагаванне задачы:",
+      "TodoTasksTab": "Выканаць",
+      "DoneTasksTab": "Выкананыя",
+      "NoTaskListsFound": "Спісаў задач не знойдзена",
+      "EnableNotification": "Нагадаць аб задачы",
+      "EnableMarkColor": "Колер задачы",
+      "TaskNotification": "Выканайце задачу"
+    },
+    "signInScreen": {
+      "SignIn": "Уваход",
+      "SignInWith": "Уваход праз <0>{{text}}</0>",
+      "CancelAuthProcess": "Працэс уваходу адменены карыстальнікам",
+      "ErrorGettingAccessToken": "Памылка атрымання токена аўтарызацыі"
+    },
+    "accountScreen": {
+      "Account": "Акаўнт",
+      "DarkMode": "Цёмная тэма",
+      "SignOut": "Выхад",
+      "SignOutWarning": "Вы ўпэўненыя, што хочаце выйсці з уліковага запісу?",
+      "ChangeLanguageButtonTitle": "Мова",
+      "ChangeLanguageButtonDescription": "Абярыце мову перакладання:",
+      "DeleteAccount": "Выдаліць акаўнт",
+      "DeleteAccountWarning": "Вы ўпэўненыя, што жадаеце выдаліць свой уліковы запіс з усімі вашымі дадзенымі?",
+      "AccentColorDescription": "Абярыце колер акцэнту:",
+      "AccentColorButtonTitle": "Колер акцэнту"
+    }
+  }
+}

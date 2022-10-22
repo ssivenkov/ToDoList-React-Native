@@ -1,0 +1,43 @@
+{
+  "translation": {
+    "common": {
+      "Ok": "Ok",
+      "Close": "Chiudere",
+      "NoInternetConnection": "Nessuna connessione a Internet. Si prega di connettersi a Internet",
+      "NoIOSNotificationsPermission": "Nessuna autorizzazione per le notifiche. Concedi all'app l'autorizzazione a mostrare le notifiche"
+    },
+    "tasksScreen": {
+      "Tasks": "Elenchi di attività",
+      "CreateTaskButtonTitle": "Immettere il nuovo titolo dell'attività:",
+      "CreateTaskListButtonTitle": "Immettere il titolo del nuovo elenco di attività:",
+      "DeleteQuestionButtonTitle": "Sei sicuro di voler cancellare <0>{{text}}</0>?",
+      "DoneButton": "Si è sicuri che l'attività <0>{{text}}</0> sia stata completata?",
+      "EditTaskListButtonTitle": "Modifica del titolo dell'elenco di attività:",
+      "EditTaskButton": "Modifica attività:",
+      "TodoTasksTab": "Attività da svolgere",
+      "DoneTasksTab": "Attività svolte",
+      "NoTaskListsFound": "Non sono stati trovati elenchi di attività",
+      "EnableNotification": "Ricordare il compito",
+      "EnableMarkColor": "Colore del compito",
+      "TaskNotification": "Eseguire il compito"
+    },
+    "signInScreen": {
+      "SignIn": "Accedi",
+      "SignInWith": "Accedi con <0>{{text}}</0>",
+      "CancelAuthProcess": "L'utente ha annullato il processo di login",
+      "ErrorGettingAccessToken": "Qualcosa è andato storto nell'ottenimento del token di accesso"
+    },
+    "accountScreen": {
+      "Account": "Conto",
+      "DarkMode": "Modalità scura",
+      "SignOut": "Esci",
+      "SignOutWarning": "È sicuro di voler firmare per uscire?",
+      "ChangeLanguageButtonTitle": "Lingua",
+      "ChangeLanguageButtonDescription": "Selezionare la lingua dell'applicazione:",
+      "DeleteAccount": "Cancellare l'account",
+      "DeleteAccountWarning": "Sei sicuro di voler cancellare il tuo account con tutti i tuoi dati?",
+      "AccentColorDescription": "Selezionare il colore dell'accento:",
+      "AccentColorButtonTitle": "Colore d'accento"
+    }
+  }
+}

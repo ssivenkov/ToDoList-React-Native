@@ -1,0 +1,43 @@
+{
+  "translation": {
+    "common": {
+      "Ok": "Ok",
+      "Close": "Zamknij",
+      "NoInternetConnection": "Brak połączenia z internetem. Proszę połączyć się z Internetem",
+      "NoIOSNotificationsPermission": "Brak pozwolenia na wyświetlanie powiadomień. Zezwól aplikacji na wyświetlanie powiadomień"
+    },
+    "tasksScreen": {
+      "Tasks": "Listy zadań",
+      "CreateTaskButtonTitle": "Wprowadź nowy tytuł zadania:",
+      "CreateTaskListButtonTitle": "Wprowadź nowy tytuł listy zadań:",
+      "DeleteQuestionButtonTitle": "Czy na pewno chcesz usunąć <0>{{text}}</0>?",
+      "DoneButton": "Czy na pewno zadanie <0>{{text}}</0> zostało zakończone?",
+      "EditTaskListButtonTitle": "Edycja tytułu listy zadań:",
+      "EditTaskButton": "Edycja zadania:",
+      "TodoTasksTab": "Zadania do wykonania",
+      "DoneTasksTab": "Wykonane zadania",
+      "NoTaskListsFound": "Nie znaleziono żadnych list zadań",
+      "EnableNotification": "Przypomnij o zadaniu",
+      "EnableMarkColor": "Kolor zadania",
+      "TaskNotification": "Wykonać zadanie"
+    },
+    "signInScreen": {
+      "SignIn": "Zaloguj się",
+      "SignInWith": "Zaloguj się za pomocą <0>{{text}}</0>",
+      "CancelAuthProcess": "Użytkownik anulował proces logowania",
+      "ErrorGettingAccessToken": "Coś poszło nie tak z uzyskaniem tokena dostępu"
+    },
+    "accountScreen": {
+      "Account": "Konto",
+      "DarkMode": "Tryb ciemny",
+      "SignOut": "Wypisać się",
+      "SignOutWarning": "Czy na pewno chcesz się wypisać?",
+      "ChangeLanguageButtonTitle": "Język",
+      "ChangeLanguageButtonDescription": "Wybierz język aplikacji:",
+      "DeleteAccount": "Usuń konto",
+      "DeleteAccountWarning": "Czy na pewno chcesz usunąć swoje konto ze wszystkimi danymi?",
+      "AccentColorDescription": "Wybierz kolor akcentu:",
+      "AccentColorButtonTitle": "Kolor akcentu"
+    }
+  }
+}

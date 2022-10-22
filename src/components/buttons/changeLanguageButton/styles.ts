@@ -11,10 +11,12 @@ export const styles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<DarkModeButtonStylesType>({
     buttonsContainer: {
       flexDirection: 'row',
+      flexWrap: 'wrap',
+      justifyContent: 'center',
     },
 
     buttonContainer: {
-      margin: 15,
+      margin: 8,
     },
 
     languageIndicatorText: {

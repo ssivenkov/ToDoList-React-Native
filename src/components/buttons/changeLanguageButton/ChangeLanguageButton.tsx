@@ -4,7 +4,38 @@ import { styles } from '@components/buttons/changeLanguageButton/styles';
 import { ChangeLanguageButtonPropsType } from '@components/buttons/changeLanguageButton/types';
 import { TextButton } from '@components/common/buttons/textButton/TextButton';
 import { ModalLongButton } from '@components/common/modals/ModalLongButton';
-import { EN, ENGLISH, RU, RUSSIAN } from '@constants/constants';
+import {
+  BELARUSIAN,
+  BY,
+  CHINESE,
+  CN,
+  DE,
+  EN,
+  ENGLISH,
+  ES,
+  FR,
+  FRENCH,
+  GERMAN,
+  ID,
+  INDONESIAN,
+  IT,
+  ITALIAN,
+  JAPANESE,
+  JP,
+  KOREAN,
+  KR,
+  PL,
+  POLISH,
+  PORTUGUESE,
+  PT,
+  RU,
+  RUSSIAN,
+  SPANISH,
+  TR,
+  TURKISH,
+  UA,
+  UKRAINIAN,
+} from '@constants/constants';
 import { faLanguage } from '@fortawesome/free-solid-svg-icons';
 import { useStyles } from '@root/hooks/useStyles';
 import { changeLanguageAction } from '@store/actions/userSagaActions/changeLanguageAction';
@@ -42,8 +73,73 @@ export const ChangeLanguageButton = (props: ChangeLanguageButtonPropsType) => {
         />
         <TextButton
           containerStyle={style.buttonContainer}
+          onPress={() => changeLanguage(FR)}
+          title={`${FRENCH}  🇫🇷`}
+        />
+        <TextButton
+          containerStyle={style.buttonContainer}
+          onPress={() => changeLanguage(DE)}
+          title={`${GERMAN}  🇩🇪`}
+        />
+        <TextButton
+          containerStyle={style.buttonContainer}
+          onPress={() => changeLanguage(ID)}
+          title={`${INDONESIAN}  🇮🇩`}
+        />
+        <TextButton
+          containerStyle={style.buttonContainer}
+          onPress={() => changeLanguage(IT)}
+          title={`${ITALIAN}  🇮🇹`}
+        />
+        <TextButton
+          containerStyle={style.buttonContainer}
+          onPress={() => changeLanguage(PL)}
+          title={`${POLISH}  🇵🇱`}
+        />
+        <TextButton
+          containerStyle={style.buttonContainer}
+          onPress={() => changeLanguage(PT)}
+          title={`${PORTUGUESE}  🇵🇹`}
+        />
+        <TextButton
+          containerStyle={style.buttonContainer}
+          onPress={() => changeLanguage(ES)}
+          title={`${SPANISH}  🇪🇸`}
+        />
+        <TextButton
+          containerStyle={style.buttonContainer}
+          onPress={() => changeLanguage(TR)}
+          title={`${TURKISH}  🇹🇷`}
+        />
+        <TextButton
+          containerStyle={style.buttonContainer}
           onPress={() => changeLanguage(RU)}
           title={`${RUSSIAN}  🇷🇺`}
+        />
+        <TextButton
+          containerStyle={style.buttonContainer}
+          onPress={() => changeLanguage(BY)}
+          title={`${BELARUSIAN}  🇧🇾`}
+        />
+        <TextButton
+          containerStyle={style.buttonContainer}
+          onPress={() => changeLanguage(UA)}
+          title={`${UKRAINIAN}  🇺🇦`}
+        />
+        <TextButton
+          containerStyle={style.buttonContainer}
+          onPress={() => changeLanguage(CN)}
+          title={`${CHINESE}  🇨🇳`}
+        />
+        <TextButton
+          containerStyle={style.buttonContainer}
+          onPress={() => changeLanguage(KR)}
+          title={`${KOREAN}  🇰🇷`}
+        />
+        <TextButton
+          containerStyle={style.buttonContainer}
+          onPress={() => changeLanguage(JP)}
+          title={`${JAPANESE}  🇯🇵`}
         />
       </View>
     </ModalLongButton>

@@ -1,0 +1,43 @@
+{
+  "translation": {
+    "common": {
+      "Ok": "Baik",
+      "Close": "Tutup",
+      "NoInternetConnection": "Tidak ada koneksi internet. Harap terhubung ke Internet",
+      "NoIOSNotificationsPermission": "Tidak ada izin untuk notifikasi. Berikan izin aplikasi untuk menampilkan notifikasi"
+    },
+    "tasksScreen": {
+      "Tasks": "Daftar tugas",
+      "CreateTaskButtonTitle": "Masukkan judul tugas baru:",
+      "CreateTaskListButtonTitle": "Masukkan judul daftar tugas baru:",
+      "DeleteQuestionButtonTitle": "Apakah Anda yakin untuk menghapus <0>{{{text}}</0>?",
+      "DoneButton": "Apakah Anda yakin tugas <0>{{{text}}</0> sudah selesai?",
+      "EditTaskListButtonTitle": "Edit judul daftar tugas:",
+      "EditTaskButton": "Edit tugas:",
+      "TodoTasksTab": "Tugas",
+      "DoneTasksTab": "Tugas siap pakai",
+      "NoTaskListsFound": "Tidak ada daftar tugas yang ditemukan",
+      "EnableNotification": "Mengingatkan tugas",
+      "EnableMarkColor": "Warna tugas",
+      "TaskNotification": "Melakukan tugas"
+    },
+    "signInScreen": {
+      "SignIn": "Masuk",
+      "SignInWith": "Masuk dengan <0>{{text}}</0>",
+      "CancelAuthProcess": "Pengguna membatalkan proses login",
+      "ErrorGettingAccessToken": "Ada yang salah dalam mendapatkan token akses"
+    },
+    "accountScreen": {
+      "Account": "Akun",
+      "DarkMode": "Mode gelap",
+      "SignOut": "Keluar",
+      "SignOutWarning": "Apakah Anda yakin ingin keluar?",
+      "ChangeLanguageButtonTitle": "Bahasa",
+      "ChangeLanguageButtonDescription": "Pilih bahasa aplikasi:",
+      "DeleteAccount": "Hapus akun",
+      "DeleteAccountWarning": "Apakah Anda yakin ingin menghapus akun Anda dengan semua data Anda?",
+      "AccentColorDescription": "Pilih warna aksen:",
+      "AccentColorButtonTitle": "Warna aksen"
+    }
+  }
+}

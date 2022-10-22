@@ -1,4 +1,22 @@
-import { EN, FACEBOOK_PROVIDER_ID, GOOGLE_PROVIDER_ID, RU } from '@constants/constants';
+import {
+  BY,
+  CN,
+  DE,
+  EN,
+  ES,
+  FACEBOOK_PROVIDER_ID,
+  FR,
+  GOOGLE_PROVIDER_ID,
+  ID,
+  IT,
+  JP,
+  KR,
+  PL,
+  PT,
+  RU,
+  TR,
+  UA,
+} from '@constants/constants';
 import { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import { FirebaseDatabaseTypes } from '@react-native-firebase/database';
 import { Nullable } from '@root/types/common/types';
@@ -19,7 +37,22 @@ export type SnapshotType = FirebaseDatabaseTypes.DataSnapshot;
 export type UserDataType = Nullable<FirebaseAuthTypes.User>;
 export type UserIDType = Nullable<FirebaseAuthTypes.User['uid']>;
 export type ChannelIDType = string;
-export type LanguageType = typeof EN | typeof RU;
+export type LanguageType =
+  | typeof EN
+  | typeof RU
+  | typeof BY
+  | typeof FR
+  | typeof ES
+  | typeof IT
+  | typeof DE
+  | typeof TR
+  | typeof ID
+  | typeof PL
+  | typeof PT
+  | typeof JP
+  | typeof CN
+  | typeof KR
+  | typeof UA;
 export type ProviderIDType = Nullable<
   typeof GOOGLE_PROVIDER_ID | typeof FACEBOOK_PROVIDER_ID
 >;
