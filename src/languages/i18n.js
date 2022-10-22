@@ -6,16 +6,18 @@ import belarusian from './belarusian.json';
 import english from './english.json';
 import french from './french.json';
 import russian from './russian.json';
+import spanish from './spanish.json';
 
 // eslint-disable-next-line import/no-named-as-default-member
 i18next.use(initReactI18next).init({
   lng: EN,
   interpolation: { escapeValue: false },
   resources: {
+    by: belarusian,
     en: english,
+    es: spanish,
     fr: french,
     ru: russian,
-    by: belarusian,
   },
   react: {
     useSuspense: false,

@@ -1,6 +1,7 @@
 import {
   BY,
   EN,
+  ES,
   FACEBOOK_PROVIDER_ID,
   FR,
   GOOGLE_PROVIDER_ID,
@@ -26,7 +27,7 @@ export type SnapshotType = FirebaseDatabaseTypes.DataSnapshot;
 export type UserDataType = Nullable<FirebaseAuthTypes.User>;
 export type UserIDType = Nullable<FirebaseAuthTypes.User['uid']>;
 export type ChannelIDType = string;
-export type LanguageType = typeof EN | typeof RU | typeof BY | typeof FR;
+export type LanguageType = typeof EN | typeof RU | typeof BY | typeof FR | typeof ES;
 export type ProviderIDType = Nullable<
   typeof GOOGLE_PROVIDER_ID | typeof FACEBOOK_PROVIDER_ID
 >;
