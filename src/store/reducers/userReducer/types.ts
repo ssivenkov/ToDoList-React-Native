@@ -1,5 +1,6 @@
 import {
   BY,
+  CN,
   DE,
   EN,
   ES,
@@ -46,7 +47,8 @@ export type LanguageType =
   | typeof ID
   | typeof PL
   | typeof PT
-  | typeof JP;
+  | typeof JP
+  | typeof CN;
 export type ProviderIDType = Nullable<
   typeof GOOGLE_PROVIDER_ID | typeof FACEBOOK_PROVIDER_ID
 >;

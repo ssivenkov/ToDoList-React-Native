@@ -7,6 +7,8 @@ import { ModalLongButton } from '@components/common/modals/ModalLongButton';
 import {
   BELARUSIAN,
   BY,
+  CHINESE,
+  CN,
   DE,
   EN,
   ENGLISH,
@@ -114,6 +116,11 @@ export const ChangeLanguageButton = (props: ChangeLanguageButtonPropsType) => {
           containerStyle={style.buttonContainer}
           onPress={() => changeLanguage(BY)}
           title={`${BELARUSIAN}  🇧🇾`}
+        />
+        <TextButton
+          containerStyle={style.buttonContainer}
+          onPress={() => changeLanguage(CN)}
+          title={`${CHINESE}  🇨🇳`}
         />
         <TextButton
           containerStyle={style.buttonContainer}

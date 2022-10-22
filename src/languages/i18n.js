@@ -3,6 +3,7 @@ import i18next from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
 import belarusian from './belarusian.json';
+import chinese from './chinese.json';
 import english from './english.json';
 import french from './french.json';
 import german from './german.json';
@@ -21,6 +22,7 @@ i18next.use(initReactI18next).init({
   interpolation: { escapeValue: false },
   resources: {
     by: belarusian,
+    cn: chinese,
     de: german,
     en: english,
     es: spanish,
