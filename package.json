@@ -102,6 +102,9 @@
     "app_dependencies_MacOS": "cd android && ./gradlew app:dependencies",
     "app_dependencies_Windows": "cd android && gradlew app:dependencies"
   },
+  "engines": {
+    "node": "<=16.17.0"
+  },
   "jest": {
     "preset": "react-native"
   }
