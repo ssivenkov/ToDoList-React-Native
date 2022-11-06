@@ -93,6 +93,7 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "lint": "eslint . --color && tsc --noEmit",
+    "search_global_errors": "npx react-native doctor",
     "fix_Exit_code_7": "adb uninstall com.myproject",
     "metro_connect": "adb -s 18aeadf7 reverse tcp:8081 tcp:8081",
     "gradle_clean_MacOS": "cd android && ./gradlew clean && cd ..",
