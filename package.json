@@ -89,6 +89,8 @@
   },
   "scripts": {
     "husky_install": "husky install",
+    "reinstall_packages_MacOS": "rm -rf node_modules && npm install",
+    "reinstall_packages_Windows": "RMDIR /Q/S node_modules && npm install",
     "start": "react-native start --reset-cache",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
