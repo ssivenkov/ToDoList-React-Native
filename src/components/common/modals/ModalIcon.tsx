@@ -55,7 +55,7 @@ export const ModalIcon = (props: ModalIconPropsType) => {
   return (
     <View>
       <View>
-        <Modal transparent visible={modalVisibleFromProps ?? modalVisible}>
+        <Modal transparent={true} visible={modalVisibleFromProps ?? modalVisible}>
           <View style={style.centeredView}>
             <View style={style.modalView}>
               <View style={style.contentWithBottomPadding}>
@@ -65,7 +65,7 @@ export const ModalIcon = (props: ModalIconPropsType) => {
               <View style={style.buttonsContainer}>
                 <ModalMenuButton
                   disable={okDisable}
-                  leftRounding
+                  leftRounding={true}
                   onPress={onOkButtonPress}
                   rightRounding={false}
                   title={t('common.Ok')}
@@ -74,7 +74,7 @@ export const ModalIcon = (props: ModalIconPropsType) => {
                 <ModalMenuButton
                   leftRounding={false}
                   onPress={onCancelButtonPress}
-                  rightRounding
+                  rightRounding={true}
                   title={t('common.Close')}
                 />
               </View>

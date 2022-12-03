@@ -28,9 +28,9 @@ export const ColorPickerComponent = (props: ColorPickerComponentPropsType) => {
         noSnap={false}
         onColorChangeComplete={(color) => onColorChangeComplete(color)}
         palette={[CRIMSON, PIZAZZ, TURBO, GREEN, CYAN_AQUA, PERSIAN_BLUE, PURPLE_HEART]}
-        row
+        row={true}
         sliderSize={40}
-        swatches
+        swatches={true}
         swatchesLast={false}
         swatchesOnly={false}
         thumbSize={40}

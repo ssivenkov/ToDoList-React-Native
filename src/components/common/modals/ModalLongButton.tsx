@@ -44,7 +44,7 @@ export const ModalLongButton = (props: ModalLongButtonPropsType) => {
 
   return (
     <View>
-      <Modal onRequestClose={onClosePress} transparent visible={modalVisible}>
+      <Modal onRequestClose={onClosePress} transparent={true} visible={modalVisible}>
         <View style={style.centeredView}>
           <View style={style.modalView}>
             <View
@@ -61,7 +61,7 @@ export const ModalLongButton = (props: ModalLongButtonPropsType) => {
               {okHandler && (
                 <>
                   <ModalMenuButton
-                    leftRounding
+                    leftRounding={true}
                     onPress={onOkButtonPress}
                     rightRounding={false}
                     title={t('common.Ok')}
@@ -72,7 +72,7 @@ export const ModalLongButton = (props: ModalLongButtonPropsType) => {
               <ModalMenuButton
                 leftRounding={!okHandler}
                 onPress={onClosePress}
-                rightRounding
+                rightRounding={true}
                 title={t('common.Close')}
               />
             </View>

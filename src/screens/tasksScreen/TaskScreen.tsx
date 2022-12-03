@@ -49,7 +49,7 @@ export const TasksScreen = () => {
                 fullTaskList={item}
                 isDoneCollapsed={!!isDoneCollapsed}
                 isTodoCollapsed={!!isTodoCollapsed}
-                isTodoTaskList
+                isTodoTaskList={true}
                 key={id}
                 taskListDate={date}
                 taskListID={id}

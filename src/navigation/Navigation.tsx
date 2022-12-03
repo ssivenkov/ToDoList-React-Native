@@ -93,7 +93,7 @@ export const Navigation = () => {
     <SafeAreaProvider>
       <Modal
         onRequestClose={onCloseErrorModalPress}
-        transparent
+        transparent={true}
         visible={!!errorModalMessage}
       >
         <View style={style.centeredView}>
@@ -103,9 +103,9 @@ export const Navigation = () => {
             </View>
             <View style={style.buttonsContainer}>
               <ModalMenuButton
-                leftRounding
+                leftRounding={true}
                 onPress={onCloseErrorModalPress}
-                rightRounding
+                rightRounding={true}
                 title={t('common.Close')}
               />
             </View>
