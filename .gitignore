@@ -58,6 +58,7 @@ buck-out/
 # Keys
 .env
 *.keystore
+gradle.properties
 google-services.json
 GoogleService-Info.plist
 Info.plist
