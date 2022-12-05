@@ -1,7 +1,6 @@
 # OSX
 #
 .DS_Store
-.idea
 # Xcode
 #
 build/
@@ -23,7 +22,6 @@ DerivedData
 
 # Android/IntelliJ
 #
-build/
 .idea
 .gradle
 local.properties
@@ -39,8 +37,6 @@ yarn-error.log
 # BUCK
 buck-out/
 \.buckd/
-*.keystore
-!debug.keystore
 
 # fastlane
 #
@@ -58,3 +54,11 @@ buck-out/
 
 # CocoaPods
 /ios/Pods/
+
+# Keys
+.env
+*.keystore
+gradle.properties
+google-services.json
+GoogleService-Info.plist
+Info.plist
