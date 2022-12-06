@@ -62,3 +62,5 @@ gradle.properties
 google-services.json
 GoogleService-Info.plist
 Info.plist
+strings.xml
+appcenter-config.json
