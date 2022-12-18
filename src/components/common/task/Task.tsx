@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
 
+import MenuIcon from '@assets/images/icons/three-dots-vertical.svg';
 import { commonButtonStyles } from '@components/buttons/common/styles/commonButtonStyles';
 import { DeleteTaskButton } from '@components/buttons/deleteTaskButton/DeleteTaskButton';
 import { DoneTaskButton } from '@components/buttons/doneTaskButton/DoneTaskButton';
 import { EditTaskButton } from '@components/buttons/editTaskButton/EditTaskButton';
 import { MenuHorizontal } from '@components/common/menus/menuHorizontal/MenuHorizontal';
 import { menuHorizontalStyles } from '@components/common/menus/menuHorizontal/styles';
-import { ICON_SIZE_SMALL } from '@constants/constants';
-import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { useStyles } from '@root/hooks/useStyles';
 import { themeSelector } from '@store/selectors/userSelectors';
 import { nanoid } from 'nanoid';
@@ -71,11 +69,7 @@ export const Task = (props: TaskPropsType) => {
         isMenuVisible={isMenuVisible}
         menuButtonIcon={
           <View style={commonButtonStyles.buttonContainer}>
-            <FontAwesomeIcon
-              color={theme.ICON_BUTTON_COLOR}
-              icon={faEllipsisV}
-              size={ICON_SIZE_SMALL}
-            />
+            <MenuIcon fill={theme.ICON_BUTTON_COLOR} height={20} width={20} />
           </View>
         }
         onMenuButtonPress={onMenuButtonPress}
