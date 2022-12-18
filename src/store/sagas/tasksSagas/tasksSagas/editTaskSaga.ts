@@ -44,6 +44,7 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
     colorMark,
     shouldSetColor,
     setColorMark,
+    setIsMenuVisible,
   } = action.payload;
 
   try {
@@ -197,6 +198,7 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
 
     yield call(setIsLoading, false);
     yield call(setModalVisible, false);
+    yield call(setIsMenuVisible, false);
     yield call(setEditedTaskTitle, editedTaskTitle);
   } catch (error) {
     yield call(setIsLoading, false);

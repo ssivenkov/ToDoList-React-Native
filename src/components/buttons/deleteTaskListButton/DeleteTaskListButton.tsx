@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { commonButtonStyles } from '@components/buttons/common/styles/styles';
+import { commonButtonStyles } from '@components/buttons/common/styles/commonButtonStyles';
 import { ModalIcon } from '@components/common/modals/ModalIcon';
 import { ICON_SIZE_SMALL } from '@constants/constants';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';

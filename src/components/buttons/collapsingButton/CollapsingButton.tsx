@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { CollapsingButtonPropsType } from '@components/buttons/collapsingButton/types';
-import { commonButtonStyles } from '@components/buttons/common/styles/styles';
+import { commonButtonStyles } from '@components/buttons/common/styles/commonButtonStyles';
 import { IconButton } from '@components/common/buttons/iconButton/IconButton';
 import { ICON_SIZE_SMALL } from '@constants/constants';
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';

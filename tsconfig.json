@@ -17,6 +17,7 @@
     "noEmit": true,
     "paths": {
       "@root/*": ["src/*"],
+      "@assets/*": ["src/assets"],
       "@colors/*": ["src/colors/*"],
       "@commonTypes/*": ["src/commonTypes/*"],
       "@components/*": ["src/components/*"],

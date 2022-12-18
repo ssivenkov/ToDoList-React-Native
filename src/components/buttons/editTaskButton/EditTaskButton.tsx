@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 
-import { commonButtonStyles } from '@components/buttons/common/styles/styles';
+import { menuButtonDarkGradient, menuButtonLightGradient } from '@colors/gradients';
+import { commonButtonStyles } from '@components/buttons/common/styles/commonButtonStyles';
 import { styles } from '@components/buttons/editTaskButton/styles';
 import { ColorPickerComponent } from '@components/common/colorPicker/ColorPicker';
 import { CustomInput } from '@components/common/input/CustomInput';
+import { menuHorizontalStyles } from '@components/common/menus/menuHorizontal/styles';
 import { ModalIcon } from '@components/common/modals/ModalIcon';
 import { Notification } from '@components/common/notification/Notification';
 import { Switcher } from '@components/common/switcher/Switcher';
@@ -20,20 +22,26 @@ import { notificationsSelector } from '@store/selectors/tasksSelectors';
 import { themeSelector } from '@store/selectors/userSelectors';
 import { useTranslation } from 'react-i18next';
 import { View } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { EditTaskTitleButtonPropsType } from './types';
 
 export const EditTaskButton = (props: EditTaskTitleButtonPropsType) => {
-  const { taskListID, taskID, oldTaskTitle, colorMark, isTodo } = props;
-
-  const theme = useSelector(themeSelector);
+  const { taskListID, taskID, oldTaskTitle, colorMark, isTodo, setIsMenuVisible } = props;
 
   const dispatch = useDispatch();
+
+  const theme = useSelector(themeSelector);
 
   const { t } = useTranslation();
 
   const style = useStyles(styles);
+  const menuHorizontalStyle = useStyles(menuHorizontalStyles);
+
+  const buttonGradient = theme.darkMode
+    ? menuButtonDarkGradient
+    : menuButtonLightGradient;
 
   const notifications = useSelector(notificationsSelector);
   const taskNotification = notifications.find((item) => item.taskID === taskID);
@@ -98,6 +106,7 @@ export const EditTaskButton = (props: EditTaskTitleButtonPropsType) => {
           shouldSetColor: isColorPickerSwitcherOn,
           setColorMark: setTempColorMark,
           colorMark: tempColorMark,
+          setIsMenuVisible: setIsMenuVisible,
         }),
       );
 
@@ -115,6 +124,7 @@ export const EditTaskButton = (props: EditTaskTitleButtonPropsType) => {
           setEditedTaskTitle,
           shouldSetColor: isColorPickerSwitcherOn,
           setColorMark: setTempColorMark,
+          setIsMenuVisible: setIsMenuVisible,
         }),
       );
 
@@ -134,13 +144,17 @@ export const EditTaskButton = (props: EditTaskTitleButtonPropsType) => {
   return (
     <ModalIcon
       buttonIcon={
-        <View style={commonButtonStyles.buttonContainer}>
-          <FontAwesomeIcon
-            color={theme.ICON_BUTTON_COLOR}
-            icon={faPen}
-            size={ICON_SIZE_SMALL}
-          />
-        </View>
+        <LinearGradient colors={buttonGradient}>
+          <View style={menuHorizontalStyle.middleButtonContainer}>
+            <View style={commonButtonStyles.buttonContainer}>
+              <FontAwesomeIcon
+                color={theme.TEXT_COLOR}
+                icon={faPen}
+                size={ICON_SIZE_SMALL}
+              />
+            </View>
+          </View>
+        </LinearGradient>
       }
       closeHandler={onClosePress}
       description={t('tasksScreen.EditTaskButton')}
