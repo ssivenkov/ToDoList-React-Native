@@ -1,6 +1,8 @@
 import React from 'react';
 
-import { commonButtonStyles } from '@components/buttons/common/styles/styles';
+import { menuButtonDarkGradient, menuButtonLightGradient } from '@colors/gradients';
+import { commonButtonStyles } from '@components/buttons/common/styles/commonButtonStyles';
+import { menuHorizontalStyles } from '@components/common/menus/menuHorizontal/styles';
 import { ModalIcon } from '@components/common/modals/ModalIcon';
 import { ICON_SIZE_SMALL } from '@constants/constants';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
@@ -11,6 +13,7 @@ import { setTaskIsDoneAction } from '@store/actions/tasksSagaActions/tasksSagasA
 import { themeSelector } from '@store/selectors/userSelectors';
 import { Trans } from 'react-i18next';
 import { Text, View } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { styles } from './styles';
@@ -22,8 +25,15 @@ export const DoneTaskButton = ({
   completedTaskTitle,
 }: DoneTaskButtonPropsType) => {
   const dispatch = useDispatch();
+
   const theme = useSelector(themeSelector);
+
   const style = useStyles(styles);
+  const menuHorizontalStyle = useStyles(menuHorizontalStyles);
+
+  const buttonGradient = theme.darkMode
+    ? menuButtonDarkGradient
+    : menuButtonLightGradient;
 
   const setDoneTask = (
     setIsLoading: SetStateType<boolean>,
@@ -42,13 +52,17 @@ export const DoneTaskButton = ({
   return (
     <ModalIcon
       buttonIcon={
-        <View style={commonButtonStyles.buttonContainer}>
-          <FontAwesomeIcon
-            color={theme.ICON_BUTTON_COLOR}
-            icon={faCheck}
-            size={ICON_SIZE_SMALL}
-          />
-        </View>
+        <LinearGradient colors={buttonGradient}>
+          <View style={menuHorizontalStyle.leftButtonContainer}>
+            <View style={commonButtonStyles.buttonContainer}>
+              <FontAwesomeIcon
+                color={theme.TEXT_COLOR}
+                icon={faCheck}
+                size={ICON_SIZE_SMALL}
+              />
+            </View>
+          </View>
+        </LinearGradient>
       }
       okHandler={setDoneTask}
     >

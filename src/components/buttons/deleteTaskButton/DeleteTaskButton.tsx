@@ -1,6 +1,8 @@
 import React from 'react';
 
-import { commonButtonStyles } from '@components/buttons/common/styles/styles';
+import { menuButtonDarkGradient, menuButtonLightGradient } from '@colors/gradients';
+import { commonButtonStyles } from '@components/buttons/common/styles/commonButtonStyles';
+import { menuHorizontalStyles } from '@components/common/menus/menuHorizontal/styles';
 import { ModalIcon } from '@components/common/modals/ModalIcon';
 import { ICON_SIZE_SMALL } from '@constants/constants';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
@@ -13,6 +15,7 @@ import { deleteTaskAction } from '@store/actions/tasksSagaActions/tasksSagasActi
 import { themeSelector } from '@store/selectors/userSelectors';
 import { Trans } from 'react-i18next';
 import { Text, View } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { styles } from './styles';
@@ -22,9 +25,16 @@ export const DeleteTaskButton = (props: DeleteTaskButtonPropsType) => {
   const { isTodoTaskList, taskID, taskTitle, fullTaskList } = props;
   const { tasks } = fullTaskList;
 
-  const theme = useSelector(themeSelector);
-  const style = useStyles(styles);
   const dispatch = useDispatch();
+
+  const theme = useSelector(themeSelector);
+
+  const style = useStyles(styles);
+  const menuHorizontalStyle = useStyles(menuHorizontalStyles);
+
+  const buttonGradient = theme.darkMode
+    ? menuButtonDarkGradient
+    : menuButtonLightGradient;
 
   const toDoTasks = tasks ? tasks.filter((task) => !task.isDone) : [];
   const doneTasks = tasks ? tasks.filter((task) => task.isDone) : [];
@@ -71,13 +81,17 @@ export const DeleteTaskButton = (props: DeleteTaskButtonPropsType) => {
   return (
     <ModalIcon
       buttonIcon={
-        <View style={commonButtonStyles.buttonContainer}>
-          <FontAwesomeIcon
-            color={theme.ICON_BUTTON_COLOR}
-            icon={faTrash}
-            size={ICON_SIZE_SMALL}
-          />
-        </View>
+        <LinearGradient colors={buttonGradient}>
+          <View style={menuHorizontalStyle.rightButtonContainer}>
+            <View style={commonButtonStyles.buttonContainer}>
+              <FontAwesomeIcon
+                color={theme.TEXT_COLOR}
+                icon={faTrash}
+                size={ICON_SIZE_SMALL}
+              />
+            </View>
+          </View>
+        </LinearGradient>
       }
       okHandler={removeTask}
     >

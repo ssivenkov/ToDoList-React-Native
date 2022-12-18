@@ -1,3 +1,5 @@
+import { IsMenuVisibleType } from '@components/common/task/types';
+import { SetStateType } from '@root/types/common/types';
 import { TaskListInterface, TaskType } from '@store/reducers/tasksReducer/types';
 import { ColorType } from '@store/reducers/userReducer/types';
 
@@ -7,4 +9,5 @@ export type EditTaskTitleButtonPropsType = {
   oldTaskTitle: TaskType['title'];
   colorMark?: ColorType;
   isTodo: boolean;
+  setIsMenuVisible: SetStateType<IsMenuVisibleType>;
 };

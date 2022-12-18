@@ -8,3 +8,5 @@ export type TaskPropsType = {
   taskID: TaskType['id'];
   fullTaskList: TaskListInterface;
 };
+
+export type IsMenuVisibleType = boolean;

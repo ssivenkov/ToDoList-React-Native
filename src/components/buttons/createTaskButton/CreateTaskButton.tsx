@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { commonButtonStyles } from '@components/buttons/common/styles/styles';
+import { commonButtonStyles } from '@components/buttons/common/styles/commonButtonStyles';
 import { styles } from '@components/buttons/createTaskButton/styles';
 import { ColorPickerComponent } from '@components/common/colorPicker/ColorPicker';
 import { CustomInput } from '@components/common/input/CustomInput';

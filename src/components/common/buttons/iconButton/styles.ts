@@ -6,6 +6,7 @@ type CustomButtonStylesType = {
 
 export const styles = StyleSheet.create<CustomButtonStylesType>({
   icon: {
+    justifyContent: 'center',
     marginHorizontal: 0,
   },
 });
