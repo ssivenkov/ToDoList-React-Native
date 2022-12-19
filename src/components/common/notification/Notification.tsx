@@ -3,6 +3,7 @@ import React, { useRef } from 'react';
 import { styles } from '@components/common/notification/styles';
 import { NotificationPropsType } from '@components/common/notification/types';
 import { Switcher } from '@components/common/switcher/Switcher';
+import { BY, CN, EN, JP, KR, RU, UA } from '@constants/constants';
 import { errorAlert } from '@root/helpers/alertHelper';
 import { requestIOSNotificationsPermissionHelper } from '@root/helpers/requestIOSNotificationsPermissionHelper';
 import { useStyles } from '@root/hooks/useStyles';
@@ -19,11 +20,25 @@ export const Notification = (props: NotificationPropsType) => {
   const { i18n, t } = useTranslation();
   const theme = useSelector(themeSelector);
 
+  let datePickerLanguage = i18n.language;
+  const isBY = datePickerLanguage === BY;
+  const isUA = datePickerLanguage === UA;
+  const isCN = datePickerLanguage === CN;
+  const isKR = datePickerLanguage === KR;
+  const isJP = datePickerLanguage === JP;
   const iOSDatePickerHeight = 210;
   const androidDatePickerHeight = 170;
   const datePickerHeight =
     Platform.OS === 'ios' ? iOSDatePickerHeight : androidDatePickerHeight;
   const datePickerDate = date ? new Date(date) : new Date();
+
+  if (isBY || isUA) {
+    datePickerLanguage = RU;
+  }
+
+  if (isCN || isKR || isJP) {
+    datePickerLanguage = EN;
+  }
 
   const heightAnimation = useRef(
     new Animated.Value(isSwitcherOn ? datePickerHeight : 0),
@@ -67,7 +82,7 @@ export const Notification = (props: NotificationPropsType) => {
         <DatePicker
           date={datePickerDate}
           fadeToColor='none'
-          locale={i18n.language}
+          locale={datePickerLanguage}
           onDateChange={setDate}
           textColor={theme.TEXT_COLOR}
         />
