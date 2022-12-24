@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 
 import { commonButtonStyles } from '@components/buttons/common/styles/commonButtonStyles';
 import { styles } from '@components/buttons/createTaskButton/styles';
@@ -20,7 +20,7 @@ import { ColorType } from '@store/reducers/userReducer/types';
 import { selectedColorSelector, themeSelector } from '@store/selectors/userSelectors';
 import { nanoid } from 'nanoid';
 import { useTranslation } from 'react-i18next';
-import { View } from 'react-native';
+import { TextInput, View } from 'react-native';
 import 'react-native-get-random-values';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -29,14 +29,22 @@ import { CreateTaskButtonPropsType } from './types';
 export const CreateTaskButton = (props: CreateTaskButtonPropsType) => {
   const { taskListID, taskListDate, taskListTitle, fullTaskList } = props;
 
-  const theme = useSelector(themeSelector);
-  const selectedColor = useSelector(selectedColorSelector);
-
   const dispatch = useDispatch();
 
   const { t } = useTranslation();
 
   const style = useStyles(styles);
+
+  const theme = useSelector(themeSelector);
+  const selectedColor = useSelector(selectedColorSelector);
+
+  const inputRef = useRef<TextInput>(null);
+
+  const inputFocus = () => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  };
 
   const [newTaskTitle, setNewTaskTitle] = useState<TaskType['title']>('');
   const [date, setDate] = useState<Date>(new Date());
@@ -129,11 +137,16 @@ export const CreateTaskButton = (props: CreateTaskButtonPropsType) => {
       }
       closeHandler={onClosePress}
       description={t('tasksScreen.CreateTaskButtonTitle')}
+      inputFocus={inputFocus}
       okDisable={!newTaskTitle}
       okHandler={createTask}
     >
       <>
-        <CustomInput onValueChange={setNewTaskTitle} value={newTaskTitle} />
+        <CustomInput
+          inputRef={inputRef}
+          onValueChange={setNewTaskTitle}
+          value={newTaskTitle}
+        />
         <Notification
           date={date}
           isSwitcherOn={isNotificationSwitcherOn}
