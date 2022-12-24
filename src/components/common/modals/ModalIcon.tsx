@@ -21,6 +21,7 @@ export const ModalIcon = (props: ModalIconPropsType) => {
     modalVisibleFromProps,
     setModalVisibleFromProps,
     okDisable,
+    inputFocus,
   } = props;
 
   const style = useStyles(styles);
@@ -55,7 +56,15 @@ export const ModalIcon = (props: ModalIconPropsType) => {
   return (
     <View>
       <View>
-        <Modal transparent={true} visible={modalVisibleFromProps ?? modalVisible}>
+        <Modal
+          onShow={() => {
+            if (inputFocus) {
+              inputFocus();
+            }
+          }}
+          transparent={true}
+          visible={modalVisibleFromProps ?? modalVisible}
+        >
           <View style={style.centeredView}>
             <View style={style.modalView}>
               <View style={style.contentWithBottomPadding}>

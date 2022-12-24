@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 
 import { commonButtonStyles } from '@components/buttons/common/styles/commonButtonStyles';
 import { CustomInput } from '@components/common/input/CustomInput';
@@ -11,7 +11,7 @@ import { editTaskListTitleAction } from '@store/actions/tasksSagaActions/taskLis
 import { TaskListInterface } from '@store/reducers/tasksReducer/types';
 import { themeSelector } from '@store/selectors/userSelectors';
 import { useTranslation } from 'react-i18next';
-import { View } from 'react-native';
+import { TextInput, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { EditTaskListTitleButtonPropsType } from './types';
@@ -20,9 +20,19 @@ export const EditTaskListTitleButton = ({
   oldTaskListTitle,
   taskListID,
 }: EditTaskListTitleButtonPropsType) => {
-  const theme = useSelector(themeSelector);
-  const { t } = useTranslation();
   const dispatch = useDispatch();
+
+  const { t } = useTranslation();
+
+  const theme = useSelector(themeSelector);
+
+  const inputRef = useRef<TextInput>(null);
+
+  const inputFocus = () => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  };
 
   const [editedTaskListTitle, setEditedTaskListTitle] =
     useState<TaskListInterface['title']>(oldTaskListTitle);
@@ -63,10 +73,15 @@ export const EditTaskListTitleButton = ({
       }
       closeHandler={onClosePress}
       description={t('tasksScreen.EditTaskListButtonTitle')}
+      inputFocus={inputFocus}
       okDisable={!editedTaskListTitle}
       okHandler={onOkPress}
     >
-      <CustomInput onValueChange={setEditedTaskListTitle} value={editedTaskListTitle} />
+      <CustomInput
+        inputRef={inputRef}
+        onValueChange={setEditedTaskListTitle}
+        value={editedTaskListTitle}
+      />
     </ModalIcon>
   );
 };
