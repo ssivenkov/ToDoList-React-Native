@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 
 import { COLORS } from '@colors/colors';
 import { commonButtonStyles } from '@components/buttons/common/styles/commonButtonStyles';
@@ -14,14 +14,23 @@ import { TaskListInterface } from '@store/reducers/tasksReducer/types';
 import { nanoid } from 'nanoid';
 import { useTranslation } from 'react-i18next';
 import 'react-native-get-random-values';
-import { View } from 'react-native';
+import { TextInput, View } from 'react-native';
 import { useDispatch } from 'react-redux';
 
 export const CreateTaskListButton = () => {
   const dispatch = useDispatch();
+
   const { t } = useTranslation();
 
   const [taskListTitle, setTaskListTitle] = useState<TaskListInterface['title']>('');
+
+  const inputRef = useRef<TextInput>(null);
+
+  const inputFocus = () => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  };
 
   const notEmptyTaskListTitleCondition = taskListTitle.length > 0;
 
@@ -63,10 +72,15 @@ export const CreateTaskListButton = () => {
       }
       closeHandler={onClosePress}
       description={t('tasksScreen.CreateTaskListButtonTitle')}
+      inputFocus={inputFocus}
       okDisable={!taskListTitle}
       okHandler={createTaskList}
     >
-      <CustomInput onValueChange={setTaskListTitle} value={taskListTitle} />
+      <CustomInput
+        inputRef={inputRef}
+        onValueChange={setTaskListTitle}
+        value={taskListTitle}
+      />
     </ModalIcon>
   );
 };
