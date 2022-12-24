@@ -8,7 +8,7 @@ import { styles } from './styles';
 import { InputPropsType } from './types';
 
 export const CustomInput = (props: InputPropsType) => {
-  const { value, onValueChange, placeholder } = props;
+  const { value, onValueChange, placeholder, inputRef } = props;
 
   const style = useStyles(styles);
 
@@ -21,6 +21,7 @@ export const CustomInput = (props: InputPropsType) => {
         }}
         placeholder={placeholder}
         placeholderTextColor={COLORS.SILVER_CHALICE1}
+        ref={inputRef}
         style={style.input}
         value={value}
       />

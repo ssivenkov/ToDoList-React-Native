@@ -14,6 +14,7 @@ export type ModalIconPropsType = {
   closeHandler?: () => void;
   modalVisibleFromProps?: boolean;
   setModalVisibleFromProps?: SetStateType<boolean>;
+  inputFocus?: () => void;
 };
 
 export type ModalLongButtonPropsType = {
