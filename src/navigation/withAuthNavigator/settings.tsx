@@ -4,11 +4,11 @@ import { CreateTaskListButton } from '@components/buttons/createTaskListButton/C
 import { ICON_SIZE_HALF_MEDIUM } from '@constants/constants';
 import { faFile, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { WithAuthNavigatorOptionsType } from '@navigation/withAuthNavigator/types';
+import { WithAuthNavigatorScreenSettingsType } from '@navigation/withAuthNavigator/types';
 import { t } from 'i18next';
 import { View } from 'react-native';
 
-export const withAuthNavigatorOptions: WithAuthNavigatorOptionsType = (params) => {
+export const withAuthNavigatorOptions: WithAuthNavigatorScreenSettingsType = (params) => {
   const { style, theme, accentColor } = params;
 
   return {
@@ -21,14 +21,14 @@ export const withAuthNavigatorOptions: WithAuthNavigatorOptionsType = (params) =
   };
 };
 
-export const tasksNavigatorOptions: WithAuthNavigatorOptionsType = (params) => {
+export const tasksNavigatorSettings: WithAuthNavigatorScreenSettingsType = (params) => {
   const { style } = params;
 
   return {
     headerShown: true,
     headerStyle: style.header,
     headerTitle: t('tasksScreen.Tasks'),
-    headerTitleStyle: style.headerTitleStyle,
+    headerTitleStyle: style.headerTitle,
     headerTitleAlign: 'center',
     tabBarLabel: t('tasksScreen.Tasks'),
     headerRight: () => (
@@ -46,14 +46,14 @@ export const tasksNavigatorOptions: WithAuthNavigatorOptionsType = (params) => {
   };
 };
 
-export const accountScreenOptions: WithAuthNavigatorOptionsType = (params) => {
+export const accountScreenSettings: WithAuthNavigatorScreenSettingsType = (params) => {
   const { style } = params;
 
   return {
     headerShown: true,
     headerStyle: style.header,
     headerTitle: t('accountScreen.Account'),
-    headerTitleStyle: style.headerTitleStyle,
+    headerTitleStyle: style.headerTitle,
     headerTitleAlign: 'center',
     tabBarLabel: t('accountScreen.Account'),
     tabBarIcon: ({ focused }) => (

@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 
 import { ModalMenuButton } from '@components/common/buttons/modalMenuButton/ModalMenuButton';
 import { styles } from '@components/common/modals/styles';
+import { ROOT_NAVIGATOR_ROUTE } from '@enums/routesEnum';
 import { GOOGLE_WEB_CLIENT_ID } from '@env';
-import { RootStackParamList, RootStackScreens } from '@navigation/types';
+import { RootNativeStackNavigatorParamListType } from '@navigation/rootNavigator/types';
 import { WithAuthNavigator } from '@navigation/withAuthNavigator/WithAuthNavigator';
 import auth from '@react-native-firebase/auth';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
@@ -29,22 +30,23 @@ import { Modal, Text, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { useDispatch, useSelector } from 'react-redux';
 
-const { Navigator, Screen } = createNativeStackNavigator<RootStackParamList>();
+const { Navigator, Screen } =
+  createNativeStackNavigator<RootNativeStackNavigatorParamListType>();
 
-export const Navigation = () => {
+export const RootNavigator = () => {
   const dispatch = useDispatch();
+
+  const style = useStyles(styles);
+
+  const { t } = useTranslation();
 
   const theme = useSelector(themeSelector);
   const userID = useSelector(userIDSelector);
   const isUserDataSynchronized = useSelector(isUserDataSynchronizedSelector);
   const channelID = useSelector(channelIDSelector);
-
-  const { t } = useTranslation();
-
-  const style = useStyles(styles);
+  const errorModalMessage = useSelector(errorModalMessageSelector);
 
   const [firebaseInitializing, setFirebaseInitializing] = useState<boolean>(true);
-  const errorModalMessage = useSelector(errorModalMessageSelector);
 
   const backgroundTheme: Theme = {
     ...DarkTheme,
@@ -115,16 +117,16 @@ export const Navigation = () => {
 
       <NavigationContainer theme={backgroundTheme}>
         <Navigator>
-          {userID ? (
+          {!userID ? (
             <Screen
-              component={WithAuthNavigator}
-              name={RootStackScreens.WITH_AUTH}
+              component={SignInScreen}
+              name={ROOT_NAVIGATOR_ROUTE.SIGN_IN_SCREEN}
               options={{ headerShown: false }}
             />
           ) : (
             <Screen
-              component={SignInScreen}
-              name={RootStackScreens.SIGN_IN}
+              component={WithAuthNavigator}
+              name={ROOT_NAVIGATOR_ROUTE.WITH_AUTH_NAVIGATOR}
               options={{ headerShown: false }}
             />
           )}

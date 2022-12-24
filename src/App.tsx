@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 
 import { HIDE_SPLASH_SCREEN_TIMEOUT } from '@constants/constants';
-import { Navigation } from '@navigation/Navigation';
+import { RootNavigator } from '@navigation/rootNavigator/RootNavigator';
 import { persistor, store } from '@store/store';
 import { LogBox, StatusBar } from 'react-native';
 import 'react-native-gesture-handler';
@@ -22,7 +22,7 @@ export const App = () => {
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <StatusBar barStyle='light-content' />
-        <Navigation />
+        <RootNavigator />
       </PersistGate>
     </Provider>
   );

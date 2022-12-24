@@ -1,7 +1,6 @@
+import { androidHeaderHeight, iOSHeaderHeight } from '@navigation/commonNavigationStyles';
 import {
-  androidHeaderHeight,
   androidTabBarContainerHeight,
-  iOSHeaderHeight,
   iOSTabBarContainerHeight,
 } from '@navigation/withAuthNavigator/styles';
 import { ExtendedStylesPropsType } from '@root/hooks/useStyles';

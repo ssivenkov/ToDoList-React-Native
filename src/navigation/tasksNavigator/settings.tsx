@@ -3,10 +3,10 @@ import React from 'react';
 import { ICON_SIZE_HALF_MEDIUM } from '@constants/constants';
 import { faCheck, faList } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { TasksNavigatorOptionsType } from '@navigation/tasksNavigator/types';
+import { TasksNavigatorSettingsType } from '@navigation/tasksNavigator/types';
 import { t } from 'i18next';
 
-export const tasksNavigatorOptions: TasksNavigatorOptionsType = (params) => {
+export const tasksNavigatorSettings: TasksNavigatorSettingsType = (params) => {
   const { style, theme, accentColor } = params;
 
   return {
@@ -20,7 +20,7 @@ export const tasksNavigatorOptions: TasksNavigatorOptionsType = (params) => {
   };
 };
 
-export const toDoScreenOptions: TasksNavigatorOptionsType = (params) => {
+export const toDoScreenSettings: TasksNavigatorSettingsType = (params) => {
   const { style } = params;
 
   return {
@@ -35,7 +35,7 @@ export const toDoScreenOptions: TasksNavigatorOptionsType = (params) => {
   };
 };
 
-export const doneScreenOptions: TasksNavigatorOptionsType = (params) => {
+export const doneScreenSettings: TasksNavigatorSettingsType = (params) => {
   const { style } = params;
 
   return {

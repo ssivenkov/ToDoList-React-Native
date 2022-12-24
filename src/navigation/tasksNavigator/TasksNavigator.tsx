@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 
+import { TASKS_NAVIGATOR_ROUTE } from '@enums/routesEnum';
 import {
-  doneScreenOptions,
-  tasksNavigatorOptions,
-  toDoScreenOptions,
+  doneScreenSettings,
+  tasksNavigatorSettings,
+  toDoScreenSettings,
 } from '@navigation/tasksNavigator/settings';
 import { styles } from '@navigation/tasksNavigator/styles';
-import { TaskNavigatorScreens, TopTabParamList } from '@navigation/tasksNavigator/types';
+import { TopTabParamListType } from '@navigation/tasksNavigator/types';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { useStyles } from '@root/hooks/useStyles';
 import { TasksScreen } from '@root/screens/tasksScreen/TaskScreen';
@@ -19,14 +20,17 @@ import {
 import i18next, { t } from 'i18next';
 import { useDispatch, useSelector } from 'react-redux';
 
-const { Navigator, Screen } = createMaterialTopTabNavigator<TopTabParamList>();
+const { Navigator, Screen } = createMaterialTopTabNavigator<TopTabParamListType>();
 
 export const TasksNavigator = () => {
   const dispatch = useDispatch();
+
   const style = useStyles(styles);
+
   const theme = useSelector(themeSelector);
   const accentColor = useSelector(accentColorSelector);
   const languageInState = useSelector(languageSelector);
+
   const [rerender, setRerender] = useState<string>('');
 
   // need for rerender with correct translations for navigator
@@ -39,17 +43,17 @@ export const TasksNavigator = () => {
 
   return (
     <Navigator
-      initialRouteName={TaskNavigatorScreens.TODO}
-      screenOptions={tasksNavigatorOptions({ style, theme, accentColor })}
+      initialRouteName={TASKS_NAVIGATOR_ROUTE.TODO_TASKS_SCREEN}
+      screenOptions={tasksNavigatorSettings({ style, theme, accentColor })}
     >
       <Screen
         component={TasksScreen}
         initialParams={{
           isTodoScreen: true,
         }}
-        name={TaskNavigatorScreens.TODO}
+        name={TASKS_NAVIGATOR_ROUTE.TODO_TASKS_SCREEN}
         options={{
-          ...toDoScreenOptions({ style, theme, accentColor }),
+          ...toDoScreenSettings({ style, theme, accentColor }),
           tabBarLabel: t('tasksScreen.TodoTasksTab'),
         }}
       />
@@ -58,9 +62,9 @@ export const TasksNavigator = () => {
         initialParams={{
           isTodoScreen: false,
         }}
-        name={TaskNavigatorScreens.DONE}
+        name={TASKS_NAVIGATOR_ROUTE.DONE_TASKS_SCREEN}
         options={{
-          ...doneScreenOptions({ style, theme, accentColor }),
+          ...doneScreenSettings({ style, theme, accentColor }),
           tabBarLabel: t('tasksScreen.DoneTasksTab'),
         }}
       />

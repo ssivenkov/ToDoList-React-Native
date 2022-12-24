@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from 'react';
 
 import { Loader } from '@components/common/loader/Loader';
+import { WITH_AUTH_NAVIGATOR_ROUTE } from '@enums/routesEnum';
 import { TasksNavigator } from '@navigation/tasksNavigator/TasksNavigator';
 import {
-  accountScreenOptions,
-  tasksNavigatorOptions,
+  accountScreenSettings,
+  tasksNavigatorSettings,
   withAuthNavigatorOptions,
 } from '@navigation/withAuthNavigator/settings';
 import { styles } from '@navigation/withAuthNavigator/styles';
-import {
-  BottomTabParamList,
-  withAuthNavigatorScreens,
-} from '@navigation/withAuthNavigator/types';
+import { BottomTabParamList } from '@navigation/withAuthNavigator/types';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useStyles } from '@root/hooks/useStyles';
 import { AccountScreen } from '@root/screens/accountScreen/AccountScreen';
@@ -53,23 +51,23 @@ export const WithAuthNavigator = () => {
     <>
       {globalLoader && <Loader />}
       <Navigator
-        initialRouteName={withAuthNavigatorScreens.TASKS}
+        initialRouteName={WITH_AUTH_NAVIGATOR_ROUTE.TASKS_NAVIGATOR}
         screenOptions={withAuthNavigatorOptions({ style, theme, accentColor })}
       >
         <Screen
           component={TasksNavigator}
-          name={withAuthNavigatorScreens.TASKS}
+          name={WITH_AUTH_NAVIGATOR_ROUTE.TASKS_NAVIGATOR}
           options={{
-            ...tasksNavigatorOptions({ style, theme, accentColor }),
+            ...tasksNavigatorSettings({ style, theme, accentColor }),
             headerTitle: t('tasksScreen.Tasks'),
             tabBarLabel: t('tasksScreen.Tasks'),
           }}
         />
         <Screen
           component={AccountScreen}
-          name={withAuthNavigatorScreens.ACCOUNT}
+          name={WITH_AUTH_NAVIGATOR_ROUTE.ACCOUNT_SCREEN}
           options={{
-            ...accountScreenOptions({ style, theme, accentColor }),
+            ...accountScreenSettings({ style, theme, accentColor }),
             headerTitle: t('accountScreen.Account'),
             tabBarLabel: t('accountScreen.Account'),
           }}
