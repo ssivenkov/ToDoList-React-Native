@@ -37,7 +37,14 @@
       "DeleteAccount": "Delete account",
       "DeleteAccountWarning": "Are you sure you want to delete your account with all your data?",
       "AccentColorDescription": "Select accent color:",
-      "AccentColorButtonTitle": "Accent color"
+      "AccentColorButtonTitle": "Accent color",
+      "ContactTheAuthorButtonTitle": "Contact the author"
+    },
+    "contactTheAuthorScreen": {
+      "HeaderTitle": "Contact the author",
+      "EmailPlaceholder": "Email",
+      "SubjectPlaceholder": "Subject",
+      "MessagePlaceholder": "Message"
     }
   }
 }

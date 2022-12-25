@@ -37,7 +37,14 @@
       "DeleteAccount": "删除账户",
       "DeleteAccountWarning": "你确定要删除你的账户和所有的数据吗？",
       "AccentColorDescription": "选择重点颜色:",
-      "AccentColorButtonTitle": "重点颜色"
+      "AccentColorButtonTitle": "重点颜色",
+      "ContactTheAuthorButtonTitle": "聯繫作者"
+    },
+    "contactTheAuthorScreen": {
+      "HeaderTitle": "聯繫作者",
+      "EmailPlaceholder": "電子郵件",
+      "SubjectPlaceholder": "信息主題",
+      "MessagePlaceholder": "信息"
     }
   }
 }

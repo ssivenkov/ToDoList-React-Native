@@ -37,7 +37,14 @@
       "DeleteAccount": "Выдаліць акаўнт",
       "DeleteAccountWarning": "Вы ўпэўненыя, што жадаеце выдаліць свой уліковы запіс з усімі вашымі дадзенымі?",
       "AccentColorDescription": "Абярыце колер акцэнту:",
-      "AccentColorButtonTitle": "Колер акцэнту"
+      "AccentColorButtonTitle": "Колер акцэнту",
+      "ContactTheAuthorButtonTitle": "Звязацца з аўтарам"
+    },
+    "contactTheAuthorScreen": {
+      "HeaderTitle": "Звязацца з аўтарам",
+      "EmailPlaceholder": "Эл. ліст",
+      "SubjectPlaceholder": "Тэма паведамлення",
+      "MessagePlaceholder": "Паведамленне"
     }
   }
 }

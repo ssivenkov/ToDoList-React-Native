@@ -37,7 +37,14 @@
       "DeleteAccount": "アカウント削除",
       "DeleteAccountWarning": "本当にデータごとアカウントを削除してよいのでしょうか?",
       "AccentColorDescription": "アクセントカラーを選択:",
-      "AccentColorButtonTitle": "アクセントカラー"
+      "AccentColorButtonTitle": "アクセントカラー",
+      "ContactTheAuthorButtonTitle": "著者に連絡する"
+    },
+    "contactTheAuthorScreen": {
+      "HeaderTitle": "著者に連絡する",
+      "EmailPlaceholder": "メール",
+      "SubjectPlaceholder": "メッセージの件名",
+      "MessagePlaceholder": "メッセージ"
     }
   }
 }

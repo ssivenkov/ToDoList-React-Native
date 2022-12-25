@@ -3,10 +3,13 @@ import React, { useState } from 'react';
 import { ChangeLanguageButton } from '@components/buttons/changeLanguageButton/ChangeLanguageButton';
 import { DarkModeButton } from '@components/buttons/darkModeButton/DarkModeButton';
 import { SelectAccentColorButton } from '@components/buttons/selectAccentColorButton/SelectAccentColorButton';
+import { LongButton } from '@components/common/buttons/longButton/LongButton';
 import { GradientWrapper } from '@components/common/gradientWrapper/GradientWrapper';
 import { Loader } from '@components/common/loader/Loader';
 import { ModalLongButton } from '@components/common/modals/ModalLongButton';
-import { faArrowRight, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { ROOT_NAVIGATOR_ROUTE } from '@enums/routesEnum';
+import { faArrowRight, faAt, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { useNavigation } from '@react-navigation/native';
 import { useStyles } from '@root/hooks/useStyles';
 import { styles } from '@root/screens/accountScreen/styles';
 import { deleteAccountAction } from '@store/actions/userSagaActions/deleteAccountAction';
@@ -18,12 +21,20 @@ import { useDispatch, useSelector } from 'react-redux';
 
 export const AccountScreen = () => {
   const dispatch = useDispatch();
+
   const style = useStyles(styles);
+
   const { t } = useTranslation();
+
+  const navigation = useNavigation();
 
   const userData = useSelector(userDataSelector);
   const userAvatar = useSelector(userAvatarSelector);
   const [waitingProcess, setWaitingProcess] = useState<boolean>(false);
+
+  const navigateToAuthorCommunicationScreen = () => {
+    navigation.navigate(ROOT_NAVIGATOR_ROUTE.CONTACT_THE_AUTHOR_SCREEN);
+  };
 
   const signOutHandler = (): void => {
     dispatch(signOutAction({ setWaitingProcess }));
@@ -56,6 +67,13 @@ export const AccountScreen = () => {
             </GradientWrapper>
             <GradientWrapper>
               <SelectAccentColorButton setIsLoading={setWaitingProcess} />
+            </GradientWrapper>
+            <GradientWrapper>
+              <LongButton
+                icon={faAt}
+                onPress={() => navigateToAuthorCommunicationScreen()}
+                title={t('accountScreen.ContactTheAuthorButtonTitle')}
+              />
             </GradientWrapper>
             <GradientWrapper>
               <ModalLongButton

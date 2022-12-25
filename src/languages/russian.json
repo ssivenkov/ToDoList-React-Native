@@ -37,7 +37,14 @@
       "DeleteAccount": "Удалить аккаунт",
       "DeleteAccountWarning": "Вы уверены, что хотите удалить свою учетную запись со всеми вашими данными?",
       "AccentColorDescription": "Выберите цвет акцента:",
-      "AccentColorButtonTitle": "Цвет акцента"
+      "AccentColorButtonTitle": "Цвет акцента",
+      "ContactTheAuthorButtonTitle": "Связаться с автором"
+    },
+    "contactTheAuthorScreen": {
+      "HeaderTitle": "Связаться с автором",
+      "EmailPlaceholder": "Эл. почта",
+      "SubjectPlaceholder": "Тема сообщения",
+      "MessagePlaceholder": "Сообщение"
     }
   }
 }

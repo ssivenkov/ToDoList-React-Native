@@ -37,7 +37,14 @@
       "DeleteAccount": "Apagar conta",
       "DeleteAccountWarning": "Tem a certeza de querer apagar a sua conta com todos os seus dados?",
       "AccentColorDescription": "Seleccione a cor do acento:",
-      "AccentColorButtonTitle": "Cor do acento"
+      "AccentColorButtonTitle": "Cor do acento",
+      "ContactTheAuthorButtonTitle": "Entre em contato com o autor"
+    },
+    "contactTheAuthorScreen": {
+      "HeaderTitle": "Entre em contato com o autor",
+      "EmailPlaceholder": "E-mail",
+      "SubjectPlaceholder": "Assunto da mensagem",
+      "MessagePlaceholder": "Mensagem"
     }
   }
 }

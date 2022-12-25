@@ -37,7 +37,14 @@
       "DeleteAccount": "계정 삭제",
       "DeleteAccountWarning": "모든 데이터가 포함된 계정을 삭제하시겠습니까?",
       "AccentColorDescription": "강조 색상 선택:",
-      "AccentColorButtonTitle": "액센트 컬러"
+      "AccentColorButtonTitle": "액센트 컬러",
+      "ContactTheAuthorButtonTitle": "저자에게 연락하기"
+    },
+    "contactTheAuthorScreen": {
+      "HeaderTitle": "저자에게 연락하기",
+      "EmailPlaceholder": "이메일",
+      "SubjectPlaceholder": "메시지 제목",
+      "MessagePlaceholder": "메세지"
     }
   }
 }

@@ -4,6 +4,7 @@ import { ModalMenuButton } from '@components/common/buttons/modalMenuButton/Moda
 import { styles } from '@components/common/modals/styles';
 import { ROOT_NAVIGATOR_ROUTE } from '@enums/routesEnum';
 import { GOOGLE_WEB_CLIENT_ID } from '@env';
+import { nativeStackExtraScreenSettings } from '@navigation/rootNavigator/settings';
 import { RootNativeStackNavigatorParamListType } from '@navigation/rootNavigator/types';
 import { WithAuthNavigator } from '@navigation/withAuthNavigator/WithAuthNavigator';
 import auth from '@react-native-firebase/auth';
@@ -12,20 +13,24 @@ import { DarkTheme, NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Theme } from '@react-navigation/native/src/types';
 import { useStyles } from '@root/hooks/useStyles';
+import { ContactTheAuthorScreen } from '@root/screens/contactTheAuthorScreen/ContactTheAuthorScreen';
 import { SignInScreen } from '@root/screens/signInScreen/SignInScreen';
 import { setModalErrorMessageAction } from '@store/actions/userReducerActions/setModalErrorMessageAction';
+import { changeLanguageAction } from '@store/actions/userSagaActions/changeLanguageAction';
 import { checkUserAction } from '@store/actions/userSagaActions/checkUserAction';
 import { createChannelAction } from '@store/actions/userSagaActions/createChannelAction';
 import { getUserDataAction } from '@store/actions/userSagaActions/getUserDataAction';
 import { UserDataType } from '@store/reducers/userReducer/types';
 import {
+  accentColorSelector,
   channelIDSelector,
   errorModalMessageSelector,
   isUserDataSynchronizedSelector,
+  languageSelector,
   themeSelector,
   userIDSelector,
 } from '@store/selectors/userSelectors';
-import { useTranslation } from 'react-i18next';
+import i18next, { t } from 'i18next';
 import { Modal, Text, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { useDispatch, useSelector } from 'react-redux';
@@ -36,17 +41,18 @@ const { Navigator, Screen } =
 export const RootNavigator = () => {
   const dispatch = useDispatch();
 
-  const style = useStyles(styles);
-
-  const { t } = useTranslation();
+  const modalStyles = useStyles(styles);
 
   const theme = useSelector(themeSelector);
+  const accentColor = useSelector(accentColorSelector);
   const userID = useSelector(userIDSelector);
   const isUserDataSynchronized = useSelector(isUserDataSynchronizedSelector);
   const channelID = useSelector(channelIDSelector);
   const errorModalMessage = useSelector(errorModalMessageSelector);
+  const language = useSelector(languageSelector);
 
   const [firebaseInitializing, setFirebaseInitializing] = useState<boolean>(true);
+  const [rerender, setRerender] = useState<string>('');
 
   const backgroundTheme: Theme = {
     ...DarkTheme,
@@ -87,6 +93,14 @@ export const RootNavigator = () => {
     return auth().onAuthStateChanged((user) => onAuthStateChanged(user));
   }, []);
 
+  // need for rerender with correct translations for navigator
+  useEffect(() => {
+    if (i18next.language !== language) {
+      dispatch(changeLanguageAction({ language }));
+      setRerender(language);
+    }
+  }, [rerender, language]);
+
   if (firebaseInitializing) {
     return null;
   }
@@ -98,12 +112,12 @@ export const RootNavigator = () => {
         transparent={true}
         visible={!!errorModalMessage}
       >
-        <View style={style.centeredView}>
-          <View style={style.modalView}>
-            <View style={style.contentWithBottomPadding}>
-              <Text style={style.text}>{errorModalMessage}</Text>
+        <View style={modalStyles.centeredView}>
+          <View style={modalStyles.modalView}>
+            <View style={modalStyles.contentWithBottomPadding}>
+              <Text style={modalStyles.text}>{errorModalMessage}</Text>
             </View>
-            <View style={style.buttonsContainer}>
+            <View style={modalStyles.buttonsContainer}>
               <ModalMenuButton
                 leftRounding={true}
                 onPress={onCloseErrorModalPress}
@@ -124,11 +138,23 @@ export const RootNavigator = () => {
               options={{ headerShown: false }}
             />
           ) : (
-            <Screen
-              component={WithAuthNavigator}
-              name={ROOT_NAVIGATOR_ROUTE.WITH_AUTH_NAVIGATOR}
-              options={{ headerShown: false }}
-            />
+            <>
+              <Screen
+                component={WithAuthNavigator}
+                name={ROOT_NAVIGATOR_ROUTE.WITH_AUTH_NAVIGATOR}
+                options={{ headerShown: false }}
+              />
+              <Screen
+                component={ContactTheAuthorScreen}
+                name={ROOT_NAVIGATOR_ROUTE.CONTACT_THE_AUTHOR_SCREEN}
+                options={{
+                  ...nativeStackExtraScreenSettings({
+                    accentColor,
+                  }),
+                  title: t('contactTheAuthorScreen.HeaderTitle'),
+                }}
+              />
+            </>
           )}
         </Navigator>
       </NavigationContainer>
