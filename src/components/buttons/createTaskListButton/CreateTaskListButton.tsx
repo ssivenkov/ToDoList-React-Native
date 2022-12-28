@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 
 import { COLORS } from '@colors/colors';
 import { commonButtonStyles } from '@components/buttons/common/styles/commonButtonStyles';
-import { CustomInput } from '@components/common/input/CustomInput';
+import { Input } from '@components/common/input/Input';
 import { ModalIcon } from '@components/common/modals/ModalIcon';
 import { ICON_SIZE_MEDIUM } from '@constants/constants';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
@@ -76,11 +76,7 @@ export const CreateTaskListButton = () => {
       okDisable={!taskListTitle}
       okHandler={createTaskList}
     >
-      <CustomInput
-        inputRef={inputRef}
-        onValueChange={setTaskListTitle}
-        value={taskListTitle}
-      />
+      <Input inputRef={inputRef} onValueChange={setTaskListTitle} value={taskListTitle} />
     </ModalIcon>
   );
 };

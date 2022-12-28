@@ -3,7 +3,7 @@ import React, { useRef, useState } from 'react';
 import { commonButtonStyles } from '@components/buttons/common/styles/commonButtonStyles';
 import { styles } from '@components/buttons/createTaskButton/styles';
 import { ColorPickerComponent } from '@components/common/colorPicker/ColorPicker';
-import { CustomInput } from '@components/common/input/CustomInput';
+import { Input } from '@components/common/input/Input';
 import { ModalIcon } from '@components/common/modals/ModalIcon';
 import { Notification } from '@components/common/notification/Notification';
 import { Switcher } from '@components/common/switcher/Switcher';
@@ -142,11 +142,7 @@ export const CreateTaskButton = (props: CreateTaskButtonPropsType) => {
       okHandler={createTask}
     >
       <>
-        <CustomInput
-          inputRef={inputRef}
-          onValueChange={setNewTaskTitle}
-          value={newTaskTitle}
-        />
+        <Input inputRef={inputRef} onValueChange={setNewTaskTitle} value={newTaskTitle} />
         <Notification
           date={date}
           isSwitcherOn={isNotificationSwitcherOn}

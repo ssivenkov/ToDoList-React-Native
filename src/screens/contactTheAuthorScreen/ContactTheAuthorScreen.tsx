@@ -1,49 +1,96 @@
 import React, { useState } from 'react';
 
-import { CustomInput } from '@components/common/input/CustomInput';
+import { TextButton } from '@components/common/buttons/textButton/TextButton';
+import { FormikInput } from '@components/common/input/FormikInput';
+import { useNavigation } from '@react-navigation/native';
 import { useStyles } from '@root/hooks/useStyles';
+import {
+  emailField,
+  messageField,
+} from '@root/screens/contactTheAuthorScreen/fieldNames';
 import { styles } from '@root/screens/contactTheAuthorScreen/styles';
+import { validate } from '@root/screens/contactTheAuthorScreen/validate';
+import { contactTheAuthorAction } from '@store/actions/userSagaActions/contactTheAuthorAction';
 import { userDataSelector } from '@store/selectors/userSelectors';
+import { useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
-import { View } from 'react-native';
-import { useSelector } from 'react-redux';
+import { ScrollView, View } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
 
 export const ContactTheAuthorScreen = () => {
+  const dispatch = useDispatch();
+
+  const navigation = useNavigation();
+
   const style = useStyles(styles);
 
   const { t } = useTranslation();
 
   const userData = useSelector(userDataSelector);
 
+  const [isFormValid, setIsFormValid] = useState<boolean>(false);
+
   const initialEmailValue = userData?.email ?? '';
 
-  const [email, setEmail] = useState<string>(initialEmailValue);
-  const [subject, setSubject] = useState<string>('');
-  const [message, setMessage] = useState<string>('');
+  const navigate = () => {
+    navigation.goBack();
+  };
+
+  const {
+    handleChange,
+    handleSubmit,
+    values,
+    setFieldTouched,
+    errors,
+    touched,
+    isSubmitting,
+  } = useFormik({
+    validate: (values) => validate({ values, isFormValid, setIsFormValid }),
+    initialValues: { [emailField]: initialEmailValue, [messageField]: '' },
+    validateOnBlur: true,
+    validateOnChange: true,
+    onSubmit: (values) => {
+      dispatch(contactTheAuthorAction({ values, navigate }));
+    },
+  });
+
+  const buttonDisabledCondition = isSubmitting || !isFormValid;
 
   return (
-    <View style={style.screenContainer}>
-      <View style={style.inputWrapper}>
-        <CustomInput
-          onValueChange={setSubject}
-          placeholder={t('contactTheAuthorScreen.SubjectPlaceholder')}
-          value={subject}
-        />
+    <ScrollView style={style.screenContainer}>
+      <View style={style.inputsWrapper}>
+        <View style={style.inputWrapper}>
+          <FormikInput
+            errorSubtext={
+              errors[emailField] && touched[emailField] ? errors[emailField] : ''
+            }
+            onBlur={() => setFieldTouched(emailField, true)}
+            onChangeText={handleChange(emailField)}
+            placeholder={t('contactTheAuthorScreen.EmailPlaceholder')}
+            subtext={t('contactTheAuthorScreen.EmailSubtext')}
+            suptext={t('contactTheAuthorScreen.EmailSuptext')}
+            value={values[emailField]}
+          />
+        </View>
+        <View style={style.inputWrapper}>
+          <FormikInput
+            errorSubtext={
+              errors[messageField] && touched[messageField] ? errors[messageField] : ''
+            }
+            onBlur={() => setFieldTouched(messageField, true)}
+            onChangeText={handleChange(messageField)}
+            placeholder={t('contactTheAuthorScreen.MessagePlaceholder')}
+            suptext={t('contactTheAuthorScreen.MessageSuptext')}
+            value={values[messageField]}
+          />
+        </View>
       </View>
-      <View style={style.inputWrapper}>
-        <CustomInput
-          onValueChange={setEmail}
-          placeholder={t('contactTheAuthorScreen.EmailPlaceholder')}
-          value={email}
-        />
-      </View>
-      <View style={style.inputWrapper}>
-        <CustomInput
-          onValueChange={setMessage}
-          placeholder={t('contactTheAuthorScreen.MessagePlaceholder')}
-          value={message}
-        />
-      </View>
-    </View>
+      <TextButton
+        containerStyle={style.buttonContainer}
+        disabled={buttonDisabledCondition}
+        onPress={() => handleSubmit()}
+        title={t('contactTheAuthorScreen.SendButton')}
+      />
+    </ScrollView>
   );
 };

@@ -44,7 +44,16 @@
       "HeaderTitle": "Entre em contato com o autor",
       "EmailPlaceholder": "E-mail",
       "SubjectPlaceholder": "Assunto da mensagem",
-      "MessagePlaceholder": "Mensagem"
+      "MessagePlaceholder": "Mensagem",
+      "EmailSuptext": "E-mail",
+      "EmailSubtext": "Uma resposta será enviada para este e-mail",
+      "MessageSuptext": "Mensagem de texto",
+      "SendButton": "Mandar",
+      "ContactTheAuthorSuccess": "Obrigado! Sua mensagem foi enviada. O autor entrará em contato com você em breve",
+      "ContactTheAuthorError": "Erro desconhecido. Por favor, tente inserir outro e-mail",
+      "InvalidEmailError": "Endereço de email invalido",
+      "EmailRequiredError": "Email obrigatório",
+      "MessageRequiredError": "Texto da mensagem obrigatório"
     }
   }
 }

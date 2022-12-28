@@ -4,7 +4,7 @@ import { menuButtonDarkGradient, menuButtonLightGradient } from '@colors/gradien
 import { commonButtonStyles } from '@components/buttons/common/styles/commonButtonStyles';
 import { styles } from '@components/buttons/editTaskButton/styles';
 import { ColorPickerComponent } from '@components/common/colorPicker/ColorPicker';
-import { CustomInput } from '@components/common/input/CustomInput';
+import { Input } from '@components/common/input/Input';
 import { menuHorizontalStyles } from '@components/common/menus/menuHorizontal/styles';
 import { ModalIcon } from '@components/common/modals/ModalIcon';
 import { Notification } from '@components/common/notification/Notification';
@@ -164,7 +164,7 @@ export const EditTaskButton = (props: EditTaskTitleButtonPropsType) => {
       setModalVisibleFromProps={setModalVisible}
     >
       <>
-        <CustomInput onValueChange={setEditedTaskTitle} value={editedTaskTitle} />
+        <Input onValueChange={setEditedTaskTitle} value={editedTaskTitle} />
         {isTodo && (
           <Notification
             date={date}

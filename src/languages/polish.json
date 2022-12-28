@@ -44,7 +44,16 @@
       "HeaderTitle": "Skontaktuj się z autorem",
       "EmailPlaceholder": "E-mail",
       "SubjectPlaceholder": "Temat wiadomości",
-      "MessagePlaceholder": "Wiadomość"
+      "MessagePlaceholder": "Wiadomość",
+      "EmailSuptext": "E-mail",
+      "EmailSubtext": "Odpowiedź zostanie wysłana na ten e-mail",
+      "MessageSuptext": "Wiadomość tekstowa",
+      "SendButton": "Wysłać",
+      "ContactTheAuthorSuccess": "Dziękujemy, twoja wiadomość została wysłana. Autor wkrótce się z Tobą skontaktuje",
+      "ContactTheAuthorError": "Nieznany błąd. Spróbuj wprowadzić inny adres e-mail",
+      "InvalidEmailError": "Niepoprawny adres email",
+      "EmailRequiredError": "E-mail wymagany",
+      "MessageRequiredError": "Treść wiadomości jest wymagana"
     }
   }
 }

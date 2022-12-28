@@ -44,7 +44,16 @@
       "HeaderTitle": "Contact the author",
       "EmailPlaceholder": "Email",
       "SubjectPlaceholder": "Subject",
-      "MessagePlaceholder": "Message"
+      "MessagePlaceholder": "Message",
+      "EmailSuptext": "Email",
+      "EmailSubtext": "A reply will be sent to this email",
+      "MessageSuptext": "Message text",
+      "SendButton": "Send",
+      "ContactTheAuthorSuccess": "Thank you, your message has been sent. The author will contact you shortly",
+      "ContactTheAuthorError": "Unknown error. Please try to enter another email",
+      "InvalidEmailError": "Invalid email address",
+      "EmailRequiredError": "Email required",
+      "MessageRequiredError": "Message text required"
     }
   }
 }

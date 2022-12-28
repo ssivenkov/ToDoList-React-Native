@@ -42,9 +42,18 @@
     },
     "contactTheAuthorScreen": {
       "HeaderTitle": "Звязацца з аўтарам",
-      "EmailPlaceholder": "Эл. ліст",
+      "EmailPlaceholder": "Эл. пошта",
       "SubjectPlaceholder": "Тэма паведамлення",
-      "MessagePlaceholder": "Паведамленне"
+      "MessagePlaceholder": "Паведамленне",
+      "EmailSuptext": "Эл. пошта",
+      "EmailSubtext": "Адказ будзе дасланы на гэты адрас эл. пошты",
+      "MessageSuptext": "Тэкст паведамлення",
+      "SendButton": "Адправіць",
+      "ContactTheAuthorSuccess": "Дзякуй, ваша паведамленне было адпраўлена. Аўтар звяжацца з вамі ў бліжэйшы час",
+      "ContactTheAuthorError": "Невядомая памылка. Паспрабуйце ўвесці іншы адрас эл. пошты",
+      "InvalidEmailError": "Няправільны адрас эл. пошты",
+      "EmailRequiredError": "Патрабуецца эл. пошта",
+      "MessageRequiredError": "Патрабуецца тэкст паведамлення"
     }
   }
 }

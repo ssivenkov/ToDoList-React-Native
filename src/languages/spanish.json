@@ -44,7 +44,16 @@
       "HeaderTitle": "Contacta con el autor",
       "EmailPlaceholder": "Correo electrónico",
       "SubjectPlaceholder": "Asunto del mensaje",
-      "MessagePlaceholder": "Mensaje"
+      "MessagePlaceholder": "Mensaje",
+      "EmailSuptext": "Correo electrónico",
+      "EmailSubtext": "Se enviará una respuesta a este correo electrónico",
+      "MessageSuptext": "Mensaje de texto",
+      "SendButton": "Enviar",
+      "ContactTheAuthorSuccess": "Gracias! Tu mensaje ha sido enviado. El autor se pondrá en contacto con usted en breve",
+      "ContactTheAuthorError": "Error desconocido. Intente ingresar otro correo electrónico",
+      "InvalidEmailError": "Dirección de correo electrónico no válida",
+      "EmailRequiredError": "Correo electrónico requerido",
+      "MessageRequiredError": "Texto del mensaje requerido"
     }
   }
 }

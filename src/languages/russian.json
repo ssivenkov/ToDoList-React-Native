@@ -44,7 +44,16 @@
       "HeaderTitle": "Связаться с автором",
       "EmailPlaceholder": "Эл. почта",
       "SubjectPlaceholder": "Тема сообщения",
-      "MessagePlaceholder": "Сообщение"
+      "MessagePlaceholder": "Сообщение",
+      "EmailSuptext": "Эл. почта",
+      "EmailSubtext": "Ответ будет отправлен на этот адрес эл. почты",
+      "MessageSuptext": "Текст сообщения",
+      "SendButton": "Отправить",
+      "ContactTheAuthorSuccess": "Спасибо, ваше сообщение отправлено. Автор свяжется с вами в ближайшее время",
+      "ContactTheAuthorError": "Неизвестная ошибка. Пожалуйста, попробуйте ввести другой адрес эл. почты",
+      "InvalidEmailError": "Некорректный адрес эл. почты",
+      "EmailRequiredError": "Эл. почта обязательна",
+      "MessageRequiredError": "Текст сообщения обязателен"
     }
   }
 }

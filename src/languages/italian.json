@@ -44,7 +44,16 @@
       "HeaderTitle": "Contatta l'autore",
       "EmailPlaceholder": "E-mail",
       "SubjectPlaceholder": "Soggetto del messaggio",
-      "MessagePlaceholder": "Messaggio"
+      "MessagePlaceholder": "Messaggio",
+      "EmailSuptext": "E-mail",
+      "EmailSubtext": "Una risposta verrà inviata a questa email",
+      "MessageSuptext": "Messaggio di testo",
+      "SendButton": "Spedire",
+      "ContactTheAuthorSuccess": "Grazie! Il tuo messaggio è stato spedito. L'autore ti contatterà a breve",
+      "ContactTheAuthorError": "Errore sconosciuto. Si prega di provare a inserire un'altra email",
+      "InvalidEmailError": "Indirizzo email non valido",
+      "EmailRequiredError": "Email obbligatorio",
+      "MessageRequiredError": "Testo del messaggio richiesto"
     }
   }
 }

@@ -44,7 +44,16 @@
       "HeaderTitle": "Hubungi penulis",
       "EmailPlaceholder": "Surel",
       "SubjectPlaceholder": "Judul Pesan",
-      "MessagePlaceholder": "Pesan"
+      "MessagePlaceholder": "Pesan",
+      "EmailSuptext": "Surel",
+      "EmailSubtext": "Balasan akan dikirim ke email ini",
+      "MessageSuptext": "Pesan teks",
+      "SendButton": "Mengirim",
+      "ContactTheAuthorSuccess": "Terima kasih! Pesan anda sudah terkirim. Penulis akan segera menghubungi Anda",
+      "ContactTheAuthorError": "Kesalahan yang tidak diketahui. Silakan coba masukkan email lain",
+      "InvalidEmailError": "Alamat surel salah",
+      "EmailRequiredError": "Surel diperlukan",
+      "MessageRequiredError": "Teks pesan diperlukan"
     }
   }
 }

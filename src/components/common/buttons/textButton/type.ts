@@ -7,5 +7,5 @@ export type TextButtonPropsType = {
   touched?: Array<boolean>;
   containerStyle?: ViewStyle;
   errors?: Array<string | undefined>;
-  disable?: boolean;
+  disabled?: boolean;
 };

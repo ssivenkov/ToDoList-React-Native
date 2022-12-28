@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 
 import { commonButtonStyles } from '@components/buttons/common/styles/commonButtonStyles';
-import { CustomInput } from '@components/common/input/CustomInput';
+import { Input } from '@components/common/input/Input';
 import { ModalIcon } from '@components/common/modals/ModalIcon';
 import { ICON_SIZE_SMALL } from '@constants/constants';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
@@ -77,7 +77,7 @@ export const EditTaskListTitleButton = ({
       okDisable={!editedTaskListTitle}
       okHandler={onOkPress}
     >
-      <CustomInput
+      <Input
         inputRef={inputRef}
         onValueChange={setEditedTaskListTitle}
         value={editedTaskListTitle}
