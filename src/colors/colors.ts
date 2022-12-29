@@ -31,6 +31,6 @@ export const COLORS = {
   MINE_SHAFT2: '#111111',
   WOODSMOKE2: '#0D0D0E',
   BLACK: '#000000',
-  SLIGHT_TRANSPARENCY: 'rgba(0,0,0,0.85)',
+  MEDIUM_TRANSPARENCY: 'rgba(0,0,0,0.65)',
   TRANSPARENT: 'rgba(0,0,0,0)',
 };

@@ -20,7 +20,7 @@ export const styles = (props: ExtendedStylesPropsType) =>
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: COLORS.SLIGHT_TRANSPARENCY,
+      backgroundColor: COLORS.MEDIUM_TRANSPARENCY,
     },
 
     modalView: {
