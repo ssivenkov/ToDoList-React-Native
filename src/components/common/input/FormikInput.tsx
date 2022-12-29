@@ -28,24 +28,28 @@ export const FormikInput = (props: FormikInputPropsType) => {
     <View>
       {suptext && <Text style={style.suptext}>{suptext}</Text>}
       {autogrow ? (
-        <AutoGrowingTextInput
-          onBlur={onBlur}
-          onChangeText={onChangeText}
-          placeholder={placeholder}
-          placeholderTextColor={COLORS.SILVER_CHALICE2}
-          style={style.input}
-          value={value}
-        />
+        <View style={style.inputContainer}>
+          <AutoGrowingTextInput
+            onBlur={onBlur}
+            onChangeText={onChangeText}
+            placeholder={placeholder}
+            placeholderTextColor={COLORS.SILVER_CHALICE2}
+            style={style.input}
+            value={value}
+          />
+        </View>
       ) : (
-        <TextInput
-          maxLength={MAX_INPUT_LENGTH}
-          onBlur={onBlur}
-          onChangeText={onChangeText}
-          placeholder={placeholder}
-          placeholderTextColor={COLORS.SILVER_CHALICE2}
-          style={style.input}
-          value={value}
-        />
+        <View style={style.inputContainer}>
+          <TextInput
+            maxLength={MAX_INPUT_LENGTH}
+            onBlur={onBlur}
+            onChangeText={onChangeText}
+            placeholder={placeholder}
+            placeholderTextColor={COLORS.SILVER_CHALICE2}
+            style={style.input}
+            value={value}
+          />
+        </View>
       )}
       {errorSubtext ? (
         <Text style={style.errorSubtext}>{errorSubtext}</Text>

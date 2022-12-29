@@ -14,7 +14,7 @@ export const Input = (props: InputPropsType) => {
   const style = useStyles(styles);
 
   return (
-    <View>
+    <View style={style.inputContainer}>
       <TextInput
         maxLength={MAX_INPUT_LENGTH}
         onChangeText={(text: string) => {

@@ -1,8 +1,9 @@
 import { COLORS } from '@colors/colors';
 import { ExtendedStylesPropsType } from '@root/hooks/useStyles';
-import { StyleSheet, TextStyle } from 'react-native';
+import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
 type InputStylesType = {
+  inputContainer: ViewStyle;
   input: TextStyle;
   suptext: TextStyle;
   subtext: TextStyle;
@@ -16,6 +17,10 @@ const subtextPaddingVertical = 8;
 
 export const styles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<InputStylesType>({
+    inputContainer: {
+      flexDirection: 'row',
+    },
+
     input: {
       width: '100%',
       alignContent: 'center',
