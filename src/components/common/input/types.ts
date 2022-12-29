@@ -21,4 +21,5 @@ export type FormikInputPropsType = {
   subtext?: string;
   suptext?: string;
   errorSubtext?: string;
+  autogrow?: boolean;
 };

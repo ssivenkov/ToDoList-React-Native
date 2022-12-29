@@ -74,6 +74,7 @@ export const ContactTheAuthorScreen = () => {
         </View>
         <View style={style.inputWrapper}>
           <FormikInput
+            autogrow={true}
             errorSubtext={
               errors[messageField] && touched[messageField] ? errors[messageField] : ''
             }

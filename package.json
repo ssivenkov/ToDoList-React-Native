@@ -33,6 +33,7 @@
     "react": "17.0.2",
     "react-i18next": "^11.16.1",
     "react-native": "0.67.3",
+    "react-native-autogrow-textinput": "^5.4.0",
     "react-native-date-picker": "^4.2.6",
     "react-native-dotenv": "^3.3.1",
     "react-native-fbsdk-next": "^7.3.3",

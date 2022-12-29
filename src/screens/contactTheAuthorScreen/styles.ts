@@ -10,8 +10,8 @@ type ContactTheAuthorScreenPropsType = {
 export const styles = () =>
   StyleSheet.create<ContactTheAuthorScreenPropsType>({
     screenContainer: {
-      marginHorizontal: 18,
-      marginTop: 22,
+      paddingHorizontal: 18,
+      paddingTop: 22,
     },
 
     inputsWrapper: {
@@ -24,6 +24,6 @@ export const styles = () =>
 
     buttonContainer: {
       alignItems: 'center',
-      marginBottom: 50,
+      marginBottom: 70,
     },
   });
