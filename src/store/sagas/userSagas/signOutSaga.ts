@@ -52,8 +52,8 @@ export function* signOutSaga(action: SignOutSagaActionReturnType) {
         userData: null,
         providerID: null,
         isUserDataSynchronized: false,
-        selectedColor: COLORS.FLIRT,
-        accentColor: COLORS.FLIRT,
+        selectedColor: COLORS.ELECTRIC_VIOLET,
+        accentColor: COLORS.ELECTRIC_VIOLET,
       }),
     );
 
