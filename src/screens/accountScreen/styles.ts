@@ -19,9 +19,10 @@ export const styles = (props: ExtendedStylesPropsType) =>
     },
 
     userInfoContainer: {
-      marginTop: 50,
+      width: '100%',
+      paddingTop: 50,
       alignItems: 'center',
-      marginBottom: 30,
+      paddingBottom: 30,
     },
 
     avatar: {

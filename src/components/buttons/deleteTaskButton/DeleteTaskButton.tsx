@@ -1,6 +1,9 @@
 import React from 'react';
 
-import { menuButtonDarkGradient, menuButtonLightGradient } from '@colors/gradients';
+import {
+  taskMenuButtonDarkGradient,
+  taskMenuButtonLightGradient,
+} from '@colors/gradients';
 import { commonButtonStyles } from '@components/buttons/common/styles/commonButtonStyles';
 import { menuHorizontalStyles } from '@components/common/menus/menuHorizontal/styles';
 import { ModalIcon } from '@components/common/modals/ModalIcon';
@@ -32,9 +35,9 @@ export const DeleteTaskButton = (props: DeleteTaskButtonPropsType) => {
   const style = useStyles(styles);
   const menuHorizontalStyle = useStyles(menuHorizontalStyles);
 
-  const buttonGradient = theme.darkMode
-    ? menuButtonDarkGradient
-    : menuButtonLightGradient;
+  const taskMenuButtonGradient = theme.darkMode
+    ? taskMenuButtonDarkGradient
+    : taskMenuButtonLightGradient;
 
   const toDoTasks = tasks ? tasks.filter((task) => !task.isDone) : [];
   const doneTasks = tasks ? tasks.filter((task) => task.isDone) : [];
@@ -81,7 +84,7 @@ export const DeleteTaskButton = (props: DeleteTaskButtonPropsType) => {
   return (
     <ModalIcon
       buttonIcon={
-        <LinearGradient colors={buttonGradient}>
+        <LinearGradient colors={taskMenuButtonGradient}>
           <View style={menuHorizontalStyle.rightButtonContainer}>
             <View style={commonButtonStyles.buttonContainer}>
               <FontAwesomeIcon

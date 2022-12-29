@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 
+import { longButtonDarkGradient, longButtonLightGradient } from '@colors/gradients';
 import { ChangeLanguageButton } from '@components/buttons/changeLanguageButton/ChangeLanguageButton';
 import { DarkModeButton } from '@components/buttons/darkModeButton/DarkModeButton';
 import { SelectAccentColorButton } from '@components/buttons/selectAccentColorButton/SelectAccentColorButton';
 import { LongButton } from '@components/common/buttons/longButton/LongButton';
-import { GradientWrapper } from '@components/common/gradientWrapper/GradientWrapper';
 import { Loader } from '@components/common/loader/Loader';
 import { ModalLongButton } from '@components/common/modals/ModalLongButton';
 import { ROOT_NAVIGATOR_ROUTE } from '@enums/routesEnum';
@@ -14,9 +14,14 @@ import { useStyles } from '@root/hooks/useStyles';
 import { styles } from '@root/screens/accountScreen/styles';
 import { deleteAccountAction } from '@store/actions/userSagaActions/deleteAccountAction';
 import { signOutAction } from '@store/actions/userSagaActions/signOutAction';
-import { userAvatarSelector, userDataSelector } from '@store/selectors/userSelectors';
+import {
+  themeSelector,
+  userAvatarSelector,
+  userDataSelector,
+} from '@store/selectors/userSelectors';
 import { useTranslation } from 'react-i18next';
 import { Image, ScrollView, Text, View } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 import { useDispatch, useSelector } from 'react-redux';
 
 export const AccountScreen = () => {
@@ -26,11 +31,17 @@ export const AccountScreen = () => {
 
   const { t } = useTranslation();
 
+  const theme = useSelector(themeSelector);
+
   const navigation = useNavigation();
 
   const userData = useSelector(userDataSelector);
   const userAvatar = useSelector(userAvatarSelector);
   const [waitingProcess, setWaitingProcess] = useState<boolean>(false);
+
+  const longButtonGradient = theme.darkMode
+    ? longButtonDarkGradient
+    : longButtonLightGradient;
 
   const navigateToAuthorCommunicationScreen = () => {
     navigation.navigate(ROOT_NAVIGATOR_ROUTE.CONTACT_THE_AUTHOR_SCREEN);
@@ -59,23 +70,23 @@ export const AccountScreen = () => {
             )}
           </View>
           <View>
-            <GradientWrapper>
+            <LinearGradient colors={longButtonGradient}>
               <ChangeLanguageButton setIsLoading={setWaitingProcess} />
-            </GradientWrapper>
-            <GradientWrapper>
+            </LinearGradient>
+            <LinearGradient colors={longButtonGradient}>
               <DarkModeButton setIsLoading={setWaitingProcess} />
-            </GradientWrapper>
-            <GradientWrapper>
+            </LinearGradient>
+            <LinearGradient colors={longButtonGradient}>
               <SelectAccentColorButton setIsLoading={setWaitingProcess} />
-            </GradientWrapper>
-            <GradientWrapper>
+            </LinearGradient>
+            <LinearGradient colors={longButtonGradient}>
               <LongButton
                 icon={faAt}
                 onPress={() => navigateToAuthorCommunicationScreen()}
                 title={t('accountScreen.ContactTheAuthorButtonTitle')}
               />
-            </GradientWrapper>
-            <GradientWrapper>
+            </LinearGradient>
+            <LinearGradient colors={longButtonGradient}>
               <ModalLongButton
                 buttonIcon={faArrowRight}
                 buttonTitle={t('accountScreen.SignOut')}
@@ -83,8 +94,8 @@ export const AccountScreen = () => {
                 disable={waitingProcess}
                 okHandler={signOutHandler}
               />
-            </GradientWrapper>
-            <GradientWrapper>
+            </LinearGradient>
+            <LinearGradient colors={longButtonGradient}>
               <ModalLongButton
                 buttonIcon={faTrash}
                 buttonTitle={t('accountScreen.DeleteAccount')}
@@ -92,7 +103,7 @@ export const AccountScreen = () => {
                 disable={waitingProcess}
                 okHandler={deleteAccountHandler}
               />
-            </GradientWrapper>
+            </LinearGradient>
           </View>
         </View>
       </ScrollView>

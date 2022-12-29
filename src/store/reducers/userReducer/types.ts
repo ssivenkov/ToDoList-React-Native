@@ -60,10 +60,10 @@ export type UserAvatarType = Nullable<string>;
 export type ThemeType = {
   darkMode: boolean;
   BACKGROUND_COLOR: string;
+  MODAL_BACKGROUND_COLOR: string;
   TASK_LIST_COLOR: string;
   TASK_COLOR: string;
   TEXT_COLOR: string;
-  TEXT_BUTTON_COLOR: string;
   TAB_BAR_BACKGROUND_COLOR: string;
   TAB_BAR_ICON_COLOR: string;
   TAB_BAR_TEXT_COLOR: string;

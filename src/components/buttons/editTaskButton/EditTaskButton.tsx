@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 
-import { menuButtonDarkGradient, menuButtonLightGradient } from '@colors/gradients';
+import {
+  taskMenuButtonDarkGradient,
+  taskMenuButtonLightGradient,
+} from '@colors/gradients';
 import { commonButtonStyles } from '@components/buttons/common/styles/commonButtonStyles';
 import { styles } from '@components/buttons/editTaskButton/styles';
 import { ColorPickerComponent } from '@components/common/colorPicker/ColorPicker';
@@ -39,9 +42,9 @@ export const EditTaskButton = (props: EditTaskTitleButtonPropsType) => {
   const style = useStyles(styles);
   const menuHorizontalStyle = useStyles(menuHorizontalStyles);
 
-  const buttonGradient = theme.darkMode
-    ? menuButtonDarkGradient
-    : menuButtonLightGradient;
+  const taskMenuButtonGradient = theme.darkMode
+    ? taskMenuButtonDarkGradient
+    : taskMenuButtonLightGradient;
 
   const notifications = useSelector(notificationsSelector);
   const taskNotification = notifications.find((item) => item.taskID === taskID);
@@ -144,7 +147,7 @@ export const EditTaskButton = (props: EditTaskTitleButtonPropsType) => {
   return (
     <ModalIcon
       buttonIcon={
-        <LinearGradient colors={buttonGradient}>
+        <LinearGradient colors={taskMenuButtonGradient}>
           <View style={menuHorizontalStyle.middleButtonContainer}>
             <View style={commonButtonStyles.buttonContainer}>
               <FontAwesomeIcon

@@ -1,6 +1,9 @@
 import React from 'react';
 
-import { menuButtonDarkGradient, menuButtonLightGradient } from '@colors/gradients';
+import {
+  taskMenuButtonDarkGradient,
+  taskMenuButtonLightGradient,
+} from '@colors/gradients';
 import { commonButtonStyles } from '@components/buttons/common/styles/commonButtonStyles';
 import { menuHorizontalStyles } from '@components/common/menus/menuHorizontal/styles';
 import { ModalIcon } from '@components/common/modals/ModalIcon';
@@ -31,9 +34,9 @@ export const DoneTaskButton = ({
   const style = useStyles(styles);
   const menuHorizontalStyle = useStyles(menuHorizontalStyles);
 
-  const buttonGradient = theme.darkMode
-    ? menuButtonDarkGradient
-    : menuButtonLightGradient;
+  const taskMenuButtonGradient = theme.darkMode
+    ? taskMenuButtonDarkGradient
+    : taskMenuButtonLightGradient;
 
   const setDoneTask = (
     setIsLoading: SetStateType<boolean>,
@@ -52,7 +55,7 @@ export const DoneTaskButton = ({
   return (
     <ModalIcon
       buttonIcon={
-        <LinearGradient colors={buttonGradient}>
+        <LinearGradient colors={taskMenuButtonGradient}>
           <View style={menuHorizontalStyle.leftButtonContainer}>
             <View style={commonButtonStyles.buttonContainer}>
               <FontAwesomeIcon

@@ -32,7 +32,7 @@ export const FormikInput = (props: FormikInputPropsType) => {
           onBlur={onBlur}
           onChangeText={onChangeText}
           placeholder={placeholder}
-          placeholderTextColor={COLORS.SILVER_CHALICE1}
+          placeholderTextColor={COLORS.SILVER_CHALICE2}
           style={style.input}
           value={value}
         />
@@ -42,7 +42,7 @@ export const FormikInput = (props: FormikInputPropsType) => {
           onBlur={onBlur}
           onChangeText={onChangeText}
           placeholder={placeholder}
-          placeholderTextColor={COLORS.SILVER_CHALICE1}
+          placeholderTextColor={COLORS.SILVER_CHALICE2}
           style={style.input}
           value={value}
         />

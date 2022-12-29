@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+import { signInScreenGradient } from '@colors/gradients';
 import { Loader } from '@components/common/loader/Loader';
 import { FACEBOOK_TITLE, GOOGLE_TITLE } from '@constants/constants';
 import { faFacebook, faGoogle } from '@fortawesome/free-brands-svg-icons';
@@ -17,7 +18,9 @@ import { styles } from './styles';
 
 export const SignInScreen = () => {
   const dispatch = useDispatch();
+
   const style = useStyles(styles);
+
   const { t } = useTranslation();
 
   const [waitingUserData, setWaitingUserData] = useState<boolean>(false);
@@ -33,7 +36,7 @@ export const SignInScreen = () => {
   };
 
   return (
-    <LinearGradient colors={['#5A00FF', '#3412B1', '#000E32']}>
+    <LinearGradient colors={signInScreenGradient}>
       <View style={style.signInWrapper}>
         {waitingUserData ? (
           <Loader />

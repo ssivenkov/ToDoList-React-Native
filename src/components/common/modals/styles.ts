@@ -20,14 +20,14 @@ export const styles = (props: ExtendedStylesPropsType) =>
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: COLORS.SLIGHT_TRANSPARENCY,
+      backgroundColor: COLORS.MEDIUM_TRANSPARENCY,
     },
 
     modalView: {
       width: '90%',
       borderRadius: modalBorderRadius,
       paddingTop: 20,
-      backgroundColor: props.BACKGROUND_COLOR,
+      backgroundColor: props.MODAL_BACKGROUND_COLOR,
     },
 
     contentWithBottomPadding: {

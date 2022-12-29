@@ -31,7 +31,7 @@ export const Switcher = (props: SwitcherPropsType) => {
       <ToggleSwitch
         animationSpeed={250}
         isOn={isOn}
-        offColor={COLORS.SILVER_CHALICE1}
+        offColor={COLORS.SILVER_CHALICE2}
         onColor={COLORS.JAPANESE_LAUREL}
         onToggle={(isOn) => toggle(isOn)}
         size={size}
