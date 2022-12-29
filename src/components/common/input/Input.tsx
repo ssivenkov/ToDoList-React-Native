@@ -21,7 +21,7 @@ export const Input = (props: InputPropsType) => {
           onValueChange(text);
         }}
         placeholder={placeholder}
-        placeholderTextColor={COLORS.SILVER_CHALICE1}
+        placeholderTextColor={COLORS.SILVER_CHALICE2}
         ref={inputRef}
         style={style.input}
         value={value}

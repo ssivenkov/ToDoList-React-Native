@@ -12,8 +12,8 @@ export const GradientWrapper = (props: GradientWrapperPropsType) => {
   const theme = useSelector(themeSelector);
 
   const buttonGradient = theme.darkMode
-    ? [COLORS.OUTER_SPACE2, COLORS.MINE_SHAFT2]
-    : [COLORS.WHITE, COLORS.ALTO3];
+    ? [COLORS.OUTER_SPACE, COLORS.MINE_SHAFT2]
+    : [COLORS.WHITE, COLORS.ALTO2];
 
   return <LinearGradient colors={buttonGradient}>{children}</LinearGradient>;
 };
