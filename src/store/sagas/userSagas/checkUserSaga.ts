@@ -35,7 +35,7 @@ export function* checkUserSaga() {
         userToken: userID,
         language: EN,
         darkTheme: false,
-        accentColor: COLORS.ELECTRIC_VIOLET,
+        accentColor: COLORS.ELECTRIC_VIOLET2,
       });
     } else {
       if (!isUserDataSynchronized) {
