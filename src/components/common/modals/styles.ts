@@ -27,7 +27,7 @@ export const styles = (props: ExtendedStylesPropsType) =>
       width: '90%',
       borderRadius: modalBorderRadius,
       paddingTop: 20,
-      backgroundColor: props.BACKGROUND_COLOR,
+      backgroundColor: props.MODAL_BACKGROUND_COLOR,
     },
 
     contentWithBottomPadding: {
