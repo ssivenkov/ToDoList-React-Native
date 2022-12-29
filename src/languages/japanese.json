@@ -37,7 +37,23 @@
       "DeleteAccount": "アカウント削除",
       "DeleteAccountWarning": "本当にデータごとアカウントを削除してよいのでしょうか?",
       "AccentColorDescription": "アクセントカラーを選択:",
-      "AccentColorButtonTitle": "アクセントカラー"
+      "AccentColorButtonTitle": "アクセントカラー",
+      "ContactTheAuthorButtonTitle": "著者に連絡する"
+    },
+    "contactTheAuthorScreen": {
+      "HeaderTitle": "著者に連絡する",
+      "EmailPlaceholder": "メール",
+      "SubjectPlaceholder": "メッセージの件名",
+      "MessagePlaceholder": "メッセージ",
+      "EmailSuptext": "メール",
+      "EmailSubtext": "このメールに返信が送信されます",
+      "MessageSuptext": "メッセージ本文",
+      "SendButton": "送信",
+      "ContactTheAuthorSuccess": "ありがとうございました！あなたのメッセージは送信されました。 著者はすぐにあなたに連絡します",
+      "ContactTheAuthorError": "不明なエラー。 別のメールアドレスを入力してください",
+      "InvalidEmailError": "無効な電子メールアドレス",
+      "EmailRequiredError": "メールアドレス必須",
+      "MessageRequiredError": "メッセージ本文必須"
     }
   }
 }

@@ -5,6 +5,7 @@ export const NOTIFICATION_ID_MAX_LENGTH = 9;
 export const START_ANIMATION_DELAY = 10;
 export const HIDE_SPLASH_SCREEN_TIMEOUT = 600;
 export const COLOR_PICKER_SHOW_TIMEOUT = 100;
+export const MAX_INPUT_LENGTH = 100;
 export const BY = 'by';
 export const CN = 'cn';
 export const DE = 'de';

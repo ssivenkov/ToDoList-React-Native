@@ -11,11 +11,10 @@ type TextButtonStylesType = {
 export const styles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<TextButtonStylesType>({
     textButton: {
-      paddingHorizontal: 12,
-      paddingVertical: 6,
-      borderRadius: 8,
-      backgroundColor: props.TEXT_BUTTON_COLOR,
-      justifyContent: 'center',
+      paddingHorizontal: 60,
+      paddingVertical: 12,
+      borderRadius: 30,
+      backgroundColor: props.ACCENT_COLOR,
       alignItems: 'center',
     },
 

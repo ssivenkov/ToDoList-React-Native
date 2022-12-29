@@ -39,6 +39,7 @@
 
     // typescript
     "@typescript-eslint/no-var-requires": "error",
+    "@typescript-eslint/ban-ts-comment": "off",
 
     // react native
     "react-native/no-unused-styles": "error",

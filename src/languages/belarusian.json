@@ -37,7 +37,23 @@
       "DeleteAccount": "Выдаліць акаўнт",
       "DeleteAccountWarning": "Вы ўпэўненыя, што жадаеце выдаліць свой уліковы запіс з усімі вашымі дадзенымі?",
       "AccentColorDescription": "Абярыце колер акцэнту:",
-      "AccentColorButtonTitle": "Колер акцэнту"
+      "AccentColorButtonTitle": "Колер акцэнту",
+      "ContactTheAuthorButtonTitle": "Звязацца з аўтарам"
+    },
+    "contactTheAuthorScreen": {
+      "HeaderTitle": "Звязацца з аўтарам",
+      "EmailPlaceholder": "Эл. пошта",
+      "SubjectPlaceholder": "Тэма паведамлення",
+      "MessagePlaceholder": "Паведамленне",
+      "EmailSuptext": "Эл. пошта",
+      "EmailSubtext": "Адказ будзе дасланы на гэты адрас эл. пошты",
+      "MessageSuptext": "Тэкст паведамлення",
+      "SendButton": "Адправіць",
+      "ContactTheAuthorSuccess": "Дзякуй, ваша паведамленне было адпраўлена. Аўтар звяжацца з вамі ў бліжэйшы час",
+      "ContactTheAuthorError": "Невядомая памылка. Паспрабуйце ўвесці іншы адрас эл. пошты",
+      "InvalidEmailError": "Няправільны адрас эл. пошты",
+      "EmailRequiredError": "Патрабуецца эл. пошта",
+      "MessageRequiredError": "Патрабуецца тэкст паведамлення"
     }
   }
 }

@@ -37,7 +37,23 @@
       "DeleteAccount": "계정 삭제",
       "DeleteAccountWarning": "모든 데이터가 포함된 계정을 삭제하시겠습니까?",
       "AccentColorDescription": "강조 색상 선택:",
-      "AccentColorButtonTitle": "액센트 컬러"
+      "AccentColorButtonTitle": "액센트 컬러",
+      "ContactTheAuthorButtonTitle": "저자에게 연락하기"
+    },
+    "contactTheAuthorScreen": {
+      "HeaderTitle": "저자에게 연락하기",
+      "EmailPlaceholder": "이메일",
+      "SubjectPlaceholder": "메시지 제목",
+      "MessagePlaceholder": "메세지",
+      "EmailSuptext": "이메일",
+      "EmailSubtext": "이 이메일로 답장이 전송됩니다",
+      "MessageSuptext": "메시지 텍스트",
+      "SendButton": "보내다",
+      "ContactTheAuthorSuccess": "감사합니다. 메시지가 전송되었습니다. 작성자가 곧 연락을 드릴 것입니다",
+      "ContactTheAuthorError": "알수없는 오류. 다른 이메일을 입력해 주세요",
+      "InvalidEmailError": "잘못된 이메일 주소",
+      "EmailRequiredError": "이메일 필요",
+      "MessageRequiredError": "메시지 텍스트 필요"
     }
   }
 }

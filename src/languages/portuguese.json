@@ -37,7 +37,23 @@
       "DeleteAccount": "Apagar conta",
       "DeleteAccountWarning": "Tem a certeza de querer apagar a sua conta com todos os seus dados?",
       "AccentColorDescription": "Seleccione a cor do acento:",
-      "AccentColorButtonTitle": "Cor do acento"
+      "AccentColorButtonTitle": "Cor do acento",
+      "ContactTheAuthorButtonTitle": "Entre em contato com o autor"
+    },
+    "contactTheAuthorScreen": {
+      "HeaderTitle": "Entre em contato com o autor",
+      "EmailPlaceholder": "E-mail",
+      "SubjectPlaceholder": "Assunto da mensagem",
+      "MessagePlaceholder": "Mensagem",
+      "EmailSuptext": "E-mail",
+      "EmailSubtext": "Uma resposta será enviada para este e-mail",
+      "MessageSuptext": "Mensagem de texto",
+      "SendButton": "Mandar",
+      "ContactTheAuthorSuccess": "Obrigado! Sua mensagem foi enviada. O autor entrará em contato com você em breve",
+      "ContactTheAuthorError": "Erro desconhecido. Por favor, tente inserir outro e-mail",
+      "InvalidEmailError": "Endereço de email invalido",
+      "EmailRequiredError": "Email obrigatório",
+      "MessageRequiredError": "Texto da mensagem obrigatório"
     }
   }
 }

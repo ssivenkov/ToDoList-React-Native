@@ -37,7 +37,23 @@
       "DeleteAccount": "Hesap silme",
       "DeleteAccountWarning": "Hesabınızı tüm verilerinizle birlikte silmek istediğinizden emin misiniz?",
       "AccentColorDescription": "Vurgu rengini seçin:",
-      "AccentColorButtonTitle": "Vurgu rengi"
+      "AccentColorButtonTitle": "Vurgu rengi",
+      "ContactTheAuthorButtonTitle": "Yazarla iletişim kurun"
+    },
+    "contactTheAuthorScreen": {
+      "HeaderTitle": "Yazarla iletişim kurun",
+      "EmailPlaceholder": "E-posta",
+      "SubjectPlaceholder": "Mesaj Konusu",
+      "MessagePlaceholder": "İleti",
+      "EmailSuptext": "E-posta",
+      "EmailSubtext": "Bu e-postaya bir yanıt gönderilecek",
+      "MessageSuptext": "Mesaj metni",
+      "SendButton": "Göndermek",
+      "ContactTheAuthorSuccess": "Teşekkürler! Mesajınız gönderildi. Yazar kısa süre içinde sizinle iletişime geçecek",
+      "ContactTheAuthorError": "Bilinmeyen hata. Lütfen başka bir e-posta girmeyi deneyin",
+      "InvalidEmailError": "Geçersiz e-posta adresi",
+      "EmailRequiredError": "E-posta gerekli",
+      "MessageRequiredError": "Mesaj metni gerekli"
     }
   }
 }

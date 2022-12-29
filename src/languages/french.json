@@ -37,7 +37,23 @@
       "DeleteAccount": "Supprimer le compte",
       "DeleteAccountWarning": "Êtes-vous sûr de vouloir supprimer votre compte avec toutes vos données?",
       "AccentColorDescription": "Sélectionnez la couleur d'accentuation:",
-      "AccentColorButtonTitle": "Couleur d'accentuation"
+      "AccentColorButtonTitle": "Couleur d'accentuation",
+      "ContactTheAuthorButtonTitle": "Contacter l'auteur"
+    },
+    "contactTheAuthorScreen": {
+      "HeaderTitle": "Contacter l'auteur",
+      "EmailPlaceholder": "E-mail",
+      "SubjectPlaceholder": "Objet du message",
+      "MessagePlaceholder": "Message",
+      "EmailSuptext": "E-mail",
+      "EmailSubtext": "Une réponse sera envoyée à cet e-mail",
+      "MessageSuptext": "Texte du message",
+      "SendButton": "Envoyer",
+      "ContactTheAuthorSuccess": "Merci! Votre message a été envoyé. L'auteur vous contactera sous peu",
+      "ContactTheAuthorError": "Erreur inconnue. Veuillez essayer d'entrer une autre adresse e-mail",
+      "InvalidEmailError": "Adresse e-mail invalide",
+      "EmailRequiredError": "E-mail requis",
+      "MessageRequiredError": "Texte du message requis"
     }
   }
 }

@@ -37,7 +37,23 @@
       "DeleteAccount": "Hapus akun",
       "DeleteAccountWarning": "Apakah Anda yakin ingin menghapus akun Anda dengan semua data Anda?",
       "AccentColorDescription": "Pilih warna aksen:",
-      "AccentColorButtonTitle": "Warna aksen"
+      "AccentColorButtonTitle": "Warna aksen",
+      "ContactTheAuthorButtonTitle": "Hubungi penulis"
+    },
+    "contactTheAuthorScreen": {
+      "HeaderTitle": "Hubungi penulis",
+      "EmailPlaceholder": "Surel",
+      "SubjectPlaceholder": "Judul Pesan",
+      "MessagePlaceholder": "Pesan",
+      "EmailSuptext": "Surel",
+      "EmailSubtext": "Balasan akan dikirim ke email ini",
+      "MessageSuptext": "Pesan teks",
+      "SendButton": "Mengirim",
+      "ContactTheAuthorSuccess": "Terima kasih! Pesan anda sudah terkirim. Penulis akan segera menghubungi Anda",
+      "ContactTheAuthorError": "Kesalahan yang tidak diketahui. Silakan coba masukkan email lain",
+      "InvalidEmailError": "Alamat surel salah",
+      "EmailRequiredError": "Surel diperlukan",
+      "MessageRequiredError": "Teks pesan diperlukan"
     }
   }
 }

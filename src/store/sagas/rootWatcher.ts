@@ -13,6 +13,7 @@ import { changeAccentColorSaga } from '@store/sagas/userSagas/changeAccentColorS
 import { changeDarkModeSaga } from '@store/sagas/userSagas/changeDarkModeSaga';
 import { changeLanguageSaga } from '@store/sagas/userSagas/changeLanguageSaga';
 import { checkUserSaga } from '@store/sagas/userSagas/checkUserSaga';
+import { contactTheAuthorSaga } from '@store/sagas/userSagas/contactTheAuthorSaga';
 import { createChannelSaga } from '@store/sagas/userSagas/createChannelSaga';
 import { deleteAccountSaga } from '@store/sagas/userSagas/deleteAccountSaga';
 import { facebookSignInSaga } from '@store/sagas/userSagas/facebookSignInSaga';
@@ -34,6 +35,7 @@ export function* rootWatcher() {
   yield takeLatest(USER_SAGA_ACTION.CREATE_CHANNEL, createChannelSaga);
   yield takeEvery(USER_SAGA_ACTION.CHECK_USER, checkUserSaga);
   yield takeLatest(USER_SAGA_ACTION.SYNC_USER_DATA, syncUserDataSaga);
+  yield takeLatest(USER_SAGA_ACTION.CONTACT_THE_AUTHOR, contactTheAuthorSaga);
 
   yield takeLatest(TASKS_SAGA_ACTION.ADD_NEW_TASK_LIST, addNewTaskListSaga);
   yield takeLatest(TASKS_SAGA_ACTION.SET_TASK_LIST_COLLAPSED, setTaskListCollapsedSaga);

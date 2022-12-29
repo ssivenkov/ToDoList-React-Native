@@ -21,6 +21,7 @@ export const COLORS = {
   MANATEE: '#9A99A1',
   DUSTY_GRAY: '#999999',
   DOVE_GRAY: '#636363',
+  EMPEROR: '#555555',
   TUNDORA: '#444444',
   MINE_SHAFT1: '#363636',
   OUTER_SPACE1: '#2E363B',
@@ -31,4 +32,5 @@ export const COLORS = {
   WOODSMOKE2: '#0D0D0E',
   BLACK: '#000000',
   SLIGHT_TRANSPARENCY: 'rgba(0,0,0,0.85)',
+  TRANSPARENT: 'rgba(0,0,0,0)',
 };

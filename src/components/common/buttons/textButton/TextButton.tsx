@@ -6,14 +6,14 @@ import { useStyles } from '@root/hooks/useStyles';
 import { Text, TouchableOpacity, View } from 'react-native';
 
 export const TextButton = (props: TextButtonPropsType) => {
-  const { title, containerStyle, onPress, disable } = props;
+  const { title, containerStyle, onPress, disabled } = props;
   const style = useStyles(styles);
 
-  const TextButtonStyle = [style.textButton, disable && style.textButtonDisable];
+  const TextButtonStyle = [style.textButton, disabled && style.textButtonDisable];
 
   return (
     <View style={containerStyle && containerStyle}>
-      <TouchableOpacity disabled={disable} onPress={onPress} style={TextButtonStyle}>
+      <TouchableOpacity disabled={disabled} onPress={onPress} style={TextButtonStyle}>
         <Text style={style.text}>{title}</Text>
       </TouchableOpacity>
     </View>

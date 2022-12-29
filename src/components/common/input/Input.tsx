@@ -1,21 +1,22 @@
 import React from 'react';
 
 import { COLORS } from '@colors/colors';
+import { MAX_INPUT_LENGTH } from '@constants/constants';
 import { useStyles } from '@root/hooks/useStyles';
 import { TextInput, View } from 'react-native';
 
 import { styles } from './styles';
 import { InputPropsType } from './types';
 
-export const CustomInput = (props: InputPropsType) => {
+export const Input = (props: InputPropsType) => {
   const { value, onValueChange, placeholder, inputRef } = props;
 
   const style = useStyles(styles);
 
   return (
-    <View style={style.container}>
+    <View>
       <TextInput
-        maxLength={100}
+        maxLength={MAX_INPUT_LENGTH}
         onChangeText={(text: string) => {
           onValueChange(text);
         }}

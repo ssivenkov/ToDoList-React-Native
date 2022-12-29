@@ -37,7 +37,23 @@
       "DeleteAccount": "Konto löschen",
       "DeleteAccountWarning": "Sind Sie sicher, dass Sie Ihr Konto mit allen Daten löschen wollen?",
       "AccentColorDescription": "Akzentfarbe auswählen:",
-      "AccentColorButtonTitle": "Akzentfarbe"
+      "AccentColorButtonTitle": "Akzentfarbe",
+      "ContactTheAuthorButtonTitle": "Kontaktieren Sie den Autor"
+    },
+    "contactTheAuthorScreen": {
+      "HeaderTitle": "Kontaktieren Sie den Autor",
+      "EmailPlaceholder": "Email",
+      "SubjectPlaceholder": "Betreff der Nachricht",
+      "MessagePlaceholder": "Nachricht",
+      "EmailSuptext": "Email",
+      "EmailSubtext": "Eine Antwort wird an diese E-Mail gesendet",
+      "MessageSuptext": "Nachrichtentext",
+      "SendButton": "Schicken",
+      "ContactTheAuthorSuccess": "Vielen Dank! Ihre Nachricht wurde gesendet. Der Autor wird Sie in Kürze kontaktieren",
+      "ContactTheAuthorError": "Unbekannter Fehler. Bitte versuchen Sie, eine andere Email-Adresse einzugeben",
+      "InvalidEmailError": "Ungültige E-Mail-Adresse",
+      "EmailRequiredError": "Email erforderlich",
+      "MessageRequiredError": "Nachrichtentext erforderlich"
     }
   }
 }
