@@ -54,6 +54,15 @@
       "InvalidEmailError": "Invalid email address",
       "EmailRequiredError": "Email required",
       "MessageRequiredError": "Message text required"
+    },
+    "notepadScreen": {
+      "notepad": "Notepad",
+      "notepadPlaceholder": "Text",
+      "cleanButtonWarningTitle": "Are you sure you want to clear the notepad?",
+      "cleanNotepadTextRequestError": "No internet connection, notepad has only been cleared on your device. To clear notepad on the server turn on the Internet and repeat the request",
+      "saveNotepadTextRequestError": "No internet connection, notepad has only been saved on your device. To save notepad on the server turn on the Internet and repeat the request",
+      "notepadCleared": "Notepad cleared",
+      "notepadSaved": "Notepad saved"
     }
   }
 }

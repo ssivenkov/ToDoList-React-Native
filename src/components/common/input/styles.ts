@@ -5,6 +5,7 @@ import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 type InputStylesType = {
   inputContainer: ViewStyle;
   input: TextStyle;
+  notepadInput: TextStyle;
   suptext: TextStyle;
   subtext: TextStyle;
   errorSubtext: TextStyle;
@@ -29,6 +30,15 @@ export const styles = (props: ExtendedStylesPropsType) =>
       color: props.TEXT_COLOR,
       backgroundColor: props.PLACEHOLDER_COLOR,
       borderRadius: 8,
+    },
+
+    notepadInput: {
+      width: '100%',
+      alignContent: 'center',
+      fontSize: 16,
+      padding: 10,
+      color: props.TEXT_COLOR,
+      backgroundColor: props.PLACEHOLDER_COLOR,
     },
 
     suptext: {

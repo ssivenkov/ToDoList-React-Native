@@ -1,6 +1,15 @@
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { SetStateType } from '@root/types/common/types';
 
+export type ModalIconWithoutDialogPropsType = {
+  buttonIcon: JSX.Element;
+  okHandler: (setIsLoading: SetStateType<boolean>) => void;
+
+  buttonIconDisabled?: boolean;
+  modalVisibleFromProps?: boolean;
+  setModalVisibleFromProps?: SetStateType<boolean>;
+};
+
 export type ModalIconPropsType = {
   buttonIcon: JSX.Element;
   okHandler: (
@@ -8,13 +17,14 @@ export type ModalIconPropsType = {
     setModalVisible: SetStateType<boolean>,
   ) => void;
 
+  buttonIconDisabled?: boolean;
   children?: JSX.Element;
-  description?: string;
-  okDisable?: boolean;
   closeHandler?: () => void;
-  modalVisibleFromProps?: boolean;
-  setModalVisibleFromProps?: SetStateType<boolean>;
+  description?: string;
   inputFocus?: () => void;
+  modalVisibleFromProps?: boolean;
+  okDisable?: boolean;
+  setModalVisibleFromProps?: SetStateType<boolean>;
 };
 
 export type ModalLongButtonPropsType = {

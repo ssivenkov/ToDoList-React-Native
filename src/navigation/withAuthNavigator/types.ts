@@ -8,6 +8,7 @@ import { ColorType, ThemeType } from '@store/reducers/userReducer/types';
 export type BottomTabParamList = {
   [WITH_AUTH_NAVIGATOR_ROUTE.TASKS_NAVIGATOR]: NavigatorScreenParams<TopTabParamListType>;
   [WITH_AUTH_NAVIGATOR_ROUTE.ACCOUNT_SCREEN]: undefined;
+  [WITH_AUTH_NAVIGATOR_ROUTE.NOTEPAD_SCREEN]: undefined;
 };
 
 type WithAuthNavigatorStyleParamsType = {

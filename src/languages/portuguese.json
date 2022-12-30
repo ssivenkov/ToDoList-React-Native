@@ -54,6 +54,15 @@
       "InvalidEmailError": "Endereço de email invalido",
       "EmailRequiredError": "Email obrigatório",
       "MessageRequiredError": "Texto da mensagem obrigatório"
+    },
+    "notepadScreen": {
+      "notepad": "Bloco de anotações",
+      "notepadPlaceholder": "Texto",
+      "cleanButtonWarningTitle": "Tem certeza de que deseja limpar o bloco de notas?",
+      "cleanNotepadTextRequestError": "Sem conexão com a Internet, o bloco de notas foi apagado apenas no seu dispositivo. Para limpar o bloco de notas no servidor, ligue a Internet e repita a solicitação",
+      "saveNotepadTextRequestError": "Sem conexão com a Internet, o bloco de notas foi salvo apenas no seu dispositivo. Para salvar o bloco de notas no servidor, ligue a Internet e repita a solicitação",
+      "notepadCleared": "Bloco de notas limpo",
+      "notepadSaved": "Bloco de notas salvo"
     }
   }
 }

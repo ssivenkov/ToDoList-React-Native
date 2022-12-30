@@ -5,6 +5,7 @@ import { WITH_AUTH_NAVIGATOR_ROUTE } from '@enums/routesEnum';
 import { TasksNavigator } from '@navigation/tasksNavigator/TasksNavigator';
 import {
   accountScreenSettings,
+  notepadScreenSettings,
   tasksNavigatorSettings,
   withAuthNavigatorOptions,
 } from '@navigation/withAuthNavigator/settings';
@@ -13,6 +14,7 @@ import { BottomTabParamList } from '@navigation/withAuthNavigator/types';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useStyles } from '@root/hooks/useStyles';
 import { AccountScreen } from '@root/screens/accountScreen/AccountScreen';
+import { NotepadScreen } from '@root/screens/notepadScreen/NotepadScreen';
 import { changeLanguageAction } from '@store/actions/userSagaActions/changeLanguageAction';
 import {
   accentColorSelector,
@@ -54,6 +56,18 @@ export const WithAuthNavigator = () => {
         initialRouteName={WITH_AUTH_NAVIGATOR_ROUTE.TASKS_NAVIGATOR}
         screenOptions={withAuthNavigatorOptions({ style, theme, accentColor })}
       >
+        <Screen
+          component={NotepadScreen}
+          name={WITH_AUTH_NAVIGATOR_ROUTE.NOTEPAD_SCREEN}
+          options={{
+            ...notepadScreenSettings({
+              style,
+              theme,
+              accentColor,
+            }),
+            tabBarLabel: t('notepadScreen.notepad'),
+          }}
+        />
         <Screen
           component={TasksNavigator}
           name={WITH_AUTH_NAVIGATOR_ROUTE.TASKS_NAVIGATOR}

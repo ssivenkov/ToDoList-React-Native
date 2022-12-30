@@ -1,4 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { notepadReducer } from '@store/reducers/notepadReducer/notepadReducer';
 import { tasksReducer } from '@store/reducers/tasksReducer/tasksReducer';
 import { userReducer } from '@store/reducers/userReducer/userReducer';
 import { rootWatcher } from '@store/sagas/rootWatcher';
@@ -11,6 +12,7 @@ import createSagaMiddleware from 'redux-saga';
 export const rootReducer = combineReducers<RootStateType>({
   tasks: tasksReducer,
   user: userReducer,
+  notepad: notepadReducer,
 });
 
 const persistConfig = {

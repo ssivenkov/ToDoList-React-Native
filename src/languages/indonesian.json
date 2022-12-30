@@ -54,6 +54,15 @@
       "InvalidEmailError": "Alamat surel salah",
       "EmailRequiredError": "Surel diperlukan",
       "MessageRequiredError": "Teks pesan diperlukan"
+    },
+    "notepadScreen": {
+      "notepad": "Buku catatan",
+      "notepadPlaceholder": "Teks",
+      "cleanButtonWarningTitle": "Anda yakin ingin menghapus buku catatan?",
+      "cleanNotepadTextRequestError": "Tidak ada koneksi internet, buku catatan hanya dibersihkan di perangkat Anda. Untuk menghapus buku catatan di server, hidupkan Internet dan ulangi permintaan",
+      "saveNotepadTextRequestError": "Tidak ada koneksi internet, buku catatan hanya disimpan di perangkat Anda. Untuk menyimpan buku catatan di server, nyalakan Internet dan ulangi permintaan",
+      "notepadCleared": "Buku catatan dibersihkan",
+      "notepadSaved": "Buku catatan disimpan"
     }
   }
 }

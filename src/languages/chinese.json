@@ -54,6 +54,15 @@
       "InvalidEmailError": "無效的郵件地址",
       "EmailRequiredError": "需要電子郵件",
       "MessageRequiredError": "需要消息文本"
+    },
+    "notepadScreen": {
+      "notepad": "記事本",
+      "notepadPlaceholder": "文本",
+      "cleanButtonWarningTitle": "您確定要清除記事本嗎？",
+      "cleanNotepadTextRequestError": "沒有互聯網連接，記事本僅在您的設備上被清除。 要清除服務器上的記事本，請打開互聯網並重複請求",
+      "saveNotepadTextRequestError": "沒有互聯網連接，記事本僅保存在您的設備上。 要將記事本保存在服務器上，請打開互聯網並重複請求",
+      "notepadCleared": "記事本已清除",
+      "notepadSaved": "記事本已保存"
     }
   }
 }

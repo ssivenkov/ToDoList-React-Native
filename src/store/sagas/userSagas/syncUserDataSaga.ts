@@ -2,6 +2,7 @@ import { ONLINE, USERS } from '@constants/constants';
 import { DB } from '@root/api/DB';
 import { checkInternetConnectionHelper } from '@root/helpers/checkInternetConnectionHelper';
 import { darkTheme, lightTheme } from '@root/themes/theme';
+import { setNotepadTextAction } from '@store/actions/notepadReducerActions/setNotepadTextAction';
 import { setNotificationsAction } from '@store/actions/tasksReducerActions/notificationsActions/setNotificationsAction';
 import { setTaskListsAction } from '@store/actions/tasksReducerActions/taskListsActions/setTaskListsAction';
 import { setAccentColorAction } from '@store/actions/userReducerActions/setAccentColorAction';
@@ -72,6 +73,10 @@ export function* syncUserDataSaga() {
     } else {
       yield put(setTaskListsAction({ taskLists: [] }));
       yield put(setNotificationsAction({ notifications: [] }));
+    }
+
+    if (userData.notepad && userData.notepad.notepadText) {
+      yield put(setNotepadTextAction({ notepadText: userData.notepad.notepadText }));
     }
 
     yield put(setIsUserDataSynchronizedAction({ isUserDataSynchronized: true }));
