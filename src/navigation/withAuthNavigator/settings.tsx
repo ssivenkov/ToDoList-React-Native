@@ -2,7 +2,7 @@ import React from 'react';
 
 import { CreateTaskListButton } from '@components/buttons/createTaskListButton/CreateTaskListButton';
 import { ICON_SIZE_HALF_MEDIUM } from '@constants/constants';
-import { faFile, faFileAlt, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faList, faFileAlt, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { WithAuthNavigatorScreenSettingsType } from '@navigation/withAuthNavigator/types';
 import { t } from 'i18next';
@@ -54,7 +54,7 @@ export const tasksNavigatorSettings: WithAuthNavigatorScreenSettingsType = (para
     ),
     tabBarIcon: ({ focused }) => (
       <FontAwesomeIcon
-        icon={faFile}
+        icon={faList}
         size={ICON_SIZE_HALF_MEDIUM}
         style={focused ? style.tabFocusIcon : style.tabIcon}
       />
