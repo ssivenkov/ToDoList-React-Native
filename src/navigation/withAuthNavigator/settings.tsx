@@ -2,7 +2,7 @@ import React from 'react';
 
 import { CreateTaskListButton } from '@components/buttons/createTaskListButton/CreateTaskListButton';
 import { ICON_SIZE_HALF_MEDIUM } from '@constants/constants';
-import { faFile, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faFile, faFileAlt, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { WithAuthNavigatorScreenSettingsType } from '@navigation/withAuthNavigator/types';
 import { t } from 'i18next';
@@ -21,6 +21,22 @@ export const withAuthNavigatorOptions: WithAuthNavigatorScreenSettingsType = (pa
   };
 };
 
+export const notepadScreenSettings: WithAuthNavigatorScreenSettingsType = (params) => {
+  const { style } = params;
+
+  return {
+    headerShown: false,
+    tabBarLabel: t('notepadScreen.notepad'),
+    tabBarIcon: ({ focused }) => (
+      <FontAwesomeIcon
+        icon={faFileAlt}
+        size={ICON_SIZE_HALF_MEDIUM}
+        style={focused ? style.tabFocusIcon : style.tabIcon}
+      />
+    ),
+  };
+};
+
 export const tasksNavigatorSettings: WithAuthNavigatorScreenSettingsType = (params) => {
   const { style } = params;
 
@@ -32,7 +48,7 @@ export const tasksNavigatorSettings: WithAuthNavigatorScreenSettingsType = (para
     headerTitleAlign: 'center',
     tabBarLabel: t('tasksScreen.Tasks'),
     headerRight: () => (
-      <View style={style.buttonContainer}>
+      <View style={style.rightButtonContainer}>
         <CreateTaskListButton />
       </View>
     ),

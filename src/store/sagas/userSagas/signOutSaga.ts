@@ -8,6 +8,7 @@ import {
 import auth from '@react-native-firebase/auth';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { checkInternetConnectionHelper } from '@root/helpers/checkInternetConnectionHelper';
+import { setNotepadTextAction } from '@store/actions/notepadReducerActions/setNotepadTextAction';
 import { setTaskListsAction } from '@store/actions/tasksReducerActions/taskListsActions/setTaskListsAction';
 import { setAuthStateAction } from '@store/actions/userReducerActions/setAuthStateAction';
 import { setModalErrorMessageAction } from '@store/actions/userReducerActions/setModalErrorMessageAction';
@@ -58,6 +59,7 @@ export function* signOutSaga(action: SignOutSagaActionReturnType) {
     );
 
     yield put(setTaskListsAction({ taskLists: [] }));
+    yield put(setNotepadTextAction({ notepadText: '' }));
   } catch (error) {
     if (error instanceof Error) {
       yield put(setModalErrorMessageAction({ errorModalMessage: error.message }));

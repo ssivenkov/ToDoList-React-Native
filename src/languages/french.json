@@ -54,6 +54,15 @@
       "InvalidEmailError": "Adresse e-mail invalide",
       "EmailRequiredError": "E-mail requis",
       "MessageRequiredError": "Texte du message requis"
+    },
+    "notepadScreen": {
+      "notepad": "Bloc-notes",
+      "notepadPlaceholder": "Texte",
+      "cleanButtonWarningTitle": "Voulez-vous vraiment effacer le bloc-notes?",
+      "cleanNotepadTextRequestError": "Pas de connexion Internet, le bloc-notes n'a été effacé que sur votre appareil. Pour effacer le bloc-notes sur le serveur, activez Internet et répétez la demande",
+      "saveNotepadTextRequestError": "Pas de connexion Internet, le bloc-notes n'a été enregistré que sur votre appareil. Pour enregistrer le bloc-notes sur le serveur, activez Internet et répétez la demande",
+      "notepadCleared": "Bloc-notes effacé",
+      "notepadSaved": "Bloc-notes enregistré"
     }
   }
 }

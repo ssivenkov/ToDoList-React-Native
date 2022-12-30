@@ -16,6 +16,7 @@ export const ModalIcon = (props: ModalIconPropsType) => {
     children,
     description,
     buttonIcon,
+    buttonIconDisabled = false,
     okHandler,
     closeHandler,
     modalVisibleFromProps,
@@ -92,7 +93,11 @@ export const ModalIcon = (props: ModalIconPropsType) => {
           {isLoading && <Loader />}
         </Modal>
       </View>
-      <IconButton icon={buttonIcon} onPress={onButtonPress} />
+      <IconButton
+        disable={buttonIconDisabled}
+        icon={buttonIcon}
+        onPress={onButtonPress}
+      />
     </View>
   );
 };

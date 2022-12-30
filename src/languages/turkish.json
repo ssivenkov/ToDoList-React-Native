@@ -54,6 +54,15 @@
       "InvalidEmailError": "Geçersiz e-posta adresi",
       "EmailRequiredError": "E-posta gerekli",
       "MessageRequiredError": "Mesaj metni gerekli"
+    },
+    "notepadScreen": {
+      "notepad": "Notlarınız",
+      "notepadPlaceholder": "Metin",
+      "cleanButtonWarningTitle": "Notlarınızı silmek istediğinizden emin misiniz?",
+      "cleanNotepadTextRequestError": "İnternet bağlantısı yok, sadece cihazınızdaki notlarınız silinmiştir. Sunucudaki notlarınızı silmek için interneti açın ve isteği tekrarlayın",
+      "saveNotepadTextRequestError": "İnternet bağlantısı yok, notlarınız sadece cihazınıza kaydedildi. Notlarınızı sunucuya yazmak için interneti açın ve isteği tekrarlayın",
+      "notepadCleared": "Notlarınız zaten silinmiş",
+      "notepadSaved": "Notlarınız zaten kaydedildi"
     }
   }
 }

@@ -6,10 +6,14 @@ import { TouchableOpacity } from 'react-native';
 import { styles } from './styles';
 
 export const IconButton = (props: IconButtonPropsType) => {
-  const { icon, onPress, disable } = props;
+  const { icon, onPress, disable = false } = props;
 
   return (
-    <TouchableOpacity disabled={disable} onPress={onPress} style={styles.icon}>
+    <TouchableOpacity
+      disabled={disable}
+      onPress={onPress}
+      style={disable ? styles.iconDisable : styles.icon}
+    >
       {icon}
     </TouchableOpacity>
   );

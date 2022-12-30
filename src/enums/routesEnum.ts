@@ -7,6 +7,7 @@ export enum ROOT_NAVIGATOR_ROUTE {
 export enum WITH_AUTH_NAVIGATOR_ROUTE {
   TASKS_NAVIGATOR = 'TasksNavigator',
   ACCOUNT_SCREEN = 'AccountScreen',
+  NOTEPAD_SCREEN = 'NotepadScreen',
 }
 
 export enum TASKS_NAVIGATOR_ROUTE {

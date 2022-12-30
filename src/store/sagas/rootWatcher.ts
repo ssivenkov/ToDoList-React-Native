@@ -1,5 +1,8 @@
+import { NOTEPAD_SAGA_ACTION } from '@enums/notepadSagaEnum';
 import { TASKS_SAGA_ACTION } from '@enums/tasksSagaEnum';
 import { USER_SAGA_ACTION } from '@enums/userSagaEnum';
+import { cleanNotepadTextSaga } from '@store/sagas/notepadSagas/cleanNotepadTextSaga';
+import { saveNotepadTextSaga } from '@store/sagas/notepadSagas/saveNotepadTextSaga';
 import { addNewTaskListSaga } from '@store/sagas/tasksSagas/taskListsSagas/addNewTaskListSaga';
 import { deleteTaskListFromScreenSaga } from '@store/sagas/tasksSagas/taskListsSagas/deleteTaskListFromScreenSaga';
 import { deleteTaskListFullSaga } from '@store/sagas/tasksSagas/taskListsSagas/deleteTaskListFullSaga';
@@ -49,4 +52,7 @@ export function* rootWatcher() {
   yield takeLatest(TASKS_SAGA_ACTION.SET_TASK_IS_DONE, setTaskIsDoneSaga);
   yield takeLatest(TASKS_SAGA_ACTION.SET_EDITED_TASK, editTaskSaga);
   yield takeLatest(TASKS_SAGA_ACTION.DELETE_TASK, deleteTaskSaga);
+
+  yield takeLatest(NOTEPAD_SAGA_ACTION.SAVE_NOTEPAD_TEXT, saveNotepadTextSaga);
+  yield takeLatest(NOTEPAD_SAGA_ACTION.CLEAN_NOTEPAD_TEXT, cleanNotepadTextSaga);
 }

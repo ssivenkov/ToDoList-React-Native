@@ -1,7 +1,7 @@
 import { COLORS } from '@colors/colors';
 import { FontAwesomeIconStyle } from '@fortawesome/react-native-fontawesome';
 import {
-  buttonContainerMarginRight,
+  headerButtonMargin,
   headerHeight,
   headerTitleFontSize,
 } from '@navigation/commonNavigationStyles';
@@ -14,7 +14,7 @@ export type WithAuthNavigatorStylesType = {
   tabBarContainer: ViewStyle;
   tabFocusIcon: FontAwesomeIconStyle;
   tabIcon: FontAwesomeIconStyle;
-  buttonContainer: ViewStyle;
+  rightButtonContainer: ViewStyle;
   icon: TextStyle;
   title: TextStyle;
 };
@@ -49,8 +49,8 @@ export const styles = (props: ExtendedStylesPropsType) =>
       color: props.TAB_BAR_ICON_COLOR,
     },
 
-    buttonContainer: {
-      marginRight: buttonContainerMarginRight,
+    rightButtonContainer: {
+      marginRight: headerButtonMargin,
     },
 
     icon: {

@@ -62,7 +62,7 @@
     "react/no-array-index-key": "error",
     "react/no-arrow-function-lifecycle": "error",
     "react/no-danger": "error",
-    "react/no-multi-comp": "error",
+    "react/no-multi-comp": "off",
     "react/no-namespace": "error",
     "react/no-this-in-sfc": "error",
     "react/no-unsafe": "error",
