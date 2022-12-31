@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { COLORS } from '@colors/colors';
-import { MAX_INPUT_LENGTH } from '@constants/constants';
+import { MAX_INPUT_LENGTH100 } from '@constants/constants';
 import { useStyles } from '@root/hooks/useStyles';
 import { Text, TextInput, View } from 'react-native';
 // @ts-ignore
@@ -41,7 +41,7 @@ export const FormikInput = (props: FormikInputPropsType) => {
       ) : (
         <View style={style.inputContainer}>
           <TextInput
-            maxLength={MAX_INPUT_LENGTH}
+            maxLength={MAX_INPUT_LENGTH100}
             onBlur={onBlur}
             onChangeText={onChangeText}
             placeholder={placeholder}

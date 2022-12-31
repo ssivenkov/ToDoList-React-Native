@@ -12,7 +12,11 @@ import { menuHorizontalStyles } from '@components/common/menus/menuHorizontal/st
 import { ModalIcon } from '@components/common/modals/ModalIcon';
 import { Notification } from '@components/common/notification/Notification';
 import { Switcher } from '@components/common/switcher/Switcher';
-import { COLOR_PICKER_SHOW_TIMEOUT, ICON_SIZE_SMALL } from '@constants/constants';
+import {
+  COLOR_PICKER_SHOW_TIMEOUT,
+  ICON_SIZE_SMALL,
+  MAX_INPUT_LENGTH200,
+} from '@constants/constants';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { useStyles } from '@root/hooks/useStyles';
@@ -167,7 +171,11 @@ export const EditTaskButton = (props: EditTaskTitleButtonPropsType) => {
       setModalVisibleFromProps={setModalVisible}
     >
       <>
-        <Input onValueChange={setEditedTaskTitle} value={editedTaskTitle} />
+        <Input
+          maxLength={MAX_INPUT_LENGTH200}
+          onValueChange={setEditedTaskTitle}
+          value={editedTaskTitle}
+        />
         {isTodo && (
           <Notification
             date={date}

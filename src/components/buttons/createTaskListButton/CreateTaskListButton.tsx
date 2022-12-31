@@ -4,7 +4,7 @@ import { COLORS } from '@colors/colors';
 import { commonButtonStyles } from '@components/buttons/common/styles/commonButtonStyles';
 import { Input } from '@components/common/input/Input';
 import { ModalIcon } from '@components/common/modals/ModalIcon';
-import { ICON_SIZE_MEDIUM } from '@constants/constants';
+import { ICON_SIZE_MEDIUM, MAX_INPUT_LENGTH100 } from '@constants/constants';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { createDate } from '@root/helpers/generateDateHelper';
@@ -76,7 +76,12 @@ export const CreateTaskListButton = () => {
       okDisable={!taskListTitle}
       okHandler={createTaskList}
     >
-      <Input inputRef={inputRef} onValueChange={setTaskListTitle} value={taskListTitle} />
+      <Input
+        inputRef={inputRef}
+        maxLength={MAX_INPUT_LENGTH100}
+        onValueChange={setTaskListTitle}
+        value={taskListTitle}
+      />
     </ModalIcon>
   );
 };

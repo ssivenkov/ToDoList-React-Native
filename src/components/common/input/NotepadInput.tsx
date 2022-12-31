@@ -7,9 +7,9 @@ import { View } from 'react-native';
 import { AutoGrowingTextInput } from 'react-native-autogrow-textinput';
 
 import { styles } from './styles';
-import { InputPropsType } from './types';
+import { NotepadInputPropsType } from './types';
 
-export const NotepadInput = (props: InputPropsType) => {
+export const NotepadInput = (props: NotepadInputPropsType) => {
   const { value, onValueChange, placeholder, inputRef } = props;
 
   const style = useStyles(styles);

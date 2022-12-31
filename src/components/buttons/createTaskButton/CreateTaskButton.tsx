@@ -7,7 +7,7 @@ import { Input } from '@components/common/input/Input';
 import { ModalIcon } from '@components/common/modals/ModalIcon';
 import { Notification } from '@components/common/notification/Notification';
 import { Switcher } from '@components/common/switcher/Switcher';
-import { ICON_SIZE_SMALL } from '@constants/constants';
+import { ICON_SIZE_SMALL, MAX_INPUT_LENGTH200 } from '@constants/constants';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { createDate } from '@root/helpers/generateDateHelper';
@@ -142,7 +142,12 @@ export const CreateTaskButton = (props: CreateTaskButtonPropsType) => {
       okHandler={createTask}
     >
       <>
-        <Input inputRef={inputRef} onValueChange={setNewTaskTitle} value={newTaskTitle} />
+        <Input
+          inputRef={inputRef}
+          maxLength={MAX_INPUT_LENGTH200}
+          onValueChange={setNewTaskTitle}
+          value={newTaskTitle}
+        />
         <Notification
           date={date}
           isSwitcherOn={isNotificationSwitcherOn}
