@@ -27,6 +27,7 @@ export const styles = (props: ExtendedStylesPropsType) =>
       alignContent: 'center',
       fontSize: 18,
       padding: 10,
+      lineHeight: 25,
       color: props.TEXT_COLOR,
       backgroundColor: props.PLACEHOLDER_COLOR,
       borderRadius: 8,
@@ -37,8 +38,9 @@ export const styles = (props: ExtendedStylesPropsType) =>
       alignContent: 'center',
       fontSize: 16,
       padding: 10,
+      lineHeight: 24,
       color: props.TEXT_COLOR,
-      backgroundColor: props.PLACEHOLDER_COLOR,
+      backgroundColor: props.NOTEPAD_PLACEHOLDER_COLOR,
     },
 
     suptext: {

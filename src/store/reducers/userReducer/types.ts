@@ -69,6 +69,7 @@ export type ThemeType = {
   TAB_BAR_TEXT_COLOR: string;
   ICON_BUTTON_COLOR: string;
   PLACEHOLDER_COLOR: string;
+  NOTEPAD_PLACEHOLDER_COLOR: string;
   SUBTEXT_COLOR: string;
 };
 export type ColorType = string;
