@@ -22,7 +22,7 @@ export const NotepadScreen = () => {
     useState<NotepadReducerStateType['notepadText']>(notepadTextFromState);
 
   return (
-    <ScrollView>
+    <View>
       <View style={style.header}>
         <View style={style.leftButtonContainer}>
           <CleanButton setNotepadText={setNotepadText} />
@@ -32,11 +32,13 @@ export const NotepadScreen = () => {
           <SaveButton notepadText={notepadText} />
         </View>
       </View>
-      <NotepadInput
-        onValueChange={setNotepadText}
-        placeholder={t('notepadScreen.notepadPlaceholder')}
-        value={notepadText}
-      />
-    </ScrollView>
+      <ScrollView style={style.scrollViewContainer}>
+        <NotepadInput
+          onValueChange={setNotepadText}
+          placeholder={t('notepadScreen.notepadPlaceholder')}
+          value={notepadText}
+        />
+      </ScrollView>
+    </View>
   );
 };

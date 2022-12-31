@@ -21,6 +21,8 @@ export type WithAuthNavigatorStylesType = {
 
 export const iOSTabBarContainerHeight = 82;
 export const androidTabBarContainerHeight = 50;
+export const tabBarContainerHeight =
+  Platform.OS === 'ios' ? iOSTabBarContainerHeight : androidTabBarContainerHeight;
 
 export const styles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<WithAuthNavigatorStylesType>({
@@ -35,8 +37,7 @@ export const styles = (props: ExtendedStylesPropsType) =>
     },
 
     tabBarContainer: {
-      height:
-        Platform.OS === 'ios' ? iOSTabBarContainerHeight : androidTabBarContainerHeight,
+      height: tabBarContainerHeight,
       backgroundColor: props.TAB_BAR_BACKGROUND_COLOR,
       borderTopWidth: 0,
     },

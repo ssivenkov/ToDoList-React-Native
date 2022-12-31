@@ -4,6 +4,7 @@ import {
   headerHeight,
   headerTitleFontSize,
 } from '@navigation/commonNavigationStyles';
+import { tabBarContainerHeight } from '@navigation/withAuthNavigator/styles';
 import { ExtendedStylesPropsType } from '@root/hooks/useStyles';
 import { StyleSheet, ViewStyle } from 'react-native';
 
@@ -12,6 +13,7 @@ export type NotepadScreenStylesType = {
   headerTitle: ViewStyle;
   leftButtonContainer: ViewStyle;
   rightButtonContainer: ViewStyle;
+  scrollViewContainer: ViewStyle;
 };
 
 export const styles = (props: ExtendedStylesPropsType) =>
@@ -36,5 +38,9 @@ export const styles = (props: ExtendedStylesPropsType) =>
 
     rightButtonContainer: {
       marginRight: headerButtonMargin,
+    },
+
+    scrollViewContainer: {
+      marginBottom: tabBarContainerHeight,
     },
   });
