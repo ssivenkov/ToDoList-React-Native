@@ -2,6 +2,7 @@ import { ONLINE, USERS } from '@constants/constants';
 import { DB } from '@root/api/DB';
 import { checkInternetConnectionHelper } from '@root/helpers/checkInternetConnectionHelper';
 import { darkTheme, lightTheme } from '@root/themes/theme';
+import * as Sentry from '@sentry/react-native';
 import { setNotepadTextAction } from '@store/actions/notepadReducerActions/setNotepadTextAction';
 import { setNotificationsAction } from '@store/actions/tasksReducerActions/notificationsActions/setNotificationsAction';
 import { setTaskListsAction } from '@store/actions/tasksReducerActions/taskListsActions/setTaskListsAction';
@@ -18,14 +19,18 @@ import {
 } from '@store/reducers/tasksReducer/types';
 import { SnapshotType, UserIDType } from '@store/reducers/userReducer/types';
 import { userIDSelector } from '@store/selectors/userSelectors';
-import { call, put, select } from 'redux-saga/effects';
+import { call, cancel, put, select } from 'redux-saga/effects';
 
 export function* syncUserDataSaga() {
   try {
     const internetConnectionStatus: string = yield call(checkInternetConnectionHelper);
 
     if (internetConnectionStatus !== ONLINE) {
-      throw Error(internetConnectionStatus);
+      yield put(
+        setModalErrorMessageAction({ errorModalMessage: internetConnectionStatus }),
+      );
+
+      yield cancel();
     }
 
     yield put(setGlobalLoaderAction({ globalLoader: true }));
@@ -80,12 +85,12 @@ export function* syncUserDataSaga() {
     }
 
     yield put(setIsUserDataSynchronizedAction({ isUserDataSynchronized: true }));
-    yield put(setGlobalLoaderAction({ globalLoader: false }));
   } catch (error) {
-    yield put(setGlobalLoaderAction({ globalLoader: false }));
-
     if (error instanceof Error) {
+      yield call(Sentry.captureException, error);
       yield put(setModalErrorMessageAction({ errorModalMessage: error.message }));
     }
+  } finally {
+    yield put(setGlobalLoaderAction({ globalLoader: false }));
   }
 }

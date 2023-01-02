@@ -7,13 +7,14 @@ import {
 } from '@constants/constants';
 import { DB } from '@root/api/DB';
 import { checkInternetConnectionHelper } from '@root/helpers/checkInternetConnectionHelper';
+import * as Sentry from '@sentry/react-native';
 import { setNotepadTextAction } from '@store/actions/notepadReducerActions/setNotepadTextAction';
 import { CleanNotepadTextSagaActionReturnType } from '@store/actions/notepadSagaActions/cleanNotepadTextAction';
 import { setModalErrorMessageAction } from '@store/actions/userReducerActions/setModalErrorMessageAction';
 import { UserIDType } from '@store/reducers/userReducer/types';
 import { userIDSelector } from '@store/selectors/userSelectors';
 import { t } from 'i18next';
-import { call, delay, put, select } from 'redux-saga/effects';
+import { call, cancel, delay, put, select } from 'redux-saga/effects';
 
 export function* cleanNotepadTextSaga(action: CleanNotepadTextSagaActionReturnType) {
   const { setNotepadText, setIsLoading, setModalVisible, setButtonDisabled } =
@@ -27,11 +28,13 @@ export function* cleanNotepadTextSaga(action: CleanNotepadTextSagaActionReturnTy
     const internetConnectionStatus: string = yield call(checkInternetConnectionHelper);
 
     if (internetConnectionStatus !== ONLINE) {
-      yield call(setNotepadText, '');
-      yield call(setModalVisible, false);
-      yield call(setButtonDisabled, false);
+      yield put(
+        setModalErrorMessageAction({
+          errorModalMessage: t('notepadScreen.cleanNotepadTextRequestError'),
+        }),
+      );
 
-      throw Error(t('notepadScreen.cleanNotepadTextRequestError'));
+      yield cancel();
     }
 
     yield call(setIsLoading, true);
@@ -43,20 +46,21 @@ export function* cleanNotepadTextSaga(action: CleanNotepadTextSagaActionReturnTy
     };
 
     yield call(cleanNotepadTextInFirebase);
-    yield call(setIsLoading, false);
-    yield call(setNotepadText, '');
-    yield call(setModalVisible, false);
+
     yield put(
       setModalErrorMessageAction({
         errorModalMessage: t('notepadScreen.notepadCleared'),
       }),
     );
-    yield call(setButtonDisabled, false);
   } catch (error) {
-    yield call(setIsLoading, false);
-
     if (error instanceof Error) {
+      yield call(Sentry.captureException, error);
       yield put(setModalErrorMessageAction({ errorModalMessage: error.message }));
     }
+  } finally {
+    yield call(setNotepadText, '');
+    yield call(setIsLoading, false);
+    yield call(setModalVisible, false);
+    yield call(setButtonDisabled, false);
   }
 }

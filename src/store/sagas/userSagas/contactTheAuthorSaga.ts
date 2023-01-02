@@ -3,10 +3,11 @@ import { CONTACT_THE_AUTHOR_ENDPOINT } from '@env';
 import { contactTheAuthorInstance } from '@root/api/instances';
 import { checkInternetConnectionHelper } from '@root/helpers/checkInternetConnectionHelper';
 import { SendMessageResponseDataType } from '@root/screens/contactTheAuthorScreen/types';
+import * as Sentry from '@sentry/react-native';
 import { setModalErrorMessageAction } from '@store/actions/userReducerActions/setModalErrorMessageAction';
 import { ContactTheAuthorSagaSagaActionReturnType } from '@store/actions/userSagaActions/contactTheAuthorAction';
 import { t } from 'i18next';
-import { call, put, SagaReturnType } from 'redux-saga/effects';
+import { call, cancel, put, SagaReturnType } from 'redux-saga/effects';
 
 export function* contactTheAuthorSaga(action: ContactTheAuthorSagaSagaActionReturnType) {
   try {
@@ -15,7 +16,11 @@ export function* contactTheAuthorSaga(action: ContactTheAuthorSagaSagaActionRetu
     const internetConnectionStatus: string = yield call(checkInternetConnectionHelper);
 
     if (internetConnectionStatus !== ONLINE) {
-      throw Error(internetConnectionStatus);
+      yield put(
+        setModalErrorMessageAction({ errorModalMessage: internetConnectionStatus }),
+      );
+
+      yield cancel();
     }
 
     const formData = Object.entries(values).reduce<FormData>((acc, [k, v]) => {
@@ -51,6 +56,7 @@ export function* contactTheAuthorSaga(action: ContactTheAuthorSagaSagaActionRetu
     }
   } catch (error) {
     if (error instanceof Error) {
+      yield call(Sentry.captureException, error);
       yield put(setModalErrorMessageAction({ errorModalMessage: error.message }));
     }
   }

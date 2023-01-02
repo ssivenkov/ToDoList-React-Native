@@ -5,13 +5,14 @@ import {
 } from '@constants/constants';
 import auth from '@react-native-firebase/auth';
 import { checkInternetConnectionHelper } from '@root/helpers/checkInternetConnectionHelper';
+import * as Sentry from '@sentry/react-native';
 import { setModalErrorMessageAction } from '@store/actions/userReducerActions/setModalErrorMessageAction';
 import { setProviderIDAction } from '@store/actions/userReducerActions/setProviderIDAction';
 import { GetFacebookUserDataSagaActionReturnType } from '@store/actions/userSagaActions/FacebookSignInAction';
 import { AuthCredentialType } from '@store/sagas/userSagas/googleSignInSaga';
 import { t } from 'i18next';
 import { AccessToken, LoginManager } from 'react-native-fbsdk-next';
-import { call, delay, put, putResolve } from 'redux-saga/effects';
+import { call, cancel, delay, put, putResolve } from 'redux-saga/effects';
 
 export function* facebookSignInSaga(action: GetFacebookUserDataSagaActionReturnType) {
   const { setWaitingUserData } = action.payload;
@@ -20,7 +21,11 @@ export function* facebookSignInSaga(action: GetFacebookUserDataSagaActionReturnT
     const internetConnectionStatus: string = yield call(checkInternetConnectionHelper);
 
     if (internetConnectionStatus !== ONLINE) {
-      throw Error(internetConnectionStatus);
+      yield put(
+        setModalErrorMessageAction({ errorModalMessage: internetConnectionStatus }),
+      );
+
+      yield cancel();
     }
 
     yield call(setWaitingUserData, true);
@@ -32,13 +37,25 @@ export function* facebookSignInSaga(action: GetFacebookUserDataSagaActionReturnT
     ]);
 
     if (isCancelled) {
-      throw t('signInScreen.CancelAuthProcess');
+      yield put(
+        setModalErrorMessageAction({
+          errorModalMessage: t('signInScreen.CancelAuthProcess'),
+        }),
+      );
+
+      yield cancel();
     }
 
     const { accessToken } = yield call(AccessToken.getCurrentAccessToken);
 
     if (!accessToken) {
-      throw t('signInScreen.ErrorGettingAccessToken');
+      yield put(
+        setModalErrorMessageAction({
+          errorModalMessage: t('signInScreen.ErrorGettingAccessToken'),
+        }),
+      );
+
+      yield cancel();
     }
 
     const facebookCredential: AuthCredentialType = yield call(
@@ -57,9 +74,10 @@ export function* facebookSignInSaga(action: GetFacebookUserDataSagaActionReturnT
     yield call(signInWithCredential, facebookCredential);
   } catch (error) {
     if (error instanceof Error) {
+      yield call(Sentry.captureException, error);
       yield put(setModalErrorMessageAction({ errorModalMessage: error.message }));
     }
-
+  } finally {
     setWaitingUserData(false);
   }
 }

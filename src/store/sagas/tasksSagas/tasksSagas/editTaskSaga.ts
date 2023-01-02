@@ -12,6 +12,7 @@ import { cancelNotificationHelper } from '@root/helpers/cancelNotificationHelper
 import { checkInternetConnectionHelper } from '@root/helpers/checkInternetConnectionHelper';
 import { createNotificationHelper } from '@root/helpers/createNotificationHelper';
 import { generateNumberIDHelper } from '@root/helpers/generateNumberIDHelper';
+import * as Sentry from '@sentry/react-native';
 import { editTaskNotificationAction } from '@store/actions/tasksReducerActions/notificationsActions/editTaskNotificationAction';
 import { setEditedTaskAction } from '@store/actions/tasksReducerActions/tasksActions/setEditedTaskAction';
 import { SetEditedTaskActionSagaReturnType } from '@store/actions/tasksSagaActions/tasksSagasActions/setEditedTaskAction';
@@ -29,7 +30,7 @@ import {
   selectedColorSelector,
   userIDSelector,
 } from '@store/selectors/userSelectors';
-import { call, delay, put, select } from 'redux-saga/effects';
+import { call, cancel, delay, put, select } from 'redux-saga/effects';
 
 export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
   const {
@@ -51,7 +52,11 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
     const internetConnectionStatus: string = yield call(checkInternetConnectionHelper);
 
     if (internetConnectionStatus !== ONLINE) {
-      throw Error(internetConnectionStatus);
+      yield put(
+        setModalErrorMessageAction({ errorModalMessage: internetConnectionStatus }),
+      );
+
+      yield cancel();
     }
 
     yield call(setIsLoading, true);
@@ -196,15 +201,15 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
       yield call(setColorMark, '');
     }
 
-    yield call(setIsLoading, false);
     yield call(setModalVisible, false);
     yield call(setIsMenuVisible, false);
     yield call(setEditedTaskTitle, editedTaskTitle);
   } catch (error) {
-    yield call(setIsLoading, false);
-
     if (error instanceof Error) {
+      yield call(Sentry.captureException, error);
       yield put(setModalErrorMessageAction({ errorModalMessage: error.message }));
     }
+  } finally {
+    yield call(setIsLoading, false);
   }
 }
