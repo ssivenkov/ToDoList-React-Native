@@ -8,6 +8,7 @@ import {
 import { DB } from '@root/api/DB';
 import { cancelNotificationHelper } from '@root/helpers/cancelNotificationHelper';
 import { checkInternetConnectionHelper } from '@root/helpers/checkInternetConnectionHelper';
+import * as Sentry from '@sentry/react-native';
 import { deleteTaskNotificationAction } from '@store/actions/tasksReducerActions/notificationsActions/deleteTaskNotificationAction';
 import { deleteTaskAction } from '@store/actions/tasksReducerActions/tasksActions/deleteTaskAction';
 import { DeleteTaskSagaActionReturnType } from '@store/actions/tasksSagaActions/tasksSagasActions/deleteTaskAction';
@@ -16,7 +17,7 @@ import { NotificationType } from '@store/reducers/tasksReducer/types';
 import { UserIDType } from '@store/reducers/userReducer/types';
 import { notificationsSelector } from '@store/selectors/tasksSelectors';
 import { userIDSelector } from '@store/selectors/userSelectors';
-import { call, delay, put, select } from 'redux-saga/effects';
+import { call, cancel, delay, put, select } from 'redux-saga/effects';
 
 export function* deleteTaskSaga(action: DeleteTaskSagaActionReturnType) {
   const { setIsLoading, setModalVisible, taskListID, taskID } = action.payload;
@@ -25,7 +26,11 @@ export function* deleteTaskSaga(action: DeleteTaskSagaActionReturnType) {
     const internetConnectionStatus: string = yield call(checkInternetConnectionHelper);
 
     if (internetConnectionStatus !== ONLINE) {
-      throw Error(internetConnectionStatus);
+      yield put(
+        setModalErrorMessageAction({ errorModalMessage: internetConnectionStatus }),
+      );
+
+      yield cancel();
     }
 
     yield call(setIsLoading, true);
@@ -58,13 +63,13 @@ export function* deleteTaskSaga(action: DeleteTaskSagaActionReturnType) {
       }),
     );
 
-    yield call(setIsLoading, false);
     yield call(setModalVisible, false);
   } catch (error) {
-    yield call(setIsLoading, false);
-
     if (error instanceof Error) {
+      yield call(Sentry.captureException, error);
       yield put(setModalErrorMessageAction({ errorModalMessage: error.message }));
     }
+  } finally {
+    yield call(setIsLoading, false);
   }
 }

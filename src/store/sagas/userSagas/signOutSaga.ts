@@ -8,6 +8,7 @@ import {
 import auth from '@react-native-firebase/auth';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { checkInternetConnectionHelper } from '@root/helpers/checkInternetConnectionHelper';
+import * as Sentry from '@sentry/react-native';
 import { setNotepadTextAction } from '@store/actions/notepadReducerActions/setNotepadTextAction';
 import { setTaskListsAction } from '@store/actions/tasksReducerActions/taskListsActions/setTaskListsAction';
 import { setAuthStateAction } from '@store/actions/userReducerActions/setAuthStateAction';
@@ -16,7 +17,7 @@ import { SignOutSagaActionReturnType } from '@store/actions/userSagaActions/sign
 import { ProviderIDType } from '@store/reducers/userReducer/types';
 import { providerIDSelector } from '@store/selectors/userSelectors';
 import { LoginManager } from 'react-native-fbsdk-next';
-import { call, delay, put, select } from 'redux-saga/effects';
+import { call, cancel, delay, put, select } from 'redux-saga/effects';
 
 export function* signOutSaga(action: SignOutSagaActionReturnType) {
   const setWaitingProcess = action.payload.setWaitingProcess;
@@ -25,7 +26,11 @@ export function* signOutSaga(action: SignOutSagaActionReturnType) {
     const internetConnectionStatus: string = yield call(checkInternetConnectionHelper);
 
     if (internetConnectionStatus !== ONLINE) {
-      throw Error(internetConnectionStatus);
+      yield put(
+        setModalErrorMessageAction({ errorModalMessage: internetConnectionStatus }),
+      );
+
+      yield cancel();
     }
 
     yield call(setWaitingProcess, true);
@@ -62,6 +67,7 @@ export function* signOutSaga(action: SignOutSagaActionReturnType) {
     yield put(setNotepadTextAction({ notepadText: '' }));
   } catch (error) {
     if (error instanceof Error) {
+      yield call(Sentry.captureException, error);
       yield put(setModalErrorMessageAction({ errorModalMessage: error.message }));
     }
   }

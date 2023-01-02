@@ -1,5 +1,6 @@
 import { FACEBOOK_PROVIDER_ID } from '@constants/constants';
 import { Nullable } from '@root/types/common/types';
+import * as Sentry from '@sentry/react-native';
 import { setModalErrorMessageAction } from '@store/actions/userReducerActions/setModalErrorMessageAction';
 import { setUserAvatarAction } from '@store/actions/userReducerActions/setUserAvatarAction';
 import { setUserDataAction } from '@store/actions/userReducerActions/setUserDataAction';
@@ -8,7 +9,7 @@ import { ProviderIDType } from '@store/reducers/userReducer/types';
 import { providerIDSelector } from '@store/selectors/userSelectors';
 import { Profile } from 'react-native-fbsdk-next';
 import FBProfile from 'react-native-fbsdk-next/src/FBProfile';
-import { put, select } from 'redux-saga/effects';
+import { call, put, select } from 'redux-saga/effects';
 
 export function* getUserDataSaga(action: GetUserDataSagaActionReturnType) {
   try {
@@ -29,6 +30,7 @@ export function* getUserDataSaga(action: GetUserDataSagaActionReturnType) {
     yield put(setUserDataAction({ userData }));
   } catch (error) {
     if (error instanceof Error) {
+      yield call(Sentry.captureException, error);
       yield put(setModalErrorMessageAction({ errorModalMessage: error.message }));
     }
   }

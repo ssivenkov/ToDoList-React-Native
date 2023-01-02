@@ -2,6 +2,7 @@ import { COLORS } from '@colors/colors';
 import { EN, ONLINE, USERS } from '@constants/constants';
 import { DB } from '@root/api/DB';
 import { checkInternetConnectionHelper } from '@root/helpers/checkInternetConnectionHelper';
+import * as Sentry from '@sentry/react-native';
 import { setModalErrorMessageAction } from '@store/actions/userReducerActions/setModalErrorMessageAction';
 import { syncUserDataAction } from '@store/actions/userSagaActions/syncUserDataAction';
 import {
@@ -13,14 +14,18 @@ import {
   isUserDataSynchronizedSelector,
   userIDSelector,
 } from '@store/selectors/userSelectors';
-import { call, put, select } from 'redux-saga/effects';
+import { call, cancel, put, select } from 'redux-saga/effects';
 
 export function* checkUserSaga() {
   try {
     const internetConnectionStatus: string = yield call(checkInternetConnectionHelper);
 
     if (internetConnectionStatus !== ONLINE) {
-      throw Error(internetConnectionStatus);
+      yield put(
+        setModalErrorMessageAction({ errorModalMessage: internetConnectionStatus }),
+      );
+
+      yield cancel();
     }
 
     const userID: UserIDType = yield select(userIDSelector);
@@ -44,6 +49,7 @@ export function* checkUserSaga() {
     }
   } catch (error) {
     if (error instanceof Error) {
+      yield call(Sentry.captureException, error);
       yield put(setModalErrorMessageAction({ errorModalMessage: error.message }));
     }
   }

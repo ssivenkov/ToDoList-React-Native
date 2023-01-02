@@ -9,6 +9,7 @@ import { DB } from '@root/api/DB';
 import { cancelNotificationHelper } from '@root/helpers/cancelNotificationHelper';
 import { checkInternetConnectionHelper } from '@root/helpers/checkInternetConnectionHelper';
 import { findNotification } from '@root/helpers/findNotification';
+import * as Sentry from '@sentry/react-native';
 import { setNotificationsAction } from '@store/actions/tasksReducerActions/notificationsActions/setNotificationsAction';
 import { deleteTaskListFromScreenAction } from '@store/actions/tasksReducerActions/taskListsActions/deleteTaskListFromScreenAction';
 import { DeleteTaskListFromScreenSagaActionReturnType } from '@store/actions/tasksSagaActions/taskListsSagasActions/deleteTaskListFromScreenAction';
@@ -20,7 +21,7 @@ import {
 import { UserIDType } from '@store/reducers/userReducer/types';
 import { notificationsSelector } from '@store/selectors/tasksSelectors';
 import { userIDSelector } from '@store/selectors/userSelectors';
-import { call, delay, put, select } from 'redux-saga/effects';
+import { call, cancel, delay, put, select } from 'redux-saga/effects';
 
 export function* deleteTaskListFromScreenSaga(
   action: DeleteTaskListFromScreenSagaActionReturnType,
@@ -32,7 +33,11 @@ export function* deleteTaskListFromScreenSaga(
     const internetConnectionStatus: string = yield call(checkInternetConnectionHelper);
 
     if (internetConnectionStatus !== ONLINE) {
-      throw Error(internetConnectionStatus);
+      yield put(
+        setModalErrorMessageAction({ errorModalMessage: internetConnectionStatus }),
+      );
+
+      yield cancel();
     }
 
     yield delay(START_ANIMATION_DELAY);
@@ -107,13 +112,13 @@ export function* deleteTaskListFromScreenSaga(
         fullTaskList,
       }),
     );
-    yield call(setIsLoading, false);
     yield call(setModalVisible, false);
   } catch (error) {
-    yield call(setIsLoading, false);
-
     if (error instanceof Error) {
+      yield call(Sentry.captureException, error);
       yield put(setModalErrorMessageAction({ errorModalMessage: error.message }));
     }
+  } finally {
+    yield call(setIsLoading, false);
   }
 }

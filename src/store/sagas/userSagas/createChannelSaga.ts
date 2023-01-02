@@ -1,18 +1,23 @@
 import { ONLINE } from '@constants/constants';
 import messaging from '@react-native-firebase/messaging';
 import { checkInternetConnectionHelper } from '@root/helpers/checkInternetConnectionHelper';
+import * as Sentry from '@sentry/react-native';
 import { setChannelIDAction } from '@store/actions/userReducerActions/setChannelIDAction';
 import { setModalErrorMessageAction } from '@store/actions/userReducerActions/setModalErrorMessageAction';
 import { ChannelIDType } from '@store/reducers/userReducer/types';
 import PushNotification from 'react-native-push-notification';
-import { call, put } from 'redux-saga/effects';
+import { call, cancel, put } from 'redux-saga/effects';
 
 export function* createChannelSaga() {
   try {
     const internetConnectionStatus: string = yield call(checkInternetConnectionHelper);
 
     if (internetConnectionStatus !== ONLINE) {
-      throw Error(internetConnectionStatus);
+      yield put(
+        setModalErrorMessageAction({ errorModalMessage: internetConnectionStatus }),
+      );
+
+      yield cancel();
     }
 
     const getChannelID = () => messaging().getToken();
@@ -37,6 +42,7 @@ export function* createChannelSaga() {
     yield put(setChannelIDAction({ channelID }));
   } catch (error) {
     if (error instanceof Error) {
+      yield call(Sentry.captureException, error);
       yield put(setModalErrorMessageAction({ errorModalMessage: error.message }));
     }
   }

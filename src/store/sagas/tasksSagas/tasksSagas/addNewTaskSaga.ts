@@ -10,13 +10,14 @@ import { DB } from '@root/api/DB';
 import { checkInternetConnectionHelper } from '@root/helpers/checkInternetConnectionHelper';
 import { createNotificationHelper } from '@root/helpers/createNotificationHelper';
 import { generateNumberIDHelper } from '@root/helpers/generateNumberIDHelper';
+import * as Sentry from '@sentry/react-native';
 import { addTaskNotificationAction } from '@store/actions/tasksReducerActions/notificationsActions/addTaskNotificationAction';
 import { addNewTaskAction } from '@store/actions/tasksReducerActions/tasksActions/addNewTaskAction';
 import { AddNewTaskSagaActionReturnType } from '@store/actions/tasksSagaActions/tasksSagasActions/addNewTaskAction';
 import { setModalErrorMessageAction } from '@store/actions/userReducerActions/setModalErrorMessageAction';
 import { ChannelIDType, UserIDType } from '@store/reducers/userReducer/types';
 import { channelIDSelector, userIDSelector } from '@store/selectors/userSelectors';
-import { call, delay, put, select } from 'redux-saga/effects';
+import { call, cancel, delay, put, select } from 'redux-saga/effects';
 
 export function* addNewTaskSaga(action: AddNewTaskSagaActionReturnType) {
   const {
@@ -36,7 +37,11 @@ export function* addNewTaskSaga(action: AddNewTaskSagaActionReturnType) {
     const internetConnectionStatus: string = yield call(checkInternetConnectionHelper);
 
     if (internetConnectionStatus !== ONLINE) {
-      throw Error(internetConnectionStatus);
+      yield put(
+        setModalErrorMessageAction({ errorModalMessage: internetConnectionStatus }),
+      );
+
+      yield cancel();
     }
 
     yield call(setIsLoading, true);
@@ -90,15 +95,15 @@ export function* addNewTaskSaga(action: AddNewTaskSagaActionReturnType) {
       }),
     );
 
-    yield call(setIsLoading, false);
     yield call(setModalVisible, false);
     yield call(setIsNotificationSwitcherOn, false);
     yield call(setNewTaskTitle, '');
   } catch (error) {
-    yield call(setIsLoading, false);
-
     if (error instanceof Error) {
+      yield call(Sentry.captureException, error);
       yield put(setModalErrorMessageAction({ errorModalMessage: error.message }));
     }
+  } finally {
+    yield call(setIsLoading, false);
   }
 }

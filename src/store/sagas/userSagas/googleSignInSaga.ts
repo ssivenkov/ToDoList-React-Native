@@ -3,11 +3,12 @@ import { GoogleSignInCancelError, signInActionCanceled } from '@constants/errorM
 import auth from '@react-native-firebase/auth';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { checkInternetConnectionHelper } from '@root/helpers/checkInternetConnectionHelper';
+import * as Sentry from '@sentry/react-native';
 import { setModalErrorMessageAction } from '@store/actions/userReducerActions/setModalErrorMessageAction';
 import { setProviderIDAction } from '@store/actions/userReducerActions/setProviderIDAction';
 import { GetGoogleUserDataSagaActionReturnType } from '@store/actions/userSagaActions/GoogleSignInAction';
 import { t } from 'i18next';
-import { call, delay, put, putResolve } from 'redux-saga/effects';
+import { call, cancel, delay, put, putResolve } from 'redux-saga/effects';
 
 export type AuthCredentialType = {
   providerId: string;
@@ -22,7 +23,11 @@ export function* googleSignInSaga(action: GetGoogleUserDataSagaActionReturnType)
     const internetConnectionStatus: string = yield call(checkInternetConnectionHelper);
 
     if (internetConnectionStatus !== ONLINE) {
-      throw Error(internetConnectionStatus);
+      yield put(
+        setModalErrorMessageAction({ errorModalMessage: internetConnectionStatus }),
+      );
+
+      yield cancel();
     }
 
     yield call(setWaitingUserData, true);
@@ -31,7 +36,13 @@ export function* googleSignInSaga(action: GetGoogleUserDataSagaActionReturnType)
     const { idToken } = yield call(GoogleSignin.signIn);
 
     if (!idToken) {
-      throw t('signInScreen.ErrorGettingAccessToken');
+      yield put(
+        setModalErrorMessageAction({
+          errorModalMessage: t('signInScreen.ErrorGettingAccessToken'),
+        }),
+      );
+
+      yield cancel();
     }
 
     const googleCredential: AuthCredentialType = yield call(
@@ -60,9 +71,8 @@ export function* googleSignInSaga(action: GetGoogleUserDataSagaActionReturnType)
           errorModalMessage: t('signInScreen.CancelAuthProcess'),
         }),
       );
-    }
-
-    if (error instanceof Error) {
+    } else if (error instanceof Error) {
+      yield call(Sentry.captureException, error);
       yield put(setModalErrorMessageAction({ errorModalMessage: error.message }));
     }
   }
