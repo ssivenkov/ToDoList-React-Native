@@ -64,3 +64,4 @@ GoogleService-Info.plist
 Info.plist
 strings.xml
 appcenter-config.json
+sentry.properties
