@@ -1,6 +1,6 @@
 import { COLORS } from '@colors/colors';
 import { FontAwesomeIconStyle } from '@fortawesome/react-native-fontawesome';
-import { ExtendedStylesPropsType } from '@root/hooks/useStyles';
+import { ExtendedStylesPropsType } from '@hooks/useStyles';
 import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
 export type TasksNavigatorStylesType = {
@@ -17,7 +17,7 @@ export type TasksNavigatorStylesType = {
 
 const { WHITE } = COLORS;
 
-export const styles = (props: ExtendedStylesPropsType) =>
+export const tasksNavigatorStyles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<TasksNavigatorStylesType>({
     tabBarContainer: {
       backgroundColor: props.TAB_BAR_BACKGROUND_COLOR,

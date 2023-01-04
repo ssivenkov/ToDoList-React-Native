@@ -1,16 +1,16 @@
-import { ONLINE, USERS } from '@constants/constants';
+import { ONLINE } from '@constants/constants';
+import { FIREBASE_PATH } from '@enums/firebaseEnum';
+import { checkInternetConnectionHelper } from '@helpers/checkInternetConnectionHelper';
 import { DB } from '@root/api/DB';
-import { checkInternetConnectionHelper } from '@root/helpers/checkInternetConnectionHelper';
-import { darkTheme, lightTheme } from '@root/themes/theme';
 import * as Sentry from '@sentry/react-native';
 import { setNotepadTextAction } from '@store/actions/notepadReducerActions/setNotepadTextAction';
 import { setNotificationsAction } from '@store/actions/tasksReducerActions/notificationsActions/setNotificationsAction';
 import { setTaskListsAction } from '@store/actions/tasksReducerActions/taskListsActions/setTaskListsAction';
 import { setAccentColorAction } from '@store/actions/userReducerActions/setAccentColorAction';
 import { setGlobalLoaderAction } from '@store/actions/userReducerActions/setGlobalLoaderAction';
-import { setIsUserDataSynchronizedAction } from '@store/actions/userReducerActions/setIsUserDataSynchronized';
+import { setIsUserDataSynchronizedAction } from '@store/actions/userReducerActions/setIsUserDataSynchronizedAction';
 import { setLanguageAction } from '@store/actions/userReducerActions/setLanguageAction';
-import { setModalErrorMessageAction } from '@store/actions/userReducerActions/setModalErrorMessageAction';
+import { setModalMessageAction } from '@store/actions/userReducerActions/setModalMessageAction';
 import { setThemeAction } from '@store/actions/userReducerActions/setThemeAction';
 import {
   TaskListBeforeConvertInterface,
@@ -19,16 +19,17 @@ import {
 } from '@store/reducers/tasksReducer/types';
 import { SnapshotType, UserIDType } from '@store/reducers/userReducer/types';
 import { userIDSelector } from '@store/selectors/userSelectors';
+import { darkTheme, lightTheme } from '@themes/themes';
 import { call, cancel, put, select } from 'redux-saga/effects';
 
 export function* syncUserDataSaga() {
+  const { USERS } = FIREBASE_PATH;
+
   try {
     const internetConnectionStatus: string = yield call(checkInternetConnectionHelper);
 
     if (internetConnectionStatus !== ONLINE) {
-      yield put(
-        setModalErrorMessageAction({ errorModalMessage: internetConnectionStatus }),
-      );
+      yield put(setModalMessageAction({ modalMessage: internetConnectionStatus }));
 
       yield cancel();
     }
@@ -36,16 +37,19 @@ export function* syncUserDataSaga() {
     yield put(setGlobalLoaderAction({ globalLoader: true }));
 
     const userID: UserIDType = yield select(userIDSelector);
+
     const snapshot: SnapshotType = yield DB.ref(`${USERS}/${userID}`).once('value');
+
     const userData = snapshot.val() && snapshot.val();
+    const theme = userData.darkMode ? darkTheme : lightTheme;
 
     yield put(setLanguageAction({ language: userData.language }));
+
     yield put(
       setAccentColorAction({
         accentColor: userData.accentColor,
       }),
     );
-    const theme = userData.darkMode ? darkTheme : lightTheme;
 
     yield put(setThemeAction({ theme }));
 
@@ -88,7 +92,7 @@ export function* syncUserDataSaga() {
   } catch (error) {
     if (error instanceof Error) {
       yield call(Sentry.captureException, error);
-      yield put(setModalErrorMessageAction({ errorModalMessage: error.message }));
+      yield put(setModalMessageAction({ modalMessage: error.message }));
     }
   } finally {
     yield put(setGlobalLoaderAction({ globalLoader: false }));

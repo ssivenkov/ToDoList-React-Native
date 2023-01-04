@@ -1,4 +1,4 @@
-import { EN } from '@constants/constants';
+import { EN } from '@constants/languages';
 import i18next from 'i18next';
 import { initReactI18next } from 'react-i18next';
 

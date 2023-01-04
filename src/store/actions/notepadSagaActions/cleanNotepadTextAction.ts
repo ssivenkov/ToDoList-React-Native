@@ -1,6 +1,6 @@
 import { NOTEPAD_SAGA_ACTION } from '@enums/notepadSagaEnum';
-import { NotepadTextSetStateType } from '@root/screens/notepadScreen/types';
 import { SetStateType } from '@root/types/common/types';
+import { NotepadTextSetStateType } from '@screens/notepadScreen/types';
 
 export type CleanNotepadTextSagaPayloadType = {
   setNotepadText: NotepadTextSetStateType;

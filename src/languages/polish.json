@@ -56,13 +56,13 @@
       "MessageRequiredError": "Treść wiadomości jest wymagana"
     },
     "notepadScreen": {
-      "notepad": "Notatnik",
-      "notepadPlaceholder": "Tekst",
-      "cleanButtonWarningTitle": "Czy na pewno chcesz wyczyścić notatnik?",
-      "cleanNotepadTextRequestError": "Brak połączenia z Internetem, notatnik został wyczyszczony tylko na Twoim urządzeniu. Aby wyczyścić notatnik na serwerze, włącz Internet i powtórz żądanie",
-      "saveNotepadTextRequestError": "Brak połączenia z Internetem, notatnik został zapisany tylko na Twoim urządzeniu. Aby zapisać notatnik na serwerze włącz Internet i powtórz żądanie",
-      "notepadCleared": "Notatnik wyczyszczony",
-      "notepadSaved": "Notatnik zapisany"
+      "Notepad": "Notatnik",
+      "NotepadPlaceholder": "Tekst",
+      "CleanButtonWarningTitle": "Czy na pewno chcesz wyczyścić notatnik?",
+      "CleanNotepadTextRequestError": "Brak połączenia z Internetem, notatnik został wyczyszczony tylko na Twoim urządzeniu. Aby wyczyścić notatnik na serwerze, włącz Internet i powtórz żądanie",
+      "SaveNotepadTextRequestError": "Brak połączenia z Internetem, notatnik został zapisany tylko na Twoim urządzeniu. Aby zapisać notatnik na serwerze włącz Internet i powtórz żądanie",
+      "NotepadCleared": "Notatnik wyczyszczony",
+      "NotepadSaved": "Notatnik zapisany"
     }
   }
 }

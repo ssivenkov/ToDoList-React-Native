@@ -1,9 +1,6 @@
-import {
-  emailField,
-  messageField,
-} from '@root/screens/contactTheAuthorScreen/fieldNames';
 import { t } from 'i18next';
 
+import { emailField, messageField } from './fieldNames';
 import { ValidationParamsType, ValuesType } from './types';
 
 export const validate = (params: ValidationParamsType) => {

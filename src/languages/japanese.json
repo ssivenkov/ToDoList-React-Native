@@ -56,13 +56,13 @@
       "MessageRequiredError": "メッセージ本文必須"
     },
     "notepadScreen": {
-      "notepad": "メモ帳",
-      "notepadPlaceholder": "文章",
-      "cleanButtonWarningTitle": "本当にメモ帳をクリアしますか?",
-      "cleanNotepadTextRequestError": "インターネットに接続されていません。デバイスのメモ帳のみが消去されました。 サーバー上のメモ帳をクリアするには、インターネットをオンにして要求を繰り返します",
-      "saveNotepadTextRequestError": "インターネットに接続されていません。メモ帳はデバイスにのみ保存されています。 サーバーにメモ帳を保存するには、インターネットをオンにして、要求を繰り返します",
-      "notepadCleared": "メモ帳をクリアしました",
-      "notepadSaved": "メモ帳を保存しました"
+      "Notepad": "メモ帳",
+      "NotepadPlaceholder": "文章",
+      "CleanButtonWarningTitle": "本当にメモ帳をクリアしますか?",
+      "CleanNotepadTextRequestError": "インターネットに接続されていません。デバイスのメモ帳のみが消去されました。 サーバー上のメモ帳をクリアするには、インターネットをオンにして要求を繰り返します",
+      "SaveNotepadTextRequestError": "インターネットに接続されていません。メモ帳はデバイスにのみ保存されています。 サーバーにメモ帳を保存するには、インターネットをオンにして、要求を繰り返します",
+      "NotepadCleared": "メモ帳をクリアしました",
+      "NotepadSaved": "メモ帳を保存しました"
     }
   }
 }

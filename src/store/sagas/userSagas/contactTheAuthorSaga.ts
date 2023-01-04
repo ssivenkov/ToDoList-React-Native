@@ -1,10 +1,10 @@
 import { ONLINE } from '@constants/constants';
 import { CONTACT_THE_AUTHOR_ENDPOINT } from '@env';
+import { checkInternetConnectionHelper } from '@helpers/checkInternetConnectionHelper';
 import { contactTheAuthorInstance } from '@root/api/instances';
-import { checkInternetConnectionHelper } from '@root/helpers/checkInternetConnectionHelper';
-import { SendMessageResponseDataType } from '@root/screens/contactTheAuthorScreen/types';
+import { SendMessageResponseDataType } from '@screens/contactTheAuthorScreen/types';
 import * as Sentry from '@sentry/react-native';
-import { setModalErrorMessageAction } from '@store/actions/userReducerActions/setModalErrorMessageAction';
+import { setModalMessageAction } from '@store/actions/userReducerActions/setModalMessageAction';
 import { ContactTheAuthorSagaSagaActionReturnType } from '@store/actions/userSagaActions/contactTheAuthorAction';
 import { t } from 'i18next';
 import { call, cancel, put, SagaReturnType } from 'redux-saga/effects';
@@ -16,9 +16,7 @@ export function* contactTheAuthorSaga(action: ContactTheAuthorSagaSagaActionRetu
     const internetConnectionStatus: string = yield call(checkInternetConnectionHelper);
 
     if (internetConnectionStatus !== ONLINE) {
-      yield put(
-        setModalErrorMessageAction({ errorModalMessage: internetConnectionStatus }),
-      );
+      yield put(setModalMessageAction({ modalMessage: internetConnectionStatus }));
 
       yield cancel();
     }
@@ -43,21 +41,21 @@ export function* contactTheAuthorSaga(action: ContactTheAuthorSagaSagaActionRetu
     if (result.data.ok) {
       yield call(navigate);
       yield put(
-        setModalErrorMessageAction({
-          errorModalMessage: t('contactTheAuthorScreen.ContactTheAuthorSuccess'),
+        setModalMessageAction({
+          modalMessage: t('contactTheAuthorScreen.ContactTheAuthorSuccess'),
         }),
       );
     } else {
       yield put(
-        setModalErrorMessageAction({
-          errorModalMessage: t('contactTheAuthorScreen.ContactTheAuthorError'),
+        setModalMessageAction({
+          modalMessage: t('contactTheAuthorScreen.ContactTheAuthorError'),
         }),
       );
     }
   } catch (error) {
     if (error instanceof Error) {
       yield call(Sentry.captureException, error);
-      yield put(setModalErrorMessageAction({ errorModalMessage: error.message }));
+      yield put(setModalMessageAction({ modalMessage: error.message }));
     }
   }
 }

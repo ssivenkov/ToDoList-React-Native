@@ -1,15 +1,11 @@
 import React, { useState } from 'react';
 
-import { TextButton } from '@components/common/buttons/textButton/TextButton';
-import { FormikInput } from '@components/common/input/FormikInput';
+import { TextButton } from '@components/buttons/textButton/TextButton';
+import { FormikInput } from '@components/input/FormikInput';
+import { useStyles } from '@hooks/useStyles';
 import { useNavigation } from '@react-navigation/native';
-import { useStyles } from '@root/hooks/useStyles';
-import {
-  emailField,
-  messageField,
-} from '@root/screens/contactTheAuthorScreen/fieldNames';
-import { styles } from '@root/screens/contactTheAuthorScreen/styles';
-import { validate } from '@root/screens/contactTheAuthorScreen/validate';
+import { emailField, messageField } from '@screens/contactTheAuthorScreen/fieldNames';
+import { validate } from '@screens/contactTheAuthorScreen/validate';
 import { contactTheAuthorAction } from '@store/actions/userSagaActions/contactTheAuthorAction';
 import { userDataSelector } from '@store/selectors/userSelectors';
 import { useFormik } from 'formik';
@@ -17,12 +13,14 @@ import { useTranslation } from 'react-i18next';
 import { ScrollView, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { contactTheAuthorScreenStyles } from './styles';
+
 export const ContactTheAuthorScreen = () => {
   const dispatch = useDispatch();
 
   const navigation = useNavigation();
 
-  const style = useStyles(styles);
+  const styles = useStyles(contactTheAuthorScreenStyles);
 
   const { t } = useTranslation();
 
@@ -57,9 +55,9 @@ export const ContactTheAuthorScreen = () => {
   const buttonDisabledCondition = isSubmitting || !isFormValid;
 
   return (
-    <ScrollView style={style.screenContainer}>
-      <View style={style.inputsWrapper}>
-        <View style={style.inputWrapper}>
+    <ScrollView style={styles.screenContainer}>
+      <View style={styles.inputsWrapper}>
+        <View style={styles.inputWrapper}>
           <FormikInput
             errorSubtext={
               errors[emailField] && touched[emailField] ? errors[emailField] : ''
@@ -72,7 +70,7 @@ export const ContactTheAuthorScreen = () => {
             value={values[emailField]}
           />
         </View>
-        <View style={style.inputWrapper}>
+        <View style={styles.inputWrapper}>
           <FormikInput
             autogrow={true}
             errorSubtext={
@@ -87,7 +85,7 @@ export const ContactTheAuthorScreen = () => {
         </View>
       </View>
       <TextButton
-        containerStyle={style.buttonContainer}
+        containerStyle={styles.buttonContainer}
         disabled={buttonDisabledCondition}
         onPress={() => handleSubmit()}
         title={t('contactTheAuthorScreen.SendButton')}

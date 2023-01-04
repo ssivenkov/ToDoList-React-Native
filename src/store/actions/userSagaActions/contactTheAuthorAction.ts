@@ -1,5 +1,5 @@
 import { USER_SAGA_ACTION } from '@enums/userSagaEnum';
-import { ValuesType } from '@root/screens/contactTheAuthorScreen/types';
+import { ValuesType } from '@screens/contactTheAuthorScreen/types';
 
 export type ContactTheAuthorSagaSagaActionPayloadType = {
   values: ValuesType;

@@ -1,54 +1,56 @@
 import React from 'react';
 
-import { CreateTaskListButton } from '@components/buttons/createTaskListButton/CreateTaskListButton';
 import { ICON_SIZE_HALF_MEDIUM } from '@constants/constants';
-import { faList, faFileAlt, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faFileAlt } from '@fortawesome/free-solid-svg-icons/faFileAlt';
+import { faList } from '@fortawesome/free-solid-svg-icons/faList';
+import { faUser } from '@fortawesome/free-solid-svg-icons/faUser';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { WithAuthNavigatorScreenSettingsType } from '@navigation/withAuthNavigator/types';
+import { CreateTaskListButton } from '@screens/tasksScreen/buttons/createTaskListButton/CreateTaskListButton';
 import { t } from 'i18next';
 import { View } from 'react-native';
 
 export const withAuthNavigatorOptions: WithAuthNavigatorScreenSettingsType = (params) => {
-  const { style, theme, accentColor } = params;
+  const { styles, theme, accentColor } = params;
 
   return {
     headerShown: false,
-    tabBarStyle: style.tabBarContainer,
+    tabBarStyle: styles.tabBarContainer,
     tabBarActiveTintColor: accentColor,
     tabBarInactiveTintColor: theme.TAB_BAR_TEXT_COLOR,
-    tabBarIconStyle: style.icon,
-    tabBarLabelStyle: style.title,
+    tabBarIconStyle: styles.icon,
+    tabBarLabelStyle: styles.title,
   };
 };
 
 export const notepadScreenSettings: WithAuthNavigatorScreenSettingsType = (params) => {
-  const { style } = params;
+  const { styles } = params;
 
   return {
     headerShown: false,
-    tabBarLabel: t('notepadScreen.notepad'),
+    tabBarLabel: t('notepadScreen.Notepad'),
     tabBarIcon: ({ focused }) => (
       <FontAwesomeIcon
         icon={faFileAlt}
         size={ICON_SIZE_HALF_MEDIUM}
-        style={focused ? style.tabFocusIcon : style.tabIcon}
+        style={focused ? styles.tabFocusIcon : styles.tabIcon}
       />
     ),
   };
 };
 
 export const tasksNavigatorSettings: WithAuthNavigatorScreenSettingsType = (params) => {
-  const { style } = params;
+  const { styles } = params;
 
   return {
     headerShown: true,
-    headerStyle: style.header,
+    headerStyle: styles.header,
     headerTitle: t('tasksScreen.Tasks'),
-    headerTitleStyle: style.headerTitle,
+    headerTitleStyle: styles.headerTitle,
     headerTitleAlign: 'center',
     tabBarLabel: t('tasksScreen.Tasks'),
     headerRight: () => (
-      <View style={style.rightButtonContainer}>
+      <View style={styles.rightButtonContainer}>
         <CreateTaskListButton />
       </View>
     ),
@@ -56,27 +58,27 @@ export const tasksNavigatorSettings: WithAuthNavigatorScreenSettingsType = (para
       <FontAwesomeIcon
         icon={faList}
         size={ICON_SIZE_HALF_MEDIUM}
-        style={focused ? style.tabFocusIcon : style.tabIcon}
+        style={focused ? styles.tabFocusIcon : styles.tabIcon}
       />
     ),
   };
 };
 
 export const accountScreenSettings: WithAuthNavigatorScreenSettingsType = (params) => {
-  const { style } = params;
+  const { styles } = params;
 
   return {
     headerShown: true,
-    headerStyle: style.header,
+    headerStyle: styles.header,
     headerTitle: t('accountScreen.Account'),
-    headerTitleStyle: style.headerTitle,
+    headerTitleStyle: styles.headerTitle,
     headerTitleAlign: 'center',
     tabBarLabel: t('accountScreen.Account'),
     tabBarIcon: ({ focused }) => (
       <FontAwesomeIcon
         icon={faUser}
         size={ICON_SIZE_HALF_MEDIUM}
-        style={focused ? style.tabFocusIcon : style.tabIcon}
+        style={focused ? styles.tabFocusIcon : styles.tabIcon}
       />
     ),
   };

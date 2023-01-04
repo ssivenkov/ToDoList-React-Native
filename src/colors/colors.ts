@@ -34,4 +34,5 @@ export const COLORS = {
   WOODSMOKE: '#0D0D0E',
   BLACK: '#000000',
   MEDIUM_TRANSPARENCY: 'rgba(0,0,0,0.65)',
+  TRANSPARENT: 'transparent',
 };

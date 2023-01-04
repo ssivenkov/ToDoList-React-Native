@@ -56,13 +56,13 @@
       "MessageRequiredError": "메시지 텍스트 필요"
     },
     "notepadScreen": {
-      "notepad": "메모장",
-      "notepadPlaceholder": "텍스트",
-      "cleanButtonWarningTitle": "메모장을 지우시겠습니까?",
-      "cleanNotepadTextRequestError": "인터넷에 연결되어 있지 않습니다. 메모장은 기기에서만 삭제되었습니다. 서버에서 메모장을 지우려면 인터넷을 켜고 요청을 반복하십시오",
-      "saveNotepadTextRequestError": "인터넷에 연결되어 있지 않습니다. 메모장은 기기에만 저장되었습니다. 서버에 메모장을 저장하려면 인터넷을 켜고 요청을 반복하십시오",
-      "notepadCleared": "메모장이 지워짐",
-      "notepadSaved": "메모장이 저장됨"
+      "Notepad": "메모장",
+      "NotepadPlaceholder": "텍스트",
+      "CleanButtonWarningTitle": "메모장을 지우시겠습니까?",
+      "CleanNotepadTextRequestError": "인터넷에 연결되어 있지 않습니다. 메모장은 기기에서만 삭제되었습니다. 서버에서 메모장을 지우려면 인터넷을 켜고 요청을 반복하십시오",
+      "SaveNotepadTextRequestError": "인터넷에 연결되어 있지 않습니다. 메모장은 기기에만 저장되었습니다. 서버에 메모장을 저장하려면 인터넷을 켜고 요청을 반복하십시오",
+      "NotepadCleared": "메모장이 지워짐",
+      "NotepadSaved": "메모장이 저장됨"
     }
   }
 }

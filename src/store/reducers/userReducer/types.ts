@@ -4,9 +4,7 @@ import {
   DE,
   EN,
   ES,
-  FACEBOOK_PROVIDER_ID,
   FR,
-  GOOGLE_PROVIDER_ID,
   ID,
   IT,
   JP,
@@ -16,7 +14,8 @@ import {
   RU,
   TR,
   UA,
-} from '@constants/constants';
+} from '@constants/languages';
+import { FIREBASE_OTHER } from '@enums/firebaseEnum';
 import { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import { FirebaseDatabaseTypes } from '@react-native-firebase/database';
 import { Nullable } from '@root/types/common/types';
@@ -24,19 +23,25 @@ import { SetAccentColorActionReturnType } from '@store/actions/userReducerAction
 import { SetAuthStateActionReturnType } from '@store/actions/userReducerActions/setAuthStateAction';
 import { SetChannelIDActionReturnType } from '@store/actions/userReducerActions/setChannelIDAction';
 import { SetGlobalLoaderActionReturnType } from '@store/actions/userReducerActions/setGlobalLoaderAction';
-import { SetIsUserDataSynchronizedActionReturnType } from '@store/actions/userReducerActions/setIsUserDataSynchronized';
+import { SetIsUserDataSynchronizedActionReturnType } from '@store/actions/userReducerActions/setIsUserDataSynchronizedAction';
 import { SetLanguageActionReturnType } from '@store/actions/userReducerActions/setLanguageAction';
-import { SetErrorModalMessageActionReturnType } from '@store/actions/userReducerActions/setModalErrorMessageAction';
+import { SetModalMessageActionReturnType } from '@store/actions/userReducerActions/setModalMessageAction';
 import { SetProviderIDActionReturnType } from '@store/actions/userReducerActions/setProviderIDAction';
 import { SetSelectedColorActionReturnType } from '@store/actions/userReducerActions/setSelectedColorAction';
 import { SetThemeActionReturnType } from '@store/actions/userReducerActions/setThemeAction';
 import { SetUserAvatarActionReturnType } from '@store/actions/userReducerActions/setUserAvatarAction';
 import { SetUserDataActionReturnType } from '@store/actions/userReducerActions/setUserDataAction';
 
+const { FACEBOOK_PROVIDER_ID, GOOGLE_PROVIDER_ID } = FIREBASE_OTHER;
+
 export type SnapshotType = FirebaseDatabaseTypes.DataSnapshot;
+
 export type UserDataType = Nullable<FirebaseAuthTypes.User>;
+
 export type UserIDType = Nullable<FirebaseAuthTypes.User['uid']>;
+
 export type ChannelIDType = string;
+
 export type LanguageType =
   | typeof EN
   | typeof RU
@@ -53,10 +58,13 @@ export type LanguageType =
   | typeof CN
   | typeof KR
   | typeof UA;
+
 export type ProviderIDType = Nullable<
   typeof GOOGLE_PROVIDER_ID | typeof FACEBOOK_PROVIDER_ID
 >;
+
 export type UserAvatarType = Nullable<string>;
+
 export type ThemeType = {
   darkMode: boolean;
   BACKGROUND_COLOR: string;
@@ -72,8 +80,10 @@ export type ThemeType = {
   NOTEPAD_PLACEHOLDER_COLOR: string;
   SUBTEXT_COLOR: string;
 };
+
 export type ColorType = string;
-export type ErrorModalMessageType = string;
+
+export type ModalMessageType = string;
 
 export type UserReducerStateType = {
   providerID: ProviderIDType;
@@ -85,7 +95,7 @@ export type UserReducerStateType = {
   accentColor: ColorType;
   selectedColor: ColorType;
   globalLoader: boolean;
-  errorModalMessage: ErrorModalMessageType;
+  modalMessage: ModalMessageType;
   isUserDataSynchronized: boolean;
 };
 
@@ -100,5 +110,5 @@ export type UserReducerActionsType =
   | SetAccentColorActionReturnType
   | SetSelectedColorActionReturnType
   | SetGlobalLoaderActionReturnType
-  | SetErrorModalMessageActionReturnType
+  | SetModalMessageActionReturnType
   | SetIsUserDataSynchronizedActionReturnType;

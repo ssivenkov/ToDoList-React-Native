@@ -1,14 +1,14 @@
 import { StyleSheet, ViewStyle } from 'react-native';
 
-type ContactTheAuthorScreenPropsType = {
+type ContactTheAuthorScreenStylesType = {
   screenContainer: ViewStyle;
   inputsWrapper: ViewStyle;
   inputWrapper: ViewStyle;
   buttonContainer: ViewStyle;
 };
 
-export const styles = () =>
-  StyleSheet.create<ContactTheAuthorScreenPropsType>({
+export const contactTheAuthorScreenStyles = () =>
+  StyleSheet.create<ContactTheAuthorScreenStylesType>({
     screenContainer: {
       paddingHorizontal: 18,
       paddingTop: 22,

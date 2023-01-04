@@ -1,11 +1,11 @@
 import { COLORS } from '@colors/colors';
+import { ExtendedStylesPropsType } from '@hooks/useStyles';
 import {
   headerButtonMargin,
   headerHeight,
   headerTitleFontSize,
+  tabBarContainerHeight,
 } from '@navigation/commonNavigationStyles';
-import { tabBarContainerHeight } from '@navigation/withAuthNavigator/styles';
-import { ExtendedStylesPropsType } from '@root/hooks/useStyles';
 import { StyleSheet, ViewStyle } from 'react-native';
 
 export type NotepadScreenStylesType = {
@@ -16,7 +16,7 @@ export type NotepadScreenStylesType = {
   scrollViewContainer: ViewStyle;
 };
 
-export const styles = (props: ExtendedStylesPropsType) =>
+export const notepadScreenStyles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<NotepadScreenStylesType>({
     header: {
       backgroundColor: props.darkMode ? `${props.ACCENT_COLOR}CC` : props.ACCENT_COLOR,

@@ -1,8 +1,8 @@
 import { COLORS } from '@colors/colors';
-import { ExtendedStylesPropsType } from '@root/hooks/useStyles';
+import { ExtendedStylesPropsType } from '@hooks/useStyles';
 import { ImageStyle, Platform, StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
-type TasksScreenStylesType = {
+type SignInScreenStylesType = {
   signInWrapper: ViewStyle;
   signInContainer: ViewStyle;
   screenTitle: TextStyle;
@@ -15,8 +15,8 @@ const iOSBorderRadiusDivider = 18;
 const androidBorderRadiusDivider = 10;
 const appIconDivider = Platform.OS === 'ios' ? iOSAppIconDivider : androidAppIconDivider;
 
-export const styles = (props: ExtendedStylesPropsType) =>
-  StyleSheet.create<TasksScreenStylesType>({
+export const signInScreenStyles = (props: ExtendedStylesPropsType) =>
+  StyleSheet.create<SignInScreenStylesType>({
     signInWrapper: {
       height: '100%',
       justifyContent: 'center',

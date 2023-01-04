@@ -1,13 +1,14 @@
-import { ONLINE, START_ANIMATION_DELAY, TASK_LISTS, USERS } from '@constants/constants';
+import { ONLINE, START_ANIMATION_DELAY } from '@constants/constants';
+import { FIREBASE_PATH } from '@enums/firebaseEnum';
+import { cancelNotificationHelper } from '@helpers/cancelNotificationHelper';
+import { checkInternetConnectionHelper } from '@helpers/checkInternetConnectionHelper';
+import { findNotification } from '@helpers/findNotification';
 import { DB } from '@root/api/DB';
-import { cancelNotificationHelper } from '@root/helpers/cancelNotificationHelper';
-import { checkInternetConnectionHelper } from '@root/helpers/checkInternetConnectionHelper';
-import { findNotification } from '@root/helpers/findNotification';
 import * as Sentry from '@sentry/react-native';
 import { setNotificationsAction } from '@store/actions/tasksReducerActions/notificationsActions/setNotificationsAction';
 import { deleteTaskListFullAction } from '@store/actions/tasksReducerActions/taskListsActions/deleteTaskListFullAction';
 import { DeleteTaskListFullSagaActionReturnType } from '@store/actions/tasksSagaActions/taskListsSagasActions/deleteTaskListFullAction';
-import { setModalErrorMessageAction } from '@store/actions/userReducerActions/setModalErrorMessageAction';
+import { setModalMessageAction } from '@store/actions/userReducerActions/setModalMessageAction';
 import { NotificationType, TaskListInterface } from '@store/reducers/tasksReducer/types';
 import { UserIDType } from '@store/reducers/userReducer/types';
 import {
@@ -20,22 +21,25 @@ import { call, cancel, delay, put, select } from 'redux-saga/effects';
 export function* deleteTaskListFullSaga(action: DeleteTaskListFullSagaActionReturnType) {
   const { setIsLoading, setModalVisible, taskListID } = action.payload;
 
+  const { TASK_LISTS, USERS } = FIREBASE_PATH;
+
   try {
     const internetConnectionStatus: string = yield call(checkInternetConnectionHelper);
 
     if (internetConnectionStatus !== ONLINE) {
-      yield put(
-        setModalErrorMessageAction({ errorModalMessage: internetConnectionStatus }),
-      );
+      yield put(setModalMessageAction({ modalMessage: internetConnectionStatus }));
 
       yield cancel();
     }
 
     yield call(setIsLoading, true);
+
     yield delay(START_ANIMATION_DELAY);
+
     const userID: UserIDType = yield select(userIDSelector);
     const notifications: NotificationType[] = yield select(notificationsSelector);
     const taskLists: TaskListInterface[] = yield select(taskListsSelector);
+
     const taskList = taskLists.find((taskList) => taskList.id === taskListID);
 
     const deleteTaskListInFirebase = () => {
@@ -46,6 +50,7 @@ export function* deleteTaskListFullSaga(action: DeleteTaskListFullSagaActionRetu
 
     if (taskList && taskList.tasks) {
       const { tasks } = taskList;
+
       const notificationTaskIDs: string[] = [];
 
       tasks.forEach((task) => {
@@ -77,11 +82,12 @@ export function* deleteTaskListFullSaga(action: DeleteTaskListFullSagaActionRetu
         taskListID,
       }),
     );
+
     yield call(setModalVisible, false);
   } catch (error) {
     if (error instanceof Error) {
       yield call(Sentry.captureException, error);
-      yield put(setModalErrorMessageAction({ errorModalMessage: error.message }));
+      yield put(setModalMessageAction({ modalMessage: error.message }));
     }
   } finally {
     yield call(setIsLoading, false);

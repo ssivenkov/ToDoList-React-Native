@@ -12,7 +12,7 @@ export type BottomTabParamList = {
 };
 
 type WithAuthNavigatorStyleParamsType = {
-  style: WithAuthNavigatorStylesType;
+  styles: WithAuthNavigatorStylesType;
   theme: ThemeType;
   accentColor: ColorType;
 };

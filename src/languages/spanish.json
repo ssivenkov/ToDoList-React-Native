@@ -56,13 +56,13 @@
       "MessageRequiredError": "Texto del mensaje requerido"
     },
     "notepadScreen": {
-      "notepad": "Libro para escribir",
-      "notepadPlaceholder": "Texto",
-      "cleanButtonWarningTitle": "¿Está seguro de que desea borrar el libro de trabajo para escribir?",
-      "cleanNotepadTextRequestError": "No hay conexión a Internet, el libro para escribir se ha borrado solo en su dispositivo. Para borrar el libro para escribir en el servidor, encienda Internet y repita la solicitud",
-      "saveNotepadTextRequestError": "No hay conexión a Internet, el libro para escribir se ha guardado solo en su dispositivo. Para guardar el libro para escribir en el servidor, encienda Internet y repita la solicitud",
-      "notepadCleared": "Libro de registro borrado",
-      "notepadSaved": "Libro de registro guardado"
+      "Notepad": "Libro para escribir",
+      "NotepadPlaceholder": "Texto",
+      "CleanButtonWarningTitle": "¿Está seguro de que desea borrar el libro de trabajo para escribir?",
+      "CleanNotepadTextRequestError": "No hay conexión a Internet, el libro para escribir se ha borrado solo en su dispositivo. Para borrar el libro para escribir en el servidor, encienda Internet y repita la solicitud",
+      "SaveNotepadTextRequestError": "No hay conexión a Internet, el libro para escribir se ha guardado solo en su dispositivo. Para guardar el libro para escribir en el servidor, encienda Internet y repita la solicitud",
+      "NotepadCleared": "Libro de registro borrado",
+      "NotepadSaved": "Libro de registro guardado"
     }
   }
 }
