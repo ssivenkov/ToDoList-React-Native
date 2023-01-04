@@ -63,6 +63,7 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
     const userID: UserIDType = yield select(userIDSelector);
     const channelId: ChannelIDType = yield select(channelIDSelector);
     const selectedColor: ColorType = yield select(selectedColorSelector);
+    const notifications: NotificationType[] = yield select(notificationsSelector);
 
     if (shouldSetColor && selectedColor) {
       const colorMarkSnapshot: SnapshotType = yield DB.ref(
@@ -130,7 +131,30 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
 
     yield call(sendTaskTitleToFirebase);
 
-    if (shouldCreateNotification && date) {
+    const taskNotification = notifications.find((item) => {
+      return taskID === item.taskID;
+    });
+    const notificationID = taskNotification?.notificationID;
+
+    const shouldDeleteNotificationCondition = shouldCreateNotification && notificationID;
+
+    if (shouldDeleteNotificationCondition) {
+      if (taskNotification && notificationID) {
+        cancelNotificationHelper(notificationID);
+      }
+
+      yield put(
+        editTaskNotificationAction({
+          notification: {
+            taskID,
+          },
+        }),
+      );
+    }
+
+    const shouldCreateNotificationCondition = shouldCreateNotification && date;
+
+    if (shouldCreateNotificationCondition) {
       const notificationID = generateNumberIDHelper(NOTIFICATION_ID_MAX_LENGTH);
 
       yield call(createNotificationHelper, {
@@ -146,25 +170,6 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
             taskID,
             notificationID,
             date,
-          },
-        }),
-      );
-    } else {
-      const notifications: NotificationType[] = yield select(notificationsSelector);
-
-      const taskNotification = notifications.find((item) => {
-        return taskID === item.taskID;
-      });
-      const notificationID = taskNotification?.notificationID;
-
-      if (taskNotification && notificationID) {
-        cancelNotificationHelper(notificationID);
-      }
-
-      yield put(
-        editTaskNotificationAction({
-          notification: {
-            taskID,
           },
         }),
       );
