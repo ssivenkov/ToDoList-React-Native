@@ -126,7 +126,7 @@
 
     // naming
     "id-denylist": ["error", "data", "err", "e", "cb", "callback"],
-    "new-cap": "error",
+    "new-cap": "off",
     "no-label-var": "error",
     "no-underscore-dangle": ["error", {
       "allow": ["__REDUX_DEVTOOLS_EXTENSION_COMPOSE__"]
