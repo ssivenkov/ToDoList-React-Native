@@ -1,9 +1,11 @@
 import { COLORS } from '@colors/colors';
-import { EN, ONLINE, USERS } from '@constants/constants';
+import { ONLINE } from '@constants/constants';
+import { EN } from '@constants/languages';
+import { FIREBASE_PATH } from '@enums/firebaseEnum';
+import { checkInternetConnectionHelper } from '@helpers/checkInternetConnectionHelper';
 import { DB } from '@root/api/DB';
-import { checkInternetConnectionHelper } from '@root/helpers/checkInternetConnectionHelper';
 import * as Sentry from '@sentry/react-native';
-import { setModalErrorMessageAction } from '@store/actions/userReducerActions/setModalErrorMessageAction';
+import { setModalMessageAction } from '@store/actions/userReducerActions/setModalMessageAction';
 import { syncUserDataAction } from '@store/actions/userSagaActions/syncUserDataAction';
 import {
   SnapshotType,
@@ -17,13 +19,13 @@ import {
 import { call, cancel, put, select } from 'redux-saga/effects';
 
 export function* checkUserSaga() {
+  const { USERS } = FIREBASE_PATH;
+
   try {
     const internetConnectionStatus: string = yield call(checkInternetConnectionHelper);
 
     if (internetConnectionStatus !== ONLINE) {
-      yield put(
-        setModalErrorMessageAction({ errorModalMessage: internetConnectionStatus }),
-      );
+      yield put(setModalMessageAction({ modalMessage: internetConnectionStatus }));
 
       yield cancel();
     }
@@ -33,6 +35,7 @@ export function* checkUserSaga() {
       yield select(isUserDataSynchronizedSelector);
 
     const snapshot: SnapshotType = yield DB.ref(`${USERS}/${userID}`).once('value');
+
     const isUserExist = snapshot.exists();
 
     if (!isUserExist && userID) {
@@ -50,7 +53,7 @@ export function* checkUserSaga() {
   } catch (error) {
     if (error instanceof Error) {
       yield call(Sentry.captureException, error);
-      yield put(setModalErrorMessageAction({ errorModalMessage: error.message }));
+      yield put(setModalMessageAction({ modalMessage: error.message }));
     }
   }
 }

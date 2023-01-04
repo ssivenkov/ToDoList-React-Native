@@ -1,8 +1,6 @@
-import {
-  emailField,
-  messageField,
-} from '@root/screens/contactTheAuthorScreen/fieldNames';
 import { SetStateType } from '@root/types/common/types';
+
+import { emailField, messageField } from './fieldNames';
 
 export type ValuesType = {
   [emailField]: string;

@@ -1,22 +1,19 @@
 import {
-  COLOR_MARK,
   NOTIFICATION_ID_MAX_LENGTH,
   ONLINE,
   START_ANIMATION_DELAY,
-  TASK_LISTS,
-  TASKS,
-  USERS,
 } from '@constants/constants';
+import { FIREBASE_PATH } from '@enums/firebaseEnum';
+import { cancelNotificationHelper } from '@helpers/cancelNotificationHelper';
+import { checkInternetConnectionHelper } from '@helpers/checkInternetConnectionHelper';
+import { createNotificationHelper } from '@helpers/createNotificationHelper';
+import { generateNumberIDHelper } from '@helpers/generateNumberIDHelper';
 import { DB } from '@root/api/DB';
-import { cancelNotificationHelper } from '@root/helpers/cancelNotificationHelper';
-import { checkInternetConnectionHelper } from '@root/helpers/checkInternetConnectionHelper';
-import { createNotificationHelper } from '@root/helpers/createNotificationHelper';
-import { generateNumberIDHelper } from '@root/helpers/generateNumberIDHelper';
 import * as Sentry from '@sentry/react-native';
 import { editTaskNotificationAction } from '@store/actions/tasksReducerActions/notificationsActions/editTaskNotificationAction';
 import { setEditedTaskAction } from '@store/actions/tasksReducerActions/tasksActions/setEditedTaskAction';
 import { SetEditedTaskActionSagaReturnType } from '@store/actions/tasksSagaActions/tasksSagasActions/setEditedTaskAction';
-import { setModalErrorMessageAction } from '@store/actions/userReducerActions/setModalErrorMessageAction';
+import { setModalMessageAction } from '@store/actions/userReducerActions/setModalMessageAction';
 import { NotificationType, TaskType } from '@store/reducers/tasksReducer/types';
 import {
   ChannelIDType,
@@ -48,19 +45,21 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
     setIsMenuVisible,
   } = action.payload;
 
+  const { COLOR_MARK, TASK_LISTS, TASKS, TITLE, USERS } = FIREBASE_PATH;
+
   try {
     const internetConnectionStatus: string = yield call(checkInternetConnectionHelper);
 
     if (internetConnectionStatus !== ONLINE) {
-      yield put(
-        setModalErrorMessageAction({ errorModalMessage: internetConnectionStatus }),
-      );
+      yield put(setModalMessageAction({ modalMessage: internetConnectionStatus }));
 
       yield cancel();
     }
 
     yield call(setIsLoading, true);
+
     yield delay(START_ANIMATION_DELAY);
+
     const userID: UserIDType = yield select(userIDSelector);
     const channelId: ChannelIDType = yield select(channelIDSelector);
     const selectedColor: ColorType = yield select(selectedColorSelector);
@@ -76,7 +75,7 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
         const sendTaskColorToFirebase = () => {
           return DB.ref(
             `${USERS}/${userID}/${TASK_LISTS}/${taskListID}/${TASKS}/${taskID}`,
-          ).update({ colorMark: colorMark ?? selectedColor });
+          ).update({ [COLOR_MARK]: colorMark ?? selectedColor });
         };
 
         yield call(sendTaskColorToFirebase);
@@ -87,7 +86,7 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
 
         const modifiedTask: TaskType = {
           ...taskSnapshot.val(),
-          colorMark: colorMark ?? selectedColor,
+          [COLOR_MARK]: colorMark ?? selectedColor,
         };
 
         const sendModifiedTaskToFirebase = () => {
@@ -112,6 +111,7 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
         const taskWithoutColorMark = { ...modifiedTask };
 
         delete taskWithoutColorMark.colorMark;
+
         const sendTaskWithoutColorMarkToFirebase = () => {
           return DB.ref(
             `${USERS}/${userID}/${TASK_LISTS}/${taskListID}/${TASKS}/${taskID}`,
@@ -125,7 +125,7 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
     const sendTaskTitleToFirebase = () => {
       return DB.ref(
         `${USERS}/${userID}/${TASK_LISTS}/${taskListID}/${TASKS}/${taskID}`,
-      ).update({ title: editedTaskTitle });
+      ).update({ [TITLE]: editedTaskTitle });
     };
 
     yield call(sendTaskTitleToFirebase);
@@ -179,6 +179,7 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
           colorMark: colorMark,
         }),
       );
+
       yield call(setColorMark, colorMark);
     } else if (shouldSetColor && !colorMark) {
       yield put(
@@ -189,6 +190,7 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
           colorMark: selectedColor,
         }),
       );
+
       yield call(setColorMark, selectedColor);
     } else {
       yield put(
@@ -198,6 +200,7 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
           editedTaskTitle,
         }),
       );
+
       yield call(setColorMark, '');
     }
 
@@ -207,7 +210,7 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
   } catch (error) {
     if (error instanceof Error) {
       yield call(Sentry.captureException, error);
-      yield put(setModalErrorMessageAction({ errorModalMessage: error.message }));
+      yield put(setModalMessageAction({ modalMessage: error.message }));
     }
   } finally {
     yield call(setIsLoading, false);

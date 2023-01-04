@@ -1,19 +1,14 @@
-import {
-  ONLINE,
-  START_ANIMATION_DELAY,
-  TASK_LISTS,
-  TASKS,
-  USERS,
-} from '@constants/constants';
+import { ONLINE, START_ANIMATION_DELAY } from '@constants/constants';
+import { FIREBASE_PATH } from '@enums/firebaseEnum';
+import { cancelNotificationHelper } from '@helpers/cancelNotificationHelper';
+import { checkInternetConnectionHelper } from '@helpers/checkInternetConnectionHelper';
+import { findNotification } from '@helpers/findNotification';
 import { DB } from '@root/api/DB';
-import { cancelNotificationHelper } from '@root/helpers/cancelNotificationHelper';
-import { checkInternetConnectionHelper } from '@root/helpers/checkInternetConnectionHelper';
-import { findNotification } from '@root/helpers/findNotification';
 import * as Sentry from '@sentry/react-native';
 import { setNotificationsAction } from '@store/actions/tasksReducerActions/notificationsActions/setNotificationsAction';
 import { deleteTaskListFromScreenAction } from '@store/actions/tasksReducerActions/taskListsActions/deleteTaskListFromScreenAction';
 import { DeleteTaskListFromScreenSagaActionReturnType } from '@store/actions/tasksSagaActions/taskListsSagasActions/deleteTaskListFromScreenAction';
-import { setModalErrorMessageAction } from '@store/actions/userReducerActions/setModalErrorMessageAction';
+import { setModalMessageAction } from '@store/actions/userReducerActions/setModalMessageAction';
 import {
   ConvertedTasksForFirebaseType,
   NotificationType,
@@ -29,36 +24,42 @@ export function* deleteTaskListFromScreenSaga(
   const { setIsLoading, fullTaskList, deleteTodoTask, deleteDoneTask, setModalVisible } =
     action.payload;
 
+  const { SHOW_IN_TODO, TASK_LISTS, TASKS, USERS } = FIREBASE_PATH;
+
   try {
     const internetConnectionStatus: string = yield call(checkInternetConnectionHelper);
 
     if (internetConnectionStatus !== ONLINE) {
-      yield put(
-        setModalErrorMessageAction({ errorModalMessage: internetConnectionStatus }),
-      );
+      yield put(setModalMessageAction({ modalMessage: internetConnectionStatus }));
 
       yield cancel();
     }
 
     yield delay(START_ANIMATION_DELAY);
+
     yield call(setIsLoading, true);
+
     const userID: UserIDType = yield select(userIDSelector);
     const notifications: NotificationType[] = yield select(notificationsSelector);
+
     const notificationTaskIDs: string[] = [];
 
     const deleteTaskListFromScreenInFirebase = () => {
       const taskList = { ...fullTaskList };
+
       const { tasks, id: taskListID } = taskList;
 
       if (deleteTodoTask) {
         DB.ref(`${USERS}/${userID}/${TASK_LISTS}/${taskListID}`).update({
-          showInToDo: false,
+          [SHOW_IN_TODO]: false,
         });
 
         if (tasks && tasks.length > 0) {
           tasks.forEach((task) => {
             const { isDone, id: taskID } = task;
+
             const notificationItem = findNotification(taskID, notifications);
+
             const notificationID = notificationItem?.notificationID;
 
             if (!isDone) {
@@ -105,6 +106,7 @@ export function* deleteTaskListFromScreenSaga(
     });
 
     yield put(setNotificationsAction({ notifications: filteredNotifications }));
+
     yield put(
       deleteTaskListFromScreenAction({
         deleteTodoTask,
@@ -112,11 +114,12 @@ export function* deleteTaskListFromScreenSaga(
         fullTaskList,
       }),
     );
+
     yield call(setModalVisible, false);
   } catch (error) {
     if (error instanceof Error) {
       yield call(Sentry.captureException, error);
-      yield put(setModalErrorMessageAction({ errorModalMessage: error.message }));
+      yield put(setModalMessageAction({ modalMessage: error.message }));
     }
   } finally {
     yield call(setIsLoading, false);

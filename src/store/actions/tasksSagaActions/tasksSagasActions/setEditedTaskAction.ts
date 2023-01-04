@@ -1,4 +1,4 @@
-import { IsMenuVisibleType } from '@components/common/task/types';
+import { IsMenuVisibleType } from '@components/task/types';
 import { TASKS_SAGA_ACTION } from '@enums/tasksSagaEnum';
 import { Nullable, SetStateType } from '@root/types/common/types';
 import { TaskListInterface, TaskType } from '@store/reducers/tasksReducer/types';

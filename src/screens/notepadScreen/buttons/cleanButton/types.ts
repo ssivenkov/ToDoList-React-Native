@@ -1,4 +1,4 @@
-import { NotepadTextSetStateType } from '@root/screens/notepadScreen/types';
+import { NotepadTextSetStateType } from '@screens/notepadScreen/types';
 
 export type CleanButtonPropsType = {
   setNotepadText: NotepadTextSetStateType;

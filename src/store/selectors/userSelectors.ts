@@ -1,5 +1,5 @@
 import {
-  ErrorModalMessageType,
+  ModalMessageType,
   UserIDType,
   UserReducerStateType,
 } from '@store/reducers/userReducer/types';
@@ -61,10 +61,8 @@ export const globalLoaderSelector = (
   return state.user.globalLoader;
 };
 
-export const errorModalMessageSelector = (
-  state: AppRootStateType,
-): ErrorModalMessageType => {
-  return state.user.errorModalMessage;
+export const errorModalMessageSelector = (state: AppRootStateType): ModalMessageType => {
+  return state.user.modalMessage;
 };
 
 export const isUserDataSynchronizedSelector = (

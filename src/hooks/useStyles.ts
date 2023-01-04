@@ -14,7 +14,9 @@ export const useStyles = <TStyles, ArgType>(
 ): TStyles => {
   const theme = useSelector(themeSelector);
   const accentColor = useSelector(accentColorSelector);
+
   const { width, height } = useWindowDimensions();
+
   const appWidth = Math.floor(width);
   const appHeight = Math.floor(height);
 

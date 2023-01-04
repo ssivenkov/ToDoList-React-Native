@@ -1,8 +1,9 @@
-import { ONLINE, START_ANIMATION_DELAY, USERS } from '@constants/constants';
+import { ONLINE, START_ANIMATION_DELAY } from '@constants/constants';
+import { FIREBASE_PATH } from '@enums/firebaseEnum';
+import { checkInternetConnectionHelper } from '@helpers/checkInternetConnectionHelper';
 import { DB } from '@root/api/DB';
-import { checkInternetConnectionHelper } from '@root/helpers/checkInternetConnectionHelper';
 import * as Sentry from '@sentry/react-native';
-import { setModalErrorMessageAction } from '@store/actions/userReducerActions/setModalErrorMessageAction';
+import { setModalMessageAction } from '@store/actions/userReducerActions/setModalMessageAction';
 import { setThemeAction } from '@store/actions/userReducerActions/setThemeAction';
 import { ChangeDarkModeSagaActionReturnType } from '@store/actions/userSagaActions/changeDarkModeAction';
 import { UserIDType } from '@store/reducers/userReducer/types';
@@ -12,27 +13,31 @@ import { call, cancel, delay, put, select } from 'redux-saga/effects';
 export function* changeDarkModeSaga(action: ChangeDarkModeSagaActionReturnType) {
   const { darkMode, setIsLoading, theme } = action.payload;
 
+  const { DARK_MODE, USERS } = FIREBASE_PATH;
+
   try {
     const internetConnectionStatus: string = yield call(checkInternetConnectionHelper);
 
     if (internetConnectionStatus !== ONLINE) {
-      yield put(
-        setModalErrorMessageAction({ errorModalMessage: internetConnectionStatus }),
-      );
+      yield put(setModalMessageAction({ modalMessage: internetConnectionStatus }));
 
       yield cancel();
     }
 
     yield call(setIsLoading, true);
+
     yield delay(START_ANIMATION_DELAY);
+
     const userID: UserIDType = yield select(userIDSelector);
+
     const sendDarkModeToFirebase = () => {
       return DB.ref(`${USERS}/${userID}`).update({
-        darkMode: darkMode,
+        [DARK_MODE]: darkMode,
       });
     };
 
     yield call(sendDarkModeToFirebase);
+
     yield put(
       setThemeAction({
         theme,
@@ -41,7 +46,7 @@ export function* changeDarkModeSaga(action: ChangeDarkModeSagaActionReturnType) 
   } catch (error) {
     if (error instanceof Error) {
       yield call(Sentry.captureException, error);
-      yield put(setModalErrorMessageAction({ errorModalMessage: error.message }));
+      yield put(setModalMessageAction({ modalMessage: error.message }));
     }
   } finally {
     yield call(setIsLoading, false);

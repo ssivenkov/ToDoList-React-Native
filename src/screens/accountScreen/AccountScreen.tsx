@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 
 import { longButtonDarkGradient, longButtonLightGradient } from '@colors/gradients';
-import { ChangeLanguageButton } from '@components/buttons/changeLanguageButton/ChangeLanguageButton';
-import { DarkModeButton } from '@components/buttons/darkModeButton/DarkModeButton';
-import { SelectAccentColorButton } from '@components/buttons/selectAccentColorButton/SelectAccentColorButton';
-import { LongButton } from '@components/common/buttons/longButton/LongButton';
-import { Loader } from '@components/common/loader/Loader';
-import { ModalLongButton } from '@components/common/modals/ModalLongButton';
+import { LongButton } from '@components/buttons/longButton/LongButton';
+import { Loader } from '@components/loader/Loader';
+import { ModalLongButton } from '@components/modals/ModalLongButton';
 import { ROOT_NAVIGATOR_ROUTE } from '@enums/routesEnum';
-import { faArrowRight, faAt, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons/faArrowRight';
+import { faAt } from '@fortawesome/free-solid-svg-icons/faAt';
+import { faTrash } from '@fortawesome/free-solid-svg-icons/faTrash';
+import { useStyles } from '@hooks/useStyles';
 import { useNavigation } from '@react-navigation/native';
-import { useStyles } from '@root/hooks/useStyles';
-import { styles } from '@root/screens/accountScreen/styles';
+import { ChangeLanguageButton } from '@screens/accountScreen/buttons/changeLanguageButton/ChangeLanguageButton';
+import { DarkModeButton } from '@screens/accountScreen/buttons/darkModeButton/DarkModeButton';
+import { SelectAccentColorButton } from '@screens/accountScreen/buttons/selectAccentColorButton/SelectAccentColorButton';
 import { deleteAccountAction } from '@store/actions/userSagaActions/deleteAccountAction';
 import { signOutAction } from '@store/actions/userSagaActions/signOutAction';
 import {
@@ -24,10 +25,12 @@ import { Image, ScrollView, Text, View } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { accountScreenStyles } from './styles';
+
 export const AccountScreen = () => {
   const dispatch = useDispatch();
 
-  const style = useStyles(styles);
+  const styles = useStyles(accountScreenStyles);
 
   const { t } = useTranslation();
 
@@ -37,6 +40,7 @@ export const AccountScreen = () => {
 
   const userData = useSelector(userDataSelector);
   const userAvatar = useSelector(userAvatarSelector);
+
   const [waitingProcess, setWaitingProcess] = useState<boolean>(false);
 
   const longButtonGradient = theme.darkMode
@@ -47,26 +51,26 @@ export const AccountScreen = () => {
     navigation.navigate(ROOT_NAVIGATOR_ROUTE.CONTACT_THE_AUTHOR_SCREEN);
   };
 
-  const signOutHandler = (): void => {
+  const signOutHandler = () => {
     dispatch(signOutAction({ setWaitingProcess }));
   };
 
-  const deleteAccountHandler = (): void => {
+  const deleteAccountHandler = () => {
     dispatch(deleteAccountAction({ setWaitingProcess }));
   };
 
   if (userData && !waitingProcess) {
     return (
       <ScrollView>
-        <View style={style.screenContainer}>
-          <View style={style.userInfoContainer}>
-            {userAvatar && <Image source={{ uri: userAvatar }} style={style.avatar} />}
+        <View style={styles.screenContainer}>
+          <View style={styles.userInfoContainer}>
+            {userAvatar && <Image source={{ uri: userAvatar }} style={styles.avatar} />}
             {userData.displayName && (
-              <Text style={style.name}>{userData.displayName}</Text>
+              <Text style={styles.name}>{userData.displayName}</Text>
             )}
-            {userData.email && <Text style={style.text}>{userData.email}</Text>}
+            {userData.email && <Text style={styles.text}>{userData.email}</Text>}
             {userData.phoneNumber && (
-              <Text style={style.text}>{userData.phoneNumber}</Text>
+              <Text style={styles.text}>{userData.phoneNumber}</Text>
             )}
           </View>
           <View>
@@ -91,7 +95,7 @@ export const AccountScreen = () => {
                 buttonIcon={faArrowRight}
                 buttonTitle={t('accountScreen.SignOut')}
                 description={t('accountScreen.SignOutWarning')}
-                disable={waitingProcess}
+                disabled={waitingProcess}
                 okHandler={signOutHandler}
               />
             </LinearGradient>
@@ -100,7 +104,7 @@ export const AccountScreen = () => {
                 buttonIcon={faTrash}
                 buttonTitle={t('accountScreen.DeleteAccount')}
                 description={t('accountScreen.DeleteAccountWarning')}
-                disable={waitingProcess}
+                disabled={waitingProcess}
                 okHandler={deleteAccountHandler}
               />
             </LinearGradient>

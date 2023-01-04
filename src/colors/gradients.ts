@@ -1,4 +1,4 @@
-import { COLORS } from './colors';
+import { COLORS } from '@colors/colors';
 
 const {
   ALTO2,

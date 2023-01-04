@@ -10,7 +10,7 @@ const tasksReducerState: TasksReducerStateType = {
 };
 
 export const tasksReducer = (
-  state: TasksReducerStateType = tasksReducerState,
+  state = tasksReducerState,
   action: TasksReducerActionsType,
 ): TasksReducerStateType => {
   switch (action.type) {

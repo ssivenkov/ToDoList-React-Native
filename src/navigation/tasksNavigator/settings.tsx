@@ -1,27 +1,29 @@
 import React from 'react';
 
 import { ICON_SIZE_HALF_MEDIUM } from '@constants/constants';
-import { faCheck, faList } from '@fortawesome/free-solid-svg-icons';
+import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck';
+import { faList } from '@fortawesome/free-solid-svg-icons/faList';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { TasksNavigatorSettingsType } from '@navigation/tasksNavigator/types';
 import { t } from 'i18next';
 
+import { TasksNavigatorSettingsType } from './types';
+
 export const tasksNavigatorSettings: TasksNavigatorSettingsType = (params) => {
-  const { style, theme, accentColor } = params;
+  const { styles, theme, accentColor } = params;
 
   return {
-    tabBarStyle: style.tabBarContainer,
-    tabBarItemStyle: style.tabBarItem,
+    tabBarStyle: styles.tabBarContainer,
+    tabBarItemStyle: styles.tabBarItem,
     tabBarActiveTintColor: accentColor,
     tabBarInactiveTintColor: theme.TAB_BAR_TEXT_COLOR,
-    tabBarIndicatorStyle: style.tabBarIndicator,
-    tabBarIconStyle: style.icon,
-    tabBarLabelStyle: style.title,
+    tabBarIndicatorStyle: styles.tabBarIndicator,
+    tabBarIconStyle: styles.icon,
+    tabBarLabelStyle: styles.title,
   };
 };
 
 export const toDoScreenSettings: TasksNavigatorSettingsType = (params) => {
-  const { style } = params;
+  const { styles } = params;
 
   return {
     tabBarLabel: t('tasksScreen.TodoTasksTab'),
@@ -29,14 +31,14 @@ export const toDoScreenSettings: TasksNavigatorSettingsType = (params) => {
       <FontAwesomeIcon
         icon={faList}
         size={ICON_SIZE_HALF_MEDIUM}
-        style={focused ? style.tabFocusIcon : style.tabIcon}
+        style={focused ? styles.tabFocusIcon : styles.tabIcon}
       />
     ),
   };
 };
 
 export const doneScreenSettings: TasksNavigatorSettingsType = (params) => {
-  const { style } = params;
+  const { styles } = params;
 
   return {
     tabBarLabel: t('tasksScreen.DoneTasksTab'),
@@ -44,7 +46,7 @@ export const doneScreenSettings: TasksNavigatorSettingsType = (params) => {
       <FontAwesomeIcon
         icon={faCheck}
         size={ICON_SIZE_HALF_MEDIUM}
-        style={focused ? style.tabFocusIcon : style.tabIcon}
+        style={focused ? styles.tabFocusIcon : styles.tabIcon}
       />
     ),
   };

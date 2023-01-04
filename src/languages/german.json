@@ -56,13 +56,13 @@
       "MessageRequiredError": "Nachrichtentext erforderlich"
     },
     "notepadScreen": {
-      "notepad": "Notizblock",
-      "notepadPlaceholder": "Text",
-      "cleanButtonWarningTitle": "Möchten Sie den Notizblock wirklich löschen?",
-      "cleanNotepadTextRequestError": "Keine Internetverbindung, Notizblock wurde nur auf Ihrem Gerät gelöscht. Um den Notizblock auf dem Server zu löschen, schalten Sie das Internet ein und wiederholen Sie die Anfrage",
-      "saveNotepadTextRequestError": "Keine Internetverbindung, Notizblock wurde nur auf Ihrem Gerät gespeichert. Um Notepad auf dem Server zu speichern, schalten Sie das Internet ein und wiederholen Sie die Anfrage",
-      "notepadCleared": "Notizblock gelöscht",
-      "notepadSaved": "Notizblock gespeichert"
+      "Notepad": "Notizblock",
+      "NotepadPlaceholder": "Text",
+      "CleanButtonWarningTitle": "Möchten Sie den Notizblock wirklich löschen?",
+      "CleanNotepadTextRequestError": "Keine Internetverbindung, Notizblock wurde nur auf Ihrem Gerät gelöscht. Um den Notizblock auf dem Server zu löschen, schalten Sie das Internet ein und wiederholen Sie die Anfrage",
+      "SaveNotepadTextRequestError": "Keine Internetverbindung, Notizblock wurde nur auf Ihrem Gerät gespeichert. Um Notepad auf dem Server zu speichern, schalten Sie das Internet ein und wiederholen Sie die Anfrage",
+      "NotepadCleared": "Notizblock gelöscht",
+      "NotepadSaved": "Notizblock gespeichert"
     }
   }
 }

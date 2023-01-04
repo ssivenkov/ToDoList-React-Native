@@ -1,21 +1,20 @@
 import React, { useEffect, useState } from 'react';
 
-import { ModalMenuButton } from '@components/common/buttons/modalMenuButton/ModalMenuButton';
-import { styles } from '@components/common/modals/styles';
+import { ModalMenuButton } from '@components/buttons/modalMenuButton/ModalMenuButton';
+import { modalStyles } from '@components/modals/modalStyles';
 import { ROOT_NAVIGATOR_ROUTE } from '@enums/routesEnum';
 import { GOOGLE_WEB_CLIENT_ID } from '@env';
+import { useStyles } from '@hooks/useStyles';
 import { nativeStackExtraScreenSettings } from '@navigation/rootNavigator/settings';
-import { RootNativeStackNavigatorParamListType } from '@navigation/rootNavigator/types';
 import { WithAuthNavigator } from '@navigation/withAuthNavigator/WithAuthNavigator';
 import auth from '@react-native-firebase/auth';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { DarkTheme, NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Theme } from '@react-navigation/native/src/types';
-import { useStyles } from '@root/hooks/useStyles';
-import { ContactTheAuthorScreen } from '@root/screens/contactTheAuthorScreen/ContactTheAuthorScreen';
-import { SignInScreen } from '@root/screens/signInScreen/SignInScreen';
-import { setModalErrorMessageAction } from '@store/actions/userReducerActions/setModalErrorMessageAction';
+import { ContactTheAuthorScreen } from '@screens/contactTheAuthorScreen/ContactTheAuthorScreen';
+import { SignInScreen } from '@screens/signInScreen/SignInScreen';
+import { setModalMessageAction } from '@store/actions/userReducerActions/setModalMessageAction';
 import { changeLanguageAction } from '@store/actions/userSagaActions/changeLanguageAction';
 import { checkUserAction } from '@store/actions/userSagaActions/checkUserAction';
 import { createChannelAction } from '@store/actions/userSagaActions/createChannelAction';
@@ -35,13 +34,15 @@ import { Modal, Text, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { RootNativeStackNavigatorParamListType } from './types';
+
 const { Navigator, Screen } =
   createNativeStackNavigator<RootNativeStackNavigatorParamListType>();
 
 export const RootNavigator = () => {
   const dispatch = useDispatch();
 
-  const modalStyles = useStyles(styles);
+  const styles = useStyles(modalStyles);
 
   const theme = useSelector(themeSelector);
   const accentColor = useSelector(accentColorSelector);
@@ -62,8 +63,8 @@ export const RootNavigator = () => {
     },
   };
 
-  const onCloseErrorModalPress = (): void => {
-    dispatch(setModalErrorMessageAction({ errorModalMessage: '' }));
+  const onCloseErrorModalPress = () => {
+    dispatch(setModalMessageAction({ modalMessage: '' }));
   };
 
   useEffect(() => {
@@ -112,12 +113,12 @@ export const RootNavigator = () => {
         transparent={true}
         visible={!!errorModalMessage}
       >
-        <View style={modalStyles.centeredView}>
-          <View style={modalStyles.modalView}>
-            <View style={modalStyles.contentWithBottomPadding}>
-              <Text style={modalStyles.text}>{errorModalMessage}</Text>
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <View style={styles.contentWithBottomPadding}>
+              <Text style={styles.text}>{errorModalMessage}</Text>
             </View>
-            <View style={modalStyles.buttonsContainer}>
+            <View style={styles.buttonsContainer}>
               <ModalMenuButton
                 leftRounding={true}
                 onPress={onCloseErrorModalPress}

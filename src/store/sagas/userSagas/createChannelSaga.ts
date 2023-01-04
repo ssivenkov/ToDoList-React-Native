@@ -1,9 +1,9 @@
 import { ONLINE } from '@constants/constants';
+import { checkInternetConnectionHelper } from '@helpers/checkInternetConnectionHelper';
 import messaging from '@react-native-firebase/messaging';
-import { checkInternetConnectionHelper } from '@root/helpers/checkInternetConnectionHelper';
 import * as Sentry from '@sentry/react-native';
 import { setChannelIDAction } from '@store/actions/userReducerActions/setChannelIDAction';
-import { setModalErrorMessageAction } from '@store/actions/userReducerActions/setModalErrorMessageAction';
+import { setModalMessageAction } from '@store/actions/userReducerActions/setModalMessageAction';
 import { ChannelIDType } from '@store/reducers/userReducer/types';
 import PushNotification from 'react-native-push-notification';
 import { call, cancel, put } from 'redux-saga/effects';
@@ -13,15 +13,14 @@ export function* createChannelSaga() {
     const internetConnectionStatus: string = yield call(checkInternetConnectionHelper);
 
     if (internetConnectionStatus !== ONLINE) {
-      yield put(
-        setModalErrorMessageAction({ errorModalMessage: internetConnectionStatus }),
-      );
+      yield put(setModalMessageAction({ modalMessage: internetConnectionStatus }));
 
       yield cancel();
     }
 
     const getChannelID = () => messaging().getToken();
     const channelID: ChannelIDType = yield call(getChannelID);
+
     const createChannel = () => {
       PushNotification.createChannel(
         {
@@ -39,11 +38,12 @@ export function* createChannelSaga() {
     };
 
     yield call(createChannel);
+
     yield put(setChannelIDAction({ channelID }));
   } catch (error) {
     if (error instanceof Error) {
       yield call(Sentry.captureException, error);
-      yield put(setModalErrorMessageAction({ errorModalMessage: error.message }));
+      yield put(setModalMessageAction({ modalMessage: error.message }));
     }
   }
 }

@@ -56,13 +56,13 @@
       "MessageRequiredError": "Testo del messaggio richiesto"
     },
     "notepadScreen": {
-      "notepad": "Blocco note",
-      "notepadPlaceholder": "Testo",
-      "cleanButtonWarningTitle": "È sicuro di voler cancellare il blocco note?",
-      "cleanNotepadTextRequestError": "Nessuna connessione a Internet, il blocco note è stato cancellato solo sul tuo dispositivo. Per cancellare il blocco note sul server, accendi Internet e ripeti la richiesta",
-      "saveNotepadTextRequestError": "Nessuna connessione a Internet, il blocco note è stato salvato solo sul tuo dispositivo. Per salvare il blocco note sul server accendi Internet e ripeti la richiesta",
-      "notepadCleared": "Blocco note cancellato",
-      "notepadSaved": "Blocco note salvato"
+      "Notepad": "Blocco note",
+      "NotepadPlaceholder": "Testo",
+      "CleanButtonWarningTitle": "È sicuro di voler cancellare il blocco note?",
+      "CleanNotepadTextRequestError": "Nessuna connessione a Internet, il blocco note è stato cancellato solo sul tuo dispositivo. Per cancellare il blocco note sul server, accendi Internet e ripeti la richiesta",
+      "SaveNotepadTextRequestError": "Nessuna connessione a Internet, il blocco note è stato salvato solo sul tuo dispositivo. Per salvare il blocco note sul server accendi Internet e ripeti la richiesta",
+      "NotepadCleared": "Blocco note cancellato",
+      "NotepadSaved": "Blocco note salvato"
     }
   }
 }

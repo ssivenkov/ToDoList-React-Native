@@ -1,12 +1,13 @@
 import { COLORS } from '@colors/colors';
 import { FontAwesomeIconStyle } from '@fortawesome/react-native-fontawesome';
+import { ExtendedStylesPropsType } from '@hooks/useStyles';
 import {
   headerButtonMargin,
   headerHeight,
   headerTitleFontSize,
+  tabBarContainerHeight,
 } from '@navigation/commonNavigationStyles';
-import { ExtendedStylesPropsType } from '@root/hooks/useStyles';
-import { Platform, StyleSheet, TextStyle, ViewStyle } from 'react-native';
+import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
 export type WithAuthNavigatorStylesType = {
   header: ViewStyle;
@@ -19,12 +20,7 @@ export type WithAuthNavigatorStylesType = {
   title: TextStyle;
 };
 
-export const iOSTabBarContainerHeight = 82;
-export const androidTabBarContainerHeight = 50;
-export const tabBarContainerHeight =
-  Platform.OS === 'ios' ? iOSTabBarContainerHeight : androidTabBarContainerHeight;
-
-export const styles = (props: ExtendedStylesPropsType) =>
+export const withAuthNavigatorStyles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<WithAuthNavigatorStylesType>({
     header: {
       backgroundColor: props.darkMode ? `${props.ACCENT_COLOR}CC` : props.ACCENT_COLOR,

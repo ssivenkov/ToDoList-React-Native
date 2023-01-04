@@ -1,4 +1,4 @@
-import { NotepadTextType } from '@root/screens/notepadScreen/types';
+import { NotepadTextType } from '@screens/notepadScreen/types';
 
 export type SaveButtonPropsType = {
   notepadText: NotepadTextType;
