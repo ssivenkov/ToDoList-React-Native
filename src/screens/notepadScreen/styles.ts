@@ -9,6 +9,7 @@ import {
 import { StyleSheet, ViewStyle } from 'react-native';
 
 export type NotepadScreenStylesType = {
+  darkModeScreenContainer: ViewStyle;
   header: ViewStyle;
   headerTitle: ViewStyle;
   leftButtonContainer: ViewStyle;
@@ -18,6 +19,11 @@ export type NotepadScreenStylesType = {
 
 export const notepadScreenStyles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<NotepadScreenStylesType>({
+    darkModeScreenContainer: {
+      height: '100%',
+      backgroundColor: COLORS.WOODSMOKE1,
+    },
+
     header: {
       backgroundColor: props.darkMode ? `${props.ACCENT_COLOR}CC` : props.ACCENT_COLOR,
       height: headerHeight,
@@ -41,6 +47,6 @@ export const notepadScreenStyles = (props: ExtendedStylesPropsType) =>
     },
 
     scrollViewContainer: {
-      marginBottom: tabBarContainerHeight,
+      paddingBottom: tabBarContainerHeight,
     },
   });

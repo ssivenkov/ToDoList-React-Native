@@ -46,6 +46,6 @@ export const modalMenuButtonStyles = (props: ExtendedStylesPropsType) =>
 
     separator: {
       width: 1,
-      backgroundColor: props.darkMode ? COLORS.WOODSMOKE : COLORS.WHITE,
+      backgroundColor: props.darkMode ? COLORS.WOODSMOKE2 : COLORS.WHITE,
     },
   });
