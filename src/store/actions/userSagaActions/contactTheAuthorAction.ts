@@ -1,9 +1,11 @@
 import { USER_SAGA_ACTION } from '@enums/userSagaEnum';
+import { SetStateType } from '@root/types/common/types';
 import { ValuesType } from '@screens/contactTheAuthorScreen/types';
 
 export type ContactTheAuthorSagaSagaActionPayloadType = {
   values: ValuesType;
   navigate: () => void;
+  setIsSubmitting: SetStateType<boolean>;
 };
 
 export type ContactTheAuthorSagaSagaActionReturnType = {

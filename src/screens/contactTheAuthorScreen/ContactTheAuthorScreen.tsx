@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useLayoutEffect, useState } from 'react';
 
 import { TextButton } from '@components/buttons/textButton/TextButton';
 import { FormikInput } from '@components/input/FormikInput';
@@ -27,6 +27,7 @@ export const ContactTheAuthorScreen = () => {
   const userData = useSelector(userDataSelector);
 
   const [isFormValid, setIsFormValid] = useState<boolean>(false);
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
   const initialEmailValue = userData?.email ?? '';
 
@@ -34,23 +35,22 @@ export const ContactTheAuthorScreen = () => {
     navigation.goBack();
   };
 
-  const {
-    handleChange,
-    handleSubmit,
-    values,
-    setFieldTouched,
-    errors,
-    touched,
-    isSubmitting,
-  } = useFormik({
-    validate: (values) => validate({ values, isFormValid, setIsFormValid }),
-    initialValues: { [emailField]: initialEmailValue, [messageField]: '' },
-    validateOnBlur: true,
-    validateOnChange: true,
-    onSubmit: (values) => {
-      dispatch(contactTheAuthorAction({ values, navigate }));
-    },
-  });
+  const { handleChange, handleSubmit, values, setFieldTouched, errors, touched } =
+    useFormik({
+      validate: (values) => validate({ values, isFormValid, setIsFormValid }),
+      initialValues: { [emailField]: initialEmailValue, [messageField]: '' },
+      validateOnBlur: true,
+      validateOnChange: true,
+      onSubmit: () => {
+        setIsSubmitting(true);
+      },
+    });
+
+  useLayoutEffect(() => {
+    if (isSubmitting) {
+      dispatch(contactTheAuthorAction({ values, navigate, setIsSubmitting }));
+    }
+  }, [isSubmitting]);
 
   const buttonDisabledCondition = isSubmitting || !isFormValid;
 
