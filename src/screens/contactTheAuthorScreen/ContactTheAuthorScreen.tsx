@@ -2,6 +2,7 @@ import React, { useLayoutEffect, useState } from 'react';
 
 import { TextButton } from '@components/buttons/textButton/TextButton';
 import { FormikInput } from '@components/input/FormikInput';
+import { Loader } from '@components/loader/Loader';
 import { useStyles } from '@hooks/useStyles';
 import { useNavigation } from '@react-navigation/native';
 import { emailField, messageField } from '@screens/contactTheAuthorScreen/fieldNames';
@@ -10,7 +11,7 @@ import { contactTheAuthorAction } from '@store/actions/userSagaActions/contactTh
 import { userDataSelector } from '@store/selectors/userSelectors';
 import { useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
-import { ScrollView, View } from 'react-native';
+import { Modal, ScrollView, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { contactTheAuthorScreenStyles } from './styles';
@@ -56,6 +57,11 @@ export const ContactTheAuthorScreen = () => {
 
   return (
     <ScrollView style={styles.screenContainer}>
+      {isSubmitting && (
+        <Modal transparent={true}>
+          <Loader />
+        </Modal>
+      )}
       <View style={styles.inputsWrapper}>
         <View style={styles.inputWrapper}>
           <FormikInput
