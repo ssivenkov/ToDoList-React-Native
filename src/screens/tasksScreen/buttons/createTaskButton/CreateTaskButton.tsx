@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 
 import { commonButtonStyles } from '@components/buttons/commonButtonStyles';
 import { ColorPickerComponent } from '@components/colorPicker/ColorPicker';
-import { Input } from '@components/input/Input';
+import { Input } from '@components/inputs/Input';
 import { ModalIcon } from '@components/modals/ModalIcon';
 import { Notification } from '@components/notification/Notification';
 import { Switcher } from '@components/switcher/Switcher';

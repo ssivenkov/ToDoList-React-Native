@@ -1,7 +1,7 @@
 import React, { useLayoutEffect, useState } from 'react';
 
 import { TextButton } from '@components/buttons/textButton/TextButton';
-import { FormikInput } from '@components/input/FormikInput';
+import { FormikInput } from '@components/inputs/FormikInput';
 import { Loader } from '@components/loader/Loader';
 import { useStyles } from '@hooks/useStyles';
 import { useNavigation } from '@react-navigation/native';

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { NotepadInput } from '@components/input/NotepadInput';
+import { NotepadInput } from '@components/inputs/NotepadInput';
 import { useStyles } from '@hooks/useStyles';
 import { CleanButton } from '@screens/notepadScreen/buttons/cleanButton/CleanButton';
 import { SaveButton } from '@screens/notepadScreen/buttons/saveButton/SaveButton';
