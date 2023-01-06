@@ -27,7 +27,11 @@ export const NotepadScreen = () => {
     useState<NotepadReducerStateType['notepadText']>(notepadTextFromState);
 
   return (
-    <View style={isDarkMode && styles.darkModeScreenContainer}>
+    <View
+      style={
+        isDarkMode ? styles.darkModeScreenContainer : styles.lightModeScreenContainer
+      }
+    >
       <View style={styles.header}>
         <View style={styles.leftButtonContainer}>
           <CleanButton setNotepadText={setNotepadText} />

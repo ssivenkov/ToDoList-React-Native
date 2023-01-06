@@ -6,7 +6,7 @@ import { Separator } from '@components/buttons/modalMenuButton/Separator';
 import { Loader } from '@components/loader/Loader';
 import { useStyles } from '@hooks/useStyles';
 import { useTranslation } from 'react-i18next';
-import { Modal, Text, View } from 'react-native';
+import { Keyboard, Modal, Text, TouchableWithoutFeedback, View } from 'react-native';
 
 import { modalStyles } from './modalStyles';
 import { ModalIconPropsType } from './types';
@@ -55,6 +55,10 @@ export const ModalIcon = (props: ModalIconPropsType) => {
     okHandler(setIsLoading, setModalVisible);
   };
 
+  const keyboardDismiss = () => {
+    Keyboard.dismiss();
+  };
+
   return (
     <View>
       <View>
@@ -67,30 +71,32 @@ export const ModalIcon = (props: ModalIconPropsType) => {
           transparent={true}
           visible={modalVisibleFromProps ?? modalVisible}
         >
-          <View style={styles.centeredView}>
-            <View style={styles.modalView}>
-              <View style={styles.contentWithBottomPadding}>
-                {description && <Text style={styles.text}>{description}</Text>}
-                {children && <View style={styles.contentContainer}>{children}</View>}
-              </View>
-              <View style={styles.buttonsContainer}>
-                <ModalMenuButton
-                  disabled={okDisabled}
-                  leftRounding={true}
-                  onPress={onOkButtonPress}
-                  rightRounding={false}
-                  title={t('common.Ok')}
-                />
-                <Separator />
-                <ModalMenuButton
-                  leftRounding={false}
-                  onPress={onCancelButtonPress}
-                  rightRounding={true}
-                  title={t('common.Close')}
-                />
+          <TouchableWithoutFeedback onPress={keyboardDismiss}>
+            <View style={styles.centeredView}>
+              <View style={styles.modalView}>
+                <View style={styles.contentWithBottomPadding}>
+                  {description && <Text style={styles.text}>{description}</Text>}
+                  {children && <View style={styles.contentContainer}>{children}</View>}
+                </View>
+                <View style={styles.buttonsContainer}>
+                  <ModalMenuButton
+                    disabled={okDisabled}
+                    leftRounding={true}
+                    onPress={onOkButtonPress}
+                    rightRounding={false}
+                    title={t('common.Ok')}
+                  />
+                  <Separator />
+                  <ModalMenuButton
+                    leftRounding={false}
+                    onPress={onCancelButtonPress}
+                    rightRounding={true}
+                    title={t('common.Close')}
+                  />
+                </View>
               </View>
             </View>
-          </View>
+          </TouchableWithoutFeedback>
           {isLoading && <Loader />}
         </Modal>
       </View>

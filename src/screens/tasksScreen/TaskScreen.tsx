@@ -41,7 +41,7 @@ export const TasksScreen = () => {
 
   if (isTodoScreen && sortedToDoTaskLists.length > 0) {
     return (
-      <ScrollView>
+      <ScrollView keyboardShouldPersistTaps='handled'>
         <View style={styles.tasksListContainer}>
           {sortedToDoTaskLists.map((item) => {
             const { id, date, title, tasks, isTodoCollapsed, isDoneCollapsed } = item;
@@ -68,7 +68,7 @@ export const TasksScreen = () => {
 
   if (!isTodoScreen && sortedDoneTaskLists.length > 0) {
     return (
-      <ScrollView>
+      <ScrollView keyboardShouldPersistTaps='handled'>
         <View style={styles.tasksListContainer}>
           {sortedDoneTaskLists.map((item) => {
             const { id, date, title, tasks, isTodoCollapsed, isDoneCollapsed } = item;

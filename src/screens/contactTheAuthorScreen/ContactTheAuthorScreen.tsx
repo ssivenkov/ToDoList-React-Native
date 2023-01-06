@@ -56,7 +56,7 @@ export const ContactTheAuthorScreen = () => {
   const buttonDisabledCondition = isSubmitting || !isFormValid;
 
   return (
-    <ScrollView style={styles.screenContainer}>
+    <ScrollView keyboardShouldPersistTaps='handled' style={styles.screenContainer}>
       {isSubmitting && (
         <Modal transparent={true}>
           <Loader />
