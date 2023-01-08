@@ -86,6 +86,7 @@ export const Notification = (props: NotificationPropsType) => {
       />
       <Animated.View style={{ height: heightAnimation }}>
         <DatePicker
+          androidVariant='iosClone'
           date={datePickerDate}
           fadeToColor='none'
           locale={datePickerLanguage}
