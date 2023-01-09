@@ -39,6 +39,7 @@
 
     // typescript
     "@typescript-eslint/no-var-requires": "error",
+    "@typescript-eslint/ban-ts-comment": "off",
 
     // react native
     "react-native/no-unused-styles": "error",
@@ -61,7 +62,7 @@
     "react/no-array-index-key": "error",
     "react/no-arrow-function-lifecycle": "error",
     "react/no-danger": "error",
-    "react/no-multi-comp": "error",
+    "react/no-multi-comp": "off",
     "react/no-namespace": "error",
     "react/no-this-in-sfc": "error",
     "react/no-unsafe": "error",
@@ -78,7 +79,7 @@
       "noSortAlphabetically": false
     }],
     "react/void-dom-elements-no-children": "error",
-    "react/jsx-boolean-value": ["error", "never"],
+    "react/jsx-boolean-value": ["error", "always"],
     "react/jsx-child-element-spacing": "error",
     "react/jsx-closing-bracket-location": "error",
     "react/jsx-closing-tag-location": "error",
@@ -125,7 +126,7 @@
 
     // naming
     "id-denylist": ["error", "data", "err", "e", "cb", "callback"],
-    "new-cap": "error",
+    "new-cap": "off",
     "no-label-var": "error",
     "no-underscore-dangle": ["error", {
       "allow": ["__REDUX_DEVTOOLS_EXTENSION_COMPOSE__"]

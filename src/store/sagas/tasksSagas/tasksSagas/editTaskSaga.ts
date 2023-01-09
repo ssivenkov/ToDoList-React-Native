@@ -1,21 +1,19 @@
 import {
-  COLOR_MARK,
   NOTIFICATION_ID_MAX_LENGTH,
   ONLINE,
   START_ANIMATION_DELAY,
-  TASK_LISTS,
-  TASKS,
-  USERS,
 } from '@constants/constants';
+import { FIREBASE_PATH } from '@enums/firebaseEnum';
+import { cancelNotificationHelper } from '@helpers/cancelNotificationHelper';
+import { checkInternetConnectionHelper } from '@helpers/checkInternetConnectionHelper';
+import { createNotificationHelper } from '@helpers/createNotificationHelper';
+import { generateNumberIDHelper } from '@helpers/generateNumberIDHelper';
 import { DB } from '@root/api/DB';
-import { cancelNotificationHelper } from '@root/helpers/cancelNotificationHelper';
-import { checkInternetConnectionHelper } from '@root/helpers/checkInternetConnectionHelper';
-import { createNotificationHelper } from '@root/helpers/createNotificationHelper';
-import { generateNumberIDHelper } from '@root/helpers/generateNumberIDHelper';
+import * as Sentry from '@sentry/react-native';
 import { editTaskNotificationAction } from '@store/actions/tasksReducerActions/notificationsActions/editTaskNotificationAction';
 import { setEditedTaskAction } from '@store/actions/tasksReducerActions/tasksActions/setEditedTaskAction';
 import { SetEditedTaskActionSagaReturnType } from '@store/actions/tasksSagaActions/tasksSagasActions/setEditedTaskAction';
-import { setModalErrorMessageAction } from '@store/actions/userReducerActions/setModalErrorMessageAction';
+import { setModalMessageAction } from '@store/actions/userReducerActions/setModalMessageAction';
 import { NotificationType, TaskType } from '@store/reducers/tasksReducer/types';
 import {
   ChannelIDType,
@@ -29,7 +27,7 @@ import {
   selectedColorSelector,
   userIDSelector,
 } from '@store/selectors/userSelectors';
-import { call, delay, put, select } from 'redux-saga/effects';
+import { call, cancel, delay, put, select } from 'redux-saga/effects';
 
 export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
   const {
@@ -44,20 +42,28 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
     colorMark,
     shouldSetColor,
     setColorMark,
+    setIsMenuVisible,
   } = action.payload;
+
+  const { COLOR_MARK, TASK_LISTS, TASKS, TITLE, USERS } = FIREBASE_PATH;
 
   try {
     const internetConnectionStatus: string = yield call(checkInternetConnectionHelper);
 
     if (internetConnectionStatus !== ONLINE) {
-      throw Error(internetConnectionStatus);
+      yield put(setModalMessageAction({ modalMessage: internetConnectionStatus }));
+
+      yield cancel();
     }
 
     yield call(setIsLoading, true);
+
     yield delay(START_ANIMATION_DELAY);
+
     const userID: UserIDType = yield select(userIDSelector);
     const channelId: ChannelIDType = yield select(channelIDSelector);
     const selectedColor: ColorType = yield select(selectedColorSelector);
+    const notifications: NotificationType[] = yield select(notificationsSelector);
 
     if (shouldSetColor && selectedColor) {
       const colorMarkSnapshot: SnapshotType = yield DB.ref(
@@ -70,7 +76,7 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
         const sendTaskColorToFirebase = () => {
           return DB.ref(
             `${USERS}/${userID}/${TASK_LISTS}/${taskListID}/${TASKS}/${taskID}`,
-          ).update({ colorMark: colorMark ?? selectedColor });
+          ).update({ [COLOR_MARK]: colorMark ?? selectedColor });
         };
 
         yield call(sendTaskColorToFirebase);
@@ -81,7 +87,7 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
 
         const modifiedTask: TaskType = {
           ...taskSnapshot.val(),
-          colorMark: colorMark ?? selectedColor,
+          [COLOR_MARK]: colorMark ?? selectedColor,
         };
 
         const sendModifiedTaskToFirebase = () => {
@@ -106,6 +112,7 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
         const taskWithoutColorMark = { ...modifiedTask };
 
         delete taskWithoutColorMark.colorMark;
+
         const sendTaskWithoutColorMarkToFirebase = () => {
           return DB.ref(
             `${USERS}/${userID}/${TASK_LISTS}/${taskListID}/${TASKS}/${taskID}`,
@@ -119,12 +126,35 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
     const sendTaskTitleToFirebase = () => {
       return DB.ref(
         `${USERS}/${userID}/${TASK_LISTS}/${taskListID}/${TASKS}/${taskID}`,
-      ).update({ title: editedTaskTitle });
+      ).update({ [TITLE]: editedTaskTitle });
     };
 
     yield call(sendTaskTitleToFirebase);
 
-    if (shouldCreateNotification && date) {
+    const taskNotification = notifications.find((item) => {
+      return taskID === item.taskID;
+    });
+    const notificationID = taskNotification?.notificationID;
+
+    const shouldDeleteNotificationCondition = shouldCreateNotification && notificationID;
+
+    if (shouldDeleteNotificationCondition) {
+      if (taskNotification && notificationID) {
+        cancelNotificationHelper(notificationID);
+      }
+
+      yield put(
+        editTaskNotificationAction({
+          notification: {
+            taskID,
+          },
+        }),
+      );
+    }
+
+    const shouldCreateNotificationCondition = shouldCreateNotification && date;
+
+    if (shouldCreateNotificationCondition) {
       const notificationID = generateNumberIDHelper(NOTIFICATION_ID_MAX_LENGTH);
 
       yield call(createNotificationHelper, {
@@ -143,25 +173,6 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
           },
         }),
       );
-    } else {
-      const notifications: NotificationType[] = yield select(notificationsSelector);
-
-      const taskNotification = notifications.find((item) => {
-        return taskID === item.taskID;
-      });
-      const notificationID = taskNotification?.notificationID;
-
-      if (taskNotification && notificationID) {
-        cancelNotificationHelper(notificationID);
-      }
-
-      yield put(
-        editTaskNotificationAction({
-          notification: {
-            taskID,
-          },
-        }),
-      );
     }
 
     if (shouldSetColor && colorMark) {
@@ -173,6 +184,7 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
           colorMark: colorMark,
         }),
       );
+
       yield call(setColorMark, colorMark);
     } else if (shouldSetColor && !colorMark) {
       yield put(
@@ -183,6 +195,7 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
           colorMark: selectedColor,
         }),
       );
+
       yield call(setColorMark, selectedColor);
     } else {
       yield put(
@@ -192,17 +205,19 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
           editedTaskTitle,
         }),
       );
+
       yield call(setColorMark, '');
     }
 
-    yield call(setIsLoading, false);
     yield call(setModalVisible, false);
+    yield call(setIsMenuVisible, false);
     yield call(setEditedTaskTitle, editedTaskTitle);
   } catch (error) {
-    yield call(setIsLoading, false);
-
     if (error instanceof Error) {
-      yield put(setModalErrorMessageAction({ errorModalMessage: error.message }));
+      yield call(Sentry.captureException, error);
+      yield put(setModalMessageAction({ modalMessage: error.message }));
     }
+  } finally {
+    yield call(setIsLoading, false);
   }
 }

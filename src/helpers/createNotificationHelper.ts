@@ -3,15 +3,16 @@ import { t } from 'i18next';
 import { Platform } from 'react-native';
 import PushNotification from 'react-native-push-notification';
 
-type createNotificationHelperPropsType = {
+type CreateNotificationHelperParamsType = {
   channelId: string;
   date: Date;
   notificationID: string;
   taskTitle: string;
 };
 
-export const createNotificationHelper = (params: createNotificationHelperPropsType) => {
+export const createNotificationHelper = (params: CreateNotificationHelperParamsType) => {
   const { channelId, date, notificationID, taskTitle } = params;
+
   const message = `${t('tasksScreen.TaskNotification')} ${taskTitle}`;
 
   if (Platform.OS === 'android') {

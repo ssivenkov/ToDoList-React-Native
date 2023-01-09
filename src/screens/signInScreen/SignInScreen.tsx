@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 
-import { Loader } from '@components/common/loader/Loader';
-import { FACEBOOK_TITLE, GOOGLE_TITLE } from '@constants/constants';
-import { faFacebook, faGoogle } from '@fortawesome/free-brands-svg-icons';
-import { useStyles } from '@root/hooks/useStyles';
-import { SignInButton } from '@root/screens/signInScreen/signInButton/SignInButton';
-import { signInStyles } from '@root/screens/signInScreen/signInButton/styles';
+import { signInScreenGradient } from '@colors/gradients';
+import { Loader } from '@components/loader/Loader';
+import { FIREBASE_OTHER } from '@enums/firebaseEnum';
+import { faFacebook } from '@fortawesome/free-brands-svg-icons/faFacebook';
+import { faGoogle } from '@fortawesome/free-brands-svg-icons/faGoogle';
+import { useStyles } from '@hooks/useStyles';
+import { SignInButton } from '@screens/signInScreen/buttons/signInButton/SignInButton';
+import { signInButtonStyles } from '@screens/signInScreen/buttons/signInButton/styles';
 import { facebookSignInAction } from '@store/actions/userSagaActions/FacebookSignInAction';
 import { googleSignInAction } from '@store/actions/userSagaActions/GoogleSignInAction';
 import { useTranslation } from 'react-i18next';
@@ -13,39 +15,43 @@ import { Image, Text, View } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { useDispatch } from 'react-redux';
 
-import { styles } from './styles';
+import { signInScreenStyles } from './styles';
 
 export const SignInScreen = () => {
+  const { GOOGLE_TITLE, FACEBOOK_TITLE } = FIREBASE_OTHER;
+
   const dispatch = useDispatch();
-  const style = useStyles(styles);
+
+  const styles = useStyles(signInScreenStyles);
+
   const { t } = useTranslation();
 
   const [waitingUserData, setWaitingUserData] = useState<boolean>(false);
 
   const isDeveloperMode = __DEV__;
 
-  const onGoogleButtonPress = (): void => {
+  const onGoogleButtonPress = () => {
     dispatch(googleSignInAction({ setWaitingUserData }));
   };
 
-  const onFacebookButtonPress = (): void => {
+  const onFacebookButtonPress = () => {
     dispatch(facebookSignInAction({ setWaitingUserData }));
   };
 
   return (
-    <LinearGradient colors={['#5A00FF', '#3412B1', '#000E32']}>
-      <View style={style.signInWrapper}>
+    <LinearGradient colors={signInScreenGradient}>
+      <View style={styles.signInWrapper}>
         {waitingUserData ? (
           <Loader />
         ) : (
-          <View style={style.signInContainer}>
+          <View style={styles.signInContainer}>
             <Image
               source={require('../../assets/images/icons/appIcon.png')}
-              style={style.appIcon}
+              style={styles.appIcon}
             />
-            <Text style={style.screenTitle}>{t('signInScreen.SignIn')}</Text>
+            <Text style={styles.screenTitle}>{t('signInScreen.SignIn')}</Text>
             <SignInButton
-              colorStyle={signInStyles.googleStyle}
+              colorStyle={signInButtonStyles.googleStyle}
               disabled={waitingUserData}
               icon={faGoogle}
               onPress={onGoogleButtonPress}
@@ -53,7 +59,7 @@ export const SignInScreen = () => {
             />
             {isDeveloperMode && (
               <SignInButton
-                colorStyle={signInStyles.facebookStyle}
+                colorStyle={signInButtonStyles.facebookStyle}
                 disabled={waitingUserData}
                 icon={faFacebook}
                 onPress={onFacebookButtonPress}

@@ -1,0 +1,68 @@
+{
+  "translation": {
+    "common": {
+      "Ok": "Ok",
+      "Close": "Cerrar",
+      "NoInternetConnection": "No hay conexión a Internet. Por favor, conéctese a Internet",
+      "NoIOSNotificationsPermission": "No hay permiso para las notificaciones. Concede a la aplicación permiso para mostrar notificaciones"
+    },
+    "tasksScreen": {
+      "Tasks": "Listas de tareas",
+      "CreateTaskButtonTitle": "Introduzca el título de la nueva tarea:",
+      "CreateTaskListButtonTitle": "Introduzca el título de la nueva lista de tareas:",
+      "DeleteQuestionButtonTitle": "¿Estás seguro de borrar <0>{{text}}</0>?",
+      "DoneButton": "¿Está seguro de que la tarea <0>{{text}}</0> se ha completado?",
+      "EditTaskListButtonTitle": "Editar el título de la lista de tareas:",
+      "EditTaskButton": "Editar tarea:",
+      "TodoTasksTab": "Tareas de todo tipo",
+      "DoneTasksTab": "Tareas realizadas",
+      "NoTaskListsFound": "No se han encontrado hojas de ruta",
+      "EnableNotification": "Recordar la tarea",
+      "EnableMarkColor": "Color de la tarea",
+      "TaskNotification": "Realizar la tarea"
+    },
+    "signInScreen": {
+      "SignIn": "Acceder",
+      "SignInWith": "Accede con <0>{{text}}</0>",
+      "CancelAuthProcess": "El usuario canceló el proceso de inicio de sesión",
+      "ErrorGettingAccessToken": "Algo salió mal al obtener el token de acceso"
+    },
+    "accountScreen": {
+      "Account": "Cuenta",
+      "DarkMode": "Modo oscuro",
+      "SignOut": "Firmar la salida",
+      "SignOutWarning": "¿Estás seguro de que quieres cerrar la sesión?",
+      "ChangeLanguageButtonTitle": "Idioma",
+      "ChangeLanguageButtonDescription": "Seleccione el idioma de la aplicación:",
+      "DeleteAccount": "Eliminar la cuenta",
+      "DeleteAccountWarning": "¿Estás seguro de que quieres eliminar tu cuenta con todos tus datos?",
+      "AccentColorDescription": "Seleccione el color de acento:",
+      "AccentColorButtonTitle": "Color de acento",
+      "ContactTheAuthorButtonTitle": "Contacta con el autor"
+    },
+    "contactTheAuthorScreen": {
+      "HeaderTitle": "Contacta con el autor",
+      "EmailPlaceholder": "Correo electrónico",
+      "SubjectPlaceholder": "Asunto del mensaje",
+      "MessagePlaceholder": "Mensaje",
+      "EmailSuptext": "Correo electrónico",
+      "EmailSubtext": "Se enviará una respuesta a este correo electrónico",
+      "MessageSuptext": "Mensaje de texto",
+      "SendButton": "Enviar",
+      "ContactTheAuthorSuccess": "Gracias! Tu mensaje ha sido enviado. El autor se pondrá en contacto con usted en breve",
+      "ContactTheAuthorError": "Error desconocido. Intente ingresar otro correo electrónico",
+      "InvalidEmailError": "Dirección de correo electrónico no válida",
+      "EmailRequiredError": "Correo electrónico requerido",
+      "MessageRequiredError": "Texto del mensaje requerido"
+    },
+    "notepadScreen": {
+      "Notepad": "Libro para escribir",
+      "NotepadPlaceholder": "Texto",
+      "CleanButtonWarningTitle": "¿Está seguro de que desea borrar el libro de trabajo para escribir?",
+      "CleanNotepadTextRequestError": "No hay conexión a Internet, el libro para escribir se ha borrado solo en su dispositivo. Para borrar el libro para escribir en el servidor, encienda Internet y repita la solicitud",
+      "SaveNotepadTextRequestError": "No hay conexión a Internet, el libro para escribir se ha guardado solo en su dispositivo. Para guardar el libro para escribir en el servidor, encienda Internet y repita la solicitud",
+      "NotepadCleared": "Libro de registro borrado",
+      "NotepadSaved": "Libro de registro guardado"
+    }
+  }
+}

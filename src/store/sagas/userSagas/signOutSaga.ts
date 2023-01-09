@@ -1,33 +1,36 @@
 import { COLORS } from '@colors/colors';
-import {
-  FACEBOOK_PROVIDER_ID,
-  GOOGLE_PROVIDER_ID,
-  ONLINE,
-  START_ANIMATION_DELAY,
-} from '@constants/constants';
+import { ONLINE, START_ANIMATION_DELAY } from '@constants/constants';
+import { FIREBASE_OTHER } from '@enums/firebaseEnum';
+import { checkInternetConnectionHelper } from '@helpers/checkInternetConnectionHelper';
 import auth from '@react-native-firebase/auth';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
-import { checkInternetConnectionHelper } from '@root/helpers/checkInternetConnectionHelper';
+import * as Sentry from '@sentry/react-native';
+import { setNotepadTextAction } from '@store/actions/notepadReducerActions/setNotepadTextAction';
 import { setTaskListsAction } from '@store/actions/tasksReducerActions/taskListsActions/setTaskListsAction';
 import { setAuthStateAction } from '@store/actions/userReducerActions/setAuthStateAction';
-import { setModalErrorMessageAction } from '@store/actions/userReducerActions/setModalErrorMessageAction';
+import { setModalMessageAction } from '@store/actions/userReducerActions/setModalMessageAction';
 import { SignOutSagaActionReturnType } from '@store/actions/userSagaActions/signOutAction';
 import { ProviderIDType } from '@store/reducers/userReducer/types';
 import { providerIDSelector } from '@store/selectors/userSelectors';
 import { LoginManager } from 'react-native-fbsdk-next';
-import { call, delay, put, select } from 'redux-saga/effects';
+import { call, cancel, delay, put, select } from 'redux-saga/effects';
 
 export function* signOutSaga(action: SignOutSagaActionReturnType) {
-  const setWaitingProcess = action.payload.setWaitingProcess;
+  const { setWaitingProcess } = action.payload;
+
+  const { FACEBOOK_PROVIDER_ID, GOOGLE_PROVIDER_ID } = FIREBASE_OTHER;
 
   try {
     const internetConnectionStatus: string = yield call(checkInternetConnectionHelper);
 
     if (internetConnectionStatus !== ONLINE) {
-      throw Error(internetConnectionStatus);
+      yield put(setModalMessageAction({ modalMessage: internetConnectionStatus }));
+
+      yield cancel();
     }
 
     yield call(setWaitingProcess, true);
+
     yield delay(START_ANIMATION_DELAY);
 
     const providerID: ProviderIDType = yield select(providerIDSelector);
@@ -37,6 +40,7 @@ export function* signOutSaga(action: SignOutSagaActionReturnType) {
     };
 
     yield delay(START_ANIMATION_DELAY);
+
     yield call(signOut);
 
     if (providerID === GOOGLE_PROVIDER_ID) {
@@ -52,15 +56,17 @@ export function* signOutSaga(action: SignOutSagaActionReturnType) {
         userData: null,
         providerID: null,
         isUserDataSynchronized: false,
-        selectedColor: COLORS.FLIRT,
-        accentColor: COLORS.FLIRT,
+        selectedColor: COLORS.ELECTRIC_VIOLET2,
+        accentColor: COLORS.ELECTRIC_VIOLET2,
       }),
     );
 
     yield put(setTaskListsAction({ taskLists: [] }));
+    yield put(setNotepadTextAction({ notepadText: '' }));
   } catch (error) {
     if (error instanceof Error) {
-      yield put(setModalErrorMessageAction({ errorModalMessage: error.message }));
+      yield call(Sentry.captureException, error);
+      yield put(setModalMessageAction({ modalMessage: error.message }));
     }
   }
 }

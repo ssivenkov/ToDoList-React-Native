@@ -1,69 +1,113 @@
 import React, { useState } from 'react';
 
-import { ChangeLanguageButton } from '@components/buttons/changeLanguageButton/ChangeLanguageButton';
-import { DarkModeButton } from '@components/buttons/darkModeButton/DarkModeButton';
-import { SelectAccentColorButton } from '@components/buttons/selectAccentColorButton/SelectAccentColorButton';
-import { Loader } from '@components/common/loader/Loader';
-import { ModalLongButton } from '@components/common/modals/ModalLongButton';
-import { faArrowRight, faTrash } from '@fortawesome/free-solid-svg-icons';
-import { useStyles } from '@root/hooks/useStyles';
-import { styles } from '@root/screens/accountScreen/styles';
+import { longButtonDarkGradient, longButtonLightGradient } from '@colors/gradients';
+import { LongButton } from '@components/buttons/longButton/LongButton';
+import { Loader } from '@components/loader/Loader';
+import { ModalLongButton } from '@components/modals/ModalLongButton';
+import { ROOT_NAVIGATOR_ROUTE } from '@enums/routesEnum';
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons/faArrowRight';
+import { faAt } from '@fortawesome/free-solid-svg-icons/faAt';
+import { faTrash } from '@fortawesome/free-solid-svg-icons/faTrash';
+import { useStyles } from '@hooks/useStyles';
+import { useNavigation } from '@react-navigation/native';
+import { ChangeLanguageButton } from '@screens/accountScreen/buttons/changeLanguageButton/ChangeLanguageButton';
+import { DarkModeButton } from '@screens/accountScreen/buttons/darkModeButton/DarkModeButton';
+import { SelectAccentColorButton } from '@screens/accountScreen/buttons/selectAccentColorButton/SelectAccentColorButton';
 import { deleteAccountAction } from '@store/actions/userSagaActions/deleteAccountAction';
 import { signOutAction } from '@store/actions/userSagaActions/signOutAction';
-import { userAvatarSelector, userDataSelector } from '@store/selectors/userSelectors';
+import {
+  themeSelector,
+  userAvatarSelector,
+  userDataSelector,
+} from '@store/selectors/userSelectors';
 import { useTranslation } from 'react-i18next';
 import { Image, ScrollView, Text, View } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 import { useDispatch, useSelector } from 'react-redux';
+
+import { accountScreenStyles } from './styles';
 
 export const AccountScreen = () => {
   const dispatch = useDispatch();
-  const style = useStyles(styles);
+
+  const styles = useStyles(accountScreenStyles);
+
   const { t } = useTranslation();
+
+  const theme = useSelector(themeSelector);
+
+  const navigation = useNavigation();
 
   const userData = useSelector(userDataSelector);
   const userAvatar = useSelector(userAvatarSelector);
+
   const [waitingProcess, setWaitingProcess] = useState<boolean>(false);
 
-  const signOutHandler = (): void => {
+  const longButtonGradient = theme.darkMode
+    ? longButtonDarkGradient
+    : longButtonLightGradient;
+
+  const navigateToAuthorCommunicationScreen = () => {
+    navigation.navigate(ROOT_NAVIGATOR_ROUTE.CONTACT_THE_AUTHOR_SCREEN);
+  };
+
+  const signOutHandler = () => {
     dispatch(signOutAction({ setWaitingProcess }));
   };
 
-  const deleteAccountHandler = (): void => {
+  const deleteAccountHandler = () => {
     dispatch(deleteAccountAction({ setWaitingProcess }));
   };
 
   if (userData && !waitingProcess) {
     return (
       <ScrollView>
-        <View style={style.screenContainer}>
-          <View style={style.userInfoContainer}>
-            {userAvatar && <Image source={{ uri: userAvatar }} style={style.avatar} />}
+        <View style={styles.screenContainer}>
+          <View style={styles.userInfoContainer}>
+            {userAvatar && <Image source={{ uri: userAvatar }} style={styles.avatar} />}
             {userData.displayName && (
-              <Text style={style.name}>{userData.displayName}</Text>
+              <Text style={styles.name}>{userData.displayName}</Text>
             )}
-            {userData.email && <Text style={style.text}>{userData.email}</Text>}
+            {userData.email && <Text style={styles.text}>{userData.email}</Text>}
             {userData.phoneNumber && (
-              <Text style={style.text}>{userData.phoneNumber}</Text>
+              <Text style={styles.text}>{userData.phoneNumber}</Text>
             )}
           </View>
           <View>
-            <ChangeLanguageButton setIsLoading={setWaitingProcess} />
-            <DarkModeButton setIsLoading={setWaitingProcess} />
-            <SelectAccentColorButton setIsLoading={setWaitingProcess} />
-            <ModalLongButton
-              buttonIcon={faArrowRight}
-              buttonTitle={t('accountScreen.SignOut')}
-              description={t('accountScreen.SignOutWarning')}
-              disable={waitingProcess}
-              okHandler={signOutHandler}
-            />
-            <ModalLongButton
-              buttonIcon={faTrash}
-              buttonTitle={t('accountScreen.DeleteAccount')}
-              description={t('accountScreen.DeleteAccountWarning')}
-              disable={waitingProcess}
-              okHandler={deleteAccountHandler}
-            />
+            <LinearGradient colors={longButtonGradient}>
+              <ChangeLanguageButton setIsLoading={setWaitingProcess} />
+            </LinearGradient>
+            <LinearGradient colors={longButtonGradient}>
+              <DarkModeButton setIsLoading={setWaitingProcess} />
+            </LinearGradient>
+            <LinearGradient colors={longButtonGradient}>
+              <SelectAccentColorButton setIsLoading={setWaitingProcess} />
+            </LinearGradient>
+            <LinearGradient colors={longButtonGradient}>
+              <LongButton
+                icon={faAt}
+                onPress={() => navigateToAuthorCommunicationScreen()}
+                title={t('accountScreen.ContactTheAuthorButtonTitle')}
+              />
+            </LinearGradient>
+            <LinearGradient colors={longButtonGradient}>
+              <ModalLongButton
+                buttonIcon={faArrowRight}
+                buttonTitle={t('accountScreen.SignOut')}
+                description={t('accountScreen.SignOutWarning')}
+                disabled={waitingProcess}
+                okHandler={signOutHandler}
+              />
+            </LinearGradient>
+            <LinearGradient colors={longButtonGradient}>
+              <ModalLongButton
+                buttonIcon={faTrash}
+                buttonTitle={t('accountScreen.DeleteAccount')}
+                description={t('accountScreen.DeleteAccountWarning')}
+                disabled={waitingProcess}
+                okHandler={deleteAccountHandler}
+              />
+            </LinearGradient>
           </View>
         </View>
       </ScrollView>

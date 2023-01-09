@@ -1,13 +1,15 @@
-import { GOOGLE_PROVIDER_ID, ONLINE, START_ANIMATION_DELAY } from '@constants/constants';
+import { ONLINE, START_ANIMATION_DELAY } from '@constants/constants';
 import { GoogleSignInCancelError, signInActionCanceled } from '@constants/errorMessages';
+import { FIREBASE_OTHER } from '@enums/firebaseEnum';
+import { checkInternetConnectionHelper } from '@helpers/checkInternetConnectionHelper';
 import auth from '@react-native-firebase/auth';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
-import { checkInternetConnectionHelper } from '@root/helpers/checkInternetConnectionHelper';
-import { setModalErrorMessageAction } from '@store/actions/userReducerActions/setModalErrorMessageAction';
+import * as Sentry from '@sentry/react-native';
+import { setModalMessageAction } from '@store/actions/userReducerActions/setModalMessageAction';
 import { setProviderIDAction } from '@store/actions/userReducerActions/setProviderIDAction';
 import { GetGoogleUserDataSagaActionReturnType } from '@store/actions/userSagaActions/GoogleSignInAction';
 import { t } from 'i18next';
-import { call, delay, put, putResolve } from 'redux-saga/effects';
+import { call, cancel, delay, put, putResolve } from 'redux-saga/effects';
 
 export type AuthCredentialType = {
   providerId: string;
@@ -18,20 +20,31 @@ export type AuthCredentialType = {
 export function* googleSignInSaga(action: GetGoogleUserDataSagaActionReturnType) {
   const { setWaitingUserData } = action.payload;
 
+  const { GOOGLE_PROVIDER_ID } = FIREBASE_OTHER;
+
   try {
     const internetConnectionStatus: string = yield call(checkInternetConnectionHelper);
 
     if (internetConnectionStatus !== ONLINE) {
-      throw Error(internetConnectionStatus);
+      yield put(setModalMessageAction({ modalMessage: internetConnectionStatus }));
+
+      yield cancel();
     }
 
     yield call(setWaitingUserData, true);
+
     yield delay(START_ANIMATION_DELAY);
 
     const { idToken } = yield call(GoogleSignin.signIn);
 
     if (!idToken) {
-      throw t('signInScreen.ErrorGettingAccessToken');
+      yield put(
+        setModalMessageAction({
+          modalMessage: t('signInScreen.ErrorGettingAccessToken'),
+        }),
+      );
+
+      yield cancel();
     }
 
     const googleCredential: AuthCredentialType = yield call(
@@ -56,14 +69,13 @@ export function* googleSignInSaga(action: GetGoogleUserDataSagaActionReturnType)
       (error instanceof Error && error.message === signInActionCanceled)
     ) {
       yield put(
-        setModalErrorMessageAction({
-          errorModalMessage: t('signInScreen.CancelAuthProcess'),
+        setModalMessageAction({
+          modalMessage: t('signInScreen.CancelAuthProcess'),
         }),
       );
-    }
-
-    if (error instanceof Error) {
-      yield put(setModalErrorMessageAction({ errorModalMessage: error.message }));
+    } else if (error instanceof Error) {
+      yield call(Sentry.captureException, error);
+      yield put(setModalMessageAction({ modalMessage: error.message }));
     }
   }
 }

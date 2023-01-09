@@ -1,0 +1,68 @@
+{
+  "translation": {
+    "common": {
+      "Ok": "Tamam",
+      "Close": "Kapat",
+      "NoInternetConnection": "İnternet bağlantısı yok. Lütfen internete bağlanın",
+      "NoIOSNotificationsPermission": "Bildirimler için izin yok. Uygulamaya bildirimleri gösterme izni verin"
+    },
+    "tasksScreen": {
+      "Tasks": "Görev listeleri",
+      "CreateTaskButtonTitle": "Yeni görev başlığı girin:",
+      "CreateTaskListButtonTitle": "Yeni görev listesi başlığı girin:",
+      "DeleteQuestionButtonTitle": "<0>{{text}}</0> öğesini sildiğinizden emin misiniz?",
+      "DoneButton": "<0>{{text}}</0> görevinin tamamlandığından emin misiniz?",
+      "EditTaskListButtonTitle": "Görev listesi başlığını düzenleme:",
+      "EditTaskButton": "Görevi düzenle:",
+      "TodoTasksTab": "Yapılacak işler",
+      "DoneTasksTab": "Tamamlanan görevler",
+      "NoTaskListsFound": "Görev listesi bulunamadı",
+      "EnableNotification": "Görevi hatırlatın",
+      "EnableMarkColor": "Görev rengi",
+      "TaskNotification": "Görevi gerçekleştirin"
+    },
+    "signInScreen": {
+      "SignIn": "Oturum aç",
+      "SignInWith": "<0>{{text}}</0> ile oturum açın",
+      "CancelAuthProcess": "Kullanıcı oturum açma işlemini iptal etti",
+      "ErrorGettingAccessToken": "Erişim belirteci alınırken bir şeyler yanlış gitti"
+    },
+    "accountScreen": {
+      "Account": "Hesap",
+      "DarkMode": "Karanlık mod",
+      "SignOut": "Çıkış yapın",
+      "SignOutWarning": "Çıkış yapmak istediğinize emin misiniz?",
+      "ChangeLanguageButtonTitle": "Dil",
+      "ChangeLanguageButtonDescription": "Uygulama dilini seçin:",
+      "DeleteAccount": "Hesap silme",
+      "DeleteAccountWarning": "Hesabınızı tüm verilerinizle birlikte silmek istediğinizden emin misiniz?",
+      "AccentColorDescription": "Vurgu rengini seçin:",
+      "AccentColorButtonTitle": "Vurgu rengi",
+      "ContactTheAuthorButtonTitle": "Yazarla iletişim kurun"
+    },
+    "contactTheAuthorScreen": {
+      "HeaderTitle": "Yazarla iletişim kurun",
+      "EmailPlaceholder": "E-posta",
+      "SubjectPlaceholder": "Mesaj Konusu",
+      "MessagePlaceholder": "İleti",
+      "EmailSuptext": "E-posta",
+      "EmailSubtext": "Bu e-postaya bir yanıt gönderilecek",
+      "MessageSuptext": "Mesaj metni",
+      "SendButton": "Göndermek",
+      "ContactTheAuthorSuccess": "Teşekkürler! Mesajınız gönderildi. Yazar kısa süre içinde sizinle iletişime geçecek",
+      "ContactTheAuthorError": "Bilinmeyen hata. Lütfen başka bir e-posta girmeyi deneyin",
+      "InvalidEmailError": "Geçersiz e-posta adresi",
+      "EmailRequiredError": "E-posta gerekli",
+      "MessageRequiredError": "Mesaj metni gerekli"
+    },
+    "notepadScreen": {
+      "Notepad": "Notlarınız",
+      "NotepadPlaceholder": "Metin",
+      "CleanButtonWarningTitle": "Notlarınızı silmek istediğinizden emin misiniz?",
+      "CleanNotepadTextRequestError": "İnternet bağlantısı yok, sadece cihazınızdaki notlarınız silinmiştir. Sunucudaki notlarınızı silmek için interneti açın ve isteği tekrarlayın",
+      "SaveNotepadTextRequestError": "İnternet bağlantısı yok, notlarınız sadece cihazınıza kaydedildi. Notlarınızı sunucuya yazmak için interneti açın ve isteği tekrarlayın",
+      "NotepadCleared": "Notlarınız zaten silinmiş",
+      "NotepadSaved": "Notlarınız zaten kaydedildi"
+    }
+  }
+}

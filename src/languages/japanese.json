@@ -1,0 +1,68 @@
+{
+  "translation": {
+    "common": {
+      "Ok": "オッケー",
+      "Close": "閉じる",
+      "NoInternetConnection": "インターネットに接続できない インターネットに接続してください",
+      "NoIOSNotificationsPermission": "通知の許可がない アプリに通知を表示する許可を与える"
+    },
+    "tasksScreen": {
+      "Tasks": "タスクリスト",
+      "CreateTaskButtonTitle": "新しいタスクのタイトルを入力する:",
+      "CreateTaskListButtonTitle": "新しいタスクリストのタイトルを入力する:",
+      "DeleteQuestionButtonTitle": "本当に<0>{{text}}</0>を削除するのですか?",
+      "DoneButton": "タスク<0>{{text}}</0>は本当に完了したのか?",
+      "EditTaskListButtonTitle": "タスクリストのタイトルを編集する:",
+      "EditTaskButton": "タスクの編集:",
+      "TodoTasksTab": "実装タスク",
+      "DoneTasksTab": "完了したタスク",
+      "NoTaskListsFound": "タスクリストが見つかりません",
+      "EnableNotification": "タスクの再認識",
+      "EnableMarkColor": "タスクカラー",
+      "TaskNotification": "タスクを実行する"
+    },
+    "signInScreen": {
+      "SignIn": "サインイン",
+      "SignInWith": "でサインインしてください。 <0>{{text}}</0>",
+      "CancelAuthProcess": "ユーザーがログイン処理をキャンセルした",
+      "ErrorGettingAccessToken": "アクセストークンの取得に失敗しました"
+    },
+    "accountScreen": {
+      "Account": "アカウント",
+      "DarkMode": "ダークモード",
+      "SignOut": "サインアウト",
+      "SignOutWarning": "本当にサインアウトしますか?",
+      "ChangeLanguageButtonTitle": "言語",
+      "ChangeLanguageButtonDescription": "アプリの言語を選択する:",
+      "DeleteAccount": "アカウント削除",
+      "DeleteAccountWarning": "本当にデータごとアカウントを削除してよいのでしょうか?",
+      "AccentColorDescription": "アクセントカラーを選択:",
+      "AccentColorButtonTitle": "アクセントカラー",
+      "ContactTheAuthorButtonTitle": "著者に連絡する"
+    },
+    "contactTheAuthorScreen": {
+      "HeaderTitle": "著者に連絡する",
+      "EmailPlaceholder": "メール",
+      "SubjectPlaceholder": "メッセージの件名",
+      "MessagePlaceholder": "メッセージ",
+      "EmailSuptext": "メール",
+      "EmailSubtext": "このメールに返信が送信されます",
+      "MessageSuptext": "メッセージ本文",
+      "SendButton": "送信",
+      "ContactTheAuthorSuccess": "ありがとうございました！あなたのメッセージは送信されました。 著者はすぐにあなたに連絡します",
+      "ContactTheAuthorError": "不明なエラー。 別のメールアドレスを入力してください",
+      "InvalidEmailError": "無効な電子メールアドレス",
+      "EmailRequiredError": "メールアドレス必須",
+      "MessageRequiredError": "メッセージ本文必須"
+    },
+    "notepadScreen": {
+      "Notepad": "メモ帳",
+      "NotepadPlaceholder": "文章",
+      "CleanButtonWarningTitle": "本当にメモ帳をクリアしますか?",
+      "CleanNotepadTextRequestError": "インターネットに接続されていません。デバイスのメモ帳のみが消去されました。 サーバー上のメモ帳をクリアするには、インターネットをオンにして要求を繰り返します",
+      "SaveNotepadTextRequestError": "インターネットに接続されていません。メモ帳はデバイスにのみ保存されています。 サーバーにメモ帳を保存するには、インターネットをオンにして、要求を繰り返します",
+      "NotepadCleared": "メモ帳をクリアしました",
+      "NotepadSaved": "メモ帳を保存しました"
+    }
+  }
+}

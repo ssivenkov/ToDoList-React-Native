@@ -1,0 +1,68 @@
+{
+  "translation": {
+    "common": {
+      "Ok": "Так",
+      "Close": "Закрити",
+      "NoInternetConnection": "Немає з'єднання з Інтернетом. Будь ласка, підключіться до Інтернету",
+      "NoIOSNotificationsPermission": "Немає дозволу на сповіщення. Надати додатку дозвіл на показ сповіщень"
+    },
+    "tasksScreen": {
+      "Tasks": "Списки завдань",
+      "CreateTaskButtonTitle": "Введіть нову назву завдання:",
+      "CreateTaskListButtonTitle": "Введіть новий заголовок списку завдань:",
+      "DeleteQuestionButtonTitle": "Ви впевнені, що хочете видалити <0>{{text}}</0>?",
+      "DoneButton": "Ви впевнені, що завдання <0>{{text}}</0> виконано?",
+      "EditTaskListButtonTitle": "Редагування назви списку завдань:",
+      "EditTaskButton": "Редагувати завдання:",
+      "TodoTasksTab": "Виконати",
+      "DoneTasksTab": "виконані",
+      "NoTaskListsFound": "Списки завдань не знайдено",
+      "EnableNotification": "Нагадуємо про завдання",
+      "EnableMarkColor": "Колір завдання",
+      "TaskNotification": "Виконати завдання"
+    },
+    "signInScreen": {
+      "SignIn": "Ввійти",
+      "SignInWith": "Увійти через <0>{{text}}</0>",
+      "CancelAuthProcess": "Користувач скасував процес входу в систему",
+      "ErrorGettingAccessToken": "Щось пішло не так при отриманні токену доступу"
+    },
+    "accountScreen": {
+      "Account": "Обліковий запис",
+      "DarkMode": "Темний режим",
+      "SignOut": "Вийдіть з системи",
+      "SignOutWarning": "Ви впевнені що хочете вийти з облікового запису?",
+      "ChangeLanguageButtonTitle": "Мова",
+      "ChangeLanguageButtonDescription": "Виберіть мову програми:",
+      "DeleteAccount": "Видалити обліковий запис",
+      "DeleteAccountWarning": "Ви впевнені, що хочете видалити свій обліковий запис з усіма даними?",
+      "AccentColorDescription": "Виберіть акцентний колір:",
+      "AccentColorButtonTitle": "Акцентний колір",
+      "ContactTheAuthorButtonTitle": "Зв'язатися з автором"
+    },
+    "contactTheAuthorScreen": {
+      "HeaderTitle": "Зв'язатися з автором",
+      "EmailPlaceholder": "Email",
+      "SubjectPlaceholder": "Тема повідомлення",
+      "MessagePlaceholder": "Повідомлення",
+      "EmailSuptext": "Email",
+      "EmailSubtext": "На цей електронний лист буде надіслано відповідь",
+      "MessageSuptext": "Текст повідомлення",
+      "SendButton": "Надіслати",
+      "ContactTheAuthorSuccess": "Дякуємо, ваше повідомлення надіслано. Автор зв'яжеться з вами найближчим часом",
+      "ContactTheAuthorError": "Невідома помилка. Спробуйте ввести іншу електронну адресу",
+      "InvalidEmailError": "Невірна адреса електронної пошти",
+      "EmailRequiredError": "Потрібна електронна адреса",
+      "MessageRequiredError": "Необхідний текст повідомлення"
+    },
+    "notepadScreen": {
+      "Notepad": "Блокнот",
+      "NotepadPlaceholder": "Текст",
+      "CleanButtonWarningTitle": "Ви впевнені, що хочете очистити блокнот?",
+      "CleanNotepadTextRequestError": "Немає підключення до інтернету, блокнот було очищено лише на вашому пристрої. Для очищення блокнота на сервері увімкніть інтернет та повторіть запит",
+      "SaveNotepadTextRequestError": "Немає підключення до інтернету, блокнот було збережено тільки на вашому пристрої. Щоб зберегти блокнот на сервері, увімкніть інтернет і повторіть запит",
+      "NotepadCleared": "Блокнот очищений",
+      "NotepadSaved": "Блокнот збережено"
+    }
+  }
+}

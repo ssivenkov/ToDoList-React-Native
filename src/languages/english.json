@@ -37,7 +37,32 @@
       "DeleteAccount": "Delete account",
       "DeleteAccountWarning": "Are you sure you want to delete your account with all your data?",
       "AccentColorDescription": "Select accent color:",
-      "AccentColorButtonTitle": "Accent color"
+      "AccentColorButtonTitle": "Accent color",
+      "ContactTheAuthorButtonTitle": "Contact the author"
+    },
+    "contactTheAuthorScreen": {
+      "HeaderTitle": "Contact the author",
+      "EmailPlaceholder": "Email",
+      "SubjectPlaceholder": "Subject",
+      "MessagePlaceholder": "Message",
+      "EmailSuptext": "Email",
+      "EmailSubtext": "A reply will be sent to this email",
+      "MessageSuptext": "Message text",
+      "SendButton": "Send",
+      "ContactTheAuthorSuccess": "Thank you, your message has been sent. The author will contact you shortly",
+      "ContactTheAuthorError": "Unknown error. Please try to enter another email",
+      "InvalidEmailError": "Invalid email address",
+      "EmailRequiredError": "Email required",
+      "MessageRequiredError": "Message text required"
+    },
+    "notepadScreen": {
+      "Notepad": "Notepad",
+      "NotepadPlaceholder": "Text",
+      "CleanButtonWarningTitle": "Are you sure you want to clear the notepad?",
+      "CleanNotepadTextRequestError": "No internet connection, notepad has only been cleared on your device. To clear notepad on the server turn on the Internet and repeat the request",
+      "SaveNotepadTextRequestError": "No internet connection, notepad has only been saved on your device. To save notepad on the server turn on the Internet and repeat the request",
+      "NotepadCleared": "Notepad cleared",
+      "NotepadSaved": "Notepad saved"
     }
   }
 }

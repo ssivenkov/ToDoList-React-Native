@@ -1,44 +1,54 @@
-import { ONLINE, START_ANIMATION_DELAY, USERS } from '@constants/constants';
+import { ONLINE, START_ANIMATION_DELAY } from '@constants/constants';
+import { FIREBASE_PATH } from '@enums/firebaseEnum';
+import { checkInternetConnectionHelper } from '@helpers/checkInternetConnectionHelper';
 import { DB } from '@root/api/DB';
-import { checkInternetConnectionHelper } from '@root/helpers/checkInternetConnectionHelper';
+import * as Sentry from '@sentry/react-native';
 import { setAccentColorAction } from '@store/actions/userReducerActions/setAccentColorAction';
-import { setModalErrorMessageAction } from '@store/actions/userReducerActions/setModalErrorMessageAction';
+import { setModalMessageAction } from '@store/actions/userReducerActions/setModalMessageAction';
 import { ChangeAccentColorSagaActionReturnType } from '@store/actions/userSagaActions/changeAccentColorAction';
 import { UserIDType } from '@store/reducers/userReducer/types';
 import { userIDSelector } from '@store/selectors/userSelectors';
-import { call, delay, put, select } from 'redux-saga/effects';
+import { call, cancel, delay, put, select } from 'redux-saga/effects';
 
 export function* changeAccentColorSaga(action: ChangeAccentColorSagaActionReturnType) {
   const { accentColor, setIsLoading } = action.payload;
+
+  const { ACCENT_COLOR, USERS } = FIREBASE_PATH;
 
   try {
     const internetConnectionStatus: string = yield call(checkInternetConnectionHelper);
 
     if (internetConnectionStatus !== ONLINE) {
-      throw Error(internetConnectionStatus);
+      yield put(setModalMessageAction({ modalMessage: internetConnectionStatus }));
+
+      yield cancel();
     }
 
     yield call(setIsLoading, true);
+
     yield delay(START_ANIMATION_DELAY);
+
     const userID: UserIDType = yield select(userIDSelector);
+
     const sendAccentColorToFirebase = () => {
       return DB.ref(`${USERS}/${userID}`).update({
-        accentColor: accentColor,
+        [ACCENT_COLOR]: accentColor,
       });
     };
 
     yield call(sendAccentColorToFirebase);
+
     yield put(
       setAccentColorAction({
         accentColor,
       }),
     );
-    yield call(setIsLoading, false);
   } catch (error) {
-    yield call(setIsLoading, false);
-
     if (error instanceof Error) {
-      yield put(setModalErrorMessageAction({ errorModalMessage: error.message }));
+      yield call(Sentry.captureException, error);
+      yield put(setModalMessageAction({ modalMessage: error.message }));
     }
+  } finally {
+    yield call(setIsLoading, false);
   }
 }

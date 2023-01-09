@@ -84,6 +84,7 @@ project.ext.react = [
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
+apply from: "../../node_modules/@sentry/react-native/sentry.gradle"
 
 /**
  * Set this to true to create two separate APKs instead of one:
@@ -136,8 +137,8 @@ android {
         applicationId "com.myproject"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 2
-        versionName "1.1"
+        versionCode 3
+        versionName "1.2"
     }
     splits {
         abi {
@@ -149,10 +150,10 @@ android {
     }
     signingConfigs {
         debug {
-            storeFile file(***REMOVED***)
-            storePassword ***REMOVED***
-            keyAlias ***REMOVED***
-            keyPassword ***REMOVED***
+            storeFile file(MYAPP_DEBUG_STORE_FILE)
+            storePassword MYAPP_DEBUG_STORE_PASSWORD
+            keyAlias MYAPP_DEBUG_KEY_ALIAS
+            keyPassword MYAPP_DEBUG_KEY_PASSWORD
         }
         release {
             storeFile file(MYAPP_RELEASE_STORE_FILE)

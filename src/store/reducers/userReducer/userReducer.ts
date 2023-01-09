@@ -1,11 +1,11 @@
 import { COLORS } from '@colors/colors';
-import { EN } from '@constants/constants';
+import { EN } from '@constants/languages';
 import { USER_REDUCER_ACTION } from '@enums/userReducerEnum';
-import { lightTheme } from '@root/themes/theme';
 import {
   UserReducerActionsType,
   UserReducerStateType,
 } from '@store/reducers/userReducer/types';
+import { lightTheme } from '@themes/themes';
 
 const userReducerState: UserReducerStateType = {
   providerID: null,
@@ -14,15 +14,15 @@ const userReducerState: UserReducerStateType = {
   userAvatar: null,
   language: EN,
   theme: lightTheme,
-  accentColor: COLORS.FLIRT,
-  selectedColor: COLORS.FLIRT,
+  accentColor: COLORS.ELECTRIC_VIOLET2,
+  selectedColor: COLORS.ELECTRIC_VIOLET2,
   globalLoader: false,
-  errorModalMessage: '',
+  modalMessage: '',
   isUserDataSynchronized: false,
 };
 
 export const userReducer = (
-  state: UserReducerStateType = userReducerState,
+  state = userReducerState,
   action: UserReducerActionsType,
 ): UserReducerStateType => {
   switch (action.type) {
@@ -53,8 +53,8 @@ export const userReducer = (
       return { ...state, selectedColor: action.payload.selectedColor };
     case USER_REDUCER_ACTION.SET_GLOBAL_LOADER:
       return { ...state, globalLoader: action.payload.globalLoader };
-    case USER_REDUCER_ACTION.SET_ERROR_MODAL_MESSAGE:
-      return { ...state, errorModalMessage: action.payload.errorModalMessage };
+    case USER_REDUCER_ACTION.SET_MODAL_MESSAGE:
+      return { ...state, modalMessage: action.payload.modalMessage };
     case USER_REDUCER_ACTION.SET_IS_USER_DATA_SYNCHRONIZED:
       return { ...state, isUserDataSynchronized: action.payload.isUserDataSynchronized };
     default:

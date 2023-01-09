@@ -1,0 +1,68 @@
+{
+  "translation": {
+    "common": {
+      "Ok": "Так",
+      "Close": "Закрыць",
+      "NoInternetConnection": "Адсутнічае падлучэнне да інтэрнэту. Калі ласка, падключыцеся да інтэрнэту",
+      "NoIOSNotificationsPermission": "Адсутнічае дазвол для апавяшчэнняў. Падайце дадатку дазвол на паказ апавяшчэнняў"
+    },
+    "tasksScreen": {
+      "Tasks": "Спісы задач",
+      "CreateTaskButtonTitle": "Назва новай задачы:",
+      "CreateTaskListButtonTitle": "Назва новага спісу задач:",
+      "DeleteQuestionButtonTitle": "Выдаліць <0>{{text}}</0>?",
+      "DoneButton": "Задача <0>{{text}}</0> выканана?",
+      "EditTaskListButtonTitle": "Назва спісу задач:",
+      "EditTaskButton": "Рэдагаванне задачы:",
+      "TodoTasksTab": "Выканаць",
+      "DoneTasksTab": "Выкананыя",
+      "NoTaskListsFound": "Спісаў задач не знойдзена",
+      "EnableNotification": "Нагадаць аб задачы",
+      "EnableMarkColor": "Колер задачы",
+      "TaskNotification": "Выканайце задачу"
+    },
+    "signInScreen": {
+      "SignIn": "Уваход",
+      "SignInWith": "Уваход праз <0>{{text}}</0>",
+      "CancelAuthProcess": "Працэс уваходу адменены карыстальнікам",
+      "ErrorGettingAccessToken": "Памылка атрымання токена аўтарызацыі"
+    },
+    "accountScreen": {
+      "Account": "Акаўнт",
+      "DarkMode": "Цёмная тэма",
+      "SignOut": "Выхад",
+      "SignOutWarning": "Вы ўпэўненыя, што хочаце выйсці з уліковага запісу?",
+      "ChangeLanguageButtonTitle": "Мова",
+      "ChangeLanguageButtonDescription": "Абярыце мову перакладання:",
+      "DeleteAccount": "Выдаліць акаўнт",
+      "DeleteAccountWarning": "Вы ўпэўненыя, што жадаеце выдаліць свой уліковы запіс з усімі вашымі дадзенымі?",
+      "AccentColorDescription": "Абярыце колер акцэнту:",
+      "AccentColorButtonTitle": "Колер акцэнту",
+      "ContactTheAuthorButtonTitle": "Звязацца з аўтарам"
+    },
+    "contactTheAuthorScreen": {
+      "HeaderTitle": "Звязацца з аўтарам",
+      "EmailPlaceholder": "Эл. пошта",
+      "SubjectPlaceholder": "Тэма паведамлення",
+      "MessagePlaceholder": "Паведамленне",
+      "EmailSuptext": "Эл. пошта",
+      "EmailSubtext": "Адказ будзе дасланы на гэты адрас эл. пошты",
+      "MessageSuptext": "Тэкст паведамлення",
+      "SendButton": "Адправіць",
+      "ContactTheAuthorSuccess": "Дзякуй, ваша паведамленне было адпраўлена. Аўтар звяжацца з вамі ў бліжэйшы час",
+      "ContactTheAuthorError": "Невядомая памылка. Паспрабуйце ўвесці іншы адрас эл. пошты",
+      "InvalidEmailError": "Няправільны адрас эл. пошты",
+      "EmailRequiredError": "Патрабуецца эл. пошта",
+      "MessageRequiredError": "Патрабуецца тэкст паведамлення"
+    },
+    "notepadScreen": {
+      "Notepad": "Нататнік",
+      "NotepadPlaceholder": "Тэкст",
+      "CleanButtonWarningTitle": "Вы ўпэўнены, што хочаце ачысціць нататнік?",
+      "CleanNotepadTextRequestError": "Няма падключэння да інтэрнэту, нататнік ачышчаны толькі на вашай прыладзе. Каб ачысціць нататнік на серверы, уключыце інтэрнэт і паўторыце запыт",
+      "SaveNotepadTextRequestError": "Няма падключэння да інтэрнэту, нататнік быў толькі захаваны на вашай прыладзе. Каб захаваць нататнік на серверы, уключыце інтэрнэт і паўторыце запыт",
+      "NotepadCleared": "Нататнік ачышчаны",
+      "NotepadSaved": "Нататнік захаваны"
+    }
+  }
+}

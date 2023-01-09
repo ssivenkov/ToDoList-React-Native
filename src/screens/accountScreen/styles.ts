@@ -1,7 +1,7 @@
-import { ExtendedStylesPropsType } from '@root/hooks/useStyles';
+import { ExtendedStylesPropsType } from '@hooks/useStyles';
 import { ImageStyle, StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
-type UserScreenStylesType = {
+type AccountScreenStylesType = {
   screenContainer: ViewStyle;
   userInfoContainer: ViewStyle;
   avatar: ImageStyle;
@@ -11,17 +11,18 @@ type UserScreenStylesType = {
 
 const avatarSize = 100;
 
-export const styles = (props: ExtendedStylesPropsType) =>
-  StyleSheet.create<UserScreenStylesType>({
+export const accountScreenStyles = (props: ExtendedStylesPropsType) =>
+  StyleSheet.create<AccountScreenStylesType>({
     screenContainer: {
       alignItems: 'center',
       marginHorizontal: 1,
     },
 
     userInfoContainer: {
-      marginTop: 50,
+      width: '100%',
+      paddingTop: 50,
       alignItems: 'center',
-      marginBottom: 30,
+      paddingBottom: 30,
     },
 
     avatar: {

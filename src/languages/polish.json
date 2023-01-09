@@ -1,0 +1,68 @@
+{
+  "translation": {
+    "common": {
+      "Ok": "Ok",
+      "Close": "Zamknij",
+      "NoInternetConnection": "Brak połączenia z internetem. Proszę połączyć się z Internetem",
+      "NoIOSNotificationsPermission": "Brak pozwolenia na wyświetlanie powiadomień. Zezwól aplikacji na wyświetlanie powiadomień"
+    },
+    "tasksScreen": {
+      "Tasks": "Listy zadań",
+      "CreateTaskButtonTitle": "Wprowadź nowy tytuł zadania:",
+      "CreateTaskListButtonTitle": "Wprowadź nowy tytuł listy zadań:",
+      "DeleteQuestionButtonTitle": "Czy na pewno chcesz usunąć <0>{{text}}</0>?",
+      "DoneButton": "Czy na pewno zadanie <0>{{text}}</0> zostało zakończone?",
+      "EditTaskListButtonTitle": "Edycja tytułu listy zadań:",
+      "EditTaskButton": "Edycja zadania:",
+      "TodoTasksTab": "Zadania do wykonania",
+      "DoneTasksTab": "Wykonane zadania",
+      "NoTaskListsFound": "Nie znaleziono żadnych list zadań",
+      "EnableNotification": "Przypomnij o zadaniu",
+      "EnableMarkColor": "Kolor zadania",
+      "TaskNotification": "Wykonać zadanie"
+    },
+    "signInScreen": {
+      "SignIn": "Zaloguj się",
+      "SignInWith": "Zaloguj się za pomocą <0>{{text}}</0>",
+      "CancelAuthProcess": "Użytkownik anulował proces logowania",
+      "ErrorGettingAccessToken": "Coś poszło nie tak z uzyskaniem tokena dostępu"
+    },
+    "accountScreen": {
+      "Account": "Konto",
+      "DarkMode": "Tryb ciemny",
+      "SignOut": "Wypisać się",
+      "SignOutWarning": "Czy na pewno chcesz się wypisać?",
+      "ChangeLanguageButtonTitle": "Język",
+      "ChangeLanguageButtonDescription": "Wybierz język aplikacji:",
+      "DeleteAccount": "Usuń konto",
+      "DeleteAccountWarning": "Czy na pewno chcesz usunąć swoje konto ze wszystkimi danymi?",
+      "AccentColorDescription": "Wybierz kolor akcentu:",
+      "AccentColorButtonTitle": "Kolor akcentu",
+      "ContactTheAuthorButtonTitle": "Skontaktuj się z autorem"
+    },
+    "contactTheAuthorScreen": {
+      "HeaderTitle": "Skontaktuj się z autorem",
+      "EmailPlaceholder": "E-mail",
+      "SubjectPlaceholder": "Temat wiadomości",
+      "MessagePlaceholder": "Wiadomość",
+      "EmailSuptext": "E-mail",
+      "EmailSubtext": "Odpowiedź zostanie wysłana na ten e-mail",
+      "MessageSuptext": "Wiadomość tekstowa",
+      "SendButton": "Wysłać",
+      "ContactTheAuthorSuccess": "Dziękujemy, twoja wiadomość została wysłana. Autor wkrótce się z Tobą skontaktuje",
+      "ContactTheAuthorError": "Nieznany błąd. Spróbuj wprowadzić inny adres e-mail",
+      "InvalidEmailError": "Niepoprawny adres email",
+      "EmailRequiredError": "E-mail wymagany",
+      "MessageRequiredError": "Treść wiadomości jest wymagana"
+    },
+    "notepadScreen": {
+      "Notepad": "Notatnik",
+      "NotepadPlaceholder": "Tekst",
+      "CleanButtonWarningTitle": "Czy na pewno chcesz wyczyścić notatnik?",
+      "CleanNotepadTextRequestError": "Brak połączenia z Internetem, notatnik został wyczyszczony tylko na Twoim urządzeniu. Aby wyczyścić notatnik na serwerze, włącz Internet i powtórz żądanie",
+      "SaveNotepadTextRequestError": "Brak połączenia z Internetem, notatnik został zapisany tylko na Twoim urządzeniu. Aby zapisać notatnik na serwerze włącz Internet i powtórz żądanie",
+      "NotepadCleared": "Notatnik wyczyszczony",
+      "NotepadSaved": "Notatnik zapisany"
+    }
+  }
+}

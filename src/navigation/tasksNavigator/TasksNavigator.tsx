@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react';
 
+import { TASKS_NAVIGATOR_ROUTE } from '@enums/routesEnum';
+import { useStyles } from '@hooks/useStyles';
 import {
-  doneScreenOptions,
-  tasksNavigatorOptions,
-  toDoScreenOptions,
+  doneScreenSettings,
+  tasksNavigatorSettings,
+  toDoScreenSettings,
 } from '@navigation/tasksNavigator/settings';
-import { styles } from '@navigation/tasksNavigator/styles';
-import { TaskNavigatorScreens, TopTabParamList } from '@navigation/tasksNavigator/types';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import { useStyles } from '@root/hooks/useStyles';
-import { TasksScreen } from '@root/screens/tasksScreen/TaskScreen';
+import { TasksScreen } from '@screens/tasksScreen/TaskScreen';
 import { changeLanguageAction } from '@store/actions/userSagaActions/changeLanguageAction';
 import {
   accentColorSelector,
@@ -19,37 +18,43 @@ import {
 import i18next, { t } from 'i18next';
 import { useDispatch, useSelector } from 'react-redux';
 
-const { Navigator, Screen } = createMaterialTopTabNavigator<TopTabParamList>();
+import { tasksNavigatorStyles } from './styles';
+import { TopTabParamListType } from './types';
+
+const { Navigator, Screen } = createMaterialTopTabNavigator<TopTabParamListType>();
 
 export const TasksNavigator = () => {
   const dispatch = useDispatch();
-  const style = useStyles(styles);
+
+  const styles = useStyles(tasksNavigatorStyles);
+
   const theme = useSelector(themeSelector);
   const accentColor = useSelector(accentColorSelector);
-  const languageInState = useSelector(languageSelector);
+  const language = useSelector(languageSelector);
+
   const [rerender, setRerender] = useState<string>('');
 
   // need for rerender with correct translations for navigator
   useEffect(() => {
-    if (i18next.language !== languageInState) {
-      dispatch(changeLanguageAction({ language: languageInState }));
-      setRerender(languageInState);
+    if (i18next.language !== language) {
+      dispatch(changeLanguageAction({ language }));
+      setRerender(language);
     }
-  }, [rerender, languageInState]);
+  }, [rerender, language]);
 
   return (
     <Navigator
-      initialRouteName={TaskNavigatorScreens.TODO}
-      screenOptions={tasksNavigatorOptions({ style, theme, accentColor })}
+      initialRouteName={TASKS_NAVIGATOR_ROUTE.TODO_TASKS_SCREEN}
+      screenOptions={tasksNavigatorSettings({ styles, theme, accentColor })}
     >
       <Screen
         component={TasksScreen}
         initialParams={{
           isTodoScreen: true,
         }}
-        name={TaskNavigatorScreens.TODO}
+        name={TASKS_NAVIGATOR_ROUTE.TODO_TASKS_SCREEN}
         options={{
-          ...toDoScreenOptions({ style, theme, accentColor }),
+          ...toDoScreenSettings({ styles, theme, accentColor }),
           tabBarLabel: t('tasksScreen.TodoTasksTab'),
         }}
       />
@@ -58,9 +63,9 @@ export const TasksNavigator = () => {
         initialParams={{
           isTodoScreen: false,
         }}
-        name={TaskNavigatorScreens.DONE}
+        name={TASKS_NAVIGATOR_ROUTE.DONE_TASKS_SCREEN}
         options={{
-          ...doneScreenOptions({ style, theme, accentColor }),
+          ...doneScreenSettings({ styles, theme, accentColor }),
           tabBarLabel: t('tasksScreen.DoneTasksTab'),
         }}
       />

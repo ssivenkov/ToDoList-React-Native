@@ -1,39 +1,39 @@
 import { COLORS } from '@colors/colors';
 import { FontAwesomeIconStyle } from '@fortawesome/react-native-fontawesome';
-import { ExtendedStylesPropsType } from '@root/hooks/useStyles';
-import { Platform, StyleSheet, TextStyle, ViewStyle } from 'react-native';
+import { ExtendedStylesPropsType } from '@hooks/useStyles';
+import {
+  headerButtonMargin,
+  headerHeight,
+  headerTitleFontSize,
+  tabBarContainerHeight,
+} from '@navigation/commonNavigationStyles';
+import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
-export type WithAuthNavigationStylesType = {
+export type WithAuthNavigatorStylesType = {
   header: ViewStyle;
-  headerTitleStyle: TextStyle;
+  headerTitle: TextStyle;
   tabBarContainer: ViewStyle;
   tabFocusIcon: FontAwesomeIconStyle;
   tabIcon: FontAwesomeIconStyle;
-  buttonContainer: ViewStyle;
+  rightButtonContainer: ViewStyle;
   icon: TextStyle;
   title: TextStyle;
 };
 
-const iOSHeaderHeight = 90;
-const androidHeaderHeight = 50;
-const iOSTabBarContainerHeight = 82;
-const androidTabBarContainerHeight = 50;
-
-export const styles = (props: ExtendedStylesPropsType) =>
-  StyleSheet.create<WithAuthNavigationStylesType>({
+export const withAuthNavigatorStyles = (props: ExtendedStylesPropsType) =>
+  StyleSheet.create<WithAuthNavigatorStylesType>({
     header: {
       backgroundColor: props.darkMode ? `${props.ACCENT_COLOR}CC` : props.ACCENT_COLOR,
-      height: Platform.OS === 'ios' ? iOSHeaderHeight : androidHeaderHeight,
+      height: headerHeight,
     },
 
-    headerTitleStyle: {
+    headerTitle: {
       color: COLORS.WHITE,
-      fontSize: 22,
+      fontSize: headerTitleFontSize,
     },
 
     tabBarContainer: {
-      height:
-        Platform.OS === 'ios' ? iOSTabBarContainerHeight : androidTabBarContainerHeight,
+      height: tabBarContainerHeight,
       backgroundColor: props.TAB_BAR_BACKGROUND_COLOR,
       borderTopWidth: 0,
     },
@@ -46,8 +46,8 @@ export const styles = (props: ExtendedStylesPropsType) =>
       color: props.TAB_BAR_ICON_COLOR,
     },
 
-    buttonContainer: {
-      marginRight: 12,
+    rightButtonContainer: {
+      marginRight: headerButtonMargin,
     },
 
     icon: {

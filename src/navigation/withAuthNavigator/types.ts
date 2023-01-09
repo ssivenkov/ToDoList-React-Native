@@ -1,22 +1,22 @@
-import { WithAuthNavigationStylesType } from '@navigation/withAuthNavigator/styles';
+import { WITH_AUTH_NAVIGATOR_ROUTE } from '@enums/routesEnum';
+import { TopTabParamListType } from '@navigation/tasksNavigator/types';
+import { WithAuthNavigatorStylesType } from '@navigation/withAuthNavigator/styles';
 import { BottomTabNavigationOptions } from '@react-navigation/bottom-tabs/src/types';
+import { NavigatorScreenParams } from '@react-navigation/native';
 import { ColorType, ThemeType } from '@store/reducers/userReducer/types';
 
-export enum withAuthNavigatorScreens {
-  TASKS = 'Tasks',
-  ACCOUNT = 'Account',
-}
-
 export type BottomTabParamList = {
-  [K in withAuthNavigatorScreens]: undefined;
+  [WITH_AUTH_NAVIGATOR_ROUTE.TASKS_NAVIGATOR]: NavigatorScreenParams<TopTabParamListType>;
+  [WITH_AUTH_NAVIGATOR_ROUTE.ACCOUNT_SCREEN]: undefined;
+  [WITH_AUTH_NAVIGATOR_ROUTE.NOTEPAD_SCREEN]: undefined;
 };
 
-export type NavigatorOptionsTypeParamsType = {
-  style: WithAuthNavigationStylesType;
+type WithAuthNavigatorStyleParamsType = {
+  styles: WithAuthNavigatorStylesType;
   theme: ThemeType;
   accentColor: ColorType;
 };
 
-export type WithAuthNavigatorOptionsType = (
-  params: NavigatorOptionsTypeParamsType,
+export type WithAuthNavigatorScreenSettingsType = (
+  params: WithAuthNavigatorStyleParamsType,
 ) => BottomTabNavigationOptions;

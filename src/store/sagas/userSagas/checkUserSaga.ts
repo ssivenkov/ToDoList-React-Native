@@ -1,8 +1,11 @@
 import { COLORS } from '@colors/colors';
-import { EN, ONLINE, USERS } from '@constants/constants';
+import { ONLINE } from '@constants/constants';
+import { EN } from '@constants/languages';
+import { FIREBASE_PATH } from '@enums/firebaseEnum';
+import { checkInternetConnectionHelper } from '@helpers/checkInternetConnectionHelper';
 import { DB } from '@root/api/DB';
-import { checkInternetConnectionHelper } from '@root/helpers/checkInternetConnectionHelper';
-import { setModalErrorMessageAction } from '@store/actions/userReducerActions/setModalErrorMessageAction';
+import * as Sentry from '@sentry/react-native';
+import { setModalMessageAction } from '@store/actions/userReducerActions/setModalMessageAction';
 import { syncUserDataAction } from '@store/actions/userSagaActions/syncUserDataAction';
 import {
   SnapshotType,
@@ -13,14 +16,18 @@ import {
   isUserDataSynchronizedSelector,
   userIDSelector,
 } from '@store/selectors/userSelectors';
-import { call, put, select } from 'redux-saga/effects';
+import { call, cancel, put, select } from 'redux-saga/effects';
 
 export function* checkUserSaga() {
+  const { USERS } = FIREBASE_PATH;
+
   try {
     const internetConnectionStatus: string = yield call(checkInternetConnectionHelper);
 
     if (internetConnectionStatus !== ONLINE) {
-      throw Error(internetConnectionStatus);
+      yield put(setModalMessageAction({ modalMessage: internetConnectionStatus }));
+
+      yield cancel();
     }
 
     const userID: UserIDType = yield select(userIDSelector);
@@ -28,6 +35,7 @@ export function* checkUserSaga() {
       yield select(isUserDataSynchronizedSelector);
 
     const snapshot: SnapshotType = yield DB.ref(`${USERS}/${userID}`).once('value');
+
     const isUserExist = snapshot.exists();
 
     if (!isUserExist && userID) {
@@ -35,7 +43,7 @@ export function* checkUserSaga() {
         userToken: userID,
         language: EN,
         darkTheme: false,
-        accentColor: COLORS.FLIRT,
+        accentColor: COLORS.ELECTRIC_VIOLET2,
       });
     } else {
       if (!isUserDataSynchronized) {
@@ -44,7 +52,8 @@ export function* checkUserSaga() {
     }
   } catch (error) {
     if (error instanceof Error) {
-      yield put(setModalErrorMessageAction({ errorModalMessage: error.message }));
+      yield call(Sentry.captureException, error);
+      yield put(setModalMessageAction({ modalMessage: error.message }));
     }
   }
 }
