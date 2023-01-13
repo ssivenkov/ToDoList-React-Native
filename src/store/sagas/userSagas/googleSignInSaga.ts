@@ -1,5 +1,6 @@
 import { ONLINE, START_ANIMATION_DELAY } from '@constants/constants';
 import { GoogleSignInCancelError, signInActionCanceled } from '@constants/errorMessages';
+import { userSignInErrors } from '@constants/errors';
 import { FIREBASE_OTHER } from '@enums/firebaseEnum';
 import { checkInternetConnectionHelper } from '@helpers/checkInternetConnectionHelper';
 import auth from '@react-native-firebase/auth';
@@ -35,6 +36,8 @@ export function* googleSignInSaga(action: GetGoogleUserDataSagaActionReturnType)
 
     yield delay(START_ANIMATION_DELAY);
 
+    yield call(GoogleSignin.hasPlayServices, { showPlayServicesUpdateDialog: true });
+
     const { idToken } = yield call(GoogleSignin.signIn);
 
     if (!idToken) {
@@ -62,8 +65,6 @@ export function* googleSignInSaga(action: GetGoogleUserDataSagaActionReturnType)
 
     yield call(signInWithCredential, googleCredential);
   } catch (error) {
-    setWaitingUserData(false);
-
     if (
       (error instanceof Error && error.message === GoogleSignInCancelError) ||
       (error instanceof Error && error.message === signInActionCanceled)
@@ -74,8 +75,15 @@ export function* googleSignInSaga(action: GetGoogleUserDataSagaActionReturnType)
         }),
       );
     } else if (error instanceof Error) {
+      // @ts-ignore
+      if (userSignInErrors.includes(error.code)) {
+        yield cancel();
+      }
+
       yield call(Sentry.captureException, error);
       yield put(setModalMessageAction({ modalMessage: error.message }));
     }
+  } finally {
+    setWaitingUserData(false);
   }
 }
