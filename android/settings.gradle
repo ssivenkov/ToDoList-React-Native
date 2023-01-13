@@ -1,4 +1,4 @@
-rootProject.name = 'MyProject'
+rootProject.name = 'JetTeam.ToDoList'
 include ':@sentry_react-native'
 project(':@sentry_react-native').projectDir = new File(rootProject.projectDir, '../node_modules/@sentry/react-native/android')
 include ':react-native-linear-gradient'
