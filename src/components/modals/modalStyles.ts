@@ -13,6 +13,7 @@ type ModalStylesType = {
 };
 
 export const modalBorderRadius = 20;
+const contentMaxWidth = 420;
 
 export const modalStyles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<ModalStylesType>({
@@ -24,19 +25,22 @@ export const modalStyles = (props: ExtendedStylesPropsType) =>
     },
 
     modalView: {
-      width: '90%',
+      width: contentMaxWidth,
+      maxWidth: '90%',
       borderRadius: modalBorderRadius,
       paddingTop: 20,
       backgroundColor: props.MODAL_BACKGROUND_COLOR,
     },
 
     contentWithBottomPadding: {
+      maxWidth: contentMaxWidth,
       alignItems: 'center',
       marginBottom: 16,
       marginHorizontal: 16,
     },
 
     contentWithoutBottomPadding: {
+      maxWidth: contentMaxWidth,
       alignItems: 'center',
       marginHorizontal: 16,
     },
@@ -52,7 +56,7 @@ export const modalStyles = (props: ExtendedStylesPropsType) =>
     },
 
     buttonsContainer: {
-      maxWidth: '100%',
+      width: '100%',
       flexDirection: 'row',
     },
   });

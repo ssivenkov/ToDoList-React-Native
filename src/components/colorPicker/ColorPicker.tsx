@@ -11,7 +11,7 @@ import { styles } from './styles';
 import { ColorPickerComponentPropsType } from './types';
 
 export const ColorPickerComponent = (props: ColorPickerComponentPropsType) => {
-  const { color, setSelectedColor, marginTop, marginRight } = props;
+  const { color, setSelectedColor, marginTop, gapSize } = props;
 
   const selectedColor = useSelector(selectedColorSelector);
 
@@ -22,10 +22,11 @@ export const ColorPickerComponent = (props: ColorPickerComponentPropsType) => {
   };
 
   return (
-    <View style={[styles.container, { marginTop }, { marginRight }]}>
+    <View style={[styles.container, { marginTop }]}>
       <ColorPicker
         color={color ?? selectedColor}
         discrete={false}
+        gapSize={gapSize}
         noSnap={false}
         onColorChangeComplete={(color) => onColorChangeComplete(color)}
         palette={[CRIMSON, PIZAZZ, TURBO, GREEN, CYAN_AQUA, PERSIAN_BLUE, PURPLE_HEART]}

@@ -13,6 +13,7 @@ import { Notification } from '@components/notification/Notification';
 import { Switcher } from '@components/switcher/Switcher';
 import {
   COLOR_PICKER_SHOW_TIMEOUT,
+  colorPickerDefaultGapSize,
   ICON_SIZE_SMALL,
   MAX_INPUT_LENGTH200,
 } from '@constants/constants';
@@ -199,14 +200,14 @@ export const EditTaskButton = (props: EditTaskTitleButtonPropsType) => {
         {showColorPickerWithUserColorMarkCondition && (
           <ColorPickerComponent
             color={colorMark}
-            marginRight={20}
+            gapSize={colorPickerDefaultGapSize}
             marginTop={20}
             setSelectedColor={setTempColorMark}
           />
         )}
         {isColorPickerSwitcherOn && !colorMark && (
           <ColorPickerComponent
-            marginRight={20}
+            gapSize={colorPickerDefaultGapSize}
             marginTop={20}
             setSelectedColor={setSelectedColor}
           />

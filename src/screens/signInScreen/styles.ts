@@ -1,4 +1,5 @@
 import { COLORS } from '@colors/colors';
+import { screenWidth480px } from '@constants/constants';
 import { ExtendedStylesPropsType } from '@hooks/useStyles';
 import { ImageStyle, Platform, StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
@@ -11,8 +12,9 @@ type SignInScreenStylesType = {
 
 const iOSAppIconDivider = 2.25;
 const androidAppIconDivider = 2.4;
-const iOSBorderRadiusDivider = 18;
-const androidBorderRadiusDivider = 10;
+const borderRadiusCoefficient = 0.01;
+const narrowScreenMarginHorizontal = 15;
+const otherScreensMarginHorizontal = 30;
 const appIconDivider = Platform.OS === 'ios' ? iOSAppIconDivider : androidAppIconDivider;
 
 export const signInScreenStyles = (props: ExtendedStylesPropsType) =>
@@ -21,11 +23,15 @@ export const signInScreenStyles = (props: ExtendedStylesPropsType) =>
       height: '100%',
       justifyContent: 'center',
       alignItems: 'center',
-      marginHorizontal: 30,
+      marginHorizontal:
+        props.appWidth <= screenWidth480px
+          ? narrowScreenMarginHorizontal
+          : otherScreensMarginHorizontal,
     },
 
     signInContainer: {
       width: '100%',
+      maxWidth: 380,
       alignItems: 'center',
       justifyContent: 'center',
     },
@@ -40,10 +46,10 @@ export const signInScreenStyles = (props: ExtendedStylesPropsType) =>
     appIcon: {
       width: props.appWidth / appIconDivider,
       height: props.appWidth / appIconDivider,
+      maxWidth: 200,
+      maxHeight: 200,
       borderRadius:
-        Platform.OS === 'ios'
-          ? props.appWidth / iOSBorderRadiusDivider
-          : props.appWidth / androidBorderRadiusDivider,
+        props.appWidth / appIconDivider / (props.appWidth * borderRadiusCoefficient),
       marginBottom: 40,
       resizeMode: 'contain',
     },

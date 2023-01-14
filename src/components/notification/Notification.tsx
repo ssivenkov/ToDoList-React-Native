@@ -84,7 +84,7 @@ export const Notification = (props: NotificationPropsType) => {
         textMargin={1}
         textStyle={styles.text}
       />
-      <Animated.View style={{ height: heightAnimation }}>
+      <Animated.View style={[styles.datePickerContainer, { height: heightAnimation }]}>
         <DatePicker
           androidVariant='iosClone'
           date={datePickerDate}

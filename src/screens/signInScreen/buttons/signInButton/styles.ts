@@ -28,7 +28,7 @@ export const signInButtonStyles = StyleSheet.create<SignInButtonStylesType>({
 
   icon: {
     marginRight: 15,
-    marginLeft: 5,
+    marginLeft: 2,
     color: WHITE,
   },
 

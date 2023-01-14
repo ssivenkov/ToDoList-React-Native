@@ -8,3 +8,5 @@ export const COLOR_PICKER_SHOW_TIMEOUT = 100;
 export const MAX_INPUT_LENGTH100 = 100;
 export const MAX_INPUT_LENGTH200 = 200;
 export const ONLINE = 'online';
+export const screenWidth480px = 320;
+export const colorPickerDefaultGapSize = -10;

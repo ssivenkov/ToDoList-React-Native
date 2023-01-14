@@ -6,7 +6,11 @@ import { Input } from '@components/inputs/Input';
 import { ModalIcon } from '@components/modals/ModalIcon';
 import { Notification } from '@components/notification/Notification';
 import { Switcher } from '@components/switcher/Switcher';
-import { ICON_SIZE_SMALL, MAX_INPUT_LENGTH200 } from '@constants/constants';
+import {
+  colorPickerDefaultGapSize,
+  ICON_SIZE_SMALL,
+  MAX_INPUT_LENGTH200,
+} from '@constants/constants';
 import { faPlus } from '@fortawesome/free-solid-svg-icons/faPlus';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { createDate } from '@helpers/generateDateHelper';
@@ -169,7 +173,7 @@ export const CreateTaskButton = (props: CreateTaskButtonPropsType) => {
         {isColorPickerSwitcherOn && (
           <ColorPickerComponent
             color={selectedColor}
-            marginRight={20}
+            gapSize={colorPickerDefaultGapSize}
             marginTop={20}
             setSelectedColor={setSelectedColor}
           />
