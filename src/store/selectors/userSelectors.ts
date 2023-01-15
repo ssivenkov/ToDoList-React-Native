@@ -70,3 +70,9 @@ export const isUserDataSynchronizedSelector = (
 ): UserReducerStateType['isUserDataSynchronized'] => {
   return state.user.isUserDataSynchronized;
 };
+
+export const isWaitingUserDataOnSignInSelector = (
+  state: AppRootStateType,
+): UserReducerStateType['isWaitingUserDataOnSignIn'] => {
+  return state.user.isWaitingUserDataOnSignIn;
+};

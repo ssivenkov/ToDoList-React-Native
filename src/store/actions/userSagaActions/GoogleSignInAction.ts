@@ -1,20 +1,11 @@
 import { USER_SAGA_ACTION } from '@enums/userSagaEnum';
-import { SetStateType } from '@root/types/common/types';
-
-export type GetUserDataSagaActionPayloadType = {
-  setWaitingUserData: SetStateType<boolean>;
-};
 
 export type GetGoogleUserDataSagaActionReturnType = {
   type: USER_SAGA_ACTION.GOOGLE_SIGN_IN;
-  payload: GetUserDataSagaActionPayloadType;
 };
 
-export type GetGoogleUserDataSagaActionType = (
-  payload: GetUserDataSagaActionPayloadType,
-) => GetGoogleUserDataSagaActionReturnType;
+export type GetGoogleUserDataSagaActionType = () => GetGoogleUserDataSagaActionReturnType;
 
-export const googleSignInAction: GetGoogleUserDataSagaActionType = (payload) => ({
+export const googleSignInAction: GetGoogleUserDataSagaActionType = () => ({
   type: USER_SAGA_ACTION.GOOGLE_SIGN_IN,
-  payload,
 });

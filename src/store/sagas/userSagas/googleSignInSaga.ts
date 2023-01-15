@@ -8,7 +8,7 @@ import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import * as Sentry from '@sentry/react-native';
 import { setModalMessageAction } from '@store/actions/userReducerActions/setModalMessageAction';
 import { setProviderIDAction } from '@store/actions/userReducerActions/setProviderIDAction';
-import { GetGoogleUserDataSagaActionReturnType } from '@store/actions/userSagaActions/GoogleSignInAction';
+import { setWaitingUserDataOnSignInAction } from '@store/actions/userReducerActions/setWaitingUserDataOnSignInAction';
 import { t } from 'i18next';
 import { call, cancel, delay, put, putResolve } from 'redux-saga/effects';
 
@@ -18,9 +18,7 @@ export type AuthCredentialType = {
   secret: string;
 };
 
-export function* googleSignInSaga(action: GetGoogleUserDataSagaActionReturnType) {
-  const { setWaitingUserData } = action.payload;
-
+export function* googleSignInSaga() {
   const { GOOGLE_PROVIDER_ID } = FIREBASE_OTHER;
 
   try {
@@ -32,7 +30,9 @@ export function* googleSignInSaga(action: GetGoogleUserDataSagaActionReturnType)
       yield cancel();
     }
 
-    yield call(setWaitingUserData, true);
+    yield putResolve(
+      setWaitingUserDataOnSignInAction({ isWaitingUserDataOnSignIn: true }),
+    );
 
     yield delay(START_ANIMATION_DELAY);
 
@@ -84,6 +84,8 @@ export function* googleSignInSaga(action: GetGoogleUserDataSagaActionReturnType)
       yield put(setModalMessageAction({ modalMessage: error.message }));
     }
   } finally {
-    setWaitingUserData(false);
+    yield putResolve(
+      setWaitingUserDataOnSignInAction({ isWaitingUserDataOnSignIn: false }),
+    );
   }
 }

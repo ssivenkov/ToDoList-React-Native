@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { signInScreenGradient } from '@colors/gradients';
 import { Loader } from '@components/loader/Loader';
@@ -10,10 +10,11 @@ import { SignInButton } from '@screens/signInScreen/buttons/signInButton/SignInB
 import { signInButtonStyles } from '@screens/signInScreen/buttons/signInButton/styles';
 import { facebookSignInAction } from '@store/actions/userSagaActions/FacebookSignInAction';
 import { googleSignInAction } from '@store/actions/userSagaActions/GoogleSignInAction';
+import { isWaitingUserDataOnSignInSelector } from '@store/selectors/userSelectors';
 import { useTranslation } from 'react-i18next';
 import { Image, Text, View } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { signInScreenStyles } from './styles';
 
@@ -26,22 +27,22 @@ export const SignInScreen = () => {
 
   const { t } = useTranslation();
 
-  const [waitingUserData, setWaitingUserData] = useState<boolean>(false);
+  const waitingUserDataOnSignIn = useSelector(isWaitingUserDataOnSignInSelector);
 
   const isDeveloperMode = __DEV__;
 
   const onGoogleButtonPress = () => {
-    dispatch(googleSignInAction({ setWaitingUserData }));
+    dispatch(googleSignInAction());
   };
 
   const onFacebookButtonPress = () => {
-    dispatch(facebookSignInAction({ setWaitingUserData }));
+    dispatch(facebookSignInAction());
   };
 
   return (
     <LinearGradient colors={signInScreenGradient}>
       <View style={styles.signInWrapper}>
-        {waitingUserData ? (
+        {waitingUserDataOnSignIn ? (
           <Loader />
         ) : (
           <View style={styles.signInContainer}>
@@ -52,7 +53,7 @@ export const SignInScreen = () => {
             <Text style={styles.screenTitle}>{t('signInScreen.SignIn')}</Text>
             <SignInButton
               colorStyle={signInButtonStyles.googleStyle}
-              disabled={waitingUserData}
+              disabled={waitingUserDataOnSignIn}
               icon={faGoogle}
               onPress={onGoogleButtonPress}
               serviceTitle={GOOGLE_TITLE}
@@ -60,7 +61,7 @@ export const SignInScreen = () => {
             {isDeveloperMode && (
               <SignInButton
                 colorStyle={signInButtonStyles.facebookStyle}
-                disabled={waitingUserData}
+                disabled={waitingUserDataOnSignIn}
                 icon={faFacebook}
                 onPress={onFacebookButtonPress}
                 serviceTitle={FACEBOOK_TITLE}

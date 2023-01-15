@@ -19,6 +19,7 @@ const userReducerState: UserReducerStateType = {
   globalLoader: false,
   modalMessage: '',
   isUserDataSynchronized: false,
+  isWaitingUserDataOnSignIn: false,
 };
 
 export const userReducer = (
@@ -57,6 +58,11 @@ export const userReducer = (
       return { ...state, modalMessage: action.payload.modalMessage };
     case USER_REDUCER_ACTION.SET_IS_USER_DATA_SYNCHRONIZED:
       return { ...state, isUserDataSynchronized: action.payload.isUserDataSynchronized };
+    case USER_REDUCER_ACTION.SET_IS_WAITING_USER_DATA_ON_SIGN_IN:
+      return {
+        ...state,
+        isWaitingUserDataOnSignIn: action.payload.isWaitingUserDataOnSignIn,
+      };
     default:
       return state;
   }

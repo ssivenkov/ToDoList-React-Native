@@ -31,6 +31,7 @@ import { SetSelectedColorActionReturnType } from '@store/actions/userReducerActi
 import { SetThemeActionReturnType } from '@store/actions/userReducerActions/setThemeAction';
 import { SetUserAvatarActionReturnType } from '@store/actions/userReducerActions/setUserAvatarAction';
 import { SetUserDataActionReturnType } from '@store/actions/userReducerActions/setUserDataAction';
+import { SetWaitingUserDataOnSignInActionReturnType } from '@store/actions/userReducerActions/setWaitingUserDataOnSignInAction';
 
 const { FACEBOOK_PROVIDER_ID, GOOGLE_PROVIDER_ID } = FIREBASE_OTHER;
 
@@ -97,6 +98,7 @@ export type UserReducerStateType = {
   globalLoader: boolean;
   modalMessage: ModalMessageType;
   isUserDataSynchronized: boolean;
+  isWaitingUserDataOnSignIn: boolean;
 };
 
 export type UserReducerActionsType =
@@ -111,4 +113,5 @@ export type UserReducerActionsType =
   | SetSelectedColorActionReturnType
   | SetGlobalLoaderActionReturnType
   | SetModalMessageActionReturnType
-  | SetIsUserDataSynchronizedActionReturnType;
+  | SetIsUserDataSynchronizedActionReturnType
+  | SetWaitingUserDataOnSignInActionReturnType;

@@ -7,15 +7,13 @@ import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import * as Sentry from '@sentry/react-native';
 import { setModalMessageAction } from '@store/actions/userReducerActions/setModalMessageAction';
 import { setProviderIDAction } from '@store/actions/userReducerActions/setProviderIDAction';
-import { GetFacebookUserDataSagaActionReturnType } from '@store/actions/userSagaActions/FacebookSignInAction';
+import { setWaitingUserDataOnSignInAction } from '@store/actions/userReducerActions/setWaitingUserDataOnSignInAction';
 import { AuthCredentialType } from '@store/sagas/userSagas/googleSignInSaga';
 import { t } from 'i18next';
 import { AccessToken, LoginManager } from 'react-native-fbsdk-next';
 import { call, cancel, delay, put, putResolve } from 'redux-saga/effects';
 
-export function* facebookSignInSaga(action: GetFacebookUserDataSagaActionReturnType) {
-  const { setWaitingUserData } = action.payload;
-
+export function* facebookSignInSaga() {
   const { FACEBOOK_PROVIDER_ID } = FIREBASE_OTHER;
 
   try {
@@ -27,7 +25,9 @@ export function* facebookSignInSaga(action: GetFacebookUserDataSagaActionReturnT
       yield cancel();
     }
 
-    yield call(setWaitingUserData, true);
+    yield putResolve(
+      setWaitingUserDataOnSignInAction({ isWaitingUserDataOnSignIn: true }),
+    );
 
     yield delay(START_ANIMATION_DELAY);
 
@@ -85,6 +85,8 @@ export function* facebookSignInSaga(action: GetFacebookUserDataSagaActionReturnT
       yield put(setModalMessageAction({ modalMessage: error.message }));
     }
   } finally {
-    setWaitingUserData(false);
+    yield putResolve(
+      setWaitingUserDataOnSignInAction({ isWaitingUserDataOnSignIn: false }),
+    );
   }
 }
