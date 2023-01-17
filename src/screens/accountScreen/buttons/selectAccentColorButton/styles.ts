@@ -3,6 +3,7 @@ import { StyleSheet, ViewStyle } from 'react-native';
 
 type SelectAccentColorButtonStylesType = {
   colorIndicator: ViewStyle;
+  colorPickerWrapper: ViewStyle;
 };
 
 export const selectAccentColorButtonStyles = (props: ExtendedStylesPropsType) =>
@@ -12,5 +13,12 @@ export const selectAccentColorButtonStyles = (props: ExtendedStylesPropsType) =>
       height: 25,
       borderRadius: 100,
       backgroundColor: props.ACCENT_COLOR,
+    },
+
+    colorPickerWrapper: {
+      maxHeight: 200,
+      alignItems: 'center',
+      marginTop: 15,
+      marginBottom: 20,
     },
   });

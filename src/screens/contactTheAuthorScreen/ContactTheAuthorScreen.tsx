@@ -28,7 +28,7 @@ export const ContactTheAuthorScreen = () => {
   const userData = useSelector(userDataSelector);
 
   const [isFormValid, setIsFormValid] = useState<boolean>(false);
-  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [submitting, setSubmitting] = useState<boolean>(false);
 
   const initialEmailValue = userData?.email ?? '';
 
@@ -43,21 +43,21 @@ export const ContactTheAuthorScreen = () => {
       validateOnBlur: true,
       validateOnChange: true,
       onSubmit: () => {
-        setIsSubmitting(true);
+        setSubmitting(true);
       },
     });
 
   useLayoutEffect(() => {
-    if (isSubmitting) {
-      dispatch(contactTheAuthorAction({ values, navigate, setIsSubmitting }));
+    if (submitting) {
+      dispatch(contactTheAuthorAction({ values, navigate, setSubmitting }));
     }
-  }, [isSubmitting]);
+  }, [submitting]);
 
-  const buttonDisabledCondition = isSubmitting || !isFormValid;
+  const buttonDisabledCondition = submitting || !isFormValid;
 
   return (
     <ScrollView keyboardShouldPersistTaps='handled' style={styles.screenContainer}>
-      {isSubmitting && (
+      {submitting && (
         <Modal transparent={true}>
           <Loader />
         </Modal>

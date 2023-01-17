@@ -27,12 +27,13 @@ export const Task = (props: TaskPropsType) => {
   const styles = useStyles(taskStyles);
   const menuHorizontalStyle = useStyles(menuHorizontalStyles);
 
-  const [isMenuVisible, setIsMenuVisible] = useState<IsMenuVisibleType>(false);
+  const [isMenuHorizontalVisible, setIsMenuHorizontalVisible] =
+    useState<IsMenuVisibleType>(false);
 
   const onMenuButtonPress = () => {
-    if (isMenuVisible) {
-      setIsMenuVisible(false);
-    } else setIsMenuVisible(true);
+    if (isMenuHorizontalVisible) {
+      setIsMenuHorizontalVisible(false);
+    } else setIsMenuHorizontalVisible(true);
   };
 
   return (
@@ -54,7 +55,7 @@ export const Task = (props: TaskPropsType) => {
                 colorMark={colorMark}
                 isTodo={isTodo}
                 oldTaskTitle={taskTitle}
-                setIsMenuVisible={setIsMenuVisible}
+                /*setIsMenuHorizontalVisible={setIsMenuHorizontalVisible}*/
                 taskID={taskID}
                 taskListID={taskListID}
               />
@@ -69,7 +70,7 @@ export const Task = (props: TaskPropsType) => {
             </View>
           </View>
         }
-        isMenuVisible={isMenuVisible}
+        isMenuHorizontalVisible={isMenuHorizontalVisible}
         menuButtonIcon={
           <View style={commonButtonStyles.buttonContainer}>
             <MenuIcon fill={theme.ICON_BUTTON_COLOR} height={20} width={20} />

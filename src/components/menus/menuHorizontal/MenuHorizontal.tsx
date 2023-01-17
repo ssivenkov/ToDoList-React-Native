@@ -8,15 +8,25 @@ import { menuHorizontalStyles } from './styles';
 import { MenuHorizontalPropsType } from './types';
 
 export const MenuHorizontal = (props: MenuHorizontalPropsType) => {
-  const { children, buttons, menuButtonIcon, isMenuVisible, onMenuButtonPress } = props;
+  const {
+    children,
+    buttons,
+    menuButtonIcon,
+    isMenuHorizontalVisible,
+    onMenuButtonPress,
+  } = props;
 
   const styles = useStyles(menuHorizontalStyles);
 
   return (
     <View style={styles.menuHorizontalContainer}>
       <View style={styles.contentContainer}>
-        {isMenuVisible && <View style={styles.buttonsContainer}>{buttons}</View>}
-        <View style={[styles.childrenContainer, isMenuVisible && styles.hidden]}>
+        {isMenuHorizontalVisible && (
+          <View style={styles.buttonsContainer}>{buttons}</View>
+        )}
+        <View
+          style={[styles.childrenContainer, isMenuHorizontalVisible && styles.hidden]}
+        >
           {children}
         </View>
       </View>

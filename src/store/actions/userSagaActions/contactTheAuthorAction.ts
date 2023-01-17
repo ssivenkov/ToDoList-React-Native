@@ -5,7 +5,7 @@ import { ValuesType } from '@screens/contactTheAuthorScreen/types';
 export type ContactTheAuthorSagaSagaActionPayloadType = {
   values: ValuesType;
   navigate: () => void;
-  setIsSubmitting: SetStateType<boolean>;
+  setSubmitting: SetStateType<boolean>;
 };
 
 export type ContactTheAuthorSagaSagaActionReturnType = {

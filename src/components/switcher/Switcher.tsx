@@ -15,7 +15,7 @@ export const Switcher = (props: SwitcherPropsType) => {
     onToggleSwitcherClick,
     containerStyle,
     textStyle,
-    textMargin,
+    textMarginBottom,
   } = props;
 
   const toggle = (isOn: boolean) => {
@@ -27,7 +27,9 @@ export const Switcher = (props: SwitcherPropsType) => {
   return (
     <View style={[styles.contentDefaultContainer, containerStyle]}>
       {switcherText && (
-        <Text style={[{ marginBottom: textMargin }, textStyle]}>{switcherText}</Text>
+        <Text style={[{ marginBottom: textMarginBottom }, textStyle]}>
+          {switcherText}
+        </Text>
       )}
       <ToggleSwitch
         animationSpeed={250}

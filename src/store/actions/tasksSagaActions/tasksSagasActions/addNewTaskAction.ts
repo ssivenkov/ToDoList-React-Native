@@ -7,8 +7,9 @@ export type AddNewTaskSagaPayloadType = {
   newTask: TaskType;
   shouldCreateNotification: boolean;
   date: Nullable<Date>;
-  setIsLoading: SetStateType<boolean>;
-  setModalVisible: SetStateType<boolean>;
+  setLoading: SetStateType<boolean>;
+  setButtonDisabled: SetStateType<boolean>;
+  goBack: () => void;
   setNewTaskTitle: SetStateType<string>;
   setIsNotificationSwitcherOn: SetStateType<boolean>;
 };

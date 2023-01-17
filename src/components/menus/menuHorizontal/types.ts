@@ -1,5 +1,5 @@
 export type MenuHorizontalPropsType = {
-  isMenuVisible: boolean;
+  isMenuHorizontalVisible: boolean;
   onMenuButtonPress: () => void;
   buttons: JSX.Element;
   menuButtonIcon: JSX.Element;

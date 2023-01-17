@@ -12,7 +12,9 @@ import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { DarkTheme, NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Theme } from '@react-navigation/native/src/types';
+import { AddTaskScreen } from '@screens/addTaskScreen/AddTaskScreen';
 import { ContactTheAuthorScreen } from '@screens/contactTheAuthorScreen/ContactTheAuthorScreen';
+import { EditTaskScreen } from '@screens/editTaskScreen/EditTaskScreen';
 import { SignInScreen } from '@screens/signInScreen/SignInScreen';
 import { setModalMessageAction } from '@store/actions/userReducerActions/setModalMessageAction';
 import { changeLanguageAction } from '@store/actions/userSagaActions/changeLanguageAction';
@@ -153,6 +155,22 @@ export const RootNavigator = () => {
                     accentColor,
                   }),
                   title: t('contactTheAuthorScreen.HeaderTitle'),
+                }}
+              />
+              <Screen
+                component={AddTaskScreen}
+                name={ROOT_NAVIGATOR_ROUTE.ADD_TASK_SCREEN}
+                options={{
+                  headerShown: false,
+                  title: t('addTaskScreen.HeaderTitle'),
+                }}
+              />
+              <Screen
+                component={EditTaskScreen}
+                name={ROOT_NAVIGATOR_ROUTE.EDIT_TASK_SCREEN}
+                options={{
+                  headerShown: false,
+                  title: t('editTaskScreen.HeaderTitle'),
                 }}
               />
             </>

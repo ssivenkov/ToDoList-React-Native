@@ -8,7 +8,7 @@ import {
   toDoScreenSettings,
 } from '@navigation/tasksNavigator/settings';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import { TasksScreen } from '@screens/tasksScreen/TaskScreen';
+import { TasksScreen } from '@screens/tasksScreen/TasksScreen';
 import { changeLanguageAction } from '@store/actions/userSagaActions/changeLanguageAction';
 import {
   accentColorSelector,

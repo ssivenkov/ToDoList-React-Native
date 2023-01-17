@@ -5,5 +5,4 @@ export type ColorPickerComponentPropsType = {
   gapSize: number;
 
   color?: ColorType;
-  marginTop?: number;
 };

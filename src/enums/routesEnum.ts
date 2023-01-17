@@ -2,6 +2,8 @@ export enum ROOT_NAVIGATOR_ROUTE {
   SIGN_IN_SCREEN = 'SignInScreen',
   WITH_AUTH_NAVIGATOR = 'WithAuthNavigator',
   CONTACT_THE_AUTHOR_SCREEN = 'ContactTheAuthorScreen',
+  ADD_TASK_SCREEN = 'AddTaskScreen',
+  EDIT_TASK_SCREEN = 'EditTaskScreen',
 }
 
 export enum WITH_AUTH_NAVIGATOR_ROUTE {

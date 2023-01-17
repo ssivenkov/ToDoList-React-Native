@@ -81,7 +81,7 @@ export const Notification = (props: NotificationPropsType) => {
         onToggleSwitcherClick={switching}
         size='medium'
         switcherText={t('tasksScreen.EnableNotification')}
-        textMargin={1}
+        textMarginBottom={1}
         textStyle={styles.text}
       />
       <Animated.View style={[styles.datePickerContainer, { height: heightAnimation }]}>

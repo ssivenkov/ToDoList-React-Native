@@ -60,12 +60,13 @@ export const SelectAccentColorButton = (props: SelectAccentColorButtonPropsType)
       okHandler={setAccentColor}
       rightComponent={<View style={styles.colorIndicator} />}
     >
-      <ColorPickerComponent
-        color={color}
-        gapSize={colorPickerGapSize}
-        marginTop={10}
-        setSelectedColor={setColor}
-      />
+      <View style={styles.colorPickerWrapper}>
+        <ColorPickerComponent
+          color={color}
+          gapSize={colorPickerGapSize}
+          setSelectedColor={setColor}
+        />
+      </View>
     </ModalLongButton>
   );
 };

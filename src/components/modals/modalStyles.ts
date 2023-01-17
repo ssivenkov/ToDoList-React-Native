@@ -2,7 +2,7 @@ import { COLORS } from '@colors/colors';
 import { ExtendedStylesPropsType } from '@hooks/useStyles';
 import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
-type ModalStylesType = {
+export type ModalStylesType = {
   centeredView: ViewStyle;
   modalView: ViewStyle;
   contentWithBottomPadding: ViewStyle;

@@ -10,7 +10,7 @@ import { t } from 'i18next';
 import { call, cancel, put, SagaReturnType } from 'redux-saga/effects';
 
 export function* contactTheAuthorSaga(action: ContactTheAuthorSagaSagaActionReturnType) {
-  const { values, navigate, setIsSubmitting } = action.payload;
+  const { values, navigate, setSubmitting } = action.payload;
 
   try {
     const internetConnectionStatus: string = yield call(checkInternetConnectionHelper);
@@ -18,7 +18,7 @@ export function* contactTheAuthorSaga(action: ContactTheAuthorSagaSagaActionRetu
     if (internetConnectionStatus !== ONLINE) {
       yield put(setModalMessageAction({ modalMessage: internetConnectionStatus }));
 
-      setIsSubmitting(false);
+      setSubmitting(false);
 
       yield cancel();
     }

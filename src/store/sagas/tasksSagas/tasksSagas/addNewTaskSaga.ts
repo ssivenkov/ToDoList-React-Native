@@ -19,10 +19,9 @@ import { call, cancel, delay, put, select } from 'redux-saga/effects';
 
 export function* addNewTaskSaga(action: AddNewTaskSagaActionReturnType) {
   const {
-    setIsLoading,
-    setModalVisible,
-    setIsNotificationSwitcherOn,
-    setNewTaskTitle,
+    setLoading,
+    setButtonDisabled,
+    goBack,
     newTask,
     date,
     modifiedTaskList,
@@ -44,7 +43,8 @@ export function* addNewTaskSaga(action: AddNewTaskSagaActionReturnType) {
       yield cancel();
     }
 
-    yield call(setIsLoading, true);
+    yield call(setLoading, true);
+    yield call(setButtonDisabled, true);
 
     yield delay(START_ANIMATION_DELAY);
 
@@ -99,15 +99,14 @@ export function* addNewTaskSaga(action: AddNewTaskSagaActionReturnType) {
       }),
     );
 
-    yield call(setModalVisible, false);
-    yield call(setIsNotificationSwitcherOn, false);
-    yield call(setNewTaskTitle, '');
+    yield call(goBack);
   } catch (error) {
     if (error instanceof Error) {
       yield call(Sentry.captureException, error);
       yield put(setModalMessageAction({ modalMessage: error.message }));
     }
-  } finally {
-    yield call(setIsLoading, false);
+
+    yield call(setLoading, false);
+    yield call(setButtonDisabled, false);
   }
 }
