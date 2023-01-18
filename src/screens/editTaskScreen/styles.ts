@@ -1,17 +1,20 @@
+import { contentMaxWidth } from '@constants/constants';
 import { ExtendedStylesPropsType } from '@hooks/useStyles';
 import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
 type EditTaskScreenStylesType = {
-  contentContainer: ViewStyle;
+  contentWrapper: ViewStyle;
   colorPickerSwitcherWrapper: ViewStyle;
   colorPickerSwitcherContainer: ViewStyle;
   colorPickerSwitcherText: TextStyle;
   colorPickerWrapper: ViewStyle;
+  contentContainer: ViewStyle;
 };
 
 export const editTaskScreenStyles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<EditTaskScreenStylesType>({
-    contentContainer: {
+    contentWrapper: {
+      alignItems: 'center',
       paddingHorizontal: 18,
       paddingTop: 22,
     },
@@ -34,5 +37,10 @@ export const editTaskScreenStyles = (props: ExtendedStylesPropsType) =>
       marginTop: 25,
       paddingBottom: 90,
       height: 270,
+    },
+
+    contentContainer: {
+      width: '100%',
+      maxWidth: contentMaxWidth,
     },
   });

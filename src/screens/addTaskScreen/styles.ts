@@ -1,17 +1,20 @@
+import { contentMaxWidth } from '@constants/constants';
 import { ExtendedStylesPropsType } from '@hooks/useStyles';
 import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
 type AddTaskScreenStylesType = {
-  contentContainer: ViewStyle;
+  contentWrapper: ViewStyle;
   colorPickerSwitcherWrapper: ViewStyle;
   colorPickerSwitcherContainer: ViewStyle;
   colorPickerSwitcherText: TextStyle;
   colorPickerWrapper: ViewStyle;
+  contentContainer: ViewStyle;
 };
 
 export const addTaskScreenStyles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<AddTaskScreenStylesType>({
-    contentContainer: {
+    contentWrapper: {
+      alignItems: 'center',
       paddingHorizontal: 18,
       paddingTop: 22,
     },
@@ -30,9 +33,14 @@ export const addTaskScreenStyles = (props: ExtendedStylesPropsType) =>
     },
 
     colorPickerWrapper: {
+      height: 270,
       marginLeft: 4,
       marginTop: 25,
       paddingBottom: 90,
-      height: 270,
+    },
+
+    contentContainer: {
+      width: '100%',
+      maxWidth: contentMaxWidth,
     },
   });

@@ -136,39 +136,44 @@ export const AddTaskScreen = () => {
         rightButton={<SendNewTaskButton sendNewTask={sendNewTask} />}
         title={t('tasksScreen.CreateTaskButtonTitle')}
       />
-      <ScrollView keyboardShouldPersistTaps='handled' style={styles.contentContainer}>
-        <Input
-          inputRef={inputRef}
-          maxLength={MAX_INPUT_LENGTH200}
-          onValueChange={setNewTaskTitle}
-          value={newTaskTitle}
-        />
-        <Notification
-          date={date}
-          isSwitcherOn={isNotificationSwitcherOn}
-          onToggleSwitcherClick={handleNotificationSwitcherClick}
-          setDate={setDate}
-        />
-        <View style={styles.colorPickerSwitcherWrapper}>
-          <Switcher
-            containerStyle={styles.colorPickerSwitcherContainer}
-            isOn={isColorPickerSwitcherOn}
-            onToggleSwitcherClick={handleColorPickerSwitcherClick}
-            size='medium'
-            switcherText={t('tasksScreen.EnableMarkColor')}
-            textMarginBottom={1}
-            textStyle={styles.colorPickerSwitcherText}
+      <ScrollView
+        contentContainerStyle={styles.contentWrapper}
+        keyboardShouldPersistTaps='handled'
+      >
+        <View style={styles.contentContainer}>
+          <Input
+            inputRef={inputRef}
+            maxLength={MAX_INPUT_LENGTH200}
+            onValueChange={setNewTaskTitle}
+            value={newTaskTitle}
           />
-        </View>
-        {isColorPickerSwitcherOn && (
-          <View style={styles.colorPickerWrapper}>
-            <ColorPickerComponent
-              color={selectedColor}
-              gapSize={colorPickerDefaultGapSize}
-              setSelectedColor={setSelectedColor}
+          <Notification
+            date={date}
+            isSwitcherOn={isNotificationSwitcherOn}
+            onToggleSwitcherClick={handleNotificationSwitcherClick}
+            setDate={setDate}
+          />
+          <View style={styles.colorPickerSwitcherWrapper}>
+            <Switcher
+              containerStyle={styles.colorPickerSwitcherContainer}
+              isOn={isColorPickerSwitcherOn}
+              onToggleSwitcherClick={handleColorPickerSwitcherClick}
+              size='medium'
+              switcherText={t('tasksScreen.EnableMarkColor')}
+              textMarginBottom={1}
+              textStyle={styles.colorPickerSwitcherText}
             />
           </View>
-        )}
+          {isColorPickerSwitcherOn && (
+            <View style={styles.colorPickerWrapper}>
+              <ColorPickerComponent
+                color={selectedColor}
+                gapSize={colorPickerDefaultGapSize}
+                setSelectedColor={setSelectedColor}
+              />
+            </View>
+          )}
+        </View>
       </ScrollView>
     </View>
   );
