@@ -1,4 +1,4 @@
-package com.myproject;
+package com.jetteam.todolist;
 import android.os.Bundle;
 import com.facebook.react.ReactActivity;
 import android.os.Bundle;
@@ -14,7 +14,7 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-    return "MyProject";
+    return "JetTeam.ToDoList";
   }
 
   @Override

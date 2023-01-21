@@ -28,6 +28,7 @@ export const changeLanguageButtonStyles = (props: ExtendedStylesPropsType) =>
           : getStatusBarHeight() * statusBarHeightMultiplier +
             androidHeaderHeight +
             androidTabBarContainerHeight),
+      maxWidth: 250,
     },
 
     buttonContainer: {

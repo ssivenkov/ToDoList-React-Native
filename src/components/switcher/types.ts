@@ -10,5 +10,5 @@ export type SwitcherPropsType = {
   onToggleSwitcherClick?: (isOn: IsOnType) => void;
   containerStyle?: ViewStyle;
   textStyle?: TextStyle;
-  textMargin?: number;
+  textMarginBottom?: number;
 };

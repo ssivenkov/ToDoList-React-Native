@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.myproject">
+  package="com.jetteam.todolist"
+  android:exported="true">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.VIBRATE" />
@@ -11,7 +12,8 @@
       android:icon="@mipmap/ic_launcher"
       android:roundIcon="@mipmap/ic_launcher_round"
       android:allowBackup="false"
-      android:theme="@style/AppTheme">
+      android:theme="@style/AppTheme"
+      android:exported="true">
       <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
       <meta-data android:name="com.facebook.sdk.ClientToken" android:value="@string/facebook_client_token"/>
       <activity
@@ -19,7 +21,8 @@
         android:label="@string/app_name"
         android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
         android:launchMode="singleTask"
-        android:windowSoftInputMode="adjustResize">
+        android:windowSoftInputMode="adjustResize"
+        android:exported="true">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
             <category android:name="android.intent.category.LAUNCHER" />
@@ -28,7 +31,8 @@
       <activity android:name="com.facebook.FacebookActivity"
                 android:configChanges=
                         "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-                android:label="@string/app_name" />
+                android:label="@string/app_name"
+                android:exported="true" />
       <activity
               android:name="com.facebook.CustomTabActivity"
               android:exported="true">
@@ -47,9 +51,12 @@
       <meta-data  android:name="com.dieam.reactnativepushnotification.notification_color"
                   android:resource="@color/white"/> <!-- or @android:color/{name} to use a standard color -->
 
-      <receiver android:name="com.dieam.reactnativepushnotification.modules.RNPushNotificationActions" />
-      <receiver android:name="com.dieam.reactnativepushnotification.modules.RNPushNotificationPublisher" />
-      <receiver android:name="com.dieam.reactnativepushnotification.modules.RNPushNotificationBootEventReceiver">
+      <receiver android:name="com.dieam.reactnativepushnotification.modules.RNPushNotificationActions"
+                android:exported="true" />
+      <receiver android:name="com.dieam.reactnativepushnotification.modules.RNPushNotificationPublisher"
+                android:exported="true"/>
+      <receiver android:name="com.dieam.reactnativepushnotification.modules.RNPushNotificationBootEventReceiver"
+                android:exported="true">
           <intent-filter>
               <action android:name="android.intent.action.BOOT_COMPLETED" />
               <action android:name="android.intent.action.QUICKBOOT_POWERON" />

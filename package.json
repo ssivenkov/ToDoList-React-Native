@@ -1,6 +1,6 @@
 {
   "name": "todolist",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
@@ -101,12 +101,14 @@
     "ios": "react-native run-ios",
     "lint": "eslint . --color && tsc --noEmit",
     "search_global_errors": "npx react-native doctor",
-    "fix_Exit_code_7": "adb uninstall com.myproject",
+    "uninstall_app": "adb uninstall com.jetteam.todolist",
+    "android_debug_menu": "adb shell input keyevent 82",
     "metro_connect": "adb -s 18aeadf7 reverse tcp:8081 tcp:8081",
     "gradle_clean_MacOS": "cd android && ./gradlew clean && cd ..",
     "gradle_clean_Windows": "cd android && gradlew clean && cd ..",
     "android_assembly_MacOS": "cd android && ./gradlew assembleRelease && cd ..",
-    "android_assembly_Windows": "cd android && gradlew assembleRelease && cd ..",
+    "android_build_app_Windows": "cd android && gradlew assembleRelease && cd ..",
+    "android_build_bundle_Windows": "cd android && gradlew bundleRelease && cd ..",
     "app_dependencies_MacOS": "cd android && ./gradlew app:dependencies",
     "app_dependencies_Windows": "cd android && gradlew app:dependencies"
   },

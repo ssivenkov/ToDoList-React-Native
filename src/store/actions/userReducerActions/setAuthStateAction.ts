@@ -7,6 +7,7 @@ type SetAuthStateActionPayloadType = {
   isUserDataSynchronized: UserReducerStateType['isUserDataSynchronized'];
   accentColor: UserReducerStateType['accentColor'];
   selectedColor: UserReducerStateType['selectedColor'];
+  isWaitingUserDataOnSignIn: UserReducerStateType['isWaitingUserDataOnSignIn'];
 };
 
 export type SetAuthStateActionReturnType = {

@@ -1,5 +1,6 @@
 import { ONLINE, START_ANIMATION_DELAY } from '@constants/constants';
 import { GoogleSignInCancelError, signInActionCanceled } from '@constants/errorMessages';
+import { userSignInErrors } from '@constants/errors';
 import { FIREBASE_OTHER } from '@enums/firebaseEnum';
 import { checkInternetConnectionHelper } from '@helpers/checkInternetConnectionHelper';
 import auth from '@react-native-firebase/auth';
@@ -7,7 +8,7 @@ import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import * as Sentry from '@sentry/react-native';
 import { setModalMessageAction } from '@store/actions/userReducerActions/setModalMessageAction';
 import { setProviderIDAction } from '@store/actions/userReducerActions/setProviderIDAction';
-import { GetGoogleUserDataSagaActionReturnType } from '@store/actions/userSagaActions/GoogleSignInAction';
+import { setWaitingUserDataOnSignInAction } from '@store/actions/userReducerActions/setWaitingUserDataOnSignInAction';
 import { t } from 'i18next';
 import { call, cancel, delay, put, putResolve } from 'redux-saga/effects';
 
@@ -17,9 +18,7 @@ export type AuthCredentialType = {
   secret: string;
 };
 
-export function* googleSignInSaga(action: GetGoogleUserDataSagaActionReturnType) {
-  const { setWaitingUserData } = action.payload;
-
+export function* googleSignInSaga() {
   const { GOOGLE_PROVIDER_ID } = FIREBASE_OTHER;
 
   try {
@@ -31,9 +30,13 @@ export function* googleSignInSaga(action: GetGoogleUserDataSagaActionReturnType)
       yield cancel();
     }
 
-    yield call(setWaitingUserData, true);
+    yield putResolve(
+      setWaitingUserDataOnSignInAction({ isWaitingUserDataOnSignIn: true }),
+    );
 
     yield delay(START_ANIMATION_DELAY);
+
+    yield call(GoogleSignin.hasPlayServices, { showPlayServicesUpdateDialog: true });
 
     const { idToken } = yield call(GoogleSignin.signIn);
 
@@ -62,8 +65,6 @@ export function* googleSignInSaga(action: GetGoogleUserDataSagaActionReturnType)
 
     yield call(signInWithCredential, googleCredential);
   } catch (error) {
-    setWaitingUserData(false);
-
     if (
       (error instanceof Error && error.message === GoogleSignInCancelError) ||
       (error instanceof Error && error.message === signInActionCanceled)
@@ -74,8 +75,17 @@ export function* googleSignInSaga(action: GetGoogleUserDataSagaActionReturnType)
         }),
       );
     } else if (error instanceof Error) {
+      // @ts-ignore
+      if (userSignInErrors.includes(error.code)) {
+        yield cancel();
+      }
+
       yield call(Sentry.captureException, error);
       yield put(setModalMessageAction({ modalMessage: error.message }));
     }
+  } finally {
+    yield putResolve(
+      setWaitingUserDataOnSignInAction({ isWaitingUserDataOnSignIn: false }),
+    );
   }
 }

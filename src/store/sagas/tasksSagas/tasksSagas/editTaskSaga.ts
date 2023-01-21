@@ -31,8 +31,8 @@ import { call, cancel, delay, put, select } from 'redux-saga/effects';
 
 export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
   const {
+    goBack,
     setIsLoading,
-    setModalVisible,
     editedTaskTitle,
     setEditedTaskTitle,
     taskID,
@@ -42,7 +42,6 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
     colorMark,
     shouldSetColor,
     setColorMark,
-    setIsMenuVisible,
   } = action.payload;
 
   const { COLOR_MARK, TASK_LISTS, TASKS, TITLE, USERS } = FIREBASE_PATH;
@@ -136,7 +135,8 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
     });
     const notificationID = taskNotification?.notificationID;
 
-    const shouldDeleteNotificationCondition = shouldCreateNotification && notificationID;
+    const shouldDeleteNotificationCondition =
+      (shouldCreateNotification && notificationID) || !shouldCreateNotification;
 
     if (shouldDeleteNotificationCondition) {
       if (taskNotification && notificationID) {
@@ -209,15 +209,12 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
       yield call(setColorMark, '');
     }
 
-    yield call(setModalVisible, false);
-    yield call(setIsMenuVisible, false);
+    yield call(goBack);
     yield call(setEditedTaskTitle, editedTaskTitle);
   } catch (error) {
     if (error instanceof Error) {
       yield call(Sentry.captureException, error);
       yield put(setModalMessageAction({ modalMessage: error.message }));
     }
-  } finally {
-    yield call(setIsLoading, false);
   }
 }
