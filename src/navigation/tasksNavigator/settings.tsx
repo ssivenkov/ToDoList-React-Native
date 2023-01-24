@@ -11,13 +11,13 @@ export const tasksNavigatorSettings: TasksNavigatorSettingsType = (params) => {
   const { styles, theme, accentColor } = params;
 
   return {
-    tabBarStyle: styles.tabBarContainer,
-    tabBarItemStyle: styles.tabBarItem,
+    tabBarStyle: styles.topTabBarContainer,
+    tabBarItemStyle: styles.topTabBarItem,
     tabBarActiveTintColor: accentColor,
     tabBarInactiveTintColor: theme.TAB_BAR_TEXT_COLOR,
-    tabBarIndicatorStyle: styles.tabBarIndicator,
-    tabBarIconStyle: styles.icon,
-    tabBarLabelStyle: styles.title,
+    tabBarIndicatorStyle: styles.topTabIndicator,
+    tabBarIconStyle: styles.topTabIconContainer,
+    tabBarLabelStyle: styles.topTabTitle,
   };
 };
 
@@ -29,7 +29,7 @@ export const toDoScreenSettings: TasksNavigatorSettingsType = (params) => {
       <FontAwesomeIcon
         icon={faList}
         size={ICON_SIZE_HALF_MEDIUM}
-        style={focused ? styles.tabFocusIcon : styles.tabIcon}
+        style={focused ? styles.topTabIconFocus : styles.topTabIcon}
       />
     ),
   };
@@ -43,7 +43,7 @@ export const doneScreenSettings: TasksNavigatorSettingsType = (params) => {
       <FontAwesomeIcon
         icon={faCheck}
         size={ICON_SIZE_HALF_MEDIUM}
-        style={focused ? styles.tabFocusIcon : styles.tabIcon}
+        style={focused ? styles.topTabIconFocus : styles.topTabIcon}
       />
     ),
   };

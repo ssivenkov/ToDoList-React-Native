@@ -11,9 +11,9 @@ import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 export type WithAuthNavigatorStylesType = {
   header: ViewStyle;
   headerTitle: TextStyle;
-  topTabBarContainer: ViewStyle;
-  topTabIconFocus: FontAwesomeIconStyle;
-  topTabIcon: FontAwesomeIconStyle;
+  bottomTabBarContainer: ViewStyle;
+  bottomTabIconFocus: FontAwesomeIconStyle;
+  bottomTabIcon: FontAwesomeIconStyle;
   bottomTabBarIcon: TextStyle;
   bottomTabBarTitle: TextStyle;
 };
@@ -30,17 +30,17 @@ export const withAuthNavigatorStyles = (props: ExtendedStylesPropsType) =>
       fontSize: headerTitleFontSize,
     },
 
-    topTabBarContainer: {
+    bottomTabBarContainer: {
       height: tabBarContainerHeight,
       backgroundColor: props.TAB_BAR_BACKGROUND_COLOR,
       borderTopWidth: 0,
     },
 
-    topTabIconFocus: {
+    bottomTabIconFocus: {
       color: props.ACCENT_COLOR,
     },
 
-    topTabIcon: {
+    bottomTabIcon: {
       color: props.TAB_BAR_ICON_COLOR,
     },
 
@@ -50,6 +50,6 @@ export const withAuthNavigatorStyles = (props: ExtendedStylesPropsType) =>
 
     bottomTabBarTitle: {
       fontSize: 14,
-      marginBottom: 2,
+      marginBottom: 1,
     },
   });

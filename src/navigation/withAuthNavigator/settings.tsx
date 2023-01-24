@@ -13,7 +13,7 @@ export const withAuthNavigatorOptions: WithAuthNavigatorScreenSettingsType = (pa
 
   return {
     headerShown: false,
-    tabBarStyle: styles.topTabBarContainer,
+    tabBarStyle: styles.bottomTabBarContainer,
     tabBarActiveTintColor: accentColor,
     tabBarInactiveTintColor: theme.TAB_BAR_TEXT_COLOR,
     tabBarIconStyle: styles.bottomTabBarIcon,
@@ -30,7 +30,7 @@ export const notepadScreenSettings: WithAuthNavigatorScreenSettingsType = (param
       <FontAwesomeIcon
         icon={faFileAlt}
         size={ICON_SIZE_HALF_MEDIUM}
-        style={focused ? styles.topTabIconFocus : styles.topTabIcon}
+        style={focused ? styles.bottomTabIconFocus : styles.bottomTabIcon}
       />
     ),
   };
@@ -49,7 +49,7 @@ export const tasksNavigatorSettings: WithAuthNavigatorScreenSettingsType = (para
       <FontAwesomeIcon
         icon={faList}
         size={ICON_SIZE_HALF_MEDIUM}
-        style={focused ? styles.topTabIconFocus : styles.topTabIcon}
+        style={focused ? styles.bottomTabIconFocus : styles.bottomTabIcon}
       />
     ),
   };
@@ -67,7 +67,7 @@ export const accountScreenSettings: WithAuthNavigatorScreenSettingsType = (param
       <FontAwesomeIcon
         icon={faUser}
         size={ICON_SIZE_HALF_MEDIUM}
-        style={focused ? styles.topTabIconFocus : styles.topTabIcon}
+        style={focused ? styles.bottomTabIconFocus : styles.bottomTabIcon}
       />
     ),
   };
