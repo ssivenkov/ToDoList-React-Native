@@ -7,6 +7,7 @@ type SignInButtonStylesType = {
   disabled: ViewStyle;
   icon: FontAwesomeIconStyle;
   text: TextStyle;
+  textContainer: ViewStyle;
   googleStyle: ViewStyle;
   facebookStyle: ViewStyle;
 };
@@ -17,9 +18,7 @@ export const signInButtonStyles = StyleSheet.create<SignInButtonStylesType>({
   button: {
     width: '100%',
     flexDirection: 'row',
-    justifyContent: 'flex-start',
     alignItems: 'center',
-    flexWrap: 'wrap',
     borderRadius: 3,
     paddingVertical: 8,
     paddingHorizontal: 12,
@@ -30,6 +29,10 @@ export const signInButtonStyles = StyleSheet.create<SignInButtonStylesType>({
     marginRight: 15,
     marginLeft: 2,
     color: WHITE,
+  },
+
+  textContainer: {
+    flex: 1,
   },
 
   text: {
