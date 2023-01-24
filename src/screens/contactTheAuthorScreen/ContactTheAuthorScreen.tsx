@@ -1,6 +1,8 @@
 import React, { useLayoutEffect, useState } from 'react';
 
 import { TextButton } from '@components/buttons/textButton/TextButton';
+import { GoBackButton } from '@components/header/buttons/goBackButton/GoBackButton';
+import { Header } from '@components/header/Header';
 import { FormikInput } from '@components/inputs/FormikInput';
 import { Loader } from '@components/loader/Loader';
 import { useStyles } from '@hooks/useStyles';
@@ -56,46 +58,52 @@ export const ContactTheAuthorScreen = () => {
   const buttonDisabledCondition = submitting || !isFormValid;
 
   return (
-    <ScrollView keyboardShouldPersistTaps='handled' style={styles.screenContainer}>
-      {submitting && (
-        <Modal transparent={true}>
-          <Loader />
-        </Modal>
-      )}
-      <View style={styles.inputsWrapper}>
-        <View style={styles.inputWrapper}>
-          <FormikInput
-            errorSubtext={
-              errors[emailField] && touched[emailField] ? errors[emailField] : ''
-            }
-            onBlur={() => setFieldTouched(emailField, true)}
-            onChangeText={handleChange(emailField)}
-            placeholder={t('contactTheAuthorScreen.EmailPlaceholder')}
-            subtext={t('contactTheAuthorScreen.EmailSubtext')}
-            suptext={t('contactTheAuthorScreen.EmailSuptext')}
-            value={values[emailField]}
-          />
-        </View>
-        <View style={styles.inputWrapper}>
-          <FormikInput
-            autogrow={true}
-            errorSubtext={
-              errors[messageField] && touched[messageField] ? errors[messageField] : ''
-            }
-            onBlur={() => setFieldTouched(messageField, true)}
-            onChangeText={handleChange(messageField)}
-            placeholder={t('contactTheAuthorScreen.MessagePlaceholder')}
-            suptext={t('contactTheAuthorScreen.MessageSuptext')}
-            value={values[messageField]}
-          />
-        </View>
-      </View>
-      <TextButton
-        containerStyle={styles.buttonContainer}
-        disabled={buttonDisabledCondition}
-        onPress={() => handleSubmit()}
-        title={t('contactTheAuthorScreen.SendButton')}
+    <View>
+      <Header
+        leftButton={<GoBackButton />}
+        title={t('contactTheAuthorScreen.HeaderTitle')}
       />
-    </ScrollView>
+      <ScrollView keyboardShouldPersistTaps='handled' style={styles.screenContainer}>
+        {submitting && (
+          <Modal transparent={true}>
+            <Loader />
+          </Modal>
+        )}
+        <View style={styles.inputsWrapper}>
+          <View style={styles.inputWrapper}>
+            <FormikInput
+              errorSubtext={
+                errors[emailField] && touched[emailField] ? errors[emailField] : ''
+              }
+              onBlur={() => setFieldTouched(emailField, true)}
+              onChangeText={handleChange(emailField)}
+              placeholder={t('contactTheAuthorScreen.EmailPlaceholder')}
+              subtext={t('contactTheAuthorScreen.EmailSubtext')}
+              suptext={t('contactTheAuthorScreen.EmailSuptext')}
+              value={values[emailField]}
+            />
+          </View>
+          <View style={styles.inputWrapper}>
+            <FormikInput
+              autogrow={true}
+              errorSubtext={
+                errors[messageField] && touched[messageField] ? errors[messageField] : ''
+              }
+              onBlur={() => setFieldTouched(messageField, true)}
+              onChangeText={handleChange(messageField)}
+              placeholder={t('contactTheAuthorScreen.MessagePlaceholder')}
+              suptext={t('contactTheAuthorScreen.MessageSuptext')}
+              value={values[messageField]}
+            />
+          </View>
+        </View>
+        <TextButton
+          containerStyle={styles.buttonContainer}
+          disabled={buttonDisabledCondition}
+          onPress={() => handleSubmit()}
+          title={t('contactTheAuthorScreen.SendButton')}
+        />
+      </ScrollView>
+    </View>
   );
 };

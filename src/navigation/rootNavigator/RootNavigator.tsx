@@ -5,7 +5,6 @@ import { modalStyles } from '@components/modals/modalStyles';
 import { ROOT_NAVIGATOR_ROUTE } from '@enums/routesEnum';
 import { GOOGLE_WEB_CLIENT_ID } from '@env';
 import { useStyles } from '@hooks/useStyles';
-import { nativeStackExtraScreenSettings } from '@navigation/rootNavigator/settings';
 import { WithAuthNavigator } from '@navigation/withAuthNavigator/WithAuthNavigator';
 import auth from '@react-native-firebase/auth';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
@@ -23,7 +22,6 @@ import { createChannelAction } from '@store/actions/userSagaActions/createChanne
 import { getUserDataAction } from '@store/actions/userSagaActions/getUserDataAction';
 import { UserDataType } from '@store/reducers/userReducer/types';
 import {
-  accentColorSelector,
   channelIDSelector,
   errorModalMessageSelector,
   isUserDataSynchronizedSelector,
@@ -47,7 +45,6 @@ export const RootNavigator = () => {
   const styles = useStyles(modalStyles);
 
   const theme = useSelector(themeSelector);
-  const accentColor = useSelector(accentColorSelector);
   const userID = useSelector(userIDSelector);
   const isUserDataSynchronized = useSelector(isUserDataSynchronizedSelector);
   const channelID = useSelector(channelIDSelector);
@@ -150,28 +147,17 @@ export const RootNavigator = () => {
               <Screen
                 component={ContactTheAuthorScreen}
                 name={ROOT_NAVIGATOR_ROUTE.CONTACT_THE_AUTHOR_SCREEN}
-                options={{
-                  ...nativeStackExtraScreenSettings({
-                    accentColor,
-                  }),
-                  title: t('contactTheAuthorScreen.HeaderTitle'),
-                }}
+                options={{ headerShown: false }}
               />
               <Screen
                 component={AddTaskScreen}
                 name={ROOT_NAVIGATOR_ROUTE.ADD_TASK_SCREEN}
-                options={{
-                  headerShown: false,
-                  title: t('addTaskScreen.HeaderTitle'),
-                }}
+                options={{ headerShown: false }}
               />
               <Screen
                 component={EditTaskScreen}
                 name={ROOT_NAVIGATOR_ROUTE.EDIT_TASK_SCREEN}
-                options={{
-                  headerShown: false,
-                  title: t('editTaskScreen.HeaderTitle'),
-                }}
+                options={{ headerShown: false }}
               />
             </>
           )}

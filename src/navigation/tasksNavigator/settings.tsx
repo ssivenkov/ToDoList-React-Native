@@ -4,7 +4,6 @@ import { ICON_SIZE_HALF_MEDIUM } from '@constants/constants';
 import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck';
 import { faList } from '@fortawesome/free-solid-svg-icons/faList';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { t } from 'i18next';
 
 import { TasksNavigatorSettingsType } from './types';
 
@@ -26,7 +25,6 @@ export const toDoScreenSettings: TasksNavigatorSettingsType = (params) => {
   const { styles } = params;
 
   return {
-    tabBarLabel: t('tasksScreen.TodoTasksTab'),
     tabBarIcon: ({ focused }) => (
       <FontAwesomeIcon
         icon={faList}
@@ -41,7 +39,6 @@ export const doneScreenSettings: TasksNavigatorSettingsType = (params) => {
   const { styles } = params;
 
   return {
-    tabBarLabel: t('tasksScreen.DoneTasksTab'),
     tabBarIcon: ({ focused }) => (
       <FontAwesomeIcon
         icon={faCheck}

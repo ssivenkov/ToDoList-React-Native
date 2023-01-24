@@ -10,3 +10,5 @@ export const ONLINE = 'online';
 export const screenWidth480px = 320;
 export const colorPickerDefaultGapSize = -10;
 export const contentMaxWidth = 450;
+export const left = 'left';
+export const right = 'right';

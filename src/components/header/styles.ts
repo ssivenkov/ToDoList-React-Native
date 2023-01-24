@@ -1,10 +1,6 @@
 import { COLORS } from '@colors/colors';
 import { ExtendedStylesPropsType } from '@hooks/useStyles';
-import {
-  headerButtonMargin,
-  headerHeight,
-  headerTitleFontSize,
-} from '@navigation/commonNavigationStyles';
+import { headerHeight, headerTitleFontSize } from '@navigation/commonNavigationStyles';
 import { StyleSheet, ViewStyle } from 'react-native';
 
 export type HeaderStylesType = {
@@ -13,6 +9,9 @@ export type HeaderStylesType = {
   leftButtonContainer: ViewStyle;
   rightButtonContainer: ViewStyle;
 };
+
+const buttonPaddingLong = 13;
+const buttonPaddingShort = 6;
 
 export const headerStyles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<HeaderStylesType>({
@@ -28,13 +27,21 @@ export const headerStyles = (props: ExtendedStylesPropsType) =>
       color: COLORS.WHITE,
       fontSize: headerTitleFontSize,
       fontWeight: '600',
+      flex: 1,
+      textAlign: 'center',
     },
 
     leftButtonContainer: {
-      marginLeft: headerButtonMargin,
+      height: '100%',
+      justifyContent: 'center',
+      paddingLeft: buttonPaddingLong,
+      paddingRight: buttonPaddingShort,
     },
 
     rightButtonContainer: {
-      marginRight: headerButtonMargin,
+      height: '100%',
+      justifyContent: 'center',
+      paddingLeft: buttonPaddingShort,
+      paddingRight: buttonPaddingLong,
     },
   });

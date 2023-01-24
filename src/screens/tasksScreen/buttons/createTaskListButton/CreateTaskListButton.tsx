@@ -1,13 +1,14 @@
 import React, { useRef, useState } from 'react';
 
 import { COLORS } from '@colors/colors';
-import { commonButtonStyles } from '@components/buttons/commonButtonStyles';
+import { headerStyles } from '@components/header/styles';
 import { Input } from '@components/inputs/Input';
 import { ModalIcon } from '@components/modals/ModalIcon';
 import { ICON_SIZE_MEDIUM, MAX_INPUT_LENGTH100 } from '@constants/constants';
 import { faPlus } from '@fortawesome/free-solid-svg-icons/faPlus';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { createDate } from '@helpers/generateDateHelper';
+import { useStyles } from '@hooks/useStyles';
 import { SetStateType } from '@root/types/common/types';
 import { addNewTaskListAction } from '@store/actions/tasksSagaActions/taskListsSagasActions/addNewTaskListAction';
 import { TaskListInterface } from '@store/reducers/tasksReducer/types';
@@ -19,6 +20,8 @@ import { useDispatch } from 'react-redux';
 
 export const CreateTaskListButton = () => {
   const dispatch = useDispatch();
+
+  const headerStyle = useStyles(headerStyles);
 
   const { t } = useTranslation();
 
@@ -66,7 +69,7 @@ export const CreateTaskListButton = () => {
   return (
     <ModalIcon
       buttonIcon={
-        <View style={commonButtonStyles.buttonContainer}>
+        <View style={headerStyle.rightButtonContainer}>
           <FontAwesomeIcon color={COLORS.WHITE} icon={faPlus} size={ICON_SIZE_MEDIUM} />
         </View>
       }
