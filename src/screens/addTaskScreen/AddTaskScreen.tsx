@@ -159,6 +159,7 @@ export const AddTaskScreen = () => {
               isOn={isColorPickerSwitcherOn}
               onToggleSwitcherClick={handleColorPickerSwitcherClick}
               size='medium'
+              switcherMarginLeft={15}
               switcherText={t('tasksScreen.EnableMarkColor')}
               textMarginBottom={1}
               textStyle={styles.colorPickerSwitcherText}

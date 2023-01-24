@@ -30,6 +30,7 @@ export const modalStyles = (props: ExtendedStylesPropsType) =>
       borderRadius: modalBorderRadius,
       paddingTop: 20,
       backgroundColor: props.MODAL_BACKGROUND_COLOR,
+      overflow: 'hidden',
     },
 
     contentWithBottomPadding: {
