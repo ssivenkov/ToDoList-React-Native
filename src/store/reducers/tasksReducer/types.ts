@@ -36,13 +36,13 @@ type TasksObjectType = {
   [key: string]: TaskType;
 };
 
-export interface TaskListBeforeConvertInterface extends TaskListWithoutTasksType {
+export type TaskListBeforeConvertType = TaskListWithoutTasksType & {
   tasks?: TasksObjectType;
-}
+};
 
-export interface TaskListInterface extends TaskListWithoutTasksType {
+export type TaskListType = TaskListWithoutTasksType & {
   tasks?: TaskType[];
-}
+};
 
 export type NotificationType = {
   taskID: TaskType['id'];
@@ -52,7 +52,7 @@ export type NotificationType = {
 };
 
 export type TasksReducerStateType = {
-  taskLists: TaskListInterface[];
+  taskLists: TaskListType[];
   notifications: NotificationType[];
 };
 

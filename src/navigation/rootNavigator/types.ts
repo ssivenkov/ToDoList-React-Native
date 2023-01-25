@@ -3,20 +3,20 @@ import { ROOT_NAVIGATOR_ROUTE } from '@enums/routesEnum';
 import { BottomTabParamList } from '@navigation/withAuthNavigator/types';
 import { NavigatorScreenParams } from '@react-navigation/native';
 import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
-import { TaskListInterface, TaskType } from '@store/reducers/tasksReducer/types';
+import { TaskListType, TaskType } from '@store/reducers/tasksReducer/types';
 import { ColorType } from '@store/reducers/userReducer/types';
 
 export type AddTaskScreenParamList = {
-  fullTaskList: TaskListInterface;
-  taskListDate: TaskListInterface['date'];
-  taskListID: TaskListInterface['id'];
+  fullTaskList: TaskListType;
+  taskListDate: TaskListType['date'];
+  taskListID: TaskListType['id'];
   taskListTitle: TaskType['title'];
 };
 
 export type EditTaskScreenParamList = {
   isTodo: isTodoTaskListType;
   oldTaskTitle: TaskType['title'];
-  taskListID: TaskListInterface['id'];
+  taskListID: TaskListType['id'];
   taskID: TaskType['id'];
 
   colorMark?: TaskType['colorMark'];

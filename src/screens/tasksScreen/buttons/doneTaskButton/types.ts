@@ -1,7 +1,7 @@
-import { TaskListInterface, TaskType } from '@store/reducers/tasksReducer/types';
+import { TaskListType, TaskType } from '@store/reducers/tasksReducer/types';
 
 export type DoneTaskButtonPropsType = {
-  taskListID: TaskListInterface['id'];
+  taskListID: TaskListType['id'];
   doneTaskID: TaskType['id'];
   completedTaskTitle: TaskType['title'];
 };

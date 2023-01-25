@@ -1,10 +1,10 @@
 import { TASKS_REDUCER_ACTION } from '@enums/tasksReducerEnum';
-import { TaskListInterface } from '@store/reducers/tasksReducer/types';
+import { TaskListType } from '@store/reducers/tasksReducer/types';
 
 type SetCollapsedTaskListActionPayloadType = {
-  taskListID: TaskListInterface['id'];
-  isTodoCollapsed: TaskListInterface['isTodoCollapsed'];
-  isDoneCollapsed: TaskListInterface['isDoneCollapsed'];
+  taskListID: TaskListType['id'];
+  isTodoCollapsed: TaskListType['isTodoCollapsed'];
+  isDoneCollapsed: TaskListType['isDoneCollapsed'];
 };
 
 export type SetCollapsedTaskListActionReturnType = {

@@ -1,8 +1,8 @@
 import { TASKS_REDUCER_ACTION } from '@enums/tasksReducerEnum';
-import { TaskListInterface } from '@store/reducers/tasksReducer/types';
+import { TaskListType } from '@store/reducers/tasksReducer/types';
 
 type DeleteTaskListFromScreenActionPayloadType = {
-  fullTaskList: TaskListInterface;
+  fullTaskList: TaskListType;
   deleteTodoTask: boolean;
   deleteDoneTask: boolean;
 };

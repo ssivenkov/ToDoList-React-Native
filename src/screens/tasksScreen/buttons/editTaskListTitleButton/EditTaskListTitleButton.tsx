@@ -8,7 +8,7 @@ import { faPen } from '@fortawesome/free-solid-svg-icons/faPen';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { SetStateType } from '@root/types/common/types';
 import { editTaskListTitleAction } from '@store/actions/tasksSagaActions/taskListsSagasActions/editTaskListTitleAction';
-import { TaskListInterface } from '@store/reducers/tasksReducer/types';
+import { TaskListType } from '@store/reducers/tasksReducer/types';
 import { themeSelector } from '@store/selectors/userSelectors';
 import { useTranslation } from 'react-i18next';
 import { TextInput, View } from 'react-native';
@@ -35,7 +35,7 @@ export const EditTaskListTitleButton = ({
   };
 
   const [editedTaskListTitle, setEditedTaskListTitle] =
-    useState<TaskListInterface['title']>(oldTaskListTitle);
+    useState<TaskListType['title']>(oldTaskListTitle);
 
   const notEmptyTaskListTitleCondition = editedTaskListTitle.length > 0;
 

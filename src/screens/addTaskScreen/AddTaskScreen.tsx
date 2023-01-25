@@ -15,7 +15,7 @@ import { SendNewTaskButton } from '@screens/addTaskScreen/sendNewTaskButton/Send
 import { AddTaskScreenRouteType } from '@screens/addTaskScreen/types';
 import { addNewTaskAction } from '@store/actions/tasksSagaActions/tasksSagasActions/addNewTaskAction';
 import { setSelectedColorAction } from '@store/actions/userReducerActions/setSelectedColorAction';
-import { TaskListInterface, TaskType } from '@store/reducers/tasksReducer/types';
+import { TaskListType, TaskType } from '@store/reducers/tasksReducer/types';
 import { ColorType } from '@store/reducers/userReducer/types';
 import { selectedColorSelector } from '@store/selectors/userSelectors';
 import { nanoid } from 'nanoid';
@@ -96,7 +96,7 @@ export const AddTaskScreen = () => {
 
     const tasks = fullTaskList.tasks ? [...fullTaskList.tasks, newTask] : [newTask];
 
-    const modifiedTaskList: TaskListInterface = {
+    const modifiedTaskList: TaskListType = {
       id: taskListID,
       date: taskListDate,
       title: taskListTitle,

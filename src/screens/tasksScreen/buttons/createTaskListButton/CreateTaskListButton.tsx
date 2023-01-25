@@ -11,7 +11,7 @@ import { createDate } from '@helpers/generateDateHelper';
 import { useStyles } from '@hooks/useStyles';
 import { SetStateType } from '@root/types/common/types';
 import { addNewTaskListAction } from '@store/actions/tasksSagaActions/taskListsSagasActions/addNewTaskListAction';
-import { TaskListInterface } from '@store/reducers/tasksReducer/types';
+import { TaskListType } from '@store/reducers/tasksReducer/types';
 import { nanoid } from 'nanoid';
 import { useTranslation } from 'react-i18next';
 import 'react-native-get-random-values';
@@ -25,7 +25,7 @@ export const CreateTaskListButton = () => {
 
   const { t } = useTranslation();
 
-  const [taskListTitle, setTaskListTitle] = useState<TaskListInterface['title']>('');
+  const [taskListTitle, setTaskListTitle] = useState<TaskListType['title']>('');
 
   const inputRef = useRef<TextInput>(null);
 
@@ -46,7 +46,7 @@ export const CreateTaskListButton = () => {
     setModalVisible: SetStateType<boolean>,
   ) => {
     if (notEmptyTaskListTitleCondition) {
-      const taskList: TaskListInterface = {
+      const taskList: TaskListType = {
         id: nanoid(),
         date: createDate(),
         title: taskListTitle,

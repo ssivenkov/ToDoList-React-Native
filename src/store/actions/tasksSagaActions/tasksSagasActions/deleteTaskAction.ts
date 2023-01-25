@@ -1,9 +1,9 @@
 import { TASKS_SAGA_ACTION } from '@enums/tasksSagaEnum';
 import { SetStateType } from '@root/types/common/types';
-import { TaskListInterface, TaskType } from '@store/reducers/tasksReducer/types';
+import { TaskListType, TaskType } from '@store/reducers/tasksReducer/types';
 
 export type DeleteTaskSagaPayloadType = {
-  taskListID: TaskListInterface['id'];
+  taskListID: TaskListType['id'];
   taskID: TaskType['id'];
   setIsLoading: SetStateType<boolean>;
   setModalVisible: SetStateType<boolean>;

@@ -1,9 +1,9 @@
 import { TASKS_REDUCER_ACTION } from '@enums/tasksReducerEnum';
-import { TaskListInterface } from '@store/reducers/tasksReducer/types';
+import { TaskListType } from '@store/reducers/tasksReducer/types';
 
 type EditTaskListTitleActionPayloadType = {
-  taskListID: TaskListInterface['id'];
-  editedTaskListTitle: TaskListInterface['title'];
+  taskListID: TaskListType['id'];
+  editedTaskListTitle: TaskListType['title'];
 };
 
 export type EditTaskListTitleActionReturnType = {

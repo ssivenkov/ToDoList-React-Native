@@ -1,8 +1,8 @@
 import { TASKS_REDUCER_ACTION } from '@enums/tasksReducerEnum';
-import { TaskListInterface, TaskType } from '@store/reducers/tasksReducer/types';
+import { TaskListType, TaskType } from '@store/reducers/tasksReducer/types';
 
 type SetTaskIsDoneActionPayloadType = {
-  taskListID: TaskListInterface['id'];
+  taskListID: TaskListType['id'];
   doneTaskID: TaskType['id'];
 };
 

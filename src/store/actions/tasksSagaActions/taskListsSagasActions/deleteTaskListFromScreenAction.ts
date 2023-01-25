@@ -1,9 +1,9 @@
 import { TASKS_SAGA_ACTION } from '@enums/tasksSagaEnum';
 import { SetStateType } from '@root/types/common/types';
-import { TaskListInterface } from '@store/reducers/tasksReducer/types';
+import { TaskListType } from '@store/reducers/tasksReducer/types';
 
 export type DeleteTaskListFromScreenSagaPayloadType = {
-  fullTaskList: TaskListInterface;
+  fullTaskList: TaskListType;
   deleteTodoTask: boolean;
   deleteDoneTask: boolean;
   setIsLoading: SetStateType<boolean>;

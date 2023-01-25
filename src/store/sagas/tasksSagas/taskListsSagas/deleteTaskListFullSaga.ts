@@ -9,7 +9,7 @@ import { setNotificationsAction } from '@store/actions/tasksReducerActions/notif
 import { deleteTaskListFullAction } from '@store/actions/tasksReducerActions/taskListsActions/deleteTaskListFullAction';
 import { DeleteTaskListFullSagaActionReturnType } from '@store/actions/tasksSagaActions/taskListsSagasActions/deleteTaskListFullAction';
 import { setModalMessageAction } from '@store/actions/userReducerActions/setModalMessageAction';
-import { NotificationType, TaskListInterface } from '@store/reducers/tasksReducer/types';
+import { NotificationType, TaskListType } from '@store/reducers/tasksReducer/types';
 import { UserIDType } from '@store/reducers/userReducer/types';
 import {
   notificationsSelector,
@@ -38,7 +38,7 @@ export function* deleteTaskListFullSaga(action: DeleteTaskListFullSagaActionRetu
 
     const userID: UserIDType = yield select(userIDSelector);
     const notifications: NotificationType[] = yield select(notificationsSelector);
-    const taskLists: TaskListInterface[] = yield select(taskListsSelector);
+    const taskLists: TaskListType[] = yield select(taskListsSelector);
 
     const taskList = taskLists.find((taskList) => taskList.id === taskListID);
 

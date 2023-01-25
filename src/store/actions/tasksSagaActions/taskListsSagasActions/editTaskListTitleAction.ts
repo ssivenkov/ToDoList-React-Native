@@ -1,10 +1,10 @@
 import { TASKS_SAGA_ACTION } from '@enums/tasksSagaEnum';
 import { SetStateType } from '@root/types/common/types';
-import { TaskListInterface } from '@store/reducers/tasksReducer/types';
+import { TaskListType } from '@store/reducers/tasksReducer/types';
 
 export type EditTaskListTitleSagaPayloadType = {
-  taskListID: TaskListInterface['id'];
-  editedTaskListTitle: TaskListInterface['title'];
+  taskListID: TaskListType['id'];
+  editedTaskListTitle: TaskListType['title'];
   setIsLoading: SetStateType<boolean>;
   setModalVisible: SetStateType<boolean>;
   setEditedTaskListTitleState: SetStateType<string>;

@@ -1,9 +1,9 @@
 import { TASKS_REDUCER_ACTION } from '@enums/tasksReducerEnum';
-import { TaskListInterface, TaskType } from '@store/reducers/tasksReducer/types';
+import { TaskListType, TaskType } from '@store/reducers/tasksReducer/types';
 import { ColorType } from '@store/reducers/userReducer/types';
 
 type SetEditedTaskActionPayloadType = {
-  taskListID: TaskListInterface['id'];
+  taskListID: TaskListType['id'];
   taskID: TaskType['id'];
   editedTaskTitle: TaskType['title'];
 

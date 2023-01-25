@@ -7,12 +7,12 @@ import {
 import { useWindowDimensions } from 'react-native';
 import { useSelector } from 'react-redux';
 
-export interface ExtendedStylesPropsType extends ThemeType {
+export type ExtendedStylesPropsType = ThemeType & {
   ACCENT_COLOR: ColorType;
   appWidth: number;
   appHeight: number;
   emulatorStatusBarHeight: number;
-}
+};
 
 export const useStyles = <TStyles, ArgType>(
   styleFunction: (props: ExtendedStylesPropsType, ...args: ArgType[]) => TStyles,

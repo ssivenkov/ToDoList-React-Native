@@ -1,4 +1,4 @@
-import { TaskListInterface, TaskType } from '@store/reducers/tasksReducer/types';
+import { TaskListType, TaskType } from '@store/reducers/tasksReducer/types';
 
 export type TaskPropsType = {
   isTodo: boolean;
@@ -6,7 +6,7 @@ export type TaskPropsType = {
   taskTitle: TaskType['title'];
   colorMark?: TaskType['colorMark'];
   taskID: TaskType['id'];
-  fullTaskList: TaskListInterface;
+  fullTaskList: TaskListType;
 };
 
 export type IsMenuVisibleType = boolean;
