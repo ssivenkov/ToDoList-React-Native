@@ -3,7 +3,7 @@ import React from 'react';
 import { COLORS } from '@colors/colors';
 import { IconButton } from '@components/buttons/iconButton/IconButton';
 import { headerStyles } from '@components/header/styles';
-import { ICON_SIZE_MEDIUM } from '@constants/constants';
+import { ICON_SIZE_HALF_MEDIUM } from '@constants/constants';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons/faArrowLeft';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import 'react-native-get-random-values';
@@ -22,7 +22,11 @@ export const GoBackButton = () => {
     <IconButton
       icon={
         <View style={headerStyle.leftButtonContainer}>
-          <FontAwesomeIcon color={WHITE} icon={faArrowLeft} size={ICON_SIZE_MEDIUM} />
+          <FontAwesomeIcon
+            color={WHITE}
+            icon={faArrowLeft}
+            size={ICON_SIZE_HALF_MEDIUM}
+          />
         </View>
       }
       onPress={navigation.goBack}
