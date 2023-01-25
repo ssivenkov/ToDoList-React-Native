@@ -76,3 +76,9 @@ export const isWaitingUserDataOnSignInSelector = (
 ): UserReducerStateType['isWaitingUserDataOnSignIn'] => {
   return state.user.isWaitingUserDataOnSignIn;
 };
+
+export const emulatorStatusBarHeightSelector = (
+  state: AppRootStateType,
+): UserReducerStateType['emulatorStatusBarHeight'] => {
+  return state.user.emulatorStatusBarHeight;
+};

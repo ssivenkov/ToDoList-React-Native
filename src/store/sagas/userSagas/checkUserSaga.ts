@@ -5,6 +5,7 @@ import { FIREBASE_PATH } from '@enums/firebaseEnum';
 import { checkInternetConnectionHelper } from '@helpers/checkInternetConnectionHelper';
 import { DB } from '@root/api/DB';
 import * as Sentry from '@sentry/react-native';
+import { setEmulatorStatusBarHeightAction } from '@store/actions/userReducerActions/setEmulatorStatusBarHeightAction';
 import { setModalMessageAction } from '@store/actions/userReducerActions/setModalMessageAction';
 import { syncUserDataAction } from '@store/actions/userSagaActions/syncUserDataAction';
 import {
@@ -16,6 +17,8 @@ import {
   isUserDataSynchronizedSelector,
   userIDSelector,
 } from '@store/selectors/userSelectors';
+import { isEmulator } from 'react-native-device-info';
+import { getStatusBarHeight } from 'react-native-status-bar-height';
 import { call, cancel, put, select } from 'redux-saga/effects';
 
 export function* checkUserSaga() {
@@ -28,6 +31,14 @@ export function* checkUserSaga() {
       yield put(setModalMessageAction({ modalMessage: internetConnectionStatus }));
 
       yield cancel();
+    }
+
+    const isDeviceEmulator: boolean = yield call(isEmulator);
+
+    if (isDeviceEmulator && __DEV__) {
+      const emulatorStatusBarHeight: number = yield call(getStatusBarHeight);
+
+      yield put(setEmulatorStatusBarHeightAction({ emulatorStatusBarHeight }));
     }
 
     const userID: UserIDType = yield select(userIDSelector);

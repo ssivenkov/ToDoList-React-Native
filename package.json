@@ -36,6 +36,7 @@
     "react-native": "0.67.3",
     "react-native-autogrow-textinput": "^5.4.0",
     "react-native-date-picker": "^4.2.6",
+    "react-native-device-info": "^10.3.0",
     "react-native-dotenv": "^3.3.1",
     "react-native-fbsdk-next": "^7.3.3",
     "react-native-gesture-handler": "^2.3.2",

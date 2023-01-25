@@ -4,9 +4,20 @@ import { IconButton } from '@components/buttons/iconButton/IconButton';
 import { ModalMenuButton } from '@components/buttons/modalMenuButton/ModalMenuButton';
 import { Separator } from '@components/buttons/modalMenuButton/Separator';
 import { Loader } from '@components/loader/Loader';
+import {
+  defaultModalIndentBottom,
+  defaultModalPaddingHorizontal,
+} from '@constants/constants';
 import { useStyles } from '@hooks/useStyles';
 import { useTranslation } from 'react-i18next';
-import { Keyboard, Modal, Text, TouchableWithoutFeedback, View } from 'react-native';
+import {
+  Keyboard,
+  Modal,
+  ScrollView,
+  Text,
+  TouchableWithoutFeedback,
+  View,
+} from 'react-native';
 
 import { modalStyles } from './modalStyles';
 import { ModalIconPropsType } from './types';
@@ -14,6 +25,7 @@ import { ModalIconPropsType } from './types';
 export const ModalIcon = (props: ModalIconPropsType) => {
   const {
     children,
+    contentPaddingHorizontal = defaultModalPaddingHorizontal,
     description,
     buttonIcon,
     buttonIconDisabled = false,
@@ -23,6 +35,7 @@ export const ModalIcon = (props: ModalIconPropsType) => {
     setModalVisibleFromProps,
     okDisabled,
     inputFocus,
+    hasContentPaddingBottom = true,
   } = props;
 
   const styles = useStyles(modalStyles);
@@ -74,10 +87,27 @@ export const ModalIcon = (props: ModalIconPropsType) => {
           <TouchableWithoutFeedback onPress={keyboardDismiss}>
             <View style={styles.centeredView}>
               <View style={styles.modalView}>
-                <View style={styles.contentWithBottomPadding}>
-                  {description && <Text style={styles.text}>{description}</Text>}
-                  {children && <View style={styles.contentContainer}>{children}</View>}
-                </View>
+                {description && (
+                  <View style={styles.descriptionContainer}>
+                    <Text style={styles.text}>{description}</Text>
+                  </View>
+                )}
+                {children && (
+                  <ScrollView
+                    contentContainerStyle={[
+                      styles.childrenContainer,
+                      {
+                        paddingBottom: hasContentPaddingBottom
+                          ? defaultModalIndentBottom
+                          : 0,
+                      },
+                    ]}
+                    style={{ paddingHorizontal: contentPaddingHorizontal }}
+                  >
+                    {/* children wrapper for sensitivity to start of a touch. Need because ScrollView is inside TouchableWithoutFeedback */}
+                    <View onStartShouldSetResponder={() => true}>{children}</View>
+                  </ScrollView>
+                )}
                 <View style={styles.buttonsContainer}>
                   <ModalMenuButton
                     disabled={okDisabled}

@@ -22,6 +22,7 @@ import { Nullable } from '@root/types/common/types';
 import { SetAccentColorActionReturnType } from '@store/actions/userReducerActions/setAccentColorAction';
 import { SetAuthStateActionReturnType } from '@store/actions/userReducerActions/setAuthStateAction';
 import { SetChannelIDActionReturnType } from '@store/actions/userReducerActions/setChannelIDAction';
+import { SetEmulatorStatusBarHeightActionReturnType } from '@store/actions/userReducerActions/setEmulatorStatusBarHeightAction';
 import { SetGlobalLoaderActionReturnType } from '@store/actions/userReducerActions/setGlobalLoaderAction';
 import { SetIsUserDataSynchronizedActionReturnType } from '@store/actions/userReducerActions/setIsUserDataSynchronizedAction';
 import { SetLanguageActionReturnType } from '@store/actions/userReducerActions/setLanguageAction';
@@ -99,6 +100,7 @@ export type UserReducerStateType = {
   modalMessage: ModalMessageType;
   isUserDataSynchronized: boolean;
   isWaitingUserDataOnSignIn: boolean;
+  emulatorStatusBarHeight: number;
 };
 
 export type UserReducerActionsType =
@@ -114,4 +116,5 @@ export type UserReducerActionsType =
   | SetGlobalLoaderActionReturnType
   | SetModalMessageActionReturnType
   | SetIsUserDataSynchronizedActionReturnType
-  | SetWaitingUserDataOnSignInActionReturnType;
+  | SetWaitingUserDataOnSignInActionReturnType
+  | SetEmulatorStatusBarHeightActionReturnType;

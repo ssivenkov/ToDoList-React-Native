@@ -44,7 +44,7 @@
     // react native
     "react-native/no-unused-styles": "error",
     "react-native/split-platform-components": "error",
-    "react-native/no-inline-styles": "error",
+    "react-native/no-inline-styles": "off",
     "react-native/no-color-literals": "error",
     "react-native/no-raw-text": "error",
     "react-native/no-single-element-style-arrays": "error",
@@ -125,7 +125,7 @@
     "dot-notation": "error",
 
     // naming
-    "id-denylist": ["error", "data", "err", "e", "cb", "callback"],
+    "id-denylist": ["error", "data", "err", "e", "fn", "cb", "callback"],
     "new-cap": "off",
     "no-label-var": "error",
     "no-underscore-dangle": ["error", {

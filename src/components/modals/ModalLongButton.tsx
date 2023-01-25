@@ -3,9 +3,13 @@ import React, { useState } from 'react';
 import { LongButton } from '@components/buttons/longButton/LongButton';
 import { ModalMenuButton } from '@components/buttons/modalMenuButton/ModalMenuButton';
 import { Separator } from '@components/buttons/modalMenuButton/Separator';
+import {
+  defaultModalIndentBottom,
+  defaultModalPaddingHorizontal,
+} from '@constants/constants';
 import { useStyles } from '@hooks/useStyles';
 import { useTranslation } from 'react-i18next';
-import { Modal, Text, View } from 'react-native';
+import { Modal, ScrollView, Text, View } from 'react-native';
 
 import { modalStyles } from './modalStyles';
 import { ModalLongButtonPropsType } from './types';
@@ -13,6 +17,7 @@ import { ModalLongButtonPropsType } from './types';
 export const ModalLongButton = (props: ModalLongButtonPropsType) => {
   const {
     children,
+    contentPaddingHorizontal = defaultModalPaddingHorizontal,
     description,
     buttonIcon,
     buttonTitle,
@@ -20,7 +25,7 @@ export const ModalLongButton = (props: ModalLongButtonPropsType) => {
     closeHandler,
     rightComponent,
     disabled,
-    hasContentBottomPadding = true,
+    hasContentPaddingBottom = true,
   } = props;
 
   const styles = useStyles(modalStyles);
@@ -48,16 +53,24 @@ export const ModalLongButton = (props: ModalLongButtonPropsType) => {
       <Modal onRequestClose={onClosePress} transparent={true} visible={modalVisible}>
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <View
-              style={
-                hasContentBottomPadding
-                  ? styles.contentWithBottomPadding
-                  : styles.contentWithoutBottomPadding
-              }
-            >
-              {description && <Text style={styles.text}>{description}</Text>}
-              {children && <View>{children}</View>}
-            </View>
+            {description && (
+              <View style={styles.descriptionContainer}>
+                <Text style={styles.text}>{description}</Text>
+              </View>
+            )}
+            {children && (
+              <ScrollView
+                contentContainerStyle={[
+                  styles.childrenContainer,
+                  {
+                    paddingBottom: hasContentPaddingBottom ? defaultModalIndentBottom : 0,
+                  },
+                ]}
+                style={{ paddingHorizontal: contentPaddingHorizontal }}
+              >
+                {children}
+              </ScrollView>
+            )}
             <View style={styles.buttonsContainer}>
               {okHandler && (
                 <>

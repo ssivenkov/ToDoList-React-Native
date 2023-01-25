@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { SetStateType } from '@root/types/common/types';
 
@@ -11,22 +13,25 @@ export type ModalIconPropsType = {
   buttonIconDisabled?: boolean;
   children?: JSX.Element;
   closeHandler?: () => void;
+  contentPaddingHorizontal?: number;
   description?: string;
   inputFocus?: () => void;
   modalVisibleFromProps?: boolean;
   okDisabled?: boolean;
+  hasContentPaddingBottom?: boolean;
   setModalVisibleFromProps?: SetStateType<boolean>;
 };
 
 export type ModalLongButtonPropsType = {
-  buttonTitle: string;
   buttonIcon: IconProp;
+  buttonTitle: string;
 
-  children?: JSX.Element;
+  children?: JSX.Element | ReactNode;
+  closeHandler?: () => void;
+  contentPaddingHorizontal?: number;
   description?: string;
+  disabled?: boolean;
+  hasContentPaddingBottom?: boolean;
   okHandler?: () => void;
   rightComponent?: JSX.Element;
-  closeHandler?: () => void;
-  disabled?: boolean;
-  hasContentBottomPadding?: boolean;
 };

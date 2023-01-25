@@ -59,6 +59,7 @@ export function* signOutSaga(action: SignOutSagaActionReturnType) {
         selectedColor: COLORS.ELECTRIC_VIOLET2,
         accentColor: COLORS.ELECTRIC_VIOLET2,
         isWaitingUserDataOnSignIn: false,
+        emulatorStatusBarHeight: 0,
       }),
     );
 

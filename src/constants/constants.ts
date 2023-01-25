@@ -12,3 +12,7 @@ export const colorPickerDefaultGapSize = -10;
 export const contentMaxWidth = 450;
 export const left = 'left';
 export const right = 'right';
+export const modalBorderRadius = 20;
+export const modalContentMaxWidth = 360;
+export const defaultModalPaddingHorizontal = 16;
+export const defaultModalIndentBottom = 16;

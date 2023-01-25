@@ -4,7 +4,6 @@ import { Platform, StyleSheet, TextStyle, ViewStyle } from 'react-native';
 type LongButtonStylesType = {
   longButtonContainer: ViewStyle;
   contentContainer: ViewStyle;
-  icon: ViewStyle;
   stringIcon: TextStyle;
   text: TextStyle;
   rightComponent: ViewStyle;
@@ -15,7 +14,7 @@ const textMarginBottom = 1.5;
 export const longButtonStyles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<LongButtonStylesType>({
     longButtonContainer: {
-      width: props.appWidth,
+      width: '100%',
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'space-between',
@@ -28,10 +27,6 @@ export const longButtonStyles = (props: ExtendedStylesPropsType) =>
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'space-between',
-    },
-
-    icon: {
-      marginLeft: 15,
     },
 
     stringIcon: {

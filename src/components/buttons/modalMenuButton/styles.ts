@@ -1,5 +1,5 @@
 import { COLORS } from '@colors/colors';
-import { modalBorderRadius } from '@components/modals/modalStyles';
+import { modalBorderRadius } from '@constants/constants';
 import { ExtendedStylesPropsType } from '@hooks/useStyles';
 import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 

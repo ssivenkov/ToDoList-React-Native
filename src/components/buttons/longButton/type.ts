@@ -5,6 +5,7 @@ export type LongButtonPropsType = {
   onPress: () => void;
   icon: IconProp | string;
 
+  iconMarginLeft?: number;
   rightComponent?: JSX.Element;
   touched?: boolean[];
   errors?: Array<string | undefined>;

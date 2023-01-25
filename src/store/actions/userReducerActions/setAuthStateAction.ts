@@ -8,6 +8,7 @@ type SetAuthStateActionPayloadType = {
   accentColor: UserReducerStateType['accentColor'];
   selectedColor: UserReducerStateType['selectedColor'];
   isWaitingUserDataOnSignIn: UserReducerStateType['isWaitingUserDataOnSignIn'];
+  emulatorStatusBarHeight: UserReducerStateType['emulatorStatusBarHeight'];
 };
 
 export type SetAuthStateActionReturnType = {

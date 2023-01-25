@@ -11,7 +11,16 @@ import { longButtonStyles } from './styles';
 import { LongButtonPropsType } from './type';
 
 export const LongButton = (props: LongButtonPropsType) => {
-  const { icon, title, onPress, rightComponent, disabled } = props;
+  const defaultIconMarginLeft = 15;
+
+  const {
+    icon,
+    iconMarginLeft = defaultIconMarginLeft,
+    title,
+    onPress,
+    rightComponent,
+    disabled,
+  } = props;
 
   const styles = useStyles(longButtonStyles);
 
@@ -24,7 +33,7 @@ export const LongButton = (props: LongButtonPropsType) => {
       style={styles.longButtonContainer}
     >
       <View style={styles.contentContainer}>
-        <View style={styles.icon}>
+        <View style={{ marginLeft: iconMarginLeft }}>
           {typeof icon === 'string' ? (
             <Text style={styles.stringIcon}>{icon}</Text>
           ) : (

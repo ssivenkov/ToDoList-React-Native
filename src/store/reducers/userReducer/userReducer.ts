@@ -20,6 +20,7 @@ const userReducerState: UserReducerStateType = {
   modalMessage: '',
   isUserDataSynchronized: false,
   isWaitingUserDataOnSignIn: false,
+  emulatorStatusBarHeight: 0,
 };
 
 export const userReducer = (
@@ -39,6 +40,7 @@ export const userReducer = (
         isUserDataSynchronized: action.payload.isUserDataSynchronized,
         accentColor: action.payload.accentColor,
         selectedColor: action.payload.selectedColor,
+        emulatorStatusBarHeight: action.payload.emulatorStatusBarHeight,
       };
     case USER_REDUCER_ACTION.SET_PROVIDER_ID:
       return { ...state, providerID: action.payload.providerID };
@@ -62,6 +64,11 @@ export const userReducer = (
       return {
         ...state,
         isWaitingUserDataOnSignIn: action.payload.isWaitingUserDataOnSignIn,
+      };
+    case USER_REDUCER_ACTION.SET_EMULATOR_STATUS_BAR_HEIGHT:
+      return {
+        ...state,
+        emulatorStatusBarHeight: action.payload.emulatorStatusBarHeight,
       };
     default:
       return state;
