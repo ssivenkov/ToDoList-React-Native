@@ -6,7 +6,12 @@ import { Header } from '@components/header/Header';
 import { Input } from '@components/inputs/Input';
 import { Notification } from '@components/notification/Notification';
 import { Switcher } from '@components/switcher/Switcher';
-import { colorPickerDefaultGapSize, MAX_INPUT_LENGTH200 } from '@constants/constants';
+import {
+  colorPickerDefaultGapSize,
+  MAX_INPUT_LENGTH200,
+  screenWidth480px,
+  switcherMargin,
+} from '@constants/constants';
 import { useStyles } from '@hooks/useStyles';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { Nullable, SetStateType } from '@root/types/common/types';
@@ -18,7 +23,7 @@ import { TaskType } from '@store/reducers/tasksReducer/types';
 import { ColorType } from '@store/reducers/userReducer/types';
 import { notificationsSelector } from '@store/selectors/tasksSelectors';
 import { useTranslation } from 'react-i18next';
-import { ScrollView, View } from 'react-native';
+import { ScrollView, useWindowDimensions, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { editTaskScreenStyles } from './styles';
@@ -36,6 +41,15 @@ export const EditTaskScreen = () => {
   const { t } = useTranslation();
 
   const notifications = useSelector(notificationsSelector);
+
+  const { width: appWidth } = useWindowDimensions();
+
+  const colorPickerGapSizeOnNarrowScreen = 0;
+
+  const colorPickerGapSize =
+    appWidth <= screenWidth480px
+      ? colorPickerGapSizeOnNarrowScreen
+      : colorPickerDefaultGapSize;
 
   const taskNotification = notifications.find((item) => item.taskID === taskID);
 
@@ -150,6 +164,7 @@ export const EditTaskScreen = () => {
               onToggleSwitcherClick={handleColorPickerSwitcherClick}
               size='medium'
               switcherMarginLeft={15}
+              switcherMarginRight={switcherMargin}
               switcherText={t('tasksScreen.EnableMarkColor')}
               textMarginBottom={1}
               textStyle={styles.colorPickerSwitcherText}
@@ -159,7 +174,7 @@ export const EditTaskScreen = () => {
             <View style={styles.colorPickerWrapper}>
               <ColorPickerComponent
                 color={colorMark}
-                gapSize={colorPickerDefaultGapSize}
+                gapSize={colorPickerGapSize}
                 setSelectedColor={setTempColorMark}
               />
             </View>
@@ -167,7 +182,7 @@ export const EditTaskScreen = () => {
           {isColorPickerSwitcherOn && !colorMark && (
             <View style={styles.colorPickerWrapper}>
               <ColorPickerComponent
-                gapSize={colorPickerDefaultGapSize}
+                gapSize={colorPickerGapSize}
                 setSelectedColor={setSelectedColor}
               />
             </View>

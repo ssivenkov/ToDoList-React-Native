@@ -33,10 +33,10 @@ export const editTaskScreenStyles = (props: ExtendedStylesPropsType) =>
     },
 
     colorPickerWrapper: {
-      marginLeft: 4,
+      height: 310,
       marginTop: 25,
+      marginLeft: 4,
       paddingBottom: 90,
-      height: 270,
     },
 
     contentContainer: {

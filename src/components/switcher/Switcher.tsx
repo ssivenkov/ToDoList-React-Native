@@ -17,6 +17,7 @@ export const Switcher = (props: SwitcherPropsType) => {
     textStyle,
     textMarginBottom,
     switcherMarginLeft = 0,
+    switcherMarginRight = 0,
   } = props;
 
   const toggle = (isOn: boolean) => {
@@ -34,7 +35,7 @@ export const Switcher = (props: SwitcherPropsType) => {
           {switcherText}
         </Text>
       )}
-      <View style={{ marginLeft: switcherMarginLeft }}>
+      <View style={{ marginLeft: switcherMarginLeft, marginRight: switcherMarginRight }}>
         <ToggleSwitch
           animationSpeed={250}
           isOn={isOn}

@@ -12,4 +12,5 @@ export type SwitcherPropsType = {
   textStyle?: TextStyle;
   textMarginBottom?: number;
   switcherMarginLeft?: number;
+  switcherMarginRight?: number;
 };

@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { ColorPickerComponent } from '@components/colorPicker/ColorPicker';
 import { ModalLongButton } from '@components/modals/ModalLongButton';
 import {
+  colorPickerDefaultGapSize,
   defaultModalPaddingHorizontal,
   modalContentMaxWidth,
   screenWidth480px,
@@ -42,12 +43,11 @@ export const SelectAccentColorButton = (props: SelectAccentColorButtonPropsType)
       : narrowScreenColorPickerPaddingHorizontal;
 
   const colorPickerGapSizeOnNarrowScreen = 0;
-  const colorPickerGapSizeOnOtherScreens = 20;
 
   const colorPickerGapSize =
     appWidth <= screenWidth480px
       ? colorPickerGapSizeOnNarrowScreen
-      : colorPickerGapSizeOnOtherScreens;
+      : colorPickerDefaultGapSize;
 
   const setAccentColor = () => {
     dispatch(

@@ -16,8 +16,10 @@ export const selectAccentColorButtonStyles = (props: ExtendedStylesPropsType) =>
     },
 
     colorPickerWrapper: {
-      maxHeight: 200,
+      height: 220,
       alignItems: 'center',
+      marginTop: 5,
+      marginLeft: 5,
       marginBottom: 20,
     },
   });

@@ -6,7 +6,12 @@ import { Header } from '@components/header/Header';
 import { Input } from '@components/inputs/Input';
 import { Notification } from '@components/notification/Notification';
 import { Switcher } from '@components/switcher/Switcher';
-import { colorPickerDefaultGapSize, MAX_INPUT_LENGTH200 } from '@constants/constants';
+import {
+  colorPickerDefaultGapSize,
+  MAX_INPUT_LENGTH200,
+  screenWidth480px,
+  switcherMargin,
+} from '@constants/constants';
 import { createDate } from '@helpers/generateDateHelper';
 import { useStyles } from '@hooks/useStyles';
 import { useNavigation, useRoute } from '@react-navigation/native';
@@ -20,7 +25,7 @@ import { ColorType } from '@store/reducers/userReducer/types';
 import { selectedColorSelector } from '@store/selectors/userSelectors';
 import { nanoid } from 'nanoid';
 import { useTranslation } from 'react-i18next';
-import { ScrollView, TextInput, View } from 'react-native';
+import { ScrollView, TextInput, useWindowDimensions, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { addTaskScreenStyles } from './styles';
@@ -38,6 +43,15 @@ export const AddTaskScreen = () => {
   const selectedColor = useSelector(selectedColorSelector);
 
   const navigation = useNavigation();
+
+  const { width: appWidth } = useWindowDimensions();
+
+  const colorPickerGapSizeOnNarrowScreen = 0;
+
+  const colorPickerGapSize =
+    appWidth <= screenWidth480px
+      ? colorPickerGapSizeOnNarrowScreen
+      : colorPickerDefaultGapSize;
 
   const goBack = () => {
     navigation.goBack();
@@ -160,6 +174,7 @@ export const AddTaskScreen = () => {
               onToggleSwitcherClick={handleColorPickerSwitcherClick}
               size='medium'
               switcherMarginLeft={15}
+              switcherMarginRight={switcherMargin}
               switcherText={t('tasksScreen.EnableMarkColor')}
               textMarginBottom={1}
               textStyle={styles.colorPickerSwitcherText}
@@ -169,7 +184,7 @@ export const AddTaskScreen = () => {
             <View style={styles.colorPickerWrapper}>
               <ColorPickerComponent
                 color={selectedColor}
-                gapSize={colorPickerDefaultGapSize}
+                gapSize={colorPickerGapSize}
                 setSelectedColor={setSelectedColor}
               />
             </View>

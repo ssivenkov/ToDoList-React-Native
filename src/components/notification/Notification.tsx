@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 
 import { Switcher } from '@components/switcher/Switcher';
+import { switcherMargin } from '@constants/constants';
 import { BY, CN, EN, JP, KR, RU, UA } from '@constants/languages';
 import { errorAlert } from '@helpers/alertHelper';
 import { requestIOSNotificationsPermissionHelper } from '@helpers/requestIOSNotificationsPermissionHelper';
@@ -81,6 +82,7 @@ export const Notification = (props: NotificationPropsType) => {
         onToggleSwitcherClick={switching}
         size='medium'
         switcherMarginLeft={15}
+        switcherMarginRight={switcherMargin}
         switcherText={t('tasksScreen.EnableNotification')}
         textMarginBottom={1}
         textStyle={styles.text}

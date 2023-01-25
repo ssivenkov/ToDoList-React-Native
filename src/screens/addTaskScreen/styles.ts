@@ -33,9 +33,9 @@ export const addTaskScreenStyles = (props: ExtendedStylesPropsType) =>
     },
 
     colorPickerWrapper: {
-      height: 270,
-      marginLeft: 4,
+      height: 310,
       marginTop: 25,
+      marginLeft: 4,
       paddingBottom: 90,
     },
 
