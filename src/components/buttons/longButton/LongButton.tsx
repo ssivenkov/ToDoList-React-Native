@@ -36,8 +36,8 @@ export const LongButton = (props: LongButtonPropsType) => {
           )}
         </View>
         <Text style={styles.text}>{title}</Text>
+        {rightComponent && <View style={styles.rightComponent}>{rightComponent}</View>}
       </View>
-      {rightComponent && <View>{rightComponent}</View>}
     </TouchableOpacity>
   );
 };

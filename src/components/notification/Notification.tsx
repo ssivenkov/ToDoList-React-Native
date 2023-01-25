@@ -80,6 +80,7 @@ export const Notification = (props: NotificationPropsType) => {
         isOn={isSwitcherOn}
         onToggleSwitcherClick={switching}
         size='medium'
+        switcherMarginLeft={15}
         switcherText={t('tasksScreen.EnableNotification')}
         textMarginBottom={1}
         textStyle={styles.text}

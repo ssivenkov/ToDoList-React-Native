@@ -2,7 +2,6 @@ import { COLORS } from '@colors/colors';
 import { FontAwesomeIconStyle } from '@fortawesome/react-native-fontawesome';
 import { ExtendedStylesPropsType } from '@hooks/useStyles';
 import {
-  headerButtonMargin,
   headerHeight,
   headerTitleFontSize,
   tabBarContainerHeight,
@@ -12,12 +11,11 @@ import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 export type WithAuthNavigatorStylesType = {
   header: ViewStyle;
   headerTitle: TextStyle;
-  tabBarContainer: ViewStyle;
-  tabFocusIcon: FontAwesomeIconStyle;
-  tabIcon: FontAwesomeIconStyle;
-  rightButtonContainer: ViewStyle;
-  icon: TextStyle;
-  title: TextStyle;
+  bottomTabBarContainer: ViewStyle;
+  bottomTabIconFocus: FontAwesomeIconStyle;
+  bottomTabIcon: FontAwesomeIconStyle;
+  bottomTabBarIcon: TextStyle;
+  bottomTabBarTitle: TextStyle;
 };
 
 export const withAuthNavigatorStyles = (props: ExtendedStylesPropsType) =>
@@ -32,30 +30,26 @@ export const withAuthNavigatorStyles = (props: ExtendedStylesPropsType) =>
       fontSize: headerTitleFontSize,
     },
 
-    tabBarContainer: {
+    bottomTabBarContainer: {
       height: tabBarContainerHeight,
       backgroundColor: props.TAB_BAR_BACKGROUND_COLOR,
       borderTopWidth: 0,
     },
 
-    tabFocusIcon: {
+    bottomTabIconFocus: {
       color: props.ACCENT_COLOR,
     },
 
-    tabIcon: {
+    bottomTabIcon: {
       color: props.TAB_BAR_ICON_COLOR,
     },
 
-    rightButtonContainer: {
-      marginRight: headerButtonMargin,
-    },
-
-    icon: {
+    bottomTabBarIcon: {
       marginTop: 5,
     },
 
-    title: {
+    bottomTabBarTitle: {
       fontSize: 14,
-      marginBottom: 2,
+      marginBottom: 1,
     },
   });

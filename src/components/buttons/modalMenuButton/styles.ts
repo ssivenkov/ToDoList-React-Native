@@ -20,8 +20,9 @@ export const modalMenuButtonStyles = (props: ExtendedStylesPropsType) =>
     },
 
     modalMenuButton: {
+      flexGrow: 1,
       alignItems: 'center',
-      justifyContent: 'space-between',
+      justifyContent: 'center',
       padding: 10,
     },
 
@@ -40,6 +41,7 @@ export const modalMenuButtonStyles = (props: ExtendedStylesPropsType) =>
     text: {
       fontSize: 20,
       color: props.TEXT_COLOR,
+      textAlign: 'center',
       marginBottom: 2,
       paddingHorizontal: 10,
     },

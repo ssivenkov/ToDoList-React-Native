@@ -7,6 +7,7 @@ type LongButtonStylesType = {
   icon: ViewStyle;
   stringIcon: TextStyle;
   text: TextStyle;
+  rightComponent: ViewStyle;
 };
 
 const textMarginBottom = 1.5;
@@ -23,8 +24,10 @@ export const longButtonStyles = (props: ExtendedStylesPropsType) =>
     },
 
     contentContainer: {
+      width: '100%',
       flexDirection: 'row',
       alignItems: 'center',
+      justifyContent: 'space-between',
     },
 
     icon: {
@@ -38,9 +41,14 @@ export const longButtonStyles = (props: ExtendedStylesPropsType) =>
     },
 
     text: {
+      flex: 1,
       fontSize: 18,
       color: props.TEXT_COLOR,
       marginLeft: 20,
       marginBottom: Platform.OS === 'ios' ? 0 : textMarginBottom,
+    },
+
+    rightComponent: {
+      paddingLeft: 15,
     },
   });

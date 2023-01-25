@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 
 import { COLORS } from '@colors/colors';
-import { commonButtonStyles } from '@components/buttons/commonButtonStyles';
+import { headerStyles } from '@components/header/styles';
 import { ModalIcon } from '@components/modals/ModalIcon';
 import { ICON_SIZE_MEDIUM } from '@constants/constants';
 import { faBackspace } from '@fortawesome/free-solid-svg-icons/faBackspace';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { useStyles } from '@hooks/useStyles';
 import { SetStateType } from '@root/types/common/types';
 import { cleanNotepadTextAction } from '@store/actions/notepadSagaActions/cleanNotepadTextAction';
 import { useTranslation } from 'react-i18next';
@@ -19,6 +20,8 @@ export const CleanButton = (props: CleanButtonPropsType) => {
   const { setNotepadText } = props;
 
   const dispatch = useDispatch();
+
+  const headerStyle = useStyles(headerStyles);
 
   const { t } = useTranslation();
 
@@ -41,7 +44,7 @@ export const CleanButton = (props: CleanButtonPropsType) => {
   return (
     <ModalIcon
       buttonIcon={
-        <View style={commonButtonStyles.buttonContainer}>
+        <View style={headerStyle.leftButtonContainer}>
           <FontAwesomeIcon
             color={COLORS.WHITE}
             icon={faBackspace}
