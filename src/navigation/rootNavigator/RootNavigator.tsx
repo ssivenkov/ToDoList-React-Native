@@ -15,8 +15,8 @@ import { AddTaskScreen } from '@screens/addTaskScreen/AddTaskScreen';
 import { ContactTheAuthorScreen } from '@screens/contactTheAuthorScreen/ContactTheAuthorScreen';
 import { EditTaskScreen } from '@screens/editTaskScreen/EditTaskScreen';
 import { SignInScreen } from '@screens/signInScreen/SignInScreen';
+import { setLanguageAction } from '@store/actions/userReducerActions/setLanguageAction';
 import { setModalMessageAction } from '@store/actions/userReducerActions/setModalMessageAction';
-import { changeLanguageAction } from '@store/actions/userSagaActions/changeLanguageAction';
 import { checkUserAction } from '@store/actions/userSagaActions/checkUserAction';
 import { createChannelAction } from '@store/actions/userSagaActions/createChannelAction';
 import { getUserDataAction } from '@store/actions/userSagaActions/getUserDataAction';
@@ -96,7 +96,7 @@ export const RootNavigator = () => {
   // need for rerender with correct translations for navigator
   useEffect(() => {
     if (i18next.language !== language) {
-      dispatch(changeLanguageAction({ language }));
+      dispatch(setLanguageAction({ language }));
       setRerender(language);
     }
   }, [rerender, language]);

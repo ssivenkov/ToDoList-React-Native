@@ -13,7 +13,7 @@ import {
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { AccountScreen } from '@screens/accountScreen/AccountScreen';
 import { NotepadScreen } from '@screens/notepadScreen/NotepadScreen';
-import { changeLanguageAction } from '@store/actions/userSagaActions/changeLanguageAction';
+import { setLanguageAction } from '@store/actions/userReducerActions/setLanguageAction';
 import {
   accentColorSelector,
   globalLoaderSelector,
@@ -44,7 +44,7 @@ export const WithAuthNavigator = () => {
   useEffect(() => {
     if (i18next.language !== language) {
       changeLanguage(language).then(() => {
-        dispatch(changeLanguageAction({ language }));
+        dispatch(setLanguageAction({ language }));
         setRerender(language);
       });
     }

@@ -9,7 +9,7 @@ import {
 } from '@navigation/tasksNavigator/settings';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { TasksScreen } from '@screens/tasksScreen/TasksScreen';
-import { changeLanguageAction } from '@store/actions/userSagaActions/changeLanguageAction';
+import { setLanguageAction } from '@store/actions/userReducerActions/setLanguageAction';
 import {
   accentColorSelector,
   languageSelector,
@@ -37,7 +37,7 @@ export const TasksNavigator = () => {
   // need for rerender with correct translations for navigator
   useEffect(() => {
     if (i18next.language !== language) {
-      dispatch(changeLanguageAction({ language }));
+      dispatch(setLanguageAction({ language }));
       setRerender(language);
     }
   }, [rerender, language]);
