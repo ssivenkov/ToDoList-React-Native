@@ -15,25 +15,28 @@ import { modalStyles } from './modalStyles';
 import { ModalLongButtonPropsType } from './types';
 
 export const ModalLongButton = (props: ModalLongButtonPropsType) => {
+  const styles = useStyles(modalStyles);
+
   const { t } = useTranslation();
 
+  const defaultDescriptionTextStyle = styles.text;
   const defaultOkText = t('common.Ok');
 
   const {
     children,
     contentPaddingHorizontal = defaultModalPaddingHorizontal,
     description,
+    descriptionTextStyle = defaultDescriptionTextStyle,
     buttonIcon,
     buttonTitle,
     okHandler,
     okText = defaultOkText,
+    okTextStyle,
     closeHandler,
     rightComponent,
     disabled,
     hasContentPaddingBottom = true,
   } = props;
-
-  const styles = useStyles(modalStyles);
 
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -58,7 +61,7 @@ export const ModalLongButton = (props: ModalLongButtonPropsType) => {
           <View style={styles.modalView}>
             {description && (
               <View style={styles.descriptionContainer}>
-                <Text style={styles.text}>{description}</Text>
+                <Text style={descriptionTextStyle}>{description}</Text>
               </View>
             )}
             {children && (
@@ -79,6 +82,7 @@ export const ModalLongButton = (props: ModalLongButtonPropsType) => {
                 <>
                   <ModalMenuButton
                     leftRounding={true}
+                    okTextStyle={okTextStyle}
                     onPress={onOkButtonPress}
                     rightRounding={false}
                     title={okText}

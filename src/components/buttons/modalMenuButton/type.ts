@@ -1,3 +1,5 @@
+import { StyleProp, TextStyle } from 'react-native';
+
 export type ModalMenuButtonPropsType = {
   title: string;
   onPress: () => void;
@@ -5,4 +7,5 @@ export type ModalMenuButtonPropsType = {
   rightRounding: boolean;
 
   disabled?: boolean;
+  okTextStyle?: StyleProp<TextStyle>;
 };

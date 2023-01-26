@@ -1,3 +1,4 @@
+import { COLORS } from '@colors/colors';
 import { ExtendedStylesPropsType } from '@hooks/useStyles';
 import { ImageStyle, StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
@@ -7,7 +8,10 @@ type AccountScreenStylesType = {
   avatar: ImageStyle;
   name: TextStyle;
   text: TextStyle;
+  redText: TextStyle;
 };
+
+const { RED } = COLORS;
 
 const avatarSize = 100;
 
@@ -44,5 +48,10 @@ export const accountScreenStyles = (props: ExtendedStylesPropsType) =>
     text: {
       fontSize: 18,
       color: props.TEXT_COLOR,
+    },
+
+    redText: {
+      fontSize: 18,
+      color: RED,
     },
   });

@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { SetStateType } from '@root/types/common/types';
+import { StyleProp, TextStyle } from 'react-native';
 
 export type ModalIconPropsType = {
   buttonIcon: JSX.Element;
@@ -31,9 +32,11 @@ export type ModalLongButtonPropsType = {
   closeHandler?: () => void;
   contentPaddingHorizontal?: number;
   description?: string;
+  descriptionTextStyle?: StyleProp<TextStyle>;
   disabled?: boolean;
   hasContentPaddingBottom?: boolean;
   okHandler?: () => void;
   okText?: string;
+  okTextStyle?: StyleProp<TextStyle>;
   rightComponent?: JSX.Element;
 };

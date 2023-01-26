@@ -104,8 +104,10 @@ export const AccountScreen = () => {
                 buttonIcon={faTrash}
                 buttonTitle={t('accountScreen.DeleteAccountButtonTitle')}
                 description={t('accountScreen.DeleteAccountModalTitle')}
+                descriptionTextStyle={styles.redText}
                 disabled={waitingProcess}
                 okHandler={deleteAccountHandler}
+                okTextStyle={styles.redText}
               />
             </LinearGradient>
           </View>

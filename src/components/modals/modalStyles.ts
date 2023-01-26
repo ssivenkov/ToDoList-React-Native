@@ -53,6 +53,7 @@ export const modalStyles = (props: ExtendedStylesPropsType) =>
       maxWidth: modalContentMaxWidth,
       alignItems: 'center',
       marginHorizontal: defaultModalPaddingHorizontal,
+      marginBottom: defaultModalIndentBottom,
     },
 
     childrenContainer: {
@@ -62,7 +63,6 @@ export const modalStyles = (props: ExtendedStylesPropsType) =>
 
     text: {
       fontSize: 18,
-      marginBottom: defaultModalIndentBottom,
       color: props.TEXT_COLOR,
     },
 
