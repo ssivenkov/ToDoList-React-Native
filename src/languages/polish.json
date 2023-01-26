@@ -3,7 +3,7 @@
     "common": {
       "Ok": "Ok",
       "Close": "Zamknij",
-      "NoInternetConnection": "Brak połączenia z internetem. Proszę połączyć się z Internetem",
+      "NoInternetConnection": "Brak połączenia z internetem. Proszę połączyć się z internetem",
       "NoIOSNotificationsPermission": "Brak pozwolenia na wyświetlanie powiadomień. Zezwól aplikacji na wyświetlanie powiadomień"
     },
     "tasksScreen": {
@@ -47,23 +47,23 @@
       "ContactTheAuthorButtonTitle": "Skontaktuj się z autorem"
     },
     "contactTheAuthorScreen": {
-      "HeaderTitle": "Skontaktuj się z autorem",
-      "EmailSuptext": "E-mail",
-      "EmailSubtext": "Odpowiedź zostanie wysłana na ten e-mail",
+      "HeaderTitle": "Komunikacja z autorem",
+      "EmailSuptext": "Email",
+      "EmailSubtext": "Odpowiedź zostanie wysłana na ten email",
       "MessageSuptext": "Wiadomość tekstowa",
       "SendButton": "Wysłać",
-      "ContactTheAuthorSuccess": "Dziękujemy, twoja wiadomość została wysłana. Autor wkrótce się z Tobą skontaktuje",
-      "ContactTheAuthorError": "Nieznany błąd. Spróbuj wprowadzić inny adres e-mail",
+      "ContactTheAuthorSuccess": "Dziękujemy, twoja wiadomość została wysłana. Autor wkrótce się z tobą skontaktuje",
+      "ContactTheAuthorError": "Nieznany błąd. Spróbuj wprowadzić inny adres email",
       "InvalidEmailError": "Niepoprawny adres email",
-      "EmailRequiredError": "E-mail wymagany",
+      "EmailRequiredError": "Email wymagany",
       "MessageRequiredError": "Treść wiadomości jest wymagana"
     },
     "notepadScreen": {
       "Notepad": "Notatnik",
       "NotepadPlaceholder": "Twój tekst",
       "CleanButtonWarningTitle": "Czy na pewno chcesz wyczyścić notatnik?",
-      "CleanNotepadTextRequestError": "Brak połączenia z Internetem, notatnik został wyczyszczony tylko na Twoim urządzeniu. Aby wyczyścić notatnik na serwerze, włącz Internet i powtórz żądanie",
-      "SaveNotepadTextRequestError": "Brak połączenia z Internetem, notatnik został zapisany tylko na Twoim urządzeniu. Aby zapisać notatnik na serwerze włącz Internet i powtórz żądanie",
+      "CleanNotepadTextRequestError": "Brak połączenia z internetem, notatnik został wyczyszczony tylko na twoim urządzeniu. Aby wyczyścić notatnik na serwerze, włącz internet i powtórz żądanie",
+      "SaveNotepadTextRequestError": "Brak połączenia z internetem, notatnik został zapisany tylko na twoim urządzeniu. Aby zapisać notatnik na serwerze włącz internet i powtórz żądanie",
       "NotepadCleared": "Notatnik wyczyszczony",
       "NotepadSaved": "Notatnik zapisany"
     }

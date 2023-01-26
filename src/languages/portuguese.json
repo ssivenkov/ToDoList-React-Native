@@ -3,7 +3,7 @@
     "common": {
       "Ok": "Ok",
       "Close": "Fechar",
-      "NoInternetConnection": "Sem ligação à Internet. Por favor, ligue-se à Internet",
+      "NoInternetConnection": "Sem ligação à internet. Por favor, ligue-se à internet",
       "NoIOSNotificationsPermission": "Sem permissão para notificações. Conceder a autorização para mostrar notificações"
     },
     "tasksScreen": {
@@ -47,13 +47,13 @@
       "ContactTheAuthorButtonTitle": "Entre em contato com o autor"
     },
     "contactTheAuthorScreen": {
-      "HeaderTitle": "Entre em contato com o autor",
-      "EmailSuptext": "E-mail",
-      "EmailSubtext": "Uma resposta será enviada para este e-mail",
+      "HeaderTitle": "Comunicação com o autor",
+      "EmailSuptext": "Email",
+      "EmailSubtext": "Uma resposta será enviada para este email",
       "MessageSuptext": "Mensagem de texto",
       "SendButton": "Mandar",
       "ContactTheAuthorSuccess": "Obrigado! Sua mensagem foi enviada. O autor entrará em contato com você em breve",
-      "ContactTheAuthorError": "Erro desconhecido. Por favor, tente inserir outro e-mail",
+      "ContactTheAuthorError": "Erro desconhecido. Por favor, tente inserir outro email",
       "InvalidEmailError": "Endereço de email invalido",
       "EmailRequiredError": "Email obrigatório",
       "MessageRequiredError": "Texto da mensagem obrigatório"
@@ -62,8 +62,8 @@
       "Notepad": "Bloco de anotações",
       "NotepadPlaceholder": "Seu texto",
       "CleanButtonWarningTitle": "Tem certeza de que deseja limpar o bloco de notas?",
-      "CleanNotepadTextRequestError": "Sem conexão com a Internet, o bloco de notas foi apagado apenas no seu dispositivo. Para limpar o bloco de notas no servidor, ligue a Internet e repita a solicitação",
-      "SaveNotepadTextRequestError": "Sem conexão com a Internet, o bloco de notas foi salvo apenas no seu dispositivo. Para salvar o bloco de notas no servidor, ligue a Internet e repita a solicitação",
+      "CleanNotepadTextRequestError": "Sem conexão com a internet, o bloco de notas foi apagado apenas no seu dispositivo. Para limpar o bloco de notas no servidor, ligue a internet e repita a solicitação",
+      "SaveNotepadTextRequestError": "Sem conexão com a internet, o bloco de notas foi salvo apenas no seu dispositivo. Para salvar o bloco de notas no servidor, ligue a internet e repita a solicitação",
       "NotepadCleared": "Bloco de notas limpo",
       "NotepadSaved": "Bloco de notas salvo"
     }

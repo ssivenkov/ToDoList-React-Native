@@ -3,7 +3,7 @@
     "common": {
       "Ok": "Так",
       "Close": "Закрити",
-      "NoInternetConnection": "Немає з'єднання з Інтернетом. Будь ласка, підключіться до Інтернету",
+      "NoInternetConnection": "Немає з'єднання з інтернетом. Будь ласка, підключіться до інтернету",
       "NoIOSNotificationsPermission": "Немає дозволу на сповіщення. Надати додатку дозвіл на показ сповіщень"
     },
     "tasksScreen": {
@@ -13,7 +13,7 @@
       "DoneButton": "Ви впевнені, що завдання <0>{{text}}</0> виконано?",
       "EditTaskListButtonTitle": "Редагування назви списку завдань",
       "TodoTasksTab": "Виконати",
-      "DoneTasksTab": "виконані",
+      "DoneTasksTab": "Виконані",
       "NoTaskListsFound": "Списки завдань не знайдено",
       "EnableNotification": "Нагадуємо про завдання",
       "EnableMarkColor": "Колір завдання",
@@ -47,23 +47,23 @@
       "ContactTheAuthorButtonTitle": "Зв'язатися з автором"
     },
     "contactTheAuthorScreen": {
-      "HeaderTitle": "Зв'язатися з автором",
+      "HeaderTitle": "Зв'язок із автором",
       "EmailSuptext": "Email",
-      "EmailSubtext": "На цей електронний лист буде надіслано відповідь",
+      "EmailSubtext": "На цей email буде надіслано відповідь",
       "MessageSuptext": "Текст повідомлення",
       "SendButton": "Надіслати",
       "ContactTheAuthorSuccess": "Дякуємо, ваше повідомлення надіслано. Автор зв'яжеться з вами найближчим часом",
-      "ContactTheAuthorError": "Невідома помилка. Спробуйте ввести іншу електронну адресу",
-      "InvalidEmailError": "Невірна адреса електронної пошти",
-      "EmailRequiredError": "Потрібна електронна адреса",
-      "MessageRequiredError": "Необхідний текст повідомлення"
+      "ContactTheAuthorError": "Невідома помилка. Спробуйте ввести інший email",
+      "InvalidEmailError": "Некоректний email",
+      "EmailRequiredError": "Email обов'язковий",
+      "MessageRequiredError": "Текст повідомлення обов'язковий"
     },
     "notepadScreen": {
       "Notepad": "Блокнот",
       "NotepadPlaceholder": "Ваш текст",
       "CleanButtonWarningTitle": "Ви впевнені, що хочете очистити блокнот?",
-      "CleanNotepadTextRequestError": "Немає підключення до інтернету, блокнот було очищено лише на вашому пристрої. Для очищення блокнота на сервері увімкніть інтернет та повторіть запит",
-      "SaveNotepadTextRequestError": "Немає підключення до інтернету, блокнот було збережено тільки на вашому пристрої. Щоб зберегти блокнот на сервері, увімкніть інтернет і повторіть запит",
+      "CleanNotepadTextRequestError": "Немає підключення до інтернету, блокнот було очищено тільки на вашому пристрої. Для очищення блокнота на сервері увімкніть інтернет та повторіть запит",
+      "SaveNotepadTextRequestError": "Немає підключення до інтернету, блокнот було збережено тільки на вашому пристрої. Для збереження блокноту на сервері увімкніть інтернет і повторіть запит",
       "NotepadCleared": "Блокнот очищений",
       "NotepadSaved": "Блокнот збережено"
     }

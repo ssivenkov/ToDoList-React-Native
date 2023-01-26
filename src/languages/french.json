@@ -3,7 +3,7 @@
     "common": {
       "Ok": "Ok",
       "Close": "Fermer",
-      "NoInternetConnection": "Pas de connexion Internet. Veuillez vous connecter à l'Internet",
+      "NoInternetConnection": "Pas de connexion internet. Veuillez vous connecter à l'internet",
       "NoIOSNotificationsPermission": "Pas d'autorisation pour les notifications. Donnez à l'application la permission d'afficher des notifications"
     },
     "tasksScreen": {
@@ -48,22 +48,22 @@
     },
     "contactTheAuthorScreen": {
       "HeaderTitle": "Contacter l'auteur",
-      "EmailSuptext": "E-mail",
-      "EmailSubtext": "Une réponse sera envoyée à cet e-mail",
+      "EmailSuptext": "Email",
+      "EmailSubtext": "Une réponse sera envoyée à cet email",
       "MessageSuptext": "Texte du message",
       "SendButton": "Envoyer",
       "ContactTheAuthorSuccess": "Merci! Votre message a été envoyé. L'auteur vous contactera sous peu",
-      "ContactTheAuthorError": "Erreur inconnue. Veuillez essayer d'entrer une autre adresse e-mail",
-      "InvalidEmailError": "Adresse e-mail invalide",
-      "EmailRequiredError": "E-mail requis",
+      "ContactTheAuthorError": "Erreur inconnue. Veuillez essayer d'entrer une autre adresse email",
+      "InvalidEmailError": "Adresse email invalide",
+      "EmailRequiredError": "Email requis",
       "MessageRequiredError": "Texte du message requis"
     },
     "notepadScreen": {
       "Notepad": "Bloc-notes",
       "NotepadPlaceholder": "Ton texte",
       "CleanButtonWarningTitle": "Voulez-vous vraiment effacer le bloc-notes?",
-      "CleanNotepadTextRequestError": "Pas de connexion Internet, le bloc-notes n'a été effacé que sur votre appareil. Pour effacer le bloc-notes sur le serveur, activez Internet et répétez la demande",
-      "SaveNotepadTextRequestError": "Pas de connexion Internet, le bloc-notes n'a été enregistré que sur votre appareil. Pour enregistrer le bloc-notes sur le serveur, activez Internet et répétez la demande",
+      "CleanNotepadTextRequestError": "Pas de connexion internet, le bloc-notes n'a été effacé que sur votre appareil. Pour effacer le bloc-notes sur le serveur, activez internet et répétez la demande",
+      "SaveNotepadTextRequestError": "Pas de connexion internet, le bloc-notes n'a été enregistré que sur votre appareil. Pour enregistrer le bloc-notes sur le serveur, activez internet et répétez la demande",
       "NotepadCleared": "Bloc-notes effacé",
       "NotepadSaved": "Bloc-notes enregistré"
     }

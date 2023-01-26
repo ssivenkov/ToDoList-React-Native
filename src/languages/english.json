@@ -3,12 +3,12 @@
     "common": {
       "Ok": "Ok",
       "Close": "Close",
-      "NoInternetConnection": "No internet connection. Please connect to the Internet",
+      "NoInternetConnection": "No internet connection. Please connect to the internet",
       "NoIOSNotificationsPermission": "No permission for notifications. Grant the app permission to show notifications"
     },
     "tasksScreen": {
       "Tasks": "Task lists",
-      "CreateTaskListButtonTitle": "Enter new task list title",
+      "CreateTaskListButtonTitle": "New task list title",
       "DeleteQuestionButtonTitle": "Are you sure to delete <0>{{text}}</0>?",
       "DoneButton": "Are you sure the task <0>{{text}}</0> is completed?",
       "EditTaskListButtonTitle": "Edit task list title",
@@ -62,8 +62,8 @@
       "Notepad": "Notepad",
       "NotepadPlaceholder": "Your text",
       "CleanButtonWarningTitle": "Are you sure you want to clear the notepad?",
-      "CleanNotepadTextRequestError": "No internet connection, notepad has only been cleared on your device. To clear notepad on the server turn on the Internet and repeat the request",
-      "SaveNotepadTextRequestError": "No internet connection, notepad has only been saved on your device. To save notepad on the server turn on the Internet and repeat the request",
+      "CleanNotepadTextRequestError": "No internet connection, notepad has only been cleared on your device. To clear notepad on the server turn on the internet and repeat the request",
+      "SaveNotepadTextRequestError": "No internet connection, notepad has only been saved on your device. To save notepad on the server turn on the internet and repeat the request",
       "NotepadCleared": "Notepad cleared",
       "NotepadSaved": "Notepad saved"
     }
