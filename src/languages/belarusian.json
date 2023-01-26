@@ -42,9 +42,6 @@
     },
     "contactTheAuthorScreen": {
       "HeaderTitle": "Звязацца з аўтарам",
-      "EmailPlaceholder": "Эл. пошта",
-      "SubjectPlaceholder": "Тэма паведамлення",
-      "MessagePlaceholder": "Паведамленне",
       "EmailSuptext": "Эл. пошта",
       "EmailSubtext": "Адказ будзе дасланы на гэты адрас эл. пошты",
       "MessageSuptext": "Тэкст паведамлення",

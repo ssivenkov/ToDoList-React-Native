@@ -42,9 +42,6 @@
     },
     "contactTheAuthorScreen": {
       "HeaderTitle": "Зв'язатися з автором",
-      "EmailPlaceholder": "Email",
-      "SubjectPlaceholder": "Тема повідомлення",
-      "MessagePlaceholder": "Повідомлення",
       "EmailSuptext": "Email",
       "EmailSubtext": "На цей електронний лист буде надіслано відповідь",
       "MessageSuptext": "Текст повідомлення",

@@ -42,9 +42,6 @@
     },
     "contactTheAuthorScreen": {
       "HeaderTitle": "Yazarla iletişim kurun",
-      "EmailPlaceholder": "E-posta",
-      "SubjectPlaceholder": "Mesaj Konusu",
-      "MessagePlaceholder": "İleti",
       "EmailSuptext": "E-posta",
       "EmailSubtext": "Bu e-postaya bir yanıt gönderilecek",
       "MessageSuptext": "Mesaj metni",

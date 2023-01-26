@@ -77,7 +77,6 @@ export const ContactTheAuthorScreen = () => {
               }
               onBlur={() => setFieldTouched(emailField, true)}
               onChangeText={handleChange(emailField)}
-              placeholder={t('contactTheAuthorScreen.EmailPlaceholder')}
               subtext={t('contactTheAuthorScreen.EmailSubtext')}
               suptext={t('contactTheAuthorScreen.EmailSuptext')}
               value={values[emailField]}
@@ -91,7 +90,6 @@ export const ContactTheAuthorScreen = () => {
               }
               onBlur={() => setFieldTouched(messageField, true)}
               onChangeText={handleChange(messageField)}
-              placeholder={t('contactTheAuthorScreen.MessagePlaceholder')}
               suptext={t('contactTheAuthorScreen.MessageSuptext')}
               value={values[messageField]}
             />

@@ -42,9 +42,6 @@
     },
     "contactTheAuthorScreen": {
       "HeaderTitle": "聯繫作者",
-      "EmailPlaceholder": "電子郵件",
-      "SubjectPlaceholder": "信息主題",
-      "MessagePlaceholder": "信息",
       "EmailSuptext": "電子郵件",
       "EmailSubtext": "回復將發送到此電子郵件",
       "MessageSuptext": "消息正文",

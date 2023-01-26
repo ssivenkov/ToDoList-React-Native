@@ -42,9 +42,6 @@
     },
     "contactTheAuthorScreen": {
       "HeaderTitle": "著者に連絡する",
-      "EmailPlaceholder": "メール",
-      "SubjectPlaceholder": "メッセージの件名",
-      "MessagePlaceholder": "メッセージ",
       "EmailSuptext": "メール",
       "EmailSubtext": "このメールに返信が送信されます",
       "MessageSuptext": "メッセージ本文",

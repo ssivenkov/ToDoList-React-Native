@@ -42,9 +42,6 @@
     },
     "contactTheAuthorScreen": {
       "HeaderTitle": "Contact the author",
-      "EmailPlaceholder": "Email",
-      "SubjectPlaceholder": "Subject",
-      "MessagePlaceholder": "Message",
       "EmailSuptext": "Email",
       "EmailSubtext": "A reply will be sent to this email",
       "MessageSuptext": "Message text",

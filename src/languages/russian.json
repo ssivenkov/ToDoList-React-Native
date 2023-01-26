@@ -42,9 +42,6 @@
     },
     "contactTheAuthorScreen": {
       "HeaderTitle": "Связаться с автором",
-      "EmailPlaceholder": "Эл. почта",
-      "SubjectPlaceholder": "Тема сообщения",
-      "MessagePlaceholder": "Сообщение",
       "EmailSuptext": "Эл. почта",
       "EmailSubtext": "Ответ будет отправлен на этот адрес эл. почты",
       "MessageSuptext": "Текст сообщения",

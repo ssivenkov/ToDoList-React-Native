@@ -42,9 +42,6 @@
     },
     "contactTheAuthorScreen": {
       "HeaderTitle": "Hubungi penulis",
-      "EmailPlaceholder": "Surel",
-      "SubjectPlaceholder": "Judul Pesan",
-      "MessagePlaceholder": "Pesan",
       "EmailSuptext": "Surel",
       "EmailSubtext": "Balasan akan dikirim ke email ini",
       "MessageSuptext": "Pesan teks",
