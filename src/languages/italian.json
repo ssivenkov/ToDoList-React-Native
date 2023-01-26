@@ -2,6 +2,8 @@
   "translation": {
     "common": {
       "Ok": "Ok",
+      "Confirm": "Confermare",
+      "Select": "Scegliere",
       "Close": "Chiudere",
       "NoInternetConnection": "Nessuna connessione a internet. Si prega di connettersi a internet",
       "NoIOSNotificationsPermission": "Nessuna autorizzazione per le notifiche. Concedi all'app l'autorizzazione a mostrare le notifiche"

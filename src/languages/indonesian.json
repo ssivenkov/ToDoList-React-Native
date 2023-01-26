@@ -2,6 +2,8 @@
   "translation": {
     "common": {
       "Ok": "Baik",
+      "Confirm": "Mengonfirmasi",
+      "Select": "Memilih",
       "Close": "Tutup",
       "NoInternetConnection": "Tidak ada koneksi internet. Harap terhubung ke Internet",
       "NoIOSNotificationsPermission": "Tidak ada izin untuk notifikasi. Berikan izin aplikasi untuk menampilkan notifikasi"

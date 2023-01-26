@@ -2,6 +2,8 @@
   "translation": {
     "common": {
       "Ok": "オッケー",
+      "Confirm": "確認",
+      "Select": "選ぶ",
       "Close": "閉じる",
       "NoInternetConnection": "インターネットに接続できない インターネットに接続してください",
       "NoIOSNotificationsPermission": "通知の許可がない アプリに通知を表示する許可を与える"

@@ -18,6 +18,7 @@ export type ModalIconPropsType = {
   inputFocus?: () => void;
   modalVisibleFromProps?: boolean;
   okDisabled?: boolean;
+  okText?: string;
   hasContentPaddingBottom?: boolean;
   setModalVisibleFromProps?: SetStateType<boolean>;
 };
@@ -33,5 +34,6 @@ export type ModalLongButtonPropsType = {
   disabled?: boolean;
   hasContentPaddingBottom?: boolean;
   okHandler?: () => void;
+  okText?: string;
   rightComponent?: JSX.Element;
 };

@@ -23,6 +23,10 @@ import { modalStyles } from './modalStyles';
 import { ModalIconPropsType } from './types';
 
 export const ModalIcon = (props: ModalIconPropsType) => {
+  const { t } = useTranslation();
+
+  const defaultOkText = t('common.Ok');
+
   const {
     children,
     contentPaddingHorizontal = defaultModalPaddingHorizontal,
@@ -30,6 +34,7 @@ export const ModalIcon = (props: ModalIconPropsType) => {
     buttonIcon,
     buttonIconDisabled = false,
     okHandler,
+    okText = defaultOkText,
     closeHandler,
     modalVisibleFromProps,
     setModalVisibleFromProps,
@@ -39,8 +44,6 @@ export const ModalIcon = (props: ModalIconPropsType) => {
   } = props;
 
   const styles = useStyles(modalStyles);
-
-  const { t } = useTranslation();
 
   const [modalVisible, setModalVisible] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -114,7 +117,7 @@ export const ModalIcon = (props: ModalIconPropsType) => {
                     leftRounding={true}
                     onPress={onOkButtonPress}
                     rightRounding={false}
-                    title={t('common.Ok')}
+                    title={okText}
                   />
                   <Separator />
                   <ModalMenuButton

@@ -2,6 +2,8 @@
   "translation": {
     "common": {
       "Ok": "好的",
+      "Confirm": "確認",
+      "Select": "選擇",
       "Close": "关闭",
       "NoInternetConnection": "没有互联网连接。请连接到互联网",
       "NoIOSNotificationsPermission": "没有通知的权限。给予该应用程序显示通知的权限"

@@ -2,6 +2,8 @@
   "translation": {
     "common": {
       "Ok": "확인",
+      "Confirm": "확인하다",
+      "Select": "선택하다",
       "Close": "닫다",
       "NoInternetConnection": "인터넷에 연결되지 않음. 인터넷에 접속해주세요",
       "NoIOSNotificationsPermission": "알림에 대한 권한이 없습니다. 앱에 알림을 표시할 수 있는 권한 부여"

@@ -76,6 +76,7 @@ export const EditTaskListTitleButton = ({
       inputFocus={inputFocus}
       okDisabled={!editedTaskListTitle}
       okHandler={onOkPress}
+      okText={t('common.Confirm')}
     >
       <Input
         inputRef={inputRef}

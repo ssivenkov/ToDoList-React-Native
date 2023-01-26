@@ -2,6 +2,8 @@
   "translation": {
     "common": {
       "Ok": "Ok",
+      "Confirm": "Confirm",
+      "Select": "Select",
       "Close": "Close",
       "NoInternetConnection": "No internet connection. Please connect to the internet",
       "NoIOSNotificationsPermission": "No permission for notifications. Grant the app permission to show notifications"

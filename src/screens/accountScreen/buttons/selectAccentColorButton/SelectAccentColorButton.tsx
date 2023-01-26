@@ -71,6 +71,7 @@ export const SelectAccentColorButton = (props: SelectAccentColorButtonPropsType)
       description={t('accountScreen.AccentColorDescription')}
       hasContentPaddingBottom={false}
       okHandler={setAccentColor}
+      okText={t('common.Select')}
       rightComponent={<View style={styles.colorIndicator} />}
     >
       <View style={styles.colorPickerWrapper}>

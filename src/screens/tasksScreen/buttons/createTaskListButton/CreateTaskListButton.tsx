@@ -78,6 +78,7 @@ export const CreateTaskListButton = () => {
       inputFocus={inputFocus}
       okDisabled={!taskListTitle}
       okHandler={createTaskList}
+      okText={t('common.Confirm')}
     >
       <Input inputRef={inputRef} onChangeText={setTaskListTitle} value={taskListTitle} />
     </ModalIcon>

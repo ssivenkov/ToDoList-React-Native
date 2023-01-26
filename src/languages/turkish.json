@@ -2,6 +2,8 @@
   "translation": {
     "common": {
       "Ok": "Tamam",
+      "Confirm": "Teyit etmek",
+      "Select": "Seçmek",
       "Close": "Kapat",
       "NoInternetConnection": "İnternet bağlantısı yok. Lütfen internete bağlanın",
       "NoIOSNotificationsPermission": "Bildirimler için izin yok. Uygulamaya bildirimleri gösterme izni verin"
