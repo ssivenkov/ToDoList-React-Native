@@ -8,7 +8,6 @@
     },
     "tasksScreen": {
       "Tasks": "Списки завдань",
-      "CreateTaskButtonTitle": "Введіть нову назву завдання",
       "CreateTaskListButtonTitle": "Введіть новий заголовок списку завдань",
       "DeleteQuestionButtonTitle": "Ви впевнені, що хочете видалити <0>{{text}}</0>?",
       "DoneButton": "Ви впевнені, що завдання <0>{{text}}</0> виконано?",
@@ -20,6 +19,10 @@
       "EnableNotification": "Нагадуємо про завдання",
       "EnableMarkColor": "Колір завдання",
       "TaskNotification": "Виконати завдання"
+    },
+    "addTaskScreen": {
+      "headerTitle": "Нове завдання",
+      "addTaskInputSuptitle": "Текст нового завдання"
     },
     "signInScreen": {
       "SignIn": "Ввійти",

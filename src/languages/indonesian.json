@@ -8,7 +8,6 @@
     },
     "tasksScreen": {
       "Tasks": "Daftar tugas",
-      "CreateTaskButtonTitle": "Masukkan judul tugas baru",
       "CreateTaskListButtonTitle": "Masukkan judul daftar tugas baru",
       "DeleteQuestionButtonTitle": "Apakah Anda yakin untuk menghapus <0>{{text}}</0>?",
       "DoneButton": "Apakah Anda yakin tugas <0>{{text}}</0> sudah selesai?",
@@ -20,6 +19,10 @@
       "EnableNotification": "Mengingatkan tugas",
       "EnableMarkColor": "Warna tugas",
       "TaskNotification": "Melakukan tugas"
+    },
+    "addTaskScreen": {
+      "headerTitle": "Tugas baru",
+      "addTaskInputSuptitle": "Teks tugas baru"
     },
     "signInScreen": {
       "SignIn": "Masuk",

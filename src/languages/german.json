@@ -8,7 +8,6 @@
     },
     "tasksScreen": {
       "Tasks": "Aufgabenlisten",
-      "CreateTaskButtonTitle": "Neue Aufgabenbezeichnung eingeben",
       "CreateTaskListButtonTitle": "Neuen Aufgabentitel eingeben",
       "DeleteQuestionButtonTitle": "Sind Sie sicher, dass Sie <0>{{text}}</0> löschen wollen?",
       "DoneButton": "Sind Sie sicher, dass die Aufgabe <0>{{text}}</0> abgeschlossen ist?",
@@ -20,6 +19,10 @@
       "EnableNotification": "Erinnern Sie an die Aufgabe",
       "EnableMarkColor": "Farbe der Aufgabe",
       "TaskNotification": "Aufgabe ausführen"
+    },
+    "addTaskScreen": {
+      "headerTitle": "Neue Aufgabe",
+      "addTaskInputSuptitle": "Neuer Aufgabentext"
     },
     "signInScreen": {
       "SignIn": "Eintragen",

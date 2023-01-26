@@ -8,7 +8,6 @@
     },
     "tasksScreen": {
       "Tasks": "任务清单",
-      "CreateTaskButtonTitle": "输入新的任务名称",
       "CreateTaskListButtonTitle": "输入新的任务列表标题",
       "DeleteQuestionButtonTitle": "你确定要删除<0>{{text}}</0>吗?",
       "DoneButton": "你确定任务<0>{{text}}</0>已经完成吗?",
@@ -20,6 +19,10 @@
       "EnableNotification": "提醒任务",
       "EnableMarkColor": "任务颜色",
       "TaskNotification": "执行任务"
+    },
+    "addTaskScreen": {
+      "headerTitle": "新任務",
+      "addTaskInputSuptitle": "新任務文本"
     },
     "signInScreen": {
       "SignIn": "登录",

@@ -8,7 +8,6 @@
     },
     "tasksScreen": {
       "Tasks": "タスクリスト",
-      "CreateTaskButtonTitle": "新しいタスクのタイトルを入力する",
       "CreateTaskListButtonTitle": "新しいタスクリストのタイトルを入力する",
       "DeleteQuestionButtonTitle": "本当に<0>{{text}}</0>を削除するのですか?",
       "DoneButton": "タスク<0>{{text}}</0>は本当に完了したのか?",
@@ -20,6 +19,10 @@
       "EnableNotification": "タスクの再認識",
       "EnableMarkColor": "タスクカラー",
       "TaskNotification": "タスクを実行する"
+    },
+    "addTaskScreen": {
+      "headerTitle": "新しい仕事",
+      "addTaskInputSuptitle": "新しいタスク テキスト"
     },
     "signInScreen": {
       "SignIn": "サインイン",

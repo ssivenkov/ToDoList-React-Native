@@ -8,7 +8,6 @@
     },
     "tasksScreen": {
       "Tasks": "작업 목록",
-      "CreateTaskButtonTitle": "새 작업 제목 입력",
       "CreateTaskListButtonTitle": "새 작업 목록 제목 입력",
       "DeleteQuestionButtonTitle": "<0>{{text}}</0>을(를) 삭제하시겠습니까?",
       "DoneButton": "<0>{{text}}</0> 작업이 완료되었습니까?",
@@ -20,6 +19,10 @@
       "EnableNotification": "과제를 상기시켜라",
       "EnableMarkColor": "작업 색상",
       "TaskNotification": "작업 수행"
+    },
+    "addTaskScreen": {
+      "headerTitle": "새 작업",
+      "addTaskInputSuptitle": "새 작업 텍스트"
     },
     "signInScreen": {
       "SignIn": "로그인",

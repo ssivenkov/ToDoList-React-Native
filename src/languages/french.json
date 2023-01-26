@@ -8,7 +8,6 @@
     },
     "tasksScreen": {
       "Tasks": "Listes de tâches",
-      "CreateTaskButtonTitle": "Entrez le nouveau titre de la tâche",
       "CreateTaskListButtonTitle": "Saisissez le nouveau titre de la liste de tâches",
       "DeleteQuestionButtonTitle": "Etes-vous sûr de vouloir supprimer <0>{{text}}</0>?",
       "DoneButton": "Etes-vous sûr que la tâche <0>{{text}}</0> est terminée?",
@@ -20,6 +19,10 @@
       "EnableNotification": "Rappeler la tâche",
       "EnableMarkColor": "Couleur de la tâche",
       "TaskNotification": "Effectuer la tâche"
+    },
+    "addTaskScreen": {
+      "headerTitle": "Nouvelle tâche",
+      "addTaskInputSuptitle": "Nouveau texte de tâche"
     },
     "signInScreen": {
       "SignIn": "Se connecter",

@@ -8,7 +8,6 @@
     },
     "tasksScreen": {
       "Tasks": "Listy zadań",
-      "CreateTaskButtonTitle": "Wprowadź nowy tytuł zadania",
       "CreateTaskListButtonTitle": "Wprowadź nowy tytuł listy zadań",
       "DeleteQuestionButtonTitle": "Czy na pewno chcesz usunąć <0>{{text}}</0>?",
       "DoneButton": "Czy na pewno zadanie <0>{{text}}</0> zostało zakończone?",
@@ -20,6 +19,10 @@
       "EnableNotification": "Przypomnij o zadaniu",
       "EnableMarkColor": "Kolor zadania",
       "TaskNotification": "Wykonać zadanie"
+    },
+    "addTaskScreen": {
+      "headerTitle": "Nowe zadanie",
+      "addTaskInputSuptitle": "Nowy tekst zadania"
     },
     "signInScreen": {
       "SignIn": "Zaloguj się",

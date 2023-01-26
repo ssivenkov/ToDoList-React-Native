@@ -148,7 +148,7 @@ export const AddTaskScreen = () => {
       <Header
         leftButton={<GoBackButton />}
         rightButton={<SendNewTaskButton sendNewTask={sendNewTask} />}
-        title={t('tasksScreen.CreateTaskButtonTitle')}
+        title={t('addTaskScreen.headerTitle')}
       />
       <ScrollView
         contentContainerStyle={styles.contentWrapper}
@@ -159,6 +159,7 @@ export const AddTaskScreen = () => {
             inputRef={inputRef}
             maxLength={INPUT_MAX_LENGTH200}
             onChangeText={setNewTaskTitle}
+            suptext={t('addTaskScreen.addTaskInputSuptitle')}
             value={newTaskTitle}
           />
           <Notification

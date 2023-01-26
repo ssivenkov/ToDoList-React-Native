@@ -8,7 +8,6 @@
     },
     "tasksScreen": {
       "Tasks": "Listas de tarefas",
-      "CreateTaskButtonTitle": "Introduzir novo título da tarefa",
       "CreateTaskListButtonTitle": "Introduzir o título da nova lista de tarefas",
       "DeleteQuestionButtonTitle": "Tem a certeza de apagar <0>{{text}}</0>?",
       "DoneButton": "Tem a certeza de que a tarefa <0>{{text}}</0> está concluída?",
@@ -20,6 +19,10 @@
       "EnableNotification": "Lembrete da tarefa",
       "EnableMarkColor": "Cor da tarefa",
       "TaskNotification": "Realizar tarefa"
+    },
+    "addTaskScreen": {
+      "headerTitle": "Nova tarefa",
+      "addTaskInputSuptitle": "Texto da nova tarefa"
     },
     "signInScreen": {
       "SignIn": "Iniciar sessão",

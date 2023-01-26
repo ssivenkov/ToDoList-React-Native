@@ -8,7 +8,6 @@
     },
     "tasksScreen": {
       "Tasks": "Спісы задач",
-      "CreateTaskButtonTitle": "Назва новай задачы",
       "CreateTaskListButtonTitle": "Назва новага спісу задач",
       "DeleteQuestionButtonTitle": "Выдаліць <0>{{text}}</0>?",
       "DoneButton": "Задача <0>{{text}}</0> выканана?",
@@ -20,6 +19,10 @@
       "EnableNotification": "Нагадаць аб задачы",
       "EnableMarkColor": "Колер задачы",
       "TaskNotification": "Выканайце задачу"
+    },
+    "addTaskScreen": {
+      "headerTitle": "Новая задача",
+      "addTaskInputSuptitle": "Тэкст новай задачы"
     },
     "signInScreen": {
       "SignIn": "Уваход",

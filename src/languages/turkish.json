@@ -8,7 +8,6 @@
     },
     "tasksScreen": {
       "Tasks": "Görev listeleri",
-      "CreateTaskButtonTitle": "Yeni görev başlığı girin",
       "CreateTaskListButtonTitle": "Yeni görev listesi başlığı girin",
       "DeleteQuestionButtonTitle": "<0>{{text}}</0> öğesini sildiğinizden emin misiniz?",
       "DoneButton": "<0>{{text}}</0> görevinin tamamlandığından emin misiniz?",
@@ -20,6 +19,10 @@
       "EnableNotification": "Görevi hatırlatın",
       "EnableMarkColor": "Görev rengi",
       "TaskNotification": "Görevi gerçekleştirin"
+    },
+    "addTaskScreen": {
+      "headerTitle": "Yeni görev",
+      "addTaskInputSuptitle": "Yeni görev metni"
     },
     "signInScreen": {
       "SignIn": "Oturum aç",

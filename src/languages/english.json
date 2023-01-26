@@ -8,7 +8,6 @@
     },
     "tasksScreen": {
       "Tasks": "Task lists",
-      "CreateTaskButtonTitle": "Enter new task title",
       "CreateTaskListButtonTitle": "Enter new task list title",
       "DeleteQuestionButtonTitle": "Are you sure to delete <0>{{text}}</0>?",
       "DoneButton": "Are you sure the task <0>{{text}}</0> is completed?",
@@ -20,6 +19,10 @@
       "EnableNotification": "Remind of the task",
       "EnableMarkColor": "Task color",
       "TaskNotification": "Perform task"
+    },
+    "addTaskScreen": {
+      "headerTitle": "New task",
+      "addTaskInputSuptitle": "New task text"
     },
     "signInScreen": {
       "SignIn": "Sign in",

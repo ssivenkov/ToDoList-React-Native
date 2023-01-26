@@ -8,7 +8,6 @@
     },
     "tasksScreen": {
       "Tasks": "Elenchi di attività",
-      "CreateTaskButtonTitle": "Immettere il nuovo titolo dell'attività",
       "CreateTaskListButtonTitle": "Immettere il titolo del nuovo elenco di attività",
       "DeleteQuestionButtonTitle": "Sei sicuro di voler cancellare <0>{{text}}</0>?",
       "DoneButton": "Si è sicuri che l'attività <0>{{text}}</0> sia stata completata?",
@@ -20,6 +19,10 @@
       "EnableNotification": "Ricordare il compito",
       "EnableMarkColor": "Colore del compito",
       "TaskNotification": "Eseguire il compito"
+    },
+    "addTaskScreen": {
+      "headerTitle": "Nuovo compito",
+      "addTaskInputSuptitle": "Nuovo testo dell'attività"
     },
     "signInScreen": {
       "SignIn": "Accedi",
