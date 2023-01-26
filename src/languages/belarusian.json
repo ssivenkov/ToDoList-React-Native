@@ -8,43 +8,45 @@
       "NoInternetConnection": "Адсутнічае падлучэнне да інтэрнэту. Калі ласка, падключыцеся да інтэрнэту",
       "NoIOSNotificationsPermission": "Адсутнічае дазвол для апавяшчэнняў. Падайце дадатку дазвол на паказ апавяшчэнняў"
     },
-    "tasksScreen": {
-      "Tasks": "Спісы задач",
-      "CreateTaskListButtonTitle": "Назва новага спісу задач",
-      "DeleteQuestionButtonTitle": "Выдаліць <0>{{text}}</0>?",
-      "DoneButton": "Задача <0>{{text}}</0> выканана?",
-      "EditTaskListButtonTitle": "Назва спісу задач",
-      "TodoTasksTab": "Выканаць",
-      "DoneTasksTab": "Выкананыя",
-      "NoTaskListsFound": "Спісаў задач не знойдзена",
-      "EnableNotification": "Нагадаць аб задачы",
-      "EnableMarkColor": "Колер задачы",
+    "notification": {
       "TaskNotification": "Выканайце задачу"
     },
+    "tasksScreen": {
+      "HeaderTitle": "Спісы задач",
+      "CreateTaskListModalTitle": "Назва новага спісу задач",
+      "DeleteModalQuestion": "Выдаліць <0>{{text}}</0>?",
+      "DoneModalQuestion": "Задача <0>{{text}}</0> выканана?",
+      "EditTaskListModalTitle": "Назва спісу задач",
+      "TodoTasksTabTitle": "Выканаць",
+      "DoneTasksTabTitle": "Выкананыя",
+      "NoTaskListsFound": "Спісаў задач не знойдзена",
+      "EnableNotification": "Нагадаць аб задачы",
+      "EnableColorMark": "Колер задачы"
+    },
     "addTaskScreen": {
-      "headerTitle": "Новая задача",
-      "addTaskInputSuptitle": "Тэкст новай задачы"
+      "HeaderTitle": "Новая задача",
+      "AddTaskInputSuptitle": "Тэкст новай задачы"
     },
     "editTaskScreen": {
-      "headerTitle": "Змяненне задачы",
-      "editTaskInputSuptitle": "Тэкст задачы"
+      "HeaderTitle": "Змяненне задачы",
+      "EditTaskInputSuptitle": "Тэкст задачы"
     },
     "signInScreen": {
       "SignIn": "Уваход",
-      "SignInWith": "Уваход праз <0>{{text}}</0>",
-      "CancelAuthProcess": "Працэс уваходу адменены карыстальнікам",
-      "ErrorGettingAccessToken": "Памылка атрымання токена аўтарызацыі"
+      "SignInWithButtonTitle": "Уваход праз <0>{{text}}</0>",
+      "CancelAuthProcessModalTitle": "Працэс уваходу адменены карыстальнікам",
+      "GettingAccessTokenErrorModalTitle": "Памылка атрымання токена аўтарызацыі"
     },
     "accountScreen": {
-      "Account": "Акаўнт",
-      "DarkMode": "Цёмная тэма",
-      "SignOut": "Выхад",
-      "SignOutWarning": "Вы ўпэўненыя, што хочаце выйсці з уліковага запісу?",
+      "HeaderTitle": "Акаўнт",
+      "DarkModeButtonTitle": "Цёмная тэма",
+      "SignOutButtonTitle": "Выхад",
+      "SignOutModalTitle": "Вы ўпэўненыя, што хочаце выйсці з уліковага запісу?",
       "ChangeLanguageButtonTitle": "Мова",
-      "ChangeLanguageButtonDescription": "Абярыце мову перакладання",
-      "DeleteAccount": "Выдаліць акаўнт",
-      "DeleteAccountWarning": "Вы ўпэўненыя, што жадаеце выдаліць свой уліковы запіс з усімі вашымі дадзенымі?",
-      "AccentColorDescription": "Абярыце колер акцэнту",
+      "ChangeLanguageModalTitle": "Абярыце мову перакладання",
+      "DeleteAccountButtonTitle": "Выдаліць акаўнт",
+      "DeleteAccountModalTitle": "Вы ўпэўненыя, што жадаеце выдаліць свой уліковы запіс з усімі вашымі дадзенымі?",
+      "AccentColorModalTitle": "Абярыце колер акцэнту",
       "AccentColorButtonTitle": "Колер акцэнту",
       "ContactTheAuthorButtonTitle": "Звязацца з аўтарам"
     },
@@ -53,21 +55,21 @@
       "EmailSuptext": "Эл. пошта",
       "EmailSubtext": "Адказ будзе дасланы на гэты адрас эл. пошты",
       "MessageSuptext": "Тэкст паведамлення",
-      "SendButton": "Адправіць",
-      "ContactTheAuthorSuccess": "Дзякуй, ваша паведамленне было адпраўлена. Аўтар звяжацца з вамі ў бліжэйшы час",
-      "ContactTheAuthorError": "Невядомая памылка. Паспрабуйце ўвесці іншы адрас эл. пошты",
-      "InvalidEmailError": "Няправільны адрас эл. пошты",
-      "EmailRequiredError": "Патрабуецца эл. пошта",
-      "MessageRequiredError": "Патрабуецца тэкст паведамлення"
+      "SendButtonTitle": "Адправіць",
+      "ContactTheAuthorSuccessModalTitle": "Дзякуй, ваша паведамленне было адпраўлена. Аўтар звяжацца з вамі ў бліжэйшы час",
+      "ContactTheAuthorErrorModalTitle": "Невядомая памылка. Паспрабуйце ўвесці іншы адрас эл. пошты",
+      "InvalidEmailErrorTitle": "Няправільны адрас эл. пошты",
+      "EmailRequiredErrorTitle": "Патрабуецца эл. пошта",
+      "MessageRequiredErrorTitle": "Патрабуецца тэкст паведамлення"
     },
     "notepadScreen": {
-      "Notepad": "Нататнік",
+      "HeaderTitle": "Нататнік",
       "NotepadPlaceholder": "Ваш тэкст",
-      "CleanButtonWarningTitle": "Вы ўпэўнены, што хочаце ачысціць нататнік?",
-      "CleanNotepadTextRequestError": "Няма падключэння да інтэрнэту, нататнік быў ачышчаны толькі на вашай прыладзе. Каб ачысціць нататнік на серверы, уключыце інтэрнэт і паўторыце запыт",
-      "SaveNotepadTextRequestError": "Няма падключэння да інтэрнэту, нататнік быў захаваны толькі на вашай прыладзе. Каб захаваць нататнік на серверы, уключыце інтэрнэт і паўторыце запыт",
-      "NotepadCleared": "Нататнік ачышчаны",
-      "NotepadSaved": "Нататнік захаваны"
+      "CleanButtonModalTitle": "Вы ўпэўнены, што хочаце ачысціць нататнік?",
+      "CleanNotepadTextRequestErrorModalTitle": "Няма падключэння да інтэрнэту, нататнік быў ачышчаны толькі на вашай прыладзе. Каб ачысціць нататнік на серверы, уключыце інтэрнэт і паўторыце запыт",
+      "SaveNotepadTextRequestErrorModalTitle": "Няма падключэння да інтэрнэту, нататнік быў захаваны толькі на вашай прыладзе. Каб захаваць нататнік на серверы, уключыце інтэрнэт і паўторыце запыт",
+      "NotepadClearedModalTitle": "Нататнік ачышчаны",
+      "NotepadSavedModalTitle": "Нататнік захаваны"
     }
   }
 }

@@ -8,43 +8,45 @@
       "NoInternetConnection": "Pas de connexion internet. Veuillez vous connecter à l'internet",
       "NoIOSNotificationsPermission": "Pas d'autorisation pour les notifications. Donnez à l'application la permission d'afficher des notifications"
     },
-    "tasksScreen": {
-      "Tasks": "Listes de tâches",
-      "CreateTaskListButtonTitle": "Saisissez le nouveau titre de la liste de tâches",
-      "DeleteQuestionButtonTitle": "Etes-vous sûr de vouloir supprimer <0>{{text}}</0>?",
-      "DoneButton": "Etes-vous sûr que la tâche <0>{{text}}</0> est terminée?",
-      "EditTaskListButtonTitle": "Modifier le titre de la liste des tâches",
-      "TodoTasksTab": "Tâches à faire",
-      "DoneTasksTab": "Tâches effectuées",
-      "NoTaskListsFound": "Aucune liste de tâches trouvée",
-      "EnableNotification": "Rappeler la tâche",
-      "EnableMarkColor": "Couleur de la tâche",
+    "notification": {
       "TaskNotification": "Effectuer la tâche"
     },
+    "tasksScreen": {
+      "HeaderTitle": "Listes de tâches",
+      "CreateTaskListModalTitle": "Saisissez le nouveau titre de la liste de tâches",
+      "DeleteModalQuestion": "Etes-vous sûr de vouloir supprimer <0>{{text}}</0>?",
+      "DoneModalQuestion": "Etes-vous sûr que la tâche <0>{{text}}</0> est terminée?",
+      "EditTaskListModalTitle": "Modifier le titre de la liste des tâches",
+      "TodoTasksTabTitle": "Tâches à faire",
+      "DoneTasksTabTitle": "Tâches effectuées",
+      "NoTaskListsFound": "Aucune liste de tâches trouvée",
+      "EnableNotification": "Rappeler la tâche",
+      "EnableColorMark": "Couleur de la tâche"
+    },
     "addTaskScreen": {
-      "headerTitle": "Nouvelle tâche",
-      "addTaskInputSuptitle": "Nouveau texte de tâche"
+      "HeaderTitle": "Nouvelle tâche",
+      "AddTaskInputSuptitle": "Nouveau texte de tâche"
     },
     "editTaskScreen": {
-      "headerTitle": "Modification d'une tâche",
-      "editTaskInputSuptitle": "Texte de la tâche"
+      "HeaderTitle": "Modification d'une tâche",
+      "EditTaskInputSuptitle": "Texte de la tâche"
     },
     "signInScreen": {
       "SignIn": "Se connecter",
-      "SignInWith": "Se connecter avec <0>{{text}}</0>",
-      "CancelAuthProcess": "L'utilisateur a annulé le processus de connexion",
-      "ErrorGettingAccessToken": "Un problème est survenu lors de l'obtention du jeton d'accès"
+      "SignInWithButtonTitle": "Se connecter avec <0>{{text}}</0>",
+      "CancelAuthProcessModalTitle": "L'utilisateur a annulé le processus de connexion",
+      "GettingAccessTokenErrorModalTitle": "Un problème est survenu lors de l'obtention du jeton d'accès"
     },
     "accountScreen": {
-      "Account": "Compte",
-      "DarkMode": "Mode sombre",
-      "SignOut": "Se déconnecter",
-      "SignOutWarning": "Vous êtes sûr de vouloir vous déconnecter?",
+      "HeaderTitle": "Compte",
+      "DarkModeButtonTitle": "Mode sombre",
+      "SignOutButtonTitle": "Se déconnecter",
+      "SignOutModalTitle": "Vous êtes sûr de vouloir vous déconnecter?",
       "ChangeLanguageButtonTitle": "Langue",
-      "ChangeLanguageButtonDescription": "Sélectionnez la langue de l'application",
-      "DeleteAccount": "Supprimer le compte",
-      "DeleteAccountWarning": "Êtes-vous sûr de vouloir supprimer votre compte avec toutes vos données?",
-      "AccentColorDescription": "Sélectionnez la couleur d'accentuation",
+      "ChangeLanguageModalTitle": "Sélectionnez la langue de l'application",
+      "DeleteAccountButtonTitle": "Supprimer le compte",
+      "DeleteAccountModalTitle": "Êtes-vous sûr de vouloir supprimer votre compte avec toutes vos données?",
+      "AccentColorModalTitle": "Sélectionnez la couleur d'accentuation",
       "AccentColorButtonTitle": "Couleur d'accentuation",
       "ContactTheAuthorButtonTitle": "Contacter l'auteur"
     },
@@ -53,21 +55,21 @@
       "EmailSuptext": "Email",
       "EmailSubtext": "Une réponse sera envoyée à cet email",
       "MessageSuptext": "Texte du message",
-      "SendButton": "Envoyer",
-      "ContactTheAuthorSuccess": "Merci! Votre message a été envoyé. L'auteur vous contactera sous peu",
-      "ContactTheAuthorError": "Erreur inconnue. Veuillez essayer d'entrer une autre adresse email",
-      "InvalidEmailError": "Adresse email invalide",
-      "EmailRequiredError": "Email requis",
-      "MessageRequiredError": "Texte du message requis"
+      "SendButtonTitle": "Envoyer",
+      "ContactTheAuthorSuccessModalTitle": "Merci! Votre message a été envoyé. L'auteur vous contactera sous peu",
+      "ContactTheAuthorErrorModalTitle": "Erreur inconnue. Veuillez essayer d'entrer une autre adresse email",
+      "InvalidEmailErrorTitle": "Adresse email invalide",
+      "EmailRequiredErrorTitle": "Email requis",
+      "MessageRequiredErrorTitle": "Texte du message requis"
     },
     "notepadScreen": {
-      "Notepad": "Bloc-notes",
+      "HeaderTitle": "Bloc-notes",
       "NotepadPlaceholder": "Ton texte",
-      "CleanButtonWarningTitle": "Voulez-vous vraiment effacer le bloc-notes?",
-      "CleanNotepadTextRequestError": "Pas de connexion internet, le bloc-notes n'a été effacé que sur votre appareil. Pour effacer le bloc-notes sur le serveur, activez internet et répétez la demande",
-      "SaveNotepadTextRequestError": "Pas de connexion internet, le bloc-notes n'a été enregistré que sur votre appareil. Pour enregistrer le bloc-notes sur le serveur, activez internet et répétez la demande",
-      "NotepadCleared": "Bloc-notes effacé",
-      "NotepadSaved": "Bloc-notes enregistré"
+      "CleanButtonModalTitle": "Voulez-vous vraiment effacer le bloc-notes?",
+      "CleanNotepadTextRequestErrorModalTitle": "Pas de connexion internet, le bloc-notes n'a été effacé que sur votre appareil. Pour effacer le bloc-notes sur le serveur, activez internet et répétez la demande",
+      "SaveNotepadTextRequestErrorModalTitle": "Pas de connexion internet, le bloc-notes n'a été enregistré que sur votre appareil. Pour enregistrer le bloc-notes sur le serveur, activez internet et répétez la demande",
+      "NotepadClearedModalTitle": "Bloc-notes effacé",
+      "NotepadSavedModalTitle": "Bloc-notes enregistré"
     }
   }
 }

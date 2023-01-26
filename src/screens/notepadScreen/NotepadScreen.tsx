@@ -36,7 +36,7 @@ export const NotepadScreen = () => {
       <Header
         leftButton={<CleanButton setNotepadText={setNotepadText} />}
         rightButton={<SaveButton notepadText={notepadText} />}
-        title={t('notepadScreen.Notepad')}
+        title={t('notepadScreen.HeaderTitle')}
       />
       <ScrollView style={styles.scrollViewContainer}>
         <NotepadInput

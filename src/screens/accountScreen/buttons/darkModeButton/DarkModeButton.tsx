@@ -77,7 +77,7 @@ export const DarkModeButton = (props: DarkModeButtonPropsType) => {
           textStyle={styles.text}
         />
       }
-      title={t('accountScreen.DarkMode')}
+      title={t('accountScreen.DarkModeButtonTitle')}
     />
   );
 };

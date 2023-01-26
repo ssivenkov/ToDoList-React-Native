@@ -8,43 +8,45 @@
       "NoInternetConnection": "Tidak ada koneksi internet. Harap terhubung ke Internet",
       "NoIOSNotificationsPermission": "Tidak ada izin untuk notifikasi. Berikan izin aplikasi untuk menampilkan notifikasi"
     },
-    "tasksScreen": {
-      "Tasks": "Daftar tugas",
-      "CreateTaskListButtonTitle": "Masukkan judul daftar tugas baru",
-      "DeleteQuestionButtonTitle": "Apakah Anda yakin untuk menghapus <0>{{text}}</0>?",
-      "DoneButton": "Apakah Anda yakin tugas <0>{{text}}</0> sudah selesai?",
-      "EditTaskListButtonTitle": "Edit judul daftar tugas",
-      "TodoTasksTab": "Tugas",
-      "DoneTasksTab": "Tugas siap pakai",
-      "NoTaskListsFound": "Tidak ada daftar tugas yang ditemukan",
-      "EnableNotification": "Mengingatkan tugas",
-      "EnableMarkColor": "Warna tugas",
+    "notification": {
       "TaskNotification": "Melakukan tugas"
     },
+    "tasksScreen": {
+      "HeaderTitle": "Daftar tugas",
+      "CreateTaskListModalTitle": "Masukkan judul daftar tugas baru",
+      "DeleteModalQuestion": "Apakah Anda yakin untuk menghapus <0>{{text}}</0>?",
+      "DoneModalQuestion": "Apakah Anda yakin tugas <0>{{text}}</0> sudah selesai?",
+      "EditTaskListModalTitle": "Edit judul daftar tugas",
+      "TodoTasksTabTitle": "Tugas",
+      "DoneTasksTabTitle": "Tugas siap pakai",
+      "NoTaskListsFound": "Tidak ada daftar tugas yang ditemukan",
+      "EnableNotification": "Mengingatkan tugas",
+      "EnableColorMark": "Warna tugas"
+    },
     "addTaskScreen": {
-      "headerTitle": "Tugas baru",
-      "addTaskInputSuptitle": "Teks tugas baru"
+      "HeaderTitle": "Tugas baru",
+      "AddTaskInputSuptitle": "Teks tugas baru"
     },
     "editTaskScreen": {
-      "headerTitle": "Mengubah tugas",
-      "editTaskInputSuptitle": "Teks tugas"
+      "HeaderTitle": "Mengubah tugas",
+      "EditTaskInputSuptitle": "Teks tugas"
     },
     "signInScreen": {
       "SignIn": "Masuk",
-      "SignInWith": "Masuk dengan <0>{{text}}</0>",
-      "CancelAuthProcess": "Pengguna membatalkan proses login",
-      "ErrorGettingAccessToken": "Ada yang salah dalam mendapatkan token akses"
+      "SignInWithButtonTitle": "Masuk dengan <0>{{text}}</0>",
+      "CancelAuthProcessModalTitle": "Pengguna membatalkan proses login",
+      "GettingAccessTokenErrorModalTitle": "Ada yang salah dalam mendapatkan token akses"
     },
     "accountScreen": {
-      "Account": "Akun",
-      "DarkMode": "Mode gelap",
-      "SignOut": "Keluar",
-      "SignOutWarning": "Apakah Anda yakin ingin keluar?",
+      "HeaderTitle": "Akun",
+      "DarkModeButtonTitle": "Mode gelap",
+      "SignOutButtonTitle": "Keluar",
+      "SignOutModalTitle": "Apakah Anda yakin ingin keluar?",
       "ChangeLanguageButtonTitle": "Bahasa",
-      "ChangeLanguageButtonDescription": "Pilih bahasa aplikasi",
-      "DeleteAccount": "Hapus akun",
-      "DeleteAccountWarning": "Apakah Anda yakin ingin menghapus akun Anda dengan semua data Anda?",
-      "AccentColorDescription": "Pilih warna aksen",
+      "ChangeLanguageModalTitle": "Pilih bahasa aplikasi",
+      "DeleteAccountButtonTitle": "Hapus akun",
+      "DeleteAccountModalTitle": "Apakah Anda yakin ingin menghapus akun Anda dengan semua data Anda?",
+      "AccentColorModalTitle": "Pilih warna aksen",
       "AccentColorButtonTitle": "Warna aksen",
       "ContactTheAuthorButtonTitle": "Hubungi penulis"
     },
@@ -53,21 +55,21 @@
       "EmailSuptext": "Surel",
       "EmailSubtext": "Balasan akan dikirim ke email ini",
       "MessageSuptext": "Pesan teks",
-      "SendButton": "Mengirim",
-      "ContactTheAuthorSuccess": "Terima kasih! Pesan anda sudah terkirim. Penulis akan segera menghubungi Anda",
-      "ContactTheAuthorError": "Kesalahan yang tidak diketahui. Silakan coba masukkan email lain",
-      "InvalidEmailError": "Alamat surel salah",
-      "EmailRequiredError": "Surel diperlukan",
-      "MessageRequiredError": "Teks pesan diperlukan"
+      "SendButtonTitle": "Mengirim",
+      "ContactTheAuthorSuccessModalTitle": "Terima kasih! Pesan anda sudah terkirim. Penulis akan segera menghubungi Anda",
+      "ContactTheAuthorErrorModalTitle": "Kesalahan yang tidak diketahui. Silakan coba masukkan email lain",
+      "InvalidEmailErrorTitle": "Alamat surel salah",
+      "EmailRequiredErrorTitle": "Surel diperlukan",
+      "MessageRequiredErrorTitle": "Teks pesan diperlukan"
     },
     "notepadScreen": {
-      "Notepad": "Buku catatan",
+      "HeaderTitle": "Buku catatan",
       "NotepadPlaceholder": "Teks anda",
-      "CleanButtonWarningTitle": "Anda yakin ingin menghapus buku catatan?",
-      "CleanNotepadTextRequestError": "Tidak ada koneksi internet, buku catatan hanya dibersihkan di perangkat Anda. Untuk menghapus buku catatan di server, hidupkan Internet dan ulangi permintaan",
-      "SaveNotepadTextRequestError": "Tidak ada koneksi internet, buku catatan hanya disimpan di perangkat Anda. Untuk menyimpan buku catatan di server, nyalakan Internet dan ulangi permintaan",
-      "NotepadCleared": "Buku catatan dibersihkan",
-      "NotepadSaved": "Buku catatan disimpan"
+      "CleanButtonModalTitle": "Anda yakin ingin menghapus buku catatan?",
+      "CleanNotepadTextRequestErrorModalTitle": "Tidak ada koneksi internet, buku catatan hanya dibersihkan di perangkat Anda. Untuk menghapus buku catatan di server, hidupkan Internet dan ulangi permintaan",
+      "SaveNotepadTextRequestErrorModalTitle": "Tidak ada koneksi internet, buku catatan hanya disimpan di perangkat Anda. Untuk menyimpan buku catatan di server, nyalakan Internet dan ulangi permintaan",
+      "NotepadClearedModalTitle": "Buku catatan dibersihkan",
+      "NotepadSavedModalTitle": "Buku catatan disimpan"
     }
   }
 }

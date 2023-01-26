@@ -8,43 +8,45 @@
       "NoInternetConnection": "Nessuna connessione a internet. Si prega di connettersi a internet",
       "NoIOSNotificationsPermission": "Nessuna autorizzazione per le notifiche. Concedi all'app l'autorizzazione a mostrare le notifiche"
     },
-    "tasksScreen": {
-      "Tasks": "Elenchi di attività",
-      "CreateTaskListButtonTitle": "Immettere il titolo del nuovo elenco di attività",
-      "DeleteQuestionButtonTitle": "Sei sicuro di voler cancellare <0>{{text}}</0>?",
-      "DoneButton": "Si è sicuri che l'attività <0>{{text}}</0> sia stata completata?",
-      "EditTaskListButtonTitle": "Modifica del titolo dell'elenco di attività",
-      "TodoTasksTab": "Attività da svolgere",
-      "DoneTasksTab": "Attività svolte",
-      "NoTaskListsFound": "Non sono stati trovati elenchi di attività",
-      "EnableNotification": "Ricordare il compito",
-      "EnableMarkColor": "Colore del compito",
+    "notification": {
       "TaskNotification": "Eseguire il compito"
     },
+    "tasksScreen": {
+      "HeaderTitle": "Elenchi di attività",
+      "CreateTaskListModalTitle": "Immettere il titolo del nuovo elenco di attività",
+      "DeleteModalQuestion": "Sei sicuro di voler cancellare <0>{{text}}</0>?",
+      "DoneModalQuestion": "Si è sicuri che l'attività <0>{{text}}</0> sia stata completata?",
+      "EditTaskListModalTitle": "Modifica del titolo dell'elenco di attività",
+      "TodoTasksTabTitle": "Attività da svolgere",
+      "DoneTasksTabTitle": "Attività svolte",
+      "NoTaskListsFound": "Non sono stati trovati elenchi di attività",
+      "EnableNotification": "Ricordare il compito",
+      "EnableColorMark": "Colore del compito"
+    },
     "addTaskScreen": {
-      "headerTitle": "Nuovo compito",
-      "addTaskInputSuptitle": "Nuovo testo dell'attività"
+      "HeaderTitle": "Nuovo compito",
+      "AddTaskInputSuptitle": "Nuovo testo dell'attività"
     },
     "editTaskScreen": {
-      "headerTitle": "Modificare un'attività",
-      "editTaskInputSuptitle": "Testo dell'attività"
+      "HeaderTitle": "Modificare un'attività",
+      "EditTaskInputSuptitle": "Testo dell'attività"
     },
     "signInScreen": {
       "SignIn": "Accedi",
-      "SignInWith": "Accedi con <0>{{text}}</0>",
-      "CancelAuthProcess": "L'utente ha annullato il processo di login",
-      "ErrorGettingAccessToken": "Qualcosa è andato storto nell'ottenimento del token di accesso"
+      "SignInWithButtonTitle": "Accedi con <0>{{text}}</0>",
+      "CancelAuthProcessModalTitle": "L'utente ha annullato il processo di login",
+      "GettingAccessTokenErrorModalTitle": "Qualcosa è andato storto nell'ottenimento del token di accesso"
     },
     "accountScreen": {
-      "Account": "Conto",
-      "DarkMode": "Modalità scura",
-      "SignOut": "Esci",
-      "SignOutWarning": "È sicuro di voler firmare per uscire?",
+      "HeaderTitle": "Conto",
+      "DarkModeButtonTitle": "Modalità scura",
+      "SignOutButtonTitle": "Esci",
+      "SignOutModalTitle": "È sicuro di voler firmare per uscire?",
       "ChangeLanguageButtonTitle": "Lingua",
-      "ChangeLanguageButtonDescription": "Selezionare la lingua dell'applicazione",
-      "DeleteAccount": "Cancellare l'account",
-      "DeleteAccountWarning": "Sei sicuro di voler cancellare il tuo account con tutti i tuoi dati?",
-      "AccentColorDescription": "Selezionare il colore dell'accento",
+      "ChangeLanguageModalTitle": "Selezionare la lingua dell'applicazione",
+      "DeleteAccountButtonTitle": "Cancellare l'account",
+      "DeleteAccountModalTitle": "Sei sicuro di voler cancellare il tuo account con tutti i tuoi dati?",
+      "AccentColorModalTitle": "Selezionare il colore dell'accento",
       "AccentColorButtonTitle": "Colore d'accento",
       "ContactTheAuthorButtonTitle": "Contatta l'autore"
     },
@@ -53,21 +55,21 @@
       "EmailSuptext": "Email",
       "EmailSubtext": "Una risposta verrà inviata a questa email",
       "MessageSuptext": "Messaggio di testo",
-      "SendButton": "Spedire",
-      "ContactTheAuthorSuccess": "Grazie! Il tuo messaggio è stato spedito. L'autore ti contatterà a breve",
-      "ContactTheAuthorError": "Errore sconosciuto. Si prega di provare a inserire un'altra email",
-      "InvalidEmailError": "Indirizzo email non valido",
-      "EmailRequiredError": "Email obbligatorio",
-      "MessageRequiredError": "Testo del messaggio richiesto"
+      "SendButtonTitle": "Spedire",
+      "ContactTheAuthorSuccessModalTitle": "Grazie! Il tuo messaggio è stato spedito. L'autore ti contatterà a breve",
+      "ContactTheAuthorErrorModalTitle": "Errore sconosciuto. Si prega di provare a inserire un'altra email",
+      "InvalidEmailErrorTitle": "Indirizzo email non valido",
+      "EmailRequiredErrorTitle": "Email obbligatorio",
+      "MessageRequiredErrorTitle": "Testo del messaggio richiesto"
     },
     "notepadScreen": {
-      "Notepad": "Blocco note",
+      "HeaderTitle": "Blocco note",
       "NotepadPlaceholder": "Il tuo testo",
-      "CleanButtonWarningTitle": "È sicuro di voler cancellare il blocco note?",
-      "CleanNotepadTextRequestError": "Nessuna connessione a internet, il blocco note è stato cancellato solo sul tuo dispositivo. Per cancellare il blocco note sul server, accendi internet e ripeti la richiesta",
-      "SaveNotepadTextRequestError": "Nessuna connessione a internet, il blocco note è stato salvato solo sul tuo dispositivo. Per salvare il blocco note sul server accendi internet e ripeti la richiesta",
-      "NotepadCleared": "Blocco note cancellato",
-      "NotepadSaved": "Blocco note salvato"
+      "CleanButtonModalTitle": "È sicuro di voler cancellare il blocco note?",
+      "CleanNotepadTextRequestErrorModalTitle": "Nessuna connessione a internet, il blocco note è stato cancellato solo sul tuo dispositivo. Per cancellare il blocco note sul server, accendi internet e ripeti la richiesta",
+      "SaveNotepadTextRequestErrorModalTitle": "Nessuna connessione a internet, il blocco note è stato salvato solo sul tuo dispositivo. Per salvare il blocco note sul server accendi internet e ripeti la richiesta",
+      "NotepadClearedModalTitle": "Blocco note cancellato",
+      "NotepadSavedModalTitle": "Blocco note salvato"
     }
   }
 }

@@ -27,7 +27,7 @@ export const SignInButton = (props: SignInButtonPropsType) => {
       />
       <View style={signInButtonStyles.textContainer}>
         <Text style={signInButtonStyles.text}>
-          <Trans i18nKey='signInScreen.SignInWith'>
+          <Trans i18nKey='signInScreen.SignInWithButtonTitle'>
             <Text>{{ text: serviceTitle }}</Text>
           </Trans>
         </Text>

@@ -137,7 +137,7 @@ export const EditTaskScreen = () => {
       <Header
         leftButton={<GoBackButton />}
         rightButton={<SendEditedTaskButton sendEditedTask={sendEditedTask} />}
-        title={t('editTaskScreen.headerTitle')}
+        title={t('editTaskScreen.HeaderTitle')}
       />
       <ScrollView
         contentContainerStyle={styles.contentWrapper}
@@ -147,7 +147,7 @@ export const EditTaskScreen = () => {
           <Input
             maxLength={INPUT_MAX_LENGTH200}
             onChangeText={setEditedTaskTitle}
-            suptext={t('editTaskScreen.editTaskInputSuptitle')}
+            suptext={t('editTaskScreen.EditTaskInputSuptitle')}
             value={editedTaskTitle}
           />
           {isTodo && (
@@ -166,7 +166,7 @@ export const EditTaskScreen = () => {
               size='medium'
               switcherMarginLeft={15}
               switcherMarginRight={switcherMargin}
-              switcherText={t('tasksScreen.EnableMarkColor')}
+              switcherText={t('tasksScreen.EnableColorMark')}
               textMarginBottom={1}
               textStyle={styles.colorPickerSwitcherText}
             />

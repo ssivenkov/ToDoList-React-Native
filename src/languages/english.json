@@ -8,43 +8,45 @@
       "NoInternetConnection": "No internet connection. Please connect to the internet",
       "NoIOSNotificationsPermission": "No permission for notifications. Grant the app permission to show notifications"
     },
-    "tasksScreen": {
-      "Tasks": "Task lists",
-      "CreateTaskListButtonTitle": "New task list title",
-      "DeleteQuestionButtonTitle": "Are you sure to delete <0>{{text}}</0>?",
-      "DoneButton": "Are you sure the task <0>{{text}}</0> is completed?",
-      "EditTaskListButtonTitle": "Edit task list title",
-      "TodoTasksTab": "Todo tasks",
-      "DoneTasksTab": "Done tasks",
-      "NoTaskListsFound": "No task lists found",
-      "EnableNotification": "Remind of the task",
-      "EnableMarkColor": "Task color",
+    "notification": {
       "TaskNotification": "Perform task"
     },
+    "tasksScreen": {
+      "HeaderTitle": "Task lists",
+      "CreateTaskListModalTitle": "New task list title",
+      "DeleteModalQuestion": "Are you sure to delete <0>{{text}}</0>?",
+      "DoneModalQuestion": "Are you sure the task <0>{{text}}</0> is completed?",
+      "EditTaskListModalTitle": "Edit task list title",
+      "TodoTasksTabTitle": "Todo tasks",
+      "DoneTasksTabTitle": "Done tasks",
+      "NoTaskListsFound": "No task lists found",
+      "EnableNotification": "Remind of the task",
+      "EnableColorMark": "Task color"
+    },
     "addTaskScreen": {
-      "headerTitle": "New task",
-      "addTaskInputSuptitle": "New task text"
+      "HeaderTitle": "New task",
+      "AddTaskInputSuptitle": "New task text"
     },
     "editTaskScreen": {
-      "headerTitle": "Edit task",
-      "editTaskInputSuptitle": "Task text"
+      "HeaderTitle": "Edit task",
+      "EditTaskInputSuptitle": "Task text"
     },
     "signInScreen": {
       "SignIn": "Sign in",
-      "SignInWith": "Sign in with <0>{{text}}</0>",
-      "CancelAuthProcess": "User cancelled the login process",
-      "ErrorGettingAccessToken": "Something went wrong obtaining access token"
+      "SignInWithButtonTitle": "Sign in with <0>{{text}}</0>",
+      "CancelAuthProcessModalTitle": "User cancelled the login process",
+      "GettingAccessTokenErrorModalTitle": "Something went wrong obtaining access token"
     },
     "accountScreen": {
-      "Account": "Account",
-      "DarkMode": "Dark mode",
-      "SignOut": "Sign out",
-      "SignOutWarning": "Are you sure you want to sign out?",
+      "HeaderTitle": "Account",
+      "DarkModeButtonTitle": "Dark mode",
+      "SignOutButtonTitle": "Sign out",
+      "SignOutModalTitle": "Are you sure you want to sign out?",
       "ChangeLanguageButtonTitle": "Language",
-      "ChangeLanguageButtonDescription": "Select app language",
-      "DeleteAccount": "Delete account",
-      "DeleteAccountWarning": "Are you sure you want to delete your account with all your data?",
-      "AccentColorDescription": "Select accent color",
+      "ChangeLanguageModalTitle": "Select app language",
+      "DeleteAccountButtonTitle": "Delete account",
+      "DeleteAccountModalTitle": "Are you sure you want to delete your account with all your data?",
+      "AccentColorModalTitle": "Select accent color",
       "AccentColorButtonTitle": "Accent color",
       "ContactTheAuthorButtonTitle": "Contact the author"
     },
@@ -53,21 +55,21 @@
       "EmailSuptext": "Email",
       "EmailSubtext": "A reply will be sent to this email",
       "MessageSuptext": "Message text",
-      "SendButton": "Send",
-      "ContactTheAuthorSuccess": "Thank you, your message has been sent. The author will contact you shortly",
-      "ContactTheAuthorError": "Unknown error. Please try to enter another email",
-      "InvalidEmailError": "Invalid email address",
-      "EmailRequiredError": "Email required",
-      "MessageRequiredError": "Message text required"
+      "SendButtonTitle": "Send",
+      "ContactTheAuthorSuccessModalTitle": "Thank you, your message has been sent. The author will contact you shortly",
+      "ContactTheAuthorErrorModalTitle": "Unknown error. Please try to enter another email",
+      "InvalidEmailErrorTitle": "Invalid email address",
+      "EmailRequiredErrorTitle": "Email required",
+      "MessageRequiredErrorTitle": "Message text required"
     },
     "notepadScreen": {
-      "Notepad": "Notepad",
+      "HeaderTitle": "Notepad",
       "NotepadPlaceholder": "Your text",
-      "CleanButtonWarningTitle": "Are you sure you want to clear the notepad?",
-      "CleanNotepadTextRequestError": "No internet connection, notepad has only been cleared on your device. To clear notepad on the server turn on the internet and repeat the request",
-      "SaveNotepadTextRequestError": "No internet connection, notepad has only been saved on your device. To save notepad on the server turn on the internet and repeat the request",
-      "NotepadCleared": "Notepad cleared",
-      "NotepadSaved": "Notepad saved"
+      "CleanButtonModalTitle": "Are you sure you want to clear the notepad?",
+      "CleanNotepadTextRequestErrorModalTitle": "No internet connection, notepad has only been cleared on your device. To clear notepad on the server turn on the internet and repeat the request",
+      "SaveNotepadTextRequestErrorModalTitle": "No internet connection, notepad has only been saved on your device. To save notepad on the server turn on the internet and repeat the request",
+      "NotepadClearedModalTitle": "Notepad cleared",
+      "NotepadSavedModalTitle": "Notepad saved"
     }
   }
 }

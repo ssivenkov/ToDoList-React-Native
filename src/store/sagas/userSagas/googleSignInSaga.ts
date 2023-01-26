@@ -43,7 +43,7 @@ export function* googleSignInSaga() {
     if (!idToken) {
       yield put(
         setModalMessageAction({
-          modalMessage: t('signInScreen.ErrorGettingAccessToken'),
+          modalMessage: t('signInScreen.GettingAccessTokenErrorModalTitle'),
         }),
       );
 
@@ -71,7 +71,7 @@ export function* googleSignInSaga() {
     ) {
       yield put(
         setModalMessageAction({
-          modalMessage: t('signInScreen.CancelAuthProcess'),
+          modalMessage: t('signInScreen.CancelAuthProcessModalTitle'),
         }),
       );
     } else if (error instanceof Error) {

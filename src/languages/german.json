@@ -8,43 +8,45 @@
       "NoInternetConnection": "Keine internetverbindung. Bitte stellen sie eine verbindung mit dem internet her",
       "NoIOSNotificationsPermission": "Keine berechtigung für benachrichtigungen. Erteilen sie der app die erlaubnis, benachrichtigungen anzuzeigen"
     },
-    "tasksScreen": {
-      "Tasks": "Aufgabenlisten",
-      "CreateTaskListButtonTitle": "Neuen aufgabentitel eingeben",
-      "DeleteQuestionButtonTitle": "Sind sie sicher, dass sie <0>{{text}}</0> löschen wollen?",
-      "DoneButton": "Sind sie sicher, dass die aufgabe <0>{{text}}</0> abgeschlossen ist?",
-      "EditTaskListButtonTitle": "Titel der aufgabenliste bearbeiten",
-      "TodoTasksTab": "Fertige aufgaben",
-      "DoneTasksTab": "Erledigte aufgaben",
-      "NoTaskListsFound": "Keine aufgabenliste gefunden",
-      "EnableNotification": "Erinnern sie an die aufgabe",
-      "EnableMarkColor": "Farbe der aufgabe",
+    "notification": {
       "TaskNotification": "Aufgabe ausführen"
     },
+    "tasksScreen": {
+      "HeaderTitle": "Aufgabenlisten",
+      "CreateTaskListModalTitle": "Neuen aufgabentitel eingeben",
+      "DeleteModalQuestion": "Sind sie sicher, dass sie <0>{{text}}</0> löschen wollen?",
+      "DoneModalQuestion": "Sind sie sicher, dass die aufgabe <0>{{text}}</0> abgeschlossen ist?",
+      "EditTaskListModalTitle": "Titel der aufgabenliste bearbeiten",
+      "TodoTasksTabTitle": "Fertige aufgaben",
+      "DoneTasksTabTitle": "Erledigte aufgaben",
+      "NoTaskListsFound": "Keine aufgabenliste gefunden",
+      "EnableNotification": "Erinnern sie an die aufgabe",
+      "EnableColorMark": "Farbe der aufgabe"
+    },
     "addTaskScreen": {
-      "headerTitle": "Neue aufgabe",
-      "addTaskInputSuptitle": "Neuer aufgabentext"
+      "HeaderTitle": "Neue aufgabe",
+      "AddTaskInputSuptitle": "Neuer aufgabentext"
     },
     "editTaskScreen": {
-      "headerTitle": "Eine aufgabe ändern",
-      "editTaskInputSuptitle": "Aufgabentext"
+      "HeaderTitle": "Eine aufgabe ändern",
+      "EditTaskInputSuptitle": "Aufgabentext"
     },
     "signInScreen": {
       "SignIn": "Einloggen",
-      "SignInWith": "Einloggen über <0>{{text}}</0>",
-      "CancelAuthProcess": "Benutzer hat den anmeldevorgang abgebrochen",
-      "ErrorGettingAccessToken": "Beim abrufen des zugriffstokens ist etwas schief gelaufen"
+      "SignInWithButtonTitle": "Einloggen über <0>{{text}}</0>",
+      "CancelAuthProcessModalTitle": "Benutzer hat den anmeldevorgang abgebrochen",
+      "GettingAccessTokenErrorModalTitle": "Beim abrufen des zugriffstokens ist etwas schief gelaufen"
     },
     "accountScreen": {
-      "Account": "Konto",
-      "DarkMode": "Dunkler modus",
-      "SignOut": "Abmelden",
-      "SignOutWarning": "Sind sie sicher, dass sie sich abmelden wollen?",
+      "HeaderTitle": "Konto",
+      "DarkModeButtonTitle": "Dunkler modus",
+      "SignOutButtonTitle": "Abmelden",
+      "SignOutModalTitle": "Sind sie sicher, dass sie sich abmelden wollen?",
       "ChangeLanguageButtonTitle": "Sprache",
-      "ChangeLanguageButtonDescription": "Sprache der anwendung wählen",
-      "DeleteAccount": "Konto löschen",
-      "DeleteAccountWarning": "Sind sie sicher, dass sie ihr konto mit allen daten löschen wollen?",
-      "AccentColorDescription": "Akzentfarbe auswählen",
+      "ChangeLanguageModalTitle": "Sprache der anwendung wählen",
+      "DeleteAccountButtonTitle": "Konto löschen",
+      "DeleteAccountModalTitle": "Sind sie sicher, dass sie ihr konto mit allen daten löschen wollen?",
+      "AccentColorModalTitle": "Akzentfarbe auswählen",
       "AccentColorButtonTitle": "Akzentfarbe",
       "ContactTheAuthorButtonTitle": "Kontaktieren sie den autor"
     },
@@ -53,21 +55,21 @@
       "EmailSuptext": "Email",
       "EmailSubtext": "Eine antwort wird an diese email gesendet",
       "MessageSuptext": "Nachrichtentext",
-      "SendButton": "Schicken",
-      "ContactTheAuthorSuccess": "Vielen dank! Ihre nachricht wurde gesendet. Der autor wird sie in kürze kontaktieren",
-      "ContactTheAuthorError": "Unbekannter fehler. Bitte versuchen sie, eine andere email adresse einzugeben",
-      "InvalidEmailError": "Ungültige email adresse",
-      "EmailRequiredError": "Email erforderlich",
-      "MessageRequiredError": "Nachrichtentext erforderlich"
+      "SendButtonTitle": "Schicken",
+      "ContactTheAuthorSuccessModalTitle": "Vielen dank! Ihre nachricht wurde gesendet. Der autor wird sie in kürze kontaktieren",
+      "ContactTheAuthorErrorModalTitle": "Unbekannter fehler. Bitte versuchen sie, eine andere email adresse einzugeben",
+      "InvalidEmailErrorTitle": "Ungültige email adresse",
+      "EmailRequiredErrorTitle": "Email erforderlich",
+      "MessageRequiredErrorTitle": "Nachrichtentext erforderlich"
     },
     "notepadScreen": {
-      "Notepad": "Notizblock",
+      "HeaderTitle": "Notizblock",
       "NotepadPlaceholder": "Dein text",
-      "CleanButtonWarningTitle": "Möchten sie den notizblock wirklich löschen?",
-      "CleanNotepadTextRequestError": "Keine internetverbindung, notizblock wurde nur auf ihrem gerät gelöscht. Um den notizblock auf dem server zu löschen, schalten sie das internet ein und wiederholen sie die anfrage",
-      "SaveNotepadTextRequestError": "Keine internetverbindung, notizblock wurde nur auf ihrem gerät gespeichert. Um den notizblock auf dem server zu speichern, schalten sie das internet ein und wiederholen sie die anfrage",
-      "NotepadCleared": "Notizblock gelöscht",
-      "NotepadSaved": "Notizblock gespeichert"
+      "CleanButtonModalTitle": "Möchten sie den notizblock wirklich löschen?",
+      "CleanNotepadTextRequestErrorModalTitle": "Keine internetverbindung, notizblock wurde nur auf ihrem gerät gelöscht. Um den notizblock auf dem server zu löschen, schalten sie das internet ein und wiederholen sie die anfrage",
+      "SaveNotepadTextRequestErrorModalTitle": "Keine internetverbindung, notizblock wurde nur auf ihrem gerät gespeichert. Um den notizblock auf dem server zu speichern, schalten sie das internet ein und wiederholen sie die anfrage",
+      "NotepadClearedModalTitle": "Notizblock gelöscht",
+      "NotepadSavedModalTitle": "Notizblock gespeichert"
     }
   }
 }

@@ -79,7 +79,7 @@ export const ChangeLanguageButton = (props: ChangeLanguageButtonPropsType) => {
       buttonIcon={faLanguage}
       buttonTitle={t('accountScreen.ChangeLanguageButtonTitle')}
       contentPaddingHorizontal={0}
-      description={t('accountScreen.ChangeLanguageButtonDescription')}
+      description={t('accountScreen.ChangeLanguageModalTitle')}
       hasContentPaddingBottom={false}
       rightComponent={<Text style={styles.languageIndicator}>{language}</Text>}
     >

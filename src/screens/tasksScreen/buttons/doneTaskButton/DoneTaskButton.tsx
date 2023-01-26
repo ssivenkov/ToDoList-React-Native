@@ -70,7 +70,7 @@ export const DoneTaskButton = ({
       okHandler={setDoneTask}
     >
       <Text style={styles.warnText}>
-        <Trans i18nKey='tasksScreen.DoneButton'>
+        <Trans i18nKey='tasksScreen.DoneModalQuestion'>
           <Text style={styles.greenHighlightTask}>{{ text: completedTaskTitle }}</Text>
         </Trans>
       </Text>

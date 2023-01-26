@@ -100,7 +100,7 @@ export const DeleteTaskButton = (props: DeleteTaskButtonPropsType) => {
       okHandler={removeTask}
     >
       <Text style={styles.warnText}>
-        <Trans i18nKey='tasksScreen.DeleteQuestionButtonTitle'>
+        <Trans i18nKey='tasksScreen.DeleteModalQuestion'>
           <Text style={styles.redHighlightTask}>{{ text: taskTitle }}</Text>
         </Trans>
       </Text>

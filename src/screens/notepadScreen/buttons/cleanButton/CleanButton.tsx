@@ -53,7 +53,7 @@ export const CleanButton = (props: CleanButtonPropsType) => {
         </View>
       }
       buttonIconDisabled={buttonDisabled}
-      description={t('notepadScreen.CleanButtonWarningTitle')}
+      description={t('notepadScreen.CleanButtonModalTitle')}
       okHandler={clearNotepadText}
     />
   );

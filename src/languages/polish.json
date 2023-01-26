@@ -8,43 +8,45 @@
       "NoInternetConnection": "Brak połączenia z internetem. Proszę połączyć się z internetem",
       "NoIOSNotificationsPermission": "Brak pozwolenia na wyświetlanie powiadomień. Zezwól aplikacji na wyświetlanie powiadomień"
     },
-    "tasksScreen": {
-      "Tasks": "Listy zadań",
-      "CreateTaskListButtonTitle": "Wprowadź nowy tytuł listy zadań",
-      "DeleteQuestionButtonTitle": "Czy na pewno chcesz usunąć <0>{{text}}</0>?",
-      "DoneButton": "Czy na pewno zadanie <0>{{text}}</0> zostało zakończone?",
-      "EditTaskListButtonTitle": "Edycja tytułu listy zadań",
-      "TodoTasksTab": "Zadania do wykonania",
-      "DoneTasksTab": "Wykonane zadania",
-      "NoTaskListsFound": "Nie znaleziono żadnych list zadań",
-      "EnableNotification": "Przypomnij o zadaniu",
-      "EnableMarkColor": "Kolor zadania",
+    "notification": {
       "TaskNotification": "Wykonać zadanie"
     },
+    "tasksScreen": {
+      "HeaderTitle": "Listy zadań",
+      "CreateTaskListModalTitle": "Wprowadź nowy tytuł listy zadań",
+      "DeleteModalQuestion": "Czy na pewno chcesz usunąć <0>{{text}}</0>?",
+      "DoneModalQuestion": "Czy na pewno zadanie <0>{{text}}</0> zostało zakończone?",
+      "EditTaskListModalTitle": "Edycja tytułu listy zadań",
+      "TodoTasksTabTitle": "Zadania do wykonania",
+      "DoneTasksTabTitle": "Wykonane zadania",
+      "NoTaskListsFound": "Nie znaleziono żadnych list zadań",
+      "EnableNotification": "Przypomnij o zadaniu",
+      "EnableColorMark": "Kolor zadania"
+    },
     "addTaskScreen": {
-      "headerTitle": "Nowe zadanie",
-      "addTaskInputSuptitle": "Nowy tekst zadania"
+      "HeaderTitle": "Nowe zadanie",
+      "AddTaskInputSuptitle": "Nowy tekst zadania"
     },
     "editTaskScreen": {
-      "headerTitle": "Zmiana zadania",
-      "editTaskInputSuptitle": "Tekst zadania"
+      "HeaderTitle": "Zmiana zadania",
+      "EditTaskInputSuptitle": "Tekst zadania"
     },
     "signInScreen": {
       "SignIn": "Zaloguj się",
-      "SignInWith": "Zaloguj się za pomocą <0>{{text}}</0>",
-      "CancelAuthProcess": "Użytkownik anulował proces logowania",
-      "ErrorGettingAccessToken": "Coś poszło nie tak z uzyskaniem tokena dostępu"
+      "SignInWithButtonTitle": "Zaloguj się za pomocą <0>{{text}}</0>",
+      "CancelAuthProcessModalTitle": "Użytkownik anulował proces logowania",
+      "GettingAccessTokenErrorModalTitle": "Coś poszło nie tak z uzyskaniem tokena dostępu"
     },
     "accountScreen": {
-      "Account": "Konto",
-      "DarkMode": "Tryb ciemny",
-      "SignOut": "Wypisać się",
-      "SignOutWarning": "Czy na pewno chcesz się wypisać?",
+      "HeaderTitle": "Konto",
+      "DarkModeButtonTitle": "Tryb ciemny",
+      "SignOutButtonTitle": "Wypisać się",
+      "SignOutModalTitle": "Czy na pewno chcesz się wypisać?",
       "ChangeLanguageButtonTitle": "Język",
-      "ChangeLanguageButtonDescription": "Wybierz język aplikacji",
-      "DeleteAccount": "Usuń konto",
-      "DeleteAccountWarning": "Czy na pewno chcesz usunąć swoje konto ze wszystkimi danymi?",
-      "AccentColorDescription": "Wybierz kolor akcentu",
+      "ChangeLanguageModalTitle": "Wybierz język aplikacji",
+      "DeleteAccountButtonTitle": "Usuń konto",
+      "DeleteAccountModalTitle": "Czy na pewno chcesz usunąć swoje konto ze wszystkimi danymi?",
+      "AccentColorModalTitle": "Wybierz kolor akcentu",
       "AccentColorButtonTitle": "Kolor akcentu",
       "ContactTheAuthorButtonTitle": "Skontaktuj się z autorem"
     },
@@ -53,21 +55,21 @@
       "EmailSuptext": "Email",
       "EmailSubtext": "Odpowiedź zostanie wysłana na ten email",
       "MessageSuptext": "Wiadomość tekstowa",
-      "SendButton": "Wysłać",
-      "ContactTheAuthorSuccess": "Dziękujemy, twoja wiadomość została wysłana. Autor wkrótce się z tobą skontaktuje",
-      "ContactTheAuthorError": "Nieznany błąd. Spróbuj wprowadzić inny adres email",
-      "InvalidEmailError": "Niepoprawny adres email",
-      "EmailRequiredError": "Email wymagany",
-      "MessageRequiredError": "Treść wiadomości jest wymagana"
+      "SendButtonTitle": "Wysłać",
+      "ContactTheAuthorSuccessModalTitle": "Dziękujemy, twoja wiadomość została wysłana. Autor wkrótce się z tobą skontaktuje",
+      "ContactTheAuthorErrorModalTitle": "Nieznany błąd. Spróbuj wprowadzić inny adres email",
+      "InvalidEmailErrorTitle": "Niepoprawny adres email",
+      "EmailRequiredErrorTitle": "Email wymagany",
+      "MessageRequiredErrorTitle": "Treść wiadomości jest wymagana"
     },
     "notepadScreen": {
-      "Notepad": "Notatnik",
+      "HeaderTitle": "Notatnik",
       "NotepadPlaceholder": "Twój tekst",
-      "CleanButtonWarningTitle": "Czy na pewno chcesz wyczyścić notatnik?",
-      "CleanNotepadTextRequestError": "Brak połączenia z internetem, notatnik został wyczyszczony tylko na twoim urządzeniu. Aby wyczyścić notatnik na serwerze, włącz internet i powtórz żądanie",
-      "SaveNotepadTextRequestError": "Brak połączenia z internetem, notatnik został zapisany tylko na twoim urządzeniu. Aby zapisać notatnik na serwerze włącz internet i powtórz żądanie",
-      "NotepadCleared": "Notatnik wyczyszczony",
-      "NotepadSaved": "Notatnik zapisany"
+      "CleanButtonModalTitle": "Czy na pewno chcesz wyczyścić notatnik?",
+      "CleanNotepadTextRequestErrorModalTitle": "Brak połączenia z internetem, notatnik został wyczyszczony tylko na twoim urządzeniu. Aby wyczyścić notatnik na serwerze, włącz internet i powtórz żądanie",
+      "SaveNotepadTextRequestErrorModalTitle": "Brak połączenia z internetem, notatnik został zapisany tylko na twoim urządzeniu. Aby zapisać notatnik na serwerze włącz internet i powtórz żądanie",
+      "NotepadClearedModalTitle": "Notatnik wyczyszczony",
+      "NotepadSavedModalTitle": "Notatnik zapisany"
     }
   }
 }

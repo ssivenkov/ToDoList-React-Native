@@ -8,43 +8,45 @@
       "NoInternetConnection": "No hay conexión a internet. Por favor, conéctese a internet",
       "NoIOSNotificationsPermission": "No hay permiso para las notificaciones. Concede a la aplicación permiso para mostrar notificaciones"
     },
-    "tasksScreen": {
-      "Tasks": "Listas de tareas",
-      "CreateTaskListButtonTitle": "Introduzca el título de la nueva lista de tareas",
-      "DeleteQuestionButtonTitle": "¿Estás seguro de borrar <0>{{text}}</0>?",
-      "DoneButton": "¿Está seguro de que la tarea <0>{{text}}</0> se ha completado?",
-      "EditTaskListButtonTitle": "Editar el título de la lista de tareas",
-      "TodoTasksTab": "Tareas de todo tipo",
-      "DoneTasksTab": "Tareas realizadas",
-      "NoTaskListsFound": "No se han encontrado hojas de ruta",
-      "EnableNotification": "Recordar la tarea",
-      "EnableMarkColor": "Color de la tarea",
+    "notification": {
       "TaskNotification": "Realizar la tarea"
     },
+    "tasksScreen": {
+      "HeaderTitle": "Listas de tareas",
+      "CreateTaskListModalTitle": "Introduzca el título de la nueva lista de tareas",
+      "DeleteModalQuestion": "¿Estás seguro de borrar <0>{{text}}</0>?",
+      "DoneModalQuestion": "¿Está seguro de que la tarea <0>{{text}}</0> se ha completado?",
+      "EditTaskListModalTitle": "Editar el título de la lista de tareas",
+      "TodoTasksTabTitle": "Tareas de todo tipo",
+      "DoneTasksTabTitle": "Tareas realizadas",
+      "NoTaskListsFound": "No se han encontrado hojas de ruta",
+      "EnableNotification": "Recordar la tarea",
+      "EnableColorMark": "Color de la tarea"
+    },
     "addTaskScreen": {
-      "headerTitle": "Nueva tarea",
-      "addTaskInputSuptitle": "Nuevo texto de tarea"
+      "HeaderTitle": "Nueva tarea",
+      "AddTaskInputSuptitle": "Nuevo texto de tarea"
     },
     "editTaskScreen": {
-      "headerTitle": "Cambiar una tarea",
-      "editTaskInputSuptitle": "Texto de la tarea"
+      "HeaderTitle": "Cambiar una tarea",
+      "EditTaskInputSuptitle": "Texto de la tarea"
     },
     "signInScreen": {
       "SignIn": "Acceder",
-      "SignInWith": "Accede con <0>{{text}}</0>",
-      "CancelAuthProcess": "El usuario canceló el proceso de inicio de sesión",
-      "ErrorGettingAccessToken": "Algo salió mal al obtener el token de acceso"
+      "SignInWithButtonTitle": "Accede con <0>{{text}}</0>",
+      "CancelAuthProcessModalTitle": "El usuario canceló el proceso de inicio de sesión",
+      "GettingAccessTokenErrorModalTitle": "Algo salió mal al obtener el token de acceso"
     },
     "accountScreen": {
-      "Account": "Cuenta",
-      "DarkMode": "Modo oscuro",
-      "SignOut": "Firmar la salida",
-      "SignOutWarning": "¿Estás seguro de que quieres cerrar la sesión?",
+      "HeaderTitle": "Cuenta",
+      "DarkModeButtonTitle": "Modo oscuro",
+      "SignOutButtonTitle": "Firmar la salida",
+      "SignOutModalTitle": "¿Estás seguro de que quieres cerrar la sesión?",
       "ChangeLanguageButtonTitle": "Idioma",
-      "ChangeLanguageButtonDescription": "Seleccione el idioma de la aplicación",
-      "DeleteAccount": "Eliminar la cuenta",
-      "DeleteAccountWarning": "¿Estás seguro de que quieres eliminar tu cuenta con todos tus datos?",
-      "AccentColorDescription": "Seleccione el color de acento",
+      "ChangeLanguageModalTitle": "Seleccione el idioma de la aplicación",
+      "DeleteAccountButtonTitle": "Eliminar la cuenta",
+      "DeleteAccountModalTitle": "¿Estás seguro de que quieres eliminar tu cuenta con todos tus datos?",
+      "AccentColorModalTitle": "Seleccione el color de acento",
       "AccentColorButtonTitle": "Color de acento",
       "ContactTheAuthorButtonTitle": "Contacta con el autor"
     },
@@ -53,21 +55,21 @@
       "EmailSuptext": "Correo electrónico",
       "EmailSubtext": "Se enviará una respuesta a este correo electrónico",
       "MessageSuptext": "Mensaje de texto",
-      "SendButton": "Enviar",
-      "ContactTheAuthorSuccess": "Gracias! Tu mensaje ha sido enviado. El autor se pondrá en contacto con usted en breve",
-      "ContactTheAuthorError": "Error desconocido. Intente ingresar otro correo electrónico",
-      "InvalidEmailError": "Dirección de correo electrónico no válida",
-      "EmailRequiredError": "Correo electrónico requerido",
-      "MessageRequiredError": "Texto del mensaje requerido"
+      "SendButtonTitle": "Enviar",
+      "ContactTheAuthorSuccessModalTitle": "Gracias! Tu mensaje ha sido enviado. El autor se pondrá en contacto con usted en breve",
+      "ContactTheAuthorErrorModalTitle": "Error desconocido. Intente ingresar otro correo electrónico",
+      "InvalidEmailErrorTitle": "Dirección de correo electrónico no válida",
+      "EmailRequiredErrorTitle": "Correo electrónico requerido",
+      "MessageRequiredErrorTitle": "Texto del mensaje requerido"
     },
     "notepadScreen": {
-      "Notepad": "Libro para escribir",
+      "HeaderTitle": "Libro para escribir",
       "NotepadPlaceholder": "Tu texto",
-      "CleanButtonWarningTitle": "¿Está seguro de que desea borrar el libro de trabajo para escribir?",
-      "CleanNotepadTextRequestError": "No hay conexión a internet, el libro para escribir se ha borrado solo en su dispositivo. Para borrar el libro para escribir en el servidor, encienda internet y repita la solicitud",
-      "SaveNotepadTextRequestError": "No hay conexión a internet, el libro para escribir se ha guardado solo en su dispositivo. Para guardar el libro para escribir en el servidor, encienda internet y repita la solicitud",
-      "NotepadCleared": "Libro de registro borrado",
-      "NotepadSaved": "Libro de registro guardado"
+      "CleanButtonModalTitle": "¿Está seguro de que desea borrar el libro de trabajo para escribir?",
+      "CleanNotepadTextRequestErrorModalTitle": "No hay conexión a internet, el libro para escribir se ha borrado solo en su dispositivo. Para borrar el libro para escribir en el servidor, encienda internet y repita la solicitud",
+      "SaveNotepadTextRequestErrorModalTitle": "No hay conexión a internet, el libro para escribir se ha guardado solo en su dispositivo. Para guardar el libro para escribir en el servidor, encienda internet y repita la solicitud",
+      "NotepadClearedModalTitle": "Libro de registro borrado",
+      "NotepadSavedModalTitle": "Libro de registro guardado"
     }
   }
 }

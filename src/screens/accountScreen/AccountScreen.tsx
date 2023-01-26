@@ -93,8 +93,8 @@ export const AccountScreen = () => {
             <LinearGradient colors={longButtonGradient}>
               <ModalLongButton
                 buttonIcon={faArrowRight}
-                buttonTitle={t('accountScreen.SignOut')}
-                description={t('accountScreen.SignOutWarning')}
+                buttonTitle={t('accountScreen.SignOutButtonTitle')}
+                description={t('accountScreen.SignOutModalTitle')}
                 disabled={waitingProcess}
                 okHandler={signOutHandler}
               />
@@ -102,8 +102,8 @@ export const AccountScreen = () => {
             <LinearGradient colors={longButtonGradient}>
               <ModalLongButton
                 buttonIcon={faTrash}
-                buttonTitle={t('accountScreen.DeleteAccount')}
-                description={t('accountScreen.DeleteAccountWarning')}
+                buttonTitle={t('accountScreen.DeleteAccountButtonTitle')}
+                description={t('accountScreen.DeleteAccountModalTitle')}
                 disabled={waitingProcess}
                 okHandler={deleteAccountHandler}
               />

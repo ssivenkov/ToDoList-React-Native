@@ -8,43 +8,45 @@
       "NoInternetConnection": "İnternet bağlantısı yok. Lütfen internete bağlanın",
       "NoIOSNotificationsPermission": "Bildirimler için izin yok. Uygulamaya bildirimleri gösterme izni verin"
     },
-    "tasksScreen": {
-      "Tasks": "Görev listeleri",
-      "CreateTaskListButtonTitle": "Yeni görev listesi başlığı girin",
-      "DeleteQuestionButtonTitle": "<0>{{text}}</0> öğesini sildiğinizden emin misiniz?",
-      "DoneButton": "<0>{{text}}</0> görevinin tamamlandığından emin misiniz?",
-      "EditTaskListButtonTitle": "Görev listesi başlığını düzenleme",
-      "TodoTasksTab": "Yapılacak işler",
-      "DoneTasksTab": "Tamamlanan görevler",
-      "NoTaskListsFound": "Görev listesi bulunamadı",
-      "EnableNotification": "Görevi hatırlatın",
-      "EnableMarkColor": "Görev rengi",
+    "notification": {
       "TaskNotification": "Görevi gerçekleştirin"
     },
+    "tasksScreen": {
+      "HeaderTitle": "Görev listeleri",
+      "CreateTaskListModalTitle": "Yeni görev listesi başlığı girin",
+      "DeleteModalQuestion": "<0>{{text}}</0> öğesini sildiğinizden emin misiniz?",
+      "DoneModalQuestion": "<0>{{text}}</0> görevinin tamamlandığından emin misiniz?",
+      "EditTaskListModalTitle": "Görev listesi başlığını düzenleme",
+      "TodoTasksTabTitle": "Yapılacak işler",
+      "DoneTasksTabTitle": "Tamamlanan görevler",
+      "NoTaskListsFound": "Görev listesi bulunamadı",
+      "EnableNotification": "Görevi hatırlatın",
+      "EnableColorMark": "Görev rengi"
+    },
     "addTaskScreen": {
-      "headerTitle": "Yeni görev",
-      "addTaskInputSuptitle": "Yeni görev metni"
+      "HeaderTitle": "Yeni görev",
+      "AddTaskInputSuptitle": "Yeni görev metni"
     },
     "editTaskScreen": {
-      "headerTitle": "Görev değiştirme",
-      "editTaskInputSuptitle": "Görev metni"
+      "HeaderTitle": "Görev değiştirme",
+      "EditTaskInputSuptitle": "Görev metni"
     },
     "signInScreen": {
       "SignIn": "Oturum aç",
-      "SignInWith": "<0>{{text}}</0> ile oturum açın",
-      "CancelAuthProcess": "Kullanıcı oturum açma işlemini iptal etti",
-      "ErrorGettingAccessToken": "Erişim belirteci alınırken bir şeyler yanlış gitti"
+      "SignInWithButtonTitle": "<0>{{text}}</0> ile oturum açın",
+      "CancelAuthProcessModalTitle": "Kullanıcı oturum açma işlemini iptal etti",
+      "GettingAccessTokenErrorModalTitle": "Erişim belirteci alınırken bir şeyler yanlış gitti"
     },
     "accountScreen": {
-      "Account": "Hesap",
-      "DarkMode": "Karanlık mod",
-      "SignOut": "Çıkış yapın",
-      "SignOutWarning": "Çıkış yapmak istediğinize emin misiniz?",
+      "HeaderTitle": "Hesap",
+      "DarkModeButtonTitle": "Karanlık mod",
+      "SignOutButtonTitle": "Çıkış yapın",
+      "SignOutModalTitle": "Çıkış yapmak istediğinize emin misiniz?",
       "ChangeLanguageButtonTitle": "Dil",
-      "ChangeLanguageButtonDescription": "Uygulama dilini seçin",
-      "DeleteAccount": "Hesap silme",
-      "DeleteAccountWarning": "Hesabınızı tüm verilerinizle birlikte silmek istediğinizden emin misiniz?",
-      "AccentColorDescription": "Vurgu rengini seçin",
+      "ChangeLanguageModalTitle": "Uygulama dilini seçin",
+      "DeleteAccountButtonTitle": "Hesap silme",
+      "DeleteAccountModalTitle": "Hesabınızı tüm verilerinizle birlikte silmek istediğinizden emin misiniz?",
+      "AccentColorModalTitle": "Vurgu rengini seçin",
       "AccentColorButtonTitle": "Vurgu rengi",
       "ContactTheAuthorButtonTitle": "Yazarla iletişim kurun"
     },
@@ -53,21 +55,21 @@
       "EmailSuptext": "E-posta",
       "EmailSubtext": "Bu e-postaya bir yanıt gönderilecek",
       "MessageSuptext": "Mesaj metni",
-      "SendButton": "Göndermek",
-      "ContactTheAuthorSuccess": "Teşekkürler! Mesajınız gönderildi. Yazar kısa süre içinde sizinle iletişime geçecek",
-      "ContactTheAuthorError": "Bilinmeyen hata. Lütfen başka bir e-posta girmeyi deneyin",
-      "InvalidEmailError": "Geçersiz e-posta adresi",
-      "EmailRequiredError": "E-posta gerekli",
-      "MessageRequiredError": "Mesaj metni gerekli"
+      "SendButtonTitle": "Göndermek",
+      "ContactTheAuthorSuccessModalTitle": "Teşekkürler! Mesajınız gönderildi. Yazar kısa süre içinde sizinle iletişime geçecek",
+      "ContactTheAuthorErrorModalTitle": "Bilinmeyen hata. Lütfen başka bir e-posta girmeyi deneyin",
+      "InvalidEmailErrorTitle": "Geçersiz e-posta adresi",
+      "EmailRequiredErrorTitle": "E-posta gerekli",
+      "MessageRequiredErrorTitle": "Mesaj metni gerekli"
     },
     "notepadScreen": {
-      "Notepad": "Notlarınız",
+      "HeaderTitle": "Notlarınız",
       "NotepadPlaceholder": "Metniniz",
-      "CleanButtonWarningTitle": "Notlarınızı silmek istediğinizden emin misiniz?",
-      "CleanNotepadTextRequestError": "İnternet bağlantısı yok, sadece cihazınızdaki notlarınız silinmiştir. Sunucudaki notlarınızı silmek için interneti açın ve isteği tekrarlayın",
-      "SaveNotepadTextRequestError": "İnternet bağlantısı yok, notlarınız sadece cihazınıza kaydedildi. Notlarınızı sunucuya yazmak için interneti açın ve isteği tekrarlayın",
-      "NotepadCleared": "Notlarınız zaten silinmiş",
-      "NotepadSaved": "Notlarınız zaten kaydedildi"
+      "CleanButtonModalTitle": "Notlarınızı silmek istediğinizden emin misiniz?",
+      "CleanNotepadTextRequestErrorModalTitle": "İnternet bağlantısı yok, sadece cihazınızdaki notlarınız silinmiştir. Sunucudaki notlarınızı silmek için interneti açın ve isteği tekrarlayın",
+      "SaveNotepadTextRequestErrorModalTitle": "İnternet bağlantısı yok, notlarınız sadece cihazınıza kaydedildi. Notlarınızı sunucuya yazmak için interneti açın ve isteği tekrarlayın",
+      "NotepadClearedModalTitle": "Notlarınız zaten silinmiş",
+      "NotepadSavedModalTitle": "Notlarınız zaten kaydedildi"
     }
   }
 }

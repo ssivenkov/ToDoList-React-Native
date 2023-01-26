@@ -44,13 +44,13 @@ export function* contactTheAuthorSaga(action: ContactTheAuthorSagaSagaActionRetu
       yield call(navigate);
       yield put(
         setModalMessageAction({
-          modalMessage: t('contactTheAuthorScreen.ContactTheAuthorSuccess'),
+          modalMessage: t('contactTheAuthorScreen.ContactTheAuthorSuccessModalTitle'),
         }),
       );
     } else {
       yield put(
         setModalMessageAction({
-          modalMessage: t('contactTheAuthorScreen.ContactTheAuthorError'),
+          modalMessage: t('contactTheAuthorScreen.ContactTheAuthorErrorModalTitle'),
         }),
       );
     }

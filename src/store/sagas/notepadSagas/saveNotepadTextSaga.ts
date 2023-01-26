@@ -26,7 +26,7 @@ export function* saveNotepadTextSaga(action: SaveNotepadTextSagaActionReturnType
     if (internetConnectionStatus !== ONLINE) {
       yield put(
         setModalMessageAction({
-          modalMessage: t('notepadScreen.SaveNotepadTextRequestError'),
+          modalMessage: t('notepadScreen.SaveNotepadTextRequestErrorModalTitle'),
         }),
       );
 
@@ -49,7 +49,7 @@ export function* saveNotepadTextSaga(action: SaveNotepadTextSagaActionReturnType
 
     yield put(
       setModalMessageAction({
-        modalMessage: t('notepadScreen.NotepadSaved'),
+        modalMessage: t('notepadScreen.NotepadSavedModalTitle'),
       }),
     );
   } catch (error) {

@@ -148,7 +148,7 @@ export const AddTaskScreen = () => {
       <Header
         leftButton={<GoBackButton />}
         rightButton={<SendNewTaskButton sendNewTask={sendNewTask} />}
-        title={t('addTaskScreen.headerTitle')}
+        title={t('addTaskScreen.HeaderTitle')}
       />
       <ScrollView
         contentContainerStyle={styles.contentWrapper}
@@ -159,7 +159,7 @@ export const AddTaskScreen = () => {
             inputRef={inputRef}
             maxLength={INPUT_MAX_LENGTH200}
             onChangeText={setNewTaskTitle}
-            suptext={t('addTaskScreen.addTaskInputSuptitle')}
+            suptext={t('addTaskScreen.AddTaskInputSuptitle')}
             value={newTaskTitle}
           />
           <Notification
@@ -176,7 +176,7 @@ export const AddTaskScreen = () => {
               size='medium'
               switcherMarginLeft={15}
               switcherMarginRight={switcherMargin}
-              switcherText={t('tasksScreen.EnableMarkColor')}
+              switcherText={t('tasksScreen.EnableColorMark')}
               textMarginBottom={1}
               textStyle={styles.colorPickerSwitcherText}
             />

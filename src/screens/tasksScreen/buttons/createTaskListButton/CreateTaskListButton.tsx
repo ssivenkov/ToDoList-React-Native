@@ -74,7 +74,7 @@ export const CreateTaskListButton = () => {
         </View>
       }
       closeHandler={onClosePress}
-      description={t('tasksScreen.CreateTaskListButtonTitle')}
+      description={t('tasksScreen.CreateTaskListModalTitle')}
       inputFocus={inputFocus}
       okDisabled={!taskListTitle}
       okHandler={createTaskList}

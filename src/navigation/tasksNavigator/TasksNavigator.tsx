@@ -55,7 +55,7 @@ export const TasksNavigator = () => {
         name={TASKS_NAVIGATOR_ROUTE.TODO_TASKS_SCREEN}
         options={{
           ...toDoScreenSettings({ styles, theme, accentColor }),
-          tabBarLabel: t('tasksScreen.TodoTasksTab'),
+          tabBarLabel: t('tasksScreen.TodoTasksTabTitle'),
         }}
       />
       <Screen
@@ -66,7 +66,7 @@ export const TasksNavigator = () => {
         name={TASKS_NAVIGATOR_ROUTE.DONE_TASKS_SCREEN}
         options={{
           ...doneScreenSettings({ styles, theme, accentColor }),
-          tabBarLabel: t('tasksScreen.DoneTasksTab'),
+          tabBarLabel: t('tasksScreen.DoneTasksTabTitle'),
         }}
       />
     </Navigator>

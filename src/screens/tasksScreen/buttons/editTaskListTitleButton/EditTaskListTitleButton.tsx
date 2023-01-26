@@ -72,7 +72,7 @@ export const EditTaskListTitleButton = ({
         </View>
       }
       closeHandler={onClosePress}
-      description={t('tasksScreen.EditTaskListButtonTitle')}
+      description={t('tasksScreen.EditTaskListModalTitle')}
       inputFocus={inputFocus}
       okDisabled={!editedTaskListTitle}
       okHandler={onOkPress}

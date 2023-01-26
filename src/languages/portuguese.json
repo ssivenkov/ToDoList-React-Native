@@ -8,43 +8,45 @@
       "NoInternetConnection": "Sem ligação à internet. Por favor, ligue-se à internet",
       "NoIOSNotificationsPermission": "Sem permissão para notificações. Conceder a autorização para mostrar notificações"
     },
-    "tasksScreen": {
-      "Tasks": "Listas de tarefas",
-      "CreateTaskListButtonTitle": "Introduzir o título da nova lista de tarefas",
-      "DeleteQuestionButtonTitle": "Tem a certeza de apagar <0>{{text}}</0>?",
-      "DoneButton": "Tem a certeza de que a tarefa <0>{{text}}</0> está concluída?",
-      "EditTaskListButtonTitle": "Editar título da lista de tarefas",
-      "TodoTasksTab": "Todas as tarefas",
-      "DoneTasksTab": "Tarefas feitas",
-      "NoTaskListsFound": "Não foram encontradas listas de tarefas",
-      "EnableNotification": "Lembrete da tarefa",
-      "EnableMarkColor": "Cor da tarefa",
+    "notification": {
       "TaskNotification": "Realizar tarefa"
     },
+    "tasksScreen": {
+      "HeaderTitle": "Listas de tarefas",
+      "CreateTaskListModalTitle": "Introduzir o título da nova lista de tarefas",
+      "DeleteModalQuestion": "Tem a certeza de apagar <0>{{text}}</0>?",
+      "DoneModalQuestion": "Tem a certeza de que a tarefa <0>{{text}}</0> está concluída?",
+      "EditTaskListModalTitle": "Editar título da lista de tarefas",
+      "TodoTasksTabTitle": "Todas as tarefas",
+      "DoneTasksTabTitle": "Tarefas feitas",
+      "NoTaskListsFound": "Não foram encontradas listas de tarefas",
+      "EnableNotification": "Lembrete da tarefa",
+      "EnableColorMark": "Cor da tarefa"
+    },
     "addTaskScreen": {
-      "headerTitle": "Nova tarefa",
-      "addTaskInputSuptitle": "Texto da nova tarefa"
+      "HeaderTitle": "Nova tarefa",
+      "AddTaskInputSuptitle": "Texto da nova tarefa"
     },
     "editTaskScreen": {
-      "headerTitle": "Alterar uma tarefa",
-      "editTaskInputSuptitle": "Texto da tarefa"
+      "HeaderTitle": "Alterar uma tarefa",
+      "EditTaskInputSuptitle": "Texto da tarefa"
     },
     "signInScreen": {
       "SignIn": "Iniciar sessão",
-      "SignInWith": "Entre com <0>{{text}}</0>",
-      "CancelAuthProcess": "O utilizador cancelou o processo de login",
-      "ErrorGettingAccessToken": "Algo correu mal ao obter o código de acesso"
+      "SignInWithButtonTitle": "Entre com <0>{{text}}</0>",
+      "CancelAuthProcessModalTitle": "O utilizador cancelou o processo de login",
+      "GettingAccessTokenErrorModalTitle": "Algo correu mal ao obter o código de acesso"
     },
     "accountScreen": {
-      "Account": "Conta",
-      "DarkMode": "Modo escuro",
-      "SignOut": "Sair",
-      "SignOutWarning": "Tem a certeza de que quer assinar?",
+      "HeaderTitle": "Conta",
+      "DarkModeButtonTitle": "Modo escuro",
+      "SignOutButtonTitle": "Sair",
+      "SignOutModalTitle": "Tem a certeza de que quer assinar?",
       "ChangeLanguageButtonTitle": "Idioma",
-      "ChangeLanguageButtonDescription": "Seleccione a língua da aplicação",
-      "DeleteAccount": "Apagar conta",
-      "DeleteAccountWarning": "Tem a certeza de querer apagar a sua conta com todos os seus dados?",
-      "AccentColorDescription": "Seleccione a cor do acento",
+      "ChangeLanguageModalTitle": "Seleccione a língua da aplicação",
+      "DeleteAccountButtonTitle": "Apagar conta",
+      "DeleteAccountModalTitle": "Tem a certeza de querer apagar a sua conta com todos os seus dados?",
+      "AccentColorModalTitle": "Seleccione a cor do acento",
       "AccentColorButtonTitle": "Cor do acento",
       "ContactTheAuthorButtonTitle": "Entre em contato com o autor"
     },
@@ -53,21 +55,21 @@
       "EmailSuptext": "Email",
       "EmailSubtext": "Uma resposta será enviada para este email",
       "MessageSuptext": "Mensagem de texto",
-      "SendButton": "Mandar",
-      "ContactTheAuthorSuccess": "Obrigado! Sua mensagem foi enviada. O autor entrará em contato com você em breve",
-      "ContactTheAuthorError": "Erro desconhecido. Por favor, tente inserir outro email",
-      "InvalidEmailError": "Endereço de email invalido",
-      "EmailRequiredError": "Email obrigatório",
-      "MessageRequiredError": "Texto da mensagem obrigatório"
+      "SendButtonTitle": "Mandar",
+      "ContactTheAuthorSuccessModalTitle": "Obrigado! Sua mensagem foi enviada. O autor entrará em contato com você em breve",
+      "ContactTheAuthorErrorModalTitle": "Erro desconhecido. Por favor, tente inserir outro email",
+      "InvalidEmailErrorTitle": "Endereço de email invalido",
+      "EmailRequiredErrorTitle": "Email obrigatório",
+      "MessageRequiredErrorTitle": "Texto da mensagem obrigatório"
     },
     "notepadScreen": {
-      "Notepad": "Bloco de anotações",
+      "HeaderTitle": "Bloco de anotações",
       "NotepadPlaceholder": "Seu texto",
-      "CleanButtonWarningTitle": "Tem certeza de que deseja limpar o bloco de notas?",
-      "CleanNotepadTextRequestError": "Sem conexão com a internet, o bloco de notas foi apagado apenas no seu dispositivo. Para limpar o bloco de notas no servidor, ligue a internet e repita a solicitação",
-      "SaveNotepadTextRequestError": "Sem conexão com a internet, o bloco de notas foi salvo apenas no seu dispositivo. Para salvar o bloco de notas no servidor, ligue a internet e repita a solicitação",
-      "NotepadCleared": "Bloco de notas limpo",
-      "NotepadSaved": "Bloco de notas salvo"
+      "CleanButtonModalTitle": "Tem certeza de que deseja limpar o bloco de notas?",
+      "CleanNotepadTextRequestErrorModalTitle": "Sem conexão com a internet, o bloco de notas foi apagado apenas no seu dispositivo. Para limpar o bloco de notas no servidor, ligue a internet e repita a solicitação",
+      "SaveNotepadTextRequestErrorModalTitle": "Sem conexão com a internet, o bloco de notas foi salvo apenas no seu dispositivo. Para salvar o bloco de notas no servidor, ligue a internet e repita a solicitação",
+      "NotepadClearedModalTitle": "Bloco de notas limpo",
+      "NotepadSavedModalTitle": "Bloco de notas salvo"
     }
   }
 }

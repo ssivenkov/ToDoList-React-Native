@@ -102,7 +102,7 @@ export const ContactTheAuthorScreen = () => {
           containerStyle={styles.buttonContainer}
           disabled={buttonDisabledCondition}
           onPress={() => handleSubmit()}
-          title={t('contactTheAuthorScreen.SendButton')}
+          title={t('contactTheAuthorScreen.SendButtonTitle')}
         />
       </ScrollView>
     </View>

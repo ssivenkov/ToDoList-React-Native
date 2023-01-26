@@ -8,43 +8,45 @@
       "NoInternetConnection": "Немає з'єднання з інтернетом. Будь ласка, підключіться до інтернету",
       "NoIOSNotificationsPermission": "Немає дозволу на сповіщення. Надати додатку дозвіл на показ сповіщень"
     },
-    "tasksScreen": {
-      "Tasks": "Списки завдань",
-      "CreateTaskListButtonTitle": "Введіть новий заголовок списку завдань",
-      "DeleteQuestionButtonTitle": "Ви впевнені, що хочете видалити <0>{{text}}</0>?",
-      "DoneButton": "Ви впевнені, що завдання <0>{{text}}</0> виконано?",
-      "EditTaskListButtonTitle": "Редагування назви списку завдань",
-      "TodoTasksTab": "Виконати",
-      "DoneTasksTab": "Виконані",
-      "NoTaskListsFound": "Списки завдань не знайдено",
-      "EnableNotification": "Нагадуємо про завдання",
-      "EnableMarkColor": "Колір завдання",
+    "notification": {
       "TaskNotification": "Виконати завдання"
     },
+    "tasksScreen": {
+      "HeaderTitle": "Списки завдань",
+      "CreateTaskListModalTitle": "Введіть новий заголовок списку завдань",
+      "DeleteModalQuestion": "Ви впевнені, що хочете видалити <0>{{text}}</0>?",
+      "DoneModalQuestion": "Ви впевнені, що завдання <0>{{text}}</0> виконано?",
+      "EditTaskListModalTitle": "Редагування назви списку завдань",
+      "TodoTasksTabTitle": "Виконати",
+      "DoneTasksTabTitle": "Виконані",
+      "NoTaskListsFound": "Списки завдань не знайдено",
+      "EnableNotification": "Нагадуємо про завдання",
+      "EnableColorMark": "Колір завдання"
+    },
     "addTaskScreen": {
-      "headerTitle": "Нове завдання",
-      "addTaskInputSuptitle": "Текст нового завдання"
+      "HeaderTitle": "Нове завдання",
+      "AddTaskInputSuptitle": "Текст нового завдання"
     },
     "editTaskScreen": {
-      "headerTitle": "Зміна завдання",
-      "editTaskInputSuptitle": "Текст завдання"
+      "HeaderTitle": "Зміна завдання",
+      "EditTaskInputSuptitle": "Текст завдання"
     },
     "signInScreen": {
       "SignIn": "Ввійти",
-      "SignInWith": "Увійти через <0>{{text}}</0>",
-      "CancelAuthProcess": "Користувач скасував процес входу в систему",
-      "ErrorGettingAccessToken": "Щось пішло не так при отриманні токену доступу"
+      "SignInWithButtonTitle": "Увійти через <0>{{text}}</0>",
+      "CancelAuthProcessModalTitle": "Користувач скасував процес входу в систему",
+      "GettingAccessTokenErrorModalTitle": "Щось пішло не так при отриманні токену доступу"
     },
     "accountScreen": {
-      "Account": "Обліковий запис",
-      "DarkMode": "Темний режим",
-      "SignOut": "Вийдіть з системи",
-      "SignOutWarning": "Ви впевнені що хочете вийти з облікового запису?",
+      "HeaderTitle": "Обліковий запис",
+      "DarkModeButtonTitle": "Темний режим",
+      "SignOutButtonTitle": "Вийдіть з системи",
+      "SignOutModalTitle": "Ви впевнені що хочете вийти з облікового запису?",
       "ChangeLanguageButtonTitle": "Мова",
-      "ChangeLanguageButtonDescription": "Виберіть мову програми",
-      "DeleteAccount": "Видалити обліковий запис",
-      "DeleteAccountWarning": "Ви впевнені, що хочете видалити свій обліковий запис з усіма даними?",
-      "AccentColorDescription": "Виберіть акцентний колір",
+      "ChangeLanguageModalTitle": "Виберіть мову програми",
+      "DeleteAccountButtonTitle": "Видалити обліковий запис",
+      "DeleteAccountModalTitle": "Ви впевнені, що хочете видалити свій обліковий запис з усіма даними?",
+      "AccentColorModalTitle": "Виберіть акцентний колір",
       "AccentColorButtonTitle": "Акцентний колір",
       "ContactTheAuthorButtonTitle": "Зв'язатися з автором"
     },
@@ -53,21 +55,21 @@
       "EmailSuptext": "Email",
       "EmailSubtext": "На цей email буде надіслано відповідь",
       "MessageSuptext": "Текст повідомлення",
-      "SendButton": "Надіслати",
-      "ContactTheAuthorSuccess": "Дякуємо, ваше повідомлення надіслано. Автор зв'яжеться з вами найближчим часом",
-      "ContactTheAuthorError": "Невідома помилка. Спробуйте ввести інший email",
-      "InvalidEmailError": "Некоректний email",
-      "EmailRequiredError": "Email обов'язковий",
-      "MessageRequiredError": "Текст повідомлення обов'язковий"
+      "SendButtonTitle": "Надіслати",
+      "ContactTheAuthorSuccessModalTitle": "Дякуємо, ваше повідомлення надіслано. Автор зв'яжеться з вами найближчим часом",
+      "ContactTheAuthorErrorModalTitle": "Невідома помилка. Спробуйте ввести інший email",
+      "InvalidEmailErrorTitle": "Некоректний email",
+      "EmailRequiredErrorTitle": "Email обов'язковий",
+      "MessageRequiredErrorTitle": "Текст повідомлення обов'язковий"
     },
     "notepadScreen": {
-      "Notepad": "Блокнот",
+      "HeaderTitle": "Блокнот",
       "NotepadPlaceholder": "Ваш текст",
-      "CleanButtonWarningTitle": "Ви впевнені, що хочете очистити блокнот?",
-      "CleanNotepadTextRequestError": "Немає підключення до інтернету, блокнот було очищено тільки на вашому пристрої. Для очищення блокнота на сервері увімкніть інтернет та повторіть запит",
-      "SaveNotepadTextRequestError": "Немає підключення до інтернету, блокнот було збережено тільки на вашому пристрої. Для збереження блокноту на сервері увімкніть інтернет і повторіть запит",
-      "NotepadCleared": "Блокнот очищений",
-      "NotepadSaved": "Блокнот збережено"
+      "CleanButtonModalTitle": "Ви впевнені, що хочете очистити блокнот?",
+      "CleanNotepadTextRequestErrorModalTitle": "Немає підключення до інтернету, блокнот було очищено тільки на вашому пристрої. Для очищення блокнота на сервері увімкніть інтернет та повторіть запит",
+      "SaveNotepadTextRequestErrorModalTitle": "Немає підключення до інтернету, блокнот було збережено тільки на вашому пристрої. Для збереження блокноту на сервері увімкніть інтернет і повторіть запит",
+      "NotepadClearedModalTitle": "Блокнот очищений",
+      "NotepadSavedModalTitle": "Блокнот збережено"
     }
   }
 }
