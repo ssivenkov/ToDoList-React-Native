@@ -54,7 +54,7 @@
     },
     "notepadScreen": {
       "Notepad": "Bloc-notes",
-      "NotepadPlaceholder": "Texte",
+      "NotepadPlaceholder": "Ton texte",
       "CleanButtonWarningTitle": "Voulez-vous vraiment effacer le bloc-notes?",
       "CleanNotepadTextRequestError": "Pas de connexion Internet, le bloc-notes n'a été effacé que sur votre appareil. Pour effacer le bloc-notes sur le serveur, activez Internet et répétez la demande",
       "SaveNotepadTextRequestError": "Pas de connexion Internet, le bloc-notes n'a été enregistré que sur votre appareil. Pour enregistrer le bloc-notes sur le serveur, activez Internet et répétez la demande",

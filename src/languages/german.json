@@ -54,7 +54,7 @@
     },
     "notepadScreen": {
       "Notepad": "Notizblock",
-      "NotepadPlaceholder": "Text",
+      "NotepadPlaceholder": "Dein text",
       "CleanButtonWarningTitle": "Möchten Sie den Notizblock wirklich löschen?",
       "CleanNotepadTextRequestError": "Keine Internetverbindung, Notizblock wurde nur auf Ihrem Gerät gelöscht. Um den Notizblock auf dem Server zu löschen, schalten Sie das Internet ein und wiederholen Sie die Anfrage",
       "SaveNotepadTextRequestError": "Keine Internetverbindung, Notizblock wurde nur auf Ihrem Gerät gespeichert. Um Notepad auf dem Server zu speichern, schalten Sie das Internet ein und wiederholen Sie die Anfrage",

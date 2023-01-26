@@ -54,7 +54,7 @@
     },
     "notepadScreen": {
       "Notepad": "메모장",
-      "NotepadPlaceholder": "텍스트",
+      "NotepadPlaceholder": "당신의 텍스트",
       "CleanButtonWarningTitle": "메모장을 지우시겠습니까?",
       "CleanNotepadTextRequestError": "인터넷에 연결되어 있지 않습니다. 메모장은 기기에서만 삭제되었습니다. 서버에서 메모장을 지우려면 인터넷을 켜고 요청을 반복하십시오",
       "SaveNotepadTextRequestError": "인터넷에 연결되어 있지 않습니다. 메모장은 기기에만 저장되었습니다. 서버에 메모장을 저장하려면 인터넷을 켜고 요청을 반복하십시오",

@@ -54,7 +54,7 @@
     },
     "notepadScreen": {
       "Notepad": "Buku catatan",
-      "NotepadPlaceholder": "Teks",
+      "NotepadPlaceholder": "Teks anda",
       "CleanButtonWarningTitle": "Anda yakin ingin menghapus buku catatan?",
       "CleanNotepadTextRequestError": "Tidak ada koneksi internet, buku catatan hanya dibersihkan di perangkat Anda. Untuk menghapus buku catatan di server, hidupkan Internet dan ulangi permintaan",
       "SaveNotepadTextRequestError": "Tidak ada koneksi internet, buku catatan hanya disimpan di perangkat Anda. Untuk menyimpan buku catatan di server, nyalakan Internet dan ulangi permintaan",

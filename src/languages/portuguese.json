@@ -54,7 +54,7 @@
     },
     "notepadScreen": {
       "Notepad": "Bloco de anotações",
-      "NotepadPlaceholder": "Texto",
+      "NotepadPlaceholder": "Seu texto",
       "CleanButtonWarningTitle": "Tem certeza de que deseja limpar o bloco de notas?",
       "CleanNotepadTextRequestError": "Sem conexão com a Internet, o bloco de notas foi apagado apenas no seu dispositivo. Para limpar o bloco de notas no servidor, ligue a Internet e repita a solicitação",
       "SaveNotepadTextRequestError": "Sem conexão com a Internet, o bloco de notas foi salvo apenas no seu dispositivo. Para salvar o bloco de notas no servidor, ligue a Internet e repita a solicitação",

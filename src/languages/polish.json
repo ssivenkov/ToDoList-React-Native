@@ -54,7 +54,7 @@
     },
     "notepadScreen": {
       "Notepad": "Notatnik",
-      "NotepadPlaceholder": "Tekst",
+      "NotepadPlaceholder": "Twój tekst",
       "CleanButtonWarningTitle": "Czy na pewno chcesz wyczyścić notatnik?",
       "CleanNotepadTextRequestError": "Brak połączenia z Internetem, notatnik został wyczyszczony tylko na Twoim urządzeniu. Aby wyczyścić notatnik na serwerze, włącz Internet i powtórz żądanie",
       "SaveNotepadTextRequestError": "Brak połączenia z Internetem, notatnik został zapisany tylko na Twoim urządzeniu. Aby zapisać notatnik na serwerze włącz Internet i powtórz żądanie",

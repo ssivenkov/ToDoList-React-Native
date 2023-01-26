@@ -54,7 +54,7 @@
     },
     "notepadScreen": {
       "Notepad": "Notlarınız",
-      "NotepadPlaceholder": "Metin",
+      "NotepadPlaceholder": "Metniniz",
       "CleanButtonWarningTitle": "Notlarınızı silmek istediğinizden emin misiniz?",
       "CleanNotepadTextRequestError": "İnternet bağlantısı yok, sadece cihazınızdaki notlarınız silinmiştir. Sunucudaki notlarınızı silmek için interneti açın ve isteği tekrarlayın",
       "SaveNotepadTextRequestError": "İnternet bağlantısı yok, notlarınız sadece cihazınıza kaydedildi. Notlarınızı sunucuya yazmak için interneti açın ve isteği tekrarlayın",

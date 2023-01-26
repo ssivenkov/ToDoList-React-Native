@@ -54,7 +54,7 @@
     },
     "notepadScreen": {
       "Notepad": "Blocco note",
-      "NotepadPlaceholder": "Testo",
+      "NotepadPlaceholder": "Il tuo testo",
       "CleanButtonWarningTitle": "È sicuro di voler cancellare il blocco note?",
       "CleanNotepadTextRequestError": "Nessuna connessione a Internet, il blocco note è stato cancellato solo sul tuo dispositivo. Per cancellare il blocco note sul server, accendi Internet e ripeti la richiesta",
       "SaveNotepadTextRequestError": "Nessuna connessione a Internet, il blocco note è stato salvato solo sul tuo dispositivo. Per salvare il blocco note sul server accendi Internet e ripeti la richiesta",

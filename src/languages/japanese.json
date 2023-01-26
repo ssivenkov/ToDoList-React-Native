@@ -54,7 +54,7 @@
     },
     "notepadScreen": {
       "Notepad": "メモ帳",
-      "NotepadPlaceholder": "文章",
+      "NotepadPlaceholder": "あなたのテキスト",
       "CleanButtonWarningTitle": "本当にメモ帳をクリアしますか?",
       "CleanNotepadTextRequestError": "インターネットに接続されていません。デバイスのメモ帳のみが消去されました。 サーバー上のメモ帳をクリアするには、インターネットをオンにして要求を繰り返します",
       "SaveNotepadTextRequestError": "インターネットに接続されていません。メモ帳はデバイスにのみ保存されています。 サーバーにメモ帳を保存するには、インターネットをオンにして、要求を繰り返します",

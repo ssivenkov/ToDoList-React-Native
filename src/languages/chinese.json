@@ -54,7 +54,7 @@
     },
     "notepadScreen": {
       "Notepad": "記事本",
-      "NotepadPlaceholder": "文本",
+      "NotepadPlaceholder": "你的文字",
       "CleanButtonWarningTitle": "您確定要清除記事本嗎？",
       "CleanNotepadTextRequestError": "沒有互聯網連接，記事本僅在您的設備上被清除。 要清除服務器上的記事本，請打開互聯網並重複請求",
       "SaveNotepadTextRequestError": "沒有互聯網連接，記事本僅保存在您的設備上。 要將記事本保存在服務器上，請打開互聯網並重複請求",
