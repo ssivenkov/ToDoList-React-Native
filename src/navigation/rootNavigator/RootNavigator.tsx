@@ -114,7 +114,7 @@ export const RootNavigator = () => {
       >
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <View style={styles.childrenContainer}>
+            <View style={styles.descriptionContainer}>
               <Text style={styles.text}>{errorModalMessage}</Text>
             </View>
             <View style={styles.buttonsContainer}>
