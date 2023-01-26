@@ -12,7 +12,6 @@
       "DeleteQuestionButtonTitle": "Apakah Anda yakin untuk menghapus <0>{{text}}</0>?",
       "DoneButton": "Apakah Anda yakin tugas <0>{{text}}</0> sudah selesai?",
       "EditTaskListButtonTitle": "Edit judul daftar tugas",
-      "EditTaskButton": "Edit tugas",
       "TodoTasksTab": "Tugas",
       "DoneTasksTab": "Tugas siap pakai",
       "NoTaskListsFound": "Tidak ada daftar tugas yang ditemukan",
@@ -23,6 +22,10 @@
     "addTaskScreen": {
       "headerTitle": "Tugas baru",
       "addTaskInputSuptitle": "Teks tugas baru"
+    },
+    "editTaskScreen": {
+      "headerTitle": "Mengubah tugas",
+      "editTaskInputSuptitle": "Teks tugas"
     },
     "signInScreen": {
       "SignIn": "Masuk",

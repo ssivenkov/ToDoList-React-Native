@@ -12,7 +12,6 @@
       "DeleteQuestionButtonTitle": "你确定要删除<0>{{text}}</0>吗?",
       "DoneButton": "你确定任务<0>{{text}}</0>已经完成吗?",
       "EditTaskListButtonTitle": "编辑任务列表标题",
-      "EditTaskButton": "编辑任务",
       "TodoTasksTab": "琐碎的任务",
       "DoneTasksTab": "已完成的任务",
       "NoTaskListsFound": "没有发现任务清单",
@@ -23,6 +22,10 @@
     "addTaskScreen": {
       "headerTitle": "新任務",
       "addTaskInputSuptitle": "新任務文本"
+    },
+    "editTaskScreen": {
+      "headerTitle": "更改任務",
+      "editTaskInputSuptitle": "任務文本"
     },
     "signInScreen": {
       "SignIn": "登录",

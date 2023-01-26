@@ -12,7 +12,6 @@
       "DeleteQuestionButtonTitle": "Удалить <0>{{text}}</0>?",
       "DoneButton": "Задача <0>{{text}}</0> выполнена?",
       "EditTaskListButtonTitle": "Название списка задач",
-      "EditTaskButton": "Редактирование задачи",
       "TodoTasksTab": "Выполнить",
       "DoneTasksTab": "Выполненные",
       "NoTaskListsFound": "Списков задач не найдено",
@@ -23,6 +22,10 @@
     "addTaskScreen": {
       "headerTitle": "Новая задача",
       "addTaskInputSuptitle": "Текст новой задачи"
+    },
+    "editTaskScreen": {
+      "headerTitle": "Изменение задачи",
+      "editTaskInputSuptitle": "Текст задачи"
     },
     "signInScreen": {
       "SignIn": "Вход",

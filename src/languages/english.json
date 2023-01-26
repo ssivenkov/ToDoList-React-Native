@@ -12,7 +12,6 @@
       "DeleteQuestionButtonTitle": "Are you sure to delete <0>{{text}}</0>?",
       "DoneButton": "Are you sure the task <0>{{text}}</0> is completed?",
       "EditTaskListButtonTitle": "Edit task list title",
-      "EditTaskButton": "Edit task",
       "TodoTasksTab": "Todo tasks",
       "DoneTasksTab": "Done tasks",
       "NoTaskListsFound": "No task lists found",
@@ -23,6 +22,10 @@
     "addTaskScreen": {
       "headerTitle": "New task",
       "addTaskInputSuptitle": "New task text"
+    },
+    "editTaskScreen": {
+      "headerTitle": "Edit task",
+      "editTaskInputSuptitle": "Task text"
     },
     "signInScreen": {
       "SignIn": "Sign in",

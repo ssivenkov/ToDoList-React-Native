@@ -12,7 +12,6 @@
       "DeleteQuestionButtonTitle": "Tem a certeza de apagar <0>{{text}}</0>?",
       "DoneButton": "Tem a certeza de que a tarefa <0>{{text}}</0> está concluída?",
       "EditTaskListButtonTitle": "Editar título da lista de tarefas",
-      "EditTaskButton": "Editar tarefa",
       "TodoTasksTab": "Todas as tarefas",
       "DoneTasksTab": "Tarefas feitas",
       "NoTaskListsFound": "Não foram encontradas listas de tarefas",
@@ -23,6 +22,10 @@
     "addTaskScreen": {
       "headerTitle": "Nova tarefa",
       "addTaskInputSuptitle": "Texto da nova tarefa"
+    },
+    "editTaskScreen": {
+      "headerTitle": "Alterar uma tarefa",
+      "editTaskInputSuptitle": "Texto da tarefa"
     },
     "signInScreen": {
       "SignIn": "Iniciar sessão",

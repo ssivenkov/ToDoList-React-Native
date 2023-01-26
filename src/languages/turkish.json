@@ -12,7 +12,6 @@
       "DeleteQuestionButtonTitle": "<0>{{text}}</0> öğesini sildiğinizden emin misiniz?",
       "DoneButton": "<0>{{text}}</0> görevinin tamamlandığından emin misiniz?",
       "EditTaskListButtonTitle": "Görev listesi başlığını düzenleme",
-      "EditTaskButton": "Görevi düzenle",
       "TodoTasksTab": "Yapılacak işler",
       "DoneTasksTab": "Tamamlanan görevler",
       "NoTaskListsFound": "Görev listesi bulunamadı",
@@ -23,6 +22,10 @@
     "addTaskScreen": {
       "headerTitle": "Yeni görev",
       "addTaskInputSuptitle": "Yeni görev metni"
+    },
+    "editTaskScreen": {
+      "headerTitle": "Görev değiştirme",
+      "editTaskInputSuptitle": "Görev metni"
     },
     "signInScreen": {
       "SignIn": "Oturum aç",

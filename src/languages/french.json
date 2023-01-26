@@ -12,7 +12,6 @@
       "DeleteQuestionButtonTitle": "Etes-vous sûr de vouloir supprimer <0>{{text}}</0>?",
       "DoneButton": "Etes-vous sûr que la tâche <0>{{text}}</0> est terminée?",
       "EditTaskListButtonTitle": "Modifier le titre de la liste des tâches",
-      "EditTaskButton": "Modifier la tâche",
       "TodoTasksTab": "Tâches à faire",
       "DoneTasksTab": "Tâches effectuées",
       "NoTaskListsFound": "Aucune liste de tâches trouvée",
@@ -23,6 +22,10 @@
     "addTaskScreen": {
       "headerTitle": "Nouvelle tâche",
       "addTaskInputSuptitle": "Nouveau texte de tâche"
+    },
+    "editTaskScreen": {
+      "headerTitle": "Modification d'une tâche",
+      "editTaskInputSuptitle": "Texte de la tâche"
     },
     "signInScreen": {
       "SignIn": "Se connecter",

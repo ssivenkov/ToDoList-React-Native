@@ -137,7 +137,7 @@ export const EditTaskScreen = () => {
       <Header
         leftButton={<GoBackButton />}
         rightButton={<SendEditedTaskButton sendEditedTask={sendEditedTask} />}
-        title={t('tasksScreen.EditTaskButton')}
+        title={t('editTaskScreen.headerTitle')}
       />
       <ScrollView
         contentContainerStyle={styles.contentWrapper}
@@ -147,6 +147,7 @@ export const EditTaskScreen = () => {
           <Input
             maxLength={INPUT_MAX_LENGTH200}
             onChangeText={setEditedTaskTitle}
+            suptext={t('editTaskScreen.editTaskInputSuptitle')}
             value={editedTaskTitle}
           />
           {isTodo && (

@@ -12,7 +12,6 @@
       "DeleteQuestionButtonTitle": "¿Estás seguro de borrar <0>{{text}}</0>?",
       "DoneButton": "¿Está seguro de que la tarea <0>{{text}}</0> se ha completado?",
       "EditTaskListButtonTitle": "Editar el título de la lista de tareas",
-      "EditTaskButton": "Editar tarea",
       "TodoTasksTab": "Tareas de todo tipo",
       "DoneTasksTab": "Tareas realizadas",
       "NoTaskListsFound": "No se han encontrado hojas de ruta",
@@ -23,6 +22,10 @@
     "addTaskScreen": {
       "headerTitle": "Nueva tarea",
       "addTaskInputSuptitle": "Nuevo texto de tarea"
+    },
+    "editTaskScreen": {
+      "headerTitle": "Cambiar una tarea",
+      "editTaskInputSuptitle": "Texto de la tarea"
     },
     "signInScreen": {
       "SignIn": "Acceder",

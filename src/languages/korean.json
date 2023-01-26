@@ -12,7 +12,6 @@
       "DeleteQuestionButtonTitle": "<0>{{text}}</0>을(를) 삭제하시겠습니까?",
       "DoneButton": "<0>{{text}}</0> 작업이 완료되었습니까?",
       "EditTaskListButtonTitle": "작업 목록 제목 수정",
-      "EditTaskButton": "작업 수정",
       "TodoTasksTab": "할 일",
       "DoneTasksTab": "완료된 작업",
       "NoTaskListsFound": "작업 목록을 찾을 수 없습니다.",
@@ -23,6 +22,10 @@
     "addTaskScreen": {
       "headerTitle": "새 작업",
       "addTaskInputSuptitle": "새 작업 텍스트"
+    },
+    "editTaskScreen": {
+      "headerTitle": "작업 변경",
+      "editTaskInputSuptitle": "작업 텍스트"
     },
     "signInScreen": {
       "SignIn": "로그인",

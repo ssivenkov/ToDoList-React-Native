@@ -12,7 +12,6 @@
       "DeleteQuestionButtonTitle": "本当に<0>{{text}}</0>を削除するのですか?",
       "DoneButton": "タスク<0>{{text}}</0>は本当に完了したのか?",
       "EditTaskListButtonTitle": "タスクリストのタイトルを編集する",
-      "EditTaskButton": "タスクの編集",
       "TodoTasksTab": "実装タスク",
       "DoneTasksTab": "完了したタスク",
       "NoTaskListsFound": "タスクリストが見つかりません",
@@ -23,6 +22,10 @@
     "addTaskScreen": {
       "headerTitle": "新しい仕事",
       "addTaskInputSuptitle": "新しいタスク テキスト"
+    },
+    "editTaskScreen": {
+      "headerTitle": "タスクの変更",
+      "editTaskInputSuptitle": "タスク テキスト"
     },
     "signInScreen": {
       "SignIn": "サインイン",

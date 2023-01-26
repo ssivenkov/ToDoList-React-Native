@@ -12,7 +12,6 @@
       "DeleteQuestionButtonTitle": "Sind Sie sicher, dass Sie <0>{{text}}</0> löschen wollen?",
       "DoneButton": "Sind Sie sicher, dass die Aufgabe <0>{{text}}</0> abgeschlossen ist?",
       "EditTaskListButtonTitle": "Titel der Aufgabenliste bearbeiten",
-      "EditTaskButton": "Aufgabe bearbeiten",
       "TodoTasksTab": "Erledigte Aufgaben",
       "DoneTasksTab": "Erledigte Aufgaben",
       "NoTaskListsFound": "Keine Aufgabenliste gefunden",
@@ -23,6 +22,10 @@
     "addTaskScreen": {
       "headerTitle": "Neue Aufgabe",
       "addTaskInputSuptitle": "Neuer Aufgabentext"
+    },
+    "editTaskScreen": {
+      "headerTitle": "Eine Aufgabe ändern",
+      "editTaskInputSuptitle": "Aufgabentext"
     },
     "signInScreen": {
       "SignIn": "Eintragen",
