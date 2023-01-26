@@ -9,10 +9,12 @@ type InputStylesType = {
   suptext: TextStyle;
   subtext: TextStyle;
   errorSubtext: TextStyle;
-  transparentText: TextStyle;
+  transparentSubtext: TextStyle;
 };
 
-const subtextWidth = '100%';
+const { CRIMSON, TRANSPARENT } = COLORS;
+
+const textWidth = '100%';
 const subtextFontSize = 12.5;
 const subtextPaddingVertical = 8;
 
@@ -23,7 +25,7 @@ export const inputStyles = (props: ExtendedStylesPropsType) =>
     },
 
     input: {
-      width: '100%',
+      width: textWidth,
       alignContent: 'center',
       fontSize: 18,
       padding: 10,
@@ -34,7 +36,7 @@ export const inputStyles = (props: ExtendedStylesPropsType) =>
     },
 
     notepadInput: {
-      width: '100%',
+      width: textWidth,
       alignContent: 'center',
       fontSize: 16,
       padding: 10,
@@ -44,30 +46,31 @@ export const inputStyles = (props: ExtendedStylesPropsType) =>
     },
 
     suptext: {
-      width: '100%',
+      width: textWidth,
       fontSize: 14,
       paddingVertical: 8,
       color: props.TEXT_COLOR,
     },
 
     subtext: {
-      width: subtextWidth,
+      width: textWidth,
       fontSize: subtextFontSize,
       paddingVertical: subtextPaddingVertical,
       color: props.SUBTEXT_COLOR,
     },
 
     errorSubtext: {
-      width: subtextWidth,
+      width: textWidth,
       fontSize: subtextFontSize,
       paddingVertical: subtextPaddingVertical,
-      color: COLORS.CRIMSON,
+      color: CRIMSON,
     },
 
-    transparentText: {
-      width: subtextWidth,
+    transparentSubtext: {
+      width: textWidth,
       fontSize: subtextFontSize,
       paddingVertical: subtextPaddingVertical,
+      color: TRANSPARENT,
       opacity: 0,
     },
   });

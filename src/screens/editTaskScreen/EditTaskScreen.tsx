@@ -8,7 +8,7 @@ import { Notification } from '@components/notification/Notification';
 import { Switcher } from '@components/switcher/Switcher';
 import {
   colorPickerDefaultGapSize,
-  MAX_INPUT_LENGTH200,
+  INPUT_MAX_LENGTH200,
   screenWidth480px,
   switcherMargin,
 } from '@constants/constants';
@@ -145,8 +145,8 @@ export const EditTaskScreen = () => {
       >
         <View style={styles.contentContainer}>
           <Input
-            maxLength={MAX_INPUT_LENGTH200}
-            onValueChange={setEditedTaskTitle}
+            maxLength={INPUT_MAX_LENGTH200}
+            onChangeText={setEditedTaskTitle}
             value={editedTaskTitle}
           />
           {isTodo && (

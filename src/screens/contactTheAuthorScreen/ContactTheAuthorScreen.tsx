@@ -3,8 +3,9 @@ import React, { useLayoutEffect, useState } from 'react';
 import { TextButton } from '@components/buttons/textButton/TextButton';
 import { GoBackButton } from '@components/header/buttons/goBackButton/GoBackButton';
 import { Header } from '@components/header/Header';
-import { FormikInput } from '@components/inputs/FormikInput';
+import { Input } from '@components/inputs/Input';
 import { Loader } from '@components/loader/Loader';
+import { infinity } from '@constants/constants';
 import { useStyles } from '@hooks/useStyles';
 import { useNavigation } from '@react-navigation/native';
 import { emailField, messageField } from '@screens/contactTheAuthorScreen/fieldNames';
@@ -71,7 +72,8 @@ export const ContactTheAuthorScreen = () => {
         )}
         <View style={styles.inputsWrapper}>
           <View style={styles.inputWrapper}>
-            <FormikInput
+            <Input
+              displayEmptySubtext={true}
               errorSubtext={
                 errors[emailField] && touched[emailField] ? errors[emailField] : ''
               }
@@ -83,11 +85,12 @@ export const ContactTheAuthorScreen = () => {
             />
           </View>
           <View style={styles.inputWrapper}>
-            <FormikInput
-              autogrow={true}
+            <Input
+              displayEmptySubtext={true}
               errorSubtext={
                 errors[messageField] && touched[messageField] ? errors[messageField] : ''
               }
+              maxLength={infinity}
               onBlur={() => setFieldTouched(messageField, true)}
               onChangeText={handleChange(messageField)}
               suptext={t('contactTheAuthorScreen.MessageSuptext')}

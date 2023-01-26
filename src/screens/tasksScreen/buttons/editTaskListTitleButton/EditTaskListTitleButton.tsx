@@ -3,7 +3,7 @@ import React, { useRef, useState } from 'react';
 import { commonButtonStyles } from '@components/buttons/commonButtonStyles';
 import { Input } from '@components/inputs/Input';
 import { ModalIcon } from '@components/modals/ModalIcon';
-import { ICON_SIZE_SMALL, MAX_INPUT_LENGTH100 } from '@constants/constants';
+import { ICON_SIZE_SMALL } from '@constants/constants';
 import { faPen } from '@fortawesome/free-solid-svg-icons/faPen';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { SetStateType } from '@root/types/common/types';
@@ -79,8 +79,7 @@ export const EditTaskListTitleButton = ({
     >
       <Input
         inputRef={inputRef}
-        maxLength={MAX_INPUT_LENGTH100}
-        onValueChange={setEditedTaskListTitle}
+        onChangeText={setEditedTaskListTitle}
         value={editedTaskListTitle}
       />
     </ModalIcon>
