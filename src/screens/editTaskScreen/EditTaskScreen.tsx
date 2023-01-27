@@ -17,6 +17,7 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import { Nullable, SetStateType } from '@root/types/common/types';
 import { SendEditedTaskButton } from '@screens/editTaskScreen/sendEditedTaskButton/SendEditedTaskButton';
 import { EditTaskScreenRouteType } from '@screens/editTaskScreen/types';
+import { closeTaskHorizontalMenuAction } from '@store/actions/tasksSagaActions/tasksSagasActions/closeTaskHorizontalMenuAction';
 import { setEditedTaskAction } from '@store/actions/tasksSagaActions/tasksSagasActions/setEditedTaskAction';
 import { setSelectedColorAction } from '@store/actions/userReducerActions/setSelectedColorAction';
 import { TaskType } from '@store/reducers/tasksReducer/types';
@@ -65,6 +66,12 @@ export const EditTaskScreen = () => {
 
   const goBack = () => {
     navigation.goBack();
+  };
+
+  const customGoBack = () => {
+    dispatch(closeTaskHorizontalMenuAction());
+
+    goBack();
   };
 
   const showColorPickerWithUserColorMarkCondition =
@@ -135,7 +142,7 @@ export const EditTaskScreen = () => {
   return (
     <View>
       <Header
-        leftButton={<GoBackButton />}
+        leftButton={<GoBackButton customGoBack={customGoBack} />}
         rightButton={<SendEditedTaskButton sendEditedTask={sendEditedTask} />}
         title={t('editTaskScreen.HeaderTitle')}
       />

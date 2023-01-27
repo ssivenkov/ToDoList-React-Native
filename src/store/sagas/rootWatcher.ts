@@ -11,6 +11,7 @@ import { addNewTaskSaga } from '@store/sagas/tasksSagas/tasksSagas/addNewTaskSag
 import { deleteTaskSaga } from '@store/sagas/tasksSagas/tasksSagas/deleteTaskSaga';
 import { editTaskSaga } from '@store/sagas/tasksSagas/tasksSagas/editTaskSaga';
 import { setTaskIsDoneSaga } from '@store/sagas/tasksSagas/tasksSagas/setTaskIsDoneSaga';
+import { waitCloseTaskHorizontalMenuSaga } from '@store/sagas/tasksSagas/tasksSagas/waitCloseTaskHorizontalMenuSaga';
 import { changeAccentColorSaga } from '@store/sagas/userSagas/changeAccentColorSaga';
 import { changeDarkModeSaga } from '@store/sagas/userSagas/changeDarkModeSaga';
 import { changeLanguageSaga } from '@store/sagas/userSagas/changeLanguageSaga';
@@ -49,6 +50,10 @@ export function* rootWatcher() {
   );
   yield takeLatest(TASKS_SAGA_ACTION.SET_TASK_IS_DONE, setTaskIsDoneSaga);
   yield takeLatest(TASKS_SAGA_ACTION.SET_EDITED_TASK, editTaskSaga);
+  yield takeLatest(
+    TASKS_SAGA_ACTION.WAIT_CLOSE_TASK_HORIZONTAL_MENU,
+    waitCloseTaskHorizontalMenuSaga,
+  );
   yield takeLatest(TASKS_SAGA_ACTION.DELETE_TASK, deleteTaskSaga);
 
   yield takeLatest(NOTEPAD_SAGA_ACTION.SAVE_NOTEPAD_TEXT, saveNotepadTextSaga);

@@ -12,6 +12,7 @@ import { DB } from '@root/api/DB';
 import * as Sentry from '@sentry/react-native';
 import { editTaskNotificationAction } from '@store/actions/tasksReducerActions/notificationsActions/editTaskNotificationAction';
 import { setEditedTaskAction } from '@store/actions/tasksReducerActions/tasksActions/setEditedTaskAction';
+import { closeTaskHorizontalMenuAction } from '@store/actions/tasksSagaActions/tasksSagasActions/closeTaskHorizontalMenuAction';
 import { SetEditedTaskActionSagaReturnType } from '@store/actions/tasksSagaActions/tasksSagasActions/setEditedTaskAction';
 import { setModalMessageAction } from '@store/actions/userReducerActions/setModalMessageAction';
 import { NotificationType, TaskType } from '@store/reducers/tasksReducer/types';
@@ -208,6 +209,8 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
 
       yield call(setColorMark, '');
     }
+
+    yield put(closeTaskHorizontalMenuAction());
 
     yield call(goBack);
     yield call(setEditedTaskTitle, editedTaskTitle);

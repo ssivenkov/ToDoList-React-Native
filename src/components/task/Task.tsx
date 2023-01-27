@@ -55,7 +55,7 @@ export const Task = (props: TaskPropsType) => {
                 colorMark={colorMark}
                 isTodo={isTodo}
                 oldTaskTitle={taskTitle}
-                /*setIsMenuHorizontalVisible={setIsMenuHorizontalVisible}*/
+                setIsMenuHorizontalVisible={setIsMenuHorizontalVisible}
                 taskID={taskID}
                 taskListID={taskListID}
               />

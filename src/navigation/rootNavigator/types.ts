@@ -2,9 +2,7 @@ import { isTodoTaskListType } from '@components/taskList/types';
 import { ROOT_NAVIGATOR_ROUTE } from '@enums/routesEnum';
 import { BottomTabParamList } from '@navigation/withAuthNavigator/types';
 import { NavigatorScreenParams } from '@react-navigation/native';
-import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
 import { TaskListType, TaskType } from '@store/reducers/tasksReducer/types';
-import { ColorType } from '@store/reducers/userReducer/types';
 
 export type AddTaskScreenParamList = {
   fullTaskList: TaskListType;
@@ -29,11 +27,3 @@ export type RootNativeStackNavigatorParamListType = {
   [ROOT_NAVIGATOR_ROUTE.ADD_TASK_SCREEN]: AddTaskScreenParamList;
   [ROOT_NAVIGATOR_ROUTE.EDIT_TASK_SCREEN]: EditTaskScreenParamList;
 };
-
-type NativeStackExtraScreenStyleParamsType = {
-  accentColor: ColorType;
-};
-
-export type NativeStackExtraScreenSettingsType = (
-  params: NativeStackExtraScreenStyleParamsType,
-) => NativeStackNavigationOptions;
