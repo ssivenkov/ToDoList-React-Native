@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 
 import { ColorPickerComponent } from '@components/colorPicker/ColorPicker';
 import { GoBackButton } from '@components/header/buttons/goBackButton/GoBackButton';
@@ -13,7 +13,7 @@ import {
   switcherMargin,
 } from '@constants/constants';
 import { useStyles } from '@hooks/useStyles';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { useFocusEffect, useNavigation, useRoute } from '@react-navigation/native';
 import { Nullable, SetStateType } from '@root/types/common/types';
 import { SendEditedTaskButton } from '@screens/editTaskScreen/sendEditedTaskButton/SendEditedTaskButton';
 import { EditTaskScreenRouteType } from '@screens/editTaskScreen/types';
@@ -24,7 +24,7 @@ import { TaskType } from '@store/reducers/tasksReducer/types';
 import { ColorType } from '@store/reducers/userReducer/types';
 import { notificationsSelector } from '@store/selectors/tasksSelectors';
 import { useTranslation } from 'react-i18next';
-import { ScrollView, useWindowDimensions, View } from 'react-native';
+import { BackHandler, ScrollView, useWindowDimensions, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { editTaskScreenStyles } from './styles';
@@ -138,6 +138,20 @@ export const EditTaskScreen = () => {
       setEditedTaskTitle(editedTaskTitle);
     }
   };
+
+  useFocusEffect(
+    useCallback(() => {
+      const onBackPress = () => {
+        customGoBack();
+
+        return true;
+      };
+
+      const subscription = BackHandler.addEventListener('hardwareBackPress', onBackPress);
+
+      return () => subscription.remove();
+    }, []),
+  );
 
   return (
     <View>
