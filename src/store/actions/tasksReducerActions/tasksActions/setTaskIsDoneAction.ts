@@ -2,13 +2,13 @@ import { TASKS_REDUCER_ACTION } from '@enums/tasksReducerEnum';
 import { TaskListType, TaskType } from '@store/reducers/tasksReducer/types';
 
 type SetTaskIsDoneActionPayloadType = {
-  taskListID: TaskListType['id'];
   doneTaskID: TaskType['id'];
+  taskListID: TaskListType['id'];
 };
 
 export type SetTaskIsDoneActionReturnType = {
-  type: TASKS_REDUCER_ACTION.SET_TASK_DONE;
   payload: SetTaskIsDoneActionPayloadType;
+  type: TASKS_REDUCER_ACTION.SET_TASK_DONE;
 };
 
 export type SetTaskIsDoneActionType = (
@@ -16,6 +16,6 @@ export type SetTaskIsDoneActionType = (
 ) => SetTaskIsDoneActionReturnType;
 
 export const setTaskIsDoneAction: SetTaskIsDoneActionType = (payload) => ({
-  type: TASKS_REDUCER_ACTION.SET_TASK_DONE,
   payload,
+  type: TASKS_REDUCER_ACTION.SET_TASK_DONE,
 });

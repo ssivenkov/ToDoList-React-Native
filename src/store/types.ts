@@ -6,7 +6,7 @@ import { rootReducer } from '@store/store';
 export type AppRootStateType = ReturnType<typeof rootReducer>;
 
 export type RootStateType = {
+  notepad: NotepadReducerStateType;
   tasks: TasksReducerStateType;
   user: UserReducerStateType;
-  notepad: NotepadReducerStateType;
 };

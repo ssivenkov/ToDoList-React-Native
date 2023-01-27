@@ -6,8 +6,8 @@ type SetSelectedColorActionPayloadType = {
 };
 
 export type SetSelectedColorActionReturnType = {
-  type: USER_REDUCER_ACTION.SET_SELECTED_COLOR;
   payload: SetSelectedColorActionPayloadType;
+  type: USER_REDUCER_ACTION.SET_SELECTED_COLOR;
 };
 
 export type SetSelectedColorActionType = (
@@ -15,6 +15,6 @@ export type SetSelectedColorActionType = (
 ) => SetSelectedColorActionReturnType;
 
 export const setSelectedColorAction: SetSelectedColorActionType = (payload) => ({
-  type: USER_REDUCER_ACTION.SET_SELECTED_COLOR,
   payload,
+  type: USER_REDUCER_ACTION.SET_SELECTED_COLOR,
 });

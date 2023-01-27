@@ -33,36 +33,36 @@ export const CollapsingButton = (props: CollapsingButtonPropsType) => {
   const setTodoTaskListCollapsed = () =>
     dispatch(
       setCollapsedTaskListAction({
-        taskListID,
-        isTodoCollapsed: true,
         isDoneCollapsed: isDoneCollapsed,
+        isTodoCollapsed: true,
+        taskListID,
       }),
     );
 
   const setTodoTaskListUnCollapsed = () =>
     dispatch(
       setCollapsedTaskListAction({
-        taskListID,
-        isTodoCollapsed: false,
         isDoneCollapsed: isDoneCollapsed,
+        isTodoCollapsed: false,
+        taskListID,
       }),
     );
 
   const setDoneTaskListCollapsed = () =>
     dispatch(
       setCollapsedTaskListAction({
-        taskListID,
-        isTodoCollapsed: isTodoCollapsed,
         isDoneCollapsed: true,
+        isTodoCollapsed: isTodoCollapsed,
+        taskListID,
       }),
     );
 
   const setDoneTaskListUnCollapsed = () =>
     dispatch(
       setCollapsedTaskListAction({
-        taskListID,
-        isTodoCollapsed: isTodoCollapsed,
         isDoneCollapsed: false,
+        isTodoCollapsed: isTodoCollapsed,
+        taskListID,
       }),
     );
 

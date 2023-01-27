@@ -13,6 +13,8 @@
     "react-native",
     "react-hooks",
     "import",
+    "sort-keys",
+    "typescript-sort-keys",
     "@typescript-eslint",
     "prettier"
   ],
@@ -40,6 +42,12 @@
     // typescript
     "@typescript-eslint/no-var-requires": "error",
     "@typescript-eslint/ban-ts-comment": "off",
+    "typescript-sort-keys/interface": [
+      "error",
+      "asc",
+      { "caseSensitive": true, "natural": true, "requiredFirst": true }
+    ],
+    "typescript-sort-keys/string-enum": "error",
 
     // react native
     "react-native/no-unused-styles": "error",
@@ -149,6 +157,8 @@
 
     // objects
     "no-new": "error",
+    "sort-keys": "off",
+    "sort-keys/sort-keys-fix": "error",
 
     // comparing
     "no-self-compare": "error",

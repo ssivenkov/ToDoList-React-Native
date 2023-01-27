@@ -3,16 +3,16 @@ import { TaskListType, TaskType } from '@store/reducers/tasksReducer/types';
 import { ColorType } from '@store/reducers/userReducer/types';
 
 type SetEditedTaskActionPayloadType = {
-  taskListID: TaskListType['id'];
-  taskID: TaskType['id'];
   editedTaskTitle: TaskType['title'];
+  taskID: TaskType['id'];
+  taskListID: TaskListType['id'];
 
   colorMark?: ColorType;
 };
 
 export type SetEditedTaskActionReturnType = {
-  type: TASKS_REDUCER_ACTION.EDIT_TASK;
   payload: SetEditedTaskActionPayloadType;
+  type: TASKS_REDUCER_ACTION.EDIT_TASK;
 };
 
 export type SetEditedTaskActionType = (
@@ -20,6 +20,6 @@ export type SetEditedTaskActionType = (
 ) => SetEditedTaskActionReturnType;
 
 export const setEditedTaskAction: SetEditedTaskActionType = (payload) => ({
-  type: TASKS_REDUCER_ACTION.EDIT_TASK,
   payload,
+  type: TASKS_REDUCER_ACTION.EDIT_TASK,
 });

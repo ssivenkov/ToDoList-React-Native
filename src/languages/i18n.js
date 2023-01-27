@@ -20,8 +20,11 @@ import ukrainian from './ukrainian.json';
 
 // eslint-disable-next-line import/no-named-as-default-member
 i18next.use(initReactI18next).init({
-  lng: EN,
   interpolation: { escapeValue: false },
+  lng: EN,
+  react: {
+    useSuspense: false,
+  },
   resources: {
     by: belarusian,
     cn: chinese,
@@ -38,9 +41,6 @@ i18next.use(initReactI18next).init({
     ru: russian,
     tr: turkish,
     ua: ukrainian,
-  },
-  react: {
-    useSuspense: false,
   },
 });
 

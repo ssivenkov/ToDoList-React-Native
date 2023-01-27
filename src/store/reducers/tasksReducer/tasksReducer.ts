@@ -5,8 +5,8 @@ import {
 } from '@store/reducers/tasksReducer/types';
 
 const tasksReducerState: TasksReducerStateType = {
-  taskLists: [],
   notifications: [],
+  taskLists: [],
 };
 
 export const tasksReducer = (
@@ -125,8 +125,8 @@ export const tasksReducer = (
             if (taskList.id === taskListID) {
               return {
                 ...taskList,
-                isTodoCollapsed: isTodoCollapsed,
                 isDoneCollapsed: isDoneCollapsed,
+                isTodoCollapsed: isTodoCollapsed,
               };
             } else {
               return taskList;
@@ -195,8 +195,8 @@ export const tasksReducer = (
                     if (colorMark) {
                       return {
                         ...task,
-                        title: editedTaskTitle,
                         colorMark: colorMark,
+                        title: editedTaskTitle,
                       };
                     } else {
                       const modifiedTask = {

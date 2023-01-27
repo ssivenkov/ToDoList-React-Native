@@ -54,8 +54,8 @@ export const Notification = (props: NotificationPropsType) => {
   const datePickerAnimation = (isOn: boolean, value: number) => {
     onToggleSwitcherClick(isOn);
     Animated.timing(heightAnimation, {
-      toValue: value,
       duration: 250,
+      toValue: value,
       useNativeDriver: false,
     }).start();
   };

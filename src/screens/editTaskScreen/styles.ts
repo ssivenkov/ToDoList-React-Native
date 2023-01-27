@@ -3,26 +3,16 @@ import { ExtendedStylesPropsType } from '@hooks/useStyles';
 import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
 type EditTaskScreenStylesType = {
-  contentWrapper: ViewStyle;
-  colorPickerSwitcherWrapper: ViewStyle;
   colorPickerSwitcherContainer: ViewStyle;
   colorPickerSwitcherText: TextStyle;
+  colorPickerSwitcherWrapper: ViewStyle;
   colorPickerWrapper: ViewStyle;
   contentContainer: ViewStyle;
+  contentWrapper: ViewStyle;
 };
 
 export const editTaskScreenStyles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<EditTaskScreenStylesType>({
-    contentWrapper: {
-      alignItems: 'center',
-      paddingHorizontal: 18,
-      paddingTop: 22,
-    },
-
-    colorPickerSwitcherWrapper: {
-      overflow: 'hidden',
-    },
-
     colorPickerSwitcherContainer: {
       marginTop: 14,
     },
@@ -32,15 +22,25 @@ export const editTaskScreenStyles = (props: ExtendedStylesPropsType) =>
       fontSize: 18,
     },
 
+    colorPickerSwitcherWrapper: {
+      overflow: 'hidden',
+    },
+
     colorPickerWrapper: {
       height: 310,
-      marginTop: 25,
       marginLeft: 4,
+      marginTop: 25,
       paddingBottom: 90,
     },
 
     contentContainer: {
-      width: '100%',
       maxWidth: contentMaxWidth,
+      width: '100%',
+    },
+
+    contentWrapper: {
+      alignItems: 'center',
+      paddingHorizontal: 18,
+      paddingTop: 22,
     },
   });

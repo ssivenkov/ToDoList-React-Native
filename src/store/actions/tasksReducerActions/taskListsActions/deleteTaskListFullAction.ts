@@ -6,8 +6,8 @@ type DeleteTaskListFullActionPayloadType = {
 };
 
 export type DeleteTaskListFullActionReturnType = {
-  type: TASKS_REDUCER_ACTION.DELETE_TASK_LIST_FULL;
   payload: DeleteTaskListFullActionPayloadType;
+  type: TASKS_REDUCER_ACTION.DELETE_TASK_LIST_FULL;
 };
 
 export type DeleteTaskListFullActionType = (
@@ -15,6 +15,6 @@ export type DeleteTaskListFullActionType = (
 ) => DeleteTaskListFullActionReturnType;
 
 export const deleteTaskListFullAction: DeleteTaskListFullActionType = (payload) => ({
-  type: TASKS_REDUCER_ACTION.DELETE_TASK_LIST_FULL,
   payload,
+  type: TASKS_REDUCER_ACTION.DELETE_TASK_LIST_FULL,
 });

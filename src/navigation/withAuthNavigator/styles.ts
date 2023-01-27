@@ -9,39 +9,21 @@ import {
 import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
 export type WithAuthNavigatorStylesType = {
-  header: ViewStyle;
-  headerTitle: TextStyle;
   bottomTabBarContainer: ViewStyle;
-  bottomTabIconFocus: FontAwesomeIconStyle;
-  bottomTabIcon: FontAwesomeIconStyle;
   bottomTabBarIcon: TextStyle;
   bottomTabBarTitle: TextStyle;
+  bottomTabIcon: FontAwesomeIconStyle;
+  bottomTabIconFocus: FontAwesomeIconStyle;
+  header: ViewStyle;
+  headerTitle: TextStyle;
 };
 
 export const withAuthNavigatorStyles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<WithAuthNavigatorStylesType>({
-    header: {
-      backgroundColor: props.darkMode ? `${props.ACCENT_COLOR}CC` : props.ACCENT_COLOR,
-      height: headerHeight,
-    },
-
-    headerTitle: {
-      color: COLORS.WHITE,
-      fontSize: headerTitleFontSize,
-    },
-
     bottomTabBarContainer: {
-      height: tabBarContainerHeight,
       backgroundColor: props.TAB_BAR_BACKGROUND_COLOR,
       borderTopWidth: 0,
-    },
-
-    bottomTabIconFocus: {
-      color: props.ACCENT_COLOR,
-    },
-
-    bottomTabIcon: {
-      color: props.TAB_BAR_ICON_COLOR,
+      height: tabBarContainerHeight,
     },
 
     bottomTabBarIcon: {
@@ -51,5 +33,23 @@ export const withAuthNavigatorStyles = (props: ExtendedStylesPropsType) =>
     bottomTabBarTitle: {
       fontSize: 14,
       marginBottom: 1,
+    },
+
+    bottomTabIcon: {
+      color: props.TAB_BAR_ICON_COLOR,
+    },
+
+    bottomTabIconFocus: {
+      color: props.ACCENT_COLOR,
+    },
+
+    header: {
+      backgroundColor: props.darkMode ? `${props.ACCENT_COLOR}CC` : props.ACCENT_COLOR,
+      height: headerHeight,
+    },
+
+    headerTitle: {
+      color: COLORS.WHITE,
+      fontSize: headerTitleFontSize,
     },
   });

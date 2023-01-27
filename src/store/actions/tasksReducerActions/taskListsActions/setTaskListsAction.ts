@@ -6,8 +6,8 @@ type SetTaskListsActionPayloadType = {
 };
 
 export type SetTaskListsActionReturnType = {
-  type: TASKS_REDUCER_ACTION.SET_TASK_LISTS;
   payload: SetTaskListsActionPayloadType;
+  type: TASKS_REDUCER_ACTION.SET_TASK_LISTS;
 };
 
 export type SetTaskListsActionType = (
@@ -15,6 +15,6 @@ export type SetTaskListsActionType = (
 ) => SetTaskListsActionReturnType;
 
 export const setTaskListsAction: SetTaskListsActionType = (payload) => ({
-  type: TASKS_REDUCER_ACTION.SET_TASK_LISTS,
   payload,
+  type: TASKS_REDUCER_ACTION.SET_TASK_LISTS,
 });

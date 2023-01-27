@@ -6,8 +6,8 @@ type SetLanguageActionPayloadType = {
 };
 
 export type SetLanguageActionReturnType = {
-  type: USER_REDUCER_ACTION.SET_LANGUAGE;
   payload: SetLanguageActionPayloadType;
+  type: USER_REDUCER_ACTION.SET_LANGUAGE;
 };
 
 export type SetLanguageActionType = (
@@ -15,6 +15,6 @@ export type SetLanguageActionType = (
 ) => SetLanguageActionReturnType;
 
 export const setLanguageAction: SetLanguageActionType = (payload) => ({
-  type: USER_REDUCER_ACTION.SET_LANGUAGE,
   payload,
+  type: USER_REDUCER_ACTION.SET_LANGUAGE,
 });

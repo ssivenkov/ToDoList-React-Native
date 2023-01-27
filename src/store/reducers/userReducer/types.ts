@@ -68,19 +68,19 @@ export type ProviderIDType = Nullable<
 export type UserAvatarType = Nullable<string>;
 
 export type ThemeType = {
-  darkMode: boolean;
   BACKGROUND_COLOR: string;
+  ICON_BUTTON_COLOR: string;
   MODAL_BACKGROUND_COLOR: string;
-  TASK_LIST_COLOR: string;
-  TASK_COLOR: string;
-  TEXT_COLOR: string;
+  NOTEPAD_PLACEHOLDER_COLOR: string;
+  PLACEHOLDER_COLOR: string;
+  SUBTEXT_COLOR: string;
   TAB_BAR_BACKGROUND_COLOR: string;
   TAB_BAR_ICON_COLOR: string;
   TAB_BAR_TEXT_COLOR: string;
-  ICON_BUTTON_COLOR: string;
-  PLACEHOLDER_COLOR: string;
-  NOTEPAD_PLACEHOLDER_COLOR: string;
-  SUBTEXT_COLOR: string;
+  TASK_COLOR: string;
+  TASK_LIST_COLOR: string;
+  TEXT_COLOR: string;
+  darkMode: boolean;
 };
 
 export type ColorType = string;
@@ -88,19 +88,19 @@ export type ColorType = string;
 export type ModalMessageType = string;
 
 export type UserReducerStateType = {
-  providerID: ProviderIDType;
-  userData: UserDataType;
-  channelID: ChannelIDType;
-  userAvatar: UserAvatarType;
-  language: LanguageType;
-  theme: ThemeType;
   accentColor: ColorType;
-  selectedColor: ColorType;
+  channelID: ChannelIDType;
+  emulatorStatusBarHeight: number;
   globalLoader: boolean;
-  modalMessage: ModalMessageType;
   isUserDataSynchronized: boolean;
   isWaitingUserDataOnSignIn: boolean;
-  emulatorStatusBarHeight: number;
+  language: LanguageType;
+  modalMessage: ModalMessageType;
+  providerID: ProviderIDType;
+  selectedColor: ColorType;
+  theme: ThemeType;
+  userAvatar: UserAvatarType;
+  userData: UserDataType;
 };
 
 export type UserReducerActionsType =

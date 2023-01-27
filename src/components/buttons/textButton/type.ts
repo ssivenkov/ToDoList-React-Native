@@ -1,11 +1,11 @@
 import { ViewStyle } from 'react-native';
 
 export type TextButtonPropsType = {
-  title: string;
   onPress: () => void;
+  title: string;
 
-  touched?: boolean[];
   containerStyle?: ViewStyle;
-  errors?: Array<string | undefined>;
   disabled?: boolean;
+  errors?: Array<string | undefined>;
+  touched?: boolean[];
 };

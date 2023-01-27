@@ -5,8 +5,8 @@ import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 export type TasksNavigatorStylesType = {
   topTabBarContainer: ViewStyle;
   topTabBarItem: ViewStyle;
-  topTabIconContainer: TextStyle;
   topTabIcon: FontAwesomeIconStyle;
+  topTabIconContainer: TextStyle;
   topTabIconFocus: FontAwesomeIconStyle;
   topTabIndicator: ViewStyle;
   topTabTitle: TextStyle;
@@ -22,12 +22,12 @@ export const tasksNavigatorStyles = (props: ExtendedStylesPropsType) =>
       height: 50,
     },
 
-    topTabIconContainer: {
-      marginTop: 1,
-    },
-
     topTabIcon: {
       color: props.TAB_BAR_ICON_COLOR,
+    },
+
+    topTabIconContainer: {
+      marginTop: 1,
     },
 
     topTabIconFocus: {
@@ -41,7 +41,7 @@ export const tasksNavigatorStyles = (props: ExtendedStylesPropsType) =>
     topTabTitle: {
       fontSize: 12,
       lineHeight: 14,
-      textTransform: 'none',
       marginTop: 0,
+      textTransform: 'none',
     },
   });

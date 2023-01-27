@@ -11,9 +11,9 @@ export type TopTabParamListType = {
 };
 
 type TasksNavigatorStyleParamsType = {
+  accentColor: ColorType;
   styles: TasksNavigatorStylesType;
   theme: ThemeType;
-  accentColor: ColorType;
 };
 
 export type TasksNavigatorSettingsType = (

@@ -3,16 +3,16 @@ import { SetStateType } from '@root/types/common/types';
 import { TaskListType } from '@store/reducers/tasksReducer/types';
 
 export type DeleteTaskListFromScreenSagaPayloadType = {
-  fullTaskList: TaskListType;
-  deleteTodoTask: boolean;
   deleteDoneTask: boolean;
+  deleteTodoTask: boolean;
+  fullTaskList: TaskListType;
   setIsLoading: SetStateType<boolean>;
   setModalVisible: SetStateType<boolean>;
 };
 
 export type DeleteTaskListFromScreenSagaActionReturnType = {
-  type: TASKS_SAGA_ACTION.DELETE_TASK_LIST_FROM_SCREEN;
   payload: DeleteTaskListFromScreenSagaPayloadType;
+  type: TASKS_SAGA_ACTION.DELETE_TASK_LIST_FROM_SCREEN;
 };
 
 export type DeleteTaskListFromScreenSagaActionType = (
@@ -22,6 +22,6 @@ export type DeleteTaskListFromScreenSagaActionType = (
 export const deleteTaskListFromScreenAction: DeleteTaskListFromScreenSagaActionType = (
   payload,
 ) => ({
-  type: TASKS_SAGA_ACTION.DELETE_TASK_LIST_FROM_SCREEN,
   payload,
+  type: TASKS_SAGA_ACTION.DELETE_TASK_LIST_FROM_SCREEN,
 });

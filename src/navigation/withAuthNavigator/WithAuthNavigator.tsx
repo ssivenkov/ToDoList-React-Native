@@ -55,16 +55,16 @@ export const WithAuthNavigator = () => {
       {globalLoader && <Loader />}
       <Navigator
         initialRouteName={WITH_AUTH_NAVIGATOR_ROUTE.TASKS_NAVIGATOR}
-        screenOptions={withAuthNavigatorOptions({ styles, theme, accentColor })}
+        screenOptions={withAuthNavigatorOptions({ accentColor, styles, theme })}
       >
         <Screen
           component={NotepadScreen}
           name={WITH_AUTH_NAVIGATOR_ROUTE.NOTEPAD_SCREEN}
           options={{
             ...notepadScreenSettings({
+              accentColor,
               styles,
               theme,
-              accentColor,
             }),
             tabBarLabel: t('notepadScreen.HeaderTitle'),
           }}
@@ -73,7 +73,7 @@ export const WithAuthNavigator = () => {
           component={TasksNavigator}
           name={WITH_AUTH_NAVIGATOR_ROUTE.TASKS_NAVIGATOR}
           options={{
-            ...tasksNavigatorSettings({ styles, theme, accentColor }),
+            ...tasksNavigatorSettings({ accentColor, styles, theme }),
             headerTitle: t('tasksScreen.HeaderTitle'),
             tabBarLabel: t('tasksScreen.HeaderTitle'),
           }}
@@ -82,7 +82,7 @@ export const WithAuthNavigator = () => {
           component={AccountScreen}
           name={WITH_AUTH_NAVIGATOR_ROUTE.ACCOUNT_SCREEN}
           options={{
-            ...accountScreenSettings({ styles, theme, accentColor }),
+            ...accountScreenSettings({ accentColor, styles, theme }),
             headerTitle: t('accountScreen.HeaderTitle'),
             tabBarLabel: t('accountScreen.HeaderTitle'),
           }}

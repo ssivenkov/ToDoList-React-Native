@@ -6,11 +6,11 @@ export type SwitcherPropsType = {
   isOn: IsOnType;
   size: 'large' | 'medium' | 'small';
 
-  switcherText?: string;
-  onToggleSwitcherClick?: (isOn: IsOnType) => void;
   containerStyle?: ViewStyle;
-  textStyle?: TextStyle;
-  textMarginBottom?: number;
+  onToggleSwitcherClick?: (isOn: IsOnType) => void;
   switcherMarginLeft?: number;
   switcherMarginRight?: number;
+  switcherText?: string;
+  textMarginBottom?: number;
+  textStyle?: TextStyle;
 };

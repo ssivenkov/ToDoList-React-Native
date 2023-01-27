@@ -6,8 +6,8 @@ type AddTaskNotificationActionPayloadType = {
 };
 
 export type AddTaskNotificationActionReturnType = {
-  type: TASKS_REDUCER_ACTION.ADD_TASK_NOTIFICATION;
   payload: AddTaskNotificationActionPayloadType;
+  type: TASKS_REDUCER_ACTION.ADD_TASK_NOTIFICATION;
 };
 
 export type AddTaskNotificationActionType = (
@@ -17,6 +17,6 @@ export type AddTaskNotificationActionType = (
 export const addTaskNotificationAction: AddTaskNotificationActionType = (
   payload,
 ): AddTaskNotificationActionReturnType => ({
-  type: TASKS_REDUCER_ACTION.ADD_TASK_NOTIFICATION,
   payload,
+  type: TASKS_REDUCER_ACTION.ADD_TASK_NOTIFICATION,
 });

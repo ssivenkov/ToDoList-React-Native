@@ -4,23 +4,23 @@ import { TaskListType, TaskType } from '@store/reducers/tasksReducer/types';
 import { ColorType } from '@store/reducers/userReducer/types';
 
 export type SetEditedTaskSagaPayloadType = {
-  taskListID: TaskListType['id'];
-  taskID: TaskType['id'];
-  editedTaskTitle: TaskType['title'];
-  shouldCreateNotification: boolean;
   date: Nullable<Date>;
-  setIsLoading: SetStateType<boolean>;
+  editedTaskTitle: TaskType['title'];
   goBack: () => void;
-  setEditedTaskTitle: SetStateType<string>;
-  shouldSetColor: boolean;
   setColorMark: SetStateType<ColorType>;
+  setEditedTaskTitle: SetStateType<string>;
+  setIsLoading: SetStateType<boolean>;
+  shouldCreateNotification: boolean;
+  shouldSetColor: boolean;
+  taskID: TaskType['id'];
+  taskListID: TaskListType['id'];
 
   colorMark?: ColorType;
 };
 
 export type SetEditedTaskActionSagaReturnType = {
-  type: TASKS_SAGA_ACTION.SET_EDITED_TASK;
   payload: SetEditedTaskSagaPayloadType;
+  type: TASKS_SAGA_ACTION.SET_EDITED_TASK;
 };
 
 export type SetEditedTaskSagaActionType = (
@@ -28,6 +28,6 @@ export type SetEditedTaskSagaActionType = (
 ) => SetEditedTaskActionSagaReturnType;
 
 export const setEditedTaskAction: SetEditedTaskSagaActionType = (payload) => ({
-  type: TASKS_SAGA_ACTION.SET_EDITED_TASK,
   payload,
+  type: TASKS_SAGA_ACTION.SET_EDITED_TASK,
 });

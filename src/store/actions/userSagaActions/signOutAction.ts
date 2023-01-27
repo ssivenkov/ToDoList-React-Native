@@ -6,8 +6,8 @@ export type SignOutSagaActionPayloadType = {
 };
 
 export type SignOutSagaActionReturnType = {
-  type: USER_SAGA_ACTION.SIGN_OUT;
   payload: SignOutSagaActionPayloadType;
+  type: USER_SAGA_ACTION.SIGN_OUT;
 };
 
 export type SignOutActionType = (
@@ -15,6 +15,6 @@ export type SignOutActionType = (
 ) => SignOutSagaActionReturnType;
 
 export const signOutAction: SignOutActionType = (payload) => ({
-  type: USER_SAGA_ACTION.SIGN_OUT,
   payload,
+  type: USER_SAGA_ACTION.SIGN_OUT,
 });

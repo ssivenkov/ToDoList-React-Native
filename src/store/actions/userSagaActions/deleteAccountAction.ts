@@ -6,8 +6,8 @@ export type DeleteAccountSagaActionPayloadType = {
 };
 
 export type DeleteAccountSagaActionReturnType = {
-  type: USER_SAGA_ACTION.DELETE_ACCOUNT;
   payload: DeleteAccountSagaActionPayloadType;
+  type: USER_SAGA_ACTION.DELETE_ACCOUNT;
 };
 
 export type DeleteAccountSagaActionType = (
@@ -15,6 +15,6 @@ export type DeleteAccountSagaActionType = (
 ) => DeleteAccountSagaActionReturnType;
 
 export const deleteAccountAction: DeleteAccountSagaActionType = (payload) => ({
-  type: USER_SAGA_ACTION.DELETE_ACCOUNT,
   payload,
+  type: USER_SAGA_ACTION.DELETE_ACCOUNT,
 });

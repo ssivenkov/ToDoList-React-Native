@@ -51,10 +51,10 @@ export function* checkUserSaga() {
 
     if (!isUserExist && userID) {
       DB.ref(`${USERS}/${userID}`).set({
-        userToken: userID,
-        language: EN,
-        darkTheme: false,
         accentColor: COLORS.ELECTRIC_VIOLET2,
+        darkTheme: false,
+        language: EN,
+        userToken: userID,
       });
     } else {
       if (!isUserDataSynchronized) {

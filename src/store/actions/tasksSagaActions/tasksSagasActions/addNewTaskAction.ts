@@ -3,20 +3,20 @@ import { Nullable, SetStateType } from '@root/types/common/types';
 import { TaskListType, TaskType } from '@store/reducers/tasksReducer/types';
 
 export type AddNewTaskSagaPayloadType = {
+  date: Nullable<Date>;
+  goBack: () => void;
   modifiedTaskList: TaskListType;
   newTask: TaskType;
-  shouldCreateNotification: boolean;
-  date: Nullable<Date>;
-  setLoading: SetStateType<boolean>;
   setButtonDisabled: SetStateType<boolean>;
-  goBack: () => void;
-  setNewTaskTitle: SetStateType<string>;
   setIsNotificationSwitcherOn: SetStateType<boolean>;
+  setLoading: SetStateType<boolean>;
+  setNewTaskTitle: SetStateType<string>;
+  shouldCreateNotification: boolean;
 };
 
 export type AddNewTaskSagaActionReturnType = {
-  type: TASKS_SAGA_ACTION.ADD_NEW_TASK;
   payload: AddNewTaskSagaPayloadType;
+  type: TASKS_SAGA_ACTION.ADD_NEW_TASK;
 };
 
 export type AddNewTaskSagaActionType = (
@@ -24,6 +24,6 @@ export type AddNewTaskSagaActionType = (
 ) => AddNewTaskSagaActionReturnType;
 
 export const addNewTaskAction: AddNewTaskSagaActionType = (payload) => ({
-  type: TASKS_SAGA_ACTION.ADD_NEW_TASK,
   payload,
+  type: TASKS_SAGA_ACTION.ADD_NEW_TASK,
 });

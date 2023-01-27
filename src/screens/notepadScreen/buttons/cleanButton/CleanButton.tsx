@@ -33,10 +33,10 @@ export const CleanButton = (props: CleanButtonPropsType) => {
   ) => {
     dispatch(
       cleanNotepadTextAction({
-        setNotepadText,
+        setButtonDisabled,
         setIsLoading,
         setModalVisible,
-        setButtonDisabled,
+        setNotepadText,
       }),
     );
   };

@@ -6,8 +6,8 @@ export type GetUserDataSagaActionPayloadType = {
 };
 
 export type GetUserDataSagaActionReturnType = {
-  type: USER_SAGA_ACTION.GET_USER_DATA;
   payload: GetUserDataSagaActionPayloadType;
+  type: USER_SAGA_ACTION.GET_USER_DATA;
 };
 
 export type GetUserDataSagaActionType = (
@@ -15,6 +15,6 @@ export type GetUserDataSagaActionType = (
 ) => GetUserDataSagaActionReturnType;
 
 export const getUserDataAction: GetUserDataSagaActionType = (payload) => ({
-  type: USER_SAGA_ACTION.GET_USER_DATA,
   payload,
+  type: USER_SAGA_ACTION.GET_USER_DATA,
 });

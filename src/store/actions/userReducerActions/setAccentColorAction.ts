@@ -6,8 +6,8 @@ type SetAccentColorActionPayloadType = {
 };
 
 export type SetAccentColorActionReturnType = {
-  type: USER_REDUCER_ACTION.SET_ACCENT_COLOR;
   payload: SetAccentColorActionPayloadType;
+  type: USER_REDUCER_ACTION.SET_ACCENT_COLOR;
 };
 
 export type SetAccentColorActionType = (
@@ -15,6 +15,6 @@ export type SetAccentColorActionType = (
 ) => SetAccentColorActionReturnType;
 
 export const setAccentColorAction: SetAccentColorActionType = (payload) => ({
-  type: USER_REDUCER_ACTION.SET_ACCENT_COLOR,
   payload,
+  type: USER_REDUCER_ACTION.SET_ACCENT_COLOR,
 });

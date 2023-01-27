@@ -14,8 +14,8 @@ import { SetEditedTaskActionReturnType } from '@store/actions/tasksReducerAction
 import { SetTaskIsDoneActionReturnType } from '@store/actions/tasksReducerActions/tasksActions/setTaskIsDoneAction';
 
 export type TaskType = {
-  id: string;
   date: string;
+  id: string;
   isDone: boolean;
   title: string;
 
@@ -23,13 +23,13 @@ export type TaskType = {
 };
 
 export type TaskListWithoutTasksType = {
-  id: string;
   date: string;
-  title: string;
+  id: string;
   showInToDo: boolean;
+  title: string;
 
-  isTodoCollapsed?: boolean;
   isDoneCollapsed?: boolean;
+  isTodoCollapsed?: boolean;
 };
 
 type TasksObjectType = {
@@ -47,13 +47,13 @@ export type TaskListType = TaskListWithoutTasksType & {
 export type NotificationType = {
   taskID: TaskType['id'];
 
-  notificationID?: string;
   date?: Date;
+  notificationID?: string;
 };
 
 export type TasksReducerStateType = {
-  taskLists: TaskListType[];
   notifications: NotificationType[];
+  taskLists: TaskListType[];
 };
 
 export type ConvertedTasksForFirebaseType = {

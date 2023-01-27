@@ -46,11 +46,11 @@ export const EditTaskListTitleButton = ({
     if (notEmptyTaskListTitleCondition) {
       dispatch(
         editTaskListTitleAction({
-          taskListID,
           editedTaskListTitle,
+          setEditedTaskListTitleState: setEditedTaskListTitle,
           setIsLoading,
           setModalVisible,
-          setEditedTaskListTitleState: setEditedTaskListTitle,
+          taskListID,
         }),
       );
     }

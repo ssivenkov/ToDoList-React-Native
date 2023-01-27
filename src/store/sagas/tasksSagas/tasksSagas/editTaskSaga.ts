@@ -168,9 +168,9 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
       yield put(
         editTaskNotificationAction({
           notification: {
-            taskID,
-            notificationID,
             date,
+            notificationID,
+            taskID,
           },
         }),
       );
@@ -179,10 +179,10 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
     if (shouldSetColor && colorMark) {
       yield put(
         setEditedTaskAction({
-          taskListID,
-          taskID,
-          editedTaskTitle,
           colorMark: colorMark,
+          editedTaskTitle,
+          taskID,
+          taskListID,
         }),
       );
 
@@ -190,10 +190,10 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
     } else if (shouldSetColor && !colorMark) {
       yield put(
         setEditedTaskAction({
-          taskListID,
-          taskID,
-          editedTaskTitle,
           colorMark: selectedColor,
+          editedTaskTitle,
+          taskID,
+          taskListID,
         }),
       );
 
@@ -201,9 +201,9 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
     } else {
       yield put(
         setEditedTaskAction({
-          taskListID,
-          taskID,
           editedTaskTitle,
+          taskID,
+          taskListID,
         }),
       );
 

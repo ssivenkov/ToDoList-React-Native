@@ -6,8 +6,8 @@ type SetIsUserDataSynchronizedActionPayloadType = {
 };
 
 export type SetIsUserDataSynchronizedActionReturnType = {
-  type: USER_REDUCER_ACTION.SET_IS_USER_DATA_SYNCHRONIZED;
   payload: SetIsUserDataSynchronizedActionPayloadType;
+  type: USER_REDUCER_ACTION.SET_IS_USER_DATA_SYNCHRONIZED;
 };
 
 export type SetIsUserDataSynchronizedActionType = (
@@ -17,6 +17,6 @@ export type SetIsUserDataSynchronizedActionType = (
 export const setIsUserDataSynchronizedAction: SetIsUserDataSynchronizedActionType = (
   payload,
 ) => ({
-  type: USER_REDUCER_ACTION.SET_IS_USER_DATA_SYNCHRONIZED,
   payload,
+  type: USER_REDUCER_ACTION.SET_IS_USER_DATA_SYNCHRONIZED,
 });

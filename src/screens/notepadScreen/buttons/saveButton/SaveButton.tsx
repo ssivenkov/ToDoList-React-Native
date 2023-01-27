@@ -30,8 +30,8 @@ export const SaveButton = (props: SaveButtonPropsType) => {
     dispatch(
       saveNotepadTextAction({
         notepadText,
-        setIsLoading,
         setButtonDisabled,
+        setIsLoading,
       }),
     );
   };

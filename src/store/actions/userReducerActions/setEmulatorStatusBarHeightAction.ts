@@ -6,8 +6,8 @@ type SetEmulatorStatusBarHeightActionPayloadType = {
 };
 
 export type SetEmulatorStatusBarHeightActionReturnType = {
-  type: USER_REDUCER_ACTION.SET_EMULATOR_STATUS_BAR_HEIGHT;
   payload: SetEmulatorStatusBarHeightActionPayloadType;
+  type: USER_REDUCER_ACTION.SET_EMULATOR_STATUS_BAR_HEIGHT;
 };
 
 export type SetEmulatorStatusBarHeightActionType = (
@@ -17,6 +17,6 @@ export type SetEmulatorStatusBarHeightActionType = (
 export const setEmulatorStatusBarHeightAction: SetEmulatorStatusBarHeightActionType = (
   payload,
 ) => ({
-  type: USER_REDUCER_ACTION.SET_EMULATOR_STATUS_BAR_HEIGHT,
   payload,
+  type: USER_REDUCER_ACTION.SET_EMULATOR_STATUS_BAR_HEIGHT,
 });

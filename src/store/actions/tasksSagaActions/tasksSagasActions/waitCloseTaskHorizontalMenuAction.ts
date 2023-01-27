@@ -6,8 +6,8 @@ export type WaitCloseTaskHorizontalMenuSagaPayloadType = {
 };
 
 export type WaitCloseTaskHorizontalMenuSagaActionReturnType = {
-  type: TASKS_SAGA_ACTION.WAIT_CLOSE_TASK_HORIZONTAL_MENU;
   payload: WaitCloseTaskHorizontalMenuSagaPayloadType;
+  type: TASKS_SAGA_ACTION.WAIT_CLOSE_TASK_HORIZONTAL_MENU;
 };
 
 export type WaitCloseTaskHorizontalMenuActionType = (
@@ -17,6 +17,6 @@ export type WaitCloseTaskHorizontalMenuActionType = (
 export const waitCloseTaskHorizontalMenuAction: WaitCloseTaskHorizontalMenuActionType = (
   payload,
 ) => ({
-  type: TASKS_SAGA_ACTION.WAIT_CLOSE_TASK_HORIZONTAL_MENU,
   payload,
+  type: TASKS_SAGA_ACTION.WAIT_CLOSE_TASK_HORIZONTAL_MENU,
 });

@@ -47,20 +47,20 @@ export const CreateTaskListButton = () => {
   ) => {
     if (notEmptyTaskListTitleCondition) {
       const taskList: TaskListType = {
-        id: nanoid(),
         date: createDate(),
-        title: taskListTitle,
-        showInToDo: true,
-        isTodoCollapsed: false,
+        id: nanoid(),
         isDoneCollapsed: false,
+        isTodoCollapsed: false,
+        showInToDo: true,
+        title: taskListTitle,
       };
 
       dispatch(
         addNewTaskListAction({
-          taskList,
           setIsLoading,
           setModalVisible,
           setTaskListTitle,
+          taskList,
         }),
       );
     }

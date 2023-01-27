@@ -6,8 +6,8 @@ type SetModalMessageActionPayloadType = {
 };
 
 export type SetModalMessageActionReturnType = {
-  type: USER_REDUCER_ACTION.SET_MODAL_MESSAGE;
   payload: SetModalMessageActionPayloadType;
+  type: USER_REDUCER_ACTION.SET_MODAL_MESSAGE;
 };
 
 export type SetModalMessageActionType = (
@@ -15,6 +15,6 @@ export type SetModalMessageActionType = (
 ) => SetModalMessageActionReturnType;
 
 export const setModalMessageAction: SetModalMessageActionType = (payload) => ({
-  type: USER_REDUCER_ACTION.SET_MODAL_MESSAGE,
   payload,
+  type: USER_REDUCER_ACTION.SET_MODAL_MESSAGE,
 });

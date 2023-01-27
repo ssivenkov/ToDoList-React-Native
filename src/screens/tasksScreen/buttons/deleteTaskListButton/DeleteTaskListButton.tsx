@@ -48,17 +48,17 @@ export const DeleteTaskListButton = (props: DeleteTaskListButtonPropsType) => {
     ) {
       dispatch(
         deleteTaskListFullAction({
-          taskListID: fullTaskList.id,
           setIsLoading,
           setModalVisible,
+          taskListID: fullTaskList.id,
         }),
       );
     } else if (isTodoTaskList) {
       dispatch(
         deleteTaskListFromScreenAction({
-          fullTaskList,
-          deleteTodoTask: true,
           deleteDoneTask: false,
+          deleteTodoTask: true,
+          fullTaskList,
           setIsLoading,
           setModalVisible,
         }),
@@ -66,9 +66,9 @@ export const DeleteTaskListButton = (props: DeleteTaskListButtonPropsType) => {
     } else if (!isTodoTaskList) {
       dispatch(
         deleteTaskListFromScreenAction({
-          fullTaskList,
-          deleteTodoTask: false,
           deleteDoneTask: true,
+          deleteTodoTask: false,
+          fullTaskList,
           setIsLoading,
           setModalVisible,
         }),

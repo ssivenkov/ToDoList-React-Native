@@ -44,10 +44,10 @@ export const DoneTaskButton = ({
   ) => {
     dispatch(
       setTaskIsDoneAction({
-        taskListID,
         doneTaskID,
         setIsLoading,
         setModalVisible,
+        taskListID,
       }),
     );
   };

@@ -6,8 +6,8 @@ type SetUserAvatarActionPayloadType = {
 };
 
 export type SetUserAvatarActionReturnType = {
-  type: USER_REDUCER_ACTION.SET_USER_AVATAR;
   payload: SetUserAvatarActionPayloadType;
+  type: USER_REDUCER_ACTION.SET_USER_AVATAR;
 };
 
 export type SetUserAvatarActionType = (
@@ -15,6 +15,6 @@ export type SetUserAvatarActionType = (
 ) => SetUserAvatarActionReturnType;
 
 export const setUserAvatarAction: SetUserAvatarActionType = (payload) => ({
-  type: USER_REDUCER_ACTION.SET_USER_AVATAR,
   payload,
+  type: USER_REDUCER_ACTION.SET_USER_AVATAR,
 });

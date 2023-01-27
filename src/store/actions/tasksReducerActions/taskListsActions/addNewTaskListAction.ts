@@ -6,8 +6,8 @@ type DeleteTaskActionPayloadType = {
 };
 
 export type AddNewTaskListActionReturnType = {
-  type: TASKS_REDUCER_ACTION.ADD_NEW_TASK_LIST;
   payload: DeleteTaskActionPayloadType;
+  type: TASKS_REDUCER_ACTION.ADD_NEW_TASK_LIST;
 };
 
 export type AddNewTaskListActionType = (
@@ -15,6 +15,6 @@ export type AddNewTaskListActionType = (
 ) => AddNewTaskListActionReturnType;
 
 export const addNewTaskListAction: AddNewTaskListActionType = (payload) => ({
-  type: TASKS_REDUCER_ACTION.ADD_NEW_TASK_LIST,
   payload,
+  type: TASKS_REDUCER_ACTION.ADD_NEW_TASK_LIST,
 });

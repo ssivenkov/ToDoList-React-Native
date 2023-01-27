@@ -2,18 +2,18 @@ import { USER_REDUCER_ACTION } from '@enums/userReducerEnum';
 import { UserReducerStateType } from '@store/reducers/userReducer/types';
 
 type SetAuthStateActionPayloadType = {
-  userData: UserReducerStateType['userData'];
-  providerID: UserReducerStateType['providerID'];
-  isUserDataSynchronized: UserReducerStateType['isUserDataSynchronized'];
   accentColor: UserReducerStateType['accentColor'];
-  selectedColor: UserReducerStateType['selectedColor'];
-  isWaitingUserDataOnSignIn: UserReducerStateType['isWaitingUserDataOnSignIn'];
   emulatorStatusBarHeight: UserReducerStateType['emulatorStatusBarHeight'];
+  isUserDataSynchronized: UserReducerStateType['isUserDataSynchronized'];
+  isWaitingUserDataOnSignIn: UserReducerStateType['isWaitingUserDataOnSignIn'];
+  providerID: UserReducerStateType['providerID'];
+  selectedColor: UserReducerStateType['selectedColor'];
+  userData: UserReducerStateType['userData'];
 };
 
 export type SetAuthStateActionReturnType = {
-  type: USER_REDUCER_ACTION.SET_AUTH_STATE;
   payload: SetAuthStateActionPayloadType;
+  type: USER_REDUCER_ACTION.SET_AUTH_STATE;
 };
 
 export type SetAuthStateActionType = (
@@ -21,6 +21,6 @@ export type SetAuthStateActionType = (
 ) => SetAuthStateActionReturnType;
 
 export const setAuthStateAction: SetAuthStateActionType = (payload) => ({
-  type: USER_REDUCER_ACTION.SET_AUTH_STATE,
   payload,
+  type: USER_REDUCER_ACTION.SET_AUTH_STATE,
 });

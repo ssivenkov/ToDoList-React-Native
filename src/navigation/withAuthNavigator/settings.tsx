@@ -13,11 +13,11 @@ export const withAuthNavigatorOptions: WithAuthNavigatorScreenSettingsType = (pa
 
   return {
     headerShown: false,
-    tabBarStyle: styles.bottomTabBarContainer,
     tabBarActiveTintColor: accentColor,
-    tabBarInactiveTintColor: theme.TAB_BAR_TEXT_COLOR,
     tabBarIconStyle: styles.bottomTabBarIcon,
+    tabBarInactiveTintColor: theme.TAB_BAR_TEXT_COLOR,
     tabBarLabelStyle: styles.bottomTabBarTitle,
+    tabBarStyle: styles.bottomTabBarContainer,
   };
 };
 
@@ -40,11 +40,11 @@ export const tasksNavigatorSettings: WithAuthNavigatorScreenSettingsType = (para
   const { styles } = params;
 
   return {
+    headerRight: () => <CreateTaskListButton />,
     headerShown: true,
     headerStyle: styles.header,
-    headerTitleStyle: styles.headerTitle,
     headerTitleAlign: 'center',
-    headerRight: () => <CreateTaskListButton />,
+    headerTitleStyle: styles.headerTitle,
     tabBarIcon: ({ focused }) => (
       <FontAwesomeIcon
         icon={faList}
@@ -61,8 +61,8 @@ export const accountScreenSettings: WithAuthNavigatorScreenSettingsType = (param
   return {
     headerShown: true,
     headerStyle: styles.header,
-    headerTitleStyle: styles.headerTitle,
     headerTitleAlign: 'center',
+    headerTitleStyle: styles.headerTitle,
     tabBarIcon: ({ focused }) => (
       <FontAwesomeIcon
         icon={faUser}

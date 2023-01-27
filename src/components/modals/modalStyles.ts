@@ -15,26 +15,44 @@ import {
 import { Platform, StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
 export type ModalStylesType = {
-  centeredView: ViewStyle;
-  modalView: ViewStyle;
-  descriptionContainer: ViewStyle;
-  childrenContainer: ViewStyle;
-  text: TextStyle;
   buttonsContainer: ViewStyle;
+  centeredView: ViewStyle;
+  childrenContainer: ViewStyle;
+  descriptionContainer: ViewStyle;
+  modalView: ViewStyle;
+  text: TextStyle;
 };
 
 export const modalStyles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<ModalStylesType>({
+    buttonsContainer: {
+      flexDirection: 'row',
+      width: '100%',
+    },
+
     centeredView: {
-      flex: 1,
-      justifyContent: 'center',
       alignItems: 'center',
       backgroundColor: COLORS.MEDIUM_DARK_TRANSPARENCY,
+      flex: 1,
+      justifyContent: 'center',
+    },
+
+    childrenContainer: {
+      alignItems: 'center',
+      maxWidth: modalContentMaxWidth,
+    },
+
+    descriptionContainer: {
+      alignItems: 'center',
+      marginBottom: defaultModalIndentBottom,
+      marginHorizontal: defaultModalPaddingHorizontal,
+      maxWidth: modalContentMaxWidth,
     },
 
     modalView: {
-      width: modalContentMaxWidth,
-      maxWidth: '90%',
+      backgroundColor: props.MODAL_BACKGROUND_COLOR,
+      borderRadius: modalBorderRadius,
+      justifyContent: 'space-between',
       maxHeight:
         props.appHeight -
         (Platform.OS === 'ios'
@@ -42,32 +60,14 @@ export const modalStyles = (props: ExtendedStylesPropsType) =>
           : props.emulatorStatusBarHeight +
             androidHeaderHeight +
             androidTabBarContainerHeight),
-      justifyContent: 'space-between',
-      borderRadius: modalBorderRadius,
-      paddingTop: 20,
-      backgroundColor: props.MODAL_BACKGROUND_COLOR,
+      maxWidth: '90%',
       overflow: 'hidden',
-    },
-
-    descriptionContainer: {
-      maxWidth: modalContentMaxWidth,
-      alignItems: 'center',
-      marginHorizontal: defaultModalPaddingHorizontal,
-      marginBottom: defaultModalIndentBottom,
-    },
-
-    childrenContainer: {
-      maxWidth: modalContentMaxWidth,
-      alignItems: 'center',
+      paddingTop: 20,
+      width: modalContentMaxWidth,
     },
 
     text: {
-      fontSize: 18,
       color: props.TEXT_COLOR,
-    },
-
-    buttonsContainer: {
-      width: '100%',
-      flexDirection: 'row',
+      fontSize: 18,
     },
   });

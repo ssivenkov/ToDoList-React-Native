@@ -4,13 +4,13 @@ import { NotepadTextType } from '@screens/notepadScreen/types';
 
 export type SaveNotepadTextSagaPayloadType = {
   notepadText: NotepadTextType;
-  setIsLoading: SetStateType<boolean>;
   setButtonDisabled: SetStateType<boolean>;
+  setIsLoading: SetStateType<boolean>;
 };
 
 export type SaveNotepadTextSagaActionReturnType = {
-  type: NOTEPAD_SAGA_ACTION.SAVE_NOTEPAD_TEXT;
   payload: SaveNotepadTextSagaPayloadType;
+  type: NOTEPAD_SAGA_ACTION.SAVE_NOTEPAD_TEXT;
 };
 
 export type SaveNotepadTextActionType = (
@@ -18,6 +18,6 @@ export type SaveNotepadTextActionType = (
 ) => SaveNotepadTextSagaActionReturnType;
 
 export const saveNotepadTextAction: SaveNotepadTextActionType = (payload) => ({
-  type: NOTEPAD_SAGA_ACTION.SAVE_NOTEPAD_TEXT,
   payload,
+  type: NOTEPAD_SAGA_ACTION.SAVE_NOTEPAD_TEXT,
 });

@@ -2,13 +2,13 @@ import { TASKS_REDUCER_ACTION } from '@enums/tasksReducerEnum';
 import { TaskListType, TaskType } from '@store/reducers/tasksReducer/types';
 
 type DeleteTaskActionPayloadType = {
-  taskListID: TaskListType['id'];
   taskID: TaskType['id'];
+  taskListID: TaskListType['id'];
 };
 
 export type DeleteTaskActionReturnType = {
-  type: TASKS_REDUCER_ACTION.DELETE_TASK;
   payload: DeleteTaskActionPayloadType;
+  type: TASKS_REDUCER_ACTION.DELETE_TASK;
 };
 
 export type DeleteTaskActionType = (
@@ -16,6 +16,6 @@ export type DeleteTaskActionType = (
 ) => DeleteTaskActionReturnType;
 
 export const deleteTaskAction: DeleteTaskActionType = (payload) => ({
-  type: TASKS_REDUCER_ACTION.DELETE_TASK,
   payload,
+  type: TASKS_REDUCER_ACTION.DELETE_TASK,
 });

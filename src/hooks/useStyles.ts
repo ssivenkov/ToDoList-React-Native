@@ -9,8 +9,8 @@ import { useSelector } from 'react-redux';
 
 export type ExtendedStylesPropsType = ThemeType & {
   ACCENT_COLOR: ColorType;
-  appWidth: number;
   appHeight: number;
+  appWidth: number;
   emulatorStatusBarHeight: number;
 };
 
@@ -29,8 +29,8 @@ export const useStyles = <TStyles, ArgType>(
   const props: ExtendedStylesPropsType = {
     ...theme,
     ACCENT_COLOR: accentColor,
-    appWidth,
     appHeight,
+    appWidth,
     emulatorStatusBarHeight,
   };
 

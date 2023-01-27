@@ -17,19 +17,19 @@ export const createNotificationHelper = (params: CreateNotificationHelperParamsT
 
   if (Platform.OS === 'android') {
     PushNotification.localNotificationSchedule({
+      allowWhileIdle: true,
       channelId,
       date,
       id: notificationID,
       message,
-      allowWhileIdle: true,
     });
   }
 
   if (Platform.OS === 'ios') {
     PushNotificationIOS.addNotificationRequest({
-      id: notificationID,
-      fireDate: date,
       body: message,
+      fireDate: date,
+      id: notificationID,
     });
   }
 };

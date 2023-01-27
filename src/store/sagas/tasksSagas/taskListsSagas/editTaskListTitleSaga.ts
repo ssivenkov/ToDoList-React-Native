@@ -46,8 +46,8 @@ export function* editTaskListTitleSaga(action: EditTaskListTitleSagaActionReturn
 
     yield put(
       setEditedTaskListTitleAction({
-        taskListID,
         editedTaskListTitle,
+        taskListID,
       }),
     );
 

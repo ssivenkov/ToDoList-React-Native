@@ -6,8 +6,8 @@ type LoaderStylesType = {
 
 export const styles = StyleSheet.create<LoaderStylesType>({
   loaderContainer: {
-    justifyContent: 'center',
     alignItems: 'center',
+    justifyContent: 'center',
     zIndex: 10,
   },
 });

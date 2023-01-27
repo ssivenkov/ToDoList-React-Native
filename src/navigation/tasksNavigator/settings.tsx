@@ -11,13 +11,13 @@ export const tasksNavigatorSettings: TasksNavigatorSettingsType = (params) => {
   const { styles, theme, accentColor } = params;
 
   return {
-    tabBarStyle: styles.topTabBarContainer,
-    tabBarItemStyle: styles.topTabBarItem,
     tabBarActiveTintColor: accentColor,
+    tabBarIconStyle: styles.topTabIconContainer,
     tabBarInactiveTintColor: theme.TAB_BAR_TEXT_COLOR,
     tabBarIndicatorStyle: styles.topTabIndicator,
-    tabBarIconStyle: styles.topTabIconContainer,
+    tabBarItemStyle: styles.topTabBarItem,
     tabBarLabelStyle: styles.topTabTitle,
+    tabBarStyle: styles.topTabBarContainer,
   };
 };
 

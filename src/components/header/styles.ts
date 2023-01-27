@@ -16,18 +16,18 @@ const buttonPaddingShort = 6;
 export const headerStyles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<HeaderStylesType>({
     header: {
-      backgroundColor: props.darkMode ? `${props.ACCENT_COLOR}CC` : props.ACCENT_COLOR,
-      height: headerHeight,
-      flexDirection: 'row',
-      justifyContent: 'space-between',
       alignItems: 'center',
+      backgroundColor: props.darkMode ? `${props.ACCENT_COLOR}CC` : props.ACCENT_COLOR,
+      flexDirection: 'row',
+      height: headerHeight,
+      justifyContent: 'space-between',
     },
 
     headerTitle: {
       color: COLORS.WHITE,
+      flex: 1,
       fontSize: headerTitleFontSize,
       fontWeight: '600',
-      flex: 1,
       textAlign: 'center',
     },
 

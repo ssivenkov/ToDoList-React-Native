@@ -10,15 +10,15 @@ import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 import createSagaMiddleware from 'redux-saga';
 
 export const rootReducer = combineReducers<RootStateType>({
+  notepad: notepadReducer,
   tasks: tasksReducer,
   user: userReducer,
-  notepad: notepadReducer,
 });
 
 const persistConfig = {
+  StateReconciler: autoMergeLevel2,
   key: 'root',
   storage: AsyncStorage,
-  StateReconciler: autoMergeLevel2,
 };
 
 /*declare global {

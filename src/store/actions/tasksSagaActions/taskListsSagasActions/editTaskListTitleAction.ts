@@ -3,16 +3,16 @@ import { SetStateType } from '@root/types/common/types';
 import { TaskListType } from '@store/reducers/tasksReducer/types';
 
 export type EditTaskListTitleSagaPayloadType = {
-  taskListID: TaskListType['id'];
   editedTaskListTitle: TaskListType['title'];
+  setEditedTaskListTitleState: SetStateType<string>;
   setIsLoading: SetStateType<boolean>;
   setModalVisible: SetStateType<boolean>;
-  setEditedTaskListTitleState: SetStateType<string>;
+  taskListID: TaskListType['id'];
 };
 
 export type EditTaskListTitleSagaActionReturnType = {
-  type: TASKS_SAGA_ACTION.EDIT_TASK_LIST_TITLE;
   payload: EditTaskListTitleSagaPayloadType;
+  type: TASKS_SAGA_ACTION.EDIT_TASK_LIST_TITLE;
 };
 
 export type EditTaskListTitleSagaActionType = (
@@ -20,6 +20,6 @@ export type EditTaskListTitleSagaActionType = (
 ) => EditTaskListTitleSagaActionReturnType;
 
 export const editTaskListTitleAction: EditTaskListTitleSagaActionType = (payload) => ({
-  type: TASKS_SAGA_ACTION.EDIT_TASK_LIST_TITLE,
   payload,
+  type: TASKS_SAGA_ACTION.EDIT_TASK_LIST_TITLE,
 });

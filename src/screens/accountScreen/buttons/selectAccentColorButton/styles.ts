@@ -9,17 +9,17 @@ type SelectAccentColorButtonStylesType = {
 export const selectAccentColorButtonStyles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<SelectAccentColorButtonStylesType>({
     colorIndicator: {
-      width: 25,
-      height: 25,
-      borderRadius: 100,
       backgroundColor: props.ACCENT_COLOR,
+      borderRadius: 100,
+      height: 25,
+      width: 25,
     },
 
     colorPickerWrapper: {
-      height: 220,
       alignItems: 'center',
-      marginTop: 5,
-      marginLeft: 5,
+      height: 220,
       marginBottom: 20,
+      marginLeft: 5,
+      marginTop: 5,
     },
   });

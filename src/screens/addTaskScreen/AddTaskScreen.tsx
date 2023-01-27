@@ -97,11 +97,11 @@ export const AddTaskScreen = () => {
     setButtonDisabled: SetStateType<boolean>,
   ) => {
     const newTask: TaskType = {
-      id: nanoid(),
+      colorMark: selectedColor,
       date: createDate(),
+      id: nanoid(),
       isDone: false,
       title: newTaskTitle,
-      colorMark: selectedColor,
     };
 
     if (!isColorPickerSwitcherOn) {
@@ -111,27 +111,27 @@ export const AddTaskScreen = () => {
     const tasks = fullTaskList.tasks ? [...fullTaskList.tasks, newTask] : [newTask];
 
     const modifiedTaskList: TaskListType = {
-      id: taskListID,
       date: taskListDate,
-      title: taskListTitle,
+      id: taskListID,
+      isDoneCollapsed: fullTaskList.isDoneCollapsed,
+      isTodoCollapsed: fullTaskList.isTodoCollapsed,
       showInToDo: true,
       tasks,
-      isTodoCollapsed: fullTaskList.isTodoCollapsed,
-      isDoneCollapsed: fullTaskList.isDoneCollapsed,
+      title: taskListTitle,
     };
 
     if (newTaskTitle) {
       dispatch(
         addNewTaskAction({
+          date,
+          goBack,
           modifiedTaskList,
           newTask,
-          shouldCreateNotification: isNotificationSwitcherOn,
-          date,
-          setLoading,
           setButtonDisabled,
-          goBack,
-          setNewTaskTitle,
           setIsNotificationSwitcherOn,
+          setLoading,
+          setNewTaskTitle,
+          shouldCreateNotification: isNotificationSwitcherOn,
         }),
       );
     }

@@ -4,22 +4,22 @@ import { infinity } from '@constants/constants';
 import { TextInput, TextInputProps } from 'react-native';
 
 export type InputPropsType = {
-  value: string;
   onChangeText: TextInputProps['onChangeText'];
+  value: string;
 
   displayEmptySubtext?: boolean;
-  maxLength?: number | typeof infinity;
+  errorSubtext?: string;
   inputRef?: RefObject<TextInput>;
+  maxLength?: number | typeof infinity;
   onBlur?: TextInputProps['onBlur'];
   placeholder?: string;
   subtext?: string;
   suptext?: string;
-  errorSubtext?: string;
 };
 
 export type NotepadInputPropsType = {
-  value: string;
   onValueChange: (inputValue: string) => void;
+  value: string;
 
   placeholder?: string;
 };

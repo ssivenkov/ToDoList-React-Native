@@ -41,18 +41,18 @@ export const ContactTheAuthorScreen = () => {
 
   const { handleChange, handleSubmit, values, setFieldTouched, errors, touched } =
     useFormik({
-      validate: (values) => validate({ values, isFormValid, setIsFormValid }),
       initialValues: { [emailField]: initialEmailValue, [messageField]: '' },
-      validateOnBlur: true,
-      validateOnChange: true,
       onSubmit: () => {
         setSubmitting(true);
       },
+      validate: (values) => validate({ isFormValid, setIsFormValid, values }),
+      validateOnBlur: true,
+      validateOnChange: true,
     });
 
   useLayoutEffect(() => {
     if (submitting) {
-      dispatch(contactTheAuthorAction({ values, navigate, setSubmitting }));
+      dispatch(contactTheAuthorAction({ navigate, setSubmitting, values }));
     }
   }, [submitting]);
 

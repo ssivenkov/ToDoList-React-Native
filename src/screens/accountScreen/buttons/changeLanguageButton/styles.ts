@@ -13,8 +13,8 @@ export const changeLanguageButtonStyles = (props: ExtendedStylesPropsType) =>
     },
 
     languageIndicator: {
+      color: props.TEXT_COLOR,
       fontSize: 20,
       textTransform: 'uppercase',
-      color: props.TEXT_COLOR,
     },
   });

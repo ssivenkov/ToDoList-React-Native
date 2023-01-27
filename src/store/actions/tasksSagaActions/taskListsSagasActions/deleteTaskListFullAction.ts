@@ -3,14 +3,14 @@ import { SetStateType } from '@root/types/common/types';
 import { TaskListType } from '@store/reducers/tasksReducer/types';
 
 export type DeleteTaskListFullSagaPayloadType = {
-  taskListID: TaskListType['id'];
   setIsLoading: SetStateType<boolean>;
   setModalVisible: SetStateType<boolean>;
+  taskListID: TaskListType['id'];
 };
 
 export type DeleteTaskListFullSagaActionReturnType = {
-  type: TASKS_SAGA_ACTION.DELETE_TASK_LIST_FULL;
   payload: DeleteTaskListFullSagaPayloadType;
+  type: TASKS_SAGA_ACTION.DELETE_TASK_LIST_FULL;
 };
 
 export type DeleteTaskListFullSagaActionType = (
@@ -18,6 +18,6 @@ export type DeleteTaskListFullSagaActionType = (
 ) => DeleteTaskListFullSagaActionReturnType;
 
 export const deleteTaskListFullAction: DeleteTaskListFullSagaActionType = (payload) => ({
-  type: TASKS_SAGA_ACTION.DELETE_TASK_LIST_FULL,
   payload,
+  type: TASKS_SAGA_ACTION.DELETE_TASK_LIST_FULL,
 });

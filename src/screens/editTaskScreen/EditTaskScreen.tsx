@@ -104,17 +104,17 @@ export const EditTaskScreen = () => {
     if (notEmptyTaskTitleCondition && tempColorMark) {
       dispatch(
         setEditedTaskAction({
-          taskListID,
-          taskID,
-          editedTaskTitle,
-          shouldCreateNotification: isNotificationSwitcherOn,
-          date,
-          setIsLoading,
-          goBack,
-          setEditedTaskTitle,
-          shouldSetColor: isColorPickerSwitcherOn,
-          setColorMark: setTempColorMark,
           colorMark: tempColorMark,
+          date,
+          editedTaskTitle,
+          goBack,
+          setColorMark: setTempColorMark,
+          setEditedTaskTitle,
+          setIsLoading,
+          shouldCreateNotification: isNotificationSwitcherOn,
+          shouldSetColor: isColorPickerSwitcherOn,
+          taskID,
+          taskListID,
         }),
       );
 
@@ -122,16 +122,16 @@ export const EditTaskScreen = () => {
     } else if (notEmptyTaskTitleCondition) {
       dispatch(
         setEditedTaskAction({
-          taskListID,
-          taskID,
-          editedTaskTitle,
-          shouldCreateNotification: isNotificationSwitcherOn,
           date,
-          setIsLoading,
+          editedTaskTitle,
           goBack,
-          setEditedTaskTitle,
-          shouldSetColor: isColorPickerSwitcherOn,
           setColorMark: setTempColorMark,
+          setEditedTaskTitle,
+          setIsLoading,
+          shouldCreateNotification: isNotificationSwitcherOn,
+          shouldSetColor: isColorPickerSwitcherOn,
+          taskID,
+          taskListID,
         }),
       );
 

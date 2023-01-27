@@ -6,8 +6,8 @@ type EditTaskNotificationActionPayloadType = {
 };
 
 export type EditTaskNotificationActionReturnType = {
-  type: TASKS_REDUCER_ACTION.EDIT_TASK_NOTIFICATION;
   payload: EditTaskNotificationActionPayloadType;
+  type: TASKS_REDUCER_ACTION.EDIT_TASK_NOTIFICATION;
 };
 
 export type EditTaskNotificationsActionType = (
@@ -15,6 +15,6 @@ export type EditTaskNotificationsActionType = (
 ) => EditTaskNotificationActionReturnType;
 
 export const editTaskNotificationAction: EditTaskNotificationsActionType = (payload) => ({
-  type: TASKS_REDUCER_ACTION.EDIT_TASK_NOTIFICATION,
   payload,
+  type: TASKS_REDUCER_ACTION.EDIT_TASK_NOTIFICATION,
 });

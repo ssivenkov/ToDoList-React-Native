@@ -14,8 +14,8 @@ export type AddTaskScreenParamList = {
 export type EditTaskScreenParamList = {
   isTodo: isTodoTaskListType;
   oldTaskTitle: TaskType['title'];
-  taskListID: TaskListType['id'];
   taskID: TaskType['id'];
+  taskListID: TaskListType['id'];
 
   colorMark?: TaskType['colorMark'];
 };

@@ -3,13 +3,13 @@ import { ExtendedStylesPropsType } from '@hooks/useStyles';
 import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
 type TaskStylesType = {
-  container: ViewStyle;
-  colorMark: ViewStyle;
-  text: TextStyle;
   buttonsContainer: ViewStyle;
-  warnText: TextStyle;
-  redHighlightTask: TextStyle;
+  colorMark: ViewStyle;
+  container: ViewStyle;
   greenHighlightTask: TextStyle;
+  redHighlightTask: TextStyle;
+  text: TextStyle;
+  warnText: TextStyle;
 };
 
 const { RED, DUSTY_GRAY } = COLORS;
@@ -20,11 +20,10 @@ const taskContainerBorderRadius = 7;
 
 export const taskStyles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<TaskStylesType>({
-    container: {
-      marginVertical: 3,
-      overflow: 'hidden',
-      borderRadius: taskContainerBorderRadius,
-      backgroundColor: props.TASK_COLOR,
+    buttonsContainer: {
+      alignItems: 'center',
+      flexDirection: 'row',
+      width: '100%',
     },
 
     colorMark: {
@@ -32,22 +31,16 @@ export const taskStyles = (props: ExtendedStylesPropsType) =>
       width: 6,
     },
 
-    text: {
-      flex: 1,
-      color: props.TEXT_COLOR,
-      fontSize: textSize,
-      paddingVertical: 4,
-      paddingLeft: 7,
+    container: {
+      backgroundColor: props.TASK_COLOR,
+      borderRadius: taskContainerBorderRadius,
+      marginVertical: 3,
+      overflow: 'hidden',
     },
 
-    buttonsContainer: {
-      width: '100%',
-      flexDirection: 'row',
-      alignItems: 'center',
-    },
-
-    warnText: {
-      fontSize: textSize,
+    greenHighlightTask: {
+      color: DUSTY_GRAY,
+      fontWeight: '500',
     },
 
     redHighlightTask: {
@@ -55,8 +48,15 @@ export const taskStyles = (props: ExtendedStylesPropsType) =>
       fontWeight: '500',
     },
 
-    greenHighlightTask: {
-      color: DUSTY_GRAY,
-      fontWeight: '500',
+    text: {
+      color: props.TEXT_COLOR,
+      flex: 1,
+      fontSize: textSize,
+      paddingLeft: 7,
+      paddingVertical: 4,
+    },
+
+    warnText: {
+      fontSize: textSize,
     },
   });

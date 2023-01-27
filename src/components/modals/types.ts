@@ -16,11 +16,11 @@ export type ModalIconPropsType = {
   closeHandler?: () => void;
   contentPaddingHorizontal?: number;
   description?: string;
+  hasContentPaddingBottom?: boolean;
   inputFocus?: () => void;
   modalVisibleFromProps?: boolean;
   okDisabled?: boolean;
   okText?: string;
-  hasContentPaddingBottom?: boolean;
   setModalVisibleFromProps?: SetStateType<boolean>;
 };
 

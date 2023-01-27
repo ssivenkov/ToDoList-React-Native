@@ -14,8 +14,8 @@ import { call, cancel, delay, put, putResolve } from 'redux-saga/effects';
 
 export type AuthCredentialType = {
   providerId: string;
-  token: string;
   secret: string;
+  token: string;
 };
 
 export function* googleSignInSaga() {

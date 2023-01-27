@@ -7,9 +7,9 @@ type SwitcherStylesType = {
 
 export const styles = StyleSheet.create<SwitcherStylesType>({
   contentDefaultContainer: {
+    alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center',
   },
 
   textBasicStyle: {

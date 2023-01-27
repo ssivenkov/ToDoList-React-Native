@@ -8,9 +8,9 @@ export type ValuesType = {
 };
 
 export type ValidationParamsType = {
-  values: ValuesType;
   isFormValid: boolean;
   setIsFormValid: SetStateType<boolean>;
+  values: ValuesType;
 };
 
 export type SendMessageResponseDataType = {
