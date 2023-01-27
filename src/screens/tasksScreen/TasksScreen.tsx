@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import { TaskList } from '@components/taskList/TaskList';
 import { sortingTaskLists } from '@helpers/sorting';
 import { useStyles } from '@hooks/useStyles';
-import { useRoute } from '@react-navigation/native';
+import { useFocusEffect, useRoute } from '@react-navigation/native';
 import { taskListsSelector } from '@store/selectors/tasksSelectors';
 import { globalLoaderSelector } from '@store/selectors/userSelectors';
+import { nanoid } from 'nanoid';
 import { useTranslation } from 'react-i18next';
-import { ScrollView, Text, View } from 'react-native';
+import { BackHandler, ScrollView, Text, View } from 'react-native';
 import { useSelector } from 'react-redux';
 
 import { taskScreenStyles } from './styles';
@@ -22,6 +23,8 @@ export const TasksScreen = () => {
 
   const taskLists = useSelector(taskListsSelector);
   const globalLoader = useSelector(globalLoaderSelector);
+
+  const [rerender, setRerender] = useState<string>('');
 
   const toDoTaskLists = taskLists.filter(({ showInToDo }) => showInToDo);
   const doneTaskLists = taskLists.filter((taskList) => {
@@ -38,6 +41,25 @@ export const TasksScreen = () => {
 
   const sortedToDoTaskLists = sortingTaskLists(toDoTaskLists);
   const sortedDoneTaskLists = sortingTaskLists(doneTaskLists);
+
+  // for triggering useFocusEffect, when user just open app and press native goBack button
+  useEffect(() => {
+    setRerender(nanoid());
+  }, []);
+
+  useFocusEffect(
+    useCallback(() => {
+      const onBackPress = () => {
+        BackHandler.exitApp();
+
+        return true;
+      };
+
+      const subscription = BackHandler.addEventListener('hardwareBackPress', onBackPress);
+
+      return () => subscription.remove();
+    }, [rerender]),
+  );
 
   if (isTodoScreen && sortedToDoTaskLists.length > 0) {
     return (

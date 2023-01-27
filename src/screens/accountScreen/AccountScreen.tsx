@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 
 import { longButtonDarkGradient, longButtonLightGradient } from '@colors/gradients';
 import { LongButton } from '@components/buttons/longButton/LongButton';
@@ -9,7 +9,7 @@ import { faArrowRight } from '@fortawesome/free-solid-svg-icons/faArrowRight';
 import { faAt } from '@fortawesome/free-solid-svg-icons/faAt';
 import { faTrash } from '@fortawesome/free-solid-svg-icons/faTrash';
 import { useStyles } from '@hooks/useStyles';
-import { useNavigation } from '@react-navigation/native';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import { ChangeLanguageButton } from '@screens/accountScreen/buttons/changeLanguageButton/ChangeLanguageButton';
 import { DarkModeButton } from '@screens/accountScreen/buttons/darkModeButton/DarkModeButton';
 import { SelectAccentColorButton } from '@screens/accountScreen/buttons/selectAccentColorButton/SelectAccentColorButton';
@@ -21,7 +21,7 @@ import {
   userDataSelector,
 } from '@store/selectors/userSelectors';
 import { useTranslation } from 'react-i18next';
-import { Image, ScrollView, Text, View } from 'react-native';
+import { BackHandler, Image, ScrollView, Text, View } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -58,6 +58,20 @@ export const AccountScreen = () => {
   const deleteAccountHandler = () => {
     dispatch(deleteAccountAction({ setWaitingProcess }));
   };
+
+  useFocusEffect(
+    useCallback(() => {
+      const onBackPress = () => {
+        BackHandler.exitApp();
+
+        return true;
+      };
+
+      const subscription = BackHandler.addEventListener('hardwareBackPress', onBackPress);
+
+      return () => subscription.remove();
+    }, []),
+  );
 
   if (userData && !waitingProcess) {
     return (
