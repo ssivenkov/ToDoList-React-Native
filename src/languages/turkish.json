@@ -35,7 +35,8 @@
       "SignIn": "Oturum aç",
       "SignInWithButtonTitle": "<0>{{text}}</0> ile oturum açın",
       "CancelAuthProcessModalTitle": "Kullanıcı oturum açma işlemini iptal etti",
-      "GettingAccessTokenErrorModalTitle": "Erişim belirteci alınırken bir şeyler yanlış gitti"
+      "GettingAccessTokenErrorModalTitle": "Erişim belirteci alınırken bir şeyler yanlış gitti",
+      "DeleteAccountSuccessfully": "Hesabınız başarıyla silindi"
     },
     "accountScreen": {
       "HeaderTitle": "Hesap",

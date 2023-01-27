@@ -35,7 +35,8 @@
       "SignIn": "로그인",
       "SignInWithButtonTitle": "으로 로그인 <0>{{text}}</0>",
       "CancelAuthProcessModalTitle": "사용자가 로그인 프로세스를 취소했습니다.",
-      "GettingAccessTokenErrorModalTitle": "액세스 토큰을 가져오는 중에 문제가 발생했습니다."
+      "GettingAccessTokenErrorModalTitle": "액세스 토큰을 가져오는 중에 문제가 발생했습니다.",
+      "DeleteAccountSuccessfully": "귀하의 계정이 성공적으로 삭제되었습니다"
     },
     "accountScreen": {
       "HeaderTitle": "계정",

@@ -35,7 +35,8 @@
       "SignIn": "Zaloguj się",
       "SignInWithButtonTitle": "Zaloguj się za pomocą <0>{{text}}</0>",
       "CancelAuthProcessModalTitle": "Użytkownik anulował proces logowania",
-      "GettingAccessTokenErrorModalTitle": "Coś poszło nie tak z uzyskaniem tokena dostępu"
+      "GettingAccessTokenErrorModalTitle": "Coś poszło nie tak z uzyskaniem tokena dostępu",
+      "DeleteAccountSuccessfully": "Twoje konto zostało pomyślnie usunięte"
     },
     "accountScreen": {
       "HeaderTitle": "Konto",

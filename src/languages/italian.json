@@ -35,7 +35,8 @@
       "SignIn": "Accedi",
       "SignInWithButtonTitle": "Accedi con <0>{{text}}</0>",
       "CancelAuthProcessModalTitle": "L'utente ha annullato il processo di login",
-      "GettingAccessTokenErrorModalTitle": "Qualcosa è andato storto nell'ottenimento del token di accesso"
+      "GettingAccessTokenErrorModalTitle": "Qualcosa è andato storto nell'ottenimento del token di accesso",
+      "DeleteAccountSuccessfully": "Il tuo account è stato eliminato con successo"
     },
     "accountScreen": {
       "HeaderTitle": "Conto",

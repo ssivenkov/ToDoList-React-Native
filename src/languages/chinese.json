@@ -35,7 +35,8 @@
       "SignIn": "登录",
       "SignInWithButtonTitle": "用以下方式登录 <0>{{text}}</0>",
       "CancelAuthProcessModalTitle": "用户取消了登录过程",
-      "GettingAccessTokenErrorModalTitle": "获取访问令牌时出了问题"
+      "GettingAccessTokenErrorModalTitle": "获取访问令牌时出了问题",
+      "DeleteAccountSuccessfully": "您的帳戶已成功刪除"
     },
     "accountScreen": {
       "HeaderTitle": "帐户",

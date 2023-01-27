@@ -35,7 +35,8 @@
       "SignIn": "Вход",
       "SignInWithButtonTitle": "Вход через <0>{{text}}</0>",
       "CancelAuthProcessModalTitle": "Процесс входа отменен пользователем",
-      "GettingAccessTokenErrorModalTitle": "Ошибка получения токена авторизации"
+      "GettingAccessTokenErrorModalTitle": "Ошибка получения токена авторизации",
+      "DeleteAccountSuccessfully": "Ваш аккаунт был успешно удален"
     },
     "accountScreen": {
       "HeaderTitle": "Аккаунт",

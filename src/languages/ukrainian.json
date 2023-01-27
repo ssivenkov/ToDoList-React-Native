@@ -35,7 +35,8 @@
       "SignIn": "Ввійти",
       "SignInWithButtonTitle": "Увійти через <0>{{text}}</0>",
       "CancelAuthProcessModalTitle": "Користувач скасував процес входу в систему",
-      "GettingAccessTokenErrorModalTitle": "Щось пішло не так при отриманні токену доступу"
+      "GettingAccessTokenErrorModalTitle": "Щось пішло не так при отриманні токену доступу",
+      "DeleteAccountSuccessfully": "Ваш обліковий запис було успішно видалено"
     },
     "accountScreen": {
       "HeaderTitle": "Обліковий запис",

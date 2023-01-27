@@ -35,7 +35,8 @@
       "SignIn": "Se connecter",
       "SignInWithButtonTitle": "Se connecter avec <0>{{text}}</0>",
       "CancelAuthProcessModalTitle": "L'utilisateur a annulé le processus de connexion",
-      "GettingAccessTokenErrorModalTitle": "Un problème est survenu lors de l'obtention du jeton d'accès"
+      "GettingAccessTokenErrorModalTitle": "Un problème est survenu lors de l'obtention du jeton d'accès",
+      "DeleteAccountSuccessfully": "Votre compte a été supprimé avec succès"
     },
     "accountScreen": {
       "HeaderTitle": "Compte",

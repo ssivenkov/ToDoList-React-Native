@@ -35,7 +35,8 @@
       "SignIn": "Acceder",
       "SignInWithButtonTitle": "Accede con <0>{{text}}</0>",
       "CancelAuthProcessModalTitle": "El usuario canceló el proceso de inicio de sesión",
-      "GettingAccessTokenErrorModalTitle": "Algo salió mal al obtener el token de acceso"
+      "GettingAccessTokenErrorModalTitle": "Algo salió mal al obtener el token de acceso",
+      "DeleteAccountSuccessfully": "Su cuenta ha sido eliminada con éxito"
     },
     "accountScreen": {
       "HeaderTitle": "Cuenta",

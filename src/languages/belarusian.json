@@ -35,16 +35,17 @@
       "SignIn": "Уваход",
       "SignInWithButtonTitle": "Уваход праз <0>{{text}}</0>",
       "CancelAuthProcessModalTitle": "Працэс уваходу адменены карыстальнікам",
-      "GettingAccessTokenErrorModalTitle": "Памылка атрымання токена аўтарызацыі"
+      "GettingAccessTokenErrorModalTitle": "Памылка атрымання токена аўтарызацыі",
+      "DeleteAccountSuccessfully": "Ваш рахунак быў паспяхова выдалены"
     },
     "accountScreen": {
-      "HeaderTitle": "Акаўнт",
+      "HeaderTitle": "Рахунак",
       "DarkModeButtonTitle": "Цёмная тэма",
       "SignOutButtonTitle": "Выхад",
-      "SignOutModalTitle": "Вы ўпэўненыя, што хочаце выйсці з уліковага запісу?",
+      "SignOutModalTitle": "Вы ўпэўненыя, што хочаце выйсці з рахунка?",
       "ChangeLanguageButtonTitle": "Мова",
       "ChangeLanguageModalTitle": "Абярыце мову перакладання",
-      "DeleteAccountButtonTitle": "Выдаліць акаўнт",
+      "DeleteAccountButtonTitle": "Выдаліць рахунак",
       "DeleteAccountModalTitle": "Вы ўпэўненыя, што жадаеце выдаліць свой уліковы запіс з усімі вашымі дадзенымі?",
       "AccentColorModalTitle": "Абярыце колер акцэнту",
       "AccentColorButtonTitle": "Колер акцэнту",

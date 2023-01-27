@@ -35,7 +35,8 @@
       "SignIn": "Masuk",
       "SignInWithButtonTitle": "Masuk dengan <0>{{text}}</0>",
       "CancelAuthProcessModalTitle": "Pengguna membatalkan proses login",
-      "GettingAccessTokenErrorModalTitle": "Ada yang salah dalam mendapatkan token akses"
+      "GettingAccessTokenErrorModalTitle": "Ada yang salah dalam mendapatkan token akses",
+      "DeleteAccountSuccessfully": "Akun Anda telah berhasil dihapus"
     },
     "accountScreen": {
       "HeaderTitle": "Akun",

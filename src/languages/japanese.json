@@ -35,7 +35,8 @@
       "SignIn": "サインイン",
       "SignInWithButtonTitle": "でサインインしてください。 <0>{{text}}</0>",
       "CancelAuthProcessModalTitle": "ユーザーがログイン処理をキャンセルした",
-      "GettingAccessTokenErrorModalTitle": "アクセストークンの取得に失敗しました"
+      "GettingAccessTokenErrorModalTitle": "アクセストークンの取得に失敗しました",
+      "DeleteAccountSuccessfully": "あなたのアカウントは正常に削除されました"
     },
     "accountScreen": {
       "HeaderTitle": "アカウント",

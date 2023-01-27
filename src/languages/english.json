@@ -35,7 +35,8 @@
       "SignIn": "Sign in",
       "SignInWithButtonTitle": "Sign in with <0>{{text}}</0>",
       "CancelAuthProcessModalTitle": "User cancelled the login process",
-      "GettingAccessTokenErrorModalTitle": "Something went wrong obtaining access token"
+      "GettingAccessTokenErrorModalTitle": "Something went wrong obtaining access token",
+      "DeleteAccountSuccessfully": "Your account has been successfully deleted"
     },
     "accountScreen": {
       "HeaderTitle": "Account",

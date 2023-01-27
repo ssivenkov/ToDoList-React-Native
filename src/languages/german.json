@@ -35,7 +35,8 @@
       "SignIn": "Einloggen",
       "SignInWithButtonTitle": "Einloggen über <0>{{text}}</0>",
       "CancelAuthProcessModalTitle": "Benutzer hat den anmeldevorgang abgebrochen",
-      "GettingAccessTokenErrorModalTitle": "Beim abrufen des zugriffstokens ist etwas schief gelaufen"
+      "GettingAccessTokenErrorModalTitle": "Beim abrufen des zugriffstokens ist etwas schief gelaufen",
+      "DeleteAccountSuccessfully": "Ihr Konto wurde erfolgreich gelöscht"
     },
     "accountScreen": {
       "HeaderTitle": "Konto",
