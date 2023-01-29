@@ -7,7 +7,7 @@ import { ModalIcon } from '@components/modals/ModalIcon';
 import { ICON_SIZE_MEDIUM } from '@constants/constants';
 import { faPlus } from '@fortawesome/free-solid-svg-icons/faPlus';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { createDate } from '@helpers/generateDateHelper';
+import { createFormattedDateHelper } from '@helpers/dateHelpers';
 import { useStyles } from '@hooks/useStyles';
 import { SetStateType } from '@root/types/common/types';
 import { addNewTaskListAction } from '@store/actions/tasksSagaActions/taskListsSagasActions/addNewTaskListAction';
@@ -47,7 +47,7 @@ export const CreateTaskListButton = () => {
   ) => {
     if (notEmptyTaskListTitleCondition) {
       const taskList: TaskListType = {
-        date: createDate(),
+        date: createFormattedDateHelper(),
         id: nanoid(),
         isDoneCollapsed: false,
         isTodoCollapsed: false,

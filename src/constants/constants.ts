@@ -18,3 +18,5 @@ export const defaultModalPaddingHorizontal = 16;
 export const defaultModalIndentBottom = 16;
 export const switcherMargin = 1;
 export const infinity = 'infinity';
+export const secondsInMinute = 59;
+export const millisecondsInSecond = 1000;

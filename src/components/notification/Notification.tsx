@@ -1,9 +1,17 @@
-import React, { useRef } from 'react';
+import React, { useLayoutEffect, useRef, useState } from 'react';
 
 import { Switcher } from '@components/switcher/Switcher';
-import { switcherMargin } from '@constants/constants';
+import {
+  millisecondsInSecond,
+  secondsInMinute,
+  switcherMargin,
+} from '@constants/constants';
 import { BY, CN, EN, JP, KR, RU, UA } from '@constants/languages';
 import { errorAlert } from '@helpers/alertHelper';
+import {
+  increaseDateYearsHelper,
+  mathFloorDateFromMinuteHelper,
+} from '@helpers/dateHelpers';
 import { requestIOSNotificationsPermissionHelper } from '@helpers/requestIOSNotificationsPermissionHelper';
 import { useStyles } from '@hooks/useStyles';
 import { themeSelector } from '@store/selectors/userSelectors';
@@ -34,10 +42,48 @@ export const Notification = (props: NotificationPropsType) => {
 
   const iOSDatePickerHeight = 210;
   const androidDatePickerHeight = 170;
-
   const datePickerHeight =
     Platform.OS === 'ios' ? iOSDatePickerHeight : androidDatePickerHeight;
-  const datePickerDate = date ? new Date(date) : new Date();
+
+  const currentDate = new Date();
+  const maximumDate = increaseDateYearsHelper({ addedYears: 2, date: currentDate });
+  const trimmedCurrentDate = mathFloorDateFromMinuteHelper(currentDate);
+
+  const initialDatePickerDate =
+    date && date < currentDate ? new Date(date) : trimmedCurrentDate;
+
+  const [minimumDate, setMinimumDate] = useState<Date>(currentDate);
+  const [datePickerDate, setDatePickerDate] = useState<Date>(initialDatePickerDate);
+
+  const dateChangeHandler = (date: Date) => {
+    setDatePickerDate(date);
+    setDate(date);
+  };
+
+  useLayoutEffect(() => {
+    const currentDate = new Date();
+
+    const currentSecond = currentDate.getSeconds();
+    const currentMillisecond = currentDate.getMilliseconds();
+
+    const secondsDiff = secondsInMinute - currentSecond;
+    const millisecondsDiff = millisecondsInSecond - currentMillisecond;
+
+    const updateValuesTimeout = setTimeout(() => {
+      const newDate = new Date();
+      const minDate = mathFloorDateFromMinuteHelper(newDate);
+
+      if (datePickerDate < minDate) {
+        setDatePickerDate(minDate);
+      }
+
+      setMinimumDate(minDate);
+    }, +`${secondsDiff}${millisecondsDiff}`);
+
+    return () => {
+      clearTimeout(updateValuesTimeout);
+    };
+  }, [minimumDate, datePickerDate]);
 
   if (isBY || isUA) {
     datePickerLanguage = RU;
@@ -93,7 +139,9 @@ export const Notification = (props: NotificationPropsType) => {
           date={datePickerDate}
           fadeToColor='none'
           locale={datePickerLanguage}
-          onDateChange={setDate}
+          maximumDate={maximumDate}
+          minimumDate={minimumDate}
+          onDateChange={dateChangeHandler}
           textColor={theme.TEXT_COLOR}
         />
       </Animated.View>

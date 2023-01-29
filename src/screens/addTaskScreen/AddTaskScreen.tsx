@@ -12,7 +12,7 @@ import {
   screenWidth480px,
   switcherMargin,
 } from '@constants/constants';
-import { createDate } from '@helpers/generateDateHelper';
+import { createFormattedDateHelper } from '@helpers/dateHelpers';
 import { useStyles } from '@hooks/useStyles';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { SetStateType } from '@root/types/common/types';
@@ -98,7 +98,7 @@ export const AddTaskScreen = () => {
   ) => {
     const newTask: TaskType = {
       colorMark: selectedColor,
-      date: createDate(),
+      date: createFormattedDateHelper(),
       id: nanoid(),
       isDone: false,
       title: newTaskTitle,
