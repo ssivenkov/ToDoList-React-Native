@@ -1,5 +1,5 @@
 import { ONLINE } from '@constants/constants';
-import { GOOGLE_PLAY_LINK } from '@env';
+import { GOOGLE_PLAY_MARKET_LINK } from '@env';
 import { checkInternetConnectionHelper } from '@helpers/checkInternetConnectionHelper';
 import * as Sentry from '@sentry/react-native';
 import { setModalMessageAction } from '@store/actions/userReducerActions/setModalMessageAction';
@@ -17,7 +17,7 @@ export function* goToGooglePlaySaga() {
     }
 
     const goToGooglePlay = () => {
-      Linking.openURL(GOOGLE_PLAY_LINK);
+      Linking.openURL(GOOGLE_PLAY_MARKET_LINK);
     };
 
     yield call(goToGooglePlay);

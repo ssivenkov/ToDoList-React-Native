@@ -50,7 +50,9 @@
       "AccentColorModalTitle": "강조 색상 선택",
       "AccentColorButtonTitle": "액센트 컬러",
       "ContactTheAuthorButtonTitle": "저자에게 연락하기",
-      "RateAppButtonTitle": "앱 평가"
+      "RateAppButtonTitle": "앱 평가",
+      "ShareAppButtonTitle": "앱 공유",
+      "ShareAppMessage": "ToDo List 앱을 즐겨 사용합니다. 노력하다!"
     },
     "contactTheAuthorScreen": {
       "HeaderTitle": "저자와의 소통",

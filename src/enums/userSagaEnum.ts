@@ -10,6 +10,7 @@ export enum USER_SAGA_ACTION {
   GET_USER_DATA = 'userSaga/GET_USER_DATA',
   GOOGLE_SIGN_IN = 'userSaga/GOOGLE_SIGN_IN',
   GO_TO_GOOGLE_PLAY = 'userSaga/GO_TO_GOOGLE_PLAY',
+  SHARE_APP = 'userSaga/SHARE_APP',
   SIGN_OUT = 'userSaga/SIGN_OUT',
   SYNC_USER_DATA = 'userSaga/SYNC_USER_DATA',
 }

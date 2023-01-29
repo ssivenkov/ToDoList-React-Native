@@ -14,6 +14,7 @@ import { ChangeLanguageButton } from '@screens/accountScreen/buttons/changeLangu
 import { DarkModeButton } from '@screens/accountScreen/buttons/darkModeButton/DarkModeButton';
 import { RateAppButton } from '@screens/accountScreen/buttons/rateAppButton/RateAppButton';
 import { SelectAccentColorButton } from '@screens/accountScreen/buttons/selectAccentColorButton/SelectAccentColorButton';
+import { ShareAppButton } from '@screens/accountScreen/buttons/shareAppButton/ShareAppButton';
 import { deleteAccountAction } from '@store/actions/userSagaActions/deleteAccountAction';
 import { signOutAction } from '@store/actions/userSagaActions/signOutAction';
 import {
@@ -106,6 +107,7 @@ export const AccountScreen = () => {
               />
             </LinearGradient>
             <RateAppButton longButtonGradient={longButtonGradient} />
+            <ShareAppButton longButtonGradient={longButtonGradient} />
             <LinearGradient colors={longButtonGradient}>
               <ModalLongButton
                 buttonIcon={faArrowRight}

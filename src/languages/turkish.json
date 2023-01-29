@@ -50,7 +50,9 @@
       "AccentColorModalTitle": "Vurgu rengini seçin",
       "AccentColorButtonTitle": "Vurgu rengi",
       "ContactTheAuthorButtonTitle": "Yazarla iletişim kurun",
-      "RateAppButtonTitle": "Uygulamayı oyla"
+      "RateAppButtonTitle": "Uygulamayı oyla",
+      "ShareAppButtonTitle": "Uygulamayı paylaş",
+      "ShareAppMessage": "ToDo List uygulamasını kullanmaktan zevk alıyorum. Deneyin!"
     },
     "contactTheAuthorScreen": {
       "HeaderTitle": "Yazar ile iletişim",

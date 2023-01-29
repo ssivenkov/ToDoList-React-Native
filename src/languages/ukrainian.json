@@ -50,7 +50,9 @@
       "AccentColorModalTitle": "Виберіть акцентний колір",
       "AccentColorButtonTitle": "Акцентний колір",
       "ContactTheAuthorButtonTitle": "Зв'язатися з автором",
-      "RateAppButtonTitle": "Оцінити програму"
+      "RateAppButtonTitle": "Оцінити додаток",
+      "ShareAppButtonTitle": "Поділитися додатком",
+      "ShareAppMessage": "Я із задоволенням користуюся додатком ToDo List. Спробуй!"
     },
     "contactTheAuthorScreen": {
       "HeaderTitle": "Зв'язок із автором",

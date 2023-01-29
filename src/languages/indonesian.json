@@ -50,7 +50,9 @@
       "AccentColorModalTitle": "Pilih warna aksen",
       "AccentColorButtonTitle": "Warna aksen",
       "ContactTheAuthorButtonTitle": "Hubungi penulis",
-      "RateAppButtonTitle": "Beri nilai aplikasi"
+      "RateAppButtonTitle": "Beri nilai aplikasi",
+      "ShareAppButtonTitle": "Bagikan aplikasi",
+      "ShareAppMessage": "Saya menikmati menggunakan aplikasi ToDo List. Mencoba!"
     },
     "contactTheAuthorScreen": {
       "HeaderTitle": "Hubungi penulis",

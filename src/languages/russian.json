@@ -50,7 +50,9 @@
       "AccentColorModalTitle": "Выберите цвет акцента",
       "AccentColorButtonTitle": "Цвет акцента",
       "ContactTheAuthorButtonTitle": "Связаться с автором",
-      "RateAppButtonTitle": "Оценить приложение"
+      "RateAppButtonTitle": "Оценить приложение",
+      "ShareAppButtonTitle": "Поделиться приложением",
+      "ShareAppMessage": "Я с удовольствием пользуюсь приложением ToDo List. Попробуй!"
     },
     "contactTheAuthorScreen": {
       "HeaderTitle": "Связь с автором",

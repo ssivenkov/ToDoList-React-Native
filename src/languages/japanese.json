@@ -50,7 +50,9 @@
       "AccentColorModalTitle": "アクセントカラーを選択",
       "AccentColorButtonTitle": "アクセントカラー",
       "ContactTheAuthorButtonTitle": "著者に連絡する",
-      "RateAppButtonTitle": "アプリを評価する"
+      "RateAppButtonTitle": "アプリを評価する",
+      "ShareAppButtonTitle": "アプリを共有",
+      "ShareAppMessage": "ToDo List アプリを楽しんでいます。 試す！"
     },
     "contactTheAuthorScreen": {
       "HeaderTitle": "著者に連絡する",

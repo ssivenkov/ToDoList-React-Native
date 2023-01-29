@@ -50,7 +50,9 @@
       "AccentColorModalTitle": "Абярыце колер акцэнту",
       "AccentColorButtonTitle": "Колер акцэнту",
       "ContactTheAuthorButtonTitle": "Звязацца з аўтарам",
-      "RateAppButtonTitle": "Ацаніць дадатак"
+      "RateAppButtonTitle": "Ацаніць дадатак",
+      "ShareAppButtonTitle": "Падзяліцца дадаткам",
+      "ShareAppMessage": "Я з задавальненнем карыстаюся дадаткам ToDo List. Паспрабуй!"
     },
     "contactTheAuthorScreen": {
       "HeaderTitle": "Звязацца з аўтарам",

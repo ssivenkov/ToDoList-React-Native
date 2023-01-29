@@ -50,7 +50,9 @@
       "AccentColorModalTitle": "选择重点颜色",
       "AccentColorButtonTitle": "重点颜色",
       "ContactTheAuthorButtonTitle": "聯繫作者",
-      "RateAppButtonTitle": "評價應用程序"
+      "RateAppButtonTitle": "評價應用程序",
+      "ShareAppButtonTitle": "分享應用",
+      "ShareAppMessage": "我喜歡使用 ToDo List 應用程序。 嘗試！"
     },
     "contactTheAuthorScreen": {
       "HeaderTitle": "聯繫作者",
