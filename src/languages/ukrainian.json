@@ -49,7 +49,8 @@
       "DeleteAccountModalTitle": "Ви впевнені, що хочете видалити свій обліковий запис з усіма даними?",
       "AccentColorModalTitle": "Виберіть акцентний колір",
       "AccentColorButtonTitle": "Акцентний колір",
-      "ContactTheAuthorButtonTitle": "Зв'язатися з автором"
+      "ContactTheAuthorButtonTitle": "Зв'язатися з автором",
+      "RateAppButtonTitle": "Оцінити програму"
     },
     "contactTheAuthorScreen": {
       "HeaderTitle": "Зв'язок із автором",

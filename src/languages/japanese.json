@@ -49,7 +49,8 @@
       "DeleteAccountModalTitle": "本当にデータごとアカウントを削除してよいのでしょうか?",
       "AccentColorModalTitle": "アクセントカラーを選択",
       "AccentColorButtonTitle": "アクセントカラー",
-      "ContactTheAuthorButtonTitle": "著者に連絡する"
+      "ContactTheAuthorButtonTitle": "著者に連絡する",
+      "RateAppButtonTitle": "アプリを評価する"
     },
     "contactTheAuthorScreen": {
       "HeaderTitle": "著者に連絡する",

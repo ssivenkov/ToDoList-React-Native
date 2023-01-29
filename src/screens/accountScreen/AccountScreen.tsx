@@ -12,6 +12,7 @@ import { useStyles } from '@hooks/useStyles';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import { ChangeLanguageButton } from '@screens/accountScreen/buttons/changeLanguageButton/ChangeLanguageButton';
 import { DarkModeButton } from '@screens/accountScreen/buttons/darkModeButton/DarkModeButton';
+import { RateAppButton } from '@screens/accountScreen/buttons/rateAppButton/RateAppButton';
 import { SelectAccentColorButton } from '@screens/accountScreen/buttons/selectAccentColorButton/SelectAccentColorButton';
 import { deleteAccountAction } from '@store/actions/userSagaActions/deleteAccountAction';
 import { signOutAction } from '@store/actions/userSagaActions/signOutAction';
@@ -104,6 +105,7 @@ export const AccountScreen = () => {
                 title={t('accountScreen.ContactTheAuthorButtonTitle')}
               />
             </LinearGradient>
+            <RateAppButton longButtonGradient={longButtonGradient} />
             <LinearGradient colors={longButtonGradient}>
               <ModalLongButton
                 buttonIcon={faArrowRight}

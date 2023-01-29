@@ -49,7 +49,8 @@
       "DeleteAccountModalTitle": "Вы уверены, что хотите удалить свою учетную запись со всеми вашими данными?",
       "AccentColorModalTitle": "Выберите цвет акцента",
       "AccentColorButtonTitle": "Цвет акцента",
-      "ContactTheAuthorButtonTitle": "Связаться с автором"
+      "ContactTheAuthorButtonTitle": "Связаться с автором",
+      "RateAppButtonTitle": "Оценить приложение"
     },
     "contactTheAuthorScreen": {
       "HeaderTitle": "Связь с автором",

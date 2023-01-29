@@ -49,7 +49,8 @@
       "DeleteAccountModalTitle": "¿Estás seguro de que quieres eliminar tu cuenta con todos tus datos?",
       "AccentColorModalTitle": "Seleccione el color de acento",
       "AccentColorButtonTitle": "Color de acento",
-      "ContactTheAuthorButtonTitle": "Contacta con el autor"
+      "ContactTheAuthorButtonTitle": "Contacta con el autor",
+      "RateAppButtonTitle": "Califica la aplicación"
     },
     "contactTheAuthorScreen": {
       "HeaderTitle": "Contacta con el autor",

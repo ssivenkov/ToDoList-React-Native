@@ -49,7 +49,8 @@
       "DeleteAccountModalTitle": "Apakah Anda yakin ingin menghapus akun Anda dengan semua data Anda?",
       "AccentColorModalTitle": "Pilih warna aksen",
       "AccentColorButtonTitle": "Warna aksen",
-      "ContactTheAuthorButtonTitle": "Hubungi penulis"
+      "ContactTheAuthorButtonTitle": "Hubungi penulis",
+      "RateAppButtonTitle": "Beri nilai aplikasi"
     },
     "contactTheAuthorScreen": {
       "HeaderTitle": "Hubungi penulis",

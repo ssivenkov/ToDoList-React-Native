@@ -22,6 +22,7 @@ import { deleteAccountSaga } from '@store/sagas/userSagas/deleteAccountSaga';
 import { facebookSignInSaga } from '@store/sagas/userSagas/facebookSignInSaga';
 import { getUserDataSaga } from '@store/sagas/userSagas/getUserDataSaga';
 import { googleSignInSaga } from '@store/sagas/userSagas/googleSignInSaga';
+import { goToGooglePlaySaga } from '@store/sagas/userSagas/goToGooglePlaySaga';
 import { signOutSaga } from '@store/sagas/userSagas/signOutSaga';
 import { syncUserDataSaga } from '@store/sagas/userSagas/syncUserDataSaga';
 import { takeEvery, takeLatest } from 'redux-saga/effects';
@@ -39,6 +40,7 @@ export function* rootWatcher() {
   yield takeEvery(USER_SAGA_ACTION.CHECK_USER, checkUserSaga);
   yield takeLatest(USER_SAGA_ACTION.SYNC_USER_DATA, syncUserDataSaga);
   yield takeLatest(USER_SAGA_ACTION.CONTACT_THE_AUTHOR, contactTheAuthorSaga);
+  yield takeLatest(USER_SAGA_ACTION.GO_TO_GOOGLE_PLAY, goToGooglePlaySaga);
 
   yield takeLatest(TASKS_SAGA_ACTION.ADD_NEW_TASK_LIST, addNewTaskListSaga);
   yield takeLatest(TASKS_SAGA_ACTION.ADD_NEW_TASK, addNewTaskSaga);

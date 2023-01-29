@@ -49,7 +49,8 @@
       "DeleteAccountModalTitle": "Hesabınızı tüm verilerinizle birlikte silmek istediğinizden emin misiniz?",
       "AccentColorModalTitle": "Vurgu rengini seçin",
       "AccentColorButtonTitle": "Vurgu rengi",
-      "ContactTheAuthorButtonTitle": "Yazarla iletişim kurun"
+      "ContactTheAuthorButtonTitle": "Yazarla iletişim kurun",
+      "RateAppButtonTitle": "Uygulamayı oyla"
     },
     "contactTheAuthorScreen": {
       "HeaderTitle": "Yazar ile iletişim",

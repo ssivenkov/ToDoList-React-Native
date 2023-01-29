@@ -49,7 +49,8 @@
       "DeleteAccountModalTitle": "Вы ўпэўненыя, што жадаеце выдаліць свой уліковы запіс з усімі вашымі дадзенымі?",
       "AccentColorModalTitle": "Абярыце колер акцэнту",
       "AccentColorButtonTitle": "Колер акцэнту",
-      "ContactTheAuthorButtonTitle": "Звязацца з аўтарам"
+      "ContactTheAuthorButtonTitle": "Звязацца з аўтарам",
+      "RateAppButtonTitle": "Ацаніць дадатак"
     },
     "contactTheAuthorScreen": {
       "HeaderTitle": "Звязацца з аўтарам",
