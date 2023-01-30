@@ -55,6 +55,7 @@ export const Task = (props: TaskPropsType) => {
               <DeleteTaskButton
                 fullTaskList={fullTaskList}
                 isTodoTaskList={isTodo}
+                setIsMenuHorizontalVisible={setIsMenuHorizontalVisible}
                 taskID={taskID}
                 taskTitle={taskTitle}
               />

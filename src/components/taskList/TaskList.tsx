@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useMemo, useState } from 'react';
 
+import MenuIcon from '@assets/images/icons/three-dots-vertical.svg';
+import { commonButtonStyles } from '@components/buttons/commonButtonStyles';
+import { MenuHorizontal } from '@components/menus/menuHorizontal/MenuHorizontal';
+import { menuHorizontalStyles } from '@components/menus/menuHorizontal/styles';
 import { Task } from '@components/task/Task';
+import { IsMenuVisibleType } from '@components/task/types';
 import { sortingTasks } from '@helpers/sorting';
 import { useStyles } from '@hooks/useStyles';
 import { CollapsingButton } from '@screens/tasksScreen/buttons/collapsingButton/CollapsingButton';
 import { CreateTaskButton } from '@screens/tasksScreen/buttons/createTaskButton/CreateTaskButton';
 import { DeleteTaskListButton } from '@screens/tasksScreen/buttons/deleteTaskListButton/DeleteTaskListButton';
 import { EditTaskListTitleButton } from '@screens/tasksScreen/buttons/editTaskListTitleButton/EditTaskListTitleButton';
+import { themeSelector } from '@store/selectors/userSelectors';
 import { Text, View } from 'react-native';
+import { useSelector } from 'react-redux';
 
 import { taskListStyles } from './styles';
 import { TaskListPropsType } from './types';
@@ -25,63 +32,96 @@ export const TaskList = (props: TaskListPropsType) => {
   } = props;
 
   const styles = useStyles(taskListStyles);
+  const menuHorizontalStyle = useStyles(menuHorizontalStyles);
+
+  const theme = useSelector(themeSelector);
 
   const sortedTasks = sortingTasks(taskListTasks);
+
+  const tasks = useMemo(() => {
+    return sortedTasks.map((task) => {
+      const { id: taskID, title: taskTitle, colorMark } = task;
+
+      return (
+        <Task
+          colorMark={colorMark}
+          fullTaskList={fullTaskList}
+          isTodo={isTodoTaskList}
+          key={taskID}
+          taskID={taskID}
+          taskListID={taskListID}
+          taskTitle={taskTitle}
+        />
+      );
+    });
+  }, [taskListTasks]);
+
+  const [isMenuHorizontalVisible, setIsMenuHorizontalVisible] =
+    useState<IsMenuVisibleType>(false);
 
   const tasksCondition =
     (sortedTasks.length > 0 && isTodoTaskList && !isTodoCollapsed) ||
     (sortedTasks.length > 0 && !isTodoTaskList && !isDoneCollapsed);
 
+  const onMenuButtonPress = () => {
+    if (isMenuHorizontalVisible) {
+      setIsMenuHorizontalVisible(false);
+    } else setIsMenuHorizontalVisible(true);
+  };
+
   return (
     <View style={styles.container}>
-      <View style={styles.controlsContainer}>
-        <CollapsingButton
-          isDoneCollapsed={isDoneCollapsed}
-          isTodoCollapsed={isTodoCollapsed}
-          isTodoTaskList={isTodoTaskList}
-          taskListID={taskListID}
-          taskListsCount={sortedTasks.length}
-        />
-        <Text style={styles.title}>{taskListTitle}</Text>
-        <View style={styles.buttonsContainer}>
-          {isTodoTaskList && (
-            <CreateTaskButton
-              fullTaskList={fullTaskList}
-              taskListDate={taskListDate}
+      <View style={styles.menuHorizontalWrapper}>
+        <MenuHorizontal
+          buttons={
+            <View style={styles.buttonsContainer}>
+              <View style={menuHorizontalStyle.buttonWrapper}>
+                <EditTaskListTitleButton
+                  oldTaskListTitle={taskListTitle}
+                  setIsMenuHorizontalVisible={setIsMenuHorizontalVisible}
+                  taskListID={taskListID}
+                />
+              </View>
+              <View style={menuHorizontalStyle.buttonWrapper}>
+                <DeleteTaskListButton
+                  fullTaskList={fullTaskList}
+                  isTodoTaskList={isTodoTaskList}
+                  setIsMenuHorizontalVisible={setIsMenuHorizontalVisible}
+                  taskListTitle={taskListTitle}
+                />
+              </View>
+            </View>
+          }
+          isMenuHorizontalVisible={isMenuHorizontalVisible}
+          menuButtonIcon={
+            <View style={commonButtonStyles.buttonContainer}>
+              <MenuIcon fill={theme.ICON_BUTTON_COLOR} height={20} width={20} />
+            </View>
+          }
+          onMenuButtonPress={onMenuButtonPress}
+        >
+          <>
+            <CollapsingButton
+              isDoneCollapsed={isDoneCollapsed}
+              isTodoCollapsed={isTodoCollapsed}
+              isTodoTaskList={isTodoTaskList}
               taskListID={taskListID}
-              taskListTitle={taskListTitle}
+              taskListsCount={sortedTasks.length}
             />
-          )}
-          <EditTaskListTitleButton
-            oldTaskListTitle={taskListTitle}
-            taskListID={taskListID}
-          />
-          <DeleteTaskListButton
-            fullTaskList={fullTaskList}
-            isTodoTaskList={isTodoTaskList}
-            taskListTitle={taskListTitle}
-          />
-        </View>
-      </View>
-      {tasksCondition && (
-        <View style={styles.tasksContainer}>
-          {sortedTasks.map((task) => {
-            const { id: taskID, title: taskTitle, colorMark } = task;
-
-            return (
-              <Task
-                colorMark={colorMark}
+            <Text style={styles.title}>{taskListTitle}</Text>
+            {isTodoTaskList && (
+              <CreateTaskButton
                 fullTaskList={fullTaskList}
-                isTodo={isTodoTaskList}
-                key={taskID}
-                taskID={taskID}
+                taskListDate={taskListDate}
                 taskListID={taskListID}
-                taskTitle={taskTitle}
+                taskListTitle={taskListTitle}
               />
-            );
-          })}
-        </View>
-      )}
+            )}
+          </>
+        </MenuHorizontal>
+      </View>
+
+      {tasksCondition && <View style={styles.tasksContainer}>{tasks}</View>}
     </View>
   );
 };

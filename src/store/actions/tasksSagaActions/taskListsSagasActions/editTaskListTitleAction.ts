@@ -6,6 +6,7 @@ export type EditTaskListTitleSagaPayloadType = {
   editedTaskListTitle: TaskListType['title'];
   setEditedTaskListTitleState: SetStateType<string>;
   setIsLoading: SetStateType<boolean>;
+  setIsMenuHorizontalVisible: SetStateType<boolean>;
   setModalVisible: SetStateType<boolean>;
   taskListID: TaskListType['id'];
 };

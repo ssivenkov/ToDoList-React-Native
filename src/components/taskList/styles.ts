@@ -6,6 +6,7 @@ type TaskListStylesType = {
   buttonsContainer: ViewStyle;
   container: ViewStyle;
   controlsContainer: ViewStyle;
+  menuHorizontalWrapper: ViewStyle;
   redHighlightTask: TextStyle;
   tasksContainer: ViewStyle;
   title: TextStyle;
@@ -18,8 +19,9 @@ export const taskListStyles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<TaskListStylesType>({
     buttonsContainer: {
       alignItems: 'center',
+      borderRadius: 20,
       flexDirection: 'row',
-      justifyContent: 'center',
+      width: '100%',
     },
 
     container: {
@@ -36,6 +38,11 @@ export const taskListStyles = (props: ExtendedStylesPropsType) =>
       alignItems: 'center',
       flexDirection: 'row',
       justifyContent: 'space-between',
+    },
+
+    menuHorizontalWrapper: {
+      borderRadius: 7,
+      overflow: 'hidden',
     },
 
     redHighlightTask: {

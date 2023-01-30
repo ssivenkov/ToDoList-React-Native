@@ -25,7 +25,8 @@ import { deleteTaskButtonStyles } from './styles';
 import { DeleteTaskButtonPropsType } from './types';
 
 export const DeleteTaskButton = (props: DeleteTaskButtonPropsType) => {
-  const { isTodoTaskList, taskID, taskTitle, fullTaskList } = props;
+  const { isTodoTaskList, taskID, taskTitle, fullTaskList, setIsMenuHorizontalVisible } =
+    props;
 
   const { tasks } = fullTaskList;
 
@@ -82,6 +83,10 @@ export const DeleteTaskButton = (props: DeleteTaskButtonPropsType) => {
     }
   };
 
+  const closeHandler = () => {
+    setIsMenuHorizontalVisible(false);
+  };
+
   return (
     <ModalIcon
       buttonIcon={
@@ -97,6 +102,7 @@ export const DeleteTaskButton = (props: DeleteTaskButtonPropsType) => {
           </View>
         </LinearGradient>
       }
+      closeHandler={closeHandler}
       okHandler={removeTask}
     >
       <Text style={styles.warnText}>
