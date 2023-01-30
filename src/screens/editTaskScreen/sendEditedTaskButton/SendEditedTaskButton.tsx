@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 
-import CheckIcon from '@assets/images/icons/check.svg';
 import { COLORS } from '@colors/colors';
 import { IconButtonWithLoader } from '@components/buttons/iconButtonWithLoader/IconButtonWithLoader';
 import 'react-native-get-random-values';
 import { headerStyles } from '@components/header/styles';
+import { ICON_SIZE_HALF_MEDIUM } from '@constants/constants';
+import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { useStyles } from '@hooks/useStyles';
 import { SetStateType } from '@root/types/common/types';
 import { View } from 'react-native';
@@ -29,7 +31,7 @@ export const SendEditedTaskButton = (props: SendEditedTaskButtonPropsType) => {
       disabled={buttonDisabled}
       icon={
         <View style={headerStyle.rightButtonContainer}>
-          <CheckIcon fill={WHITE} height={25} width={25} />
+          <FontAwesomeIcon color={WHITE} icon={faCheck} size={ICON_SIZE_HALF_MEDIUM} />
         </View>
       }
       okHandler={sendEditedTaskWrapper}
