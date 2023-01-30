@@ -15,7 +15,7 @@ import { userIDSelector } from '@store/selectors/userSelectors';
 import { call, cancel, delay, put, select } from 'redux-saga/effects';
 
 export function* setTaskIsDoneSaga(action: SetTaskIsDoneSagaActionReturnType) {
-  const { setIsLoading, setModalVisible, doneTaskID, taskListID } = action.payload;
+  const { doneTaskID, taskListID } = action.payload;
 
   const { IS_DONE, TASK_LISTS, TASKS, USERS } = FIREBASE_PATH;
 
@@ -27,8 +27,6 @@ export function* setTaskIsDoneSaga(action: SetTaskIsDoneSagaActionReturnType) {
 
       yield cancel();
     }
-
-    yield call(setIsLoading, true);
 
     yield delay(START_ANIMATION_DELAY);
 
@@ -61,14 +59,10 @@ export function* setTaskIsDoneSaga(action: SetTaskIsDoneSagaActionReturnType) {
         taskListID,
       }),
     );
-
-    yield call(setModalVisible, false);
   } catch (error) {
     if (error instanceof Error) {
       yield call(Sentry.captureException, error);
       yield put(setModalMessageAction({ modalMessage: error.message }));
     }
-  } finally {
-    yield call(setIsLoading, false);
   }
 }

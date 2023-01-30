@@ -15,7 +15,6 @@
       "HeaderTitle": "Списки задач",
       "CreateTaskListModalTitle": "Название нового списка задач",
       "DeleteModalQuestion": "Удалить <0>{{text}}</0>?",
-      "DoneModalQuestion": "Задача <0>{{text}}</0> выполнена?",
       "EditTaskListModalTitle": "Название списка задач",
       "TodoTasksTabTitle": "Выполнить",
       "DoneTasksTabTitle": "Выполненные",

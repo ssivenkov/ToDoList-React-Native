@@ -15,7 +15,6 @@
       "HeaderTitle": "Elenchi di attività",
       "CreateTaskListModalTitle": "Immettere il titolo del nuovo elenco di attività",
       "DeleteModalQuestion": "Sei sicuro di voler cancellare <0>{{text}}</0>?",
-      "DoneModalQuestion": "Si è sicuri che l'attività <0>{{text}}</0> sia stata completata?",
       "EditTaskListModalTitle": "Modifica del titolo dell'elenco di attività",
       "TodoTasksTabTitle": "Attività da svolgere",
       "DoneTasksTabTitle": "Attività svolte",

@@ -15,7 +15,6 @@
       "HeaderTitle": "Daftar tugas",
       "CreateTaskListModalTitle": "Masukkan judul daftar tugas baru",
       "DeleteModalQuestion": "Apakah Anda yakin untuk menghapus <0>{{text}}</0>?",
-      "DoneModalQuestion": "Apakah Anda yakin tugas <0>{{text}}</0> sudah selesai?",
       "EditTaskListModalTitle": "Edit judul daftar tugas",
       "TodoTasksTabTitle": "Tugas",
       "DoneTasksTabTitle": "Tugas siap pakai",

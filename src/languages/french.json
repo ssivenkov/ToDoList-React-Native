@@ -15,7 +15,6 @@
       "HeaderTitle": "Listes de tâches",
       "CreateTaskListModalTitle": "Saisissez le nouveau titre de la liste de tâches",
       "DeleteModalQuestion": "Etes-vous sûr de vouloir supprimer <0>{{text}}</0>?",
-      "DoneModalQuestion": "Etes-vous sûr que la tâche <0>{{text}}</0> est terminée?",
       "EditTaskListModalTitle": "Modifier le titre de la liste des tâches",
       "TodoTasksTabTitle": "Tâches à faire",
       "DoneTasksTabTitle": "Tâches effectuées",

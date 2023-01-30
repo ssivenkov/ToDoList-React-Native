@@ -15,7 +15,6 @@
       "HeaderTitle": "작업 목록",
       "CreateTaskListModalTitle": "새 작업 목록 제목 입력",
       "DeleteModalQuestion": "<0>{{text}}</0>을(를) 삭제하시겠습니까?",
-      "DoneModalQuestion": "<0>{{text}}</0> 작업이 완료되었습니까?",
       "EditTaskListModalTitle": "작업 목록 제목 수정",
       "TodoTasksTabTitle": "할 일",
       "DoneTasksTabTitle": "완료된 작업",

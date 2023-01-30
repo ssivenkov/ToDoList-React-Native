@@ -15,7 +15,6 @@
       "HeaderTitle": "Спісы задач",
       "CreateTaskListModalTitle": "Назва новага спісу задач",
       "DeleteModalQuestion": "Выдаліць <0>{{text}}</0>?",
-      "DoneModalQuestion": "Задача <0>{{text}}</0> выканана?",
       "EditTaskListModalTitle": "Назва спісу задач",
       "TodoTasksTabTitle": "Выканаць",
       "DoneTasksTabTitle": "Выкананыя",

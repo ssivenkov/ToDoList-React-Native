@@ -41,15 +41,6 @@ export const Task = (props: TaskPropsType) => {
       <MenuHorizontal
         buttons={
           <View style={styles.buttonsContainer}>
-            {isTodo && (
-              <View style={menuHorizontalStyle.buttonWrapper}>
-                <DoneTaskButton
-                  completedTaskTitle={taskTitle}
-                  doneTaskID={taskID}
-                  taskListID={taskListID}
-                />
-              </View>
-            )}
             <View style={menuHorizontalStyle.buttonWrapper}>
               <EditTaskButton
                 colorMark={colorMark}
@@ -86,6 +77,7 @@ export const Task = (props: TaskPropsType) => {
           <Text key={nanoid()} style={styles.text}>
             {taskTitle}
           </Text>
+          {isTodo && <DoneTaskButton doneTaskID={taskID} taskListID={taskListID} />}
         </>
       </MenuHorizontal>
     </View>

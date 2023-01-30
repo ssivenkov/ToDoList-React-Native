@@ -15,7 +15,6 @@
       "HeaderTitle": "タスクリスト",
       "CreateTaskListModalTitle": "新しいタスクリストのタイトルを入力する",
       "DeleteModalQuestion": "本当に<0>{{text}}</0>を削除するのですか?",
-      "DoneModalQuestion": "タスク<0>{{text}}</0>は本当に完了したのか?",
       "EditTaskListModalTitle": "タスクリストのタイトルを編集する",
       "TodoTasksTabTitle": "実装タスク",
       "DoneTasksTabTitle": "完了したタスク",

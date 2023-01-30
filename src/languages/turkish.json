@@ -15,7 +15,6 @@
       "HeaderTitle": "Görev listeleri",
       "CreateTaskListModalTitle": "Yeni görev listesi başlığı girin",
       "DeleteModalQuestion": "<0>{{text}}</0> öğesini sildiğinizden emin misiniz?",
-      "DoneModalQuestion": "<0>{{text}}</0> görevinin tamamlandığından emin misiniz?",
       "EditTaskListModalTitle": "Görev listesi başlığını düzenleme",
       "TodoTasksTabTitle": "Yapılacak işler",
       "DoneTasksTabTitle": "Tamamlanan görevler",

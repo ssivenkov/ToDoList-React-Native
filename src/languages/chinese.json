@@ -15,7 +15,6 @@
       "HeaderTitle": "任务清单",
       "CreateTaskListModalTitle": "输入新的任务列表标题",
       "DeleteModalQuestion": "你确定要删除<0>{{text}}</0>吗?",
-      "DoneModalQuestion": "你确定任务<0>{{text}}</0>已经完成吗?",
       "EditTaskListModalTitle": "编辑任务列表标题",
       "TodoTasksTabTitle": "琐碎的任务",
       "DoneTasksTabTitle": "已完成的任务",

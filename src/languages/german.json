@@ -15,7 +15,6 @@
       "HeaderTitle": "Aufgabenlisten",
       "CreateTaskListModalTitle": "Neuen aufgabentitel eingeben",
       "DeleteModalQuestion": "Sind sie sicher, dass sie <0>{{text}}</0> löschen wollen?",
-      "DoneModalQuestion": "Sind sie sicher, dass die aufgabe <0>{{text}}</0> abgeschlossen ist?",
       "EditTaskListModalTitle": "Titel der aufgabenliste bearbeiten",
       "TodoTasksTabTitle": "Fertige aufgaben",
       "DoneTasksTabTitle": "Erledigte aufgaben",

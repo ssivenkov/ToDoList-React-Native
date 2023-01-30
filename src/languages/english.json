@@ -15,7 +15,6 @@
       "HeaderTitle": "Task lists",
       "CreateTaskListModalTitle": "New task list title",
       "DeleteModalQuestion": "Are you sure to delete <0>{{text}}</0>?",
-      "DoneModalQuestion": "Are you sure the task <0>{{text}}</0> is completed?",
       "EditTaskListModalTitle": "Edit task list title",
       "TodoTasksTabTitle": "Todo tasks",
       "DoneTasksTabTitle": "Done tasks",
