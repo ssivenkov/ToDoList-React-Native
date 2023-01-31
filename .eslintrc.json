@@ -13,7 +13,6 @@
     "react-native",
     "react-hooks",
     "import",
-    "sort-keys",
     "typescript-sort-keys",
     "@typescript-eslint",
     "prettier"
@@ -158,7 +157,6 @@
     // objects
     "no-new": "error",
     "sort-keys": "off",
-    "sort-keys/sort-keys-fix": "error",
 
     // comparing
     "no-self-compare": "error",
