@@ -2,6 +2,7 @@
   "translation": {
     "common": {
       "Ok": "Да",
+      "Cancel": "Отмена",
       "Confirm": "Готово",
       "Select": "Выбрать",
       "Close": "Закрыть",
@@ -10,6 +11,9 @@
     },
     "notification": {
       "TaskNotification": "Выполните задачу"
+    },
+    "snackBar": {
+      "taskIsDone": "Задача выполнена"
     },
     "tasksScreen": {
       "HeaderTitle": "Списки задач",

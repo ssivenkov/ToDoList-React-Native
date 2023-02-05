@@ -1,4 +1,3 @@
-import { COLORS } from '@colors/colors';
 import { ExtendedStylesPropsType } from '@hooks/useStyles';
 import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
@@ -6,13 +5,8 @@ type TaskStylesType = {
   buttonsContainer: ViewStyle;
   colorMark: ViewStyle;
   container: ViewStyle;
-  greenHighlightTask: TextStyle;
-  redHighlightTask: TextStyle;
   text: TextStyle;
-  warnText: TextStyle;
 };
-
-const { RED, DUSTY_GRAY } = COLORS;
 
 const textSize = 18;
 
@@ -38,25 +32,12 @@ export const taskStyles = (props: ExtendedStylesPropsType) =>
       overflow: 'hidden',
     },
 
-    greenHighlightTask: {
-      color: DUSTY_GRAY,
-      fontWeight: '500',
-    },
-
-    redHighlightTask: {
-      color: RED,
-      fontWeight: '500',
-    },
-
     text: {
       color: props.TEXT_COLOR,
       flex: 1,
       fontSize: textSize,
-      paddingLeft: 7,
+      marginLeft: 7,
+      paddingRight: 1,
       paddingVertical: 4,
-    },
-
-    warnText: {
-      fontSize: textSize,
     },
   });

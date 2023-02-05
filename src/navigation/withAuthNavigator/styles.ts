@@ -24,6 +24,7 @@ export const withAuthNavigatorStyles = (props: ExtendedStylesPropsType) =>
       backgroundColor: props.TAB_BAR_BACKGROUND_COLOR,
       borderTopWidth: 0,
       height: tabBarContainerHeight,
+      zIndex: 50,
     },
 
     bottomTabBarIcon: {

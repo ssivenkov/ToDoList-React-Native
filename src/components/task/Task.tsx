@@ -78,7 +78,7 @@ export const Task = (props: TaskPropsType) => {
           <Text key={nanoid()} style={styles.text}>
             {taskTitle}
           </Text>
-          {isTodo && <DoneTaskButton doneTaskID={taskID} taskListID={taskListID} />}
+          {isTodo && <DoneTaskButton taskListID={taskListID} toDoTaskID={taskID} />}
         </>
       </MenuHorizontal>
     </View>

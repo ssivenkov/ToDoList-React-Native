@@ -39,7 +39,7 @@ export const modalMenuButtonStyles = (props: ExtendedStylesPropsType) =>
     },
 
     separator: {
-      backgroundColor: props.darkMode ? COLORS.WOODSMOKE2 : COLORS.WHITE,
+      backgroundColor: props.darkMode ? COLORS.WOODSMOKE3 : COLORS.WHITE,
       width: 1,
     },
 

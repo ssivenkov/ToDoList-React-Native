@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { IconButton } from '@components/buttons/iconButton/IconButton';
-import { Loader } from '@components/loader/Loader';
+import { PurpleLoader } from '@components/loaders/purpleLoader/PurpleLoader';
 import { Modal, View } from 'react-native';
 
 import { IconButtonWithLoaderPropsType } from './types';
@@ -19,7 +19,7 @@ export const IconButtonWithLoader = (props: IconButtonWithLoaderPropsType) => {
     <View>
       {isLoading && (
         <Modal transparent={true}>
-          <Loader />
+          <PurpleLoader />
         </Modal>
       )}
       <IconButton disabled={disabled} icon={icon} onPress={onButtonPress} />

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
-import { Loader } from '@components/loader/Loader';
+import { PurpleLoader } from '@components/loaders/purpleLoader/PurpleLoader';
+import { SnackBar } from '@components/snackBar/SnackBar';
 import { WITH_AUTH_NAVIGATOR_ROUTE } from '@enums/routesEnum';
 import { useStyles } from '@hooks/useStyles';
 import { TasksNavigator } from '@navigation/tasksNavigator/TasksNavigator';
@@ -52,7 +53,8 @@ export const WithAuthNavigator = () => {
 
   return (
     <>
-      {globalLoader && <Loader />}
+      {globalLoader && <PurpleLoader />}
+      <SnackBar />
       <Navigator
         initialRouteName={WITH_AUTH_NAVIGATOR_ROUTE.TASKS_NAVIGATOR}
         screenOptions={withAuthNavigatorOptions({ accentColor, styles, theme })}

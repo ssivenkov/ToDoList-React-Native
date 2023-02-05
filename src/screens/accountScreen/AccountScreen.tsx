@@ -2,7 +2,7 @@ import React, { useCallback, useState } from 'react';
 
 import { longButtonDarkGradient, longButtonLightGradient } from '@colors/gradients';
 import { LongButton } from '@components/buttons/longButton/LongButton';
-import { Loader } from '@components/loader/Loader';
+import { PurpleLoader } from '@components/loaders/purpleLoader/PurpleLoader';
 import { ModalLongButton } from '@components/modals/ModalLongButton';
 import { ROOT_NAVIGATOR_ROUTE } from '@enums/routesEnum';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons/faArrowRight';
@@ -134,5 +134,5 @@ export const AccountScreen = () => {
     );
   }
 
-  return <Loader />;
+  return <PurpleLoader />;
 };

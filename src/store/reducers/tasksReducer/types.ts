@@ -12,6 +12,7 @@ import { AddNewTaskActionReturnType } from '@store/actions/tasksReducerActions/t
 import { DeleteTaskActionReturnType } from '@store/actions/tasksReducerActions/tasksActions/deleteTaskAction';
 import { SetEditedTaskActionReturnType } from '@store/actions/tasksReducerActions/tasksActions/setEditedTaskAction';
 import { SetTaskIsDoneActionReturnType } from '@store/actions/tasksReducerActions/tasksActions/setTaskIsDoneAction';
+import { SetTaskIsToDoActionReturnType } from '@store/actions/tasksReducerActions/tasksActions/setTaskIsToDoAction';
 
 export type TaskType = {
   date: string;
@@ -74,4 +75,5 @@ export type TasksReducerActionsType =
   | AddNewTaskActionReturnType
   | DeleteTaskActionReturnType
   | SetEditedTaskActionReturnType
-  | SetTaskIsDoneActionReturnType;
+  | SetTaskIsDoneActionReturnType
+  | SetTaskIsToDoActionReturnType;

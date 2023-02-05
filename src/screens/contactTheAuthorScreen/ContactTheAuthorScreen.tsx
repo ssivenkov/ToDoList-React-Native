@@ -4,7 +4,7 @@ import { TextButton } from '@components/buttons/textButton/TextButton';
 import { GoBackButton } from '@components/header/buttons/goBackButton/GoBackButton';
 import { Header } from '@components/header/Header';
 import { Input } from '@components/inputs/Input';
-import { Loader } from '@components/loader/Loader';
+import { PurpleLoader } from '@components/loaders/purpleLoader/PurpleLoader';
 import { infinity } from '@constants/constants';
 import { useStyles } from '@hooks/useStyles';
 import { useNavigation } from '@react-navigation/native';
@@ -67,7 +67,7 @@ export const ContactTheAuthorScreen = () => {
       <ScrollView keyboardShouldPersistTaps='handled' style={styles.screenContainer}>
         {submitting && (
           <Modal transparent={true}>
-            <Loader />
+            <PurpleLoader />
           </Modal>
         )}
         <View style={styles.inputsWrapper}>

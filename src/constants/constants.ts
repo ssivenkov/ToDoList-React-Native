@@ -1,6 +1,7 @@
 export const ICON_SIZE_MEDIUM = 28;
 export const ICON_SIZE_HALF_MEDIUM = 25;
 export const ICON_SIZE_SMALL = 20;
+export const ICON_SIZE_EXTRA_SMALL = 18;
 export const NOTIFICATION_ID_MAX_LENGTH = 9;
 export const START_ANIMATION_DELAY = 10;
 export const HIDE_SPLASH_SCREEN_TIMEOUT = 600;

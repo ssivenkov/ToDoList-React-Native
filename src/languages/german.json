@@ -2,6 +2,7 @@
   "translation": {
     "common": {
       "Ok": "Ok",
+      "Cancel": "Stornieren",
       "Confirm": "Bestätigen",
       "Select": "Wählen",
       "Close": "Schließen sie",
@@ -10,6 +11,9 @@
     },
     "notification": {
       "TaskNotification": "Aufgabe ausführen"
+    },
+    "snackBar": {
+      "taskIsDone": "Aufgabe ist erledigt"
     },
     "tasksScreen": {
       "HeaderTitle": "Aufgabenlisten",

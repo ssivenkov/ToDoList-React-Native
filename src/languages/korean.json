@@ -2,6 +2,7 @@
   "translation": {
     "common": {
       "Ok": "확인",
+      "Cancel": "취소",
       "Confirm": "확인하다",
       "Select": "선택하다",
       "Close": "닫다",
@@ -10,6 +11,9 @@
     },
     "notification": {
       "TaskNotification": "작업 수행"
+    },
+    "snackBar": {
+      "taskIsDone": "작업 완료"
     },
     "tasksScreen": {
       "HeaderTitle": "작업 목록",

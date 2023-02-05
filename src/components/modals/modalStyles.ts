@@ -16,12 +16,15 @@ import { Platform, StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
 export type ModalStylesType = {
   buttonsContainer: ViewStyle;
+  centeredTransparentView: ViewStyle;
   centeredView: ViewStyle;
   childrenContainer: ViewStyle;
   descriptionContainer: ViewStyle;
   modalView: ViewStyle;
   text: TextStyle;
 };
+
+const { TRANSPARENT, MEDIUM_DARK_TRANSPARENCY } = COLORS;
 
 export const modalStyles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<ModalStylesType>({
@@ -32,7 +35,14 @@ export const modalStyles = (props: ExtendedStylesPropsType) =>
 
     centeredView: {
       alignItems: 'center',
-      backgroundColor: COLORS.MEDIUM_DARK_TRANSPARENCY,
+      backgroundColor: MEDIUM_DARK_TRANSPARENCY,
+      flex: 1,
+      justifyContent: 'center',
+    },
+
+    centeredTransparentView: {
+      alignItems: 'center',
+      backgroundColor: TRANSPARENT,
       flex: 1,
       justifyContent: 'center',
     },

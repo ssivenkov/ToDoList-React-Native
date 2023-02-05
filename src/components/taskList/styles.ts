@@ -1,4 +1,3 @@
-import { COLORS } from '@colors/colors';
 import { ExtendedStylesPropsType } from '@hooks/useStyles';
 import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
@@ -7,10 +6,8 @@ type TaskListStylesType = {
   container: ViewStyle;
   controlsContainer: ViewStyle;
   menuHorizontalWrapper: ViewStyle;
-  redHighlightTask: TextStyle;
   tasksContainer: ViewStyle;
   title: TextStyle;
-  warnText: TextStyle;
 };
 
 export const TaskListMarginVertical = 4;
@@ -45,11 +42,6 @@ export const taskListStyles = (props: ExtendedStylesPropsType) =>
       overflow: 'hidden',
     },
 
-    redHighlightTask: {
-      color: COLORS.RED,
-      fontWeight: '500',
-    },
-
     tasksContainer: {
       marginTop: 2,
     },
@@ -59,9 +51,6 @@ export const taskListStyles = (props: ExtendedStylesPropsType) =>
       flex: 1,
       fontSize: 21,
       marginLeft: 6,
-    },
-
-    warnText: {
-      fontSize: 20,
+      paddingRight: 1,
     },
   });

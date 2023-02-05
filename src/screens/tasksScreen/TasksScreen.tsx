@@ -63,28 +63,38 @@ export const TasksScreen = () => {
 
   if (isTodoScreen && sortedToDoTaskLists.length > 0) {
     return (
-      <ScrollView keyboardShouldPersistTaps='handled'>
-        <View style={styles.tasksListContainer}>
-          {sortedToDoTaskLists.map((item) => {
-            const { id, date, title, tasks, isTodoCollapsed, isDoneCollapsed } = item;
-            const toDoTasks = tasks && tasks.filter((task) => !task.isDone);
+      <View>
+        <ScrollView keyboardShouldPersistTaps='handled'>
+          <View style={styles.tasksListContainer}>
+            {sortedToDoTaskLists.map((item) => {
+              const {
+                id,
+                date,
+                title,
+                tasks,
+                isTodoCollapsed = false,
+                isDoneCollapsed = true,
+              } = item;
 
-            return (
-              <TaskList
-                fullTaskList={item}
-                isDoneCollapsed={!!isDoneCollapsed}
-                isTodoCollapsed={!!isTodoCollapsed}
-                isTodoTaskList={true}
-                key={id}
-                taskListDate={date}
-                taskListID={id}
-                taskListTasks={toDoTasks}
-                taskListTitle={title}
-              />
-            );
-          })}
-        </View>
-      </ScrollView>
+              const toDoTasks = tasks && tasks.filter((task) => !task.isDone);
+
+              return (
+                <TaskList
+                  fullTaskList={item}
+                  isDoneCollapsed={isDoneCollapsed}
+                  isTodoCollapsed={isTodoCollapsed}
+                  isTodoTaskList={true}
+                  key={id}
+                  taskListDate={date}
+                  taskListID={id}
+                  taskListTasks={toDoTasks}
+                  taskListTitle={title}
+                />
+              );
+            })}
+          </View>
+        </ScrollView>
+      </View>
     );
   }
 
@@ -93,14 +103,22 @@ export const TasksScreen = () => {
       <ScrollView keyboardShouldPersistTaps='handled'>
         <View style={styles.tasksListContainer}>
           {sortedDoneTaskLists.map((item) => {
-            const { id, date, title, tasks, isTodoCollapsed, isDoneCollapsed } = item;
+            const {
+              id,
+              date,
+              title,
+              tasks,
+              isTodoCollapsed = false,
+              isDoneCollapsed = true,
+            } = item;
+
             const doneTasks = tasks && tasks.filter((task) => task.isDone);
 
             return (
               <TaskList
                 fullTaskList={item}
-                isDoneCollapsed={!!isDoneCollapsed}
-                isTodoCollapsed={!!isTodoCollapsed}
+                isDoneCollapsed={isDoneCollapsed}
+                isTodoCollapsed={isTodoCollapsed}
                 isTodoTaskList={false}
                 key={id}
                 taskListDate={date}

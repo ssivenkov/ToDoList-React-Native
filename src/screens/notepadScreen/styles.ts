@@ -12,7 +12,7 @@ export type NotepadScreenStylesType = {
 export const notepadScreenStyles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<NotepadScreenStylesType>({
     darkModeScreenContainer: {
-      backgroundColor: COLORS.WOODSMOKE1,
+      backgroundColor: COLORS.WOODSMOKE2,
       height: '100%',
     },
 

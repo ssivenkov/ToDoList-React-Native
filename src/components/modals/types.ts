@@ -4,6 +4,11 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { SetStateType } from '@root/types/common/types';
 import { StyleProp, TextStyle } from 'react-native';
 
+export type IconWithScreenBlockingPropsType = {
+  buttonIcon: JSX.Element;
+  onPress: (setScreenBlocking: SetStateType<boolean>) => void;
+};
+
 export type ModalIconPropsType = {
   buttonIcon: JSX.Element;
   okHandler: (

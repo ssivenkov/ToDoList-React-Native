@@ -11,6 +11,7 @@ import { addNewTaskSaga } from '@store/sagas/tasksSagas/tasksSagas/addNewTaskSag
 import { deleteTaskSaga } from '@store/sagas/tasksSagas/tasksSagas/deleteTaskSaga';
 import { editTaskSaga } from '@store/sagas/tasksSagas/tasksSagas/editTaskSaga';
 import { setTaskIsDoneSaga } from '@store/sagas/tasksSagas/tasksSagas/setTaskIsDoneSaga';
+import { setTaskIsToDoSaga } from '@store/sagas/tasksSagas/tasksSagas/setTaskIsToDoSaga';
 import { waitCloseTaskHorizontalMenuSaga } from '@store/sagas/tasksSagas/tasksSagas/waitCloseTaskHorizontalMenuSaga';
 import { changeAccentColorSaga } from '@store/sagas/userSagas/changeAccentColorSaga';
 import { changeDarkModeSaga } from '@store/sagas/userSagas/changeDarkModeSaga';
@@ -52,6 +53,7 @@ export function* rootWatcher() {
     TASKS_SAGA_ACTION.DELETE_TASK_LIST_FROM_SCREEN,
     deleteTaskListFromScreenSaga,
   );
+  yield takeLatest(TASKS_SAGA_ACTION.SET_TASK_IS_TODO, setTaskIsToDoSaga);
   yield takeLatest(TASKS_SAGA_ACTION.SET_TASK_IS_DONE, setTaskIsDoneSaga);
   yield takeLatest(TASKS_SAGA_ACTION.SET_EDITED_TASK, editTaskSaga);
   yield takeLatest(

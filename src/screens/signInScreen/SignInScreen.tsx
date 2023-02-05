@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { signInScreenGradient } from '@colors/gradients';
-import { Loader } from '@components/loader/Loader';
+import { PurpleLoader } from '@components/loaders/purpleLoader/PurpleLoader';
 import { FIREBASE_OTHER } from '@enums/firebaseEnum';
 import { faFacebook } from '@fortawesome/free-brands-svg-icons/faFacebook';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons/faGoogle';
@@ -43,7 +43,7 @@ export const SignInScreen = () => {
     <LinearGradient colors={signInScreenGradient}>
       <View style={styles.signInWrapper}>
         {waitingUserDataOnSignIn ? (
-          <Loader />
+          <PurpleLoader />
         ) : (
           <View style={styles.signInContainer}>
             <Image

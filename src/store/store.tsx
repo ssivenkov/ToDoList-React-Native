@@ -1,5 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { notepadReducer } from '@store/reducers/notepadReducer/notepadReducer';
+import { snackBarReducer } from '@store/reducers/snackBarReducer/snackBarReducer';
 import { tasksReducer } from '@store/reducers/tasksReducer/tasksReducer';
 import { userReducer } from '@store/reducers/userReducer/userReducer';
 import { rootWatcher } from '@store/sagas/rootWatcher';
@@ -13,6 +14,7 @@ export const rootReducer = combineReducers<RootStateType>({
   notepad: notepadReducer,
   tasks: tasksReducer,
   user: userReducer,
+  snackBarEvents: snackBarReducer,
 });
 
 const persistConfig = {

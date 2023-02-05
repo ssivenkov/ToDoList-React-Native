@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { IconButton } from '@components/buttons/iconButton/IconButton';
 import { ModalMenuButton } from '@components/buttons/modalMenuButton/ModalMenuButton';
 import { Separator } from '@components/buttons/modalMenuButton/Separator';
-import { Loader } from '@components/loader/Loader';
+import { PurpleLoader } from '@components/loaders/purpleLoader/PurpleLoader';
 import {
   defaultModalIndentBottom,
   defaultModalPaddingHorizontal,
@@ -130,7 +130,7 @@ export const ModalIcon = (props: ModalIconPropsType) => {
               </View>
             </View>
           </TouchableWithoutFeedback>
-          {isLoading && <Loader />}
+          {isLoading && <PurpleLoader />}
         </Modal>
       </View>
       <IconButton

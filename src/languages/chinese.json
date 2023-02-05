@@ -2,6 +2,7 @@
   "translation": {
     "common": {
       "Ok": "好的",
+      "Cancel": "取消",
       "Confirm": "確認",
       "Select": "選擇",
       "Close": "关闭",
@@ -10,6 +11,9 @@
     },
     "notification": {
       "TaskNotification": "执行任务"
+    },
+    "snackBar": {
+      "taskIsDone": "任務完成"
     },
     "tasksScreen": {
       "HeaderTitle": "任务清单",
