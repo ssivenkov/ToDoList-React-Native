@@ -13,7 +13,8 @@
       "TaskNotification": "执行任务"
     },
     "snackBar": {
-      "taskIsDone": "任務完成"
+      "taskIsDone": "任務完成",
+      "taskIsToDo": "任務返回"
     },
     "tasksScreen": {
       "HeaderTitle": "任务清单",

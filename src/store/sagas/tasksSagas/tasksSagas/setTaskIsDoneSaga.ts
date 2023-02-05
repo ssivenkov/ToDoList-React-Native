@@ -22,8 +22,10 @@ export function* setTaskIsDoneSaga(action: SetTaskIsDoneSagaActionReturnType) {
     toDoTaskID,
     taskListID,
     setTaskPending,
+    setSnackBarCancelPending,
     setTaskScreenBlocking,
     shouldCreateSnackBarEvent,
+    setSnackBarCancelFulfilled,
   } = action.payload;
 
   const { IS_DONE, TASK_LISTS, TASKS, USERS } = FIREBASE_PATH;
@@ -31,6 +33,8 @@ export function* setTaskIsDoneSaga(action: SetTaskIsDoneSagaActionReturnType) {
   try {
     if (setTaskPending) {
       yield call(setTaskPending, true);
+    } else if (setSnackBarCancelPending) {
+      yield call(setSnackBarCancelPending, true);
     }
 
     yield delay(START_ANIMATION_DELAY);
@@ -81,6 +85,10 @@ export function* setTaskIsDoneSaga(action: SetTaskIsDoneSagaActionReturnType) {
         taskListID,
       }),
     );
+
+    if (setSnackBarCancelFulfilled) {
+      yield call(setSnackBarCancelFulfilled, true);
+    }
 
     if (shouldCreateSnackBarEvent) {
       const event: SnackBarEventType = {

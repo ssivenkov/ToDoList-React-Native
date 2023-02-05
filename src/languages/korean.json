@@ -13,7 +13,8 @@
       "TaskNotification": "작업 수행"
     },
     "snackBar": {
-      "taskIsDone": "작업 완료"
+      "taskIsDone": "작업 완료",
+      "taskIsToDo": "반환된 작업"
     },
     "tasksScreen": {
       "HeaderTitle": "작업 목록",

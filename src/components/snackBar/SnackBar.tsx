@@ -4,14 +4,16 @@ import CancelIcon from '@assets/images/icons/cancel.svg';
 import { COLORS } from '@colors/colors';
 import { commonButtonStyles } from '@components/buttons/commonButtonStyles';
 import { SmallLoader } from '@components/loaders/smallLoader/SmallLoader';
-import { moveTaskInTodo } from '@components/snackBar/actions';
+import { moveTaskInDone, moveTaskInTodo } from '@components/snackBar/actions';
 import { snackBarStyles } from '@components/snackBar/styles';
 import { SnackBarAnimationParamsType } from '@components/snackBar/types';
 import { ICON_SIZE_EXTRA_SMALL } from '@constants/constants';
 import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck';
+import { faUndoAlt } from '@fortawesome/free-solid-svg-icons/faUndoAlt';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { useStyles } from '@hooks/useStyles';
 import { deleteSnackBarEventAction } from '@store/actions/snackBarActions/deleteSnackBarEventAction';
+import { setTaskIsDoneAction } from '@store/actions/tasksSagaActions/tasksSagasActions/setTaskIsDoneAction';
 import { setTaskIsToDoAction } from '@store/actions/tasksSagaActions/tasksSagasActions/setTaskIsToDoAction';
 import { SnackBarReducerStateType } from '@store/reducers/snackBarReducer/types';
 import { snackBarEventSelector } from '@store/selectors/snackBarSelectors';
@@ -47,6 +49,11 @@ export const SnackBar = () => {
 
   const isSnackBarShow = !!snackBarEvent;
   const isOldEvent = isSnackBarShow && isEqual(oldEvent, snackBarEvent);
+
+  const eventIcon =
+    snackBarEvent !== null && snackBarEvent.action === moveTaskInTodo
+      ? faCheck
+      : faUndoAlt;
 
   if (!isOldEvent && snackBarEvent !== null) {
     setOldEvent(snackBarEvent);
@@ -93,6 +100,19 @@ export const SnackBar = () => {
           dispatch(
             setTaskIsToDoAction({
               doneTaskID: taskID,
+              taskListID,
+              setSnackBarCancelPending: setCancelPending,
+              setSnackBarCancelFulfilled: setCancelFulfilled,
+            }),
+          );
+          break;
+        }
+
+        case moveTaskInDone: {
+          setScreenBlocking(true);
+          dispatch(
+            setTaskIsDoneAction({
+              toDoTaskID: taskID,
               taskListID,
               setSnackBarCancelPending: setCancelPending,
               setSnackBarCancelFulfilled: setCancelFulfilled,
@@ -164,7 +184,7 @@ export const SnackBar = () => {
             <View style={commonButtonStyles.buttonContainerLargePaddingHorizontal}>
               <FontAwesomeIcon
                 color={theme.TEXT_COLOR}
-                icon={faCheck}
+                icon={eventIcon}
                 size={ICON_SIZE_EXTRA_SMALL}
               />
             </View>

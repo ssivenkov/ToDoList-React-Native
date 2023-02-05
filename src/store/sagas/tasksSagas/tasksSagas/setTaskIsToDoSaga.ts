@@ -94,7 +94,7 @@ export function* setTaskIsToDoSaga(action: SetTaskIsToDoSagaActionReturnType) {
       const event: SnackBarEventType = {
         taskID: doneTaskID,
         taskListID,
-        snackBarUntranslatedText: 'snackBar.taskIsDone',
+        snackBarUntranslatedText: 'snackBar.taskIsToDo',
         action: moveTaskInDone,
       };
 

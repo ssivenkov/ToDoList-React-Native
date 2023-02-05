@@ -13,7 +13,8 @@
       "TaskNotification": "Effectuer la tâche"
     },
     "snackBar": {
-      "taskIsDone": "La tâche est terminée"
+      "taskIsDone": "La tâche est terminée",
+      "taskIsToDo": "Tâche renvoyée"
     },
     "tasksScreen": {
       "HeaderTitle": "Listes de tâches",

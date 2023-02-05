@@ -13,7 +13,8 @@
       "TaskNotification": "Eseguire il compito"
     },
     "snackBar": {
-      "taskIsDone": "Il compito è terminato"
+      "taskIsDone": "Il compito è terminato",
+      "taskIsToDo": "Il compito restituita"
     },
     "tasksScreen": {
       "HeaderTitle": "Elenchi di attività",

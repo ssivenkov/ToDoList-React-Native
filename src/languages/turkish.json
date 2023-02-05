@@ -13,7 +13,8 @@
       "TaskNotification": "Görevi gerçekleştirin"
     },
     "snackBar": {
-      "taskIsDone": "Görev tamamlandı"
+      "taskIsDone": "Görev tamamlandı",
+      "taskIsToDo": "Görev geri döndü"
     },
     "tasksScreen": {
       "HeaderTitle": "Görev listeleri",

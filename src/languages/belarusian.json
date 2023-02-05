@@ -13,7 +13,8 @@
       "TaskNotification": "Выканайце задачу"
     },
     "snackBar": {
-      "taskIsDone": "Задача выканана"
+      "taskIsDone": "Задача выканана",
+      "taskIsToDo": "Задача вернута"
     },
     "tasksScreen": {
       "HeaderTitle": "Спісы задач",

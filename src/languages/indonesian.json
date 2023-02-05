@@ -13,7 +13,8 @@
       "TaskNotification": "Melakukan tugas"
     },
     "snackBar": {
-      "taskIsDone": "Tugas selesai"
+      "taskIsDone": "Tugas selesai",
+      "taskIsToDo": "Tugas dikembalikan"
     },
     "tasksScreen": {
       "HeaderTitle": "Daftar tugas",

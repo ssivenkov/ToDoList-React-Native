@@ -13,7 +13,8 @@
       "TaskNotification": "タスクを実行する"
     },
     "snackBar": {
-      "taskIsDone": "タスクが完了しました"
+      "taskIsDone": "タスクが完了しました",
+      "taskIsToDo": "返却されたタスク"
     },
     "tasksScreen": {
       "HeaderTitle": "タスクリスト",

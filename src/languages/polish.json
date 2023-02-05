@@ -13,7 +13,8 @@
       "TaskNotification": "Wykonać zadanie"
     },
     "snackBar": {
-      "taskIsDone": "Zadanie wykonane"
+      "taskIsDone": "Zadanie wykonane",
+      "taskIsToDo": "Zadanie zwrócone"
     },
     "tasksScreen": {
       "HeaderTitle": "Listy zadań",

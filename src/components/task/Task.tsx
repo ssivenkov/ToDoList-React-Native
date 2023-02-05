@@ -9,6 +9,7 @@ import { useStyles } from '@hooks/useStyles';
 import { DeleteTaskButton } from '@screens/tasksScreen/buttons/deleteTaskButton/DeleteTaskButton';
 import { DoneTaskButton } from '@screens/tasksScreen/buttons/doneTaskButton/DoneTaskButton';
 import { EditTaskButton } from '@screens/tasksScreen/buttons/editTaskButton/EditTaskButton';
+import { ToDoTaskButton } from '@screens/tasksScreen/buttons/toDoTaskButton/ToDoTaskButton';
 import { themeSelector } from '@store/selectors/userSelectors';
 import { nanoid } from 'nanoid';
 import { Text, View } from 'react-native';
@@ -78,7 +79,11 @@ export const Task = (props: TaskPropsType) => {
           <Text key={nanoid()} style={styles.text}>
             {taskTitle}
           </Text>
-          {isTodo && <DoneTaskButton taskListID={taskListID} toDoTaskID={taskID} />}
+          {isTodo ? (
+            <DoneTaskButton taskListID={taskListID} toDoTaskID={taskID} />
+          ) : (
+            <ToDoTaskButton doneTaskID={taskID} taskListID={taskListID} />
+          )}
         </>
       </MenuHorizontal>
     </View>
