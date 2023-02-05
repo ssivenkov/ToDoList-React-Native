@@ -111,8 +111,9 @@
     "metro_connect": "adb -s 18aeadf7 reverse tcp:8081 tcp:8081",
     "gradle_clean_MacOS": "cd android && ./gradlew clean && cd ..",
     "gradle_clean_Windows": "cd android && gradlew clean && cd ..",
-    "android_assembly_MacOS": "cd android && ./gradlew assembleRelease && cd ..",
+    "android_build_app_MacOS": "cd android && ./gradlew assembleRelease && cd ..",
     "android_build_app_Windows": "cd android && gradlew assembleRelease && cd ..",
+    "android_build_bundle_MacOS": "cd android && ./gradlew bundleRelease && cd ..",
     "android_build_bundle_Windows": "cd android && gradlew bundleRelease && cd ..",
     "app_dependencies_MacOS": "cd android && ./gradlew app:dependencies",
     "app_dependencies_Windows": "cd android && gradlew app:dependencies"
