@@ -17,7 +17,10 @@ import { setTaskIsDoneAction } from '@store/actions/tasksSagaActions/tasksSagasA
 import { setTaskIsToDoAction } from '@store/actions/tasksSagaActions/tasksSagasActions/setTaskIsToDoAction';
 import { SnackBarReducerStateType } from '@store/reducers/snackBarReducer/types';
 import { snackBarEventSelector } from '@store/selectors/snackBarSelectors';
-import { themeSelector } from '@store/selectors/userSelectors';
+import {
+  emulatorStatusBarHeightSelector,
+  themeSelector,
+} from '@store/selectors/userSelectors';
 import { isEqual } from 'lodash';
 import { useTranslation } from 'react-i18next';
 import {
@@ -39,6 +42,7 @@ export const SnackBar = () => {
 
   const theme = useSelector(themeSelector);
   const snackBarEvent = useSelector(snackBarEventSelector);
+  const emulatorStatusBarHeight = useSelector(emulatorStatusBarHeightSelector);
 
   const { height: appHeight } = useWindowDimensions();
 
@@ -66,8 +70,9 @@ export const SnackBar = () => {
 
   const hiddenSnackBarHeight = -50;
   const visibleSnackBarHeight = 53;
-  const hiddenSnackBarValue = hiddenSnackBarHeight - appHeight;
-  const visibleSnackBarValue = visibleSnackBarHeight - appHeight;
+  const hiddenSnackBarValue = hiddenSnackBarHeight - appHeight + emulatorStatusBarHeight;
+  const visibleSnackBarValue =
+    visibleSnackBarHeight - appHeight + emulatorStatusBarHeight;
   const showAnimationDuration = 280;
   const hideAnimationDuration = 200;
   const hideAnimationDelay = 2500;
