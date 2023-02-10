@@ -71,20 +71,18 @@ export const Task = (props: TaskPropsType) => {
         }
         onMenuButtonPress={onMenuButtonPress}
       >
-        <>
-          <View
-            key={nanoid()}
-            style={[styles.colorMark, { backgroundColor: colorMark || TRANSPARENT }]}
-          />
-          <Text key={nanoid()} style={styles.text}>
-            {taskTitle}
-          </Text>
-          {isTodo ? (
-            <DoneTaskButton taskListID={taskListID} toDoTaskID={taskID} />
-          ) : (
-            <ToDoTaskButton doneTaskID={taskID} taskListID={taskListID} />
-          )}
-        </>
+        <View
+          key={nanoid()}
+          style={[styles.colorMark, { backgroundColor: colorMark || TRANSPARENT }]}
+        />
+        <Text key={nanoid()} style={styles.text}>
+          {taskTitle}
+        </Text>
+        {isTodo ? (
+          <DoneTaskButton taskListID={taskListID} toDoTaskID={taskID} />
+        ) : (
+          <ToDoTaskButton doneTaskID={taskID} taskListID={taskListID} />
+        )}
       </MenuHorizontal>
     </View>
   );

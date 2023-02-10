@@ -37,7 +37,7 @@ export const taskStyles = (props: ExtendedStylesPropsType) =>
       flex: 1,
       fontSize: textSize,
       marginLeft: 7,
-      paddingRight: 1,
+      marginRight: 1.5347,
       paddingVertical: 4,
     },
   });
