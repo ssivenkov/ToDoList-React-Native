@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import { Switcher } from '@components/switcher/Switcher';
 import {
@@ -56,11 +56,18 @@ export const Notification = (props: NotificationPropsType) => {
   const [datePickerDate, setDatePickerDate] = useState<Date>(initialDatePickerDate);
 
   const dateChangeHandler = (date: Date) => {
-    setDatePickerDate(date);
-    setDate(date);
+    const currentDate = new Date();
+
+    if (date >= currentDate) {
+      setDatePickerDate(date);
+      setDate(date);
+    } else {
+      setDatePickerDate(currentDate);
+      setDate(currentDate);
+    }
   };
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const currentDate = new Date();
 
     const currentSecond = currentDate.getSeconds();
