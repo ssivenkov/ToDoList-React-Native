@@ -1,13 +1,19 @@
 import React, { useCallback, useState } from 'react';
 
+import { COLORS } from '@colors/colors';
 import { longButtonDarkGradient, longButtonLightGradient } from '@colors/gradients';
 import { LongButton } from '@components/buttons/longButton/LongButton';
+import { Header } from '@components/header/Header';
+import { headerStyles } from '@components/header/styles';
 import { PurpleLoader } from '@components/loaders/purpleLoader/PurpleLoader';
+import { ModalIcon } from '@components/modals/ModalIcon';
 import { ModalLongButton } from '@components/modals/ModalLongButton';
+import { ICON_SIZE_ALMOST_HALF_MEDIUM } from '@constants/constants';
 import { ROOT_NAVIGATOR_ROUTE } from '@enums/routesEnum';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons/faArrowRight';
 import { faAt } from '@fortawesome/free-solid-svg-icons/faAt';
 import { faTrash } from '@fortawesome/free-solid-svg-icons/faTrash';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { useStyles } from '@hooks/useStyles';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import { ChangeLanguageButton } from '@screens/accountScreen/buttons/changeLanguageButton/ChangeLanguageButton';
@@ -33,6 +39,7 @@ export const AccountScreen = () => {
   const dispatch = useDispatch();
 
   const styles = useStyles(accountScreenStyles);
+  const headerStyle = useStyles(headerStyles);
 
   const { t } = useTranslation();
 
@@ -77,60 +84,74 @@ export const AccountScreen = () => {
 
   if (userData && !waitingProcess) {
     return (
-      <ScrollView>
-        <View style={styles.screenContainer}>
-          <View style={styles.userInfoContainer}>
-            {userAvatar && <Image source={{ uri: userAvatar }} style={styles.avatar} />}
-            {userData.displayName && (
-              <Text style={styles.name}>{userData.displayName}</Text>
-            )}
-            {userData.email && <Text style={styles.text}>{userData.email}</Text>}
-            {userData.phoneNumber && (
-              <Text style={styles.text}>{userData.phoneNumber}</Text>
-            )}
+      <>
+        <Header
+          rightButton={
+            <ModalIcon
+              buttonIcon={
+                <View style={headerStyle.rightButtonContainer}>
+                  <FontAwesomeIcon
+                    color={COLORS.WHITE}
+                    icon={faTrash}
+                    size={ICON_SIZE_ALMOST_HALF_MEDIUM}
+                  />
+                </View>
+              }
+              buttonIconDisabled={waitingProcess}
+              description={t('accountScreen.DeleteAccountModalTitle')}
+              descriptionTextStyle={styles.redText}
+              okDisabled={waitingProcess}
+              okHandler={deleteAccountHandler}
+              okText={t('common.Ok')}
+              okTextStyle={styles.redText}
+            />
+          }
+          title={t('accountScreen.HeaderTitle')}
+        />
+        <ScrollView>
+          <View style={styles.screenContainer}>
+            <View style={styles.userInfoContainer}>
+              {userAvatar && <Image source={{ uri: userAvatar }} style={styles.avatar} />}
+              {userData.displayName && (
+                <Text style={styles.name}>{userData.displayName}</Text>
+              )}
+              {userData.email && <Text style={styles.text}>{userData.email}</Text>}
+              {userData.phoneNumber && (
+                <Text style={styles.text}>{userData.phoneNumber}</Text>
+              )}
+            </View>
+            <View>
+              <LinearGradient colors={longButtonGradient}>
+                <ChangeLanguageButton setIsLoading={setWaitingProcess} />
+              </LinearGradient>
+              <LinearGradient colors={longButtonGradient}>
+                <DarkModeButton setIsLoading={setWaitingProcess} />
+              </LinearGradient>
+              <LinearGradient colors={longButtonGradient}>
+                <SelectAccentColorButton setIsLoading={setWaitingProcess} />
+              </LinearGradient>
+              <LinearGradient colors={longButtonGradient}>
+                <LongButton
+                  icon={faAt}
+                  onPress={() => navigateToAuthorCommunicationScreen()}
+                  title={t('accountScreen.ContactTheAuthorButtonTitle')}
+                />
+              </LinearGradient>
+              <RateAppButton longButtonGradient={longButtonGradient} />
+              <ShareAppButton longButtonGradient={longButtonGradient} />
+              <LinearGradient colors={longButtonGradient}>
+                <ModalLongButton
+                  buttonIcon={faArrowRight}
+                  buttonTitle={t('accountScreen.SignOutButtonTitle')}
+                  description={t('accountScreen.SignOutModalTitle')}
+                  disabled={waitingProcess}
+                  okHandler={signOutHandler}
+                />
+              </LinearGradient>
+            </View>
           </View>
-          <View>
-            <LinearGradient colors={longButtonGradient}>
-              <ChangeLanguageButton setIsLoading={setWaitingProcess} />
-            </LinearGradient>
-            <LinearGradient colors={longButtonGradient}>
-              <DarkModeButton setIsLoading={setWaitingProcess} />
-            </LinearGradient>
-            <LinearGradient colors={longButtonGradient}>
-              <SelectAccentColorButton setIsLoading={setWaitingProcess} />
-            </LinearGradient>
-            <LinearGradient colors={longButtonGradient}>
-              <LongButton
-                icon={faAt}
-                onPress={() => navigateToAuthorCommunicationScreen()}
-                title={t('accountScreen.ContactTheAuthorButtonTitle')}
-              />
-            </LinearGradient>
-            <RateAppButton longButtonGradient={longButtonGradient} />
-            <ShareAppButton longButtonGradient={longButtonGradient} />
-            <LinearGradient colors={longButtonGradient}>
-              <ModalLongButton
-                buttonIcon={faArrowRight}
-                buttonTitle={t('accountScreen.SignOutButtonTitle')}
-                description={t('accountScreen.SignOutModalTitle')}
-                disabled={waitingProcess}
-                okHandler={signOutHandler}
-              />
-            </LinearGradient>
-            <LinearGradient colors={longButtonGradient}>
-              <ModalLongButton
-                buttonIcon={faTrash}
-                buttonTitle={t('accountScreen.DeleteAccountButtonTitle')}
-                description={t('accountScreen.DeleteAccountModalTitle')}
-                descriptionTextStyle={styles.redText}
-                disabled={waitingProcess}
-                okHandler={deleteAccountHandler}
-                okTextStyle={styles.redText}
-              />
-            </LinearGradient>
-          </View>
-        </View>
-      </ScrollView>
+        </ScrollView>
+      </>
     );
   }
 

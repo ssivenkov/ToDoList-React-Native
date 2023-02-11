@@ -41,6 +41,8 @@ export const ModalIcon = (props: ModalIconPropsType) => {
     okDisabled,
     inputFocus,
     hasContentPaddingBottom = true,
+    descriptionTextStyle,
+    okTextStyle,
   } = props;
 
   const styles = useStyles(modalStyles);
@@ -92,7 +94,11 @@ export const ModalIcon = (props: ModalIconPropsType) => {
               <View style={styles.modalView}>
                 {description && (
                   <View style={styles.descriptionContainer}>
-                    <Text style={styles.text}>{description}</Text>
+                    <Text
+                      style={descriptionTextStyle ? descriptionTextStyle : styles.text}
+                    >
+                      {description}
+                    </Text>
                   </View>
                 )}
                 {children && (
@@ -115,6 +121,7 @@ export const ModalIcon = (props: ModalIconPropsType) => {
                   <ModalMenuButton
                     disabled={okDisabled}
                     leftRounding={true}
+                    okTextStyle={okTextStyle}
                     onPress={onOkButtonPress}
                     rightRounding={false}
                     title={okText}
