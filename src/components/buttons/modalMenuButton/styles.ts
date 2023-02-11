@@ -1,24 +1,17 @@
 import { COLORS } from '@colors/colors';
-import { modalBorderRadius } from '@constants/constants';
 import { ExtendedStylesPropsType } from '@hooks/useStyles';
 import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
 type ModalMenuButtonStylesType = {
-  leftBorderRadius: ViewStyle;
   modalMenuButton: ViewStyle;
   modalMenuButtonDisabled: ViewStyle;
   modalMenuButtonGradientWrapper: ViewStyle;
-  rightBorderRadius: ViewStyle;
   separator: ViewStyle;
   text: TextStyle;
 };
 
 export const modalMenuButtonStyles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<ModalMenuButtonStylesType>({
-    leftBorderRadius: {
-      borderBottomLeftRadius: modalBorderRadius,
-    },
-
     modalMenuButton: {
       alignItems: 'center',
       flexGrow: 1,
@@ -32,10 +25,6 @@ export const modalMenuButtonStyles = (props: ExtendedStylesPropsType) =>
 
     modalMenuButtonGradientWrapper: {
       flex: 1,
-    },
-
-    rightBorderRadius: {
-      borderBottomRightRadius: modalBorderRadius,
     },
 
     separator: {

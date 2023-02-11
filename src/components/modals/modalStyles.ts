@@ -2,7 +2,6 @@ import { COLORS } from '@colors/colors';
 import {
   defaultModalIndentBottom,
   defaultModalPaddingHorizontal,
-  modalBorderRadius,
   modalContentMaxWidth,
 } from '@constants/constants';
 import { ExtendedStylesPropsType } from '@hooks/useStyles';
@@ -61,7 +60,7 @@ export const modalStyles = (props: ExtendedStylesPropsType) =>
 
     modalView: {
       backgroundColor: props.MODAL_BACKGROUND_COLOR,
-      borderRadius: modalBorderRadius,
+      borderRadius: 20,
       justifyContent: 'space-between',
       maxHeight:
         props.appHeight -

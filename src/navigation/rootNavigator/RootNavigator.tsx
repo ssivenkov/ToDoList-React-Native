@@ -119,9 +119,7 @@ export const RootNavigator = () => {
             </View>
             <View style={styles.buttonsContainer}>
               <ModalMenuButton
-                leftRounding={true}
                 onPress={onCloseErrorModalPress}
-                rightRounding={true}
                 title={t('common.Close')}
               />
             </View>

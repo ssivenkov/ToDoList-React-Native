@@ -119,19 +119,15 @@ export const ModalIcon = (props: ModalIconPropsType) => {
                 )}
                 <View style={styles.buttonsContainer}>
                   <ModalMenuButton
-                    disabled={okDisabled}
-                    leftRounding={true}
-                    okTextStyle={okTextStyle}
-                    onPress={onOkButtonPress}
-                    rightRounding={false}
-                    title={okText}
+                    onPress={onCancelButtonPress}
+                    title={t('common.Close')}
                   />
                   <Separator />
                   <ModalMenuButton
-                    leftRounding={false}
-                    onPress={onCancelButtonPress}
-                    rightRounding={true}
-                    title={t('common.Close')}
+                    disabled={okDisabled}
+                    okTextStyle={okTextStyle}
+                    onPress={onOkButtonPress}
+                    title={okText}
                   />
                 </View>
               </View>
