@@ -3,15 +3,15 @@ import { SetStateType } from '@root/types/common/types';
 import { TaskListWithoutTasksType } from '@store/reducers/tasksReducer/types';
 
 export type AddNewTaskListSagaPayloadType = {
-  taskList: TaskListWithoutTasksType;
   setIsLoading: SetStateType<boolean>;
   setModalVisible: SetStateType<boolean>;
   setTaskListTitle: SetStateType<string>;
+  taskList: TaskListWithoutTasksType;
 };
 
 export type AddNewTaskListSagaActionReturnType = {
-  type: TASKS_SAGA_ACTION.ADD_NEW_TASK_LIST;
   payload: AddNewTaskListSagaPayloadType;
+  type: TASKS_SAGA_ACTION.ADD_NEW_TASK_LIST;
 };
 
 export type AddNewTaskListActionType = (
@@ -19,6 +19,6 @@ export type AddNewTaskListActionType = (
 ) => AddNewTaskListSagaActionReturnType;
 
 export const addNewTaskListAction: AddNewTaskListActionType = (payload) => ({
-  type: TASKS_SAGA_ACTION.ADD_NEW_TASK_LIST,
   payload,
+  type: TASKS_SAGA_ACTION.ADD_NEW_TASK_LIST,
 });

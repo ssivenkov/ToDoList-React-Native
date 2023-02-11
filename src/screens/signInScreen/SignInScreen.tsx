@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { signInScreenGradient } from '@colors/gradients';
-import { Loader } from '@components/loader/Loader';
+import { PurpleLoader } from '@components/loaders/purpleLoader/PurpleLoader';
 import { FIREBASE_OTHER } from '@enums/firebaseEnum';
 import { faFacebook } from '@fortawesome/free-brands-svg-icons/faFacebook';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons/faGoogle';
@@ -29,8 +29,6 @@ export const SignInScreen = () => {
 
   const waitingUserDataOnSignIn = useSelector(isWaitingUserDataOnSignInSelector);
 
-  const isDeveloperMode = __DEV__;
-
   const onGoogleButtonPress = () => {
     dispatch(googleSignInAction());
   };
@@ -43,7 +41,7 @@ export const SignInScreen = () => {
     <LinearGradient colors={signInScreenGradient}>
       <View style={styles.signInWrapper}>
         {waitingUserDataOnSignIn ? (
-          <Loader />
+          <PurpleLoader />
         ) : (
           <View style={styles.signInContainer}>
             <Image
@@ -58,15 +56,13 @@ export const SignInScreen = () => {
               onPress={onGoogleButtonPress}
               serviceTitle={GOOGLE_TITLE}
             />
-            {isDeveloperMode && (
-              <SignInButton
-                colorStyle={signInButtonStyles.facebookStyle}
-                disabled={waitingUserDataOnSignIn}
-                icon={faFacebook}
-                onPress={onFacebookButtonPress}
-                serviceTitle={FACEBOOK_TITLE}
-              />
-            )}
+            <SignInButton
+              colorStyle={signInButtonStyles.facebookStyle}
+              disabled={waitingUserDataOnSignIn}
+              icon={faFacebook}
+              onPress={onFacebookButtonPress}
+              serviceTitle={FACEBOOK_TITLE}
+            />
           </View>
         )}
       </View>

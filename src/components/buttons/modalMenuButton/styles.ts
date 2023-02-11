@@ -1,27 +1,28 @@
 import { COLORS } from '@colors/colors';
-import { modalBorderRadius } from '@components/modals/modalStyles';
+import { modalBorderRadius } from '@constants/constants';
 import { ExtendedStylesPropsType } from '@hooks/useStyles';
 import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
 type ModalMenuButtonStylesType = {
-  modalMenuButtonGradientWrapper: ViewStyle;
+  leftBorderRadius: ViewStyle;
   modalMenuButton: ViewStyle;
   modalMenuButtonDisabled: ViewStyle;
-  leftBorderRadius: ViewStyle;
+  modalMenuButtonGradientWrapper: ViewStyle;
   rightBorderRadius: ViewStyle;
-  text: TextStyle;
   separator: ViewStyle;
+  text: TextStyle;
 };
 
 export const modalMenuButtonStyles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<ModalMenuButtonStylesType>({
-    modalMenuButtonGradientWrapper: {
-      flex: 1,
+    leftBorderRadius: {
+      borderBottomLeftRadius: modalBorderRadius,
     },
 
     modalMenuButton: {
       alignItems: 'center',
-      justifyContent: 'space-between',
+      flexGrow: 1,
+      justifyContent: 'center',
       padding: 10,
     },
 
@@ -29,23 +30,24 @@ export const modalMenuButtonStyles = (props: ExtendedStylesPropsType) =>
       opacity: 0.2,
     },
 
-    leftBorderRadius: {
-      borderBottomLeftRadius: modalBorderRadius,
+    modalMenuButtonGradientWrapper: {
+      flex: 1,
     },
 
     rightBorderRadius: {
       borderBottomRightRadius: modalBorderRadius,
     },
 
-    text: {
-      fontSize: 20,
-      color: props.TEXT_COLOR,
-      marginBottom: 2,
-      paddingHorizontal: 10,
+    separator: {
+      backgroundColor: props.darkMode ? COLORS.WOODSMOKE3 : COLORS.WHITE,
+      width: 1,
     },
 
-    separator: {
-      width: 1,
-      backgroundColor: props.darkMode ? COLORS.WOODSMOKE2 : COLORS.WHITE,
+    text: {
+      color: props.TEXT_COLOR,
+      fontSize: 20,
+      marginBottom: 2,
+      paddingHorizontal: 10,
+      textAlign: 'center',
     },
   });

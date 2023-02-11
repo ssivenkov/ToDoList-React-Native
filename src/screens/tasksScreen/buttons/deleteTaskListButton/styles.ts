@@ -3,21 +3,21 @@ import { ExtendedStylesPropsType } from '@hooks/useStyles';
 import { StyleSheet, TextStyle } from 'react-native';
 
 type DeleteTaskListButtonStylesType = {
-  warnText: TextStyle;
   redHighlightTask: TextStyle;
+  warnText: TextStyle;
 };
 
 const { RED } = COLORS;
 
 export const deleteTaskListButtonStyles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<DeleteTaskListButtonStylesType>({
-    warnText: {
-      fontSize: 18,
-      color: props.TEXT_COLOR,
-    },
-
     redHighlightTask: {
       color: RED,
       fontWeight: '500',
+    },
+
+    warnText: {
+      color: props.TEXT_COLOR,
+      fontSize: 18,
     },
   });

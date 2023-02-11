@@ -1,21 +1,21 @@
 export enum FIREBASE_PATH {
-  USERS = 'Users',
-  TASK_LISTS = 'taskLists',
-  TASKS = 'tasks',
+  ACCENT_COLOR = 'accentColor',
+  COLOR_MARK = 'colorMark',
+  DARK_MODE = 'darkMode',
+  IS_DONE = 'isDone',
+  LANGUAGE = 'language',
   NOTEPAD = 'notepad',
   NOTEPAD_TEXT = 'notepadText',
-  COLOR_MARK = 'colorMark',
-  ACCENT_COLOR = 'accentColor',
-  DARK_MODE = 'darkMode',
-  LANGUAGE = 'language',
-  TITLE = 'title',
-  IS_DONE = 'isDone',
   SHOW_IN_TODO = 'showInToDo',
+  TASKS = 'tasks',
+  TASK_LISTS = 'taskLists',
+  TITLE = 'title',
+  USERS = 'Users',
 }
 
 export enum FIREBASE_OTHER {
-  GOOGLE_TITLE = 'Google',
+  FACEBOOK_PROVIDER_ID = 'facebook.com',
   FACEBOOK_TITLE = 'Facebook',
   GOOGLE_PROVIDER_ID = 'google.com',
-  FACEBOOK_PROVIDER_ID = 'facebook.com',
+  GOOGLE_TITLE = 'Google',
 }

@@ -7,19 +7,17 @@ import { faUser } from '@fortawesome/free-solid-svg-icons/faUser';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { WithAuthNavigatorScreenSettingsType } from '@navigation/withAuthNavigator/types';
 import { CreateTaskListButton } from '@screens/tasksScreen/buttons/createTaskListButton/CreateTaskListButton';
-import { t } from 'i18next';
-import { View } from 'react-native';
 
 export const withAuthNavigatorOptions: WithAuthNavigatorScreenSettingsType = (params) => {
   const { styles, theme, accentColor } = params;
 
   return {
     headerShown: false,
-    tabBarStyle: styles.tabBarContainer,
     tabBarActiveTintColor: accentColor,
+    tabBarIconStyle: styles.bottomTabBarIcon,
     tabBarInactiveTintColor: theme.TAB_BAR_TEXT_COLOR,
-    tabBarIconStyle: styles.icon,
-    tabBarLabelStyle: styles.title,
+    tabBarLabelStyle: styles.bottomTabBarTitle,
+    tabBarStyle: styles.bottomTabBarContainer,
   };
 };
 
@@ -28,12 +26,11 @@ export const notepadScreenSettings: WithAuthNavigatorScreenSettingsType = (param
 
   return {
     headerShown: false,
-    tabBarLabel: t('notepadScreen.Notepad'),
     tabBarIcon: ({ focused }) => (
       <FontAwesomeIcon
         icon={faFileAlt}
         size={ICON_SIZE_HALF_MEDIUM}
-        style={focused ? styles.tabFocusIcon : styles.tabIcon}
+        style={focused ? styles.bottomTabIconFocus : styles.bottomTabIcon}
       />
     ),
   };
@@ -43,22 +40,16 @@ export const tasksNavigatorSettings: WithAuthNavigatorScreenSettingsType = (para
   const { styles } = params;
 
   return {
+    headerRight: () => <CreateTaskListButton />,
     headerShown: true,
     headerStyle: styles.header,
-    headerTitle: t('tasksScreen.Tasks'),
-    headerTitleStyle: styles.headerTitle,
     headerTitleAlign: 'center',
-    tabBarLabel: t('tasksScreen.Tasks'),
-    headerRight: () => (
-      <View style={styles.rightButtonContainer}>
-        <CreateTaskListButton />
-      </View>
-    ),
+    headerTitleStyle: styles.headerTitle,
     tabBarIcon: ({ focused }) => (
       <FontAwesomeIcon
         icon={faList}
         size={ICON_SIZE_HALF_MEDIUM}
-        style={focused ? styles.tabFocusIcon : styles.tabIcon}
+        style={focused ? styles.bottomTabIconFocus : styles.bottomTabIcon}
       />
     ),
   };
@@ -70,15 +61,13 @@ export const accountScreenSettings: WithAuthNavigatorScreenSettingsType = (param
   return {
     headerShown: true,
     headerStyle: styles.header,
-    headerTitle: t('accountScreen.Account'),
-    headerTitleStyle: styles.headerTitle,
     headerTitleAlign: 'center',
-    tabBarLabel: t('accountScreen.Account'),
+    headerTitleStyle: styles.headerTitle,
     tabBarIcon: ({ focused }) => (
       <FontAwesomeIcon
         icon={faUser}
         size={ICON_SIZE_HALF_MEDIUM}
-        style={focused ? styles.tabFocusIcon : styles.tabIcon}
+        style={focused ? styles.bottomTabIconFocus : styles.bottomTabIcon}
       />
     ),
   };

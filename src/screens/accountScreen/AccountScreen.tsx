@@ -1,18 +1,20 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 
 import { longButtonDarkGradient, longButtonLightGradient } from '@colors/gradients';
 import { LongButton } from '@components/buttons/longButton/LongButton';
-import { Loader } from '@components/loader/Loader';
+import { PurpleLoader } from '@components/loaders/purpleLoader/PurpleLoader';
 import { ModalLongButton } from '@components/modals/ModalLongButton';
 import { ROOT_NAVIGATOR_ROUTE } from '@enums/routesEnum';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons/faArrowRight';
 import { faAt } from '@fortawesome/free-solid-svg-icons/faAt';
 import { faTrash } from '@fortawesome/free-solid-svg-icons/faTrash';
 import { useStyles } from '@hooks/useStyles';
-import { useNavigation } from '@react-navigation/native';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import { ChangeLanguageButton } from '@screens/accountScreen/buttons/changeLanguageButton/ChangeLanguageButton';
 import { DarkModeButton } from '@screens/accountScreen/buttons/darkModeButton/DarkModeButton';
+import { RateAppButton } from '@screens/accountScreen/buttons/rateAppButton/RateAppButton';
 import { SelectAccentColorButton } from '@screens/accountScreen/buttons/selectAccentColorButton/SelectAccentColorButton';
+import { ShareAppButton } from '@screens/accountScreen/buttons/shareAppButton/ShareAppButton';
 import { deleteAccountAction } from '@store/actions/userSagaActions/deleteAccountAction';
 import { signOutAction } from '@store/actions/userSagaActions/signOutAction';
 import {
@@ -21,7 +23,7 @@ import {
   userDataSelector,
 } from '@store/selectors/userSelectors';
 import { useTranslation } from 'react-i18next';
-import { Image, ScrollView, Text, View } from 'react-native';
+import { BackHandler, Image, ScrollView, Text, View } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -59,6 +61,20 @@ export const AccountScreen = () => {
     dispatch(deleteAccountAction({ setWaitingProcess }));
   };
 
+  useFocusEffect(
+    useCallback(() => {
+      const onBackPress = () => {
+        BackHandler.exitApp();
+
+        return true;
+      };
+
+      const subscription = BackHandler.addEventListener('hardwareBackPress', onBackPress);
+
+      return () => subscription.remove();
+    }, []),
+  );
+
   if (userData && !waitingProcess) {
     return (
       <ScrollView>
@@ -90,11 +106,13 @@ export const AccountScreen = () => {
                 title={t('accountScreen.ContactTheAuthorButtonTitle')}
               />
             </LinearGradient>
+            <RateAppButton longButtonGradient={longButtonGradient} />
+            <ShareAppButton longButtonGradient={longButtonGradient} />
             <LinearGradient colors={longButtonGradient}>
               <ModalLongButton
                 buttonIcon={faArrowRight}
-                buttonTitle={t('accountScreen.SignOut')}
-                description={t('accountScreen.SignOutWarning')}
+                buttonTitle={t('accountScreen.SignOutButtonTitle')}
+                description={t('accountScreen.SignOutModalTitle')}
                 disabled={waitingProcess}
                 okHandler={signOutHandler}
               />
@@ -102,10 +120,12 @@ export const AccountScreen = () => {
             <LinearGradient colors={longButtonGradient}>
               <ModalLongButton
                 buttonIcon={faTrash}
-                buttonTitle={t('accountScreen.DeleteAccount')}
-                description={t('accountScreen.DeleteAccountWarning')}
+                buttonTitle={t('accountScreen.DeleteAccountButtonTitle')}
+                description={t('accountScreen.DeleteAccountModalTitle')}
+                descriptionTextStyle={styles.redText}
                 disabled={waitingProcess}
                 okHandler={deleteAccountHandler}
+                okTextStyle={styles.redText}
               />
             </LinearGradient>
           </View>
@@ -114,5 +134,5 @@ export const AccountScreen = () => {
     );
   }
 
-  return <Loader />;
+  return <PurpleLoader />;
 };

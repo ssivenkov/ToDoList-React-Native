@@ -109,8 +109,8 @@ export function* deleteTaskListFromScreenSaga(
 
     yield put(
       deleteTaskListFromScreenAction({
-        deleteTodoTask,
         deleteDoneTask,
+        deleteTodoTask,
         fullTaskList,
       }),
     );

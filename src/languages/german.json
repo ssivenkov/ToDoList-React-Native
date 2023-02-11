@@ -2,67 +2,82 @@
   "translation": {
     "common": {
       "Ok": "Ok",
-      "Close": "Schließen Sie",
-      "NoInternetConnection": "Keine Internetverbindung. Bitte stellen Sie eine Verbindung mit dem Internet her",
-      "NoIOSNotificationsPermission": "Keine Berechtigung für Benachrichtigungen. Erteilen Sie der App die Erlaubnis, Benachrichtigungen anzuzeigen"
+      "Cancel": "Stornieren",
+      "Confirm": "Bestätigen",
+      "Select": "Wählen",
+      "Close": "Schließen sie",
+      "NoInternetConnection": "Keine internetverbindung. Bitte stellen sie eine verbindung mit dem internet her",
+      "NoIOSNotificationsPermission": "Keine berechtigung für benachrichtigungen. Erteilen sie der app die erlaubnis, benachrichtigungen anzuzeigen"
     },
-    "tasksScreen": {
-      "Tasks": "Aufgabenlisten",
-      "CreateTaskButtonTitle": "Neue Aufgabenbezeichnung eingeben",
-      "CreateTaskListButtonTitle": "Neuen Aufgabentitel eingeben:",
-      "DeleteQuestionButtonTitle": "Sind Sie sicher, dass Sie <0>{{text}}</0> löschen wollen?",
-      "DoneButton": "Sind Sie sicher, dass die Aufgabe <0>{{text}}</0> abgeschlossen ist?",
-      "EditTaskListButtonTitle": "Titel der Aufgabenliste bearbeiten:",
-      "EditTaskButton": "Aufgabe bearbeiten",
-      "TodoTasksTab": "Erledigte Aufgaben",
-      "DoneTasksTab": "Erledigte Aufgaben",
-      "NoTaskListsFound": "Keine Aufgabenliste gefunden",
-      "EnableNotification": "Erinnern Sie an die Aufgabe",
-      "EnableMarkColor": "Farbe der Aufgabe",
+    "notification": {
       "TaskNotification": "Aufgabe ausführen"
     },
+    "snackBar": {
+      "taskIsDone": "Aufgabe ist erledigt",
+      "taskIsToDo": "Aufgabe zurückgegeben"
+    },
+    "tasksScreen": {
+      "HeaderTitle": "Aufgabenlisten",
+      "CreateTaskListModalTitle": "Neuen aufgabentitel eingeben",
+      "DeleteModalQuestion": "Sind sie sicher, dass sie <0>{{text}}</0> löschen wollen?",
+      "EditTaskListModalTitle": "Titel der aufgabenliste bearbeiten",
+      "TodoTasksTabTitle": "Fertige aufgaben",
+      "DoneTasksTabTitle": "Erledigte aufgaben",
+      "NoTaskListsFound": "Keine aufgabenliste gefunden",
+      "EnableNotification": "Erinnern sie an die aufgabe",
+      "EnableColorMark": "Farbe der aufgabe"
+    },
+    "addTaskScreen": {
+      "HeaderTitle": "Neue aufgabe",
+      "AddTaskInputSuptitle": "Neuer aufgabentext"
+    },
+    "editTaskScreen": {
+      "HeaderTitle": "Eine aufgabe ändern",
+      "EditTaskInputSuptitle": "Aufgabentext"
+    },
     "signInScreen": {
-      "SignIn": "Eintragen",
-      "SignInWith": "Anmeldung mit <0>{{text}}</0>",
-      "CancelAuthProcess": "Benutzer hat den Anmeldevorgang abgebrochen",
-      "ErrorGettingAccessToken": "Beim Abrufen des Zugriffstokens ist etwas schief gelaufen"
+      "SignIn": "Einloggen",
+      "SignInWithButtonTitle": "Einloggen über <0>{{text}}</0>",
+      "CancelAuthProcessModalTitle": "Benutzer hat den anmeldevorgang abgebrochen",
+      "GettingAccessTokenErrorModalTitle": "Beim abrufen des zugriffstokens ist etwas schief gelaufen",
+      "DeleteAccountSuccessfully": "Ihr Konto wurde erfolgreich gelöscht"
     },
     "accountScreen": {
-      "Account": "Konto",
-      "DarkMode": "Dunkler Modus",
-      "SignOut": "Abmelden",
-      "SignOutWarning": "Sind Sie sicher, dass Sie sich abmelden wollen?",
+      "HeaderTitle": "Konto",
+      "DarkModeButtonTitle": "Dunkler modus",
+      "SignOutButtonTitle": "Abmelden",
+      "SignOutModalTitle": "Sind sie sicher, dass sie sich abmelden wollen?",
       "ChangeLanguageButtonTitle": "Sprache",
-      "ChangeLanguageButtonDescription": "Sprache der Anwendung wählen:",
-      "DeleteAccount": "Konto löschen",
-      "DeleteAccountWarning": "Sind Sie sicher, dass Sie Ihr Konto mit allen Daten löschen wollen?",
-      "AccentColorDescription": "Akzentfarbe auswählen:",
+      "ChangeLanguageModalTitle": "Sprache der anwendung wählen",
+      "DeleteAccountButtonTitle": "Konto löschen",
+      "DeleteAccountModalTitle": "Sind sie sicher, dass sie ihr konto mit allen daten löschen wollen?",
+      "AccentColorModalTitle": "Akzentfarbe auswählen",
       "AccentColorButtonTitle": "Akzentfarbe",
-      "ContactTheAuthorButtonTitle": "Kontaktieren Sie den Autor"
+      "ContactTheAuthorButtonTitle": "Kontaktieren sie den autor",
+      "RateAppButtonTitle": "Bewerte die App",
+      "ShareAppButtonTitle": "App teilen",
+      "ShareAppMessage": "Ich benutze gerne die ToDo List App. Versuchen!"
     },
     "contactTheAuthorScreen": {
-      "HeaderTitle": "Kontaktieren Sie den Autor",
-      "EmailPlaceholder": "Email",
-      "SubjectPlaceholder": "Betreff der Nachricht",
-      "MessagePlaceholder": "Nachricht",
+      "HeaderTitle": "Kommunikation mit dem autor",
       "EmailSuptext": "Email",
-      "EmailSubtext": "Eine Antwort wird an diese E-Mail gesendet",
+      "EmailSubtext": "Eine antwort wird an diese email gesendet",
       "MessageSuptext": "Nachrichtentext",
-      "SendButton": "Schicken",
-      "ContactTheAuthorSuccess": "Vielen Dank! Ihre Nachricht wurde gesendet. Der Autor wird Sie in Kürze kontaktieren",
-      "ContactTheAuthorError": "Unbekannter Fehler. Bitte versuchen Sie, eine andere Email-Adresse einzugeben",
-      "InvalidEmailError": "Ungültige E-Mail-Adresse",
-      "EmailRequiredError": "Email erforderlich",
-      "MessageRequiredError": "Nachrichtentext erforderlich"
+      "SendButtonTitle": "Schicken",
+      "ContactTheAuthorSuccessModalTitle": "Vielen dank! Ihre nachricht wurde gesendet. Der autor wird sie in kürze kontaktieren",
+      "ContactTheAuthorErrorModalTitle": "Unbekannter fehler. Bitte versuchen sie, eine andere email adresse einzugeben",
+      "InvalidEmailErrorTitle": "Ungültige email adresse",
+      "EmailRequiredErrorTitle": "Email erforderlich",
+      "MessageRequiredErrorTitle": "Nachrichtentext erforderlich"
     },
     "notepadScreen": {
-      "Notepad": "Notizblock",
-      "NotepadPlaceholder": "Text",
-      "CleanButtonWarningTitle": "Möchten Sie den Notizblock wirklich löschen?",
-      "CleanNotepadTextRequestError": "Keine Internetverbindung, Notizblock wurde nur auf Ihrem Gerät gelöscht. Um den Notizblock auf dem Server zu löschen, schalten Sie das Internet ein und wiederholen Sie die Anfrage",
-      "SaveNotepadTextRequestError": "Keine Internetverbindung, Notizblock wurde nur auf Ihrem Gerät gespeichert. Um Notepad auf dem Server zu speichern, schalten Sie das Internet ein und wiederholen Sie die Anfrage",
-      "NotepadCleared": "Notizblock gelöscht",
-      "NotepadSaved": "Notizblock gespeichert"
+      "HeaderTitle": "Notizblock",
+      "NotepadPlaceholder": "Dein text",
+      "CleanButtonModalTitle": "Möchten sie den notizblock wirklich löschen?",
+      "CleanNotepadTextRequestErrorModalTitle": "Keine internetverbindung, notizblock wurde nur auf ihrem gerät gelöscht. Um den notizblock auf dem server zu löschen, schalten sie das internet ein und wiederholen sie die anfrage",
+      "SaveNotepadTextRequestErrorModalTitle": "Keine internetverbindung, notizblock wurde nur auf ihrem gerät gespeichert. Um den notizblock auf dem server zu speichern, schalten sie das internet ein und wiederholen sie die anfrage",
+      "NotepadClearedModalTitle": "Notizblock gelöscht",
+      "NotepadSavedModalTitle": "Notizblock gespeichert"
     }
   }
 }

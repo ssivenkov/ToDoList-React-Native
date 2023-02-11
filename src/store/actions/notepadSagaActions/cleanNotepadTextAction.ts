@@ -3,15 +3,15 @@ import { SetStateType } from '@root/types/common/types';
 import { NotepadTextSetStateType } from '@screens/notepadScreen/types';
 
 export type CleanNotepadTextSagaPayloadType = {
-  setNotepadText: NotepadTextSetStateType;
+  setButtonDisabled: SetStateType<boolean>;
   setIsLoading: SetStateType<boolean>;
   setModalVisible: SetStateType<boolean>;
-  setButtonDisabled: SetStateType<boolean>;
+  setNotepadText: NotepadTextSetStateType;
 };
 
 export type CleanNotepadTextSagaActionReturnType = {
-  type: NOTEPAD_SAGA_ACTION.CLEAN_NOTEPAD_TEXT;
   payload: CleanNotepadTextSagaPayloadType;
+  type: NOTEPAD_SAGA_ACTION.CLEAN_NOTEPAD_TEXT;
 };
 
 export type CleanNotepadTextActionType = (
@@ -19,6 +19,6 @@ export type CleanNotepadTextActionType = (
 ) => CleanNotepadTextSagaActionReturnType;
 
 export const cleanNotepadTextAction: CleanNotepadTextActionType = (payload) => ({
-  type: NOTEPAD_SAGA_ACTION.CLEAN_NOTEPAD_TEXT,
   payload,
+  type: NOTEPAD_SAGA_ACTION.CLEAN_NOTEPAD_TEXT,
 });

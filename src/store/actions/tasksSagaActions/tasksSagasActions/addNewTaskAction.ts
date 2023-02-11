@@ -1,22 +1,22 @@
 import { TASKS_SAGA_ACTION } from '@enums/tasksSagaEnum';
 import { Nullable, SetStateType } from '@root/types/common/types';
-import { TaskListInterface, TaskType } from '@store/reducers/tasksReducer/types';
+import { TaskListType, TaskType } from '@store/reducers/tasksReducer/types';
 
 export type AddNewTaskSagaPayloadType = {
-  modifiedTaskList: TaskListInterface;
-  newTask: TaskType;
-  shouldCreateNotification: boolean;
   date: Nullable<Date>;
-  setLoading: SetStateType<boolean>;
-  setButtonDisabled: SetStateType<boolean>;
   goBack: () => void;
-  setNewTaskTitle: SetStateType<string>;
+  modifiedTaskList: TaskListType;
+  newTask: TaskType;
+  setButtonDisabled: SetStateType<boolean>;
   setIsNotificationSwitcherOn: SetStateType<boolean>;
+  setLoading: SetStateType<boolean>;
+  setNewTaskTitle: SetStateType<string>;
+  shouldCreateNotification: boolean;
 };
 
 export type AddNewTaskSagaActionReturnType = {
-  type: TASKS_SAGA_ACTION.ADD_NEW_TASK;
   payload: AddNewTaskSagaPayloadType;
+  type: TASKS_SAGA_ACTION.ADD_NEW_TASK;
 };
 
 export type AddNewTaskSagaActionType = (
@@ -24,6 +24,6 @@ export type AddNewTaskSagaActionType = (
 ) => AddNewTaskSagaActionReturnType;
 
 export const addNewTaskAction: AddNewTaskSagaActionType = (payload) => ({
-  type: TASKS_SAGA_ACTION.ADD_NEW_TASK,
   payload,
+  type: TASKS_SAGA_ACTION.ADD_NEW_TASK,
 });

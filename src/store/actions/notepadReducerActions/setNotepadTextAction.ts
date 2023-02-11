@@ -6,8 +6,8 @@ type SetNotepadTextActionPayloadType = {
 };
 
 export type SetNotepadTextActionReturnType = {
-  type: NOTEPAD_REDUCER_ACTION.SET_NOTEPAD_TEXT;
   payload: SetNotepadTextActionPayloadType;
+  type: NOTEPAD_REDUCER_ACTION.SET_NOTEPAD_TEXT;
 };
 
 export type SetNotepadTextActionType = (
@@ -15,6 +15,6 @@ export type SetNotepadTextActionType = (
 ) => SetNotepadTextActionReturnType;
 
 export const setNotepadTextAction: SetNotepadTextActionType = (payload) => ({
-  type: NOTEPAD_REDUCER_ACTION.SET_NOTEPAD_TEXT,
   payload,
+  type: NOTEPAD_REDUCER_ACTION.SET_NOTEPAD_TEXT,
 });

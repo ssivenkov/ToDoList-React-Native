@@ -14,8 +14,8 @@ import { call, cancel, delay, put, putResolve } from 'redux-saga/effects';
 
 export type AuthCredentialType = {
   providerId: string;
-  token: string;
   secret: string;
+  token: string;
 };
 
 export function* googleSignInSaga() {
@@ -43,7 +43,7 @@ export function* googleSignInSaga() {
     if (!idToken) {
       yield put(
         setModalMessageAction({
-          modalMessage: t('signInScreen.ErrorGettingAccessToken'),
+          modalMessage: t('signInScreen.GettingAccessTokenErrorModalTitle'),
         }),
       );
 
@@ -71,7 +71,7 @@ export function* googleSignInSaga() {
     ) {
       yield put(
         setModalMessageAction({
-          modalMessage: t('signInScreen.CancelAuthProcess'),
+          modalMessage: t('signInScreen.CancelAuthProcessModalTitle'),
         }),
       );
     } else if (error instanceof Error) {

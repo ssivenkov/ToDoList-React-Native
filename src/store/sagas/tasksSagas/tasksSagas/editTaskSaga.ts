@@ -12,6 +12,7 @@ import { DB } from '@root/api/DB';
 import * as Sentry from '@sentry/react-native';
 import { editTaskNotificationAction } from '@store/actions/tasksReducerActions/notificationsActions/editTaskNotificationAction';
 import { setEditedTaskAction } from '@store/actions/tasksReducerActions/tasksActions/setEditedTaskAction';
+import { closeTaskHorizontalMenuAction } from '@store/actions/tasksSagaActions/tasksSagasActions/closeTaskHorizontalMenuAction';
 import { SetEditedTaskActionSagaReturnType } from '@store/actions/tasksSagaActions/tasksSagasActions/setEditedTaskAction';
 import { setModalMessageAction } from '@store/actions/userReducerActions/setModalMessageAction';
 import { NotificationType, TaskType } from '@store/reducers/tasksReducer/types';
@@ -167,9 +168,9 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
       yield put(
         editTaskNotificationAction({
           notification: {
-            taskID,
-            notificationID,
             date,
+            notificationID,
+            taskID,
           },
         }),
       );
@@ -178,10 +179,10 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
     if (shouldSetColor && colorMark) {
       yield put(
         setEditedTaskAction({
-          taskListID,
-          taskID,
-          editedTaskTitle,
           colorMark: colorMark,
+          editedTaskTitle,
+          taskID,
+          taskListID,
         }),
       );
 
@@ -189,10 +190,10 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
     } else if (shouldSetColor && !colorMark) {
       yield put(
         setEditedTaskAction({
-          taskListID,
-          taskID,
-          editedTaskTitle,
           colorMark: selectedColor,
+          editedTaskTitle,
+          taskID,
+          taskListID,
         }),
       );
 
@@ -200,14 +201,16 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
     } else {
       yield put(
         setEditedTaskAction({
-          taskListID,
-          taskID,
           editedTaskTitle,
+          taskID,
+          taskListID,
         }),
       );
 
       yield call(setColorMark, '');
     }
+
+    yield put(closeTaskHorizontalMenuAction());
 
     yield call(goBack);
     yield call(setEditedTaskTitle, editedTaskTitle);

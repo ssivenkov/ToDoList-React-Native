@@ -2,7 +2,12 @@ import React, { useState } from 'react';
 
 import { ColorPickerComponent } from '@components/colorPicker/ColorPicker';
 import { ModalLongButton } from '@components/modals/ModalLongButton';
-import { screenWidth480px } from '@constants/constants';
+import {
+  colorPickerDefaultGapSize,
+  defaultModalPaddingHorizontal,
+  modalContentMaxWidth,
+  screenWidth480px,
+} from '@constants/constants';
 import { faPalette } from '@fortawesome/free-solid-svg-icons/faPalette';
 import { useStyles } from '@hooks/useStyles';
 import { selectAccentColorButtonStyles } from '@screens/accountScreen/buttons/selectAccentColorButton/styles';
@@ -30,13 +35,19 @@ export const SelectAccentColorButton = (props: SelectAccentColorButtonPropsType)
 
   const { width: appWidth } = useWindowDimensions();
 
+  const narrowScreenColorPickerPaddingHorizontal = 12;
+
+  const contentPaddingHorizontal =
+    appWidth >= modalContentMaxWidth
+      ? defaultModalPaddingHorizontal
+      : narrowScreenColorPickerPaddingHorizontal;
+
   const colorPickerGapSizeOnNarrowScreen = 0;
-  const colorPickerGapSizeOnOtherScreens = 20;
 
   const colorPickerGapSize =
     appWidth <= screenWidth480px
       ? colorPickerGapSizeOnNarrowScreen
-      : colorPickerGapSizeOnOtherScreens;
+      : colorPickerDefaultGapSize;
 
   const setAccentColor = () => {
     dispatch(
@@ -56,8 +67,11 @@ export const SelectAccentColorButton = (props: SelectAccentColorButtonPropsType)
       buttonIcon={faPalette}
       buttonTitle={t('accountScreen.AccentColorButtonTitle')}
       closeHandler={setInitialAccentColor}
-      description={t('accountScreen.AccentColorDescription')}
+      contentPaddingHorizontal={contentPaddingHorizontal}
+      description={t('accountScreen.AccentColorModalTitle')}
+      hasContentPaddingBottom={false}
       okHandler={setAccentColor}
+      okText={t('common.Select')}
       rightComponent={<View style={styles.colorIndicator} />}
     >
       <View style={styles.colorPickerWrapper}>

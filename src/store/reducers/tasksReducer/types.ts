@@ -12,10 +12,11 @@ import { AddNewTaskActionReturnType } from '@store/actions/tasksReducerActions/t
 import { DeleteTaskActionReturnType } from '@store/actions/tasksReducerActions/tasksActions/deleteTaskAction';
 import { SetEditedTaskActionReturnType } from '@store/actions/tasksReducerActions/tasksActions/setEditedTaskAction';
 import { SetTaskIsDoneActionReturnType } from '@store/actions/tasksReducerActions/tasksActions/setTaskIsDoneAction';
+import { SetTaskIsToDoActionReturnType } from '@store/actions/tasksReducerActions/tasksActions/setTaskIsToDoAction';
 
 export type TaskType = {
-  id: string;
   date: string;
+  id: string;
   isDone: boolean;
   title: string;
 
@@ -23,37 +24,37 @@ export type TaskType = {
 };
 
 export type TaskListWithoutTasksType = {
-  id: string;
   date: string;
-  title: string;
+  id: string;
   showInToDo: boolean;
+  title: string;
 
-  isTodoCollapsed?: boolean;
   isDoneCollapsed?: boolean;
+  isTodoCollapsed?: boolean;
 };
 
 type TasksObjectType = {
   [key: string]: TaskType;
 };
 
-export interface TaskListBeforeConvertInterface extends TaskListWithoutTasksType {
+export type TaskListBeforeConvertType = TaskListWithoutTasksType & {
   tasks?: TasksObjectType;
-}
+};
 
-export interface TaskListInterface extends TaskListWithoutTasksType {
+export type TaskListType = TaskListWithoutTasksType & {
   tasks?: TaskType[];
-}
+};
 
 export type NotificationType = {
   taskID: TaskType['id'];
 
-  notificationID?: string;
   date?: Date;
+  notificationID?: string;
 };
 
 export type TasksReducerStateType = {
-  taskLists: TaskListInterface[];
   notifications: NotificationType[];
+  taskLists: TaskListType[];
 };
 
 export type ConvertedTasksForFirebaseType = {
@@ -74,4 +75,5 @@ export type TasksReducerActionsType =
   | AddNewTaskActionReturnType
   | DeleteTaskActionReturnType
   | SetEditedTaskActionReturnType
-  | SetTaskIsDoneActionReturnType;
+  | SetTaskIsDoneActionReturnType
+  | SetTaskIsToDoActionReturnType;

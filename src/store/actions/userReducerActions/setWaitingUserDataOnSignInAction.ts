@@ -6,8 +6,8 @@ type SetWaitingUserDataOnSignInActionPayloadType = {
 };
 
 export type SetWaitingUserDataOnSignInActionReturnType = {
-  type: USER_REDUCER_ACTION.SET_IS_WAITING_USER_DATA_ON_SIGN_IN;
   payload: SetWaitingUserDataOnSignInActionPayloadType;
+  type: USER_REDUCER_ACTION.SET_IS_WAITING_USER_DATA_ON_SIGN_IN;
 };
 
 export type SetWaitingUserDataOnSignInActionType = (
@@ -17,6 +17,6 @@ export type SetWaitingUserDataOnSignInActionType = (
 export const setWaitingUserDataOnSignInAction: SetWaitingUserDataOnSignInActionType = (
   payload,
 ) => ({
-  type: USER_REDUCER_ACTION.SET_IS_WAITING_USER_DATA_ON_SIGN_IN,
   payload,
+  type: USER_REDUCER_ACTION.SET_IS_WAITING_USER_DATA_ON_SIGN_IN,
 });

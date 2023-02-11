@@ -1,29 +1,29 @@
 import { StyleSheet, ViewStyle } from 'react-native';
 
 type ContactTheAuthorScreenStylesType = {
-  screenContainer: ViewStyle;
-  inputsWrapper: ViewStyle;
-  inputWrapper: ViewStyle;
   buttonContainer: ViewStyle;
+  inputWrapper: ViewStyle;
+  inputsWrapper: ViewStyle;
+  screenContainer: ViewStyle;
 };
 
 export const contactTheAuthorScreenStyles = () =>
   StyleSheet.create<ContactTheAuthorScreenStylesType>({
-    screenContainer: {
-      paddingHorizontal: 18,
-      paddingTop: 22,
-    },
-
-    inputsWrapper: {
-      marginBottom: 20,
+    buttonContainer: {
+      alignItems: 'center',
+      marginBottom: 70,
     },
 
     inputWrapper: {
       marginBottom: 20,
     },
 
-    buttonContainer: {
-      alignItems: 'center',
-      marginBottom: 70,
+    inputsWrapper: {
+      marginBottom: 20,
+    },
+
+    screenContainer: {
+      paddingHorizontal: 18,
+      paddingTop: 22,
     },
   });

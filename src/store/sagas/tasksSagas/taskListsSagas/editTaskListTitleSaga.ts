@@ -17,6 +17,7 @@ export function* editTaskListTitleSaga(action: EditTaskListTitleSagaActionReturn
     taskListID,
     editedTaskListTitle,
     setEditedTaskListTitleState,
+    setIsMenuHorizontalVisible,
   } = action.payload;
 
   const { TASK_LISTS, TITLE, USERS } = FIREBASE_PATH;
@@ -46,11 +47,12 @@ export function* editTaskListTitleSaga(action: EditTaskListTitleSagaActionReturn
 
     yield put(
       setEditedTaskListTitleAction({
-        taskListID,
         editedTaskListTitle,
+        taskListID,
       }),
     );
 
+    yield call(setIsMenuHorizontalVisible, false);
     yield call(setModalVisible, false);
     yield call(setEditedTaskListTitleState, editedTaskListTitle);
   } catch (error) {

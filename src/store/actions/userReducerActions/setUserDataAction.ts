@@ -6,8 +6,8 @@ type SetUserDataActionPayloadType = {
 };
 
 export type SetUserDataActionReturnType = {
-  type: USER_REDUCER_ACTION.SET_USER_DATA;
   payload: SetUserDataActionPayloadType;
+  type: USER_REDUCER_ACTION.SET_USER_DATA;
 };
 
 export type SetUserDataActionType = (
@@ -15,6 +15,6 @@ export type SetUserDataActionType = (
 ) => SetUserDataActionReturnType;
 
 export const setUserDataAction: SetUserDataActionType = (payload) => ({
-  type: USER_REDUCER_ACTION.SET_USER_DATA,
   payload,
+  type: USER_REDUCER_ACTION.SET_USER_DATA,
 });

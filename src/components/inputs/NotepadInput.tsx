@@ -10,7 +10,7 @@ import { inputStyles } from './styles';
 import { NotepadInputPropsType } from './types';
 
 export const NotepadInput = (props: NotepadInputPropsType) => {
-  const { value, onValueChange, placeholder, inputRef } = props;
+  const { value, onValueChange, placeholder } = props;
 
   const styles = useStyles(inputStyles);
 
@@ -23,7 +23,6 @@ export const NotepadInput = (props: NotepadInputPropsType) => {
         }}
         placeholder={placeholder}
         placeholderTextColor={COLORS.SILVER_CHALICE2}
-        ref={inputRef}
         style={styles.notepadInput}
         value={value}
       />

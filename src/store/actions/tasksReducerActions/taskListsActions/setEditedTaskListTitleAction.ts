@@ -1,14 +1,14 @@
 import { TASKS_REDUCER_ACTION } from '@enums/tasksReducerEnum';
-import { TaskListInterface } from '@store/reducers/tasksReducer/types';
+import { TaskListType } from '@store/reducers/tasksReducer/types';
 
 type EditTaskListTitleActionPayloadType = {
-  taskListID: TaskListInterface['id'];
-  editedTaskListTitle: TaskListInterface['title'];
+  editedTaskListTitle: TaskListType['title'];
+  taskListID: TaskListType['id'];
 };
 
 export type EditTaskListTitleActionReturnType = {
-  type: TASKS_REDUCER_ACTION.EDIT_TASK_LIST_TITLE;
   payload: EditTaskListTitleActionPayloadType;
+  type: TASKS_REDUCER_ACTION.EDIT_TASK_LIST_TITLE;
 };
 
 export type EditTaskListTitleActionType = (
@@ -16,6 +16,6 @@ export type EditTaskListTitleActionType = (
 ) => EditTaskListTitleActionReturnType;
 
 export const setEditedTaskListTitleAction: EditTaskListTitleActionType = (payload) => ({
-  type: TASKS_REDUCER_ACTION.EDIT_TASK_LIST_TITLE,
   payload,
+  type: TASKS_REDUCER_ACTION.EDIT_TASK_LIST_TITLE,
 });

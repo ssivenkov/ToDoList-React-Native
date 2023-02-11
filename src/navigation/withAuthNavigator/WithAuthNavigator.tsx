@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
-import { Loader } from '@components/loader/Loader';
+import { PurpleLoader } from '@components/loaders/purpleLoader/PurpleLoader';
+import { SnackBar } from '@components/snackBar/SnackBar';
 import { WITH_AUTH_NAVIGATOR_ROUTE } from '@enums/routesEnum';
 import { useStyles } from '@hooks/useStyles';
 import { TasksNavigator } from '@navigation/tasksNavigator/TasksNavigator';
@@ -13,7 +14,7 @@ import {
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { AccountScreen } from '@screens/accountScreen/AccountScreen';
 import { NotepadScreen } from '@screens/notepadScreen/NotepadScreen';
-import { changeLanguageAction } from '@store/actions/userSagaActions/changeLanguageAction';
+import { setLanguageAction } from '@store/actions/userReducerActions/setLanguageAction';
 import {
   accentColorSelector,
   globalLoaderSelector,
@@ -44,7 +45,7 @@ export const WithAuthNavigator = () => {
   useEffect(() => {
     if (i18next.language !== language) {
       changeLanguage(language).then(() => {
-        dispatch(changeLanguageAction({ language }));
+        dispatch(setLanguageAction({ language }));
         setRerender(language);
       });
     }
@@ -52,39 +53,40 @@ export const WithAuthNavigator = () => {
 
   return (
     <>
-      {globalLoader && <Loader />}
+      {globalLoader && <PurpleLoader />}
+      <SnackBar />
       <Navigator
         initialRouteName={WITH_AUTH_NAVIGATOR_ROUTE.TASKS_NAVIGATOR}
-        screenOptions={withAuthNavigatorOptions({ styles, theme, accentColor })}
+        screenOptions={withAuthNavigatorOptions({ accentColor, styles, theme })}
       >
         <Screen
           component={NotepadScreen}
           name={WITH_AUTH_NAVIGATOR_ROUTE.NOTEPAD_SCREEN}
           options={{
             ...notepadScreenSettings({
+              accentColor,
               styles,
               theme,
-              accentColor,
             }),
-            tabBarLabel: t('notepadScreen.Notepad'),
+            tabBarLabel: t('notepadScreen.HeaderTitle'),
           }}
         />
         <Screen
           component={TasksNavigator}
           name={WITH_AUTH_NAVIGATOR_ROUTE.TASKS_NAVIGATOR}
           options={{
-            ...tasksNavigatorSettings({ styles, theme, accentColor }),
-            headerTitle: t('tasksScreen.Tasks'),
-            tabBarLabel: t('tasksScreen.Tasks'),
+            ...tasksNavigatorSettings({ accentColor, styles, theme }),
+            headerTitle: t('tasksScreen.HeaderTitle'),
+            tabBarLabel: t('tasksScreen.HeaderTitle'),
           }}
         />
         <Screen
           component={AccountScreen}
           name={WITH_AUTH_NAVIGATOR_ROUTE.ACCOUNT_SCREEN}
           options={{
-            ...accountScreenSettings({ styles, theme, accentColor }),
-            headerTitle: t('accountScreen.Account'),
-            tabBarLabel: t('accountScreen.Account'),
+            ...accountScreenSettings({ accentColor, styles, theme }),
+            headerTitle: t('accountScreen.HeaderTitle'),
+            tabBarLabel: t('accountScreen.HeaderTitle'),
           }}
         />
       </Navigator>

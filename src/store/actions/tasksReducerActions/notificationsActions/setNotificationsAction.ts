@@ -6,8 +6,8 @@ type SetNotificationsActionPayloadType = {
 };
 
 export type SetNotificationsActionReturnType = {
-  type: TASKS_REDUCER_ACTION.SET_NOTIFICATIONS;
   payload: SetNotificationsActionPayloadType;
+  type: TASKS_REDUCER_ACTION.SET_NOTIFICATIONS;
 };
 
 export type SetNotificationsActionType = (
@@ -15,6 +15,6 @@ export type SetNotificationsActionType = (
 ) => SetNotificationsActionReturnType;
 
 export const setNotificationsAction: SetNotificationsActionType = (payload) => ({
-  type: TASKS_REDUCER_ACTION.SET_NOTIFICATIONS,
   payload,
+  type: TASKS_REDUCER_ACTION.SET_NOTIFICATIONS,
 });

@@ -6,8 +6,13 @@ import { Header } from '@components/header/Header';
 import { Input } from '@components/inputs/Input';
 import { Notification } from '@components/notification/Notification';
 import { Switcher } from '@components/switcher/Switcher';
-import { colorPickerDefaultGapSize, MAX_INPUT_LENGTH200 } from '@constants/constants';
-import { createDate } from '@helpers/generateDateHelper';
+import {
+  colorPickerDefaultGapSize,
+  INPUT_MAX_LENGTH200,
+  screenWidth480px,
+  switcherMargin,
+} from '@constants/constants';
+import { createFormattedDateHelper } from '@helpers/dateHelpers';
 import { useStyles } from '@hooks/useStyles';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { SetStateType } from '@root/types/common/types';
@@ -15,12 +20,12 @@ import { SendNewTaskButton } from '@screens/addTaskScreen/sendNewTaskButton/Send
 import { AddTaskScreenRouteType } from '@screens/addTaskScreen/types';
 import { addNewTaskAction } from '@store/actions/tasksSagaActions/tasksSagasActions/addNewTaskAction';
 import { setSelectedColorAction } from '@store/actions/userReducerActions/setSelectedColorAction';
-import { TaskListInterface, TaskType } from '@store/reducers/tasksReducer/types';
+import { TaskListType, TaskType } from '@store/reducers/tasksReducer/types';
 import { ColorType } from '@store/reducers/userReducer/types';
 import { selectedColorSelector } from '@store/selectors/userSelectors';
 import { nanoid } from 'nanoid';
 import { useTranslation } from 'react-i18next';
-import { ScrollView, TextInput, View } from 'react-native';
+import { ScrollView, TextInput, useWindowDimensions, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { addTaskScreenStyles } from './styles';
@@ -38,6 +43,15 @@ export const AddTaskScreen = () => {
   const selectedColor = useSelector(selectedColorSelector);
 
   const navigation = useNavigation();
+
+  const { width: appWidth } = useWindowDimensions();
+
+  const colorPickerGapSizeOnNarrowScreen = 0;
+
+  const colorPickerGapSize =
+    appWidth <= screenWidth480px
+      ? colorPickerGapSizeOnNarrowScreen
+      : colorPickerDefaultGapSize;
 
   const goBack = () => {
     navigation.goBack();
@@ -83,11 +97,11 @@ export const AddTaskScreen = () => {
     setButtonDisabled: SetStateType<boolean>,
   ) => {
     const newTask: TaskType = {
+      colorMark: selectedColor,
+      date: createFormattedDateHelper(),
       id: nanoid(),
-      date: createDate(),
       isDone: false,
       title: newTaskTitle,
-      colorMark: selectedColor,
     };
 
     if (!isColorPickerSwitcherOn) {
@@ -96,28 +110,28 @@ export const AddTaskScreen = () => {
 
     const tasks = fullTaskList.tasks ? [...fullTaskList.tasks, newTask] : [newTask];
 
-    const modifiedTaskList: TaskListInterface = {
-      id: taskListID,
+    const modifiedTaskList: TaskListType = {
       date: taskListDate,
-      title: taskListTitle,
+      id: taskListID,
+      isDoneCollapsed: fullTaskList.isDoneCollapsed,
+      isTodoCollapsed: fullTaskList.isTodoCollapsed,
       showInToDo: true,
       tasks,
-      isTodoCollapsed: fullTaskList.isTodoCollapsed,
-      isDoneCollapsed: fullTaskList.isDoneCollapsed,
+      title: taskListTitle,
     };
 
     if (newTaskTitle) {
       dispatch(
         addNewTaskAction({
+          date,
+          goBack,
           modifiedTaskList,
           newTask,
-          shouldCreateNotification: isNotificationSwitcherOn,
-          date,
-          setLoading,
           setButtonDisabled,
-          goBack,
-          setNewTaskTitle,
           setIsNotificationSwitcherOn,
+          setLoading,
+          setNewTaskTitle,
+          shouldCreateNotification: isNotificationSwitcherOn,
         }),
       );
     }
@@ -134,7 +148,7 @@ export const AddTaskScreen = () => {
       <Header
         leftButton={<GoBackButton />}
         rightButton={<SendNewTaskButton sendNewTask={sendNewTask} />}
-        title={t('tasksScreen.CreateTaskButtonTitle')}
+        title={t('addTaskScreen.HeaderTitle')}
       />
       <ScrollView
         contentContainerStyle={styles.contentWrapper}
@@ -143,8 +157,9 @@ export const AddTaskScreen = () => {
         <View style={styles.contentContainer}>
           <Input
             inputRef={inputRef}
-            maxLength={MAX_INPUT_LENGTH200}
-            onValueChange={setNewTaskTitle}
+            maxLength={INPUT_MAX_LENGTH200}
+            onChangeText={setNewTaskTitle}
+            suptext={t('addTaskScreen.AddTaskInputSuptitle')}
             value={newTaskTitle}
           />
           <Notification
@@ -159,7 +174,9 @@ export const AddTaskScreen = () => {
               isOn={isColorPickerSwitcherOn}
               onToggleSwitcherClick={handleColorPickerSwitcherClick}
               size='medium'
-              switcherText={t('tasksScreen.EnableMarkColor')}
+              switcherMarginLeft={15}
+              switcherMarginRight={switcherMargin}
+              switcherText={t('tasksScreen.EnableColorMark')}
               textMarginBottom={1}
               textStyle={styles.colorPickerSwitcherText}
             />
@@ -168,7 +185,7 @@ export const AddTaskScreen = () => {
             <View style={styles.colorPickerWrapper}>
               <ColorPickerComponent
                 color={selectedColor}
-                gapSize={colorPickerDefaultGapSize}
+                gapSize={colorPickerGapSize}
                 setSelectedColor={setSelectedColor}
               />
             </View>

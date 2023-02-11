@@ -41,7 +41,7 @@ export function* facebookSignInSaga() {
     if (isCancelled) {
       yield put(
         setModalMessageAction({
-          modalMessage: t('signInScreen.CancelAuthProcess'),
+          modalMessage: t('signInScreen.CancelAuthProcessModalTitle'),
         }),
       );
 
@@ -53,7 +53,7 @@ export function* facebookSignInSaga() {
     if (!accessToken) {
       yield put(
         setModalMessageAction({
-          modalMessage: t('signInScreen.ErrorGettingAccessToken'),
+          modalMessage: t('signInScreen.GettingAccessTokenErrorModalTitle'),
         }),
       );
 

@@ -1,18 +1,12 @@
-import { COLORS } from '@colors/colors';
 import { ExtendedStylesPropsType } from '@hooks/useStyles';
 import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
 type TaskStylesType = {
-  container: ViewStyle;
-  colorMark: ViewStyle;
-  text: TextStyle;
   buttonsContainer: ViewStyle;
-  warnText: TextStyle;
-  redHighlightTask: TextStyle;
-  greenHighlightTask: TextStyle;
+  colorMark: ViewStyle;
+  container: ViewStyle;
+  text: TextStyle;
 };
-
-const { RED, DUSTY_GRAY } = COLORS;
 
 const textSize = 18;
 
@@ -20,11 +14,10 @@ const taskContainerBorderRadius = 7;
 
 export const taskStyles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<TaskStylesType>({
-    container: {
-      marginVertical: 3,
-      overflow: 'hidden',
-      borderRadius: taskContainerBorderRadius,
-      backgroundColor: props.TASK_COLOR,
+    buttonsContainer: {
+      alignItems: 'center',
+      flexDirection: 'row',
+      width: '100%',
     },
 
     colorMark: {
@@ -32,31 +25,19 @@ export const taskStyles = (props: ExtendedStylesPropsType) =>
       width: 6,
     },
 
+    container: {
+      backgroundColor: props.TASK_COLOR,
+      borderRadius: taskContainerBorderRadius,
+      marginVertical: 3,
+      overflow: 'hidden',
+    },
+
     text: {
-      flex: 1,
       color: props.TEXT_COLOR,
+      flex: 1,
       fontSize: textSize,
+      marginLeft: 7,
+      marginRight: 1.5347,
       paddingVertical: 4,
-      paddingLeft: 7,
-    },
-
-    buttonsContainer: {
-      width: '100%',
-      flexDirection: 'row',
-      alignItems: 'center',
-    },
-
-    warnText: {
-      fontSize: textSize,
-    },
-
-    redHighlightTask: {
-      color: RED,
-      fontWeight: '500',
-    },
-
-    greenHighlightTask: {
-      color: DUSTY_GRAY,
-      fontWeight: '500',
     },
   });

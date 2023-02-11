@@ -1,15 +1,15 @@
 import { TASKS_REDUCER_ACTION } from '@enums/tasksReducerEnum';
-import { TaskListInterface } from '@store/reducers/tasksReducer/types';
+import { TaskListType } from '@store/reducers/tasksReducer/types';
 
 type SetCollapsedTaskListActionPayloadType = {
-  taskListID: TaskListInterface['id'];
-  isTodoCollapsed: TaskListInterface['isTodoCollapsed'];
-  isDoneCollapsed: TaskListInterface['isDoneCollapsed'];
+  isDoneCollapsed: TaskListType['isDoneCollapsed'];
+  isTodoCollapsed: TaskListType['isTodoCollapsed'];
+  taskListID: TaskListType['id'];
 };
 
 export type SetCollapsedTaskListActionReturnType = {
-  type: TASKS_REDUCER_ACTION.SET_COLLAPSED_TASK_LIST;
   payload: SetCollapsedTaskListActionPayloadType;
+  type: TASKS_REDUCER_ACTION.SET_COLLAPSED_TASK_LIST;
 };
 
 export type SetCollapsedTaskListActionType = (
@@ -17,6 +17,6 @@ export type SetCollapsedTaskListActionType = (
 ) => SetCollapsedTaskListActionReturnType;
 
 export const setCollapsedTaskListAction: SetCollapsedTaskListActionType = (payload) => ({
-  type: TASKS_REDUCER_ACTION.SET_COLLAPSED_TASK_LIST,
   payload,
+  type: TASKS_REDUCER_ACTION.SET_COLLAPSED_TASK_LIST,
 });

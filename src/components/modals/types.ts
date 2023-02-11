@@ -1,5 +1,13 @@
+import { ReactNode } from 'react';
+
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { SetStateType } from '@root/types/common/types';
+import { StyleProp, TextStyle } from 'react-native';
+
+export type IconWithScreenBlockingPropsType = {
+  buttonIcon: JSX.Element;
+  onPress: (setScreenBlocking: SetStateType<boolean>) => void;
+};
 
 export type ModalIconPropsType = {
   buttonIcon: JSX.Element;
@@ -11,22 +19,29 @@ export type ModalIconPropsType = {
   buttonIconDisabled?: boolean;
   children?: JSX.Element;
   closeHandler?: () => void;
+  contentPaddingHorizontal?: number;
   description?: string;
+  hasContentPaddingBottom?: boolean;
   inputFocus?: () => void;
   modalVisibleFromProps?: boolean;
   okDisabled?: boolean;
+  okText?: string;
   setModalVisibleFromProps?: SetStateType<boolean>;
 };
 
 export type ModalLongButtonPropsType = {
-  buttonTitle: string;
   buttonIcon: IconProp;
+  buttonTitle: string;
 
-  children?: JSX.Element;
-  description?: string;
-  okHandler?: () => void;
-  rightComponent?: JSX.Element;
+  children?: JSX.Element | ReactNode;
   closeHandler?: () => void;
+  contentPaddingHorizontal?: number;
+  description?: string;
+  descriptionTextStyle?: StyleProp<TextStyle>;
   disabled?: boolean;
-  hasContentBottomPadding?: boolean;
+  hasContentPaddingBottom?: boolean;
+  okHandler?: () => void;
+  okText?: string;
+  okTextStyle?: StyleProp<TextStyle>;
+  rightComponent?: JSX.Element;
 };

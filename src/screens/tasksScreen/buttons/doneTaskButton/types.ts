@@ -1,7 +1,9 @@
-import { TaskListInterface, TaskType } from '@store/reducers/tasksReducer/types';
+import { IconWithScreenBlockingPropsType } from '@components/modals/types';
+import { TaskListType, TaskType } from '@store/reducers/tasksReducer/types';
 
 export type DoneTaskButtonPropsType = {
-  taskListID: TaskListInterface['id'];
-  doneTaskID: TaskType['id'];
-  completedTaskTitle: TaskType['title'];
+  taskListID: TaskListType['id'];
+  toDoTaskID: TaskType['id'];
 };
+
+export type SetDoneTaskType = IconWithScreenBlockingPropsType['onPress'];

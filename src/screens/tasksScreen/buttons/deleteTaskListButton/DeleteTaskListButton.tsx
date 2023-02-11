@@ -1,6 +1,11 @@
 import React from 'react';
 
+import {
+  taskMenuButtonDarkGradient,
+  taskMenuButtonLightGradient,
+} from '@colors/gradients';
 import { commonButtonStyles } from '@components/buttons/commonButtonStyles';
+import { menuHorizontalStyles } from '@components/menus/menuHorizontal/styles';
 import { ModalIcon } from '@components/modals/ModalIcon';
 import { ICON_SIZE_SMALL } from '@constants/constants';
 import { faTrash } from '@fortawesome/free-solid-svg-icons/faTrash';
@@ -12,19 +17,26 @@ import { deleteTaskListFullAction } from '@store/actions/tasksSagaActions/taskLi
 import { themeSelector } from '@store/selectors/userSelectors';
 import { Trans } from 'react-i18next';
 import { Text, View } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { deleteTaskListButtonStyles } from './styles';
 import { DeleteTaskListButtonPropsType } from './types';
 
 export const DeleteTaskListButton = (props: DeleteTaskListButtonPropsType) => {
-  const { taskListTitle, isTodoTaskList, fullTaskList } = props;
+  const { taskListTitle, isTodoTaskList, fullTaskList, setIsMenuHorizontalVisible } =
+    props;
 
   const dispatch = useDispatch();
 
   const theme = useSelector(themeSelector);
 
   const styles = useStyles(deleteTaskListButtonStyles);
+  const menuHorizontalStyle = useStyles(menuHorizontalStyles);
+
+  const taskMenuButtonGradient = theme.darkMode
+    ? taskMenuButtonDarkGradient
+    : taskMenuButtonLightGradient;
 
   const removeTaskList = (
     setIsLoading: SetStateType<boolean>,
@@ -48,17 +60,17 @@ export const DeleteTaskListButton = (props: DeleteTaskListButtonPropsType) => {
     ) {
       dispatch(
         deleteTaskListFullAction({
-          taskListID: fullTaskList.id,
           setIsLoading,
           setModalVisible,
+          taskListID: fullTaskList.id,
         }),
       );
     } else if (isTodoTaskList) {
       dispatch(
         deleteTaskListFromScreenAction({
-          fullTaskList,
-          deleteTodoTask: true,
           deleteDoneTask: false,
+          deleteTodoTask: true,
+          fullTaskList,
           setIsLoading,
           setModalVisible,
         }),
@@ -66,9 +78,9 @@ export const DeleteTaskListButton = (props: DeleteTaskListButtonPropsType) => {
     } else if (!isTodoTaskList) {
       dispatch(
         deleteTaskListFromScreenAction({
-          fullTaskList,
-          deleteTodoTask: false,
           deleteDoneTask: true,
+          deleteTodoTask: false,
+          fullTaskList,
           setIsLoading,
           setModalVisible,
         }),
@@ -76,21 +88,30 @@ export const DeleteTaskListButton = (props: DeleteTaskListButtonPropsType) => {
     }
   };
 
+  const closeHandler = () => {
+    setIsMenuHorizontalVisible(false);
+  };
+
   return (
     <ModalIcon
       buttonIcon={
-        <View style={commonButtonStyles.buttonContainer}>
-          <FontAwesomeIcon
-            color={theme.ICON_BUTTON_COLOR}
-            icon={faTrash}
-            size={ICON_SIZE_SMALL}
-          />
-        </View>
+        <LinearGradient colors={taskMenuButtonGradient}>
+          <View style={menuHorizontalStyle.rightButtonContainer}>
+            <View style={commonButtonStyles.buttonContainer}>
+              <FontAwesomeIcon
+                color={theme.ICON_BUTTON_COLOR}
+                icon={faTrash}
+                size={ICON_SIZE_SMALL}
+              />
+            </View>
+          </View>
+        </LinearGradient>
       }
+      closeHandler={closeHandler}
       okHandler={removeTaskList}
     >
       <Text style={styles.warnText}>
-        <Trans i18nKey='tasksScreen.DeleteQuestionButtonTitle'>
+        <Trans i18nKey='tasksScreen.DeleteModalQuestion'>
           <Text style={styles.redHighlightTask}>{{ text: taskListTitle }}</Text>
         </Trans>
       </Text>

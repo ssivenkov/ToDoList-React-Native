@@ -4,21 +4,21 @@ import { tabBarContainerHeight } from '@navigation/commonNavigationStyles';
 import { StyleSheet, ViewStyle } from 'react-native';
 
 export type NotepadScreenStylesType = {
-  lightModeScreenContainer: ViewStyle;
   darkModeScreenContainer: ViewStyle;
+  lightModeScreenContainer: ViewStyle;
   scrollViewContainer: ViewStyle;
 };
 
 export const notepadScreenStyles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<NotepadScreenStylesType>({
-    lightModeScreenContainer: {
+    darkModeScreenContainer: {
+      backgroundColor: COLORS.WOODSMOKE2,
       height: '100%',
-      backgroundColor: props.BACKGROUND_COLOR,
     },
 
-    darkModeScreenContainer: {
+    lightModeScreenContainer: {
+      backgroundColor: props.BACKGROUND_COLOR,
       height: '100%',
-      backgroundColor: COLORS.WOODSMOKE1,
     },
 
     scrollViewContainer: {

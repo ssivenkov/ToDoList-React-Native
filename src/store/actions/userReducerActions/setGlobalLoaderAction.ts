@@ -6,8 +6,8 @@ type SetGlobalLoaderActionPayloadType = {
 };
 
 export type SetGlobalLoaderActionReturnType = {
-  type: USER_REDUCER_ACTION.SET_GLOBAL_LOADER;
   payload: SetGlobalLoaderActionPayloadType;
+  type: USER_REDUCER_ACTION.SET_GLOBAL_LOADER;
 };
 
 export type SetGlobalLoaderActionType = (
@@ -15,6 +15,6 @@ export type SetGlobalLoaderActionType = (
 ) => SetGlobalLoaderActionReturnType;
 
 export const setGlobalLoaderAction: SetGlobalLoaderActionType = (payload) => ({
-  type: USER_REDUCER_ACTION.SET_GLOBAL_LOADER,
   payload,
+  type: USER_REDUCER_ACTION.SET_GLOBAL_LOADER,
 });

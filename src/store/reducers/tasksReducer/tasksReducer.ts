@@ -5,8 +5,8 @@ import {
 } from '@store/reducers/tasksReducer/types';
 
 const tasksReducerState: TasksReducerStateType = {
-  taskLists: [],
   notifications: [],
+  taskLists: [],
 };
 
 export const tasksReducer = (
@@ -54,104 +54,119 @@ export const tasksReducer = (
     case TASKS_REDUCER_ACTION.ADD_NEW_TASK:
       return {
         ...state,
-        taskLists: [
-          ...state.taskLists.map((taskList) => {
-            const { modifiedTaskList } = action.payload;
+        taskLists: state.taskLists.map((taskList) => {
+          const { modifiedTaskList } = action.payload;
 
-            if (taskList.id === modifiedTaskList.id) {
-              return modifiedTaskList;
-            } else {
-              return taskList;
-            }
-          }),
-        ],
+          if (taskList.id === modifiedTaskList.id) {
+            return modifiedTaskList;
+          } else {
+            return taskList;
+          }
+        }),
       };
 
     case TASKS_REDUCER_ACTION.DELETE_TASK_LIST_FROM_SCREEN:
       return {
         ...state,
-        taskLists: [
-          ...state.taskLists.map((taskList) => {
-            const { fullTaskList, deleteTodoTask, deleteDoneTask } = action.payload;
+        taskLists: state.taskLists.map((taskList) => {
+          const { fullTaskList, deleteTodoTask, deleteDoneTask } = action.payload;
 
-            if (taskList.id === fullTaskList.id) {
-              const targetTaskList = { ...taskList };
+          if (taskList.id === fullTaskList.id) {
+            const targetTaskList = { ...taskList };
 
-              if (deleteTodoTask) {
-                targetTaskList.showInToDo = false;
+            if (deleteTodoTask) {
+              targetTaskList.showInToDo = false;
 
-                if (targetTaskList.tasks) {
-                  targetTaskList.tasks = targetTaskList.tasks.filter(
-                    (task) => task.isDone,
-                  );
-                }
+              if (targetTaskList.tasks) {
+                targetTaskList.tasks = targetTaskList.tasks.filter((task) => task.isDone);
               }
-
-              if (deleteDoneTask) {
-                targetTaskList.showInToDo = true;
-
-                if (targetTaskList.tasks) {
-                  targetTaskList.tasks = targetTaskList.tasks.filter(
-                    (task) => !task.isDone,
-                  );
-                }
-              }
-
-              return targetTaskList;
-            } else {
-              return taskList;
             }
-          }),
-        ],
+
+            if (deleteDoneTask) {
+              targetTaskList.showInToDo = true;
+
+              if (targetTaskList.tasks) {
+                targetTaskList.tasks = targetTaskList.tasks.filter(
+                  (task) => !task.isDone,
+                );
+              }
+            }
+
+            return targetTaskList;
+          } else {
+            return taskList;
+          }
+        }),
       };
 
     case TASKS_REDUCER_ACTION.DELETE_TASK_LIST_FULL:
       return {
         ...state,
-        taskLists: [
-          ...state.taskLists.filter(
-            (taskList) => taskList.id !== action.payload.taskListID,
-          ),
-        ],
+        taskLists: state.taskLists.filter(
+          (taskList) => taskList.id !== action.payload.taskListID,
+        ),
       };
 
     case TASKS_REDUCER_ACTION.SET_COLLAPSED_TASK_LIST:
       return {
         ...state,
-        taskLists: [
-          ...state.taskLists.map((taskList) => {
-            const { taskListID, isTodoCollapsed, isDoneCollapsed } = action.payload;
+        taskLists: state.taskLists.map((taskList) => {
+          const { taskListID, isTodoCollapsed, isDoneCollapsed } = action.payload;
 
-            if (taskList.id === taskListID) {
-              return {
-                ...taskList,
-                isTodoCollapsed: isTodoCollapsed,
-                isDoneCollapsed: isDoneCollapsed,
-              };
-            } else {
-              return taskList;
-            }
-          }),
-        ],
+          if (taskList.id === taskListID) {
+            return {
+              ...taskList,
+              isDoneCollapsed: isDoneCollapsed,
+              isTodoCollapsed: isTodoCollapsed,
+            };
+          } else {
+            return taskList;
+          }
+        }),
       };
 
     case TASKS_REDUCER_ACTION.EDIT_TASK_LIST_TITLE:
       return {
         ...state,
-        taskLists: [
-          ...state.taskLists.map((taskList) => {
-            const { taskListID, editedTaskListTitle } = action.payload;
+        taskLists: state.taskLists.map((taskList) => {
+          const { taskListID, editedTaskListTitle } = action.payload;
 
-            if (taskList.id === taskListID) {
-              return { ...taskList, title: editedTaskListTitle };
-            } else {
-              return taskList;
-            }
-          }),
-        ],
+          if (taskList.id === taskListID) {
+            return { ...taskList, title: editedTaskListTitle };
+          } else {
+            return taskList;
+          }
+        }),
       };
 
-    case TASKS_REDUCER_ACTION.SET_TASK_DONE:
+    case TASKS_REDUCER_ACTION.SET_TASK_IS_DONE:
+      return {
+        ...state,
+        taskLists: state.taskLists.map((taskList) => {
+          const { taskListID, toDoTaskID } = action.payload;
+
+          if (taskList.id === taskListID) {
+            const targetTaskList = { ...taskList };
+            const { tasks } = targetTaskList;
+
+            if (tasks) {
+              targetTaskList.tasks = tasks.map((task) => {
+                if (task.id === toDoTaskID) {
+                  return { ...task, isDone: true };
+                } else {
+                  return task;
+                }
+              });
+            }
+
+            return targetTaskList;
+          } else {
+            return taskList;
+          }
+        }),
+      };
+
+    case TASKS_REDUCER_ACTION.SET_TASK_IS_TODO:
       return {
         ...state,
         taskLists: state.taskLists.map((taskList) => {
@@ -164,7 +179,7 @@ export const tasksReducer = (
             if (tasks) {
               targetTaskList.tasks = tasks.map((task) => {
                 if (task.id === doneTaskID) {
-                  return { ...task, isDone: true };
+                  return { ...task, isDone: false };
                 } else {
                   return task;
                 }
@@ -181,68 +196,64 @@ export const tasksReducer = (
     case TASKS_REDUCER_ACTION.EDIT_TASK:
       return {
         ...state,
-        taskLists: [
-          ...state.taskLists.map((taskList) => {
-            const { taskListID, taskID, editedTaskTitle, colorMark } = action.payload;
+        taskLists: state.taskLists.map((taskList) => {
+          const { taskListID, taskID, editedTaskTitle, colorMark } = action.payload;
 
-            if (taskList.id === taskListID) {
-              const targetTaskList = { ...taskList };
-              const { tasks } = targetTaskList;
+          if (taskList.id === taskListID) {
+            const targetTaskList = { ...taskList };
+            const { tasks } = targetTaskList;
 
-              if (tasks) {
-                targetTaskList.tasks = tasks.map((task) => {
-                  if (task.id === taskID) {
-                    if (colorMark) {
-                      return {
-                        ...task,
-                        title: editedTaskTitle,
-                        colorMark: colorMark,
-                      };
-                    } else {
-                      const modifiedTask = {
-                        ...task,
-                        title: editedTaskTitle,
-                      };
-
-                      delete modifiedTask.colorMark;
-
-                      return modifiedTask;
-                    }
+            if (tasks) {
+              targetTaskList.tasks = tasks.map((task) => {
+                if (task.id === taskID) {
+                  if (colorMark) {
+                    return {
+                      ...task,
+                      colorMark: colorMark,
+                      title: editedTaskTitle,
+                    };
                   } else {
-                    return task;
-                  }
-                });
-              }
+                    const modifiedTask = {
+                      ...task,
+                      title: editedTaskTitle,
+                    };
 
-              return targetTaskList;
-            } else {
-              return taskList;
+                    delete modifiedTask.colorMark;
+
+                    return modifiedTask;
+                  }
+                } else {
+                  return task;
+                }
+              });
             }
-          }),
-        ],
+
+            return targetTaskList;
+          } else {
+            return taskList;
+          }
+        }),
       };
 
     case TASKS_REDUCER_ACTION.DELETE_TASK:
       return {
         ...state,
-        taskLists: [
-          ...state.taskLists.map((taskList) => {
-            const { taskListID, taskID } = action.payload;
+        taskLists: state.taskLists.map((taskList) => {
+          const { taskListID, taskID } = action.payload;
 
-            if (taskList.id === taskListID) {
-              const editedTaskList = { ...taskList };
-              const { tasks } = editedTaskList;
+          if (taskList.id === taskListID) {
+            const editedTaskList = { ...taskList };
+            const { tasks } = editedTaskList;
 
-              if (tasks) {
-                editedTaskList.tasks = tasks.filter((task) => task.id !== taskID);
-              }
-
-              return editedTaskList;
-            } else {
-              return taskList;
+            if (tasks) {
+              editedTaskList.tasks = tasks.filter((task) => task.id !== taskID);
             }
-          }),
-        ],
+
+            return editedTaskList;
+          } else {
+            return taskList;
+          }
+        }),
       };
 
     default:

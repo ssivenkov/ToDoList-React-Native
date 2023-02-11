@@ -1,13 +1,13 @@
 import { StyleSheet, ViewStyle } from 'react-native';
 
-type LoaderStylesType = {
+type PurpleLoaderStylesType = {
   loaderContainer: ViewStyle;
 };
 
-export const styles = StyleSheet.create<LoaderStylesType>({
+export const styles = StyleSheet.create<PurpleLoaderStylesType>({
   loaderContainer: {
-    justifyContent: 'center',
     alignItems: 'center',
+    justifyContent: 'center',
     zIndex: 10,
   },
 });

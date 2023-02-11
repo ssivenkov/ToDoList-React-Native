@@ -24,12 +24,12 @@ export function* createChannelSaga() {
     const createChannel = () => {
       PushNotification.createChannel(
         {
+          channelDescription: 'A channel to categorise your notifications',
           channelId: channelID,
           channelName: 'Task notification channel',
-          channelDescription: 'A channel to categorise your notifications',
+          importance: 4,
           playSound: true,
           soundName: 'default',
-          importance: 4,
           vibrate: true,
         },
         (created) => created,

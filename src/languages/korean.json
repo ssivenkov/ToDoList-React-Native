@@ -2,67 +2,82 @@
   "translation": {
     "common": {
       "Ok": "확인",
+      "Cancel": "취소",
+      "Confirm": "확인하다",
+      "Select": "선택하다",
       "Close": "닫다",
       "NoInternetConnection": "인터넷에 연결되지 않음. 인터넷에 접속해주세요",
       "NoIOSNotificationsPermission": "알림에 대한 권한이 없습니다. 앱에 알림을 표시할 수 있는 권한 부여"
     },
+    "notification": {
+      "TaskNotification": "작업 수행"
+    },
+    "snackBar": {
+      "taskIsDone": "작업 완료",
+      "taskIsToDo": "반환된 작업"
+    },
     "tasksScreen": {
-      "Tasks": "작업 목록",
-      "CreateTaskButtonTitle": "새 작업 제목 입력",
-      "CreateTaskListButtonTitle": "새 작업 목록 제목 입력:",
-      "DeleteQuestionButtonTitle": "<0>{{text}}</0>을(를) 삭제하시겠습니까?",
-      "DoneButton": "<0>{{text}}</0> 작업이 완료되었습니까?",
-      "EditTaskListButtonTitle": "작업 목록 제목 수정:",
-      "EditTaskButton": "작업 수정",
-      "TodoTasksTab": "할 일",
-      "DoneTasksTab": "완료된 작업",
+      "HeaderTitle": "작업 목록",
+      "CreateTaskListModalTitle": "새 작업 목록 제목 입력",
+      "DeleteModalQuestion": "<0>{{text}}</0>을(를) 삭제하시겠습니까?",
+      "EditTaskListModalTitle": "작업 목록 제목 수정",
+      "TodoTasksTabTitle": "할 일",
+      "DoneTasksTabTitle": "완료된 작업",
       "NoTaskListsFound": "작업 목록을 찾을 수 없습니다.",
       "EnableNotification": "과제를 상기시켜라",
-      "EnableMarkColor": "작업 색상",
-      "TaskNotification": "작업 수행"
+      "EnableColorMark": "작업 색상"
+    },
+    "addTaskScreen": {
+      "HeaderTitle": "새 작업",
+      "AddTaskInputSuptitle": "새 작업 텍스트"
+    },
+    "editTaskScreen": {
+      "HeaderTitle": "작업 변경",
+      "EditTaskInputSuptitle": "작업 텍스트"
     },
     "signInScreen": {
       "SignIn": "로그인",
-      "SignInWith": "으로 로그인 <0>{{text}}</0>",
-      "CancelAuthProcess": "사용자가 로그인 프로세스를 취소했습니다.",
-      "ErrorGettingAccessToken": "액세스 토큰을 가져오는 중에 문제가 발생했습니다."
+      "SignInWithButtonTitle": "으로 로그인 <0>{{text}}</0>",
+      "CancelAuthProcessModalTitle": "사용자가 로그인 프로세스를 취소했습니다.",
+      "GettingAccessTokenErrorModalTitle": "액세스 토큰을 가져오는 중에 문제가 발생했습니다.",
+      "DeleteAccountSuccessfully": "귀하의 계정이 성공적으로 삭제되었습니다"
     },
     "accountScreen": {
-      "Account": "계정",
-      "DarkMode": "다크 모드",
-      "SignOut": "로그아웃",
-      "SignOutWarning": "로그아웃하시겠습니까?",
+      "HeaderTitle": "계정",
+      "DarkModeButtonTitle": "다크 모드",
+      "SignOutButtonTitle": "로그아웃",
+      "SignOutModalTitle": "로그아웃하시겠습니까?",
       "ChangeLanguageButtonTitle": "언어",
-      "ChangeLanguageButtonDescription": "애플리케이션 언어 선택:",
-      "DeleteAccount": "계정 삭제",
-      "DeleteAccountWarning": "모든 데이터가 포함된 계정을 삭제하시겠습니까?",
-      "AccentColorDescription": "강조 색상 선택:",
+      "ChangeLanguageModalTitle": "애플리케이션 언어 선택",
+      "DeleteAccountButtonTitle": "계정 삭제",
+      "DeleteAccountModalTitle": "모든 데이터가 포함된 계정을 삭제하시겠습니까?",
+      "AccentColorModalTitle": "강조 색상 선택",
       "AccentColorButtonTitle": "액센트 컬러",
-      "ContactTheAuthorButtonTitle": "저자에게 연락하기"
+      "ContactTheAuthorButtonTitle": "저자에게 연락하기",
+      "RateAppButtonTitle": "앱 평가",
+      "ShareAppButtonTitle": "앱 공유",
+      "ShareAppMessage": "ToDo List 앱을 즐겨 사용합니다. 노력하다!"
     },
     "contactTheAuthorScreen": {
-      "HeaderTitle": "저자에게 연락하기",
-      "EmailPlaceholder": "이메일",
-      "SubjectPlaceholder": "메시지 제목",
-      "MessagePlaceholder": "메세지",
+      "HeaderTitle": "저자와의 소통",
       "EmailSuptext": "이메일",
       "EmailSubtext": "이 이메일로 답장이 전송됩니다",
       "MessageSuptext": "메시지 텍스트",
-      "SendButton": "보내다",
-      "ContactTheAuthorSuccess": "감사합니다. 메시지가 전송되었습니다. 작성자가 곧 연락을 드릴 것입니다",
-      "ContactTheAuthorError": "알수없는 오류. 다른 이메일을 입력해 주세요",
-      "InvalidEmailError": "잘못된 이메일 주소",
-      "EmailRequiredError": "이메일 필요",
-      "MessageRequiredError": "메시지 텍스트 필요"
+      "SendButtonTitle": "보내다",
+      "ContactTheAuthorSuccessModalTitle": "감사합니다. 메시지가 전송되었습니다. 작성자가 곧 연락을 드릴 것입니다",
+      "ContactTheAuthorErrorModalTitle": "알수없는 오류. 다른 이메일을 입력해 주세요",
+      "InvalidEmailErrorTitle": "잘못된 이메일 주소",
+      "EmailRequiredErrorTitle": "이메일 필요",
+      "MessageRequiredErrorTitle": "메시지 텍스트 필요"
     },
     "notepadScreen": {
-      "Notepad": "메모장",
-      "NotepadPlaceholder": "텍스트",
-      "CleanButtonWarningTitle": "메모장을 지우시겠습니까?",
-      "CleanNotepadTextRequestError": "인터넷에 연결되어 있지 않습니다. 메모장은 기기에서만 삭제되었습니다. 서버에서 메모장을 지우려면 인터넷을 켜고 요청을 반복하십시오",
-      "SaveNotepadTextRequestError": "인터넷에 연결되어 있지 않습니다. 메모장은 기기에만 저장되었습니다. 서버에 메모장을 저장하려면 인터넷을 켜고 요청을 반복하십시오",
-      "NotepadCleared": "메모장이 지워짐",
-      "NotepadSaved": "메모장이 저장됨"
+      "HeaderTitle": "메모장",
+      "NotepadPlaceholder": "당신의 텍스트",
+      "CleanButtonModalTitle": "메모장을 지우시겠습니까?",
+      "CleanNotepadTextRequestErrorModalTitle": "인터넷에 연결되어 있지 않습니다. 메모장은 기기에서만 삭제되었습니다. 서버에서 메모장을 지우려면 인터넷을 켜고 요청을 반복하십시오",
+      "SaveNotepadTextRequestErrorModalTitle": "인터넷에 연결되어 있지 않습니다. 메모장은 기기에만 저장되었습니다. 서버에 메모장을 저장하려면 인터넷을 켜고 요청을 반복하십시오",
+      "NotepadClearedModalTitle": "메모장이 지워짐",
+      "NotepadSavedModalTitle": "메모장이 저장됨"
     }
   }
 }

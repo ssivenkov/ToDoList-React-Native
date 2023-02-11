@@ -8,6 +8,7 @@ import { DeleteAccountSagaActionReturnType } from '@store/actions/userSagaAction
 import { signOutAction } from '@store/actions/userSagaActions/signOutAction';
 import { UserIDType } from '@store/reducers/userReducer/types';
 import { userIDSelector } from '@store/selectors/userSelectors';
+import { t } from 'i18next';
 import { call, cancel, put, putResolve, select } from 'redux-saga/effects';
 
 export function* deleteAccountSaga(action: DeleteAccountSagaActionReturnType) {
@@ -30,9 +31,15 @@ export function* deleteAccountSaga(action: DeleteAccountSagaActionReturnType) {
       return DB.ref(`${USERS}/${userID}`).remove();
     };
 
+    yield call(deleteAccountInFirebase);
+
     yield putResolve(signOutAction({ setWaitingProcess }));
 
-    yield call(deleteAccountInFirebase);
+    yield put(
+      setModalMessageAction({
+        modalMessage: t('signInScreen.DeleteAccountSuccessfully'),
+      }),
+    );
   } catch (error) {
     if (error instanceof Error) {
       yield call(Sentry.captureException, error);

@@ -70,9 +70,9 @@ export function* addNewTaskSaga(action: AddNewTaskSagaActionReturnType) {
       });
 
       const notification = {
-        taskID,
-        notificationID,
         date,
+        notificationID,
+        taskID,
         taskTitle,
       };
 

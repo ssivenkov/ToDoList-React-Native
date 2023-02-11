@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import { TaskList } from '@components/taskList/TaskList';
 import { sortingTaskLists } from '@helpers/sorting';
 import { useStyles } from '@hooks/useStyles';
-import { useRoute } from '@react-navigation/native';
+import { useFocusEffect, useRoute } from '@react-navigation/native';
 import { taskListsSelector } from '@store/selectors/tasksSelectors';
 import { globalLoaderSelector } from '@store/selectors/userSelectors';
+import { nanoid } from 'nanoid';
 import { useTranslation } from 'react-i18next';
-import { ScrollView, Text, View } from 'react-native';
+import { BackHandler, ScrollView, Text, View } from 'react-native';
 import { useSelector } from 'react-redux';
 
 import { taskScreenStyles } from './styles';
@@ -22,6 +23,8 @@ export const TasksScreen = () => {
 
   const taskLists = useSelector(taskListsSelector);
   const globalLoader = useSelector(globalLoaderSelector);
+
+  const [rerender, setRerender] = useState<string>('');
 
   const toDoTaskLists = taskLists.filter(({ showInToDo }) => showInToDo);
   const doneTaskLists = taskLists.filter((taskList) => {
@@ -39,30 +42,59 @@ export const TasksScreen = () => {
   const sortedToDoTaskLists = sortingTaskLists(toDoTaskLists);
   const sortedDoneTaskLists = sortingTaskLists(doneTaskLists);
 
+  // for triggering useFocusEffect, when user just open app and press native goBack button
+  useEffect(() => {
+    setRerender(nanoid());
+  }, []);
+
+  useFocusEffect(
+    useCallback(() => {
+      const onBackPress = () => {
+        BackHandler.exitApp();
+
+        return true;
+      };
+
+      const subscription = BackHandler.addEventListener('hardwareBackPress', onBackPress);
+
+      return () => subscription.remove();
+    }, [rerender]),
+  );
+
   if (isTodoScreen && sortedToDoTaskLists.length > 0) {
     return (
-      <ScrollView keyboardShouldPersistTaps='handled'>
-        <View style={styles.tasksListContainer}>
-          {sortedToDoTaskLists.map((item) => {
-            const { id, date, title, tasks, isTodoCollapsed, isDoneCollapsed } = item;
-            const toDoTasks = tasks && tasks.filter((task) => !task.isDone);
+      <View>
+        <ScrollView keyboardShouldPersistTaps='handled'>
+          <View style={styles.tasksListContainer}>
+            {sortedToDoTaskLists.map((item) => {
+              const {
+                id,
+                date,
+                title,
+                tasks,
+                isTodoCollapsed = false,
+                isDoneCollapsed = true,
+              } = item;
 
-            return (
-              <TaskList
-                fullTaskList={item}
-                isDoneCollapsed={!!isDoneCollapsed}
-                isTodoCollapsed={!!isTodoCollapsed}
-                isTodoTaskList={true}
-                key={id}
-                taskListDate={date}
-                taskListID={id}
-                taskListTasks={toDoTasks}
-                taskListTitle={title}
-              />
-            );
-          })}
-        </View>
-      </ScrollView>
+              const toDoTasks = tasks && tasks.filter((task) => !task.isDone);
+
+              return (
+                <TaskList
+                  fullTaskList={item}
+                  isDoneCollapsed={isDoneCollapsed}
+                  isTodoCollapsed={isTodoCollapsed}
+                  isTodoTaskList={true}
+                  key={id}
+                  taskListDate={date}
+                  taskListID={id}
+                  taskListTasks={toDoTasks}
+                  taskListTitle={title}
+                />
+              );
+            })}
+          </View>
+        </ScrollView>
+      </View>
     );
   }
 
@@ -71,14 +103,22 @@ export const TasksScreen = () => {
       <ScrollView keyboardShouldPersistTaps='handled'>
         <View style={styles.tasksListContainer}>
           {sortedDoneTaskLists.map((item) => {
-            const { id, date, title, tasks, isTodoCollapsed, isDoneCollapsed } = item;
+            const {
+              id,
+              date,
+              title,
+              tasks,
+              isTodoCollapsed = false,
+              isDoneCollapsed = true,
+            } = item;
+
             const doneTasks = tasks && tasks.filter((task) => task.isDone);
 
             return (
               <TaskList
                 fullTaskList={item}
-                isDoneCollapsed={!!isDoneCollapsed}
-                isTodoCollapsed={!!isTodoCollapsed}
+                isDoneCollapsed={isDoneCollapsed}
+                isTodoCollapsed={isTodoCollapsed}
                 isTodoTaskList={false}
                 key={id}
                 taskListDate={date}

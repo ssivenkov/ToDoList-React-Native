@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 
 import { COLORS } from '@colors/colors';
-import { commonButtonStyles } from '@components/buttons/commonButtonStyles';
 import { IconButtonWithLoader } from '@components/buttons/iconButtonWithLoader/IconButtonWithLoader';
+import { headerStyles } from '@components/header/styles';
 import { ICON_SIZE_MEDIUM } from '@constants/constants';
 import { faSave } from '@fortawesome/free-solid-svg-icons/faSave';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import 'react-native-get-random-values';
+import { useStyles } from '@hooks/useStyles';
 import { SetStateType } from '@root/types/common/types';
 import { saveNotepadTextAction } from '@store/actions/notepadSagaActions/saveNotepadTextAction';
 import { View } from 'react-native';
@@ -19,6 +20,8 @@ export const SaveButton = (props: SaveButtonPropsType) => {
 
   const { WHITE } = COLORS;
 
+  const headerStyle = useStyles(headerStyles);
+
   const dispatch = useDispatch();
 
   const [buttonDisabled, setButtonDisabled] = useState<boolean>(false);
@@ -27,8 +30,8 @@ export const SaveButton = (props: SaveButtonPropsType) => {
     dispatch(
       saveNotepadTextAction({
         notepadText,
-        setIsLoading,
         setButtonDisabled,
+        setIsLoading,
       }),
     );
   };
@@ -37,7 +40,7 @@ export const SaveButton = (props: SaveButtonPropsType) => {
     <IconButtonWithLoader
       disabled={buttonDisabled}
       icon={
-        <View style={commonButtonStyles.buttonContainer}>
+        <View style={headerStyle.rightButtonContainer}>
           <FontAwesomeIcon color={WHITE} icon={faSave} size={ICON_SIZE_MEDIUM} />
         </View>
       }

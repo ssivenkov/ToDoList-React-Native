@@ -1,62 +1,83 @@
 import { COLORS } from '@colors/colors';
+import {
+  defaultModalIndentBottom,
+  defaultModalPaddingHorizontal,
+  modalBorderRadius,
+  modalContentMaxWidth,
+} from '@constants/constants';
 import { ExtendedStylesPropsType } from '@hooks/useStyles';
-import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
+import {
+  androidHeaderHeight,
+  androidTabBarContainerHeight,
+  iOSHeaderHeight,
+  iOSTabBarContainerHeight,
+} from '@navigation/commonNavigationStyles';
+import { Platform, StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
 export type ModalStylesType = {
-  centeredView: ViewStyle;
-  modalView: ViewStyle;
-  contentWithBottomPadding: ViewStyle;
-  contentWithoutBottomPadding: ViewStyle;
-  text: TextStyle;
-  contentContainer: ViewStyle;
   buttonsContainer: ViewStyle;
+  centeredTransparentView: ViewStyle;
+  centeredView: ViewStyle;
+  childrenContainer: ViewStyle;
+  descriptionContainer: ViewStyle;
+  modalView: ViewStyle;
+  text: TextStyle;
 };
 
-export const modalBorderRadius = 20;
-const contentMaxWidth = 420;
+const { TRANSPARENT, MEDIUM_DARK_TRANSPARENCY } = COLORS;
 
 export const modalStyles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<ModalStylesType>({
+    buttonsContainer: {
+      flexDirection: 'row',
+      width: '100%',
+    },
+
     centeredView: {
+      alignItems: 'center',
+      backgroundColor: MEDIUM_DARK_TRANSPARENCY,
       flex: 1,
       justifyContent: 'center',
+    },
+
+    centeredTransparentView: {
       alignItems: 'center',
-      backgroundColor: COLORS.MEDIUM_DARK_TRANSPARENCY,
+      backgroundColor: TRANSPARENT,
+      flex: 1,
+      justifyContent: 'center',
+    },
+
+    childrenContainer: {
+      alignItems: 'center',
+      maxWidth: modalContentMaxWidth,
+    },
+
+    descriptionContainer: {
+      alignItems: 'center',
+      marginBottom: defaultModalIndentBottom,
+      marginHorizontal: defaultModalPaddingHorizontal,
+      maxWidth: modalContentMaxWidth,
     },
 
     modalView: {
-      width: contentMaxWidth,
-      maxWidth: '90%',
-      borderRadius: modalBorderRadius,
-      paddingTop: 20,
       backgroundColor: props.MODAL_BACKGROUND_COLOR,
-    },
-
-    contentWithBottomPadding: {
-      maxWidth: contentMaxWidth,
-      alignItems: 'center',
-      marginBottom: 16,
-      marginHorizontal: 16,
-    },
-
-    contentWithoutBottomPadding: {
-      maxWidth: contentMaxWidth,
-      alignItems: 'center',
-      marginHorizontal: 16,
+      borderRadius: modalBorderRadius,
+      justifyContent: 'space-between',
+      maxHeight:
+        props.appHeight -
+        (Platform.OS === 'ios'
+          ? props.emulatorStatusBarHeight + iOSHeaderHeight + iOSTabBarContainerHeight
+          : props.emulatorStatusBarHeight +
+            androidHeaderHeight +
+            androidTabBarContainerHeight),
+      maxWidth: '90%',
+      overflow: 'hidden',
+      paddingTop: 20,
+      width: modalContentMaxWidth,
     },
 
     text: {
-      fontSize: 18,
-      paddingBottom: 4,
       color: props.TEXT_COLOR,
-    },
-
-    contentContainer: {
-      maxWidth: '100%',
-    },
-
-    buttonsContainer: {
-      width: '100%',
-      flexDirection: 'row',
+      fontSize: 18,
     },
   });

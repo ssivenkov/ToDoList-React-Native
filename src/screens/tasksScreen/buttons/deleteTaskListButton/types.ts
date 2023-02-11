@@ -1,7 +1,9 @@
-import { TaskListInterface } from '@store/reducers/tasksReducer/types';
+import { SetStateType } from '@root/types/common/types';
+import { TaskListType } from '@store/reducers/tasksReducer/types';
 
 export type DeleteTaskListButtonPropsType = {
-  taskListTitle: TaskListInterface['title'];
+  fullTaskList: TaskListType;
   isTodoTaskList: boolean;
-  fullTaskList: TaskListInterface;
+  setIsMenuHorizontalVisible: SetStateType<boolean>;
+  taskListTitle: TaskListType['title'];
 };

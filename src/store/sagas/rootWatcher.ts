@@ -11,6 +11,8 @@ import { addNewTaskSaga } from '@store/sagas/tasksSagas/tasksSagas/addNewTaskSag
 import { deleteTaskSaga } from '@store/sagas/tasksSagas/tasksSagas/deleteTaskSaga';
 import { editTaskSaga } from '@store/sagas/tasksSagas/tasksSagas/editTaskSaga';
 import { setTaskIsDoneSaga } from '@store/sagas/tasksSagas/tasksSagas/setTaskIsDoneSaga';
+import { setTaskIsToDoSaga } from '@store/sagas/tasksSagas/tasksSagas/setTaskIsToDoSaga';
+import { waitCloseTaskHorizontalMenuSaga } from '@store/sagas/tasksSagas/tasksSagas/waitCloseTaskHorizontalMenuSaga';
 import { changeAccentColorSaga } from '@store/sagas/userSagas/changeAccentColorSaga';
 import { changeDarkModeSaga } from '@store/sagas/userSagas/changeDarkModeSaga';
 import { changeLanguageSaga } from '@store/sagas/userSagas/changeLanguageSaga';
@@ -21,6 +23,8 @@ import { deleteAccountSaga } from '@store/sagas/userSagas/deleteAccountSaga';
 import { facebookSignInSaga } from '@store/sagas/userSagas/facebookSignInSaga';
 import { getUserDataSaga } from '@store/sagas/userSagas/getUserDataSaga';
 import { googleSignInSaga } from '@store/sagas/userSagas/googleSignInSaga';
+import { goToGooglePlaySaga } from '@store/sagas/userSagas/goToGooglePlaySaga';
+import { shareAppSaga } from '@store/sagas/userSagas/shareAppSaga';
 import { signOutSaga } from '@store/sagas/userSagas/signOutSaga';
 import { syncUserDataSaga } from '@store/sagas/userSagas/syncUserDataSaga';
 import { takeEvery, takeLatest } from 'redux-saga/effects';
@@ -38,6 +42,8 @@ export function* rootWatcher() {
   yield takeEvery(USER_SAGA_ACTION.CHECK_USER, checkUserSaga);
   yield takeLatest(USER_SAGA_ACTION.SYNC_USER_DATA, syncUserDataSaga);
   yield takeLatest(USER_SAGA_ACTION.CONTACT_THE_AUTHOR, contactTheAuthorSaga);
+  yield takeLatest(USER_SAGA_ACTION.GO_TO_GOOGLE_PLAY, goToGooglePlaySaga);
+  yield takeLatest(USER_SAGA_ACTION.SHARE_APP, shareAppSaga);
 
   yield takeLatest(TASKS_SAGA_ACTION.ADD_NEW_TASK_LIST, addNewTaskListSaga);
   yield takeLatest(TASKS_SAGA_ACTION.ADD_NEW_TASK, addNewTaskSaga);
@@ -47,8 +53,13 @@ export function* rootWatcher() {
     TASKS_SAGA_ACTION.DELETE_TASK_LIST_FROM_SCREEN,
     deleteTaskListFromScreenSaga,
   );
+  yield takeLatest(TASKS_SAGA_ACTION.SET_TASK_IS_TODO, setTaskIsToDoSaga);
   yield takeLatest(TASKS_SAGA_ACTION.SET_TASK_IS_DONE, setTaskIsDoneSaga);
   yield takeLatest(TASKS_SAGA_ACTION.SET_EDITED_TASK, editTaskSaga);
+  yield takeLatest(
+    TASKS_SAGA_ACTION.WAIT_CLOSE_TASK_HORIZONTAL_MENU,
+    waitCloseTaskHorizontalMenuSaga,
+  );
   yield takeLatest(TASKS_SAGA_ACTION.DELETE_TASK, deleteTaskSaga);
 
   yield takeLatest(NOTEPAD_SAGA_ACTION.SAVE_NOTEPAD_TEXT, saveNotepadTextSaga);

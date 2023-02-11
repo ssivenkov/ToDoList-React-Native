@@ -14,9 +14,18 @@ import { modalMenuButtonStyles } from './styles';
 import { ModalMenuButtonPropsType } from './type';
 
 export const ModalMenuButton = (props: ModalMenuButtonPropsType) => {
-  const { title, onPress, disabled, rightRounding, leftRounding } = props;
-
   const styles = useStyles(modalMenuButtonStyles);
+
+  const defaultOkTextStyle = styles.text;
+
+  const {
+    title,
+    onPress,
+    disabled,
+    rightRounding,
+    leftRounding,
+    okTextStyle = defaultOkTextStyle,
+  } = props;
 
   const theme = useSelector(themeSelector);
 
@@ -41,7 +50,7 @@ export const ModalMenuButton = (props: ModalMenuButtonPropsType) => {
         onPress={onPress}
         style={styles.modalMenuButton}
       >
-        <Text style={styles.text}>{title}</Text>
+        <Text style={okTextStyle}>{title}</Text>
       </TouchableOpacity>
     </LinearGradient>
   );

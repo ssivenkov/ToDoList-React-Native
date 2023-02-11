@@ -1,13 +1,13 @@
 import { TASKS_REDUCER_ACTION } from '@enums/tasksReducerEnum';
-import { TaskListInterface } from '@store/reducers/tasksReducer/types';
+import { TaskListType } from '@store/reducers/tasksReducer/types';
 
 type DeleteTaskActionPayloadType = {
-  taskList: TaskListInterface;
+  taskList: TaskListType;
 };
 
 export type AddNewTaskListActionReturnType = {
-  type: TASKS_REDUCER_ACTION.ADD_NEW_TASK_LIST;
   payload: DeleteTaskActionPayloadType;
+  type: TASKS_REDUCER_ACTION.ADD_NEW_TASK_LIST;
 };
 
 export type AddNewTaskListActionType = (
@@ -15,6 +15,6 @@ export type AddNewTaskListActionType = (
 ) => AddNewTaskListActionReturnType;
 
 export const addNewTaskListAction: AddNewTaskListActionType = (payload) => ({
-  type: TASKS_REDUCER_ACTION.ADD_NEW_TASK_LIST,
   payload,
+  type: TASKS_REDUCER_ACTION.ADD_NEW_TASK_LIST,
 });

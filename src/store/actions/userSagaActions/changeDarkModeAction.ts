@@ -9,8 +9,8 @@ export type ChangeDarkModeSagaPayloadType = {
 };
 
 export type ChangeDarkModeSagaActionReturnType = {
-  type: USER_SAGA_ACTION.CHANGE_DARK_MODE;
   payload: ChangeDarkModeSagaPayloadType;
+  type: USER_SAGA_ACTION.CHANGE_DARK_MODE;
 };
 
 export type ChangeDarkModeSagaActionType = (
@@ -18,6 +18,6 @@ export type ChangeDarkModeSagaActionType = (
 ) => ChangeDarkModeSagaActionReturnType;
 
 export const changeDarkModeAction: ChangeDarkModeSagaActionType = (payload) => ({
-  type: USER_SAGA_ACTION.CHANGE_DARK_MODE,
   payload,
+  type: USER_SAGA_ACTION.CHANGE_DARK_MODE,
 });

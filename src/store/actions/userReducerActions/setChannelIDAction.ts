@@ -6,8 +6,8 @@ type SetChannelIDActionPayloadType = {
 };
 
 export type SetChannelIDActionReturnType = {
-  type: USER_REDUCER_ACTION.SET_CHANNEL_ID;
   payload: SetChannelIDActionPayloadType;
+  type: USER_REDUCER_ACTION.SET_CHANNEL_ID;
 };
 
 export type SetChannelIDActionType = (
@@ -15,6 +15,6 @@ export type SetChannelIDActionType = (
 ) => SetChannelIDActionReturnType;
 
 export const setChannelIDAction: SetChannelIDActionType = (payload) => ({
-  type: USER_REDUCER_ACTION.SET_CHANNEL_ID,
   payload,
+  type: USER_REDUCER_ACTION.SET_CHANNEL_ID,
 });

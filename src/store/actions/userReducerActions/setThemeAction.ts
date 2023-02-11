@@ -6,8 +6,8 @@ type SetThemeActionPayloadType = {
 };
 
 export type SetThemeActionReturnType = {
-  type: USER_REDUCER_ACTION.SET_THEME;
   payload: SetThemeActionPayloadType;
+  type: USER_REDUCER_ACTION.SET_THEME;
 };
 
 export type SetThemeActionType = (
@@ -15,6 +15,6 @@ export type SetThemeActionType = (
 ) => SetThemeActionReturnType;
 
 export const setThemeAction: SetThemeActionType = (payload) => ({
-  type: USER_REDUCER_ACTION.SET_THEME,
   payload,
+  type: USER_REDUCER_ACTION.SET_THEME,
 });

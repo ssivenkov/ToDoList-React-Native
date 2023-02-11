@@ -5,47 +5,50 @@ import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 type SignInButtonStylesType = {
   button: ViewStyle;
   disabled: ViewStyle;
+  facebookStyle: ViewStyle;
+  googleStyle: ViewStyle;
   icon: FontAwesomeIconStyle;
   text: TextStyle;
-  googleStyle: ViewStyle;
-  facebookStyle: ViewStyle;
+  textContainer: ViewStyle;
 };
 
 const { WHITE, CORNFLOWER_BLUE, CHAMBRAY, DUSTY_GRAY } = COLORS;
 
 export const signInButtonStyles = StyleSheet.create<SignInButtonStylesType>({
   button: {
-    width: '100%',
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
     alignItems: 'center',
-    flexWrap: 'wrap',
     borderRadius: 3,
-    paddingVertical: 8,
-    paddingHorizontal: 12,
+    flexDirection: 'row',
     marginVertical: 10,
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    width: '100%',
   },
 
-  icon: {
-    marginRight: 15,
-    marginLeft: 2,
-    color: WHITE,
-  },
-
-  text: {
-    fontSize: 22,
-    color: WHITE,
-  },
-
-  googleStyle: {
-    backgroundColor: CORNFLOWER_BLUE,
+  disabled: {
+    backgroundColor: DUSTY_GRAY,
   },
 
   facebookStyle: {
     backgroundColor: CHAMBRAY,
   },
 
-  disabled: {
-    backgroundColor: DUSTY_GRAY,
+  googleStyle: {
+    backgroundColor: CORNFLOWER_BLUE,
+  },
+
+  icon: {
+    color: WHITE,
+    marginLeft: 2,
+    marginRight: 15,
+  },
+
+  text: {
+    color: WHITE,
+    fontSize: 22,
+  },
+
+  textContainer: {
+    flex: 1,
   },
 });

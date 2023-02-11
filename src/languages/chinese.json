@@ -2,67 +2,82 @@
   "translation": {
     "common": {
       "Ok": "好的",
+      "Cancel": "取消",
+      "Confirm": "確認",
+      "Select": "選擇",
       "Close": "关闭",
       "NoInternetConnection": "没有互联网连接。请连接到互联网",
       "NoIOSNotificationsPermission": "没有通知的权限。给予该应用程序显示通知的权限"
     },
+    "notification": {
+      "TaskNotification": "执行任务"
+    },
+    "snackBar": {
+      "taskIsDone": "任務完成",
+      "taskIsToDo": "任務返回"
+    },
     "tasksScreen": {
-      "Tasks": "任务清单",
-      "CreateTaskButtonTitle": "输入新的任务名称",
-      "CreateTaskListButtonTitle": "输入新的任务列表标题:",
-      "DeleteQuestionButtonTitle": "你确定要删除<0>{{text}}</0>吗?",
-      "DoneButton": "你确定任务<0>{{text}}</0>已经完成吗?",
-      "EditTaskListButtonTitle": "编辑任务列表标题:",
-      "EditTaskButton": "编辑任务",
-      "TodoTasksTab": "琐碎的任务",
-      "DoneTasksTab": "已完成的任务",
+      "HeaderTitle": "任务清单",
+      "CreateTaskListModalTitle": "输入新的任务列表标题",
+      "DeleteModalQuestion": "你确定要删除<0>{{text}}</0>吗?",
+      "EditTaskListModalTitle": "编辑任务列表标题",
+      "TodoTasksTabTitle": "琐碎的任务",
+      "DoneTasksTabTitle": "已完成的任务",
       "NoTaskListsFound": "没有发现任务清单",
       "EnableNotification": "提醒任务",
-      "EnableMarkColor": "任务颜色",
-      "TaskNotification": "执行任务"
+      "EnableColorMark": "任务颜色"
+    },
+    "addTaskScreen": {
+      "HeaderTitle": "新任務",
+      "AddTaskInputSuptitle": "新任務文本"
+    },
+    "editTaskScreen": {
+      "HeaderTitle": "更改任務",
+      "EditTaskInputSuptitle": "任務文本"
     },
     "signInScreen": {
       "SignIn": "登录",
-      "SignInWith": "用以下方式登录 <0>{{text}}</0>",
-      "CancelAuthProcess": "用户取消了登录过程",
-      "ErrorGettingAccessToken": "获取访问令牌时出了问题"
+      "SignInWithButtonTitle": "用以下方式登录 <0>{{text}}</0>",
+      "CancelAuthProcessModalTitle": "用户取消了登录过程",
+      "GettingAccessTokenErrorModalTitle": "获取访问令牌时出了问题",
+      "DeleteAccountSuccessfully": "您的帳戶已成功刪除"
     },
     "accountScreen": {
-      "Account": "帐户",
-      "DarkMode": "黑暗模式",
-      "SignOut": "签出",
-      "SignOutWarning": "你确定你要签出吗?",
+      "HeaderTitle": "帐户",
+      "DarkModeButtonTitle": "黑暗模式",
+      "SignOutButtonTitle": "签出",
+      "SignOutModalTitle": "你确定你要签出吗?",
       "ChangeLanguageButtonTitle": "语言",
-      "ChangeLanguageButtonDescription": "选择应用语言:",
-      "DeleteAccount": "删除账户",
-      "DeleteAccountWarning": "你确定要删除你的账户和所有的数据吗？",
-      "AccentColorDescription": "选择重点颜色:",
+      "ChangeLanguageModalTitle": "选择应用语言",
+      "DeleteAccountButtonTitle": "删除账户",
+      "DeleteAccountModalTitle": "你确定要删除你的账户和所有的数据吗？",
+      "AccentColorModalTitle": "选择重点颜色",
       "AccentColorButtonTitle": "重点颜色",
-      "ContactTheAuthorButtonTitle": "聯繫作者"
+      "ContactTheAuthorButtonTitle": "聯繫作者",
+      "RateAppButtonTitle": "評價應用程序",
+      "ShareAppButtonTitle": "分享應用",
+      "ShareAppMessage": "我喜歡使用 ToDo List 應用程序。 嘗試！"
     },
     "contactTheAuthorScreen": {
       "HeaderTitle": "聯繫作者",
-      "EmailPlaceholder": "電子郵件",
-      "SubjectPlaceholder": "信息主題",
-      "MessagePlaceholder": "信息",
       "EmailSuptext": "電子郵件",
       "EmailSubtext": "回復將發送到此電子郵件",
       "MessageSuptext": "消息正文",
-      "SendButton": "發送",
-      "ContactTheAuthorSuccess": "謝謝，您的信息已發送。 作者會盡快與您聯繫",
-      "ContactTheAuthorError": "未知錯誤。 請嘗試輸入另一個電子郵件",
-      "InvalidEmailError": "無效的郵件地址",
-      "EmailRequiredError": "需要電子郵件",
-      "MessageRequiredError": "需要消息文本"
+      "SendButtonTitle": "發送",
+      "ContactTheAuthorSuccessModalTitle": "謝謝，您的信息已發送。 作者會盡快與您聯繫",
+      "ContactTheAuthorErrorModalTitle": "未知錯誤。 請嘗試輸入另一個電子郵件",
+      "InvalidEmailErrorTitle": "無效的郵件地址",
+      "EmailRequiredErrorTitle": "需要電子郵件",
+      "MessageRequiredErrorTitle": "需要消息文本"
     },
     "notepadScreen": {
-      "Notepad": "記事本",
-      "NotepadPlaceholder": "文本",
-      "CleanButtonWarningTitle": "您確定要清除記事本嗎？",
-      "CleanNotepadTextRequestError": "沒有互聯網連接，記事本僅在您的設備上被清除。 要清除服務器上的記事本，請打開互聯網並重複請求",
-      "SaveNotepadTextRequestError": "沒有互聯網連接，記事本僅保存在您的設備上。 要將記事本保存在服務器上，請打開互聯網並重複請求",
-      "NotepadCleared": "記事本已清除",
-      "NotepadSaved": "記事本已保存"
+      "HeaderTitle": "記事本",
+      "NotepadPlaceholder": "你的文字",
+      "CleanButtonModalTitle": "您確定要清除記事本嗎？",
+      "CleanNotepadTextRequestErrorModalTitle": "沒有互聯網連接，記事本僅在您的設備上被清除。 要清除服務器上的記事本，請打開互聯網並重複請求",
+      "SaveNotepadTextRequestErrorModalTitle": "沒有互聯網連接，記事本僅保存在您的設備上。 要將記事本保存在服務器上，請打開互聯網並重複請求",
+      "NotepadClearedModalTitle": "記事本已清除",
+      "NotepadSavedModalTitle": "記事本已保存"
     }
   }
 }

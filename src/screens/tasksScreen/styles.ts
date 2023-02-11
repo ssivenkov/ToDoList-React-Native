@@ -3,26 +3,26 @@ import { ExtendedStylesPropsType } from '@hooks/useStyles';
 import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
 type TasksScreenStylesType = {
-  tasksListContainer: ViewStyle;
   nullContentContainer: ViewStyle;
   nullContentText: TextStyle;
+  tasksListContainer: ViewStyle;
 };
 
 export const taskScreenStyles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<TasksScreenStylesType>({
-    tasksListContainer: {
-      marginVertical: TaskListMarginVertical,
-    },
-
     nullContentContainer: {
-      height: '100%',
       alignItems: 'center',
+      height: '100%',
       justifyContent: 'center',
     },
 
     nullContentText: {
+      color: props.TEXT_COLOR,
       fontSize: 22,
       textAlign: 'center',
-      color: props.TEXT_COLOR,
+    },
+
+    tasksListContainer: {
+      marginVertical: TaskListMarginVertical,
     },
   });

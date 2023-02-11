@@ -6,8 +6,8 @@ type SetProviderIDActionPayloadType = {
 };
 
 export type SetProviderIDActionReturnType = {
-  type: USER_REDUCER_ACTION.SET_PROVIDER_ID;
   payload: SetProviderIDActionPayloadType;
+  type: USER_REDUCER_ACTION.SET_PROVIDER_ID;
 };
 
 export type SetProviderIDActionType = (
@@ -15,6 +15,6 @@ export type SetProviderIDActionType = (
 ) => SetProviderIDActionReturnType;
 
 export const setProviderIDAction: SetProviderIDActionType = (payload) => ({
-  type: USER_REDUCER_ACTION.SET_PROVIDER_ID,
   payload,
+  type: USER_REDUCER_ACTION.SET_PROVIDER_ID,
 });

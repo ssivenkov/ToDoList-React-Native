@@ -5,7 +5,7 @@ Mobile task management application for Android and iOS.
 
 Stack: JavaScript, TypeScript, React Native, Redux, Redux-Saga, Firebase, i18next, Font Awesome, ESLint, Prettier.
 
-Implemented: adding task or task list, removing task or task list, renaming task or task list, collapsing and uncollapsing task lists, marking the completed task, marking task with any color, screens for todo tasks and for done tasks, notepad screen, receiving tasks notification at a certain date and time, sign in with Google, user data storage and synchronizing with cloud database, translations into 15 languages, dark theme button, app accent color picker button, contact the author button, delete account button, change app language button, internet connection checking, splash screen.
+Implemented: adding task or task list, removing task or task list, renaming task or task list, collapsing and uncollapsing task lists, marking the completed task, marking the uncompleted task, snack bar, marking task with any color, receiving tasks notification at a certain date and time, screens for todo tasks and for done tasks, notepad screen, sign in with Google and Facebook, user data storage and synchronizing with cloud database, translations into 15 languages, change app language button, dark theme button, app accent color picker button, contact the author button, rate app button, share app button, delete account button, internet connection checking, splash screen.
 
 ![ToDo List preview](./preview.png)
 

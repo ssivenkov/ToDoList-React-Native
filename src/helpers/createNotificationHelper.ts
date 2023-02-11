@@ -13,23 +13,23 @@ type CreateNotificationHelperParamsType = {
 export const createNotificationHelper = (params: CreateNotificationHelperParamsType) => {
   const { channelId, date, notificationID, taskTitle } = params;
 
-  const message = `${t('tasksScreen.TaskNotification')} ${taskTitle}`;
+  const message = `${t('notification.TaskNotification')} ${taskTitle}`;
 
   if (Platform.OS === 'android') {
     PushNotification.localNotificationSchedule({
+      allowWhileIdle: true,
       channelId,
       date,
       id: notificationID,
       message,
-      allowWhileIdle: true,
     });
   }
 
   if (Platform.OS === 'ios') {
     PushNotificationIOS.addNotificationRequest({
-      id: notificationID,
-      fireDate: date,
       body: message,
+      fireDate: date,
+      id: notificationID,
     });
   }
 };

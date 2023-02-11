@@ -1,59 +1,47 @@
-import { COLORS } from '@colors/colors';
 import { FontAwesomeIconStyle } from '@fortawesome/react-native-fontawesome';
 import { ExtendedStylesPropsType } from '@hooks/useStyles';
 import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
 export type TasksNavigatorStylesType = {
-  tabBarContainer: ViewStyle;
-  tabBarItem: ViewStyle;
-  tabFocusIcon: FontAwesomeIconStyle;
-  tabIcon: FontAwesomeIconStyle;
-  tabBarIndicator: ViewStyle;
-  headerTitleStyle: TextStyle;
-  buttonContainer: ViewStyle;
-  icon: TextStyle;
-  title: TextStyle;
+  topTabBarContainer: ViewStyle;
+  topTabBarItem: ViewStyle;
+  topTabIcon: FontAwesomeIconStyle;
+  topTabIconContainer: TextStyle;
+  topTabIconFocus: FontAwesomeIconStyle;
+  topTabIndicator: ViewStyle;
+  topTabTitle: TextStyle;
 };
-
-const { WHITE } = COLORS;
 
 export const tasksNavigatorStyles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<TasksNavigatorStylesType>({
-    tabBarContainer: {
+    topTabBarContainer: {
       backgroundColor: props.TAB_BAR_BACKGROUND_COLOR,
     },
 
-    tabBarItem: {
+    topTabBarItem: {
       height: 50,
     },
 
-    tabFocusIcon: {
-      color: props.ACCENT_COLOR,
-    },
-
-    tabIcon: {
+    topTabIcon: {
       color: props.TAB_BAR_ICON_COLOR,
     },
 
-    tabBarIndicator: {
-      backgroundColor: props.ACCENT_COLOR,
-    },
-
-    headerTitleStyle: {
-      color: WHITE,
-      fontSize: 24,
-    },
-
-    buttonContainer: {
-      marginRight: 10,
-    },
-
-    icon: {
+    topTabIconContainer: {
       marginTop: 1,
     },
 
-    title: {
+    topTabIconFocus: {
+      color: props.ACCENT_COLOR,
+    },
+
+    topTabIndicator: {
+      backgroundColor: props.ACCENT_COLOR,
+    },
+
+    topTabTitle: {
       fontSize: 12,
+      lineHeight: 14,
       marginTop: 0,
+      textTransform: 'none',
     },
   });

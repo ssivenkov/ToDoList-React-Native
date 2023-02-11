@@ -1,19 +1,25 @@
 import { ColorType, ThemeType } from '@store/reducers/userReducer/types';
-import { accentColorSelector, themeSelector } from '@store/selectors/userSelectors';
+import {
+  accentColorSelector,
+  emulatorStatusBarHeightSelector,
+  themeSelector,
+} from '@store/selectors/userSelectors';
 import { useWindowDimensions } from 'react-native';
 import { useSelector } from 'react-redux';
 
-export interface ExtendedStylesPropsType extends ThemeType {
+export type ExtendedStylesPropsType = ThemeType & {
   ACCENT_COLOR: ColorType;
-  appWidth: number;
   appHeight: number;
-}
+  appWidth: number;
+  emulatorStatusBarHeight: number;
+};
 
 export const useStyles = <TStyles, ArgType>(
-  fn: (props: ExtendedStylesPropsType, ...args: ArgType[]) => TStyles,
+  styleFunction: (props: ExtendedStylesPropsType, ...args: ArgType[]) => TStyles,
 ): TStyles => {
   const theme = useSelector(themeSelector);
   const accentColor = useSelector(accentColorSelector);
+  const emulatorStatusBarHeight = useSelector(emulatorStatusBarHeightSelector);
 
   const { width, height } = useWindowDimensions();
 
@@ -23,9 +29,10 @@ export const useStyles = <TStyles, ArgType>(
   const props: ExtendedStylesPropsType = {
     ...theme,
     ACCENT_COLOR: accentColor,
-    appWidth,
     appHeight,
+    appWidth,
+    emulatorStatusBarHeight,
   };
 
-  return fn(props);
+  return styleFunction(props);
 };

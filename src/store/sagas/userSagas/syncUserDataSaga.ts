@@ -13,8 +13,8 @@ import { setLanguageAction } from '@store/actions/userReducerActions/setLanguage
 import { setModalMessageAction } from '@store/actions/userReducerActions/setModalMessageAction';
 import { setThemeAction } from '@store/actions/userReducerActions/setThemeAction';
 import {
-  TaskListBeforeConvertInterface,
-  TaskListInterface,
+  TaskListBeforeConvertType,
+  TaskListType,
   TaskListWithoutTasksType,
 } from '@store/reducers/tasksReducer/types';
 import { SnapshotType, UserIDType } from '@store/reducers/userReducer/types';
@@ -56,27 +56,25 @@ export function* syncUserDataSaga() {
     if (userData.taskLists) {
       const userTaskListsObject = snapshot.val().taskLists;
       // convert taskLists object to taskLists array
-      const userTaskListsBeforeConvert: TaskListBeforeConvertInterface[] =
+      const userTaskListsBeforeConvert: TaskListBeforeConvertType[] =
         Object.values(userTaskListsObject);
       // convert tasks object in every taskLists to tasks array in every taskLists
-      const taskLists: TaskListInterface[] = userTaskListsBeforeConvert.map(
-        (taskList) => {
-          const { tasks } = taskList;
+      const taskLists: TaskListType[] = userTaskListsBeforeConvert.map((taskList) => {
+        const { tasks } = taskList;
 
-          if (tasks) {
-            const taskListWithTasksAsArray: TaskListInterface = {
-              ...taskList,
-              tasks: Object.values(tasks),
-            };
+        if (tasks) {
+          const taskListWithTasksAsArray: TaskListType = {
+            ...taskList,
+            tasks: Object.values(tasks),
+          };
 
-            return taskListWithTasksAsArray;
-          } else {
-            const oldTaskList: TaskListWithoutTasksType = { ...taskList };
+          return taskListWithTasksAsArray;
+        } else {
+          const oldTaskList: TaskListWithoutTasksType = { ...taskList };
 
-            return oldTaskList;
-          }
-        },
-      );
+          return oldTaskList;
+        }
+      });
 
       yield put(setTaskListsAction({ taskLists }));
     } else {

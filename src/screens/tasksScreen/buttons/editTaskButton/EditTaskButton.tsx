@@ -13,14 +13,26 @@ import { faPen } from '@fortawesome/free-solid-svg-icons/faPen';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { useStyles } from '@hooks/useStyles';
 import { useNavigation } from '@react-navigation/native';
+import { waitCloseTaskHorizontalMenuAction } from '@store/actions/tasksSagaActions/tasksSagasActions/waitCloseTaskHorizontalMenuAction';
 import { themeSelector } from '@store/selectors/userSelectors';
 import { View } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { EditTaskTitleButtonPropsType } from './types';
 
 export const EditTaskButton = (props: EditTaskTitleButtonPropsType) => {
+  const {
+    colorMark,
+    isTodo,
+    oldTaskTitle,
+    taskID,
+    taskListID,
+    setIsMenuHorizontalVisible,
+  } = props;
+
+  const dispatch = useDispatch();
+
   const navigation = useNavigation();
 
   const theme = useSelector(themeSelector);
@@ -32,7 +44,15 @@ export const EditTaskButton = (props: EditTaskTitleButtonPropsType) => {
     : taskMenuButtonLightGradient;
 
   const navigateToEditTaskScreen = () => {
-    navigation.navigate(ROOT_NAVIGATOR_ROUTE.EDIT_TASK_SCREEN, props);
+    dispatch(waitCloseTaskHorizontalMenuAction({ setIsMenuHorizontalVisible }));
+
+    navigation.navigate(ROOT_NAVIGATOR_ROUTE.EDIT_TASK_SCREEN, {
+      colorMark,
+      isTodo,
+      oldTaskTitle,
+      taskID,
+      taskListID,
+    });
   };
 
   return (

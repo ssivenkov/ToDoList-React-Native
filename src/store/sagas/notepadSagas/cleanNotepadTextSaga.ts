@@ -27,7 +27,7 @@ export function* cleanNotepadTextSaga(action: CleanNotepadTextSagaActionReturnTy
     if (internetConnectionStatus !== ONLINE) {
       yield put(
         setModalMessageAction({
-          modalMessage: t('notepadScreen.CleanNotepadTextRequestError'),
+          modalMessage: t('notepadScreen.CleanNotepadTextRequestErrorModalTitle'),
         }),
       );
 
@@ -48,7 +48,7 @@ export function* cleanNotepadTextSaga(action: CleanNotepadTextSagaActionReturnTy
 
     yield put(
       setModalMessageAction({
-        modalMessage: t('notepadScreen.NotepadCleared'),
+        modalMessage: t('notepadScreen.NotepadClearedModalTitle'),
       }),
     );
   } catch (error) {

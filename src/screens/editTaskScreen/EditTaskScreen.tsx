@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 
 import { ColorPickerComponent } from '@components/colorPicker/ColorPicker';
 import { GoBackButton } from '@components/header/buttons/goBackButton/GoBackButton';
@@ -6,19 +6,25 @@ import { Header } from '@components/header/Header';
 import { Input } from '@components/inputs/Input';
 import { Notification } from '@components/notification/Notification';
 import { Switcher } from '@components/switcher/Switcher';
-import { colorPickerDefaultGapSize, MAX_INPUT_LENGTH200 } from '@constants/constants';
+import {
+  colorPickerDefaultGapSize,
+  INPUT_MAX_LENGTH200,
+  screenWidth480px,
+  switcherMargin,
+} from '@constants/constants';
 import { useStyles } from '@hooks/useStyles';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { useFocusEffect, useNavigation, useRoute } from '@react-navigation/native';
 import { Nullable, SetStateType } from '@root/types/common/types';
 import { SendEditedTaskButton } from '@screens/editTaskScreen/sendEditedTaskButton/SendEditedTaskButton';
 import { EditTaskScreenRouteType } from '@screens/editTaskScreen/types';
+import { closeTaskHorizontalMenuAction } from '@store/actions/tasksSagaActions/tasksSagasActions/closeTaskHorizontalMenuAction';
 import { setEditedTaskAction } from '@store/actions/tasksSagaActions/tasksSagasActions/setEditedTaskAction';
 import { setSelectedColorAction } from '@store/actions/userReducerActions/setSelectedColorAction';
 import { TaskType } from '@store/reducers/tasksReducer/types';
 import { ColorType } from '@store/reducers/userReducer/types';
 import { notificationsSelector } from '@store/selectors/tasksSelectors';
 import { useTranslation } from 'react-i18next';
-import { ScrollView, View } from 'react-native';
+import { BackHandler, ScrollView, useWindowDimensions, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { editTaskScreenStyles } from './styles';
@@ -37,6 +43,15 @@ export const EditTaskScreen = () => {
 
   const notifications = useSelector(notificationsSelector);
 
+  const { width: appWidth } = useWindowDimensions();
+
+  const colorPickerGapSizeOnNarrowScreen = 0;
+
+  const colorPickerGapSize =
+    appWidth <= screenWidth480px
+      ? colorPickerGapSizeOnNarrowScreen
+      : colorPickerDefaultGapSize;
+
   const taskNotification = notifications.find((item) => item.taskID === taskID);
 
   const [editedTaskTitle, setEditedTaskTitle] = useState<TaskType['title']>(oldTaskTitle);
@@ -51,6 +66,12 @@ export const EditTaskScreen = () => {
 
   const goBack = () => {
     navigation.goBack();
+  };
+
+  const customGoBack = () => {
+    dispatch(closeTaskHorizontalMenuAction());
+
+    goBack();
   };
 
   const showColorPickerWithUserColorMarkCondition =
@@ -83,17 +104,17 @@ export const EditTaskScreen = () => {
     if (notEmptyTaskTitleCondition && tempColorMark) {
       dispatch(
         setEditedTaskAction({
-          taskListID,
-          taskID,
-          editedTaskTitle,
-          shouldCreateNotification: isNotificationSwitcherOn,
-          date,
-          setIsLoading,
-          goBack,
-          setEditedTaskTitle,
-          shouldSetColor: isColorPickerSwitcherOn,
-          setColorMark: setTempColorMark,
           colorMark: tempColorMark,
+          date,
+          editedTaskTitle,
+          goBack,
+          setColorMark: setTempColorMark,
+          setEditedTaskTitle,
+          setIsLoading,
+          shouldCreateNotification: isNotificationSwitcherOn,
+          shouldSetColor: isColorPickerSwitcherOn,
+          taskID,
+          taskListID,
         }),
       );
 
@@ -101,16 +122,16 @@ export const EditTaskScreen = () => {
     } else if (notEmptyTaskTitleCondition) {
       dispatch(
         setEditedTaskAction({
-          taskListID,
-          taskID,
-          editedTaskTitle,
-          shouldCreateNotification: isNotificationSwitcherOn,
           date,
-          setIsLoading,
+          editedTaskTitle,
           goBack,
-          setEditedTaskTitle,
-          shouldSetColor: isColorPickerSwitcherOn,
           setColorMark: setTempColorMark,
+          setEditedTaskTitle,
+          setIsLoading,
+          shouldCreateNotification: isNotificationSwitcherOn,
+          shouldSetColor: isColorPickerSwitcherOn,
+          taskID,
+          taskListID,
         }),
       );
 
@@ -118,12 +139,26 @@ export const EditTaskScreen = () => {
     }
   };
 
+  useFocusEffect(
+    useCallback(() => {
+      const onBackPress = () => {
+        customGoBack();
+
+        return true;
+      };
+
+      const subscription = BackHandler.addEventListener('hardwareBackPress', onBackPress);
+
+      return () => subscription.remove();
+    }, []),
+  );
+
   return (
     <View>
       <Header
-        leftButton={<GoBackButton />}
+        leftButton={<GoBackButton customGoBack={customGoBack} />}
         rightButton={<SendEditedTaskButton sendEditedTask={sendEditedTask} />}
-        title={t('tasksScreen.EditTaskButton')}
+        title={t('editTaskScreen.HeaderTitle')}
       />
       <ScrollView
         contentContainerStyle={styles.contentWrapper}
@@ -131,8 +166,9 @@ export const EditTaskScreen = () => {
       >
         <View style={styles.contentContainer}>
           <Input
-            maxLength={MAX_INPUT_LENGTH200}
-            onValueChange={setEditedTaskTitle}
+            maxLength={INPUT_MAX_LENGTH200}
+            onChangeText={setEditedTaskTitle}
+            suptext={t('editTaskScreen.EditTaskInputSuptitle')}
             value={editedTaskTitle}
           />
           {isTodo && (
@@ -149,7 +185,9 @@ export const EditTaskScreen = () => {
               isOn={isColorPickerSwitcherOn}
               onToggleSwitcherClick={handleColorPickerSwitcherClick}
               size='medium'
-              switcherText={t('tasksScreen.EnableMarkColor')}
+              switcherMarginLeft={15}
+              switcherMarginRight={switcherMargin}
+              switcherText={t('tasksScreen.EnableColorMark')}
               textMarginBottom={1}
               textStyle={styles.colorPickerSwitcherText}
             />
@@ -158,7 +196,7 @@ export const EditTaskScreen = () => {
             <View style={styles.colorPickerWrapper}>
               <ColorPickerComponent
                 color={colorMark}
-                gapSize={colorPickerDefaultGapSize}
+                gapSize={colorPickerGapSize}
                 setSelectedColor={setTempColorMark}
               />
             </View>
@@ -166,7 +204,7 @@ export const EditTaskScreen = () => {
           {isColorPickerSwitcherOn && !colorMark && (
             <View style={styles.colorPickerWrapper}>
               <ColorPickerComponent
-                gapSize={colorPickerDefaultGapSize}
+                gapSize={colorPickerGapSize}
                 setSelectedColor={setSelectedColor}
               />
             </View>

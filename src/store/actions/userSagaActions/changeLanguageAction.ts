@@ -8,8 +8,8 @@ export type ChangeLanguageSagaActionPayloadType = {
 };
 
 export type ChangeLanguageSagaActionReturnType = {
-  type: USER_SAGA_ACTION.CHANGE_LANGUAGE;
   payload: ChangeLanguageSagaActionPayloadType;
+  type: USER_SAGA_ACTION.CHANGE_LANGUAGE;
 };
 
 export type ChangeLanguageSagaActionType = (
@@ -17,6 +17,6 @@ export type ChangeLanguageSagaActionType = (
 ) => ChangeLanguageSagaActionReturnType;
 
 export const changeLanguageAction: ChangeLanguageSagaActionType = (payload) => ({
-  type: USER_SAGA_ACTION.CHANGE_LANGUAGE,
   payload,
+  type: USER_SAGA_ACTION.CHANGE_LANGUAGE,
 });

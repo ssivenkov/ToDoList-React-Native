@@ -8,8 +8,8 @@ export type ChangeAccentColorSagaPayloadType = {
 };
 
 export type ChangeAccentColorSagaActionReturnType = {
-  type: USER_SAGA_ACTION.CHANGE_ACCENT_COLOR;
   payload: ChangeAccentColorSagaPayloadType;
+  type: USER_SAGA_ACTION.CHANGE_ACCENT_COLOR;
 };
 
 export type ChangeAccentColorSagaActionType = (
@@ -17,6 +17,6 @@ export type ChangeAccentColorSagaActionType = (
 ) => ChangeAccentColorSagaActionReturnType;
 
 export const changeAccentColorAction: ChangeAccentColorSagaActionType = (payload) => ({
-  type: USER_SAGA_ACTION.CHANGE_ACCENT_COLOR,
   payload,
+  type: USER_SAGA_ACTION.CHANGE_ACCENT_COLOR,
 });

@@ -9,15 +9,15 @@ export const validate = (params: ValidationParamsType) => {
   const errors: ValuesType = { [emailField]: '', [messageField]: '' };
 
   if (!/^[A-Z\d._%+-]+@[A-Z\d.-]+\.[A-Z]{2,}$/i.test(values[emailField])) {
-    errors[emailField] = t('contactTheAuthorScreen.InvalidEmailError');
+    errors[emailField] = t('contactTheAuthorScreen.InvalidEmailErrorTitle');
   }
 
   if (!values[emailField]) {
-    errors[emailField] = t('contactTheAuthorScreen.EmailRequiredError');
+    errors[emailField] = t('contactTheAuthorScreen.EmailRequiredErrorTitle');
   }
 
   if (!values[messageField]) {
-    errors[messageField] = t('contactTheAuthorScreen.MessageRequiredError');
+    errors[messageField] = t('contactTheAuthorScreen.MessageRequiredErrorTitle');
   }
 
   if (Object.values(errors).some((errorMessage) => errorMessage.length >= 1)) {

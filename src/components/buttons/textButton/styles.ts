@@ -3,30 +3,30 @@ import { ExtendedStylesPropsType } from '@hooks/useStyles';
 import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
 type TextButtonStylesType = {
-  touchableNativeFeedbackWrapper: ViewStyle;
   button: ViewStyle;
   text: TextStyle;
+  touchableNativeFeedbackWrapper: ViewStyle;
 };
 
 const textButtonBorderRadius = 30;
 
 export const textButtonStyles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<TextButtonStylesType>({
-    touchableNativeFeedbackWrapper: {
-      borderRadius: textButtonBorderRadius,
-      overflow: 'hidden',
-    },
-
     button: {
+      alignItems: 'center',
+      backgroundColor: props.ACCENT_COLOR,
+      borderRadius: textButtonBorderRadius,
       paddingHorizontal: 60,
       paddingVertical: 12,
-      borderRadius: textButtonBorderRadius,
-      backgroundColor: props.ACCENT_COLOR,
-      alignItems: 'center',
     },
 
     text: {
-      fontSize: 18,
       color: COLORS.WHITE,
+      fontSize: 18,
+    },
+
+    touchableNativeFeedbackWrapper: {
+      borderRadius: textButtonBorderRadius,
+      overflow: 'hidden',
     },
   });

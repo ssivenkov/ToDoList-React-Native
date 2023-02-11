@@ -2,9 +2,9 @@ import { ExtendedStylesPropsType } from '@hooks/useStyles';
 import { Platform, StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
 type LongButtonStylesType = {
-  longButtonContainer: ViewStyle;
   contentContainer: ViewStyle;
-  icon: ViewStyle;
+  longButtonContainer: ViewStyle;
+  rightComponent: ViewStyle;
   stringIcon: TextStyle;
   text: TextStyle;
 };
@@ -13,34 +13,37 @@ const textMarginBottom = 1.5;
 
 export const longButtonStyles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<LongButtonStylesType>({
-    longButtonContainer: {
-      width: props.appWidth,
-      flexDirection: 'row',
+    contentContainer: {
       alignItems: 'center',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      width: '100%',
+    },
+
+    longButtonContainer: {
+      alignItems: 'center',
+      flexDirection: 'row',
       justifyContent: 'space-between',
       padding: 10,
       paddingRight: 15,
+      width: '100%',
     },
 
-    contentContainer: {
-      flexDirection: 'row',
-      alignItems: 'center',
-    },
-
-    icon: {
-      marginLeft: 15,
+    rightComponent: {
+      paddingLeft: 15,
     },
 
     stringIcon: {
-      fontSize: 24,
       color: props.TEXT_COLOR,
+      fontSize: 24,
       marginBottom: 1,
     },
 
     text: {
-      fontSize: 18,
       color: props.TEXT_COLOR,
-      marginLeft: 20,
+      flex: 1,
+      fontSize: 18,
       marginBottom: Platform.OS === 'ios' ? 0 : textMarginBottom,
+      marginLeft: 20,
     },
   });

@@ -6,8 +6,8 @@ type DeleteTaskActionPayloadType = {
 };
 
 export type DeleteTaskNotificationActionReturnType = {
-  type: TASKS_REDUCER_ACTION.DELETE_TASK_NOTIFICATION;
   payload: DeleteTaskActionPayloadType;
+  type: TASKS_REDUCER_ACTION.DELETE_TASK_NOTIFICATION;
 };
 
 export type DeleteTaskNotificationActionType = (
@@ -17,6 +17,6 @@ export type DeleteTaskNotificationActionType = (
 export const deleteTaskNotificationAction: DeleteTaskNotificationActionType = (
   payload,
 ) => ({
-  type: TASKS_REDUCER_ACTION.DELETE_TASK_NOTIFICATION,
   payload,
+  type: TASKS_REDUCER_ACTION.DELETE_TASK_NOTIFICATION,
 });

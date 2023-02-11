@@ -1,16 +1,16 @@
 import { TASKS_SAGA_ACTION } from '@enums/tasksSagaEnum';
 import { SetStateType } from '@root/types/common/types';
-import { TaskListInterface } from '@store/reducers/tasksReducer/types';
+import { TaskListType } from '@store/reducers/tasksReducer/types';
 
 export type DeleteTaskListFullSagaPayloadType = {
-  taskListID: TaskListInterface['id'];
   setIsLoading: SetStateType<boolean>;
   setModalVisible: SetStateType<boolean>;
+  taskListID: TaskListType['id'];
 };
 
 export type DeleteTaskListFullSagaActionReturnType = {
-  type: TASKS_SAGA_ACTION.DELETE_TASK_LIST_FULL;
   payload: DeleteTaskListFullSagaPayloadType;
+  type: TASKS_SAGA_ACTION.DELETE_TASK_LIST_FULL;
 };
 
 export type DeleteTaskListFullSagaActionType = (
@@ -18,6 +18,6 @@ export type DeleteTaskListFullSagaActionType = (
 ) => DeleteTaskListFullSagaActionReturnType;
 
 export const deleteTaskListFullAction: DeleteTaskListFullSagaActionType = (payload) => ({
-  type: TASKS_SAGA_ACTION.DELETE_TASK_LIST_FULL,
   payload,
+  type: TASKS_SAGA_ACTION.DELETE_TASK_LIST_FULL,
 });

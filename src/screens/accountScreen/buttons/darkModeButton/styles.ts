@@ -8,7 +8,7 @@ type DarkModeButtonStylesType = {
 export const darkModeButtonStyles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<DarkModeButtonStylesType>({
     text: {
-      fontSize: 18,
       color: props.TEXT_COLOR,
+      fontSize: 18,
     },
   });

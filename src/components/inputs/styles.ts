@@ -3,71 +3,74 @@ import { ExtendedStylesPropsType } from '@hooks/useStyles';
 import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
 type InputStylesType = {
-  inputContainer: ViewStyle;
-  input: TextStyle;
-  notepadInput: TextStyle;
-  suptext: TextStyle;
-  subtext: TextStyle;
   errorSubtext: TextStyle;
-  transparentText: TextStyle;
+  input: TextStyle;
+  inputContainer: ViewStyle;
+  notepadInput: TextStyle;
+  subtext: TextStyle;
+  suptext: TextStyle;
+  transparentSubtext: TextStyle;
 };
 
-const subtextWidth = '100%';
+const { CRIMSON, TRANSPARENT } = COLORS;
+
+const textWidth = '100%';
 const subtextFontSize = 12.5;
 const subtextPaddingVertical = 8;
 
 export const inputStyles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<InputStylesType>({
+    errorSubtext: {
+      color: CRIMSON,
+      fontSize: subtextFontSize,
+      paddingVertical: subtextPaddingVertical,
+      width: textWidth,
+    },
+
+    input: {
+      alignContent: 'center',
+      backgroundColor: props.PLACEHOLDER_COLOR,
+      borderRadius: 8,
+      color: props.TEXT_COLOR,
+      fontSize: 18,
+      lineHeight: 25,
+      padding: 10,
+      width: textWidth,
+    },
+
     inputContainer: {
       flexDirection: 'row',
     },
 
-    input: {
-      width: '100%',
-      alignContent: 'center',
-      fontSize: 18,
-      padding: 10,
-      lineHeight: 25,
-      color: props.TEXT_COLOR,
-      backgroundColor: props.PLACEHOLDER_COLOR,
-      borderRadius: 8,
-    },
-
     notepadInput: {
-      width: '100%',
       alignContent: 'center',
-      fontSize: 16,
-      padding: 10,
-      lineHeight: 24,
-      color: props.TEXT_COLOR,
       backgroundColor: props.NOTEPAD_PLACEHOLDER_COLOR,
-    },
-
-    suptext: {
-      width: '100%',
-      fontSize: 14,
-      paddingVertical: 8,
       color: props.TEXT_COLOR,
+      fontSize: 16,
+      lineHeight: 24,
+      padding: 10,
+      width: textWidth,
     },
 
     subtext: {
-      width: subtextWidth,
-      fontSize: subtextFontSize,
-      paddingVertical: subtextPaddingVertical,
       color: props.SUBTEXT_COLOR,
-    },
-
-    errorSubtext: {
-      width: subtextWidth,
       fontSize: subtextFontSize,
       paddingVertical: subtextPaddingVertical,
-      color: COLORS.CRIMSON,
+      width: textWidth,
     },
 
-    transparentText: {
-      width: subtextWidth,
+    suptext: {
+      color: props.TEXT_COLOR,
+      fontSize: 14,
+      paddingVertical: 8,
+      width: textWidth,
+    },
+
+    transparentSubtext: {
+      color: TRANSPARENT,
       fontSize: subtextFontSize,
-      paddingVertical: subtextPaddingVertical,
       opacity: 0,
+      paddingVertical: subtextPaddingVertical,
+      width: textWidth,
     },
   });

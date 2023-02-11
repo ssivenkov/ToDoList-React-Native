@@ -1,13 +1,18 @@
-import { StyleSheet, ViewStyle } from 'react-native';
+import { StyleSheet, ViewStyle, TextStyle } from 'react-native';
 
 type SwitcherStylesType = {
   contentDefaultContainer: ViewStyle;
+  textBasicStyle: TextStyle;
 };
 
 export const styles = StyleSheet.create<SwitcherStylesType>({
   contentDefaultContainer: {
+    alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'flex-end',
+  },
+
+  textBasicStyle: {
+    flex: 1,
   },
 });

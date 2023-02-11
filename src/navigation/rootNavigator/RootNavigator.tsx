@@ -5,7 +5,6 @@ import { modalStyles } from '@components/modals/modalStyles';
 import { ROOT_NAVIGATOR_ROUTE } from '@enums/routesEnum';
 import { GOOGLE_WEB_CLIENT_ID } from '@env';
 import { useStyles } from '@hooks/useStyles';
-import { nativeStackExtraScreenSettings } from '@navigation/rootNavigator/settings';
 import { WithAuthNavigator } from '@navigation/withAuthNavigator/WithAuthNavigator';
 import auth from '@react-native-firebase/auth';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
@@ -16,14 +15,13 @@ import { AddTaskScreen } from '@screens/addTaskScreen/AddTaskScreen';
 import { ContactTheAuthorScreen } from '@screens/contactTheAuthorScreen/ContactTheAuthorScreen';
 import { EditTaskScreen } from '@screens/editTaskScreen/EditTaskScreen';
 import { SignInScreen } from '@screens/signInScreen/SignInScreen';
+import { setLanguageAction } from '@store/actions/userReducerActions/setLanguageAction';
 import { setModalMessageAction } from '@store/actions/userReducerActions/setModalMessageAction';
-import { changeLanguageAction } from '@store/actions/userSagaActions/changeLanguageAction';
 import { checkUserAction } from '@store/actions/userSagaActions/checkUserAction';
 import { createChannelAction } from '@store/actions/userSagaActions/createChannelAction';
 import { getUserDataAction } from '@store/actions/userSagaActions/getUserDataAction';
 import { UserDataType } from '@store/reducers/userReducer/types';
 import {
-  accentColorSelector,
   channelIDSelector,
   errorModalMessageSelector,
   isUserDataSynchronizedSelector,
@@ -47,7 +45,6 @@ export const RootNavigator = () => {
   const styles = useStyles(modalStyles);
 
   const theme = useSelector(themeSelector);
-  const accentColor = useSelector(accentColorSelector);
   const userID = useSelector(userIDSelector);
   const isUserDataSynchronized = useSelector(isUserDataSynchronizedSelector);
   const channelID = useSelector(channelIDSelector);
@@ -99,7 +96,7 @@ export const RootNavigator = () => {
   // need for rerender with correct translations for navigator
   useEffect(() => {
     if (i18next.language !== language) {
-      dispatch(changeLanguageAction({ language }));
+      dispatch(setLanguageAction({ language }));
       setRerender(language);
     }
   }, [rerender, language]);
@@ -117,7 +114,7 @@ export const RootNavigator = () => {
       >
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <View style={styles.contentWithBottomPadding}>
+            <View style={styles.descriptionContainer}>
               <Text style={styles.text}>{errorModalMessage}</Text>
             </View>
             <View style={styles.buttonsContainer}>
@@ -150,28 +147,17 @@ export const RootNavigator = () => {
               <Screen
                 component={ContactTheAuthorScreen}
                 name={ROOT_NAVIGATOR_ROUTE.CONTACT_THE_AUTHOR_SCREEN}
-                options={{
-                  ...nativeStackExtraScreenSettings({
-                    accentColor,
-                  }),
-                  title: t('contactTheAuthorScreen.HeaderTitle'),
-                }}
+                options={{ headerShown: false }}
               />
               <Screen
                 component={AddTaskScreen}
                 name={ROOT_NAVIGATOR_ROUTE.ADD_TASK_SCREEN}
-                options={{
-                  headerShown: false,
-                  title: t('addTaskScreen.HeaderTitle'),
-                }}
+                options={{ headerShown: false }}
               />
               <Screen
                 component={EditTaskScreen}
                 name={ROOT_NAVIGATOR_ROUTE.EDIT_TASK_SCREEN}
-                options={{
-                  headerShown: false,
-                  title: t('editTaskScreen.HeaderTitle'),
-                }}
+                options={{ headerShown: false }}
               />
             </>
           )}

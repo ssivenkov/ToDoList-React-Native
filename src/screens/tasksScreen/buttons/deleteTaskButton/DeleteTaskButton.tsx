@@ -25,7 +25,8 @@ import { deleteTaskButtonStyles } from './styles';
 import { DeleteTaskButtonPropsType } from './types';
 
 export const DeleteTaskButton = (props: DeleteTaskButtonPropsType) => {
-  const { isTodoTaskList, taskID, taskTitle, fullTaskList } = props;
+  const { isTodoTaskList, taskID, taskTitle, fullTaskList, setIsMenuHorizontalVisible } =
+    props;
 
   const { tasks } = fullTaskList;
 
@@ -55,9 +56,9 @@ export const DeleteTaskButton = (props: DeleteTaskButtonPropsType) => {
     if (removeFromScreenCondition) {
       dispatch(
         deleteTaskListFromScreenAction({
-          fullTaskList,
-          deleteTodoTask: false,
           deleteDoneTask: true,
+          deleteTodoTask: false,
+          fullTaskList,
           setIsLoading,
           setModalVisible,
         }),
@@ -65,21 +66,25 @@ export const DeleteTaskButton = (props: DeleteTaskButtonPropsType) => {
     } else if (fullRemoveTaskListCondition) {
       dispatch(
         deleteTaskListFullAction({
-          taskListID: fullTaskList.id,
           setIsLoading,
           setModalVisible,
+          taskListID: fullTaskList.id,
         }),
       );
     } else {
       dispatch(
         deleteTaskAction({
-          taskListID: fullTaskList.id,
-          taskID,
           setIsLoading,
           setModalVisible,
+          taskID,
+          taskListID: fullTaskList.id,
         }),
       );
     }
+  };
+
+  const closeHandler = () => {
+    setIsMenuHorizontalVisible(false);
   };
 
   return (
@@ -97,10 +102,11 @@ export const DeleteTaskButton = (props: DeleteTaskButtonPropsType) => {
           </View>
         </LinearGradient>
       }
+      closeHandler={closeHandler}
       okHandler={removeTask}
     >
       <Text style={styles.warnText}>
-        <Trans i18nKey='tasksScreen.DeleteQuestionButtonTitle'>
+        <Trans i18nKey='tasksScreen.DeleteModalQuestion'>
           <Text style={styles.redHighlightTask}>{{ text: taskTitle }}</Text>
         </Trans>
       </Text>

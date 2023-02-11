@@ -1,6 +1,8 @@
-import { TaskListInterface } from '@store/reducers/tasksReducer/types';
+import { SetStateType } from '@root/types/common/types';
+import { TaskListType } from '@store/reducers/tasksReducer/types';
 
 export type EditTaskListTitleButtonPropsType = {
-  oldTaskListTitle: TaskListInterface['title'];
-  taskListID: TaskListInterface['id'];
+  oldTaskListTitle: TaskListType['title'];
+  setIsMenuHorizontalVisible: SetStateType<boolean>;
+  taskListID: TaskListType['id'];
 };

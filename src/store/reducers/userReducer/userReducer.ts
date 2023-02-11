@@ -8,18 +8,19 @@ import {
 import { lightTheme } from '@themes/themes';
 
 const userReducerState: UserReducerStateType = {
-  providerID: null,
-  userData: null,
-  channelID: '',
-  userAvatar: null,
-  language: EN,
-  theme: lightTheme,
   accentColor: COLORS.ELECTRIC_VIOLET2,
-  selectedColor: COLORS.ELECTRIC_VIOLET2,
+  channelID: '',
+  emulatorStatusBarHeight: 0,
   globalLoader: false,
-  modalMessage: '',
   isUserDataSynchronized: false,
   isWaitingUserDataOnSignIn: false,
+  language: EN,
+  modalMessage: '',
+  providerID: null,
+  selectedColor: COLORS.ELECTRIC_VIOLET2,
+  theme: lightTheme,
+  userAvatar: null,
+  userData: null,
 };
 
 export const userReducer = (
@@ -34,11 +35,12 @@ export const userReducer = (
     case USER_REDUCER_ACTION.SET_AUTH_STATE:
       return {
         ...state,
-        userData: action.payload.userData,
-        providerID: action.payload.providerID,
-        isUserDataSynchronized: action.payload.isUserDataSynchronized,
         accentColor: action.payload.accentColor,
+        emulatorStatusBarHeight: action.payload.emulatorStatusBarHeight,
+        isUserDataSynchronized: action.payload.isUserDataSynchronized,
+        providerID: action.payload.providerID,
         selectedColor: action.payload.selectedColor,
+        userData: action.payload.userData,
       };
     case USER_REDUCER_ACTION.SET_PROVIDER_ID:
       return { ...state, providerID: action.payload.providerID };
@@ -62,6 +64,11 @@ export const userReducer = (
       return {
         ...state,
         isWaitingUserDataOnSignIn: action.payload.isWaitingUserDataOnSignIn,
+      };
+    case USER_REDUCER_ACTION.SET_EMULATOR_STATUS_BAR_HEIGHT:
+      return {
+        ...state,
+        emulatorStatusBarHeight: action.payload.emulatorStatusBarHeight,
       };
     default:
       return state;

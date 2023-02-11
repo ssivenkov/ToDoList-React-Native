@@ -5,10 +5,13 @@ import { StyleSheet, View } from 'react-native';
 
 import { styles } from './styles';
 
-export const Loader = () => {
+export const PurpleLoader = () => {
   return (
     <View style={[StyleSheet.absoluteFillObject, styles.loaderContainer]}>
-      <LottieView autoPlay={true} source={require('../../assets/images/loader.json')} />
+      <LottieView
+        autoPlay={true}
+        source={require('../../../assets/images/lottieAnimations/purple-loader.json')}
+      />
     </View>
   );
 };

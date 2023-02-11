@@ -1,15 +1,15 @@
 import { TASKS_REDUCER_ACTION } from '@enums/tasksReducerEnum';
-import { TaskListInterface } from '@store/reducers/tasksReducer/types';
+import { TaskListType } from '@store/reducers/tasksReducer/types';
 
 type DeleteTaskListFromScreenActionPayloadType = {
-  fullTaskList: TaskListInterface;
-  deleteTodoTask: boolean;
   deleteDoneTask: boolean;
+  deleteTodoTask: boolean;
+  fullTaskList: TaskListType;
 };
 
 export type DeleteTaskListFromScreenActionReturnType = {
-  type: TASKS_REDUCER_ACTION.DELETE_TASK_LIST_FROM_SCREEN;
   payload: DeleteTaskListFromScreenActionPayloadType;
+  type: TASKS_REDUCER_ACTION.DELETE_TASK_LIST_FROM_SCREEN;
 };
 
 export type AddNewTaskListActionType = (
@@ -17,6 +17,6 @@ export type AddNewTaskListActionType = (
 ) => DeleteTaskListFromScreenActionReturnType;
 
 export const deleteTaskListFromScreenAction: AddNewTaskListActionType = (payload) => ({
-  type: TASKS_REDUCER_ACTION.DELETE_TASK_LIST_FROM_SCREEN,
   payload,
+  type: TASKS_REDUCER_ACTION.DELETE_TASK_LIST_FROM_SCREEN,
 });

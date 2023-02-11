@@ -1,10 +1,10 @@
 import { TaskListPropsType } from '@components/taskList/types';
-import { TaskListInterface } from '@store/reducers/tasksReducer/types';
+import { TaskListType } from '@store/reducers/tasksReducer/types';
 
 export type CollapsingButtonPropsType = {
-  isTodoTaskList: TaskListPropsType['isTodoTaskList'];
-  taskListID: TaskListInterface['id'];
-  isTodoCollapsed: TaskListPropsType['isTodoCollapsed'];
   isDoneCollapsed: TaskListPropsType['isDoneCollapsed'];
+  isTodoCollapsed: TaskListPropsType['isTodoCollapsed'];
+  isTodoTaskList: TaskListPropsType['isTodoTaskList'];
+  taskListID: TaskListType['id'];
   taskListsCount: number;
 };

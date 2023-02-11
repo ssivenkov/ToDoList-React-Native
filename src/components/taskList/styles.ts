@@ -1,60 +1,56 @@
-import { COLORS } from '@colors/colors';
 import { ExtendedStylesPropsType } from '@hooks/useStyles';
 import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
 type TaskListStylesType = {
-  container: ViewStyle;
-  title: TextStyle;
-  controlsContainer: ViewStyle;
   buttonsContainer: ViewStyle;
-  warnText: TextStyle;
-  redHighlightTask: TextStyle;
+  container: ViewStyle;
+  controlsContainer: ViewStyle;
+  menuHorizontalWrapper: ViewStyle;
   tasksContainer: ViewStyle;
+  title: TextStyle;
 };
 
 export const TaskListMarginVertical = 4;
 
 export const taskListStyles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<TaskListStylesType>({
+    buttonsContainer: {
+      alignItems: 'center',
+      borderRadius: 20,
+      flexDirection: 'row',
+      width: '100%',
+    },
+
     container: {
       backgroundColor: props.TASK_LIST_COLOR,
-      paddingTop: 5,
-      paddingBottom: 6,
-      paddingHorizontal: 9,
+      borderRadius: 10,
       marginHorizontal: 9,
       marginVertical: TaskListMarginVertical,
-      borderRadius: 10,
+      paddingBottom: 6,
+      paddingHorizontal: 9,
+      paddingTop: 5,
     },
 
     controlsContainer: {
       alignItems: 'center',
+      flexDirection: 'row',
       justifyContent: 'space-between',
-      flexDirection: 'row',
     },
 
-    buttonsContainer: {
-      flexDirection: 'row',
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-
-    title: {
-      flex: 1,
-      color: props.TEXT_COLOR,
-      fontSize: 21,
-      marginLeft: 6,
-    },
-
-    warnText: {
-      fontSize: 20,
-    },
-
-    redHighlightTask: {
-      color: COLORS.RED,
-      fontWeight: '500',
+    menuHorizontalWrapper: {
+      borderRadius: 7,
+      overflow: 'hidden',
     },
 
     tasksContainer: {
       marginTop: 2,
+    },
+
+    title: {
+      color: props.TEXT_COLOR,
+      flex: 1,
+      fontSize: 21,
+      marginLeft: 6,
+      paddingRight: 1,
     },
   });
