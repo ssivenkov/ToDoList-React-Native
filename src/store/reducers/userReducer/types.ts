@@ -16,6 +16,7 @@ import {
   UA,
 } from '@constants/languages';
 import { FIREBASE_OTHER } from '@enums/firebaseEnum';
+import { WITH_AUTH_NAVIGATOR_ROUTE } from '@enums/routesEnum';
 import { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import { FirebaseDatabaseTypes } from '@react-native-firebase/database';
 import { Nullable } from '@root/types/common/types';
@@ -26,6 +27,7 @@ import { SetEmulatorStatusBarHeightActionReturnType } from '@store/actions/userR
 import { SetGlobalLoaderActionReturnType } from '@store/actions/userReducerActions/setGlobalLoaderAction';
 import { SetIsUserDataSynchronizedActionReturnType } from '@store/actions/userReducerActions/setIsUserDataSynchronizedAction';
 import { SetLanguageActionReturnType } from '@store/actions/userReducerActions/setLanguageAction';
+import { SetLastRouteActionReturnType } from '@store/actions/userReducerActions/setLastRouteAction';
 import { SetModalMessageActionReturnType } from '@store/actions/userReducerActions/setModalMessageAction';
 import { SetProviderIDActionReturnType } from '@store/actions/userReducerActions/setProviderIDAction';
 import { SetSelectedColorActionReturnType } from '@store/actions/userReducerActions/setSelectedColorAction';
@@ -87,6 +89,10 @@ export type ColorType = string;
 
 export type ModalMessageType = string;
 
+export type LastRouteType =
+  | WITH_AUTH_NAVIGATOR_ROUTE.TASKS_NAVIGATOR
+  | WITH_AUTH_NAVIGATOR_ROUTE.NOTEPAD_SCREEN;
+
 export type UserReducerStateType = {
   accentColor: ColorType;
   channelID: ChannelIDType;
@@ -95,6 +101,7 @@ export type UserReducerStateType = {
   isUserDataSynchronized: boolean;
   isWaitingUserDataOnSignIn: boolean;
   language: LanguageType;
+  lastRoute: LastRouteType;
   modalMessage: ModalMessageType;
   providerID: ProviderIDType;
   selectedColor: ColorType;
@@ -117,4 +124,5 @@ export type UserReducerActionsType =
   | SetModalMessageActionReturnType
   | SetIsUserDataSynchronizedActionReturnType
   | SetWaitingUserDataOnSignInActionReturnType
-  | SetEmulatorStatusBarHeightActionReturnType;
+  | SetEmulatorStatusBarHeightActionReturnType
+  | SetLastRouteActionReturnType;

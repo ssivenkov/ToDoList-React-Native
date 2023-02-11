@@ -82,3 +82,9 @@ export const emulatorStatusBarHeightSelector = (
 ): UserReducerStateType['emulatorStatusBarHeight'] => {
   return state.user.emulatorStatusBarHeight;
 };
+
+export const lastRouteSelector = (
+  state: AppRootStateType,
+): UserReducerStateType['lastRoute'] => {
+  return state.user.lastRoute;
+};

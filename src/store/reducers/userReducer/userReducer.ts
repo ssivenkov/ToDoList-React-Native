@@ -1,5 +1,6 @@
 import { COLORS } from '@colors/colors';
 import { EN } from '@constants/languages';
+import { WITH_AUTH_NAVIGATOR_ROUTE } from '@enums/routesEnum';
 import { USER_REDUCER_ACTION } from '@enums/userReducerEnum';
 import {
   UserReducerActionsType,
@@ -21,6 +22,7 @@ const userReducerState: UserReducerStateType = {
   theme: lightTheme,
   userAvatar: null,
   userData: null,
+  lastRoute: WITH_AUTH_NAVIGATOR_ROUTE.TASKS_NAVIGATOR,
 };
 
 export const userReducer = (
@@ -41,6 +43,7 @@ export const userReducer = (
         providerID: action.payload.providerID,
         selectedColor: action.payload.selectedColor,
         userData: action.payload.userData,
+        lastRoute: action.payload.lastRoute,
       };
     case USER_REDUCER_ACTION.SET_PROVIDER_ID:
       return { ...state, providerID: action.payload.providerID };
@@ -60,6 +63,8 @@ export const userReducer = (
       return { ...state, modalMessage: action.payload.modalMessage };
     case USER_REDUCER_ACTION.SET_IS_USER_DATA_SYNCHRONIZED:
       return { ...state, isUserDataSynchronized: action.payload.isUserDataSynchronized };
+    case USER_REDUCER_ACTION.SET_LAST_ROUTE:
+      return { ...state, lastRoute: action.payload.lastRoute };
     case USER_REDUCER_ACTION.SET_IS_WAITING_USER_DATA_ON_SIGN_IN:
       return {
         ...state,

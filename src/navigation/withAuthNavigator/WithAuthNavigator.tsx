@@ -19,6 +19,7 @@ import {
   accentColorSelector,
   globalLoaderSelector,
   languageSelector,
+  lastRouteSelector,
   themeSelector,
 } from '@store/selectors/userSelectors';
 import i18next, { changeLanguage, t } from 'i18next';
@@ -38,6 +39,7 @@ export const WithAuthNavigator = () => {
   const accentColor = useSelector(accentColorSelector);
   const language = useSelector(languageSelector);
   const globalLoader = useSelector(globalLoaderSelector);
+  const lastRoute = useSelector(lastRouteSelector);
 
   const [rerender, setRerender] = useState<string>('');
 
@@ -56,7 +58,7 @@ export const WithAuthNavigator = () => {
       {globalLoader && <PurpleLoader />}
       <SnackBar />
       <Navigator
-        initialRouteName={WITH_AUTH_NAVIGATOR_ROUTE.TASKS_NAVIGATOR}
+        initialRouteName={lastRoute}
         screenOptions={withAuthNavigatorOptions({ accentColor, styles, theme })}
       >
         <Screen
