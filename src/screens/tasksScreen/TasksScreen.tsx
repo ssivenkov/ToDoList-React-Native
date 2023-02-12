@@ -1,26 +1,31 @@
 import React, { useCallback, useEffect, useState } from 'react';
 
 import { TaskList } from '@components/taskList/TaskList';
+import { WITH_AUTH_NAVIGATOR_ROUTE } from '@enums/routesEnum';
 import { sortingTaskLists } from '@helpers/sorting';
 import { useStyles } from '@hooks/useStyles';
 import { useFocusEffect, useRoute } from '@react-navigation/native';
+import { setLastRouteAction } from '@store/actions/userReducerActions/setLastRouteAction';
 import { taskListsSelector } from '@store/selectors/tasksSelectors';
-import { globalLoaderSelector } from '@store/selectors/userSelectors';
+import { globalLoaderSelector, lastRouteSelector } from '@store/selectors/userSelectors';
 import { nanoid } from 'nanoid';
 import { useTranslation } from 'react-i18next';
 import { BackHandler, ScrollView, Text, View } from 'react-native';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { taskScreenStyles } from './styles';
 import { TaskScreenRouteType } from './types';
 
 export const TasksScreen = () => {
+  const dispatch = useDispatch();
+
   const styles = useStyles(taskScreenStyles);
 
   const { t } = useTranslation();
 
   const { isTodoScreen } = useRoute<TaskScreenRouteType>().params;
 
+  const lastRoute = useSelector(lastRouteSelector);
   const taskLists = useSelector(taskListsSelector);
   const globalLoader = useSelector(globalLoaderSelector);
 
@@ -41,6 +46,14 @@ export const TasksScreen = () => {
 
   const sortedToDoTaskLists = sortingTaskLists(toDoTaskLists);
   const sortedDoneTaskLists = sortingTaskLists(doneTaskLists);
+
+  useFocusEffect(() => {
+    if (lastRoute !== WITH_AUTH_NAVIGATOR_ROUTE.TASKS_NAVIGATOR) {
+      dispatch(
+        setLastRouteAction({ lastRoute: WITH_AUTH_NAVIGATOR_ROUTE.TASKS_NAVIGATOR }),
+      );
+    }
+  });
 
   // for triggering useFocusEffect, when user just open app and press native goBack button
   useEffect(() => {

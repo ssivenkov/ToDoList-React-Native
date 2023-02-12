@@ -1,6 +1,7 @@
 import { COLORS } from '@colors/colors';
 import { ONLINE, START_ANIMATION_DELAY } from '@constants/constants';
 import { FIREBASE_OTHER } from '@enums/firebaseEnum';
+import { WITH_AUTH_NAVIGATOR_ROUTE } from '@enums/routesEnum';
 import { checkInternetConnectionHelper } from '@helpers/checkInternetConnectionHelper';
 import auth from '@react-native-firebase/auth';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
@@ -60,6 +61,7 @@ export function* signOutSaga(action: SignOutSagaActionReturnType) {
         providerID: null,
         selectedColor: COLORS.ELECTRIC_VIOLET2,
         userData: null,
+        lastRoute: WITH_AUTH_NAVIGATOR_ROUTE.TASKS_NAVIGATOR,
       }),
     );
 

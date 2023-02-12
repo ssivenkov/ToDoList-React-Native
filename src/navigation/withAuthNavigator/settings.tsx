@@ -59,10 +59,7 @@ export const accountScreenSettings: WithAuthNavigatorScreenSettingsType = (param
   const { styles } = params;
 
   return {
-    headerShown: true,
-    headerStyle: styles.header,
-    headerTitleAlign: 'center',
-    headerTitleStyle: styles.headerTitle,
+    headerShown: false,
     tabBarIcon: ({ focused }) => (
       <FontAwesomeIcon
         icon={faUser}

@@ -18,22 +18,13 @@ export const ModalMenuButton = (props: ModalMenuButtonPropsType) => {
 
   const defaultOkTextStyle = styles.text;
 
-  const {
-    title,
-    onPress,
-    disabled,
-    rightRounding,
-    leftRounding,
-    okTextStyle = defaultOkTextStyle,
-  } = props;
+  const { title, onPress, disabled, okTextStyle = defaultOkTextStyle } = props;
 
   const theme = useSelector(themeSelector);
 
   const modalMenuButtonGradientWrapperStyle = [
     styles.modalMenuButtonGradientWrapper,
     disabled && styles.modalMenuButtonDisabled,
-    leftRounding && styles.leftBorderRadius,
-    rightRounding && styles.rightBorderRadius,
   ];
 
   const modalMenuButtonGradient = theme.darkMode

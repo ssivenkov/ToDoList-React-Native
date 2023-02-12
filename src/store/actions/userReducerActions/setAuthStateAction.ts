@@ -6,6 +6,7 @@ type SetAuthStateActionPayloadType = {
   emulatorStatusBarHeight: UserReducerStateType['emulatorStatusBarHeight'];
   isUserDataSynchronized: UserReducerStateType['isUserDataSynchronized'];
   isWaitingUserDataOnSignIn: UserReducerStateType['isWaitingUserDataOnSignIn'];
+  lastRoute: UserReducerStateType['lastRoute'];
   providerID: UserReducerStateType['providerID'];
   selectedColor: UserReducerStateType['selectedColor'];
   userData: UserReducerStateType['userData'];

@@ -78,24 +78,17 @@ export const ModalLongButton = (props: ModalLongButtonPropsType) => {
               </ScrollView>
             )}
             <View style={styles.buttonsContainer}>
+              <ModalMenuButton onPress={onClosePress} title={t('common.Close')} />
               {okHandler && (
                 <>
                   <ModalMenuButton
-                    leftRounding={true}
                     okTextStyle={okTextStyle}
                     onPress={onOkButtonPress}
-                    rightRounding={false}
                     title={okText}
                   />
                   <Separator />
                 </>
               )}
-              <ModalMenuButton
-                leftRounding={!okHandler}
-                onPress={onClosePress}
-                rightRounding={true}
-                title={t('common.Close')}
-              />
             </View>
           </View>
         </View>
