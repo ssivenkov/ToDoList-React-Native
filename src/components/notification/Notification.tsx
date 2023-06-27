@@ -49,8 +49,7 @@ export const Notification = (props: NotificationPropsType) => {
   const maximumDate = increaseDateYearsHelper({ addedYears: 2, date: currentDate });
   const trimmedCurrentDate = mathFloorDateFromMinuteHelper(currentDate);
 
-  const initialDatePickerDate =
-    date && date < currentDate ? new Date(date) : trimmedCurrentDate;
+  const initialDatePickerDate = date && date > currentDate ? date : trimmedCurrentDate;
 
   const [minimumDate, setMinimumDate] = useState<Date>(currentDate);
   const [datePickerDate, setDatePickerDate] = useState<Date>(initialDatePickerDate);
