@@ -46,6 +46,7 @@ export const EditTaskScreen = () => {
   const { width: appWidth } = useWindowDimensions();
 
   const colorPickerGapSizeOnNarrowScreen = 0;
+  const currentDate = new Date();
 
   const colorPickerGapSize =
     appWidth <= screenWidth480px
@@ -57,7 +58,7 @@ export const EditTaskScreen = () => {
   const [editedTaskTitle, setEditedTaskTitle] = useState<TaskType['title']>(oldTaskTitle);
   const [date, setDate] = useState<Nullable<Date>>(taskNotification?.date ?? null);
   const [isNotificationSwitcherOn, setIsNotificationSwitcherOn] = useState<boolean>(
-    !!taskNotification?.date ?? false,
+    !!taskNotification?.date && taskNotification.date > currentDate,
   );
   const [isColorPickerSwitcherOn, setIsColorPickerSwitcherOn] = useState<boolean>(
     !!colorMark ?? false,
