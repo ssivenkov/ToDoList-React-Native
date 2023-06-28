@@ -1,8 +1,8 @@
-import { moveTaskInDone } from '@components/snackBar/actions';
+import { MOVE_TASK_IN_DONE } from '@components/snackBar/actions';
 import { ONLINE, START_ANIMATION_DELAY } from '@constants/constants';
 import { FIREBASE_PATH } from '@enums/firebaseEnum';
-import { cancelNotificationHelper } from '@helpers/cancelNotificationHelper';
 import { checkInternetConnectionHelper } from '@helpers/checkInternetConnectionHelper';
+import { createNotificationHelper } from '@helpers/createNotificationHelper';
 import { DB } from '@root/api/DB';
 import * as Sentry from '@sentry/react-native';
 import { addSnackBarEventAction } from '@store/actions/snackBarActions/addSnackBarEventAction';
@@ -12,15 +12,16 @@ import { SetTaskIsToDoSagaActionReturnType } from '@store/actions/tasksSagaActio
 import { setModalMessageAction } from '@store/actions/userReducerActions/setModalMessageAction';
 import { SnackBarEventType } from '@store/reducers/snackBarReducer/types';
 import { NotificationType } from '@store/reducers/tasksReducer/types';
-import { UserIDType } from '@store/reducers/userReducer/types';
+import { ChannelIDType, UserIDType } from '@store/reducers/userReducer/types';
 import { notificationsSelector } from '@store/selectors/tasksSelectors';
-import { userIDSelector } from '@store/selectors/userSelectors';
+import { channelIDSelector, userIDSelector } from '@store/selectors/userSelectors';
 import { call, cancel, delay, put, select } from 'redux-saga/effects';
 
 export function* setTaskIsToDoSaga(action: SetTaskIsToDoSagaActionReturnType) {
   const {
     doneTaskID,
     taskListID,
+    taskTitle,
     setTaskPending,
     setSnackBarCancelPending,
     setTaskScreenBlocking,
@@ -56,6 +57,7 @@ export function* setTaskIsToDoSaga(action: SetTaskIsToDoSagaActionReturnType) {
     }
 
     const userID: UserIDType = yield select(userIDSelector);
+    const channelId: ChannelIDType = yield select(channelIDSelector);
 
     const setTaskIsToDoInFirebase = () => {
       return DB.ref(
@@ -73,11 +75,28 @@ export function* setTaskIsToDoSaga(action: SetTaskIsToDoSagaActionReturnType) {
 
     const notificationID = taskNotification?.notificationID;
 
-    if (taskNotification && notificationID) {
-      cancelNotificationHelper(notificationID);
+    const currentDate = new Date();
+    const deleteTaskNotificationCondition =
+      taskNotification && taskNotification.date && taskNotification.date <= currentDate;
+
+    // enableTaskNotificationCondition
+    if (
+      taskNotification &&
+      notificationID &&
+      taskNotification.date &&
+      taskNotification.date > currentDate
+    ) {
+      yield call(createNotificationHelper, {
+        channelId,
+        date: taskNotification.date,
+        notificationID,
+        taskTitle,
+      });
     }
 
-    yield put(deleteTaskNotificationAction({ taskID: doneTaskID }));
+    if (deleteTaskNotificationCondition) {
+      yield put(deleteTaskNotificationAction({ taskID: doneTaskID }));
+    }
 
     yield put(
       setTaskIsToDoAction({
@@ -94,8 +113,9 @@ export function* setTaskIsToDoSaga(action: SetTaskIsToDoSagaActionReturnType) {
       const event: SnackBarEventType = {
         taskID: doneTaskID,
         taskListID,
+        taskTitle,
         snackBarUntranslatedText: 'snackBar.taskIsToDo',
-        action: moveTaskInDone,
+        action: MOVE_TASK_IN_DONE,
       };
 
       yield put(addSnackBarEventAction({ event }));

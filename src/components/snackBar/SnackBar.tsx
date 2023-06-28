@@ -4,7 +4,7 @@ import CancelIcon from '@assets/images/icons/cancel.svg';
 import { COLORS } from '@colors/colors';
 import { commonButtonStyles } from '@components/buttons/commonButtonStyles';
 import { SmallLoader } from '@components/loaders/smallLoader/SmallLoader';
-import { moveTaskInDone, moveTaskInTodo } from '@components/snackBar/actions';
+import { MOVE_TASK_IN_DONE, MOVE_TASK_IN_TODO } from '@components/snackBar/actions';
 import { snackBarStyles } from '@components/snackBar/styles';
 import { SnackBarAnimationParamsType } from '@components/snackBar/types';
 import { ICON_SIZE_EXTRA_SMALL } from '@constants/constants';
@@ -55,7 +55,7 @@ export const SnackBar = () => {
   const isOldEvent = isSnackBarShow && isEqual(oldEvent, snackBarEvent);
 
   const eventIcon =
-    snackBarEvent !== null && snackBarEvent.action === moveTaskInTodo
+    snackBarEvent !== null && snackBarEvent.action === MOVE_TASK_IN_TODO
       ? faCheck
       : faUndoAlt;
 
@@ -97,15 +97,16 @@ export const SnackBar = () => {
 
   const onCancelPress = () => {
     if (isSnackBarShow) {
-      const { taskID, taskListID, action } = snackBarEvent;
+      const { taskID, taskListID, taskTitle, action } = snackBarEvent;
 
       switch (action) {
-        case moveTaskInTodo: {
+        case MOVE_TASK_IN_TODO: {
           setScreenBlocking(true);
           dispatch(
             setTaskIsToDoAction({
               doneTaskID: taskID,
               taskListID,
+              taskTitle,
               setSnackBarCancelPending: setCancelPending,
               setSnackBarCancelFulfilled: setCancelFulfilled,
             }),
@@ -113,12 +114,13 @@ export const SnackBar = () => {
           break;
         }
 
-        case moveTaskInDone: {
+        case MOVE_TASK_IN_DONE: {
           setScreenBlocking(true);
           dispatch(
             setTaskIsDoneAction({
               toDoTaskID: taskID,
               taskListID,
+              taskTitle,
               setSnackBarCancelPending: setCancelPending,
               setSnackBarCancelFulfilled: setCancelFulfilled,
             }),

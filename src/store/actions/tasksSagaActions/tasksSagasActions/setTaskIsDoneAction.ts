@@ -4,6 +4,7 @@ import { TaskListType, TaskType } from '@store/reducers/tasksReducer/types';
 
 export type SetTaskIsDoneSagaPayloadType = {
   taskListID: TaskListType['id'];
+  taskTitle: TaskType['title'];
   toDoTaskID: TaskType['id'];
 
   setSnackBarCancelFulfilled?: SetStateType<boolean>;
