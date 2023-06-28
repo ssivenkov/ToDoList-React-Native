@@ -1,4 +1,4 @@
-import { moveTaskInTodo } from '@components/snackBar/actions';
+import { MOVE_TASK_IN_TODO } from '@components/snackBar/actions';
 import { ONLINE, START_ANIMATION_DELAY } from '@constants/constants';
 import { FIREBASE_PATH } from '@enums/firebaseEnum';
 import { cancelNotificationHelper } from '@helpers/cancelNotificationHelper';
@@ -6,7 +6,6 @@ import { checkInternetConnectionHelper } from '@helpers/checkInternetConnectionH
 import { DB } from '@root/api/DB';
 import * as Sentry from '@sentry/react-native';
 import { addSnackBarEventAction } from '@store/actions/snackBarActions/addSnackBarEventAction';
-import { deleteTaskNotificationAction } from '@store/actions/tasksReducerActions/notificationsActions/deleteTaskNotificationAction';
 import { setTaskIsDoneAction } from '@store/actions/tasksReducerActions/tasksActions/setTaskIsDoneAction';
 import { SetTaskIsDoneSagaActionReturnType } from '@store/actions/tasksSagaActions/tasksSagasActions/setTaskIsDoneAction';
 import { setModalMessageAction } from '@store/actions/userReducerActions/setModalMessageAction';
@@ -21,6 +20,7 @@ export function* setTaskIsDoneSaga(action: SetTaskIsDoneSagaActionReturnType) {
   const {
     toDoTaskID,
     taskListID,
+    taskTitle,
     setTaskPending,
     setSnackBarCancelPending,
     setTaskScreenBlocking,
@@ -77,8 +77,6 @@ export function* setTaskIsDoneSaga(action: SetTaskIsDoneSagaActionReturnType) {
       cancelNotificationHelper(notificationID);
     }
 
-    yield put(deleteTaskNotificationAction({ taskID: toDoTaskID }));
-
     yield put(
       setTaskIsDoneAction({
         toDoTaskID,
@@ -94,8 +92,9 @@ export function* setTaskIsDoneSaga(action: SetTaskIsDoneSagaActionReturnType) {
       const event: SnackBarEventType = {
         taskID: toDoTaskID,
         taskListID,
+        taskTitle,
         snackBarUntranslatedText: 'snackBar.taskIsDone',
-        action: moveTaskInTodo,
+        action: MOVE_TASK_IN_TODO,
       };
 
       yield put(addSnackBarEventAction({ event }));

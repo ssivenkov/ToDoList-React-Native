@@ -79,9 +79,17 @@ export const Task = (props: TaskPropsType) => {
           {taskTitle}
         </Text>
         {isTodo ? (
-          <DoneTaskButton taskListID={taskListID} toDoTaskID={taskID} />
+          <DoneTaskButton
+            taskListID={taskListID}
+            taskTitle={taskTitle}
+            toDoTaskID={taskID}
+          />
         ) : (
-          <ToDoTaskButton doneTaskID={taskID} taskListID={taskListID} />
+          <ToDoTaskButton
+            doneTaskID={taskID}
+            taskListID={taskListID}
+            taskTitle={taskTitle}
+          />
         )}
       </MenuHorizontal>
     </View>
