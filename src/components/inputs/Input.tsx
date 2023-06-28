@@ -1,11 +1,20 @@
 import React from 'react';
 
 import { COLORS } from '@colors/colors';
-import { infinity, INPUT_MAX_LENGTH100 } from '@constants/constants';
+import { IconButton } from '@components/buttons/iconButton/IconButton';
+import {
+  ICON_SIZE_EXTRA_SMALL2,
+  infinity,
+  INPUT_MAX_LENGTH100,
+} from '@constants/constants';
+import { faTimes } from '@fortawesome/free-solid-svg-icons/faTimes';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { useStyles } from '@hooks/useStyles';
+import { themeSelector } from '@store/selectors/userSelectors';
 import { Text, TextInput, View } from 'react-native';
 // @ts-ignore
 import { AutoGrowingTextInput } from 'react-native-autogrow-textinput';
+import { useSelector } from 'react-redux';
 
 import { inputStyles } from './styles';
 import { InputPropsType } from './types';
@@ -26,6 +35,8 @@ export const Input = (props: InputPropsType) => {
 
   const styles = useStyles(inputStyles);
 
+  const theme = useSelector(themeSelector);
+
   const subtextElement = () => {
     if (errorSubtext) return <Text style={styles.errorSubtext}>{errorSubtext}</Text>;
     if (subtext) return <Text style={styles.subtext}>{subtext}</Text>;
@@ -36,7 +47,23 @@ export const Input = (props: InputPropsType) => {
 
   return (
     <View>
-      {suptext && <Text style={styles.suptext}>{suptext}</Text>}
+      {suptext && (
+        <View style={styles.inputTopContainer}>
+          <Text style={styles.suptext}>{suptext}</Text>
+          <View style={styles.clearButtonIconContainer}>
+            <IconButton
+              icon={
+                <FontAwesomeIcon
+                  color={theme.TEXT_COLOR}
+                  icon={faTimes}
+                  size={ICON_SIZE_EXTRA_SMALL2}
+                />
+              }
+              onPress={() => onChangeText && onChangeText('')}
+            />
+          </View>
+        </View>
+      )}
       {maxLength === infinity ? (
         <View style={styles.inputContainer}>
           <AutoGrowingTextInput

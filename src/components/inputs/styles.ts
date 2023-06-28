@@ -3,9 +3,11 @@ import { ExtendedStylesPropsType } from '@hooks/useStyles';
 import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
 type InputStylesType = {
+  clearButtonIconContainer: ViewStyle;
   errorSubtext: TextStyle;
   input: TextStyle;
   inputContainer: ViewStyle;
+  inputTopContainer: ViewStyle;
   notepadInput: TextStyle;
   subtext: TextStyle;
   suptext: TextStyle;
@@ -20,6 +22,10 @@ const subtextPaddingVertical = 8;
 
 export const inputStyles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<InputStylesType>({
+    clearButtonIconContainer: {
+      padding: 10.5,
+    },
+
     errorSubtext: {
       color: CRIMSON,
       fontSize: subtextFontSize,
@@ -40,6 +46,13 @@ export const inputStyles = (props: ExtendedStylesPropsType) =>
 
     inputContainer: {
       flexDirection: 'row',
+    },
+
+    inputTopContainer: {
+      width: '100%',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
     },
 
     notepadInput: {
@@ -63,7 +76,6 @@ export const inputStyles = (props: ExtendedStylesPropsType) =>
       color: props.TEXT_COLOR,
       fontSize: 14,
       paddingVertical: 8,
-      width: textWidth,
     },
 
     transparentSubtext: {
