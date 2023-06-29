@@ -1,6 +1,7 @@
 import { ONLINE } from '@constants/constants';
 import { FIREBASE_PATH } from '@enums/firebaseEnum';
 import { checkInternetConnectionHelper } from '@helpers/checkInternetConnectionHelper';
+import auth from '@react-native-firebase/auth';
 import { DB } from '@root/api/DB';
 import * as Sentry from '@sentry/react-native';
 import { setModalMessageAction } from '@store/actions/userReducerActions/setModalMessageAction';
@@ -25,15 +26,25 @@ export function* deleteAccountSaga(action: DeleteAccountSagaActionReturnType) {
       yield cancel();
     }
 
+    const user = auth().currentUser;
+
     const userID: UserIDType = yield select(userIDSelector);
 
-    const deleteAccountInFirebase = () => {
+    const deleteUserDataInFirebase = () => {
       return DB.ref(`${USERS}/${userID}`).remove();
     };
 
-    yield call(deleteAccountInFirebase);
+    const deleteUserInFirebase = () => {
+      if (user) {
+        return user.delete();
+      }
+    };
+
+    yield call(deleteUserDataInFirebase);
 
     yield putResolve(signOutAction({ setWaitingProcess }));
+
+    yield call(deleteUserInFirebase);
 
     yield put(
       setModalMessageAction({
