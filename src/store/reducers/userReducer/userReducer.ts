@@ -8,7 +8,7 @@ import {
 } from '@store/reducers/userReducer/types';
 import { lightTheme } from '@themes/themes';
 
-const userReducerState: UserReducerStateType = {
+export const userReducerState: UserReducerStateType = {
   accentColor: COLORS.ELECTRIC_VIOLET2,
   channelID: '',
   emulatorStatusBarHeight: 0,
@@ -16,13 +16,13 @@ const userReducerState: UserReducerStateType = {
   isUserDataSynchronized: false,
   isWaitingUserDataOnSignIn: false,
   language: EN,
+  lastRoute: WITH_AUTH_NAVIGATOR_ROUTE.TASKS_NAVIGATOR,
   modalMessage: '',
   providerID: null,
   selectedColor: COLORS.ELECTRIC_VIOLET2,
   theme: lightTheme,
   userAvatar: null,
   userData: null,
-  lastRoute: WITH_AUTH_NAVIGATOR_ROUTE.TASKS_NAVIGATOR,
 };
 
 export const userReducer = (
@@ -40,10 +40,14 @@ export const userReducer = (
         accentColor: action.payload.accentColor,
         emulatorStatusBarHeight: action.payload.emulatorStatusBarHeight,
         isUserDataSynchronized: action.payload.isUserDataSynchronized,
+        isWaitingUserDataOnSignIn: action.payload.isWaitingUserDataOnSignIn,
+        language: action.payload.language,
+        lastRoute: action.payload.lastRoute,
         providerID: action.payload.providerID,
         selectedColor: action.payload.selectedColor,
+        theme: action.payload.theme,
+        userAvatar: action.payload.userAvatar,
         userData: action.payload.userData,
-        lastRoute: action.payload.lastRoute,
       };
     case USER_REDUCER_ACTION.SET_PROVIDER_ID:
       return { ...state, providerID: action.payload.providerID };
