@@ -1,7 +1,5 @@
-import { COLORS } from '@colors/colors';
 import { ONLINE, START_ANIMATION_DELAY } from '@constants/constants';
 import { FIREBASE_OTHER } from '@enums/firebaseEnum';
-import { WITH_AUTH_NAVIGATOR_ROUTE } from '@enums/routesEnum';
 import { checkInternetConnectionHelper } from '@helpers/checkInternetConnectionHelper';
 import auth from '@react-native-firebase/auth';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
@@ -12,9 +10,11 @@ import { setAuthStateAction } from '@store/actions/userReducerActions/setAuthSta
 import { setModalMessageAction } from '@store/actions/userReducerActions/setModalMessageAction';
 import { SignOutSagaActionReturnType } from '@store/actions/userSagaActions/signOutAction';
 import { ProviderIDType } from '@store/reducers/userReducer/types';
+import { userReducerState } from '@store/reducers/userReducer/userReducer';
 import { providerIDSelector } from '@store/selectors/userSelectors';
+import { changeLanguage as i18nextChangeLanguage } from 'i18next';
 import { LoginManager } from 'react-native-fbsdk-next';
-import { call, cancel, delay, put, select } from 'redux-saga/effects';
+import { call, cancel, delay, put, putResolve, select } from 'redux-saga/effects';
 
 export function* signOutSaga(action: SignOutSagaActionReturnType) {
   const { setWaitingProcess } = action.payload;
@@ -52,18 +52,27 @@ export function* signOutSaga(action: SignOutSagaActionReturnType) {
       yield call(LoginManager.logOut);
     }
 
-    yield put(
+    yield putResolve(
       setAuthStateAction({
-        accentColor: COLORS.ELECTRIC_VIOLET2,
-        emulatorStatusBarHeight: 0,
-        isUserDataSynchronized: false,
-        isWaitingUserDataOnSignIn: false,
-        providerID: null,
-        selectedColor: COLORS.ELECTRIC_VIOLET2,
-        userData: null,
-        lastRoute: WITH_AUTH_NAVIGATOR_ROUTE.TASKS_NAVIGATOR,
+        accentColor: userReducerState.accentColor,
+        emulatorStatusBarHeight: userReducerState.emulatorStatusBarHeight,
+        isUserDataSynchronized: userReducerState.isUserDataSynchronized,
+        isWaitingUserDataOnSignIn: userReducerState.isWaitingUserDataOnSignIn,
+        language: userReducerState.language,
+        lastRoute: userReducerState.lastRoute,
+        providerID: userReducerState.providerID,
+        selectedColor: userReducerState.selectedColor,
+        theme: userReducerState.theme,
+        userData: userReducerState.userData,
+        userAvatar: userReducerState.userAvatar,
       }),
     );
+
+    const setAppLanguage = () => {
+      return i18nextChangeLanguage(userReducerState.language);
+    };
+
+    yield call(setAppLanguage);
 
     yield put(setTaskListsAction({ taskLists: [] }));
     yield put(setNotepadTextAction({ notepadText: '' }));
