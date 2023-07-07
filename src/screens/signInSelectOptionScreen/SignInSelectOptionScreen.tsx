@@ -4,6 +4,7 @@ import AppLogo from '@assets/images/icons/appLogo.svg';
 import { signInScreenGradient } from '@colors/gradients';
 import { SignInButton } from '@components/buttons/signInButton/SignInButton';
 import { signInButtonStyles } from '@components/buttons/signInButton/styles';
+import { ChangeLanguageButton } from '@components/header/buttons/changeLanguageButton/ChangeLanguageButton';
 import { GoBackButton } from '@components/header/buttons/goBackButton/GoBackButton';
 import { Header } from '@components/header/Header';
 import { PurpleLoader } from '@components/loaders/purpleLoader/PurpleLoader';
@@ -50,7 +51,11 @@ export const SignInSelectOptionScreen = ({
           <PurpleLoader />
         ) : (
           <View style={styles.signInContentWrapper}>
-            <Header leftButton={<GoBackButton />} transparentBackground={true} />
+            <Header
+              leftButton={<GoBackButton />}
+              rightButton={<ChangeLanguageButton />}
+              transparentBackground={true}
+            />
             <View style={styles.signInContentContainer}>
               <AppLogo style={styles.appLogoSvg} />
               <Text style={styles.screenTitle}>

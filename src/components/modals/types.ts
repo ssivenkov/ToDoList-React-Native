@@ -11,10 +11,6 @@ export type IconWithScreenBlockingPropsType = {
 
 export type ModalIconPropsType = {
   buttonIcon: JSX.Element;
-  okHandler: (
-    setIsLoading: SetStateType<boolean>,
-    setModalVisible: SetStateType<boolean>,
-  ) => void;
 
   buttonIconDisabled?: boolean;
   children?: JSX.Element;
@@ -26,6 +22,10 @@ export type ModalIconPropsType = {
   inputFocus?: () => void;
   modalVisibleFromProps?: boolean;
   okDisabled?: boolean;
+  okHandler?: (
+    setIsLoading: SetStateType<boolean>,
+    setModalVisible: SetStateType<boolean>,
+  ) => void;
   okText?: string;
   okTextStyle?: StyleProp<TextStyle>;
   setModalVisibleFromProps?: SetStateType<boolean>;
