@@ -54,6 +54,7 @@ export const signInScreenStyles = (props: ExtendedStylesPropsType) =>
       fontSize: 30,
       fontWeight: '500',
       marginBottom: 10,
+      textAlign: 'center',
     },
 
     signInContentContainer: {

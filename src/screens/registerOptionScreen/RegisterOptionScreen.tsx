@@ -5,6 +5,7 @@ import { COLORS } from '@colors/colors';
 import { signInScreenGradient } from '@colors/gradients';
 import { SignInButton } from '@components/buttons/signInButton/SignInButton';
 import { signInButtonStyles } from '@components/buttons/signInButton/styles';
+import { ChangeLanguageButton } from '@components/header/buttons/changeLanguageButton/ChangeLanguageButton';
 import { GoBackButton } from '@components/header/buttons/goBackButton/GoBackButton';
 import { Header } from '@components/header/Header';
 import { Input } from '@components/inputs/Input';
@@ -57,7 +58,11 @@ export const RegisterOptionScreen = () => {
           <PurpleLoader />
         ) : (
           <View style={styles.signInContentWrapper}>
-            <Header leftButton={<GoBackButton />} transparentBackground={true} />
+            <Header
+              leftButton={<GoBackButton />}
+              rightButton={<ChangeLanguageButton />}
+              transparentBackground={true}
+            />
             <View style={styles.signInContentContainer}>
               <AppLogo style={styles.appLogoSvg} />
               <Text style={styles.screenTitle}>{t('signInNavigator.Registration')}</Text>

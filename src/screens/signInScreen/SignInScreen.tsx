@@ -4,6 +4,7 @@ import AppLogo from '@assets/images/icons/appLogo.svg';
 import { signInScreenGradient } from '@colors/gradients';
 import { SignInButton } from '@components/buttons/signInButton/SignInButton';
 import { signInButtonStyles } from '@components/buttons/signInButton/styles';
+import { ChangeLanguageButton } from '@components/header/buttons/changeLanguageButton/ChangeLanguageButton';
 import { Header } from '@components/header/Header';
 import { PurpleLoader } from '@components/loaders/purpleLoader/PurpleLoader';
 import { FIREBASE_OTHER } from '@enums/firebaseEnum';
@@ -66,7 +67,7 @@ export const SignInScreen = ({ navigation }: SignInScreenPropsType) => {
           <PurpleLoader />
         ) : (
           <View style={styles.signInContentWrapper}>
-            <Header transparentBackground={true} />
+            <Header rightButton={<ChangeLanguageButton />} transparentBackground={true} />
             <View style={styles.signInContentContainer}>
               <AppLogo style={styles.appLogoSvg} />
               <Text style={styles.screenTitle}>{t('signInNavigator.SignIn')}</Text>

@@ -70,7 +70,7 @@ export const ModalIcon = (props: ModalIconPropsType) => {
   };
 
   const onOkButtonPress = () => {
-    okHandler(setIsLoading, setModalVisible);
+    if (okHandler) okHandler(setIsLoading, setModalVisible);
   };
 
   const keyboardDismiss = () => {
@@ -123,12 +123,14 @@ export const ModalIcon = (props: ModalIconPropsType) => {
                     title={t('common.Close')}
                   />
                   <Separator />
-                  <ModalMenuButton
-                    disabled={okDisabled}
-                    okTextStyle={okTextStyle}
-                    onPress={onOkButtonPress}
-                    title={okText}
-                  />
+                  {okHandler && (
+                    <ModalMenuButton
+                      disabled={okDisabled}
+                      okTextStyle={okTextStyle}
+                      onPress={onOkButtonPress}
+                      title={okText}
+                    />
+                  )}
                 </View>
               </View>
             </View>
