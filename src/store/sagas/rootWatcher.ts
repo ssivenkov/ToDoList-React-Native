@@ -24,7 +24,9 @@ import { facebookSignInSaga } from '@store/sagas/userSagas/facebookSignInSaga';
 import { getUserDataSaga } from '@store/sagas/userSagas/getUserDataSaga';
 import { googleSignInSaga } from '@store/sagas/userSagas/googleSignInSaga';
 import { goToGooglePlaySaga } from '@store/sagas/userSagas/goToGooglePlaySaga';
+import { registerAndSignInWithEmailSaga } from '@store/sagas/userSagas/registerAndSignInWithEmailSaga';
 import { shareAppSaga } from '@store/sagas/userSagas/shareAppSaga';
+import { signInWithEmailSaga } from '@store/sagas/userSagas/signInWithEmailSaga';
 import { signOutSaga } from '@store/sagas/userSagas/signOutSaga';
 import { syncUserDataSaga } from '@store/sagas/userSagas/syncUserDataSaga';
 import { takeEvery, takeLatest } from 'redux-saga/effects';
@@ -34,6 +36,11 @@ export function* rootWatcher() {
   yield takeLatest(USER_SAGA_ACTION.CHANGE_ACCENT_COLOR, changeAccentColorSaga);
   yield takeLatest(USER_SAGA_ACTION.CHANGE_DARK_MODE, changeDarkModeSaga);
   yield takeLatest(USER_SAGA_ACTION.GOOGLE_SIGN_IN, googleSignInSaga);
+  yield takeLatest(USER_SAGA_ACTION.SIGN_IN_WITH_EMAIL, signInWithEmailSaga);
+  yield takeLatest(
+    USER_SAGA_ACTION.REGISTER_AND_SIGN_IN_WITH_EMAIL,
+    registerAndSignInWithEmailSaga,
+  );
   yield takeLatest(USER_SAGA_ACTION.FACEBOOK_SIGN_IN, facebookSignInSaga);
   yield takeLatest(USER_SAGA_ACTION.GET_USER_DATA, getUserDataSaga);
   yield takeLatest(USER_SAGA_ACTION.SIGN_OUT, signOutSaga);

@@ -7,7 +7,8 @@
       "Select": "Select",
       "Close": "Close",
       "NoInternetConnection": "No internet connection. Please connect to the internet",
-      "NoIOSNotificationsPermission": "No permission for notifications. Grant the app permission to show notifications"
+      "NoIOSNotificationsPermission": "No permission for notifications. Grant the app permission to show notifications",
+      "UnknownError": "Unknown error"
     },
     "notification": {
       "TaskNotification": "Perform task"
@@ -35,12 +36,25 @@
       "HeaderTitle": "Edit task",
       "EditTaskInputSuptitle": "Task text"
     },
-    "signInScreen": {
+    "signInNavigator": {
       "SignIn": "Sign in",
       "SignInWithButtonTitle": "Sign in with <0>{{text}}</0>",
+      "Email": "Email",
+      "EmailAnotherDeclension": "Email",
+      "Password": "Password",
+      "PasswordSubtext": "should be at least 6 characters",
+      "SignInWithEmail": "Sign in with email",
+      "RegisterAndSignIn": "Register and sign in",
+      "Registration": "Registration",
       "CancelAuthProcessModalTitle": "User cancelled the login process",
       "GettingAccessTokenErrorModalTitle": "Something went wrong obtaining access token",
-      "DeleteAccountSuccessfully": "Your account has been successfully deleted"
+      "DeleteAccountSuccessfully": "Your account has been successfully deleted",
+      "auth/email-already-in-use": "That email address is already in use. Please use another email address",
+      "auth/too-many-requests": "Too many requests. Please try again later",
+      "auth/user-not-found": "User with that email not found",
+      "auth/invalid-email": "Email address is invalid",
+      "auth/weak-password": "Password is weak. Password should be at least 6 characters",
+      "auth/wrong-password": "Invalid password"
     },
     "accountScreen": {
       "HeaderTitle": "Account",

@@ -35,12 +35,25 @@
       "HeaderTitle": "Görev değiştirme",
       "EditTaskInputSuptitle": "Görev metni"
     },
-    "signInScreen": {
+    "signInNavigator": {
       "SignIn": "Oturum aç",
       "SignInWithButtonTitle": "<0>{{text}}</0> ile oturum açın",
+      "Email": "E-posta",
+      "EmailAnotherDeclension": "E-posta",
+      "Password": "Şifre",
+      "PasswordSubtext": "Şifre en az 6 karakter içermelidir",
+      "SignInWithEmail": "E-posta ile giriş yap posta",
+      "RegisterAndSignIn": "Kayıt ol ve giriş yap",
+      "Registration": "Kayıt",
       "CancelAuthProcessModalTitle": "Kullanıcı oturum açma işlemini iptal etti",
       "GettingAccessTokenErrorModalTitle": "Erişim belirteci alınırken bir şeyler yanlış gitti",
-      "DeleteAccountSuccessfully": "Hesabınız başarıyla silindi"
+      "DeleteAccountSuccessfully": "Hesabınız başarıyla silindi",
+      "auth/email-already-in-use": "Bu e-posta zaten kullanılıyor. Lütfen farklı bir e-posta girin",
+      "auth/too-many-requests": "Çok fazla istek. Lütfen daha sonra tekrar deneyiniz",
+      "auth/user-not-found": "Bu e-posta adresine sahip kullanıcı bulunamadı",
+      "auth/invalid-email": "Yanlış e-posta adresi",
+      "auth/weak-password": "Zayıf şifre. Şifre en az 6 karakter içermelidir",
+      "auth/wrong-password": "Yanlış parola"
     },
     "accountScreen": {
       "HeaderTitle": "Hesap",

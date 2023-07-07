@@ -35,12 +35,25 @@
       "HeaderTitle": "更改任務",
       "EditTaskInputSuptitle": "任務文本"
     },
-    "signInScreen": {
+    "signInNavigator": {
       "SignIn": "登录",
       "SignInWithButtonTitle": "用以下方式登录 <0>{{text}}</0>",
+      "Email": "電子郵件",
+      "EmailAnotherDeclension": "電子郵件",
+      "Password": "密碼",
+      "PasswordSubtext": "密碼必須包含至少 6 個字符",
+      "SignInWithEmail": "通過電子郵件登錄 郵件”",
+      "RegisterAndSignIn": "註冊並登錄",
+      "Registration": "登記",
       "CancelAuthProcessModalTitle": "用户取消了登录过程",
       "GettingAccessTokenErrorModalTitle": "获取访问令牌时出了问题",
-      "DeleteAccountSuccessfully": "您的帳戶已成功刪除"
+      "DeleteAccountSuccessfully": "您的帳戶已成功刪除",
+      "auth/email-already-in-use": "這個電子郵件地址 郵件已被使用。 請輸入不同的電子郵件地址。 郵件",
+      "auth/too-many-requests": "請求太多。 請稍後再試",
+      "auth/user-not-found": "使用此電子郵件地址的用戶 找不到郵件",
+      "auth/invalid-email": "無效的郵件地址。 郵件",
+      "auth/weak-password": "密碼強度低。 密碼必須包含至少 6 個字符",
+      "auth/wrong-password": "密碼錯誤"
     },
     "accountScreen": {
       "HeaderTitle": "帐户",

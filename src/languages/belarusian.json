@@ -35,12 +35,25 @@
       "HeaderTitle": "Змяненне задачы",
       "EditTaskInputSuptitle": "Тэкст задачы"
     },
-    "signInScreen": {
+    "signInNavigator": {
       "SignIn": "Уваход",
       "SignInWithButtonTitle": "Уваход праз <0>{{text}}</0>",
+      "Email": "Эл. пошта",
+      "EmailAnotherDeclension": "Эл. пошту",
+      "Password": "Пароль",
+      "PasswordSubtext": "павінен складацца не менш за 6 сімвалаў",
+      "SignInWithEmail": "Уход праз эл. пошту",
+      "RegisterAndSignIn": "Зарэгістравацца і ўвайсці",
+      "Registration": "Рэгістрацыя",
       "CancelAuthProcessModalTitle": "Працэс уваходу адменены карыстальнікам",
       "GettingAccessTokenErrorModalTitle": "Памылка атрымання токена аўтарызацыі",
-      "DeleteAccountSuccessfully": "Ваш рахунак быў паспяхова выдалены"
+      "DeleteAccountSuccessfully": "Ваш рахунак быў паспяхова выдалены",
+      "auth/email-already-in-use": "Гэты адрас эл. пошты ўжо выкарыстоўваецца. Калі ласка, укажыце іншы адрас эл. пошты",
+      "auth/too-many-requests": "Занадта шмат запытаў. Паўтарыце спробу пазней",
+      "auth/user-not-found": "Карыстальнік з гэтым адрасам эл. пошты не знойдзены",
+      "auth/invalid-email": "Некарэктны адрас эл. пошты",
+      "auth/weak-password": "Слабы пароль. Пароль павінен змяшчаць мінімум 6 сімвалаў",
+      "auth/wrong-password": "Няправільны пароль"
     },
     "accountScreen": {
       "HeaderTitle": "Рахунак",

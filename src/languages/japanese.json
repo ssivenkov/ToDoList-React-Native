@@ -35,12 +35,25 @@
       "HeaderTitle": "タスクの変更",
       "EditTaskInputSuptitle": "タスク テキスト"
     },
-    "signInScreen": {
+    "signInNavigator": {
       "SignIn": "サインイン",
       "SignInWithButtonTitle": "でサインインしてください。 <0>{{text}}</0>",
+      "Email": "メール",
+      "EmailAnotherDeclension": "メール",
+      "Password": "パスワード",
+      "PasswordSubtext": "パスワードには少なくとも6文字を含める必要があります",
+      "SignInWithEmail": "メールでログインする 郵便",
+      "RegisterAndSignIn": "登録してログインする",
+      "Registration": "登録",
       "CancelAuthProcessModalTitle": "ユーザーがログイン処理をキャンセルした",
       "GettingAccessTokenErrorModalTitle": "アクセストークンの取得に失敗しました",
-      "DeleteAccountSuccessfully": "あなたのアカウントは正常に削除されました"
+      "DeleteAccountSuccessfully": "あなたのアカウントは正常に削除されました",
+      "auth/email-already-in-use": "この電子メールは既に利用されています。 別のメールアドレスを入力してください",
+      "auth/too-many-requests": "リクエストが多すぎます。 後でもう一度試してください",
+      "auth/user-not-found": "このメールアドレスを持つユーザーが見つかりません",
+      "auth/invalid-email": "正しくないメールアドレス",
+      "auth/weak-password": "弱いパスワード。 パスワードには少なくとも6文字を含める必要があります",
+      "auth/wrong-password": "パスワードが間違っています"
     },
     "accountScreen": {
       "HeaderTitle": "アカウント",

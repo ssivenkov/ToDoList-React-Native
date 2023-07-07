@@ -35,12 +35,25 @@
       "HeaderTitle": "Modification d'une tâche",
       "EditTaskInputSuptitle": "Texte de la tâche"
     },
-    "signInScreen": {
+    "signInNavigator": {
       "SignIn": "Se connecter",
       "SignInWithButtonTitle": "Se connecter avec <0>{{text}}</0>",
+      "Email": "Email",
+      "EmailAnotherDeclension": "Email",
+      "Password": "Mot de passe",
+      "PasswordSubtext": "le mot de passe doit contenir au moins 6 caractères",
+      "SignInWithEmail": "Connectez-vous par email",
+      "RegisterAndSignIn": "S'inscrire et se connecter",
+      "Registration": "Inscription",
       "CancelAuthProcessModalTitle": "L'utilisateur a annulé le processus de connexion",
       "GettingAccessTokenErrorModalTitle": "Un problème est survenu lors de l'obtention du jeton d'accès",
-      "DeleteAccountSuccessfully": "Votre compte a été supprimé avec succès"
+      "DeleteAccountSuccessfully": "Votre compte a été supprimé avec succès",
+      "auth/email-already-in-use": "Cette adresse email mail est déjà utilisé. Veuillez saisir une autre adresse email",
+      "auth/too-many-requests": "Trop de demandes. Veuillez réessayer plus tard",
+      "auth/user-not-found": "Utilisateur avec cette adresse email courrier introuvable",
+      "auth/invalid-email": "Adresse email invalide",
+      "auth/weak-password": "Mot de passe faible. Le mot de passe doit contenir au moins 6 caractères",
+      "auth/wrong-password": "Mot de passe incorrect"
     },
     "accountScreen": {
       "HeaderTitle": "Compte",

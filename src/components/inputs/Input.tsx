@@ -11,7 +11,7 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons/faTimes';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { useStyles } from '@hooks/useStyles';
 import { themeSelector } from '@store/selectors/userSelectors';
-import { Text, TextInput, View } from 'react-native';
+import { Text, TextInput, View, StyleSheet } from 'react-native';
 // @ts-ignore
 import { AutoGrowingTextInput } from 'react-native-autogrow-textinput';
 import { useSelector } from 'react-redux';
@@ -31,15 +31,38 @@ export const Input = (props: InputPropsType) => {
     displayEmptySubtext = false,
     maxLength = INPUT_MAX_LENGTH100,
     inputRef,
+    additionalTextAndClearButtonColor,
   } = props;
 
   const styles = useStyles(inputStyles);
 
   const theme = useSelector(themeSelector);
 
+  const reassignColorCondition = !!additionalTextAndClearButtonColor;
+
+  const reassignedColorStyles = StyleSheet.create({
+    reassignedTextColor: {
+      color: additionalTextAndClearButtonColor,
+    },
+  });
+
+  const CLEAR_BUTTON_PADDING = 10.5;
+
   const subtextElement = () => {
     if (errorSubtext) return <Text style={styles.errorSubtext}>{errorSubtext}</Text>;
-    if (subtext) return <Text style={styles.subtext}>{subtext}</Text>;
+
+    if (subtext)
+      return (
+        <Text
+          style={[
+            styles.subtext,
+            reassignColorCondition && reassignedColorStyles.reassignedTextColor,
+          ]}
+        >
+          {subtext}
+        </Text>
+      );
+
     if (displayEmptySubtext) return <Text style={styles.transparentSubtext}> </Text>;
 
     return null;
@@ -49,19 +72,25 @@ export const Input = (props: InputPropsType) => {
     <View>
       {suptext && (
         <View style={styles.inputTopContainer}>
-          <Text style={styles.suptext}>{suptext}</Text>
-          <View style={styles.clearButtonIconContainer}>
-            <IconButton
-              icon={
-                <FontAwesomeIcon
-                  color={theme.TEXT_COLOR}
-                  icon={faTimes}
-                  size={ICON_SIZE_EXTRA_SMALL2}
-                />
-              }
-              onPress={() => onChangeText && onChangeText('')}
-            />
-          </View>
+          <Text
+            style={[
+              styles.suptext,
+              reassignColorCondition && reassignedColorStyles.reassignedTextColor,
+            ]}
+          >
+            {suptext}
+          </Text>
+          <IconButton
+            icon={
+              <FontAwesomeIcon
+                color={additionalTextAndClearButtonColor ?? theme.TEXT_COLOR}
+                icon={faTimes}
+                size={ICON_SIZE_EXTRA_SMALL2}
+              />
+            }
+            onPress={() => onChangeText && onChangeText('')}
+            padding={CLEAR_BUTTON_PADDING}
+          />
         </View>
       )}
       {maxLength === infinity ? (

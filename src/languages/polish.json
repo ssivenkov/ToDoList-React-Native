@@ -35,12 +35,25 @@
       "HeaderTitle": "Zmiana zadania",
       "EditTaskInputSuptitle": "Tekst zadania"
     },
-    "signInScreen": {
+    "signInNavigator": {
       "SignIn": "Zaloguj się",
       "SignInWithButtonTitle": "Zaloguj się za pomocą <0>{{text}}</0>",
+      "Email": "Email",
+      "EmailAnotherDeclension": "Email",
+      "Password": "Hasło",
+      "PasswordSubtext": "hasło musi zawierać co najmniej 6 znaków",
+      "SignInWithEmail": "Zaloguj się przez email",
+      "RegisterAndSignIn": "Zarejestruj się i zaloguj",
+      "Registration": "Rejestracja",
       "CancelAuthProcessModalTitle": "Użytkownik anulował proces logowania",
       "GettingAccessTokenErrorModalTitle": "Coś poszło nie tak z uzyskaniem tokena dostępu",
-      "DeleteAccountSuccessfully": "Twoje konto zostało pomyślnie usunięte"
+      "DeleteAccountSuccessfully": "Twoje konto zostało pomyślnie usunięte",
+      "auth/email-already-in-use": "Ten email jest już w użyciu. Wprowadź inny adres email",
+      "auth/too-many-requests": "Zbyt dużo próśb. Spróbuj ponownie później",
+      "auth/user-not-found": "Nie znaleziono użytkownika o tym adresie email",
+      "auth/invalid-email": "Nieprawidłowy adres email",
+      "auth/weak-password": "Słabe hasło. Hasło musi zawierać co najmniej 6 znaków",
+      "auth/wrong-password": "Niepoprawne hasło"
     },
     "accountScreen": {
       "HeaderTitle": "Konto",

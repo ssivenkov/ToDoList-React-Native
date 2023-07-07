@@ -7,6 +7,7 @@ export type InputPropsType = {
   onChangeText: TextInputProps['onChangeText'];
   value: string;
 
+  additionalTextAndClearButtonColor?: string;
   displayEmptySubtext?: boolean;
   errorSubtext?: string;
   inputRef?: RefObject<TextInput>;

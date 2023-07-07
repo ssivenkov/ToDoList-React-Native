@@ -35,12 +35,25 @@
       "HeaderTitle": "Зміна завдання",
       "EditTaskInputSuptitle": "Текст завдання"
     },
-    "signInScreen": {
+    "signInNavigator": {
       "SignIn": "Ввійти",
       "SignInWithButtonTitle": "Увійти через <0>{{text}}</0>",
+      "Email": "Eлектронна пошта",
+      "EmailAnotherDeclension": "Електронну пошту",
+      "Password": "Пароль",
+      "PasswordSubtext": "пароль повинен містити щонайменше 6 символів",
+      "SignInWithEmail": "Вхід через Електронну пошту",
+      "RegisterAndSignIn": "Зареєструватися та увійти",
+      "Registration": "Реєстрація",
       "CancelAuthProcessModalTitle": "Користувач скасував процес входу в систему",
       "GettingAccessTokenErrorModalTitle": "Щось пішло не так при отриманні токену доступу",
-      "DeleteAccountSuccessfully": "Ваш обліковий запис було успішно видалено"
+      "DeleteAccountSuccessfully": "Ваш обліковий запис було успішно видалено",
+      "auth/email-already-in-use": "Ця електронна пошта вже використовується. Будь ласка, вкажіть іншу електронну пошту",
+      "auth/too-many-requests": "Забагато запитів. Повторіть спробу пізніше",
+      "auth/user-not-found": "Користувача з цією адресою електронної пошти не знайдено",
+      "auth/invalid-email": "Некоректна адреса електронної пошти",
+      "auth/weak-password": "Слабкий пароль. Пароль повинен містити щонайменше 6 символів",
+      "auth/wrong-password": "Невірний пароль"
     },
     "accountScreen": {
       "HeaderTitle": "Обліковий запис",
@@ -60,14 +73,14 @@
     },
     "contactTheAuthorScreen": {
       "HeaderTitle": "Зв'язок із автором",
-      "EmailSuptext": "Email",
-      "EmailSubtext": "На цей email буде надіслано відповідь",
+      "EmailSuptext": "Eлектронна пошта",
+      "EmailSubtext": "На цю адресу електронної пошти буде надіслано відповідь",
       "MessageSuptext": "Текст повідомлення",
       "SendButtonTitle": "Надіслати",
       "ContactTheAuthorSuccessModalTitle": "Дякуємо, ваше повідомлення надіслано. Автор зв'яжеться з вами найближчим часом",
-      "ContactTheAuthorErrorModalTitle": "Невідома помилка. Спробуйте ввести інший email",
-      "InvalidEmailErrorTitle": "Некоректний email",
-      "EmailRequiredErrorTitle": "Email обов'язковий",
+      "ContactTheAuthorErrorModalTitle": "Невідома помилка. Спробуйте ввести іншу адресу електронної пошти",
+      "InvalidEmailErrorTitle": "Некоректна адреса електронної пошти",
+      "EmailRequiredErrorTitle": "Електронна пошта обов'язкова",
       "MessageRequiredErrorTitle": "Текст повідомлення обов'язковий"
     },
     "notepadScreen": {

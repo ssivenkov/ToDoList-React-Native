@@ -48,7 +48,7 @@ export function* deleteAccountSaga(action: DeleteAccountSagaActionReturnType) {
 
     yield put(
       setModalMessageAction({
-        modalMessage: t('signInScreen.DeleteAccountSuccessfully'),
+        modalMessage: t('signInNavigator.DeleteAccountSuccessfully'),
       }),
     );
   } catch (error) {

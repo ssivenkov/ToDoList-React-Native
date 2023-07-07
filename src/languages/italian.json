@@ -35,12 +35,25 @@
       "HeaderTitle": "Modificare un'attività",
       "EditTaskInputSuptitle": "Testo dell'attività"
     },
-    "signInScreen": {
+    "signInNavigator": {
       "SignIn": "Accedi",
       "SignInWithButtonTitle": "Accedi con <0>{{text}}</0>",
+      "Email": "Email",
+      "EmailAnotherDeclension": "Email",
+      "Password": "Parola d'ordine",
+      "PasswordSubtext": "La password deve contenere almeno 6 caratteri",
+      "SignInWithEmail": "Accedi tramite email posta",
+      "RegisterAndSignIn": "Registrati e accedi",
+      "Registration": "Registrazione",
       "CancelAuthProcessModalTitle": "L'utente ha annullato il processo di login",
       "GettingAccessTokenErrorModalTitle": "Qualcosa è andato storto nell'ottenimento del token di accesso",
-      "DeleteAccountSuccessfully": "Il tuo account è stato eliminato con successo"
+      "DeleteAccountSuccessfully": "Il tuo account è stato eliminato con successo",
+      "auth/email-already-in-use": "Questa email è già in uso. Inserisci un'email diversa",
+      "auth/too-many-requests": "Troppe richieste. Per favore riprova più tardi",
+      "auth/user-not-found": "Utente con questo indirizzo email non trovato",
+      "auth/invalid-email": "Indirizzo email errato",
+      "auth/weak-password": "Password Debole. La password deve contenere almeno 6 caratteri",
+      "auth/wrong-password": "Password errata"
     },
     "accountScreen": {
       "HeaderTitle": "Conto",
