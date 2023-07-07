@@ -26,9 +26,10 @@ import i18next, { changeLanguage, t } from 'i18next';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { withAuthNavigatorStyles } from './styles';
-import { BottomTabParamList } from './types';
+import { WithAuthBottomTabNavigatorParamListType } from './types';
 
-const { Navigator, Screen } = createBottomTabNavigator<BottomTabParamList>();
+const { Navigator, Screen } =
+  createBottomTabNavigator<WithAuthBottomTabNavigatorParamListType>();
 
 export const WithAuthNavigator = () => {
   const dispatch = useDispatch();

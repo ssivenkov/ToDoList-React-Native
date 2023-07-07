@@ -2,7 +2,7 @@ import { DateTime } from 'luxon';
 import moment from 'moment';
 
 export const createFormattedDateHelper = () => {
-  return moment().format('YYYY-MM-DD|HH-mm-ss-ms');
+  return moment().format('YYYY-MM-DD|HH-mm-signInSelectOptionScreen-ms');
 };
 
 export const mathFloorDateFromMinuteHelper = (date: Date): Date => {

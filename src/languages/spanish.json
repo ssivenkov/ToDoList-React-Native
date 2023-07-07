@@ -35,12 +35,25 @@
       "HeaderTitle": "Cambiar una tarea",
       "EditTaskInputSuptitle": "Texto de la tarea"
     },
-    "signInScreen": {
+    "signInNavigator": {
       "SignIn": "Acceder",
       "SignInWithButtonTitle": "Accede con <0>{{text}}</0>",
+      "Email": "Correo electrónico",
+      "EmailAnotherDeclension": "Correo electrónico",
+      "Password": "Contraseña",
+      "PasswordSubtext": "la contraseña debe contener al menos 6 caracteres",
+      "SignInWithEmail": "Iniciar sesión por correo electrónico correo",
+      "RegisterAndSignIn": "Regístrese e inicie sesión",
+      "Registration": "Registro",
       "CancelAuthProcessModalTitle": "El usuario canceló el proceso de inicio de sesión",
       "GettingAccessTokenErrorModalTitle": "Algo salió mal al obtener el token de acceso",
-      "DeleteAccountSuccessfully": "Su cuenta ha sido eliminada con éxito"
+      "DeleteAccountSuccessfully": "Su cuenta ha sido eliminada con éxito",
+      "auth/email-already-in-use": "Este correo electrónico ya está en uso. Por favor, introduzca un correo electrónico diferente",
+      "auth/too-many-requests": "Usuario con esta dirección de correo electrónico no encontrado",
+      "auth/user-not-found": "Usuario con esta dirección de correo electrónico no encontrado",
+      "auth/invalid-email": "Dirección de correo electrónico incorrecta",
+      "auth/weak-password": "Contraseña debil. La contraseña debe contener al menos 6 caracteres",
+      "auth/wrong-password": "Contraseña incorrecta"
     },
     "accountScreen": {
       "HeaderTitle": "Cuenta",

@@ -3,7 +3,6 @@ import { ExtendedStylesPropsType } from '@hooks/useStyles';
 import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
 type InputStylesType = {
-  clearButtonIconContainer: ViewStyle;
   errorSubtext: TextStyle;
   input: TextStyle;
   inputContainer: ViewStyle;
@@ -22,10 +21,6 @@ const subtextPaddingVertical = 8;
 
 export const inputStyles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<InputStylesType>({
-    clearButtonIconContainer: {
-      padding: 10.5,
-    },
-
     errorSubtext: {
       color: CRIMSON,
       fontSize: subtextFontSize,

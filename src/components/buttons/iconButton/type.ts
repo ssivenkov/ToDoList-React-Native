@@ -3,4 +3,5 @@ export type IconButtonPropsType = {
   onPress: () => void;
 
   disabled?: boolean;
+  padding?: number;
 };

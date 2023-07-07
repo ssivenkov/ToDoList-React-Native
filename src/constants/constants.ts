@@ -1,3 +1,5 @@
+import { Platform } from 'react-native';
+
 export const ICON_SIZE_MEDIUM = 28;
 export const ICON_SIZE_HALF_MEDIUM = 25;
 export const ICON_SIZE_ALMOST_HALF_MEDIUM = 23;
@@ -22,3 +24,9 @@ export const switcherMargin = 1;
 export const infinity = 'infinity';
 export const secondsInMinute = 59;
 export const millisecondsInSecond = 1000;
+export const PASSWORD_MIN_LENGTH = 6;
+const IOS_APP_LOGO_DIVIDER = 2.25;
+const ANDROID_APP_LOGO_DIVIDER = 2.4;
+
+export const appLogoDivider =
+  Platform.OS === 'ios' ? IOS_APP_LOGO_DIVIDER : ANDROID_APP_LOGO_DIVIDER;

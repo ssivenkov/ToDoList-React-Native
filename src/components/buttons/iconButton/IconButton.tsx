@@ -7,13 +7,16 @@ import { styles } from './styles';
 import { IconButtonPropsType } from './type';
 
 export const IconButton = (props: IconButtonPropsType) => {
-  const { icon, onPress, disabled = false } = props;
+  const { icon, onPress, disabled = false, padding } = props;
 
   return (
     <TouchableOpacity
       disabled={disabled}
       onPress={onPress}
-      style={disabled ? commonButtonStyles.disabled : styles.icon}
+      style={[
+        disabled ? commonButtonStyles.disabled : styles.icon,
+        { padding: padding ?? 0 },
+      ]}
     >
       {icon}
     </TouchableOpacity>

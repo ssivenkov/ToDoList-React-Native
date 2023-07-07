@@ -5,6 +5,7 @@ import { modalStyles } from '@components/modals/modalStyles';
 import { ROOT_NAVIGATOR_ROUTE } from '@enums/routesEnum';
 import { GOOGLE_WEB_CLIENT_ID } from '@env';
 import { useStyles } from '@hooks/useStyles';
+import { SignInNavigator } from '@navigation/signInNavigator/SignInNavigator';
 import { WithAuthNavigator } from '@navigation/withAuthNavigator/WithAuthNavigator';
 import auth from '@react-native-firebase/auth';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
@@ -14,7 +15,6 @@ import { Theme } from '@react-navigation/native/src/types';
 import { AddTaskScreen } from '@screens/addTaskScreen/AddTaskScreen';
 import { ContactTheAuthorScreen } from '@screens/contactTheAuthorScreen/ContactTheAuthorScreen';
 import { EditTaskScreen } from '@screens/editTaskScreen/EditTaskScreen';
-import { SignInScreen } from '@screens/signInScreen/SignInScreen';
 import { setLanguageAction } from '@store/actions/userReducerActions/setLanguageAction';
 import { setModalMessageAction } from '@store/actions/userReducerActions/setModalMessageAction';
 import { checkUserAction } from '@store/actions/userSagaActions/checkUserAction';
@@ -131,8 +131,8 @@ export const RootNavigator = () => {
         <Navigator>
           {!userID ? (
             <Screen
-              component={SignInScreen}
-              name={ROOT_NAVIGATOR_ROUTE.SIGN_IN_SCREEN}
+              component={SignInNavigator}
+              name={ROOT_NAVIGATOR_ROUTE.SIGN_IN_NAVIGATOR}
               options={{ headerShown: false }}
             />
           ) : (

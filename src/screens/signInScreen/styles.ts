@@ -1,33 +1,52 @@
 import { COLORS } from '@colors/colors';
-import { screenWidth480px } from '@constants/constants';
+import { appLogoDivider } from '@constants/constants';
 import { ExtendedStylesPropsType } from '@hooks/useStyles';
-import { ImageStyle, Platform, StyleSheet, TextStyle, ViewStyle } from 'react-native';
+import { headerHeight } from '@navigation/commonNavigationStyles';
+import { ImageStyle, StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
 type SignInScreenStylesType = {
-  appIcon: ImageStyle;
+  appLogoImage: ImageStyle;
+  appLogoSvg: ImageStyle;
+  formContainer: ViewStyle;
+  inputWrapper: ViewStyle;
+  linearGradient: ViewStyle;
   screenTitle: TextStyle;
-  signInContainer: ViewStyle;
-  signInWrapper: ViewStyle;
+  signInContentContainer: ViewStyle;
+  signInContentWrapper: ViewStyle;
+  signInScrollViewWithLoaderWrapper: ViewStyle;
+  signInScrollViewWrapper: ViewStyle;
+  signInServicesButtonsContainer: ViewStyle;
+  submitButtonContainer: ViewStyle;
 };
 
-const iOSAppIconDivider = 2.25;
-const androidAppIconDivider = 2.4;
 const borderRadiusCoefficient = 0.01;
-const narrowScreenMarginHorizontal = 15;
-const otherScreensMarginHorizontal = 30;
-const appIconDivider = Platform.OS === 'ios' ? iOSAppIconDivider : androidAppIconDivider;
+const mobileScreenMarginHorizontal = 30;
+const tabletScreensMarginHorizontalDivider = 6;
+const appLogoMarginTopDivider = 8;
+const appLogoMarginBottom = 40;
+const phoneMinAspectRatio = 1.6;
 
 export const signInScreenStyles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<SignInScreenStylesType>({
-    appIcon: {
+    linearGradient: {
+      minHeight: '100%',
+    },
+
+    appLogoImage: {
       borderRadius:
-        props.appWidth / appIconDivider / (props.appWidth * borderRadiusCoefficient),
-      height: props.appWidth / appIconDivider,
-      marginBottom: 40,
+        props.appWidth / appLogoDivider / (props.appWidth * borderRadiusCoefficient),
+      height: props.appWidth / appLogoDivider,
+      marginTop: props.appHeight / appLogoMarginTopDivider,
+      marginBottom: appLogoMarginBottom,
       maxHeight: 200,
       maxWidth: 200,
       resizeMode: 'contain',
-      width: props.appWidth / appIconDivider,
+      width: props.appWidth / appLogoDivider,
+    },
+
+    appLogoSvg: {
+      marginTop: props.appHeight / appLogoMarginTopDivider,
+      marginBottom: appLogoMarginBottom,
     },
 
     screenTitle: {
@@ -37,20 +56,47 @@ export const signInScreenStyles = (props: ExtendedStylesPropsType) =>
       marginBottom: 10,
     },
 
-    signInContainer: {
+    signInContentContainer: {
       alignItems: 'center',
       justifyContent: 'center',
-      maxWidth: 380,
       width: '100%',
+      paddingHorizontal:
+        props.appHeight / props.appWidth >= phoneMinAspectRatio
+          ? mobileScreenMarginHorizontal
+          : props.appWidth / tabletScreensMarginHorizontalDivider,
     },
 
-    signInWrapper: {
+    signInContentWrapper: {
+      alignItems: 'center',
+      width: '100%',
+      height: '100%',
+      paddingBottom: headerHeight,
+    },
+
+    signInScrollViewWithLoaderWrapper: {
       alignItems: 'center',
       height: '100%',
       justifyContent: 'center',
-      marginHorizontal:
-        props.appWidth <= screenWidth480px
-          ? narrowScreenMarginHorizontal
-          : otherScreensMarginHorizontal,
+    },
+
+    signInScrollViewWrapper: {
+      alignItems: 'center',
+      minHeight: '100%',
+    },
+
+    formContainer: {
+      width: '100%',
+    },
+
+    inputWrapper: {
+      marginBottom: 15,
+    },
+
+    submitButtonContainer: {
+      marginTop: 15,
+    },
+
+    signInServicesButtonsContainer: {
+      marginBottom: 10,
     },
   });

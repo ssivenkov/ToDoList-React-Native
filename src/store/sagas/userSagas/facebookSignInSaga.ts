@@ -1,5 +1,5 @@
 import { ONLINE, START_ANIMATION_DELAY } from '@constants/constants';
-import { userSignInErrors } from '@constants/errors';
+import { commonSignInErrors } from '@constants/errors';
 import { FIREBASE_OTHER } from '@enums/firebaseEnum';
 import { checkInternetConnectionHelper } from '@helpers/checkInternetConnectionHelper';
 import auth from '@react-native-firebase/auth';
@@ -41,7 +41,7 @@ export function* facebookSignInSaga() {
     if (isCancelled) {
       yield put(
         setModalMessageAction({
-          modalMessage: t('signInScreen.CancelAuthProcessModalTitle'),
+          modalMessage: t('signInNavigator.CancelAuthProcessModalTitle'),
         }),
       );
 
@@ -53,7 +53,7 @@ export function* facebookSignInSaga() {
     if (!accessToken) {
       yield put(
         setModalMessageAction({
-          modalMessage: t('signInScreen.GettingAccessTokenErrorModalTitle'),
+          modalMessage: t('signInNavigator.GettingAccessTokenErrorModalTitle'),
         }),
       );
 
@@ -77,7 +77,7 @@ export function* facebookSignInSaga() {
   } catch (error) {
     if (error instanceof Error) {
       // @ts-ignore
-      if (userSignInErrors.includes(error.code)) {
+      if (commonSignInErrors.includes(error.code)) {
         yield cancel();
       }
 

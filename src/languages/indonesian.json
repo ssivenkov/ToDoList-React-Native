@@ -35,12 +35,25 @@
       "HeaderTitle": "Mengubah tugas",
       "EditTaskInputSuptitle": "Teks tugas"
     },
-    "signInScreen": {
+    "signInNavigator": {
       "SignIn": "Masuk",
       "SignInWithButtonTitle": "Masuk dengan <0>{{text}}</0>",
+      "Email": "Surel",
+      "EmailAnotherDeclension": "Surel",
+      "Password": "Kata sandi",
+      "PasswordSubtext": "kata sandi harus mengandung setidaknya 6 karakter",
+      "SignInWithEmail": "Masuk melalui surat",
+      "RegisterAndSignIn": "Daftar dan masuk",
+      "Registration": "Registrasi",
       "CancelAuthProcessModalTitle": "Pengguna membatalkan proses login",
       "GettingAccessTokenErrorModalTitle": "Ada yang salah dalam mendapatkan token akses",
-      "DeleteAccountSuccessfully": "Akun Anda telah berhasil dihapus"
+      "DeleteAccountSuccessfully": "Akun Anda telah berhasil dihapus",
+      "auth/email-already-in-use": "Email ini surat sudah digunakan. Harap masukkan email yang berbeda",
+      "auth/too-many-requests": "Terlalu banyak permintaan. Coba lagi nanti",
+      "auth/user-not-found": "Pengguna dengan alamat email ini tidak ditemukan",
+      "auth/invalid-email": "Alamat email salah",
+      "auth/weak-password": "Kata kunci lemah. Kata sandi harus mengandung setidaknya 6 karakter",
+      "auth/wrong-password": "Kata kunci Salah"
     },
     "accountScreen": {
       "HeaderTitle": "Akun",

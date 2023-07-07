@@ -35,12 +35,25 @@
       "HeaderTitle": "Alterar uma tarefa",
       "EditTaskInputSuptitle": "Texto da tarefa"
     },
-    "signInScreen": {
+    "signInNavigator": {
       "SignIn": "Iniciar sessão",
       "SignInWithButtonTitle": "Entre com <0>{{text}}</0>",
+      "Email": "Email",
+      "EmailAnotherDeclension": "Email",
+      "Password": "Senha",
+      "PasswordSubtext": "a senha deve conter pelo menos 6 caracteres",
+      "SignInWithEmail": "Entrar por email correspondência",
+      "RegisterAndSignIn": "Registre-se e faça login",
+      "Registration": "Cadastro",
       "CancelAuthProcessModalTitle": "O utilizador cancelou o processo de login",
       "GettingAccessTokenErrorModalTitle": "Algo correu mal ao obter o código de acesso",
-      "DeleteAccountSuccessfully": "Sua conta foi excluída com sucesso"
+      "DeleteAccountSuccessfully": "Sua conta foi excluída com sucesso",
+      "auth/email-already-in-use": "Esse email já está em uso. Insira um email diferente",
+      "auth/too-many-requests": "Muitos pedidos. Por favor, tente novamente mais tarde",
+      "auth/user-not-found": "Usuário com este endereço de email não encontrado",
+      "auth/invalid-email": "Endereço de email incorreto",
+      "auth/weak-password": "Senha fraca. A senha deve conter pelo menos 6 caracteres",
+      "auth/wrong-password": "Senha incorreta"
     },
     "accountScreen": {
       "HeaderTitle": "Conta",
