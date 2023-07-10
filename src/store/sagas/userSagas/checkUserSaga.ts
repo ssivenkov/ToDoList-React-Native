@@ -1,6 +1,5 @@
 import { COLORS } from '@colors/colors';
 import { ONLINE } from '@constants/constants';
-import { EN } from '@constants/languages';
 import { FIREBASE_PATH } from '@enums/firebaseEnum';
 import { checkInternetConnectionHelper } from '@helpers/checkInternetConnectionHelper';
 import { DB } from '@root/api/DB';
@@ -15,6 +14,7 @@ import {
 } from '@store/reducers/userReducer/types';
 import {
   isUserDataSynchronizedSelector,
+  languageSelector,
   userIDSelector,
 } from '@store/selectors/userSelectors';
 import { isEmulator } from 'react-native-device-info';
@@ -44,6 +44,7 @@ export function* checkUserSaga() {
     const userID: UserIDType = yield select(userIDSelector);
     const isUserDataSynchronized: UserReducerStateType['isUserDataSynchronized'] =
       yield select(isUserDataSynchronizedSelector);
+    const language: UserReducerStateType['language'] = yield select(languageSelector);
 
     const snapshot: SnapshotType = yield DB.ref(`${USERS}/${userID}`).once('value');
 
@@ -53,7 +54,7 @@ export function* checkUserSaga() {
       DB.ref(`${USERS}/${userID}`).set({
         accentColor: COLORS.ELECTRIC_VIOLET2,
         darkTheme: false,
-        language: EN,
+        language: language,
         userToken: userID,
       });
     } else {
