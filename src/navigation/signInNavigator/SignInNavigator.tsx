@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 
 import { PurpleLoader } from '@components/loaders/purpleLoader/PurpleLoader';
 import { SIGN_IN_NAVIGATOR_ROUTE } from '@enums/routesEnum';
@@ -23,17 +23,12 @@ export const SignInNavigator = () => {
   const language = useSelector(languageSelector);
   const globalLoader = useSelector(globalLoaderSelector);
 
-  const [rerender, setRerender] = useState<string>('');
-
   // need for rerender with correct translations for navigator
   useEffect(() => {
-    if (i18next.language !== language) {
-      changeLanguage(language).then(() => {
-        dispatch(setLanguageAction({ language }));
-        setRerender(language);
-      });
-    }
-  }, [rerender, language]);
+    changeLanguage(language).then(() => {
+      dispatch(setLanguageAction({ language }));
+    });
+  }, [i18next.language, language]);
 
   return (
     <>

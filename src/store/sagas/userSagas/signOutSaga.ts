@@ -1,5 +1,8 @@
+import { COLORS } from '@colors/colors';
 import { ONLINE, START_ANIMATION_DELAY } from '@constants/constants';
+import { EN } from '@constants/languages';
 import { FIREBASE_OTHER } from '@enums/firebaseEnum';
+import { WITH_AUTH_NAVIGATOR_ROUTE } from '@enums/routesEnum';
 import { checkInternetConnectionHelper } from '@helpers/checkInternetConnectionHelper';
 import auth from '@react-native-firebase/auth';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
@@ -12,6 +15,7 @@ import { SignOutSagaActionReturnType } from '@store/actions/userSagaActions/sign
 import { ProviderIDType } from '@store/reducers/userReducer/types';
 import { userReducerState } from '@store/reducers/userReducer/userReducer';
 import { providerIDSelector } from '@store/selectors/userSelectors';
+import { lightTheme } from '@themes/themes';
 import { changeLanguage as i18nextChangeLanguage } from 'i18next';
 import { LoginManager } from 'react-native-fbsdk-next';
 import { call, cancel, delay, put, putResolve, select } from 'redux-saga/effects';
@@ -54,17 +58,17 @@ export function* signOutSaga(action: SignOutSagaActionReturnType) {
 
     yield putResolve(
       setAuthStateAction({
-        accentColor: userReducerState.accentColor,
-        emulatorStatusBarHeight: userReducerState.emulatorStatusBarHeight,
-        isUserDataSynchronized: userReducerState.isUserDataSynchronized,
-        isWaitingUserDataOnSignIn: userReducerState.isWaitingUserDataOnSignIn,
-        language: userReducerState.language,
-        lastRoute: userReducerState.lastRoute,
-        providerID: userReducerState.providerID,
-        selectedColor: userReducerState.selectedColor,
-        theme: userReducerState.theme,
-        userData: userReducerState.userData,
-        userAvatar: userReducerState.userAvatar,
+        accentColor: COLORS.ELECTRIC_VIOLET2,
+        emulatorStatusBarHeight: 0,
+        isUserDataSynchronized: false,
+        isWaitingUserDataOnSignIn: false,
+        language: EN,
+        lastRoute: WITH_AUTH_NAVIGATOR_ROUTE.TASKS_NAVIGATOR,
+        providerID: null,
+        selectedColor: COLORS.ELECTRIC_VIOLET2,
+        theme: lightTheme,
+        userAvatar: null,
+        userData: null,
       }),
     );
 
