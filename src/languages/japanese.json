@@ -67,9 +67,24 @@
       "AccentColorModalTitle": "アクセントカラーを選択",
       "AccentColorButtonTitle": "アクセントカラー",
       "ContactTheAuthorButtonTitle": "著者に連絡する",
+      "AdjustTextSizesButtonTitle": "文字サイズ",
       "RateAppButtonTitle": "アプリを評価する",
       "ShareAppButtonTitle": "アプリを共有",
       "ShareAppMessage": "ToDo List アプリを楽しんでいます。 試す！"
+    },
+    "adjustTextSizesScreen": {
+      "HeaderTitle": "文字サイズ",
+      "TaskListSliderTitle": "タスクリスト名",
+      "TaskSliderTitle": "タスクテキスト",
+      "NotepadSliderTitle": "メモ帳のテキスト",
+      "ModalWindowSliderTitle": "モーダルウィンドウのテキスト",
+      "ModalButtonSliderTitle": "モーダルボタンのテキスト",
+      "TaskListVisualExampleTitle": "リスト名",
+      "TaskVisualExample1Text": "短いテキスト",
+      "TaskVisualExample2Text": "文章を理解しやすくするための中程度のタスクテキスト",
+      "TaskVisualExample3Text": "タスクの長いテキスト。指定したタスクのテキストのサイズをよりよく理解するために提供されます。",
+      "NotepadVisualExampleText": "設定したメモ帳のテキスト サイズをよりよく理解するために提供されたメモ帳のテキストの例",
+      "ModalVisualExampleText": "モーダル ウィンドウ内のテキスト メッセージの例。モーダル ウィンドウのテキスト コンテンツに設定したサイズをよりよく理解するために提供されています。"
     },
     "contactTheAuthorScreen": {
       "HeaderTitle": "著者に連絡する",

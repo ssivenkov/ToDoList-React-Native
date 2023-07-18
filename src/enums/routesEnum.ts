@@ -7,6 +7,7 @@ export enum SIGN_IN_NAVIGATOR_ROUTE {
 
 export enum ROOT_NAVIGATOR_ROUTE {
   ADD_TASK_SCREEN = 'AddTaskScreen',
+  ADJUST_TEXT_SIZES_SCREEN = 'ADJUST_TEXT_SIZES_SCREEN',
   CONTACT_THE_AUTHOR_SCREEN = 'ContactTheAuthorScreen',
   EDIT_TASK_SCREEN = 'EditTaskScreen',
   SIGN_IN_NAVIGATOR = 'SignInNavigator',

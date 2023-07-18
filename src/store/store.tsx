@@ -7,6 +7,7 @@ import { rootWatcher } from '@store/sagas/rootWatcher';
 import { AppRootStateType, RootStateType } from '@store/types';
 import { applyMiddleware, combineReducers, createStore /*, compose*/ } from 'redux';
 import { persistReducer, persistStore } from 'redux-persist';
+import { PersistConfig } from 'redux-persist/es/types';
 import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 import createSagaMiddleware from 'redux-saga';
 
@@ -17,8 +18,8 @@ export const rootReducer = combineReducers<RootStateType>({
   snackBarEvents: snackBarReducer,
 });
 
-const persistConfig = {
-  StateReconciler: autoMergeLevel2,
+const persistConfig: PersistConfig<RootStateType> = {
+  stateReconciler: autoMergeLevel2,
   key: 'root',
   storage: AsyncStorage,
 };

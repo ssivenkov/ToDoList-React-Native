@@ -11,6 +11,7 @@ import { setGlobalLoaderAction } from '@store/actions/userReducerActions/setGlob
 import { setIsUserDataSynchronizedAction } from '@store/actions/userReducerActions/setIsUserDataSynchronizedAction';
 import { setLanguageAction } from '@store/actions/userReducerActions/setLanguageAction';
 import { setModalMessageAction } from '@store/actions/userReducerActions/setModalMessageAction';
+import { setTextSizesAction } from '@store/actions/userReducerActions/setTextSizesAction';
 import { setThemeAction } from '@store/actions/userReducerActions/setThemeAction';
 import {
   TaskListBeforeConvertType,
@@ -52,6 +53,27 @@ export function* syncUserDataSaga() {
     );
 
     yield put(setThemeAction({ theme }));
+
+    const setTextSizesCondition = !!(
+      userData.textSizes &&
+      typeof userData.textSizes.modalButtonTextSize === 'number' &&
+      typeof userData.textSizes.modalWindowTextSize === 'number' &&
+      typeof userData.textSizes.taskListTitleSize === 'number' &&
+      typeof userData.textSizes.taskTextSize === 'number' &&
+      typeof userData.textSizes.notepadTextSize === 'number'
+    );
+
+    if (setTextSizesCondition) {
+      yield put(
+        setTextSizesAction({
+          modalButtonTextSize: userData.textSizes.modalButtonTextSize,
+          modalWindowTextSize: userData.textSizes.modalWindowTextSize,
+          taskListTitleSize: userData.textSizes.taskListTitleSize,
+          taskTextSize: userData.textSizes.taskTextSize,
+          notepadTextSize: userData.textSizes.notepadTextSize,
+        }),
+      );
+    }
 
     if (userData.taskLists) {
       const userTaskListsObject = snapshot.val().taskLists;

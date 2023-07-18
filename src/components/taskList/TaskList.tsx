@@ -5,14 +5,14 @@ import { commonButtonStyles } from '@components/buttons/commonButtonStyles';
 import { MenuHorizontal } from '@components/menus/menuHorizontal/MenuHorizontal';
 import { menuHorizontalStyles } from '@components/menus/menuHorizontal/styles';
 import { Task } from '@components/task/Task';
-import { IsMenuVisibleType } from '@components/task/types';
+import { IsMenuHorizontalVisibleType } from '@components/task/types';
 import { sortingTasks } from '@helpers/sorting';
 import { useStyles } from '@hooks/useStyles';
 import { CollapsingButton } from '@screens/tasksScreen/buttons/collapsingButton/CollapsingButton';
 import { CreateTaskButton } from '@screens/tasksScreen/buttons/createTaskButton/CreateTaskButton';
 import { DeleteTaskListButton } from '@screens/tasksScreen/buttons/deleteTaskListButton/DeleteTaskListButton';
 import { EditTaskListTitleButton } from '@screens/tasksScreen/buttons/editTaskListTitleButton/EditTaskListTitleButton';
-import { themeSelector } from '@store/selectors/userSelectors';
+import { taskListTitleSizeSelector, themeSelector } from '@store/selectors/userSelectors';
 import { Text, View } from 'react-native';
 import { useSelector } from 'react-redux';
 
@@ -35,6 +35,7 @@ export const TaskList = (props: TaskListPropsType) => {
   const menuHorizontalStyle = useStyles(menuHorizontalStyles);
 
   const theme = useSelector(themeSelector);
+  const taskListTitleSize = useSelector(taskListTitleSizeSelector);
 
   const sortedTasks = sortingTasks(taskListTasks);
 
@@ -57,7 +58,7 @@ export const TaskList = (props: TaskListPropsType) => {
   }, [taskListTasks]);
 
   const [isMenuHorizontalVisible, setIsMenuHorizontalVisible] =
-    useState<IsMenuVisibleType>(false);
+    useState<IsMenuHorizontalVisibleType>(false);
 
   const tasksCondition =
     (sortedTasks.length > 0 && isTodoTaskList && !isTodoCollapsed) ||
@@ -108,7 +109,9 @@ export const TaskList = (props: TaskListPropsType) => {
               taskListID={taskListID}
               taskListsCount={sortedTasks.length}
             />
-            <Text style={styles.title}>{taskListTitle}</Text>
+            <Text style={[styles.title, { fontSize: taskListTitleSize }]}>
+              {taskListTitle}
+            </Text>
             {isTodoTaskList && (
               <CreateTaskButton
                 fullTaskList={fullTaskList}

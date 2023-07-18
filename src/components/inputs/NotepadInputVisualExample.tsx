@@ -3,21 +3,17 @@ import React from 'react';
 import { COLORS } from '@colors/colors';
 import { NOTEPAD_LINE_HEIGHT_COMPENSATION } from '@constants/constants';
 import { useStyles } from '@hooks/useStyles';
-import { notepadTextSizeSelector } from '@store/selectors/userSelectors';
 import { View } from 'react-native';
 // @ts-ignore
 import { AutoGrowingTextInput } from 'react-native-autogrow-textinput';
-import { useSelector } from 'react-redux';
 
 import { inputStyles } from './styles';
-import { NotepadInputPropsType } from './types';
+import { NotepadInputVisualExamplePropsType } from './types';
 
-export const NotepadInput = (props: NotepadInputPropsType) => {
-  const { value, onValueChange, placeholder } = props;
+export const NotepadInputVisualExample = (props: NotepadInputVisualExamplePropsType) => {
+  const { value, onValueChange, placeholder, textSize } = props;
 
   const styles = useStyles(inputStyles);
-
-  const notepadTextSize = useSelector(notepadTextSizeSelector);
 
   return (
     <View style={styles.inputContainer}>
@@ -30,10 +26,7 @@ export const NotepadInput = (props: NotepadInputPropsType) => {
         placeholderTextColor={COLORS.SILVER_CHALICE2}
         style={[
           styles.notepadInput,
-          {
-            fontSize: notepadTextSize,
-            lineHeight: notepadTextSize + NOTEPAD_LINE_HEIGHT_COMPENSATION,
-          },
+          { fontSize: textSize, lineHeight: textSize + NOTEPAD_LINE_HEIGHT_COMPENSATION },
         ]}
         value={value}
       />

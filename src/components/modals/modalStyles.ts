@@ -17,13 +17,16 @@ export type ModalStylesType = {
   buttonsContainer: ViewStyle;
   centeredTransparentView: ViewStyle;
   centeredView: ViewStyle;
+  centeredViewVisualExampleDark: ViewStyle;
+  centeredViewVisualExampleLight: ViewStyle;
   childrenContainer: ViewStyle;
   descriptionContainer: ViewStyle;
   modalView: ViewStyle;
   text: TextStyle;
+  textVisualExample: TextStyle;
 };
 
-const { TRANSPARENT, MEDIUM_DARK_TRANSPARENCY } = COLORS;
+const { TRANSPARENT, MEDIUM_DARK_TRANSPARENCY, EMPEROR } = COLORS;
 
 export const modalStyles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<ModalStylesType>({
@@ -35,6 +38,22 @@ export const modalStyles = (props: ExtendedStylesPropsType) =>
     centeredView: {
       alignItems: 'center',
       backgroundColor: MEDIUM_DARK_TRANSPARENCY,
+      flex: 1,
+      justifyContent: 'center',
+    },
+
+    centeredViewVisualExampleDark: {
+      alignItems: 'center',
+      backgroundColor: EMPEROR,
+      paddingVertical: 10,
+      flex: 1,
+      justifyContent: 'center',
+    },
+
+    centeredViewVisualExampleLight: {
+      alignItems: 'center',
+      backgroundColor: MEDIUM_DARK_TRANSPARENCY,
+      paddingVertical: 10,
       flex: 1,
       justifyContent: 'center',
     },
@@ -77,6 +96,9 @@ export const modalStyles = (props: ExtendedStylesPropsType) =>
 
     text: {
       color: props.TEXT_COLOR,
-      fontSize: 18,
+    },
+
+    textVisualExample: {
+      color: props.TEXT_COLOR,
     },
   });

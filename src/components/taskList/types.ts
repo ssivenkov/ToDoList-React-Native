@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 import { TaskListType, TaskType } from '@store/reducers/tasksReducer/types';
 
 export type isTodoTaskListType = boolean;
@@ -12,4 +14,10 @@ export type TaskListPropsType = {
   taskListTitle: TaskListType['title'];
 
   taskListTasks?: TaskType[];
+};
+
+export type TaskListVisualExamplePropsType = {
+  taskListTitleSize: number;
+  tasks: ReactNode;
+  title: TaskListPropsType['taskListTitle'];
 };

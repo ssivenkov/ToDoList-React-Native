@@ -10,6 +10,7 @@
     "@react-native-async-storage/async-storage": "^1.16.1",
     "@react-native-community/netinfo": "^8.2.0",
     "@react-native-community/push-notification-ios": "^1.10.1",
+    "@react-native-community/slider": "^4.4.2",
     "@react-native-firebase/app": "^14.7.0",
     "@react-native-firebase/auth": "^14.7.0",
     "@react-native-firebase/database": "^14.7.0",
@@ -119,7 +120,7 @@
     "app_dependencies_Windows": "cd android && gradlew app:dependencies"
   },
   "engines": {
-    "node": "<=16.17.0"
+    "node": ">=16.0.0"
   },
   "jest": {
     "preset": "react-native"

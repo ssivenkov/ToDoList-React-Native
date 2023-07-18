@@ -25,6 +25,7 @@ export const infinity = 'infinity';
 export const secondsInMinute = 59;
 export const millisecondsInSecond = 1000;
 export const PASSWORD_MIN_LENGTH = 6;
+export const NOTEPAD_LINE_HEIGHT_COMPENSATION = 8;
 const IOS_APP_LOGO_DIVIDER = 2.25;
 const ANDROID_APP_LOGO_DIVIDER = 2.4;
 

@@ -4,13 +4,12 @@ import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 type TaskStylesType = {
   buttonsContainer: ViewStyle;
   colorMark: ViewStyle;
-  container: ViewStyle;
+  taskContainer: ViewStyle;
   text: TextStyle;
+  visualExampleText: TextStyle;
 };
 
-const textSize = 18;
-
-const taskContainerBorderRadius = 7;
+const TASK_CONTAINER_BORDER_RADIUS = 7;
 
 export const taskStyles = (props: ExtendedStylesPropsType) =>
   StyleSheet.create<TaskStylesType>({
@@ -25,9 +24,9 @@ export const taskStyles = (props: ExtendedStylesPropsType) =>
       width: 6,
     },
 
-    container: {
+    taskContainer: {
       backgroundColor: props.TASK_COLOR,
-      borderRadius: taskContainerBorderRadius,
+      borderRadius: TASK_CONTAINER_BORDER_RADIUS,
       marginVertical: 3,
       overflow: 'hidden',
     },
@@ -35,7 +34,16 @@ export const taskStyles = (props: ExtendedStylesPropsType) =>
     text: {
       color: props.TEXT_COLOR,
       flex: 1,
-      fontSize: textSize,
+      alignSelf: 'center',
+      marginLeft: 7,
+      marginRight: 1.5347,
+      paddingVertical: 4,
+    },
+
+    visualExampleText: {
+      color: props.TEXT_COLOR,
+      flex: 1,
+      alignSelf: 'center',
       marginLeft: 7,
       marginRight: 1.5347,
       paddingVertical: 4,

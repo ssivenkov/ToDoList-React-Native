@@ -20,10 +20,10 @@ import { changeLanguage as i18nextChangeLanguage } from 'i18next';
 import { LoginManager } from 'react-native-fbsdk-next';
 import { call, cancel, delay, put, putResolve, select } from 'redux-saga/effects';
 
+const { FACEBOOK_PROVIDER_ID, GOOGLE_PROVIDER_ID } = FIREBASE_OTHER;
+
 export function* signOutSaga(action: SignOutSagaActionReturnType) {
   const { setWaitingProcess } = action.payload;
-
-  const { FACEBOOK_PROVIDER_ID, GOOGLE_PROVIDER_ID } = FIREBASE_OTHER;
 
   try {
     const internetConnectionStatus: string = yield call(checkInternetConnectionHelper);
@@ -69,6 +69,11 @@ export function* signOutSaga(action: SignOutSagaActionReturnType) {
         theme: lightTheme,
         userAvatar: null,
         userData: null,
+        modalButtonTextSize: 20,
+        modalWindowTextSize: 18,
+        taskListTitleSize: 21,
+        taskTextSize: 18,
+        notepadTextSize: 16,
       }),
     );
 
