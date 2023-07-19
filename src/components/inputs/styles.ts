@@ -54,8 +54,6 @@ export const inputStyles = (props: ExtendedStylesPropsType) =>
       alignContent: 'center',
       backgroundColor: props.NOTEPAD_PLACEHOLDER_COLOR,
       color: props.TEXT_COLOR,
-      fontSize: 16,
-      lineHeight: 24,
       padding: 10,
       width: textWidth,
     },

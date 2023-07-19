@@ -68,9 +68,24 @@
       "AccentColorModalTitle": "Select accent color",
       "AccentColorButtonTitle": "Accent color",
       "ContactTheAuthorButtonTitle": "Contact the author",
+      "AdjustTextSizesButtonTitle": "Text sizes",
       "RateAppButtonTitle": "Rate the app",
       "ShareAppButtonTitle": "Share the app",
       "ShareAppMessage": "I enjoy using the ToDo List app. Try it!"
+    },
+    "adjustTextSizesScreen": {
+      "HeaderTitle": "Text sizes",
+      "TaskListSliderTitle": "Task list name",
+      "TaskSliderTitle": "Task text",
+      "NotepadSliderTitle": "Notepad text",
+      "ModalWindowSliderTitle": "Modal window text",
+      "ModalButtonSliderTitle": "Modal window buttons text",
+      "TaskListVisualExampleTitle": "Task list name",
+      "TaskVisualExample1Text": "Short text",
+      "TaskVisualExample2Text": "Medium task text for better text perception",
+      "TaskVisualExample3Text": "The long text of the task, which was provided for you to you to better perception the size of the task text you specified",
+      "NotepadVisualExampleText": "The long text of the notepad, which was provided for you to you to better perception the size of the notepad text you specified",
+      "ModalVisualExampleText": "An example of a text message in a modal window, which was provided for you to better perception the size you set for the text content of the modal window"
     },
     "contactTheAuthorScreen": {
       "HeaderTitle": "Contact the author",

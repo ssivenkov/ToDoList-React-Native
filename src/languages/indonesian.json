@@ -67,9 +67,24 @@
       "AccentColorModalTitle": "Pilih warna aksen",
       "AccentColorButtonTitle": "Warna aksen",
       "ContactTheAuthorButtonTitle": "Hubungi penulis",
+      "AdjustTextSizesButtonTitle": "Ukuran teks",
       "RateAppButtonTitle": "Beri nilai aplikasi",
       "ShareAppButtonTitle": "Bagikan aplikasi",
       "ShareAppMessage": "Saya menikmati menggunakan aplikasi ToDo List. Mencoba!"
+    },
+    "adjustTextSizesScreen": {
+      "HeaderTitle": "Ukuran teks",
+      "TaskListSliderTitle": "Nama Daftar Tugas",
+      "TaskSliderTitle": "Teks tugas",
+      "NotepadSliderTitle": "Teks buku catatan",
+      "ModalWindowSliderTitle": "Teks jendela modal",
+      "ModalButtonSliderTitle": "Teks tombol modal",
+      "TaskListVisualExampleTitle": "Daftar nama",
+      "TaskVisualExample1Text": "Teks pendek",
+      "TaskVisualExample2Text": "Teks tugas sedang untuk pemahaman teks yang lebih baik",
+      "TaskVisualExample3Text": "Teks tugas yang panjang, yang diberikan kepada Anda untuk lebih memahami ukuran teks tugas yang Anda tentukan",
+      "NotepadVisualExampleText": "Contoh teks notepad yang disediakan agar Anda lebih memahami ukuran teks notepad yang Anda atur",
+      "ModalVisualExampleText": "Contoh pesan teks di jendela modal, yang disediakan agar Anda lebih memahami ukuran yang Anda atur untuk konten teks jendela modal"
     },
     "contactTheAuthorScreen": {
       "HeaderTitle": "Hubungi penulis",

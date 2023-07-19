@@ -14,11 +14,11 @@ export type AddNewTaskListSagaActionReturnType = {
   type: TASKS_SAGA_ACTION.ADD_NEW_TASK_LIST;
 };
 
-export type AddNewTaskListActionType = (
+export type AddNewTaskListSagaActionType = (
   payload: AddNewTaskListSagaPayloadType,
 ) => AddNewTaskListSagaActionReturnType;
 
-export const addNewTaskListAction: AddNewTaskListActionType = (payload) => ({
+export const addNewTaskListAction: AddNewTaskListSagaActionType = (payload) => ({
   payload,
   type: TASKS_SAGA_ACTION.ADD_NEW_TASK_LIST,
 });

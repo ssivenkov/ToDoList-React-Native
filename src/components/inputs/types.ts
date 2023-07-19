@@ -24,3 +24,7 @@ export type NotepadInputPropsType = {
 
   placeholder?: string;
 };
+
+export type NotepadInputVisualExamplePropsType = NotepadInputPropsType & {
+  textSize: number;
+};

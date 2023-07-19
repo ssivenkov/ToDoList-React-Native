@@ -8,6 +8,8 @@ type TaskListStylesType = {
   menuHorizontalWrapper: ViewStyle;
   tasksContainer: ViewStyle;
   title: TextStyle;
+  visualExampleContainer: ViewStyle;
+  visualExampleTitle: TextStyle;
 };
 
 export const TaskListMarginVertical = 4;
@@ -25,6 +27,15 @@ export const taskListStyles = (props: ExtendedStylesPropsType) =>
       backgroundColor: props.TASK_LIST_COLOR,
       borderRadius: 10,
       marginHorizontal: 9,
+      marginVertical: TaskListMarginVertical,
+      paddingBottom: 6,
+      paddingHorizontal: 9,
+      paddingTop: 5,
+    },
+
+    visualExampleContainer: {
+      backgroundColor: props.TASK_LIST_COLOR,
+      borderRadius: 10,
       marginVertical: TaskListMarginVertical,
       paddingBottom: 6,
       paddingHorizontal: 9,
@@ -49,7 +60,15 @@ export const taskListStyles = (props: ExtendedStylesPropsType) =>
     title: {
       color: props.TEXT_COLOR,
       flex: 1,
-      fontSize: 21,
+      alignSelf: 'center',
+      marginLeft: 6,
+      paddingRight: 1,
+    },
+
+    visualExampleTitle: {
+      color: props.TEXT_COLOR,
+      flex: 1,
+      alignSelf: 'center',
       marginLeft: 6,
       paddingRight: 1,
     },

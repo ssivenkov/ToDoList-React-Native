@@ -13,11 +13,11 @@ export type SaveNotepadTextSagaActionReturnType = {
   type: NOTEPAD_SAGA_ACTION.SAVE_NOTEPAD_TEXT;
 };
 
-export type SaveNotepadTextActionType = (
+export type SaveNotepadTextSagaActionType = (
   payload: SaveNotepadTextSagaPayloadType,
 ) => SaveNotepadTextSagaActionReturnType;
 
-export const saveNotepadTextAction: SaveNotepadTextActionType = (payload) => ({
+export const saveNotepadTextAction: SaveNotepadTextSagaActionType = (payload) => ({
   payload,
   type: NOTEPAD_SAGA_ACTION.SAVE_NOTEPAD_TEXT,
 });

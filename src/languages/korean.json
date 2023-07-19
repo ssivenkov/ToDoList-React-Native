@@ -67,9 +67,24 @@
       "AccentColorModalTitle": "강조 색상 선택",
       "AccentColorButtonTitle": "액센트 컬러",
       "ContactTheAuthorButtonTitle": "저자에게 연락하기",
+      "AdjustTextSizesButtonTitle": "텍스트 크기",
       "RateAppButtonTitle": "앱 평가",
       "ShareAppButtonTitle": "앱 공유",
       "ShareAppMessage": "ToDo List 앱을 즐겨 사용합니다. 노력하다!"
+    },
+    "adjustTextSizesScreen": {
+      "HeaderTitle": "텍스트 크기",
+      "TaskListSliderTitle": "작업 목록 이름",
+      "TaskSliderTitle": "작업 텍스트",
+      "NotepadSliderTitle": "메모장 텍스트",
+      "ModalWindowSliderTitle": "모달 창 텍스트",
+      "ModalButtonSliderTitle": "모달 버튼 텍스트",
+      "TaskListVisualExampleTitle": "목록 이름",
+      "TaskVisualExample1Text": "짧은 텍스트",
+      "TaskVisualExample2Text": "더 나은 텍스트 이해를 위한 중간 작업 텍스트",
+      "TaskVisualExample3Text": "지정한 작업 텍스트의 크기를 더 잘 이해하기 위해 제공된 작업의 긴 텍스트",
+      "NotepadVisualExampleText": "사용자가 설정한 메모장 텍스트 크기를 더 잘 이해할 수 있도록 제공된 메모장 텍스트의 예",
+      "ModalVisualExampleText": "모달 창의 텍스트 콘텐츠에 대해 설정한 크기를 더 잘 이해할 수 있도록 제공된 모달 창의 텍스트 메시지 예"
     },
     "contactTheAuthorScreen": {
       "HeaderTitle": "저자와의 소통",

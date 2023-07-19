@@ -8,8 +8,10 @@ import {
   defaultModalPaddingHorizontal,
 } from '@constants/constants';
 import { useStyles } from '@hooks/useStyles';
+import { modalWindowTextSizeSelector } from '@store/selectors/userSelectors';
 import { useTranslation } from 'react-i18next';
 import { Modal, ScrollView, Text, View } from 'react-native';
+import { useSelector } from 'react-redux';
 
 import { modalStyles } from './modalStyles';
 import { ModalLongButtonPropsType } from './types';
@@ -38,6 +40,8 @@ export const ModalLongButton = (props: ModalLongButtonPropsType) => {
     hasContentPaddingBottom = true,
   } = props;
 
+  const modalWindowTextSize = useSelector(modalWindowTextSizeSelector);
+
   const [modalVisible, setModalVisible] = useState(false);
 
   const onModalButtonPress = () => {
@@ -61,7 +65,9 @@ export const ModalLongButton = (props: ModalLongButtonPropsType) => {
           <View style={styles.modalView}>
             {description && (
               <View style={styles.descriptionContainer}>
-                <Text style={descriptionTextStyle}>{description}</Text>
+                <Text style={[descriptionTextStyle, { fontSize: modalWindowTextSize }]}>
+                  {description}
+                </Text>
               </View>
             )}
             {children && (
@@ -81,12 +87,12 @@ export const ModalLongButton = (props: ModalLongButtonPropsType) => {
               <ModalMenuButton onPress={onClosePress} title={t('common.Close')} />
               {okHandler && (
                 <>
+                  <Separator />
                   <ModalMenuButton
                     okTextStyle={okTextStyle}
                     onPress={onOkButtonPress}
                     title={okText}
                   />
-                  <Separator />
                 </>
               )}
             </View>

@@ -9,4 +9,8 @@ export type TaskPropsType = {
   colorMark?: TaskType['colorMark'];
 };
 
-export type IsMenuVisibleType = boolean;
+export type TaskVisualExamplePropsType = Pick<TaskPropsType, 'taskTitle'> & {
+  textSize: number;
+};
+
+export type IsMenuHorizontalVisibleType = boolean;

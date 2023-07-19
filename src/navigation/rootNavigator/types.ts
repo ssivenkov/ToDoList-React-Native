@@ -26,5 +26,6 @@ export type RootNativeStackNavigatorParamListType = {
   [ROOT_NAVIGATOR_ROUTE.WITH_AUTH_NAVIGATOR]: NavigatorScreenParams<WithAuthBottomTabNavigatorParamListType>;
   [ROOT_NAVIGATOR_ROUTE.ADD_TASK_SCREEN]: AddTaskScreenParamListType;
   [ROOT_NAVIGATOR_ROUTE.EDIT_TASK_SCREEN]: EditTaskScreenParamListType;
+  [ROOT_NAVIGATOR_ROUTE.ADJUST_TEXT_SIZES_SCREEN]: undefined;
   [ROOT_NAVIGATOR_ROUTE.CONTACT_THE_AUTHOR_SCREEN]: undefined;
 };

@@ -5,7 +5,10 @@ import {
   modalMenuButtonLightGradient,
 } from '@colors/gradients';
 import { useStyles } from '@hooks/useStyles';
-import { themeSelector } from '@store/selectors/userSelectors';
+import {
+  modalButtonTextSizeSelector,
+  themeSelector,
+} from '@store/selectors/userSelectors';
 import { Text, TouchableOpacity } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { useSelector } from 'react-redux';
@@ -21,6 +24,7 @@ export const ModalMenuButton = (props: ModalMenuButtonPropsType) => {
   const { title, onPress, disabled, okTextStyle = defaultOkTextStyle } = props;
 
   const theme = useSelector(themeSelector);
+  const modalButtonTextSize = useSelector(modalButtonTextSizeSelector);
 
   const modalMenuButtonGradientWrapperStyle = [
     styles.modalMenuButtonGradientWrapper,
@@ -41,7 +45,7 @@ export const ModalMenuButton = (props: ModalMenuButtonPropsType) => {
         onPress={onPress}
         style={styles.modalMenuButton}
       >
-        <Text style={okTextStyle}>{title}</Text>
+        <Text style={[okTextStyle, { fontSize: modalButtonTextSize }]}>{title}</Text>
       </TouchableOpacity>
     </LinearGradient>
   );

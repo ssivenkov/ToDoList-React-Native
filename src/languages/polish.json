@@ -67,9 +67,24 @@
       "AccentColorModalTitle": "Wybierz kolor akcentu",
       "AccentColorButtonTitle": "Kolor akcentu",
       "ContactTheAuthorButtonTitle": "Skontaktuj się z autorem",
+      "AdjustTextSizesButtonTitle": "Rozmiary tekstu",
       "RateAppButtonTitle": "Oceń aplikację",
       "ShareAppButtonTitle": "Udostępnij aplikacje",
       "ShareAppMessage": "Lubię korzystać z aplikacji ToDo List. Próbować!"
+    },
+    "adjustTextSizesScreen": {
+      "HeaderTitle": "Rozmiary tekstu",
+      "TaskListSliderTitle": "Nazwa listy zadań",
+      "TaskSliderTitle": "Tekst zadania",
+      "NotepadSliderTitle": "Tekst notatnika",
+      "ModalWindowSliderTitle": "Tekst okna modalnego",
+      "ModalButtonSliderTitle": "Modalny tekst przycisku",
+      "TaskListVisualExampleTitle": "Nazwa listy",
+      "TaskVisualExample1Text": "Krótki tekst",
+      "TaskVisualExample2Text": "Średnio zadany tekst dla lepszego zrozumienia tekstu",
+      "TaskVisualExample3Text": "Długi tekst zadania, który został Ci przydzielony, aby lepiej zrozumieć rozmiar określonego tekstu zadania",
+      "NotepadVisualExampleText": "Przykład tekstu notatnika, który został udostępniony, aby lepiej zrozumieć ustawiony rozmiar tekstu notatnika",
+      "ModalVisualExampleText": "Przykład wiadomości tekstowej w oknie modalnym, który został udostępniony, aby lepiej zrozumieć rozmiar ustawiony dla zawartości tekstowej okna modalnego"
     },
     "contactTheAuthorScreen": {
       "HeaderTitle": "Komunikacja z autorem",
