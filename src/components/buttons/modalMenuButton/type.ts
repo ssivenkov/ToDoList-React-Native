@@ -8,3 +8,10 @@ export type ModalMenuButtonPropsType = {
   disabled?: boolean;
   okTextStyle?: StyleProp<TextStyle>;
 };
+
+export type ModalMenuButtonVisualExamplePropsType = Omit<
+  ModalMenuButtonPropsType,
+  'onPress'
+> & {
+  textSize: number;
+};

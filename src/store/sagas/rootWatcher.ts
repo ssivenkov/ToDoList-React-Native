@@ -16,6 +16,7 @@ import { waitCloseTaskHorizontalMenuSaga } from '@store/sagas/tasksSagas/tasksSa
 import { changeAccentColorSaga } from '@store/sagas/userSagas/changeAccentColorSaga';
 import { changeDarkModeSaga } from '@store/sagas/userSagas/changeDarkModeSaga';
 import { changeLanguageSaga } from '@store/sagas/userSagas/changeLanguageSaga';
+import { changeTextSizesSaga } from '@store/sagas/userSagas/changeTextSizesSaga';
 import { checkUserSaga } from '@store/sagas/userSagas/checkUserSaga';
 import { contactTheAuthorSaga } from '@store/sagas/userSagas/contactTheAuthorSaga';
 import { createChannelSaga } from '@store/sagas/userSagas/createChannelSaga';
@@ -32,9 +33,10 @@ import { syncUserDataSaga } from '@store/sagas/userSagas/syncUserDataSaga';
 import { takeEvery, takeLatest } from 'redux-saga/effects';
 
 export function* rootWatcher() {
-  yield takeLatest(USER_SAGA_ACTION.CHANGE_LANGUAGE, changeLanguageSaga);
   yield takeLatest(USER_SAGA_ACTION.CHANGE_ACCENT_COLOR, changeAccentColorSaga);
   yield takeLatest(USER_SAGA_ACTION.CHANGE_DARK_MODE, changeDarkModeSaga);
+  yield takeLatest(USER_SAGA_ACTION.CHANGE_LANGUAGE, changeLanguageSaga);
+  yield takeLatest(USER_SAGA_ACTION.CHANGE_TEXT_SIZES, changeTextSizesSaga);
   yield takeLatest(USER_SAGA_ACTION.GOOGLE_SIGN_IN, googleSignInSaga);
   yield takeLatest(USER_SAGA_ACTION.SIGN_IN_WITH_EMAIL, signInWithEmailSaga);
   yield takeLatest(

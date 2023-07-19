@@ -13,6 +13,7 @@ import { DarkTheme, NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Theme } from '@react-navigation/native/src/types';
 import { AddTaskScreen } from '@screens/addTaskScreen/AddTaskScreen';
+import { AdjustTextSizesScreen } from '@screens/adjustTextSizesScreen/AdjustTextSizesScreen';
 import { ContactTheAuthorScreen } from '@screens/contactTheAuthorScreen/ContactTheAuthorScreen';
 import { EditTaskScreen } from '@screens/editTaskScreen/EditTaskScreen';
 import { setLanguageAction } from '@store/actions/userReducerActions/setLanguageAction';
@@ -23,11 +24,12 @@ import { getUserDataAction } from '@store/actions/userSagaActions/getUserDataAct
 import { UserDataType } from '@store/reducers/userReducer/types';
 import {
   channelIDSelector,
-  errorModalMessageSelector,
+  modalMessageSelector,
   isUserDataSynchronizedSelector,
   languageSelector,
   themeSelector,
   userIDSelector,
+  modalWindowTextSizeSelector,
 } from '@store/selectors/userSelectors';
 import i18next, { t } from 'i18next';
 import { Modal, Text, View } from 'react-native';
@@ -48,8 +50,9 @@ export const RootNavigator = () => {
   const userID = useSelector(userIDSelector);
   const isUserDataSynchronized = useSelector(isUserDataSynchronizedSelector);
   const channelID = useSelector(channelIDSelector);
-  const errorModalMessage = useSelector(errorModalMessageSelector);
+  const modalMessage = useSelector(modalMessageSelector);
   const language = useSelector(languageSelector);
+  const modalWindowTextSize = useSelector(modalWindowTextSizeSelector);
 
   const [firebaseInitializing, setFirebaseInitializing] = useState<boolean>(true);
   const [rerender, setRerender] = useState<string>('');
@@ -62,7 +65,7 @@ export const RootNavigator = () => {
     },
   };
 
-  const onCloseErrorModalPress = () => {
+  const onCloseModalPress = () => {
     dispatch(setModalMessageAction({ modalMessage: '' }));
   };
 
@@ -108,20 +111,19 @@ export const RootNavigator = () => {
   return (
     <SafeAreaProvider>
       <Modal
-        onRequestClose={onCloseErrorModalPress}
+        onRequestClose={onCloseModalPress}
         transparent={true}
-        visible={!!errorModalMessage}
+        visible={!!modalMessage}
       >
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <View style={styles.descriptionContainer}>
-              <Text style={styles.text}>{errorModalMessage}</Text>
+              <Text style={[styles.text, { fontSize: modalWindowTextSize }]}>
+                {modalMessage}
+              </Text>
             </View>
             <View style={styles.buttonsContainer}>
-              <ModalMenuButton
-                onPress={onCloseErrorModalPress}
-                title={t('common.Close')}
-              />
+              <ModalMenuButton onPress={onCloseModalPress} title={t('common.Close')} />
             </View>
           </View>
         </View>
@@ -140,6 +142,11 @@ export const RootNavigator = () => {
               <Screen
                 component={WithAuthNavigator}
                 name={ROOT_NAVIGATOR_ROUTE.WITH_AUTH_NAVIGATOR}
+                options={{ headerShown: false }}
+              />
+              <Screen
+                component={AdjustTextSizesScreen}
+                name={ROOT_NAVIGATOR_ROUTE.ADJUST_TEXT_SIZES_SCREEN}
                 options={{ headerShown: false }}
               />
               <Screen

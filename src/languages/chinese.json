@@ -67,9 +67,24 @@
       "AccentColorModalTitle": "选择重点颜色",
       "AccentColorButtonTitle": "重点颜色",
       "ContactTheAuthorButtonTitle": "聯繫作者",
+      "AdjustTextSizesButtonTitle": "文字大小",
       "RateAppButtonTitle": "評價應用程序",
       "ShareAppButtonTitle": "分享應用",
       "ShareAppMessage": "我喜歡使用 ToDo List 應用程序。 嘗試！"
+    },
+    "adjustTextSizesScreen": {
+      "HeaderTitle": "文字大小",
+      "TaskListSliderTitle": "任務列表名稱",
+      "TaskSliderTitle": "任務文本",
+      "NotepadSliderTitle": "記事本文本",
+      "ModalWindowSliderTitle": "模態窗口文本",
+      "ModalButtonSliderTitle": "模態按鈕文本",
+      "TaskListVisualExampleTitle": "列表名稱",
+      "TaskVisualExample1Text": "短文本",
+      "TaskVisualExample2Text": "中等任務文本可更好地理解文本",
+      "TaskVisualExample3Text": "任務的長文本，提供給您是為了更好地理解您指定的任務文本的大小",
+      "NotepadVisualExampleText": "為您提供的記事本文本示例，以便您更好地了解您設置的記事本文本大小",
+      "ModalVisualExampleText": "模態窗口中的文本消息示例，供您更好地了解為模態窗口文本內容設置的大小"
     },
     "contactTheAuthorScreen": {
       "HeaderTitle": "聯繫作者",

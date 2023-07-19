@@ -18,8 +18,13 @@ export const userReducerState: UserReducerStateType = {
   language: EN,
   lastRoute: WITH_AUTH_NAVIGATOR_ROUTE.TASKS_NAVIGATOR,
   modalMessage: '',
+  modalButtonTextSize: 20,
+  notepadTextSize: 16,
   providerID: null,
   selectedColor: COLORS.ELECTRIC_VIOLET2,
+  modalWindowTextSize: 18,
+  taskListTitleSize: 21,
+  taskTextSize: 18,
   theme: lightTheme,
   userAvatar: null,
   userData: null,
@@ -48,6 +53,11 @@ export const userReducer = (
         theme: action.payload.theme,
         userAvatar: action.payload.userAvatar,
         userData: action.payload.userData,
+        taskListTitleSize: action.payload.taskListTitleSize,
+        taskTextSize: action.payload.taskTextSize,
+        notepadTextSize: action.payload.notepadTextSize,
+        modalButtonTextSize: action.payload.modalButtonTextSize,
+        modalWindowTextSize: action.payload.modalWindowTextSize,
       };
     case USER_REDUCER_ACTION.SET_PROVIDER_ID:
       return { ...state, providerID: action.payload.providerID };
@@ -78,6 +88,15 @@ export const userReducer = (
       return {
         ...state,
         emulatorStatusBarHeight: action.payload.emulatorStatusBarHeight,
+      };
+    case USER_REDUCER_ACTION.SET_TEXT_SIZES:
+      return {
+        ...state,
+        modalButtonTextSize: action.payload.modalButtonTextSize,
+        taskListTitleSize: action.payload.taskListTitleSize,
+        taskTextSize: action.payload.taskTextSize,
+        notepadTextSize: action.payload.notepadTextSize,
+        modalWindowTextSize: action.payload.modalWindowTextSize,
       };
     default:
       return state;

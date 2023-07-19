@@ -61,7 +61,7 @@ export const globalLoaderSelector = (
   return state.user.globalLoader;
 };
 
-export const errorModalMessageSelector = (state: AppRootStateType): ModalMessageType => {
+export const modalMessageSelector = (state: AppRootStateType): ModalMessageType => {
   return state.user.modalMessage;
 };
 
@@ -87,4 +87,34 @@ export const lastRouteSelector = (
   state: AppRootStateType,
 ): UserReducerStateType['lastRoute'] => {
   return state.user.lastRoute;
+};
+
+export const taskListTitleSizeSelector = (
+  state: AppRootStateType,
+): UserReducerStateType['taskListTitleSize'] => {
+  return state.user.taskListTitleSize;
+};
+
+export const taskTextSizeSelector = (
+  state: AppRootStateType,
+): UserReducerStateType['taskTextSize'] => {
+  return state.user.taskTextSize;
+};
+
+export const notepadTextSizeSelector = (
+  state: AppRootStateType,
+): UserReducerStateType['notepadTextSize'] => {
+  return state.user.notepadTextSize;
+};
+
+export const modalWindowTextSizeSelector = (
+  state: AppRootStateType,
+): UserReducerStateType['modalWindowTextSize'] => {
+  return state.user.modalWindowTextSize;
+};
+
+export const modalButtonTextSizeSelector = (
+  state: AppRootStateType,
+): UserReducerStateType['modalButtonTextSize'] => {
+  return state.user.modalButtonTextSize;
 };

@@ -67,9 +67,24 @@
       "AccentColorModalTitle": "Выберите цвет акцента",
       "AccentColorButtonTitle": "Цвет акцента",
       "ContactTheAuthorButtonTitle": "Связаться с автором",
+      "AdjustTextSizesButtonTitle": "Размеры текста",
       "RateAppButtonTitle": "Оценить приложение",
       "ShareAppButtonTitle": "Поделиться приложением",
       "ShareAppMessage": "Я с удовольствием пользуюсь приложением ToDo List. Попробуй!"
+    },
+    "adjustTextSizesScreen": {
+      "HeaderTitle": "Размеры текста",
+      "TaskListSliderTitle": "Название списка задач",
+      "TaskSliderTitle": "Текст задачи",
+      "NotepadSliderTitle": "Текст блокнота",
+      "ModalWindowSliderTitle": "Текст модального окна",
+      "ModalButtonSliderTitle": "Текст кнопок модального окна",
+      "TaskListVisualExampleTitle": "Название списка",
+      "TaskVisualExample1Text": "Короткий текст",
+      "TaskVisualExample2Text": "Средний текст задачи для лучшего восприятия текста",
+      "TaskVisualExample3Text": "Длинный текст задачи, который был предоставен вам для лучшего восприятия заданного вами размера текста задачи",
+      "NotepadVisualExampleText": "Пример текста блокнота, который был предоставен вам для лучшего восприятия заданного вами размера текста блокнота",
+      "ModalVisualExampleText": "Пример текстового сообщения в модальном окне, который был предоставен вам для лучшего восприятия заданного вами размера для текстового содержимого модального окна"
     },
     "contactTheAuthorScreen": {
       "HeaderTitle": "Связь с автором",

@@ -31,6 +31,7 @@ import { SetLastRouteActionReturnType } from '@store/actions/userReducerActions/
 import { SetModalMessageActionReturnType } from '@store/actions/userReducerActions/setModalMessageAction';
 import { SetProviderIDActionReturnType } from '@store/actions/userReducerActions/setProviderIDAction';
 import { SetSelectedColorActionReturnType } from '@store/actions/userReducerActions/setSelectedColorAction';
+import { SetTextSizesActionReturnType } from '@store/actions/userReducerActions/setTextSizesAction';
 import { SetThemeActionReturnType } from '@store/actions/userReducerActions/setThemeAction';
 import { SetUserAvatarActionReturnType } from '@store/actions/userReducerActions/setUserAvatarAction';
 import { SetUserDataActionReturnType } from '@store/actions/userReducerActions/setUserDataAction';
@@ -102,9 +103,14 @@ export type UserReducerStateType = {
   isWaitingUserDataOnSignIn: boolean;
   language: LanguageType;
   lastRoute: LastRouteType;
+  modalButtonTextSize: number;
   modalMessage: ModalMessageType;
+  modalWindowTextSize: number;
+  notepadTextSize: number;
   providerID: ProviderIDType;
   selectedColor: ColorType;
+  taskListTitleSize: number;
+  taskTextSize: number;
   theme: ThemeType;
   userAvatar: UserAvatarType;
   userData: UserDataType;
@@ -125,4 +131,5 @@ export type UserReducerActionsType =
   | SetIsUserDataSynchronizedActionReturnType
   | SetWaitingUserDataOnSignInActionReturnType
   | SetEmulatorStatusBarHeightActionReturnType
-  | SetLastRouteActionReturnType;
+  | SetLastRouteActionReturnType
+  | SetTextSizesActionReturnType;

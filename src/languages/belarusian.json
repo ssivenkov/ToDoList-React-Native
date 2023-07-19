@@ -67,9 +67,24 @@
       "AccentColorModalTitle": "Абярыце колер акцэнту",
       "AccentColorButtonTitle": "Колер акцэнту",
       "ContactTheAuthorButtonTitle": "Звязацца з аўтарам",
+      "AdjustTextSizesButtonTitle": "Памеры тэксту",
       "RateAppButtonTitle": "Ацаніць дадатак",
       "ShareAppButtonTitle": "Падзяліцца дадаткам",
       "ShareAppMessage": "Я з задавальненнем карыстаюся дадаткам ToDo List. Паспрабуй!"
+    },
+    "adjustTextSizesScreen": {
+      "HeaderTitle": "Памеры тэксту",
+      "TaskListSliderTitle": "Назва спісу задач",
+      "TaskSliderTitle": "Тэкст задачы",
+      "NotepadSliderTitle": "Тэкст нататніка",
+      "ModalWindowSliderTitle": "Тэкст мадальнага акна",
+      "ModalButtonSliderTitle": "Тэкст кнопак мадальнага акна",
+      "TaskListVisualExampleTitle": "Назва спісу",
+      "TaskVisualExample1Text": "Кароткі тэкст",
+      "TaskVisualExample2Text": "Сярэдні тэкст задачы для лепшага ўспрымання тэксту",
+      "TaskVisualExample3Text": "Доўгі тэкст задачы, які быў прадстаўлены вам для лепшага ўспрымання зададзенага вамі памеру тэксту задачы",
+      "NotepadVisualExampleText": "Прыклад тэксту нататніка, які быў дадзены вам для лепшага ўспрымання зададзенага вамі памеру тэксту нататніка",
+      "ModalVisualExampleText": "Прыклад тэкставага паведамлення ў мадальным акне, які быў прадстаўлены вам для лепшага ўспрымання зададзенага вамі памеру для тэкставага змесціва мадальнага акна"
     },
     "contactTheAuthorScreen": {
       "HeaderTitle": "Звязацца з аўтарам",
