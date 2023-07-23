@@ -107,15 +107,9 @@ export const Input = (props: InputPropsType) => {
       ) : (
         <View style={styles.inputContainer}>
           <TextInput
-            autoFocus={!!inputRef}
             maxLength={maxLength}
             onBlur={onBlur}
             onChangeText={onChangeText}
-            onLayout={() => {
-              if (inputRef) {
-                inputRef.current?.focus();
-              }
-            }}
             placeholder={placeholder}
             placeholderTextColor={COLORS.SILVER_CHALICE2}
             ref={inputRef}
