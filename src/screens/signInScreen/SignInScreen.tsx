@@ -9,7 +9,6 @@ import { Header } from '@components/header/Header';
 import { PurpleLoader } from '@components/loaders/purpleLoader/PurpleLoader';
 import { FIREBASE_OTHER } from '@enums/firebaseEnum';
 import { SIGN_IN_NAVIGATOR_ROUTE } from '@enums/routesEnum';
-import { faFacebook } from '@fortawesome/free-brands-svg-icons/faFacebook';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons/faGoogle';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons/faEnvelope';
 import { useStyles } from '@hooks/useStyles';
@@ -25,7 +24,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { signInScreenStyles } from './styles';
 
-const { GOOGLE_TITLE, FACEBOOK_TITLE } = FIREBASE_OTHER;
+const { GOOGLE_TITLE } = FIREBASE_OTHER;
 
 export const SignInScreen = ({ navigation }: SignInScreenPropsType) => {
   const dispatch = useDispatch();
@@ -83,7 +82,7 @@ export const SignInScreen = ({ navigation }: SignInScreenPropsType) => {
                     </Trans>
                   }
                 />
-                <SignInButton
+                {/*<SignInButton
                   colorStyle={signInButtonStyles.facebook}
                   disabled={waitingUserDataOnSignIn}
                   icon={faFacebook}
@@ -93,7 +92,7 @@ export const SignInScreen = ({ navigation }: SignInScreenPropsType) => {
                       {FACEBOOK_TITLE}
                     </Trans>
                   }
-                />
+                />*/}
                 <SignInButton
                   colorStyle={signInButtonStyles.email}
                   disabled={waitingUserDataOnSignIn}
