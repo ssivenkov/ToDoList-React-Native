@@ -9,6 +9,7 @@ import { checkInternetConnectionHelper } from '@helpers/checkInternetConnectionH
 import { createNotificationHelper } from '@helpers/createNotificationHelper';
 import { generateNumberIDHelper } from '@helpers/generateNumberIDHelper';
 import { DB } from '@root/api/DB';
+import { FirebaseNotificationType } from '@root/types/firebase/firebaseTypes';
 import * as Sentry from '@sentry/react-native';
 import { editTaskNotificationAction } from '@store/actions/tasksReducerActions/notificationsActions/editTaskNotificationAction';
 import { setEditedTaskAction } from '@store/actions/tasksReducerActions/tasksActions/setEditedTaskAction';
@@ -30,6 +31,9 @@ import {
 } from '@store/selectors/userSelectors';
 import { call, cancel, delay, put, select } from 'redux-saga/effects';
 
+const { COLOR_MARK, IS_TODO, TASK_LISTS, TASKS, TITLE, USERS, NOTIFICATIONS } =
+  FIREBASE_PATH;
+
 export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
   const {
     goBack,
@@ -44,8 +48,6 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
     shouldSetColor,
     setColorMark,
   } = action.payload;
-
-  const { COLOR_MARK, TASK_LISTS, TASKS, TITLE, USERS } = FIREBASE_PATH;
 
   try {
     const internetConnectionStatus: string = yield call(checkInternetConnectionHelper);
@@ -140,6 +142,22 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
       (shouldCreateNotification && notificationID) || !shouldCreateNotification;
 
     if (shouldDeleteNotificationCondition) {
+      const snapshot: SnapshotType = yield DB.ref(
+        `${USERS}/${userID}/${NOTIFICATIONS}/${IS_TODO}/${taskListID}/${taskID}`,
+      ).once('value');
+
+      const notificationData = snapshot.val();
+
+      if (notificationData) {
+        const removeTaskNotificationFromFirebase = () => {
+          return DB.ref(
+            `${USERS}/${userID}/${NOTIFICATIONS}/${IS_TODO}/${taskListID}/${taskID}`,
+          ).remove();
+        };
+
+        yield call(removeTaskNotificationFromFirebase);
+      }
+
       if (taskNotification && notificationID) {
         cancelNotificationHelper(notificationID);
       }
@@ -157,6 +175,21 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
 
     if (shouldCreateNotificationCondition) {
       const notificationID = generateNumberIDHelper(NOTIFICATION_ID_MAX_LENGTH);
+
+      const firebaseNotification: FirebaseNotificationType = {
+        date: date.toISOString(),
+        notificationID,
+        taskTitle: editedTaskTitle,
+        taskID,
+      };
+
+      const sendTaskNotificationToFirebase = () => {
+        return DB.ref(
+          `${USERS}/${userID}/${NOTIFICATIONS}/${IS_TODO}/${taskListID}/${taskID}`,
+        ).set(firebaseNotification);
+      };
+
+      yield call(sendTaskNotificationToFirebase);
 
       yield call(createNotificationHelper, {
         channelId,

@@ -4,6 +4,7 @@ import { FIREBASE_PATH } from '@enums/firebaseEnum';
 import { cancelNotificationHelper } from '@helpers/cancelNotificationHelper';
 import { checkInternetConnectionHelper } from '@helpers/checkInternetConnectionHelper';
 import { DB } from '@root/api/DB';
+import { FirebaseNotificationType } from '@root/types/firebase/firebaseTypes';
 import * as Sentry from '@sentry/react-native';
 import { addSnackBarEventAction } from '@store/actions/snackBarActions/addSnackBarEventAction';
 import { setTaskIsDoneAction } from '@store/actions/tasksReducerActions/tasksActions/setTaskIsDoneAction';
@@ -11,10 +12,12 @@ import { SetTaskIsDoneSagaActionReturnType } from '@store/actions/tasksSagaActio
 import { setModalMessageAction } from '@store/actions/userReducerActions/setModalMessageAction';
 import { SnackBarEventType } from '@store/reducers/snackBarReducer/types';
 import { NotificationType } from '@store/reducers/tasksReducer/types';
-import { UserIDType } from '@store/reducers/userReducer/types';
+import { SnapshotType, UserIDType } from '@store/reducers/userReducer/types';
 import { notificationsSelector } from '@store/selectors/tasksSelectors';
 import { userIDSelector } from '@store/selectors/userSelectors';
 import { call, cancel, delay, put, select } from 'redux-saga/effects';
+
+const { IS_DONE, IS_TODO, NOTIFICATIONS, TASK_LISTS, TASKS, USERS } = FIREBASE_PATH;
 
 export function* setTaskIsDoneSaga(action: SetTaskIsDoneSagaActionReturnType) {
   const {
@@ -27,8 +30,6 @@ export function* setTaskIsDoneSaga(action: SetTaskIsDoneSagaActionReturnType) {
     shouldCreateSnackBarEvent,
     setSnackBarCancelFulfilled,
   } = action.payload;
-
-  const { IS_DONE, TASK_LISTS, TASKS, USERS } = FIREBASE_PATH;
 
   try {
     if (setTaskPending) {
@@ -72,6 +73,39 @@ export function* setTaskIsDoneSaga(action: SetTaskIsDoneSagaActionReturnType) {
     });
 
     const notificationID = taskNotification?.notificationID;
+
+    const toDoSnapshot: SnapshotType = yield DB.ref(
+      `${USERS}/${userID}/${NOTIFICATIONS}/${IS_TODO}/${taskListID}/${toDoTaskID}`,
+    ).once('value');
+
+    const toDoTaskListNotificationsData = toDoSnapshot.val();
+
+    if (toDoTaskListNotificationsData) {
+      const removeToDoTaskNotificationFromFirebase = () => {
+        return DB.ref(
+          `${USERS}/${userID}/${NOTIFICATIONS}/${IS_TODO}/${taskListID}/${toDoTaskID}`,
+        ).remove();
+      };
+
+      yield call(removeToDoTaskNotificationFromFirebase);
+    }
+
+    if (taskNotification && taskNotification.date && notificationID) {
+      const firebaseNotification: FirebaseNotificationType = {
+        date: taskNotification.date.toISOString(),
+        notificationID,
+        taskTitle,
+        taskID: toDoTaskID,
+      };
+
+      const sendDoneTaskNotificationToFirebase = () => {
+        return DB.ref(
+          `${USERS}/${userID}/${NOTIFICATIONS}/${IS_DONE}/${taskListID}/${toDoTaskID}`,
+        ).set(firebaseNotification);
+      };
+
+      yield call(sendDoneTaskNotificationToFirebase);
+    }
 
     if (taskNotification && notificationID) {
       cancelNotificationHelper(notificationID);

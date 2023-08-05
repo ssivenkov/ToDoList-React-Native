@@ -21,9 +21,9 @@ import { isEmulator } from 'react-native-device-info';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
 import { call, cancel, put, select } from 'redux-saga/effects';
 
-export function* checkUserSaga() {
-  const { USERS } = FIREBASE_PATH;
+const { USERS } = FIREBASE_PATH;
 
+export function* checkUserSaga() {
   try {
     const internetConnectionStatus: string = yield call(checkInternetConnectionHelper);
 
@@ -53,7 +53,7 @@ export function* checkUserSaga() {
     if (!isUserExist && userID) {
       DB.ref(`${USERS}/${userID}`).set({
         accentColor: COLORS.ELECTRIC_VIOLET2,
-        darkTheme: false,
+        darkMode: false,
         language: language,
         userToken: userID,
       });

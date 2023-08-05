@@ -3,6 +3,7 @@ import { ONLINE, START_ANIMATION_DELAY } from '@constants/constants';
 import { EN } from '@constants/languages';
 import { FIREBASE_OTHER } from '@enums/firebaseEnum';
 import { WITH_AUTH_NAVIGATOR_ROUTE } from '@enums/routesEnum';
+import { cancelNotificationHelper } from '@helpers/cancelNotificationHelper';
 import { checkInternetConnectionHelper } from '@helpers/checkInternetConnectionHelper';
 import auth from '@react-native-firebase/auth';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
@@ -12,8 +13,10 @@ import { setTaskListsAction } from '@store/actions/tasksReducerActions/taskLists
 import { setAuthStateAction } from '@store/actions/userReducerActions/setAuthStateAction';
 import { setModalMessageAction } from '@store/actions/userReducerActions/setModalMessageAction';
 import { SignOutSagaActionReturnType } from '@store/actions/userSagaActions/signOutAction';
+import { TasksReducerStateType } from '@store/reducers/tasksReducer/types';
 import { ProviderIDType } from '@store/reducers/userReducer/types';
 import { userReducerState } from '@store/reducers/userReducer/userReducer';
+import { notificationsSelector } from '@store/selectors/tasksSelectors';
 import { providerIDSelector } from '@store/selectors/userSelectors';
 import { lightTheme } from '@themes/themes';
 import { changeLanguage as i18nextChangeLanguage } from 'i18next';
@@ -39,6 +42,17 @@ export function* signOutSaga(action: SignOutSagaActionReturnType) {
     yield delay(START_ANIMATION_DELAY);
 
     const providerID: ProviderIDType = yield select(providerIDSelector);
+    const notifications: TasksReducerStateType['notifications'] = yield select(
+      notificationsSelector,
+    );
+
+    notifications.forEach((notification) => {
+      const { notificationID } = notification;
+
+      if (notificationID) {
+        cancelNotificationHelper(notificationID);
+      }
+    });
 
     const signOut = () => {
       return auth().signOut();
@@ -62,18 +76,18 @@ export function* signOutSaga(action: SignOutSagaActionReturnType) {
         emulatorStatusBarHeight: 0,
         isUserDataSynchronized: false,
         isWaitingUserDataOnSignIn: false,
+        modalButtonTextSize: 20,
+        modalWindowTextSize: 18,
         language: EN,
         lastRoute: WITH_AUTH_NAVIGATOR_ROUTE.TASKS_NAVIGATOR,
+        notepadTextSize: 16,
         providerID: null,
         selectedColor: COLORS.ELECTRIC_VIOLET2,
+        taskListTitleSize: 21,
+        taskTextSize: 18,
         theme: lightTheme,
         userAvatar: null,
         userData: null,
-        modalButtonTextSize: 20,
-        modalWindowTextSize: 18,
-        taskListTitleSize: 21,
-        taskTextSize: 18,
-        notepadTextSize: 16,
       }),
     );
 
