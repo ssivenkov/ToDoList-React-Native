@@ -9,15 +9,15 @@ import { deleteTaskAction } from '@store/actions/tasksReducerActions/tasksAction
 import { DeleteTaskSagaActionReturnType } from '@store/actions/tasksSagaActions/tasksSagasActions/deleteTaskAction';
 import { setModalMessageAction } from '@store/actions/userReducerActions/setModalMessageAction';
 import { NotificationType } from '@store/reducers/tasksReducer/types';
-import { UserIDType } from '@store/reducers/userReducer/types';
+import { SnapshotType, UserIDType } from '@store/reducers/userReducer/types';
 import { notificationsSelector } from '@store/selectors/tasksSelectors';
 import { userIDSelector } from '@store/selectors/userSelectors';
 import { call, cancel, delay, put, select } from 'redux-saga/effects';
 
-export function* deleteTaskSaga(action: DeleteTaskSagaActionReturnType) {
-  const { setIsLoading, setModalVisible, taskListID, taskID } = action.payload;
+const { IS_DONE, IS_TODO, TASK_LISTS, TASKS, USERS, NOTIFICATIONS } = FIREBASE_PATH;
 
-  const { TASK_LISTS, TASKS, USERS } = FIREBASE_PATH;
+export function* deleteTaskSaga(action: DeleteTaskSagaActionReturnType) {
+  const { isToDo, setIsLoading, setModalVisible, taskListID, taskID } = action.payload;
 
   try {
     const internetConnectionStatus: string = yield call(checkInternetConnectionHelper);
@@ -50,6 +50,26 @@ export function* deleteTaskSaga(action: DeleteTaskSagaActionReturnType) {
     const notificationID = taskNotification?.notificationID;
 
     if (taskNotification && notificationID) {
+      const snapshot: SnapshotType = yield DB.ref(
+        `${USERS}/${userID}/${NOTIFICATIONS}/${
+          isToDo ? IS_TODO : IS_DONE
+        }/${taskListID}/${taskID}`,
+      ).once('value');
+
+      const notificationData = snapshot.val();
+
+      if (notificationData) {
+        const removeTaskNotificationFromFirebase = () => {
+          return DB.ref(
+            `${USERS}/${userID}/${NOTIFICATIONS}/${
+              isToDo ? IS_TODO : IS_DONE
+            }/${taskListID}/${taskID}`,
+          ).remove();
+        };
+
+        yield call(removeTaskNotificationFromFirebase);
+      }
+
       cancelNotificationHelper(notificationID);
     }
 

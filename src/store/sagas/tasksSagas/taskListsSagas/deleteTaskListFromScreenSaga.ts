@@ -13,18 +13,19 @@ import {
   ConvertedTasksForFirebaseType,
   NotificationType,
 } from '@store/reducers/tasksReducer/types';
-import { UserIDType } from '@store/reducers/userReducer/types';
+import { SnapshotType, UserIDType } from '@store/reducers/userReducer/types';
 import { notificationsSelector } from '@store/selectors/tasksSelectors';
 import { userIDSelector } from '@store/selectors/userSelectors';
 import { call, cancel, delay, put, select } from 'redux-saga/effects';
+
+const { IS_DONE, IS_TODO, SHOW_IN_TODO, TASK_LISTS, TASKS, USERS, NOTIFICATIONS } =
+  FIREBASE_PATH;
 
 export function* deleteTaskListFromScreenSaga(
   action: DeleteTaskListFromScreenSagaActionReturnType,
 ) {
   const { setIsLoading, fullTaskList, deleteTodoTask, deleteDoneTask, setModalVisible } =
     action.payload;
-
-  const { SHOW_IN_TODO, TASK_LISTS, TASKS, USERS } = FIREBASE_PATH;
 
   try {
     const internetConnectionStatus: string = yield call(checkInternetConnectionHelper);
@@ -95,6 +96,40 @@ export function* deleteTaskListFromScreenSaga(
     };
 
     yield call(deleteTaskListFromScreenInFirebase);
+
+    if (deleteTodoTask) {
+      const snapshot: SnapshotType = yield DB.ref(
+        `${USERS}/${userID}/${NOTIFICATIONS}/${IS_TODO}/${fullTaskList.id}`,
+      ).once('value');
+
+      const toDoTaskListNotificationsData = snapshot.val();
+
+      if (toDoTaskListNotificationsData) {
+        const removeToDoTaskNotificationsFromFirebase = () => {
+          return DB.ref(
+            `${USERS}/${userID}/${NOTIFICATIONS}/${IS_TODO}/${fullTaskList.id}`,
+          ).remove();
+        };
+
+        yield call(removeToDoTaskNotificationsFromFirebase);
+      }
+    } else if (deleteDoneTask) {
+      const snapshot: SnapshotType = yield DB.ref(
+        `${USERS}/${userID}/${NOTIFICATIONS}/${IS_DONE}/${fullTaskList.id}`,
+      ).once('value');
+
+      const doneTaskListNotificationsData = snapshot.val();
+
+      if (doneTaskListNotificationsData) {
+        const removeDoneTaskNotificationsFromFirebase = () => {
+          return DB.ref(
+            `${USERS}/${userID}/${NOTIFICATIONS}/${IS_DONE}/${fullTaskList.id}`,
+          ).remove();
+        };
+
+        yield call(removeDoneTaskNotificationsFromFirebase);
+      }
+    }
 
     const filteredNotifications = notifications.filter((notification) => {
       const notificationToDelete =

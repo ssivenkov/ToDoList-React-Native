@@ -8,6 +8,7 @@ import { checkInternetConnectionHelper } from '@helpers/checkInternetConnectionH
 import { createNotificationHelper } from '@helpers/createNotificationHelper';
 import { generateNumberIDHelper } from '@helpers/generateNumberIDHelper';
 import { DB } from '@root/api/DB';
+import { FirebaseNotificationType } from '@root/types/firebase/firebaseTypes';
 import * as Sentry from '@sentry/react-native';
 import { addTaskNotificationAction } from '@store/actions/tasksReducerActions/notificationsActions/addTaskNotificationAction';
 import { addNewTaskAction } from '@store/actions/tasksReducerActions/tasksActions/addNewTaskAction';
@@ -16,6 +17,8 @@ import { setModalMessageAction } from '@store/actions/userReducerActions/setModa
 import { ChannelIDType, UserIDType } from '@store/reducers/userReducer/types';
 import { channelIDSelector, userIDSelector } from '@store/selectors/userSelectors';
 import { call, cancel, delay, put, select } from 'redux-saga/effects';
+
+const { IS_TODO, TASK_LISTS, TASKS, USERS, NOTIFICATIONS } = FIREBASE_PATH;
 
 export function* addNewTaskSaga(action: AddNewTaskSagaActionReturnType) {
   const {
@@ -31,8 +34,6 @@ export function* addNewTaskSaga(action: AddNewTaskSagaActionReturnType) {
   const { id: taskID, title: taskTitle } = newTask;
 
   const { id: taskListID } = modifiedTaskList;
-
-  const { TASK_LISTS, TASKS, USERS } = FIREBASE_PATH;
 
   try {
     const internetConnectionStatus: string = yield call(checkInternetConnectionHelper);
@@ -62,6 +63,21 @@ export function* addNewTaskSaga(action: AddNewTaskSagaActionReturnType) {
     yield call(sendNewTaskToFirebase);
 
     if (shouldCreateNotification && date) {
+      const firebaseNotification: FirebaseNotificationType = {
+        date: date.toISOString(),
+        notificationID,
+        taskTitle,
+        taskID,
+      };
+
+      const sendNewTaskNotificationToFirebase = () => {
+        return DB.ref(
+          `${USERS}/${userID}/${NOTIFICATIONS}/${IS_TODO}/${taskListID}/${taskID}`,
+        ).set(firebaseNotification);
+      };
+
+      yield call(sendNewTaskNotificationToFirebase);
+
       yield call(createNotificationHelper, {
         channelId,
         date,
@@ -69,35 +85,21 @@ export function* addNewTaskSaga(action: AddNewTaskSagaActionReturnType) {
         taskTitle,
       });
 
-      const notification = {
+      const localNotification = {
         date,
         notificationID,
         taskID,
         taskTitle,
       };
 
-      yield put(
-        addTaskNotificationAction({
-          notification,
-        }),
-      );
+      yield put(addTaskNotificationAction({ notification: localNotification }));
     } else {
-      const notification = {
-        taskID,
-      };
+      const notification = { taskID };
 
-      yield put(
-        addTaskNotificationAction({
-          notification,
-        }),
-      );
+      yield put(addTaskNotificationAction({ notification }));
     }
 
-    yield put(
-      addNewTaskAction({
-        modifiedTaskList,
-      }),
-    );
+    yield put(addNewTaskAction({ modifiedTaskList }));
 
     yield call(goBack);
   } catch (error) {

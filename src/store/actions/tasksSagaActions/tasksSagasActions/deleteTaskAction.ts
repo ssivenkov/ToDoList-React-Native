@@ -3,6 +3,7 @@ import { SetStateType } from '@root/types/common/types';
 import { TaskListType, TaskType } from '@store/reducers/tasksReducer/types';
 
 export type DeleteTaskSagaPayloadType = {
+  isToDo: TaskListType['showInToDo'];
   setIsLoading: SetStateType<boolean>;
   setModalVisible: SetStateType<boolean>;
   taskID: TaskType['id'];

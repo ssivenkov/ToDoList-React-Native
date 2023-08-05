@@ -33,14 +33,6 @@ export type TaskListWithoutTasksType = {
   isTodoCollapsed?: boolean;
 };
 
-type TasksObjectType = {
-  [key: string]: TaskType;
-};
-
-export type TaskListBeforeConvertType = TaskListWithoutTasksType & {
-  tasks?: TasksObjectType;
-};
-
 export type TaskListType = TaskListWithoutTasksType & {
   tasks?: TaskType[];
 };

@@ -82,6 +82,7 @@ export const DeleteTaskButton = (props: DeleteTaskButtonPropsType) => {
           setModalVisible,
           taskID,
           taskListID: fullTaskList.id,
+          isToDo: isTodoTaskList,
         }),
       );
     }
