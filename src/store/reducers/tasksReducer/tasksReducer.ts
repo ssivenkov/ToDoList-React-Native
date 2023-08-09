@@ -1,4 +1,5 @@
 import { TASKS_REDUCER_ACTION } from '@enums/tasksReducerEnum';
+import { sortingTasks } from '@helpers/sorting';
 import {
   TasksReducerActionsType,
   TasksReducerStateType,
@@ -43,7 +44,21 @@ export const tasksReducer = (
       };
 
     case TASKS_REDUCER_ACTION.SET_TASK_LISTS:
-      return { ...state, taskLists: action.payload.taskLists };
+      return {
+        ...state,
+        taskLists: action.payload.taskLists.map((taskList) => {
+          const targetTaskList = { ...taskList };
+
+          if (targetTaskList.tasks && targetTaskList.sorting) {
+            targetTaskList.tasks = sortingTasks(
+              targetTaskList.sorting,
+              targetTaskList.tasks,
+            );
+          }
+
+          return targetTaskList;
+        }),
+      };
 
     case TASKS_REDUCER_ACTION.ADD_NEW_TASK_LIST:
       return {
@@ -58,7 +73,15 @@ export const tasksReducer = (
           const { modifiedTaskList } = action.payload;
 
           if (taskList.id === modifiedTaskList.id) {
-            return modifiedTaskList;
+            const resultTaskList = { ...modifiedTaskList };
+
+            if (resultTaskList.tasks && resultTaskList.sorting.isAutosorting) {
+              const { tasks, sorting } = resultTaskList;
+
+              resultTaskList.tasks = sortingTasks(sorting, tasks);
+            }
+
+            return resultTaskList;
           } else {
             return taskList;
           }
@@ -139,54 +162,59 @@ export const tasksReducer = (
         }),
       };
 
-    case TASKS_REDUCER_ACTION.SET_TASK_IS_DONE:
+    case TASKS_REDUCER_ACTION.EDIT_TASK_LIST_SORTING:
       return {
         ...state,
         taskLists: state.taskLists.map((taskList) => {
-          const { taskListID, toDoTaskID } = action.payload;
+          const { taskListID, editedTaskListSorting } = action.payload;
 
-          if (taskList.id === taskListID) {
-            const targetTaskList = { ...taskList };
-            const { tasks } = targetTaskList;
+          if (
+            taskList.id === taskListID &&
+            taskList.tasks &&
+            taskList.tasks.length !== 0
+          ) {
+            const { tasks } = taskList;
 
-            if (tasks) {
-              targetTaskList.tasks = tasks.map((task) => {
-                if (task.id === toDoTaskID) {
-                  return { ...task, isDone: true };
-                } else {
-                  return task;
-                }
-              });
-            }
-
-            return targetTaskList;
+            return {
+              ...taskList,
+              sorting: editedTaskListSorting,
+              tasks: sortingTasks(editedTaskListSorting, tasks),
+            };
+          } else if (taskList.id === taskListID) {
+            return {
+              ...taskList,
+              sorting: editedTaskListSorting,
+            };
           } else {
             return taskList;
           }
         }),
       };
 
-    case TASKS_REDUCER_ACTION.SET_TASK_IS_TODO:
+    case TASKS_REDUCER_ACTION.SET_TASK_TODO_STATUS:
       return {
         ...state,
         taskLists: state.taskLists.map((taskList) => {
-          const { taskListID, doneTaskID } = action.payload;
+          const { taskListID, taskID, isDone, modificationDate } = action.payload;
 
-          if (taskList.id === taskListID) {
-            const targetTaskList = { ...taskList };
-            const { tasks } = targetTaskList;
+          if (taskList.id === taskListID && taskList.tasks && taskList.tasks.length > 0) {
+            let modifiedTasks = taskList.tasks.map((task) => {
+              if (task.id === taskID) {
+                return {
+                  ...task,
+                  isDone,
+                  modificationDate,
+                };
+              } else {
+                return task;
+              }
+            });
 
-            if (tasks) {
-              targetTaskList.tasks = tasks.map((task) => {
-                if (task.id === doneTaskID) {
-                  return { ...task, isDone: false };
-                } else {
-                  return task;
-                }
-              });
+            if (taskList.sorting.isAutosorting) {
+              modifiedTasks = sortingTasks(taskList.sorting, modifiedTasks);
             }
 
-            return targetTaskList;
+            return { ...taskList, tasks: modifiedTasks };
           } else {
             return taskList;
           }
@@ -197,38 +225,33 @@ export const tasksReducer = (
       return {
         ...state,
         taskLists: state.taskLists.map((taskList) => {
-          const { taskListID, taskID, editedTaskTitle, colorMark } = action.payload;
+          const { taskListID, taskID, editedTaskTitle, colorMark, modificationDate } =
+            action.payload;
 
-          if (taskList.id === taskListID) {
-            const targetTaskList = { ...taskList };
-            const { tasks } = targetTaskList;
+          if (taskList.id === taskListID && taskList.tasks && taskList.tasks.length > 0) {
+            let modifiedTasks = taskList.tasks.map((task) => {
+              if (task.id === taskID) {
+                const modifiedTask = {
+                  ...task,
+                  title: editedTaskTitle,
+                  modificationDate,
+                };
 
-            if (tasks) {
-              targetTaskList.tasks = tasks.map((task) => {
-                if (task.id === taskID) {
-                  if (colorMark) {
-                    return {
-                      ...task,
-                      colorMark: colorMark,
-                      title: editedTaskTitle,
-                    };
-                  } else {
-                    const modifiedTask = {
-                      ...task,
-                      title: editedTaskTitle,
-                    };
-
-                    delete modifiedTask.colorMark;
-
-                    return modifiedTask;
-                  }
-                } else {
-                  return task;
+                if (colorMark) {
+                  modifiedTask.colorMark = colorMark;
                 }
-              });
+
+                return modifiedTask;
+              } else {
+                return task;
+              }
+            });
+
+            if (taskList.sorting.isAutosorting) {
+              modifiedTasks = sortingTasks(taskList.sorting, modifiedTasks);
             }
 
-            return targetTaskList;
+            return { ...taskList, tasks: modifiedTasks };
           } else {
             return taskList;
           }

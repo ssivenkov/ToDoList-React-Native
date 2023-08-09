@@ -6,6 +6,7 @@ import { saveNotepadTextSaga } from '@store/sagas/notepadSagas/saveNotepadTextSa
 import { addNewTaskListSaga } from '@store/sagas/tasksSagas/taskListsSagas/addNewTaskListSaga';
 import { deleteTaskListFromScreenSaga } from '@store/sagas/tasksSagas/taskListsSagas/deleteTaskListFromScreenSaga';
 import { deleteTaskListFullSaga } from '@store/sagas/tasksSagas/taskListsSagas/deleteTaskListFullSaga';
+import { editTaskListSortingSaga } from '@store/sagas/tasksSagas/taskListsSagas/editTaskListSortingSaga';
 import { editTaskListTitleSaga } from '@store/sagas/tasksSagas/taskListsSagas/editTaskListTitleSaga';
 import { addNewTaskSaga } from '@store/sagas/tasksSagas/tasksSagas/addNewTaskSaga';
 import { deleteTaskSaga } from '@store/sagas/tasksSagas/tasksSagas/deleteTaskSaga';
@@ -57,6 +58,7 @@ export function* rootWatcher() {
   yield takeLatest(TASKS_SAGA_ACTION.ADD_NEW_TASK_LIST, addNewTaskListSaga);
   yield takeLatest(TASKS_SAGA_ACTION.ADD_NEW_TASK, addNewTaskSaga);
   yield takeLatest(TASKS_SAGA_ACTION.EDIT_TASK_LIST_TITLE, editTaskListTitleSaga);
+  yield takeLatest(TASKS_SAGA_ACTION.EDIT_TASK_LIST_SORTING, editTaskListSortingSaga);
   yield takeLatest(TASKS_SAGA_ACTION.DELETE_TASK_LIST_FULL, deleteTaskListFullSaga);
   yield takeLatest(
     TASKS_SAGA_ACTION.DELETE_TASK_LIST_FROM_SCREEN,

@@ -25,7 +25,14 @@
       "DoneTasksTabTitle": "Tamamlanan görevler",
       "NoTaskListsFound": "Görev listesi bulunamadı",
       "EnableNotification": "Görevi hatırlatın",
-      "EnableColorMark": "Görev rengi"
+      "EnableColorMark": "Görev rengi",
+      "ModalSortingTitle": "Sıralama ayarları",
+      "sortByModificationDate": "Değiştirilme tarihine göre",
+      "sortByCreationDate": "Oluşturma tarihine göre",
+      "sortByTitle": "Isimle",
+      "sortAscendingType": "Artan",
+      "sortDescendingType": "Azalan",
+      "taskAutosorting": "Görevleri otomatik sırala"
     },
     "addTaskScreen": {
       "HeaderTitle": "Yeni görev",

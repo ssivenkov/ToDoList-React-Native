@@ -25,7 +25,14 @@
       "DoneTasksTabTitle": "Tarefas feitas",
       "NoTaskListsFound": "Não foram encontradas listas de tarefas",
       "EnableNotification": "Lembrete da tarefa",
-      "EnableColorMark": "Cor da tarefa"
+      "EnableColorMark": "Cor da tarefa",
+      "ModalSortingTitle": "Classificar configurações",
+      "sortByModificationDate": "Por data de modificação",
+      "sortByCreationDate": "Por data de criação",
+      "sortByTitle": "Por nome",
+      "sortAscendingType": "Ascendente",
+      "sortDescendingType": "Descendente",
+      "taskAutosorting": "Tarefas de classificação automática"
     },
     "addTaskScreen": {
       "HeaderTitle": "Nova tarefa",

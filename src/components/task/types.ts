@@ -6,6 +6,7 @@ export type TaskPropsType = {
   taskID: TaskType['id'];
   taskListID: string;
   taskTitle: TaskType['title'];
+
   colorMark?: TaskType['colorMark'];
 };
 

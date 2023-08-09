@@ -5,6 +5,7 @@ import { headerStyles } from '@components/header/styles';
 import { Input } from '@components/inputs/Input';
 import { ModalIcon } from '@components/modals/ModalIcon';
 import { ICON_SIZE_MEDIUM } from '@constants/constants';
+import { defaultSorting } from '@constants/defaultValues';
 import { faPlus } from '@fortawesome/free-solid-svg-icons/faPlus';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { createFormattedDateHelper } from '@helpers/dateHelpers';
@@ -53,6 +54,7 @@ export const CreateTaskListButton = () => {
         isTodoCollapsed: false,
         showInToDo: true,
         title: taskListTitle,
+        sorting: defaultSorting,
       };
 
       dispatch(

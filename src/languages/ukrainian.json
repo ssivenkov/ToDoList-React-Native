@@ -25,7 +25,14 @@
       "DoneTasksTabTitle": "Виконані",
       "NoTaskListsFound": "Списки завдань не знайдено",
       "EnableNotification": "Нагадуємо про завдання",
-      "EnableColorMark": "Колір завдання"
+      "EnableColorMark": "Колір завдання",
+      "ModalSortingTitle": "Налаштування сортування",
+      "sortByModificationDate": "За датою зміни",
+      "sortByCreationDate": "За датою створення",
+      "sortByTitle": "За назвою",
+      "sortAscendingType": "За зростанням",
+      "sortDescendingType": "За зменшенням",
+      "taskAutosorting": "Автосортування завдань"
     },
     "addTaskScreen": {
       "HeaderTitle": "Нове завдання",

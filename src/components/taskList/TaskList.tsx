@@ -6,11 +6,12 @@ import { MenuHorizontal } from '@components/menus/menuHorizontal/MenuHorizontal'
 import { menuHorizontalStyles } from '@components/menus/menuHorizontal/styles';
 import { Task } from '@components/task/Task';
 import { IsMenuHorizontalVisibleType } from '@components/task/types';
-import { sortingTasks } from '@helpers/sorting';
+import { defaultSorting } from '@constants/defaultValues';
 import { useStyles } from '@hooks/useStyles';
 import { CollapsingButton } from '@screens/tasksScreen/buttons/collapsingButton/CollapsingButton';
 import { CreateTaskButton } from '@screens/tasksScreen/buttons/createTaskButton/CreateTaskButton';
 import { DeleteTaskListButton } from '@screens/tasksScreen/buttons/deleteTaskListButton/DeleteTaskListButton';
+import { EditTaskListSortingButton } from '@screens/tasksScreen/buttons/editTaskListSortingButton/EditTaskListSortingButton';
 import { EditTaskListTitleButton } from '@screens/tasksScreen/buttons/editTaskListTitleButton/EditTaskListTitleButton';
 import { taskListTitleSizeSelector, themeSelector } from '@store/selectors/userSelectors';
 import { Text, View } from 'react-native';
@@ -29,6 +30,7 @@ export const TaskList = (props: TaskListPropsType) => {
     isTodoCollapsed,
     isDoneCollapsed,
     fullTaskList,
+    sorting = defaultSorting,
   } = props;
 
   const styles = useStyles(taskListStyles);
@@ -37,10 +39,8 @@ export const TaskList = (props: TaskListPropsType) => {
   const theme = useSelector(themeSelector);
   const taskListTitleSize = useSelector(taskListTitleSizeSelector);
 
-  const sortedTasks = sortingTasks(taskListTasks);
-
-  const tasks = useMemo(() => {
-    return sortedTasks.map((task) => {
+  const tasksForRender = useMemo(() => {
+    return taskListTasks.map((task) => {
       const { id: taskID, title: taskTitle, colorMark } = task;
 
       return (
@@ -61,8 +61,8 @@ export const TaskList = (props: TaskListPropsType) => {
     useState<IsMenuHorizontalVisibleType>(false);
 
   const tasksCondition =
-    (sortedTasks.length > 0 && isTodoTaskList && !isTodoCollapsed) ||
-    (sortedTasks.length > 0 && !isTodoTaskList && !isDoneCollapsed);
+    (taskListTasks.length > 0 && isTodoTaskList && !isTodoCollapsed) ||
+    (taskListTasks.length > 0 && !isTodoTaskList && !isDoneCollapsed);
 
   const onMenuButtonPress = () => {
     if (isMenuHorizontalVisible) {
@@ -76,6 +76,13 @@ export const TaskList = (props: TaskListPropsType) => {
         <MenuHorizontal
           buttons={
             <View style={styles.buttonsContainer}>
+              <View style={menuHorizontalStyle.buttonWrapper}>
+                <EditTaskListSortingButton
+                  oldTaskListSorting={sorting}
+                  setIsMenuHorizontalVisible={setIsMenuHorizontalVisible}
+                  taskListID={taskListID}
+                />
+              </View>
               <View style={menuHorizontalStyle.buttonWrapper}>
                 <EditTaskListTitleButton
                   oldTaskListTitle={taskListTitle}
@@ -107,7 +114,7 @@ export const TaskList = (props: TaskListPropsType) => {
               isTodoCollapsed={isTodoCollapsed}
               isTodoTaskList={isTodoTaskList}
               taskListID={taskListID}
-              taskListsCount={sortedTasks.length}
+              taskListsCount={taskListTasks.length}
             />
             <Text style={[styles.title, { fontSize: taskListTitleSize }]}>
               {taskListTitle}
@@ -124,7 +131,7 @@ export const TaskList = (props: TaskListPropsType) => {
         </MenuHorizontal>
       </View>
 
-      {tasksCondition && <View style={styles.tasksContainer}>{tasks}</View>}
+      {tasksCondition && <View style={styles.tasksContainer}>{tasksForRender}</View>}
     </View>
   );
 };

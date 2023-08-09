@@ -26,7 +26,14 @@
       "DoneTasksTabTitle": "Done tasks",
       "NoTaskListsFound": "No task lists found",
       "EnableNotification": "Remind of the task",
-      "EnableColorMark": "Task color"
+      "EnableColorMark": "Task color",
+      "ModalSortingTitle": "Sorting settings",
+      "sortByModificationDate": "By modification date",
+      "sortByCreationDate": "By creation date",
+      "sortByTitle": "By title",
+      "sortAscendingType": "Ascending",
+      "sortDescendingType": "Descending",
+      "taskAutosorting": "Tasks autosorting"
     },
     "addTaskScreen": {
       "HeaderTitle": "New task",

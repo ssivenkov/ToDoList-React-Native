@@ -25,7 +25,14 @@
       "DoneTasksTabTitle": "Attività svolte",
       "NoTaskListsFound": "Non sono stati trovati elenchi di attività",
       "EnableNotification": "Ricordare il compito",
-      "EnableColorMark": "Colore del compito"
+      "EnableColorMark": "Colore del compito",
+      "ModalSortingTitle": "Ordina le impostazioni",
+      "sortByModificationDate": "Per data di modifica",
+      "sortByCreationDate": "Per data di creazione",
+      "sortByTitle": "Per nome",
+      "sortAscendingType": "Ascendente",
+      "sortDescendingType": "Discendente",
+      "taskAutosorting": "Attività di ordinamento automatico"
     },
     "addTaskScreen": {
       "HeaderTitle": "Nuovo compito",

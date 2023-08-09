@@ -242,6 +242,7 @@
     "default-case-last": "error",
 
     // imports
+    "import/no-named-as-default": "off",
     "no-duplicate-imports": "error",
     "import/no-unresolved": "off",
     "import/no-extraneous-dependencies": "error",

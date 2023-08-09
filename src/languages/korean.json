@@ -25,7 +25,14 @@
       "DoneTasksTabTitle": "완료된 작업",
       "NoTaskListsFound": "작업 목록을 찾을 수 없습니다.",
       "EnableNotification": "과제를 상기시켜라",
-      "EnableColorMark": "작업 색상"
+      "EnableColorMark": "작업 색상",
+      "ModalSortingTitle": "정렬 설정",
+      "sortByModificationDate": "수정된 날짜 기준",
+      "sortByCreationDate": "생성일 기준",
+      "sortByTitle": "이름으로",
+      "sortAscendingType": "오름차순",
+      "sortDescendingType": "내림차순",
+      "taskAutosorting": "자동 정렬 작업"
     },
     "addTaskScreen": {
       "HeaderTitle": "새 작업",

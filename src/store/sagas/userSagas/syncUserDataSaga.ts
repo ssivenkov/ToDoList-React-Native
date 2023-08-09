@@ -1,4 +1,5 @@
 import { ONLINE } from '@constants/constants';
+import { defaultSorting } from '@constants/defaultValues';
 import { FIREBASE_PATH } from '@enums/firebaseEnum';
 import { checkInternetConnectionHelper } from '@helpers/checkInternetConnectionHelper';
 import { createNotificationHelper } from '@helpers/createNotificationHelper';
@@ -112,7 +113,12 @@ export function* syncUserDataSaga() {
           if (tasks) {
             const taskListWithTasksAsArray: TaskListType = {
               ...taskList,
-              tasks: Object.values(tasks),
+              tasks: Object.values(tasks).map((task) => {
+                if (!task.modificationDate) {
+                  return { ...task, modificationDate: task.date };
+                } else return task;
+              }),
+              sorting: taskList.sorting ?? defaultSorting,
             };
 
             return taskListWithTasksAsArray;

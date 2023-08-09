@@ -12,6 +12,7 @@ import {
   screenWidth480px,
   switcherMargin,
 } from '@constants/constants';
+import { defaultSorting } from '@constants/defaultValues';
 import { createFormattedDateHelper } from '@helpers/dateHelpers';
 import { useStyles } from '@hooks/useStyles';
 import { useNavigation, useRoute } from '@react-navigation/native';
@@ -96,19 +97,24 @@ export const AddTaskScreen = () => {
     setLoading: SetStateType<boolean>,
     setButtonDisabled: SetStateType<boolean>,
   ) => {
+    const currentDate = createFormattedDateHelper();
+
     const newTask: TaskType = {
       colorMark: selectedColor,
-      date: createFormattedDateHelper(),
+      date: currentDate,
       id: nanoid(),
       isDone: false,
       title: newTaskTitle,
+      modificationDate: currentDate,
     };
 
     if (!isColorPickerSwitcherOn) {
       delete newTask.colorMark;
     }
 
-    const tasks = fullTaskList.tasks ? [...fullTaskList.tasks, newTask] : [newTask];
+    const modifiedTasks = fullTaskList.tasks
+      ? [newTask, ...fullTaskList.tasks]
+      : [newTask];
 
     const modifiedTaskList: TaskListType = {
       date: taskListDate,
@@ -116,8 +122,9 @@ export const AddTaskScreen = () => {
       isDoneCollapsed: fullTaskList.isDoneCollapsed,
       isTodoCollapsed: fullTaskList.isTodoCollapsed,
       showInToDo: true,
-      tasks,
+      tasks: modifiedTasks,
       title: taskListTitle,
+      sorting: fullTaskList.sorting ?? defaultSorting,
     };
 
     if (newTaskTitle) {

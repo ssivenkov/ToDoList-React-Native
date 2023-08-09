@@ -25,7 +25,14 @@
       "DoneTasksTabTitle": "完了したタスク",
       "NoTaskListsFound": "タスクリストが見つかりません",
       "EnableNotification": "タスクの再認識",
-      "EnableColorMark": "タスクカラー"
+      "EnableColorMark": "タスクカラー",
+      "ModalSortingTitle": "並べ替え設定",
+      "sortByModificationDate": "変更日順",
+      "sortByCreationDate": "作成日順",
+      "sortByTitle": "名前で",
+      "sortAscendingType": "上昇",
+      "sortDescendingType": "降順",
+      "taskAutosorting": "タスクの自動並べ替え"
     },
     "addTaskScreen": {
       "HeaderTitle": "新しい仕事",
