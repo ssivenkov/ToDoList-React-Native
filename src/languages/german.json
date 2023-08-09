@@ -25,7 +25,14 @@
       "DoneTasksTabTitle": "Erledigte aufgaben",
       "NoTaskListsFound": "Keine aufgabenliste gefunden",
       "EnableNotification": "Erinnern sie an die aufgabe",
-      "EnableColorMark": "Farbe der aufgabe"
+      "EnableColorMark": "Farbe der aufgabe",
+      "ModalSortingTitle": "Sortiereinstellungen",
+      "sortByModificationDate": "Nach Änderungsdatum",
+      "sortByCreationDate": "Nach Erstellungsdatum",
+      "sortByTitle": "Namentlich",
+      "sortAscendingType": "Aufsteigend",
+      "sortDescendingType": "Absteigend",
+      "taskAutosorting": "Aufgaben automatisch sortieren"
     },
     "addTaskScreen": {
       "HeaderTitle": "Neue aufgabe",

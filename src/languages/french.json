@@ -25,7 +25,14 @@
       "DoneTasksTabTitle": "Tâches effectuées",
       "NoTaskListsFound": "Aucune liste de tâches trouvée",
       "EnableNotification": "Rappeler la tâche",
-      "EnableColorMark": "Couleur de la tâche"
+      "EnableColorMark": "Couleur de la tâche",
+      "ModalSortingTitle": "Paramètres de tri",
+      "sortByModificationDate": "Par date de modification",
+      "sortByCreationDate": "Par date de création",
+      "sortByTitle": "Par de nom",
+      "sortAscendingType": "Ascendant",
+      "sortDescendingType": "Descendant",
+      "taskAutosorting": "Tâches de tri automatique"
     },
     "addTaskScreen": {
       "HeaderTitle": "Nouvelle tâche",

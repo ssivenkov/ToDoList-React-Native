@@ -3,7 +3,7 @@ import { SetStateType } from '@root/types/common/types';
 import { TaskListType, TaskType } from '@store/reducers/tasksReducer/types';
 
 export type SetTaskIsToDoSagaPayloadType = {
-  doneTaskID: TaskType['id'];
+  taskID: TaskType['id'];
   taskListID: TaskListType['id'];
   taskTitle: TaskType['title'];
 

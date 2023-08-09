@@ -25,7 +25,14 @@
       "DoneTasksTabTitle": "Tareas realizadas",
       "NoTaskListsFound": "No se han encontrado hojas de ruta",
       "EnableNotification": "Recordar la tarea",
-      "EnableColorMark": "Color de la tarea"
+      "EnableColorMark": "Color de la tarea",
+      "ModalSortingTitle": "Ordenar configuraciones",
+      "sortByModificationDate": "Por fecha de modificación",
+      "sortByCreationDate": "Por fecha de creación",
+      "sortByTitle": "Por nombre",
+      "sortAscendingType": "Ascendente",
+      "sortDescendingType": "Descendente",
+      "taskAutosorting": "Tareas de clasificación automática"
     },
     "addTaskScreen": {
       "HeaderTitle": "Nueva tarea",

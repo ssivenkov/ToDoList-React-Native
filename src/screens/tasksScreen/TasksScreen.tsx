@@ -87,6 +87,7 @@ export const TasksScreen = () => {
                 tasks,
                 isTodoCollapsed = false,
                 isDoneCollapsed = true,
+                sorting,
               } = item;
 
               const toDoTasks = tasks && tasks.filter((task) => !task.isDone);
@@ -98,6 +99,7 @@ export const TasksScreen = () => {
                   isTodoCollapsed={isTodoCollapsed}
                   isTodoTaskList={true}
                   key={id}
+                  sorting={sorting}
                   taskListDate={date}
                   taskListID={id}
                   taskListTasks={toDoTasks}
@@ -123,6 +125,7 @@ export const TasksScreen = () => {
               tasks,
               isTodoCollapsed = false,
               isDoneCollapsed = true,
+              sorting,
             } = item;
 
             const doneTasks = tasks && tasks.filter((task) => task.isDone);
@@ -134,6 +137,7 @@ export const TasksScreen = () => {
                 isTodoCollapsed={isTodoCollapsed}
                 isTodoTaskList={false}
                 key={id}
+                sorting={sorting}
                 taskListDate={date}
                 taskListID={id}
                 taskListTasks={doneTasks}

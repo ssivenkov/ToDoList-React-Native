@@ -15,6 +15,7 @@ import { TaskListVisualExamplePropsType } from '@components/taskList/types';
 import { ICON_SIZE_SMALL } from '@constants/constants';
 import { faPen } from '@fortawesome/free-solid-svg-icons/faPen';
 import { faPlus } from '@fortawesome/free-solid-svg-icons/faPlus';
+import { faSort } from '@fortawesome/free-solid-svg-icons/faSort';
 import { faTrash } from '@fortawesome/free-solid-svg-icons/faTrash';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { useStyles } from '@hooks/useStyles';
@@ -52,6 +53,19 @@ export const TaskListVisualExample = (props: TaskListVisualExamplePropsType) => 
         <MenuHorizontal
           buttons={
             <View style={styles.buttonsContainer}>
+              <View style={menuHorizontalStyle.buttonWrapper}>
+                <LinearGradient colors={taskMenuButtonGradient}>
+                  <View style={menuHorizontalStyle.leftButtonContainer}>
+                    <View style={commonButtonStyles.buttonContainer}>
+                      <FontAwesomeIcon
+                        color={theme.ICON_BUTTON_COLOR}
+                        icon={faSort}
+                        size={ICON_SIZE_SMALL}
+                      />
+                    </View>
+                  </View>
+                </LinearGradient>
+              </View>
               <View style={menuHorizontalStyle.buttonWrapper}>
                 <LinearGradient colors={taskMenuButtonGradient}>
                   <View style={menuHorizontalStyle.middleButtonContainer}>

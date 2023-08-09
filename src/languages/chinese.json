@@ -25,7 +25,14 @@
       "DoneTasksTabTitle": "已完成的任务",
       "NoTaskListsFound": "没有发现任务清单",
       "EnableNotification": "提醒任务",
-      "EnableColorMark": "任务颜色"
+      "EnableColorMark": "任务颜色",
+      "ModalSortingTitle": "排序設置",
+      "sortByModificationDate": "按修改日期",
+      "sortByCreationDate": "按創建日期",
+      "sortByTitle": "按名字",
+      "sortAscendingType": "上升",
+      "sortDescendingType": "降序",
+      "taskAutosorting": "自動排序任務"
     },
     "addTaskScreen": {
       "HeaderTitle": "新任務",

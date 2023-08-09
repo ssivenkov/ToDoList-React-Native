@@ -25,7 +25,14 @@
       "DoneTasksTabTitle": "Wykonane zadania",
       "NoTaskListsFound": "Nie znaleziono żadnych list zadań",
       "EnableNotification": "Przypomnij o zadaniu",
-      "EnableColorMark": "Kolor zadania"
+      "EnableColorMark": "Kolor zadania",
+      "ModalSortingTitle": "Sortuj ustawienia",
+      "sortByModificationDate": "Według daty modyfikacji",
+      "sortByCreationDate": "Według daty utworzenia",
+      "sortByTitle": "Według nazwy",
+      "sortAscendingType": "Rosnąco",
+      "sortDescendingType": "Malejąco",
+      "taskAutosorting": "Automatyczne sortowanie zadań"
     },
     "addTaskScreen": {
       "HeaderTitle": "Nowe zadanie",

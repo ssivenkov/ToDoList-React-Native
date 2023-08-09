@@ -25,7 +25,14 @@
       "DoneTasksTabTitle": "Выполненные",
       "NoTaskListsFound": "Списков задач не найдено",
       "EnableNotification": "Напомнить о задаче",
-      "EnableColorMark": "Цвет задачи"
+      "EnableColorMark": "Цвет задачи",
+      "ModalSortingTitle": "Настройки сортировки",
+      "sortByModificationDate": "По дате изменения",
+      "sortByCreationDate": "По дате создания",
+      "sortByTitle": "По названию",
+      "sortAscendingType": "По возрастанию",
+      "sortDescendingType": "По убыванию",
+      "taskAutosorting": "Автосортировка задач"
     },
     "addTaskScreen": {
       "HeaderTitle": "Новая задача",

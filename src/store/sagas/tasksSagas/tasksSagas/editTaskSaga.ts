@@ -7,6 +7,7 @@ import { FIREBASE_PATH } from '@enums/firebaseEnum';
 import { cancelNotificationHelper } from '@helpers/cancelNotificationHelper';
 import { checkInternetConnectionHelper } from '@helpers/checkInternetConnectionHelper';
 import { createNotificationHelper } from '@helpers/createNotificationHelper';
+import { createFormattedDateHelper } from '@helpers/dateHelpers';
 import { generateNumberIDHelper } from '@helpers/generateNumberIDHelper';
 import { DB } from '@root/api/DB';
 import { FirebaseNotificationType } from '@root/types/firebase/firebaseTypes';
@@ -31,8 +32,16 @@ import {
 } from '@store/selectors/userSelectors';
 import { call, cancel, delay, put, select } from 'redux-saga/effects';
 
-const { COLOR_MARK, IS_TODO, TASK_LISTS, TASKS, TITLE, USERS, NOTIFICATIONS } =
-  FIREBASE_PATH;
+const {
+  COLOR_MARK,
+  IS_TODO,
+  TASK_LISTS,
+  TASKS,
+  TITLE,
+  USERS,
+  NOTIFICATIONS,
+  MODIFICATION_DATE,
+} = FIREBASE_PATH;
 
 export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
   const {
@@ -131,7 +140,16 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
       ).update({ [TITLE]: editedTaskTitle });
     };
 
+    const currentDate = createFormattedDateHelper();
+
+    const sendTaskModificationDateToFirebase = () => {
+      return DB.ref(
+        `${USERS}/${userID}/${TASK_LISTS}/${taskListID}/${TASKS}/${taskID}`,
+      ).update({ [MODIFICATION_DATE]: currentDate });
+    };
+
     yield call(sendTaskTitleToFirebase);
+    yield call(sendTaskModificationDateToFirebase);
 
     const taskNotification = notifications.find((item) => {
       return taskID === item.taskID;
@@ -216,6 +234,7 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
           editedTaskTitle,
           taskID,
           taskListID,
+          modificationDate: currentDate,
         }),
       );
 
@@ -227,6 +246,7 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
           editedTaskTitle,
           taskID,
           taskListID,
+          modificationDate: currentDate,
         }),
       );
 
@@ -237,6 +257,7 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
           editedTaskTitle,
           taskID,
           taskListID,
+          modificationDate: currentDate,
         }),
       );
 

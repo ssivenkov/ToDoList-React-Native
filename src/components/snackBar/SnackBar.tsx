@@ -104,7 +104,7 @@ export const SnackBar = () => {
           setScreenBlocking(true);
           dispatch(
             setTaskIsToDoAction({
-              doneTaskID: taskID,
+              taskID,
               taskListID,
               taskTitle,
               setSnackBarCancelPending: setCancelPending,
@@ -118,7 +118,7 @@ export const SnackBar = () => {
           setScreenBlocking(true);
           dispatch(
             setTaskIsDoneAction({
-              toDoTaskID: taskID,
+              taskID,
               taskListID,
               taskTitle,
               setSnackBarCancelPending: setCancelPending,

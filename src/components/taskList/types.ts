@@ -9,10 +9,10 @@ export type TaskListPropsType = {
   isDoneCollapsed: boolean;
   isTodoCollapsed: boolean;
   isTodoTaskList: isTodoTaskListType;
+  sorting: TaskListType['sorting'];
   taskListDate: TaskListType['date'];
   taskListID: TaskListType['id'];
   taskListTitle: TaskListType['title'];
-
   taskListTasks?: TaskType[];
 };
 

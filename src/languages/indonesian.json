@@ -25,7 +25,14 @@
       "DoneTasksTabTitle": "Tugas siap pakai",
       "NoTaskListsFound": "Tidak ada daftar tugas yang ditemukan",
       "EnableNotification": "Mengingatkan tugas",
-      "EnableColorMark": "Warna tugas"
+      "EnableColorMark": "Warna tugas",
+      "ModalSortingTitle": "Sortir pengaturan",
+      "sortByModificationDate": "Berdasarkan tanggal diubah",
+      "sortByCreationDate": "Menurut tanggal pembuatan",
+      "sortByTitle": "Dengan nama",
+      "sortAscendingType": "Naik",
+      "sortDescendingType": "Menurun",
+      "taskAutosorting": "Tugas sortir otomatis"
     },
     "addTaskScreen": {
       "HeaderTitle": "Tugas baru",
