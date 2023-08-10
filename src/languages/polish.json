@@ -7,7 +7,8 @@
       "Select": "Wybierać",
       "Close": "Zamknij",
       "NoInternetConnection": "Brak połączenia z internetem. Proszę połączyć się z internetem",
-      "NoIOSNotificationsPermission": "Brak pozwolenia na wyświetlanie powiadomień. Zezwól aplikacji na wyświetlanie powiadomień"
+      "NoIOSNotificationsPermission": "Brak pozwolenia na wyświetlanie powiadomień. Zezwól aplikacji na wyświetlanie powiadomień",
+      "UnknownError": "Nieznany błąd"
     },
     "notification": {
       "TaskNotification": "Wykonać zadanie"
@@ -40,7 +41,9 @@
     },
     "editTaskScreen": {
       "HeaderTitle": "Zmiana zadania",
-      "EditTaskInputSuptitle": "Tekst zadania"
+      "EditTaskInputSuptitle": "Tekst zadania",
+      "ModificationDate": "Data zmiany",
+      "CreationDate": "Data utworzenia"
     },
     "signInNavigator": {
       "SignIn": "Zaloguj się",

@@ -3,6 +3,7 @@ import React, { useCallback, useState } from 'react';
 import { ColorPickerComponent } from '@components/colorPicker/ColorPicker';
 import { GoBackButton } from '@components/header/buttons/goBackButton/GoBackButton';
 import { Header } from '@components/header/Header';
+import { InfoField } from '@components/infoField/InfoField';
 import { Input } from '@components/inputs/Input';
 import { Notification } from '@components/notification/Notification';
 import { Switcher } from '@components/switcher/Switcher';
@@ -30,8 +31,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { editTaskScreenStyles } from './styles';
 
 export const EditTaskScreen = () => {
-  const { colorMark, isTodo, oldTaskTitle, taskID, taskListID } =
-    useRoute<EditTaskScreenRouteType>().params;
+  const {
+    colorMark,
+    isTodo,
+    oldTaskTitle,
+    taskID,
+    taskListID,
+    modificationDate,
+    creationDate,
+  } = useRoute<EditTaskScreenRouteType>().params;
 
   const dispatch = useDispatch();
 
@@ -210,6 +218,16 @@ export const EditTaskScreen = () => {
               />
             </View>
           )}
+          <View style={styles.infoFieldsWrapper}>
+            <InfoField
+              infoText={modificationDate}
+              suptext={t('editTaskScreen.ModificationDate')}
+            />
+            <InfoField
+              infoText={creationDate}
+              suptext={t('editTaskScreen.CreationDate')}
+            />
+          </View>
         </View>
       </ScrollView>
     </View>

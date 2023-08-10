@@ -21,7 +21,16 @@ import { IsMenuHorizontalVisibleType, TaskPropsType } from './types';
 const { TRANSPARENT } = COLORS;
 
 export const Task = (props: TaskPropsType) => {
-  const { isTodo, taskListID, taskTitle, taskID, fullTaskList, colorMark } = props;
+  const {
+    isTodo,
+    taskListID,
+    taskTitle,
+    taskID,
+    fullTaskList,
+    colorMark,
+    modificationDate,
+    date,
+  } = props;
 
   const theme = useSelector(themeSelector);
   const taskTextSize = useSelector(taskTextSizeSelector);
@@ -46,7 +55,9 @@ export const Task = (props: TaskPropsType) => {
             <View style={menuHorizontalStyle.buttonWrapper}>
               <EditTaskButton
                 colorMark={colorMark}
+                date={date}
                 isTodo={isTodo}
+                modificationDate={modificationDate}
                 oldTaskTitle={taskTitle}
                 setIsMenuHorizontalVisible={setIsMenuHorizontalVisible}
                 taskID={taskID}

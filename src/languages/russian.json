@@ -7,7 +7,8 @@
       "Select": "Выбрать",
       "Close": "Закрыть",
       "NoInternetConnection": "Отсутствует подключение к интернету. Пожалуйста, подключитесь к интернету",
-      "NoIOSNotificationsPermission": "Отсутствует разрешение для уведомлений. Предоставьте приложению разрешение на показ уведомлений"
+      "NoIOSNotificationsPermission": "Отсутствует разрешение для уведомлений. Предоставьте приложению разрешение на показ уведомлений",
+      "UnknownError": "Неизвестная ошибка"
     },
     "notification": {
       "TaskNotification": "Выполните задачу"
@@ -40,7 +41,9 @@
     },
     "editTaskScreen": {
       "HeaderTitle": "Изменение задачи",
-      "EditTaskInputSuptitle": "Текст задачи"
+      "EditTaskInputSuptitle": "Текст задачи",
+      "ModificationDate": "Дата изменения",
+      "CreationDate": "Дата создания"
     },
     "signInNavigator": {
       "SignIn": "Вход",

@@ -7,7 +7,8 @@
       "Select": "Вибрати",
       "Close": "Закрити",
       "NoInternetConnection": "Немає з'єднання з інтернетом. Будь ласка, підключіться до інтернету",
-      "NoIOSNotificationsPermission": "Немає дозволу на сповіщення. Надати додатку дозвіл на показ сповіщень"
+      "NoIOSNotificationsPermission": "Немає дозволу на сповіщення. Надати додатку дозвіл на показ сповіщень",
+      "UnknownError": "Невідома помилка"
     },
     "notification": {
       "TaskNotification": "Виконати завдання"
@@ -40,7 +41,9 @@
     },
     "editTaskScreen": {
       "HeaderTitle": "Зміна завдання",
-      "EditTaskInputSuptitle": "Текст завдання"
+      "EditTaskInputSuptitle": "Текст завдання",
+      "ModificationDate": "Дата зміни",
+      "CreationDate": "Дата створення"
     },
     "signInNavigator": {
       "SignIn": "Ввійти",

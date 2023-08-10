@@ -7,7 +7,8 @@
       "Select": "Choisir",
       "Close": "Fermer",
       "NoInternetConnection": "Pas de connexion internet. Veuillez vous connecter à l'internet",
-      "NoIOSNotificationsPermission": "Pas d'autorisation pour les notifications. Donnez à l'application la permission d'afficher des notifications"
+      "NoIOSNotificationsPermission": "Pas d'autorisation pour les notifications. Donnez à l'application la permission d'afficher des notifications",
+      "UnknownError": "Erreur inconnue"
     },
     "notification": {
       "TaskNotification": "Effectuer la tâche"
@@ -40,7 +41,9 @@
     },
     "editTaskScreen": {
       "HeaderTitle": "Modification d'une tâche",
-      "EditTaskInputSuptitle": "Texte de la tâche"
+      "EditTaskInputSuptitle": "Texte de la tâche",
+      "ModificationDate": "Date du changement",
+      "CreationDate": "Date de création"
     },
     "signInNavigator": {
       "SignIn": "Se connecter",

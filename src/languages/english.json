@@ -41,7 +41,9 @@
     },
     "editTaskScreen": {
       "HeaderTitle": "Edit task",
-      "EditTaskInputSuptitle": "Task text"
+      "EditTaskInputSuptitle": "Task text",
+      "ModificationDate": "Modification date",
+      "CreationDate": "Creation date"
     },
     "signInNavigator": {
       "SignIn": "Sign in",

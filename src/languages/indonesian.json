@@ -7,7 +7,8 @@
       "Select": "Memilih",
       "Close": "Tutup",
       "NoInternetConnection": "Tidak ada koneksi internet. Harap terhubung ke Internet",
-      "NoIOSNotificationsPermission": "Tidak ada izin untuk notifikasi. Berikan izin aplikasi untuk menampilkan notifikasi"
+      "NoIOSNotificationsPermission": "Tidak ada izin untuk notifikasi. Berikan izin aplikasi untuk menampilkan notifikasi",
+      "UnknownError": "Kesalahan yang tidak diketahui"
     },
     "notification": {
       "TaskNotification": "Melakukan tugas"
@@ -40,7 +41,9 @@
     },
     "editTaskScreen": {
       "HeaderTitle": "Mengubah tugas",
-      "EditTaskInputSuptitle": "Teks tugas"
+      "EditTaskInputSuptitle": "Teks tugas",
+      "ModificationDate": "Tanggal perubahan",
+      "CreationDate": "Tanggal pembuatan"
     },
     "signInNavigator": {
       "SignIn": "Masuk",
