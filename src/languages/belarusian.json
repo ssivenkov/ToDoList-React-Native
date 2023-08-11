@@ -7,7 +7,8 @@
       "Select": "Выбраць",
       "Close": "Закрыць",
       "NoInternetConnection": "Адсутнічае падлучэнне да інтэрнэту. Калі ласка, падключыцеся да інтэрнэту",
-      "NoIOSNotificationsPermission": "Адсутнічае дазвол для апавяшчэнняў. Падайце дадатку дазвол на паказ апавяшчэнняў"
+      "NoIOSNotificationsPermission": "Адсутнічае дазвол для апавяшчэнняў. Падайце дадатку дазвол на паказ апавяшчэнняў",
+      "UnknownError": "Невядомая памылка"
     },
     "notification": {
       "TaskNotification": "Выканайце задачу"
@@ -40,7 +41,9 @@
     },
     "editTaskScreen": {
       "HeaderTitle": "Змяненне задачы",
-      "EditTaskInputSuptitle": "Тэкст задачы"
+      "EditTaskInputSuptitle": "Тэкст задачы",
+      "ModificationDate": "Дата змены",
+      "CreationDate": "Дата стварэння"
     },
     "signInNavigator": {
       "SignIn": "Уваход",

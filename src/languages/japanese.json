@@ -7,7 +7,8 @@
       "Select": "選ぶ",
       "Close": "閉じる",
       "NoInternetConnection": "インターネットに接続できない インターネットに接続してください",
-      "NoIOSNotificationsPermission": "通知の許可がない アプリに通知を表示する許可を与える"
+      "NoIOSNotificationsPermission": "通知の許可がない アプリに通知を表示する許可を与える",
+      "UnknownError": "不明なエラー"
     },
     "notification": {
       "TaskNotification": "タスクを実行する"
@@ -40,7 +41,9 @@
     },
     "editTaskScreen": {
       "HeaderTitle": "タスクの変更",
-      "EditTaskInputSuptitle": "タスク テキスト"
+      "EditTaskInputSuptitle": "タスク テキスト",
+      "ModificationDate": "変更日",
+      "CreationDate": "作成日"
     },
     "signInNavigator": {
       "SignIn": "サインイン",

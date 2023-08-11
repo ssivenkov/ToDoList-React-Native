@@ -7,7 +7,8 @@
       "Select": "選擇",
       "Close": "关闭",
       "NoInternetConnection": "没有互联网连接。请连接到互联网",
-      "NoIOSNotificationsPermission": "没有通知的权限。给予该应用程序显示通知的权限"
+      "NoIOSNotificationsPermission": "没有通知的权限。给予该应用程序显示通知的权限",
+      "UnknownError": "未知錯誤"
     },
     "notification": {
       "TaskNotification": "执行任务"
@@ -40,7 +41,9 @@
     },
     "editTaskScreen": {
       "HeaderTitle": "更改任務",
-      "EditTaskInputSuptitle": "任務文本"
+      "EditTaskInputSuptitle": "任務文本",
+      "ModificationDate": "變更日期",
+      "CreationDate": "創建日期"
     },
     "signInNavigator": {
       "SignIn": "登录",

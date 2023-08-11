@@ -7,7 +7,8 @@
       "Select": "Escolher",
       "Close": "Fechar",
       "NoInternetConnection": "Sem ligação à internet. Por favor, ligue-se à internet",
-      "NoIOSNotificationsPermission": "Sem permissão para notificações. Conceder a autorização para mostrar notificações"
+      "NoIOSNotificationsPermission": "Sem permissão para notificações. Conceder a autorização para mostrar notificações",
+      "UnknownError": "Erro desconhecido"
     },
     "notification": {
       "TaskNotification": "Realizar tarefa"
@@ -40,7 +41,9 @@
     },
     "editTaskScreen": {
       "HeaderTitle": "Alterar uma tarefa",
-      "EditTaskInputSuptitle": "Texto da tarefa"
+      "EditTaskInputSuptitle": "Texto da tarefa",
+      "ModificationDate": "Data de alteração",
+      "CreationDate": "Data de criação"
     },
     "signInNavigator": {
       "SignIn": "Iniciar sessão",

@@ -29,6 +29,8 @@ export const EditTaskButton = (props: EditTaskTitleButtonPropsType) => {
     taskID,
     taskListID,
     setIsMenuHorizontalVisible,
+    modificationDate,
+    date,
   } = props;
 
   const dispatch = useDispatch();
@@ -52,6 +54,8 @@ export const EditTaskButton = (props: EditTaskTitleButtonPropsType) => {
       oldTaskTitle,
       taskID,
       taskListID,
+      modificationDate,
+      creationDate: date,
     });
   };
 

@@ -13,7 +13,9 @@ export type AddTaskScreenParamListType = {
 };
 
 export type EditTaskScreenParamListType = {
+  creationDate: TaskType['date'];
   isTodo: isTodoTaskListType;
+  modificationDate: TaskType['modificationDate'];
   oldTaskTitle: TaskType['title'];
   taskID: TaskType['id'];
   taskListID: TaskListType['id'];

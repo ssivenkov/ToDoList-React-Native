@@ -41,14 +41,16 @@ export const TaskList = (props: TaskListPropsType) => {
 
   const tasksForRender = useMemo(() => {
     return taskListTasks.map((task) => {
-      const { id: taskID, title: taskTitle, colorMark } = task;
+      const { id: taskID, title: taskTitle, colorMark, modificationDate, date } = task;
 
       return (
         <Task
           colorMark={colorMark}
+          date={date}
           fullTaskList={fullTaskList}
           isTodo={isTodoTaskList}
           key={taskID}
+          modificationDate={modificationDate}
           taskID={taskID}
           taskListID={taskListID}
           taskTitle={taskTitle}
