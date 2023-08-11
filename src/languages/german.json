@@ -7,7 +7,8 @@
       "Select": "Wählen",
       "Close": "Schließen sie",
       "NoInternetConnection": "Keine internetverbindung. Bitte stellen sie eine verbindung mit dem internet her",
-      "NoIOSNotificationsPermission": "Keine berechtigung für benachrichtigungen. Erteilen sie der app die erlaubnis, benachrichtigungen anzuzeigen"
+      "NoIOSNotificationsPermission": "Keine berechtigung für benachrichtigungen. Erteilen sie der app die erlaubnis, benachrichtigungen anzuzeigen",
+      "UnknownError": "Unbekannter Fehler"
     },
     "notification": {
       "TaskNotification": "Aufgabe ausführen"
@@ -40,7 +41,9 @@
     },
     "editTaskScreen": {
       "HeaderTitle": "Eine aufgabe ändern",
-      "EditTaskInputSuptitle": "Aufgabentext"
+      "EditTaskInputSuptitle": "Aufgabentext",
+      "ModificationDate": "Datum der Änderung",
+      "CreationDate": "Erstelldatum"
     },
     "signInNavigator": {
       "SignIn": "Einloggen",

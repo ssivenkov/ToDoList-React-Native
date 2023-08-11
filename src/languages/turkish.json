@@ -7,7 +7,8 @@
       "Select": "Seçmek",
       "Close": "Kapat",
       "NoInternetConnection": "İnternet bağlantısı yok. Lütfen internete bağlanın",
-      "NoIOSNotificationsPermission": "Bildirimler için izin yok. Uygulamaya bildirimleri gösterme izni verin"
+      "NoIOSNotificationsPermission": "Bildirimler için izin yok. Uygulamaya bildirimleri gösterme izni verin",
+      "UnknownError": "Bilinmeyen hata"
     },
     "notification": {
       "TaskNotification": "Görevi gerçekleştirin"
@@ -40,7 +41,9 @@
     },
     "editTaskScreen": {
       "HeaderTitle": "Görev değiştirme",
-      "EditTaskInputSuptitle": "Görev metni"
+      "EditTaskInputSuptitle": "Görev metni",
+      "ModificationDate": "Değişiklik tarihi",
+      "CreationDate": "Yaratılış tarihi"
     },
     "signInNavigator": {
       "SignIn": "Oturum aç",

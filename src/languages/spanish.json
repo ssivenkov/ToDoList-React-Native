@@ -7,7 +7,8 @@
       "Select": "Escoger",
       "Close": "Cerrar",
       "NoInternetConnection": "No hay conexión a internet. Por favor, conéctese a internet",
-      "NoIOSNotificationsPermission": "No hay permiso para las notificaciones. Concede a la aplicación permiso para mostrar notificaciones"
+      "NoIOSNotificationsPermission": "No hay permiso para las notificaciones. Concede a la aplicación permiso para mostrar notificaciones",
+      "UnknownError": "Error desconocido"
     },
     "notification": {
       "TaskNotification": "Realizar la tarea"
@@ -40,7 +41,9 @@
     },
     "editTaskScreen": {
       "HeaderTitle": "Cambiar una tarea",
-      "EditTaskInputSuptitle": "Texto de la tarea"
+      "EditTaskInputSuptitle": "Texto de la tarea",
+      "ModificationDate": "Fecha de cambio",
+      "CreationDate": "Fecha de creación"
     },
     "signInNavigator": {
       "SignIn": "Acceder",
