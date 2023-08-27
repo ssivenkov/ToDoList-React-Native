@@ -1,2 +1,2 @@
-export const moveTaskInTodo = 'moveTaskInToDo';
-export const moveTaskInDone = 'moveTaskInDone';
+export const MOVE_TASK_IN_TODO = 'moveTaskInToDo';
+export const MOVE_TASK_IN_DONE = 'moveTaskInDone';

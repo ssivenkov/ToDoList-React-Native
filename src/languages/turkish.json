@@ -7,7 +7,8 @@
       "Select": "Seçmek",
       "Close": "Kapat",
       "NoInternetConnection": "İnternet bağlantısı yok. Lütfen internete bağlanın",
-      "NoIOSNotificationsPermission": "Bildirimler için izin yok. Uygulamaya bildirimleri gösterme izni verin"
+      "NoIOSNotificationsPermission": "Bildirimler için izin yok. Uygulamaya bildirimleri gösterme izni verin",
+      "UnknownError": "Bilinmeyen hata"
     },
     "notification": {
       "TaskNotification": "Görevi gerçekleştirin"
@@ -25,7 +26,14 @@
       "DoneTasksTabTitle": "Tamamlanan görevler",
       "NoTaskListsFound": "Görev listesi bulunamadı",
       "EnableNotification": "Görevi hatırlatın",
-      "EnableColorMark": "Görev rengi"
+      "EnableColorMark": "Görev rengi",
+      "ModalSortingTitle": "Sıralama ayarları",
+      "sortByModificationDate": "Değiştirilme tarihine göre",
+      "sortByCreationDate": "Oluşturma tarihine göre",
+      "sortByTitle": "Isimle",
+      "sortAscendingType": "Artan",
+      "sortDescendingType": "Azalan",
+      "taskAutosorting": "Görevleri otomatik sırala"
     },
     "addTaskScreen": {
       "HeaderTitle": "Yeni görev",
@@ -33,14 +41,29 @@
     },
     "editTaskScreen": {
       "HeaderTitle": "Görev değiştirme",
-      "EditTaskInputSuptitle": "Görev metni"
+      "EditTaskInputSuptitle": "Görev metni",
+      "ModificationDate": "Değişiklik tarihi",
+      "CreationDate": "Yaratılış tarihi"
     },
-    "signInScreen": {
+    "signInNavigator": {
       "SignIn": "Oturum aç",
       "SignInWithButtonTitle": "<0>{{text}}</0> ile oturum açın",
+      "Email": "E-posta",
+      "EmailAnotherDeclension": "E-posta",
+      "Password": "Şifre",
+      "PasswordSubtext": "Şifre en az 6 karakter içermelidir",
+      "SignInWithEmail": "E-posta ile giriş yap posta",
+      "RegisterAndSignIn": "Kayıt ol ve giriş yap",
+      "Registration": "Kayıt",
       "CancelAuthProcessModalTitle": "Kullanıcı oturum açma işlemini iptal etti",
       "GettingAccessTokenErrorModalTitle": "Erişim belirteci alınırken bir şeyler yanlış gitti",
-      "DeleteAccountSuccessfully": "Hesabınız başarıyla silindi"
+      "DeleteAccountSuccessfully": "Hesabınız başarıyla silindi",
+      "auth/email-already-in-use": "Bu e-posta zaten kullanılıyor. Lütfen farklı bir e-posta girin",
+      "auth/too-many-requests": "Çok fazla istek. Lütfen daha sonra tekrar deneyiniz",
+      "auth/user-not-found": "Bu e-posta adresine sahip kullanıcı bulunamadı",
+      "auth/invalid-email": "Yanlış e-posta adresi",
+      "auth/weak-password": "Zayıf şifre. Şifre en az 6 karakter içermelidir",
+      "auth/wrong-password": "Yanlış parola"
     },
     "accountScreen": {
       "HeaderTitle": "Hesap",
@@ -54,9 +77,24 @@
       "AccentColorModalTitle": "Vurgu rengini seçin",
       "AccentColorButtonTitle": "Vurgu rengi",
       "ContactTheAuthorButtonTitle": "Yazarla iletişim kurun",
+      "AdjustTextSizesButtonTitle": "Metin boyutları",
       "RateAppButtonTitle": "Uygulamayı oyla",
       "ShareAppButtonTitle": "Uygulamayı paylaş",
       "ShareAppMessage": "ToDo List uygulamasını kullanmaktan zevk alıyorum. Deneyin!"
+    },
+    "adjustTextSizesScreen": {
+      "HeaderTitle": "Metin boyutları",
+      "TaskListSliderTitle": "Görev Listesi Adı",
+      "TaskSliderTitle": "Görev metni",
+      "NotepadSliderTitle": "Not defteri metni",
+      "ModalWindowSliderTitle": "Kalıcı pencere metni",
+      "ModalButtonSliderTitle": "Kalıcı düğme metni",
+      "TaskListVisualExampleTitle": "Liste adı",
+      "TaskVisualExample1Text": "Kısa metin",
+      "TaskVisualExample2Text": "Metnin daha iyi anlaşılması için orta görev metni",
+      "TaskVisualExample3Text": "Belirttiğiniz görev metninin boyutunu daha iyi anlamanız için size verilen görevin uzun metni",
+      "NotepadVisualExampleText": "Ayarladığınız not defteri metin boyutunu daha iyi anlamanız için sağlanan bir not defteri metni örneği",
+      "ModalVisualExampleText": "Modal pencerenin metin içeriği için ayarladığınız boyutu daha iyi anlamanız için sağlanan, kalıcı penceredeki bir metin mesajı örneği"
     },
     "contactTheAuthorScreen": {
       "HeaderTitle": "Yazar ile iletişim",

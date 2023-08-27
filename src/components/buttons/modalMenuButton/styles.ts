@@ -34,7 +34,6 @@ export const modalMenuButtonStyles = (props: ExtendedStylesPropsType) =>
 
     text: {
       color: props.TEXT_COLOR,
-      fontSize: 20,
       marginBottom: 2,
       paddingHorizontal: 10,
       textAlign: 'center',

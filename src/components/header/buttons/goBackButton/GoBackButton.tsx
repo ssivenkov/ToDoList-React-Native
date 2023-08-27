@@ -2,7 +2,7 @@ import React from 'react';
 
 import { COLORS } from '@colors/colors';
 import { IconButton } from '@components/buttons/iconButton/IconButton';
-import { GoBackPropsType } from '@components/header/buttons/goBackButton/types';
+import { GoBackButtonPropsType } from '@components/header/buttons/goBackButton/types';
 import { headerStyles } from '@components/header/styles';
 import { ICON_SIZE_HALF_MEDIUM } from '@constants/constants';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons/faArrowLeft';
@@ -12,7 +12,7 @@ import { useStyles } from '@hooks/useStyles';
 import { useNavigation } from '@react-navigation/native';
 import { View } from 'react-native';
 
-export const GoBackButton = (props: GoBackPropsType) => {
+export const GoBackButton = (props: GoBackButtonPropsType) => {
   const navigation = useNavigation();
 
   const { customGoBack = navigation.goBack } = props;

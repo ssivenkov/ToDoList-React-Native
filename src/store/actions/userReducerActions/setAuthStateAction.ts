@@ -1,16 +1,10 @@
 import { USER_REDUCER_ACTION } from '@enums/userReducerEnum';
 import { UserReducerStateType } from '@store/reducers/userReducer/types';
 
-type SetAuthStateActionPayloadType = {
-  accentColor: UserReducerStateType['accentColor'];
-  emulatorStatusBarHeight: UserReducerStateType['emulatorStatusBarHeight'];
-  isUserDataSynchronized: UserReducerStateType['isUserDataSynchronized'];
-  isWaitingUserDataOnSignIn: UserReducerStateType['isWaitingUserDataOnSignIn'];
-  lastRoute: UserReducerStateType['lastRoute'];
-  providerID: UserReducerStateType['providerID'];
-  selectedColor: UserReducerStateType['selectedColor'];
-  userData: UserReducerStateType['userData'];
-};
+type SetAuthStateActionPayloadType = Omit<
+  UserReducerStateType,
+  'channelID' | 'globalLoader' | 'modalMessage'
+>;
 
 export type SetAuthStateActionReturnType = {
   payload: SetAuthStateActionPayloadType;

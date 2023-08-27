@@ -19,9 +19,10 @@ import i18next, { t } from 'i18next';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { tasksNavigatorStyles } from './styles';
-import { TopTabParamListType } from './types';
+import { TasksTopTabNavigatorParamListType } from './types';
 
-const { Navigator, Screen } = createMaterialTopTabNavigator<TopTabParamListType>();
+const { Navigator, Screen } =
+  createMaterialTopTabNavigator<TasksTopTabNavigatorParamListType>();
 
 export const TasksNavigator = () => {
   const dispatch = useDispatch();

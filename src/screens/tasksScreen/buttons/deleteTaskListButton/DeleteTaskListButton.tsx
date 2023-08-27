@@ -14,7 +14,10 @@ import { useStyles } from '@hooks/useStyles';
 import { SetStateType } from '@root/types/common/types';
 import { deleteTaskListFromScreenAction } from '@store/actions/tasksSagaActions/taskListsSagasActions/deleteTaskListFromScreenAction';
 import { deleteTaskListFullAction } from '@store/actions/tasksSagaActions/taskListsSagasActions/deleteTaskListFullAction';
-import { themeSelector } from '@store/selectors/userSelectors';
+import {
+  modalWindowTextSizeSelector,
+  themeSelector,
+} from '@store/selectors/userSelectors';
 import { Trans } from 'react-i18next';
 import { Text, View } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
@@ -30,6 +33,7 @@ export const DeleteTaskListButton = (props: DeleteTaskListButtonPropsType) => {
   const dispatch = useDispatch();
 
   const theme = useSelector(themeSelector);
+  const modalWindowTextSize = useSelector(modalWindowTextSizeSelector);
 
   const styles = useStyles(deleteTaskListButtonStyles);
   const menuHorizontalStyle = useStyles(menuHorizontalStyles);
@@ -110,7 +114,7 @@ export const DeleteTaskListButton = (props: DeleteTaskListButtonPropsType) => {
       closeHandler={closeHandler}
       okHandler={removeTaskList}
     >
-      <Text style={styles.warnText}>
+      <Text style={[styles.warnText, { fontSize: modalWindowTextSize }]}>
         <Trans i18nKey='tasksScreen.DeleteModalQuestion'>
           <Text style={styles.redHighlightTask}>{{ text: taskListTitle }}</Text>
         </Trans>

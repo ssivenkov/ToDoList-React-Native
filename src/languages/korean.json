@@ -7,7 +7,8 @@
       "Select": "선택하다",
       "Close": "닫다",
       "NoInternetConnection": "인터넷에 연결되지 않음. 인터넷에 접속해주세요",
-      "NoIOSNotificationsPermission": "알림에 대한 권한이 없습니다. 앱에 알림을 표시할 수 있는 권한 부여"
+      "NoIOSNotificationsPermission": "알림에 대한 권한이 없습니다. 앱에 알림을 표시할 수 있는 권한 부여",
+      "UnknownError": "알수없는 오류"
     },
     "notification": {
       "TaskNotification": "작업 수행"
@@ -25,7 +26,14 @@
       "DoneTasksTabTitle": "완료된 작업",
       "NoTaskListsFound": "작업 목록을 찾을 수 없습니다.",
       "EnableNotification": "과제를 상기시켜라",
-      "EnableColorMark": "작업 색상"
+      "EnableColorMark": "작업 색상",
+      "ModalSortingTitle": "정렬 설정",
+      "sortByModificationDate": "수정된 날짜 기준",
+      "sortByCreationDate": "생성일 기준",
+      "sortByTitle": "이름으로",
+      "sortAscendingType": "오름차순",
+      "sortDescendingType": "내림차순",
+      "taskAutosorting": "자동 정렬 작업"
     },
     "addTaskScreen": {
       "HeaderTitle": "새 작업",
@@ -33,14 +41,29 @@
     },
     "editTaskScreen": {
       "HeaderTitle": "작업 변경",
-      "EditTaskInputSuptitle": "작업 텍스트"
+      "EditTaskInputSuptitle": "작업 텍스트",
+      "ModificationDate": "변경일자",
+      "CreationDate": "생성일"
     },
-    "signInScreen": {
+    "signInNavigator": {
       "SignIn": "로그인",
       "SignInWithButtonTitle": "으로 로그인 <0>{{text}}</0>",
+      "Email": "이메일",
+      "EmailAnotherDeclension": "이메일",
+      "Password": "비밀번호",
+      "PasswordSubtext": "비밀번호는 6자 이상이어야 합니다",
+      "SignInWithEmail": "이메일을 통해 로그인 우편",
+      "RegisterAndSignIn": "등록 및 로그인",
+      "Registration": "등록",
       "CancelAuthProcessModalTitle": "사용자가 로그인 프로세스를 취소했습니다.",
       "GettingAccessTokenErrorModalTitle": "액세스 토큰을 가져오는 중에 문제가 발생했습니다.",
-      "DeleteAccountSuccessfully": "귀하의 계정이 성공적으로 삭제되었습니다"
+      "DeleteAccountSuccessfully": "귀하의 계정이 성공적으로 삭제되었습니다",
+      "auth/email-already-in-use": "이 이메일은 이미 사용중입니다. 다른 이메일을 입력하세요",
+      "auth/too-many-requests": "요청이 너무 많습니다. 나중에 다시 시도 해주십시오",
+      "auth/user-not-found": "이 이메일 주소를 가진 사용자를 찾을 수 없습니다",
+      "auth/invalid-email": "잘못된 이메일 주소",
+      "auth/weak-password": "약한 암호. 비밀번호는 6자 이상이어야 합니다",
+      "auth/wrong-password": "잘못된 비밀번호"
     },
     "accountScreen": {
       "HeaderTitle": "계정",
@@ -54,9 +77,24 @@
       "AccentColorModalTitle": "강조 색상 선택",
       "AccentColorButtonTitle": "액센트 컬러",
       "ContactTheAuthorButtonTitle": "저자에게 연락하기",
+      "AdjustTextSizesButtonTitle": "텍스트 크기",
       "RateAppButtonTitle": "앱 평가",
       "ShareAppButtonTitle": "앱 공유",
       "ShareAppMessage": "ToDo List 앱을 즐겨 사용합니다. 노력하다!"
+    },
+    "adjustTextSizesScreen": {
+      "HeaderTitle": "텍스트 크기",
+      "TaskListSliderTitle": "작업 목록 이름",
+      "TaskSliderTitle": "작업 텍스트",
+      "NotepadSliderTitle": "메모장 텍스트",
+      "ModalWindowSliderTitle": "모달 창 텍스트",
+      "ModalButtonSliderTitle": "모달 버튼 텍스트",
+      "TaskListVisualExampleTitle": "목록 이름",
+      "TaskVisualExample1Text": "짧은 텍스트",
+      "TaskVisualExample2Text": "더 나은 텍스트 이해를 위한 중간 작업 텍스트",
+      "TaskVisualExample3Text": "지정한 작업 텍스트의 크기를 더 잘 이해하기 위해 제공된 작업의 긴 텍스트",
+      "NotepadVisualExampleText": "사용자가 설정한 메모장 텍스트 크기를 더 잘 이해할 수 있도록 제공된 메모장 텍스트의 예",
+      "ModalVisualExampleText": "모달 창의 텍스트 콘텐츠에 대해 설정한 크기를 더 잘 이해할 수 있도록 제공된 모달 창의 텍스트 메시지 예"
     },
     "contactTheAuthorScreen": {
       "HeaderTitle": "저자와의 소통",

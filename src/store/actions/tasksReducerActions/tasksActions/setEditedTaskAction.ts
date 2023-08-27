@@ -4,6 +4,7 @@ import { ColorType } from '@store/reducers/userReducer/types';
 
 type SetEditedTaskActionPayloadType = {
   editedTaskTitle: TaskType['title'];
+  modificationDate: TaskType['modificationDate'];
   taskID: TaskType['id'];
   taskListID: TaskListType['id'];
 

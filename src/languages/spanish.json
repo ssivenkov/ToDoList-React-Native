@@ -7,7 +7,8 @@
       "Select": "Escoger",
       "Close": "Cerrar",
       "NoInternetConnection": "No hay conexión a internet. Por favor, conéctese a internet",
-      "NoIOSNotificationsPermission": "No hay permiso para las notificaciones. Concede a la aplicación permiso para mostrar notificaciones"
+      "NoIOSNotificationsPermission": "No hay permiso para las notificaciones. Concede a la aplicación permiso para mostrar notificaciones",
+      "UnknownError": "Error desconocido"
     },
     "notification": {
       "TaskNotification": "Realizar la tarea"
@@ -25,7 +26,14 @@
       "DoneTasksTabTitle": "Tareas realizadas",
       "NoTaskListsFound": "No se han encontrado hojas de ruta",
       "EnableNotification": "Recordar la tarea",
-      "EnableColorMark": "Color de la tarea"
+      "EnableColorMark": "Color de la tarea",
+      "ModalSortingTitle": "Ordenar configuraciones",
+      "sortByModificationDate": "Por fecha de modificación",
+      "sortByCreationDate": "Por fecha de creación",
+      "sortByTitle": "Por nombre",
+      "sortAscendingType": "Ascendente",
+      "sortDescendingType": "Descendente",
+      "taskAutosorting": "Tareas de clasificación automática"
     },
     "addTaskScreen": {
       "HeaderTitle": "Nueva tarea",
@@ -33,14 +41,29 @@
     },
     "editTaskScreen": {
       "HeaderTitle": "Cambiar una tarea",
-      "EditTaskInputSuptitle": "Texto de la tarea"
+      "EditTaskInputSuptitle": "Texto de la tarea",
+      "ModificationDate": "Fecha de cambio",
+      "CreationDate": "Fecha de creación"
     },
-    "signInScreen": {
+    "signInNavigator": {
       "SignIn": "Acceder",
       "SignInWithButtonTitle": "Accede con <0>{{text}}</0>",
+      "Email": "Correo electrónico",
+      "EmailAnotherDeclension": "Correo electrónico",
+      "Password": "Contraseña",
+      "PasswordSubtext": "la contraseña debe contener al menos 6 caracteres",
+      "SignInWithEmail": "Iniciar sesión por correo electrónico correo",
+      "RegisterAndSignIn": "Regístrese e inicie sesión",
+      "Registration": "Registro",
       "CancelAuthProcessModalTitle": "El usuario canceló el proceso de inicio de sesión",
       "GettingAccessTokenErrorModalTitle": "Algo salió mal al obtener el token de acceso",
-      "DeleteAccountSuccessfully": "Su cuenta ha sido eliminada con éxito"
+      "DeleteAccountSuccessfully": "Su cuenta ha sido eliminada con éxito",
+      "auth/email-already-in-use": "Este correo electrónico ya está en uso. Por favor, introduzca un correo electrónico diferente",
+      "auth/too-many-requests": "Usuario con esta dirección de correo electrónico no encontrado",
+      "auth/user-not-found": "Usuario con esta dirección de correo electrónico no encontrado",
+      "auth/invalid-email": "Dirección de correo electrónico incorrecta",
+      "auth/weak-password": "Contraseña debil. La contraseña debe contener al menos 6 caracteres",
+      "auth/wrong-password": "Contraseña incorrecta"
     },
     "accountScreen": {
       "HeaderTitle": "Cuenta",
@@ -54,9 +77,24 @@
       "AccentColorModalTitle": "Seleccione el color de acento",
       "AccentColorButtonTitle": "Color de acento",
       "ContactTheAuthorButtonTitle": "Contacta con el autor",
+      "AdjustTextSizesButtonTitle": "Tamaños de texto",
       "RateAppButtonTitle": "Califica la aplicación",
       "ShareAppButtonTitle": "Compartir aplicación",
       "ShareAppMessage": "Me gusta usar la aplicación ToDo List. ¡Intentar!"
+    },
+    "adjustTextSizesScreen": {
+      "HeaderTitle": "Tamaños de texto",
+      "TaskListSliderTitle": "Nombre de la lista de tareas",
+      "TaskSliderTitle": "Texto de la tarea",
+      "NotepadSliderTitle": "Texto del bloc de notas",
+      "ModalWindowSliderTitle": "Texto de ventana modal",
+      "ModalButtonSliderTitle": "Texto del botón modal",
+      "TaskListVisualExampleTitle": "Lista de nombres",
+      "TaskVisualExample1Text": "Texto corto",
+      "TaskVisualExample2Text": "Texto de tarea medio para una mejor comprensión del texto.",
+      "TaskVisualExample3Text": "El texto largo de la tarea, que se le proporcionó para comprender mejor el tamaño del texto de la tarea que especificó",
+      "NotepadVisualExampleText": "Un ejemplo de texto de bloc de notas que se le proporcionó para comprender mejor el tamaño de texto de bloc de notas que configuró",
+      "ModalVisualExampleText": "Un ejemplo de un mensaje de texto en una ventana modal, que se le proporcionó para comprender mejor el tamaño que estableció para el contenido de texto de la ventana modal"
     },
     "contactTheAuthorScreen": {
       "HeaderTitle": "Contacta con el autor",

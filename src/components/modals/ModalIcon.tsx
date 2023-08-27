@@ -9,6 +9,7 @@ import {
   defaultModalPaddingHorizontal,
 } from '@constants/constants';
 import { useStyles } from '@hooks/useStyles';
+import { modalWindowTextSizeSelector } from '@store/selectors/userSelectors';
 import { useTranslation } from 'react-i18next';
 import {
   Keyboard,
@@ -18,6 +19,7 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
+import { useSelector } from 'react-redux';
 
 import { modalStyles } from './modalStyles';
 import { ModalIconPropsType } from './types';
@@ -47,6 +49,8 @@ export const ModalIcon = (props: ModalIconPropsType) => {
 
   const styles = useStyles(modalStyles);
 
+  const modalWindowTextSize = useSelector(modalWindowTextSizeSelector);
+
   const [modalVisible, setModalVisible] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -70,7 +74,7 @@ export const ModalIcon = (props: ModalIconPropsType) => {
   };
 
   const onOkButtonPress = () => {
-    okHandler(setIsLoading, setModalVisible);
+    if (okHandler) okHandler(setIsLoading, setModalVisible);
   };
 
   const keyboardDismiss = () => {
@@ -95,7 +99,10 @@ export const ModalIcon = (props: ModalIconPropsType) => {
                 {description && (
                   <View style={styles.descriptionContainer}>
                     <Text
-                      style={descriptionTextStyle ? descriptionTextStyle : styles.text}
+                      style={[
+                        descriptionTextStyle ? descriptionTextStyle : styles.text,
+                        { fontSize: modalWindowTextSize },
+                      ]}
                     >
                       {description}
                     </Text>
@@ -123,12 +130,14 @@ export const ModalIcon = (props: ModalIconPropsType) => {
                     title={t('common.Close')}
                   />
                   <Separator />
-                  <ModalMenuButton
-                    disabled={okDisabled}
-                    okTextStyle={okTextStyle}
-                    onPress={onOkButtonPress}
-                    title={okText}
-                  />
+                  {okHandler && (
+                    <ModalMenuButton
+                      disabled={okDisabled}
+                      okTextStyle={okTextStyle}
+                      onPress={onOkButtonPress}
+                      title={okText}
+                    />
+                  )}
                 </View>
               </View>
             </View>

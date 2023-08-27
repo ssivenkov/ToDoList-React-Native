@@ -6,6 +6,7 @@ type InputStylesType = {
   errorSubtext: TextStyle;
   input: TextStyle;
   inputContainer: ViewStyle;
+  inputTopContainer: ViewStyle;
   notepadInput: TextStyle;
   subtext: TextStyle;
   suptext: TextStyle;
@@ -42,12 +43,17 @@ export const inputStyles = (props: ExtendedStylesPropsType) =>
       flexDirection: 'row',
     },
 
+    inputTopContainer: {
+      width: '100%',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+    },
+
     notepadInput: {
       alignContent: 'center',
       backgroundColor: props.NOTEPAD_PLACEHOLDER_COLOR,
       color: props.TEXT_COLOR,
-      fontSize: 16,
-      lineHeight: 24,
       padding: 10,
       width: textWidth,
     },
@@ -63,7 +69,6 @@ export const inputStyles = (props: ExtendedStylesPropsType) =>
       color: props.TEXT_COLOR,
       fontSize: 14,
       paddingVertical: 8,
-      width: textWidth,
     },
 
     transparentSubtext: {

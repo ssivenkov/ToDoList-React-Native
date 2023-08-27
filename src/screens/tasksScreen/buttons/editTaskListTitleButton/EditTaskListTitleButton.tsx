@@ -80,7 +80,7 @@ export const EditTaskListTitleButton = ({
     <ModalIcon
       buttonIcon={
         <LinearGradient colors={taskMenuButtonGradient}>
-          <View style={menuHorizontalStyle.middleButtonContainer}>
+          <View style={menuHorizontalStyle.rightButtonContainer}>
             <View style={commonButtonStyles.buttonContainer}>
               <FontAwesomeIcon
                 color={theme.ICON_BUTTON_COLOR}

@@ -7,7 +7,8 @@
       "Select": "Wybierać",
       "Close": "Zamknij",
       "NoInternetConnection": "Brak połączenia z internetem. Proszę połączyć się z internetem",
-      "NoIOSNotificationsPermission": "Brak pozwolenia na wyświetlanie powiadomień. Zezwól aplikacji na wyświetlanie powiadomień"
+      "NoIOSNotificationsPermission": "Brak pozwolenia na wyświetlanie powiadomień. Zezwól aplikacji na wyświetlanie powiadomień",
+      "UnknownError": "Nieznany błąd"
     },
     "notification": {
       "TaskNotification": "Wykonać zadanie"
@@ -25,7 +26,14 @@
       "DoneTasksTabTitle": "Wykonane zadania",
       "NoTaskListsFound": "Nie znaleziono żadnych list zadań",
       "EnableNotification": "Przypomnij o zadaniu",
-      "EnableColorMark": "Kolor zadania"
+      "EnableColorMark": "Kolor zadania",
+      "ModalSortingTitle": "Sortuj ustawienia",
+      "sortByModificationDate": "Według daty modyfikacji",
+      "sortByCreationDate": "Według daty utworzenia",
+      "sortByTitle": "Według nazwy",
+      "sortAscendingType": "Rosnąco",
+      "sortDescendingType": "Malejąco",
+      "taskAutosorting": "Automatyczne sortowanie zadań"
     },
     "addTaskScreen": {
       "HeaderTitle": "Nowe zadanie",
@@ -33,14 +41,29 @@
     },
     "editTaskScreen": {
       "HeaderTitle": "Zmiana zadania",
-      "EditTaskInputSuptitle": "Tekst zadania"
+      "EditTaskInputSuptitle": "Tekst zadania",
+      "ModificationDate": "Data zmiany",
+      "CreationDate": "Data utworzenia"
     },
-    "signInScreen": {
+    "signInNavigator": {
       "SignIn": "Zaloguj się",
       "SignInWithButtonTitle": "Zaloguj się za pomocą <0>{{text}}</0>",
+      "Email": "Email",
+      "EmailAnotherDeclension": "Email",
+      "Password": "Hasło",
+      "PasswordSubtext": "hasło musi zawierać co najmniej 6 znaków",
+      "SignInWithEmail": "Zaloguj się przez email",
+      "RegisterAndSignIn": "Zarejestruj się i zaloguj",
+      "Registration": "Rejestracja",
       "CancelAuthProcessModalTitle": "Użytkownik anulował proces logowania",
       "GettingAccessTokenErrorModalTitle": "Coś poszło nie tak z uzyskaniem tokena dostępu",
-      "DeleteAccountSuccessfully": "Twoje konto zostało pomyślnie usunięte"
+      "DeleteAccountSuccessfully": "Twoje konto zostało pomyślnie usunięte",
+      "auth/email-already-in-use": "Ten email jest już w użyciu. Wprowadź inny adres email",
+      "auth/too-many-requests": "Zbyt dużo próśb. Spróbuj ponownie później",
+      "auth/user-not-found": "Nie znaleziono użytkownika o tym adresie email",
+      "auth/invalid-email": "Nieprawidłowy adres email",
+      "auth/weak-password": "Słabe hasło. Hasło musi zawierać co najmniej 6 znaków",
+      "auth/wrong-password": "Niepoprawne hasło"
     },
     "accountScreen": {
       "HeaderTitle": "Konto",
@@ -54,9 +77,24 @@
       "AccentColorModalTitle": "Wybierz kolor akcentu",
       "AccentColorButtonTitle": "Kolor akcentu",
       "ContactTheAuthorButtonTitle": "Skontaktuj się z autorem",
+      "AdjustTextSizesButtonTitle": "Rozmiary tekstu",
       "RateAppButtonTitle": "Oceń aplikację",
       "ShareAppButtonTitle": "Udostępnij aplikacje",
       "ShareAppMessage": "Lubię korzystać z aplikacji ToDo List. Próbować!"
+    },
+    "adjustTextSizesScreen": {
+      "HeaderTitle": "Rozmiary tekstu",
+      "TaskListSliderTitle": "Nazwa listy zadań",
+      "TaskSliderTitle": "Tekst zadania",
+      "NotepadSliderTitle": "Tekst notatnika",
+      "ModalWindowSliderTitle": "Tekst okna modalnego",
+      "ModalButtonSliderTitle": "Modalny tekst przycisku",
+      "TaskListVisualExampleTitle": "Nazwa listy",
+      "TaskVisualExample1Text": "Krótki tekst",
+      "TaskVisualExample2Text": "Średnio zadany tekst dla lepszego zrozumienia tekstu",
+      "TaskVisualExample3Text": "Długi tekst zadania, który został Ci przydzielony, aby lepiej zrozumieć rozmiar określonego tekstu zadania",
+      "NotepadVisualExampleText": "Przykład tekstu notatnika, który został udostępniony, aby lepiej zrozumieć ustawiony rozmiar tekstu notatnika",
+      "ModalVisualExampleText": "Przykład wiadomości tekstowej w oknie modalnym, który został udostępniony, aby lepiej zrozumieć rozmiar ustawiony dla zawartości tekstowej okna modalnego"
     },
     "contactTheAuthorScreen": {
       "HeaderTitle": "Komunikacja z autorem",

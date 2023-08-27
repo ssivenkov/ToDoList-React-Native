@@ -7,6 +7,7 @@ export type InputPropsType = {
   onChangeText: TextInputProps['onChangeText'];
   value: string;
 
+  additionalTextAndClearButtonColor?: string;
   displayEmptySubtext?: boolean;
   errorSubtext?: string;
   inputRef?: RefObject<TextInput>;
@@ -22,4 +23,8 @@ export type NotepadInputPropsType = {
   value: string;
 
   placeholder?: string;
+};
+
+export type NotepadInputVisualExamplePropsType = NotepadInputPropsType & {
+  textSize: number;
 };

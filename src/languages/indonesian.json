@@ -7,7 +7,8 @@
       "Select": "Memilih",
       "Close": "Tutup",
       "NoInternetConnection": "Tidak ada koneksi internet. Harap terhubung ke Internet",
-      "NoIOSNotificationsPermission": "Tidak ada izin untuk notifikasi. Berikan izin aplikasi untuk menampilkan notifikasi"
+      "NoIOSNotificationsPermission": "Tidak ada izin untuk notifikasi. Berikan izin aplikasi untuk menampilkan notifikasi",
+      "UnknownError": "Kesalahan yang tidak diketahui"
     },
     "notification": {
       "TaskNotification": "Melakukan tugas"
@@ -25,7 +26,14 @@
       "DoneTasksTabTitle": "Tugas siap pakai",
       "NoTaskListsFound": "Tidak ada daftar tugas yang ditemukan",
       "EnableNotification": "Mengingatkan tugas",
-      "EnableColorMark": "Warna tugas"
+      "EnableColorMark": "Warna tugas",
+      "ModalSortingTitle": "Sortir pengaturan",
+      "sortByModificationDate": "Berdasarkan tanggal diubah",
+      "sortByCreationDate": "Menurut tanggal pembuatan",
+      "sortByTitle": "Dengan nama",
+      "sortAscendingType": "Naik",
+      "sortDescendingType": "Menurun",
+      "taskAutosorting": "Tugas sortir otomatis"
     },
     "addTaskScreen": {
       "HeaderTitle": "Tugas baru",
@@ -33,14 +41,29 @@
     },
     "editTaskScreen": {
       "HeaderTitle": "Mengubah tugas",
-      "EditTaskInputSuptitle": "Teks tugas"
+      "EditTaskInputSuptitle": "Teks tugas",
+      "ModificationDate": "Tanggal perubahan",
+      "CreationDate": "Tanggal pembuatan"
     },
-    "signInScreen": {
+    "signInNavigator": {
       "SignIn": "Masuk",
       "SignInWithButtonTitle": "Masuk dengan <0>{{text}}</0>",
+      "Email": "Surel",
+      "EmailAnotherDeclension": "Surel",
+      "Password": "Kata sandi",
+      "PasswordSubtext": "kata sandi harus mengandung setidaknya 6 karakter",
+      "SignInWithEmail": "Masuk melalui surat",
+      "RegisterAndSignIn": "Daftar dan masuk",
+      "Registration": "Registrasi",
       "CancelAuthProcessModalTitle": "Pengguna membatalkan proses login",
       "GettingAccessTokenErrorModalTitle": "Ada yang salah dalam mendapatkan token akses",
-      "DeleteAccountSuccessfully": "Akun Anda telah berhasil dihapus"
+      "DeleteAccountSuccessfully": "Akun Anda telah berhasil dihapus",
+      "auth/email-already-in-use": "Email ini surat sudah digunakan. Harap masukkan email yang berbeda",
+      "auth/too-many-requests": "Terlalu banyak permintaan. Coba lagi nanti",
+      "auth/user-not-found": "Pengguna dengan alamat email ini tidak ditemukan",
+      "auth/invalid-email": "Alamat email salah",
+      "auth/weak-password": "Kata kunci lemah. Kata sandi harus mengandung setidaknya 6 karakter",
+      "auth/wrong-password": "Kata kunci Salah"
     },
     "accountScreen": {
       "HeaderTitle": "Akun",
@@ -54,9 +77,24 @@
       "AccentColorModalTitle": "Pilih warna aksen",
       "AccentColorButtonTitle": "Warna aksen",
       "ContactTheAuthorButtonTitle": "Hubungi penulis",
+      "AdjustTextSizesButtonTitle": "Ukuran teks",
       "RateAppButtonTitle": "Beri nilai aplikasi",
       "ShareAppButtonTitle": "Bagikan aplikasi",
       "ShareAppMessage": "Saya menikmati menggunakan aplikasi ToDo List. Mencoba!"
+    },
+    "adjustTextSizesScreen": {
+      "HeaderTitle": "Ukuran teks",
+      "TaskListSliderTitle": "Nama Daftar Tugas",
+      "TaskSliderTitle": "Teks tugas",
+      "NotepadSliderTitle": "Teks buku catatan",
+      "ModalWindowSliderTitle": "Teks jendela modal",
+      "ModalButtonSliderTitle": "Teks tombol modal",
+      "TaskListVisualExampleTitle": "Daftar nama",
+      "TaskVisualExample1Text": "Teks pendek",
+      "TaskVisualExample2Text": "Teks tugas sedang untuk pemahaman teks yang lebih baik",
+      "TaskVisualExample3Text": "Teks tugas yang panjang, yang diberikan kepada Anda untuk lebih memahami ukuran teks tugas yang Anda tentukan",
+      "NotepadVisualExampleText": "Contoh teks notepad yang disediakan agar Anda lebih memahami ukuran teks notepad yang Anda atur",
+      "ModalVisualExampleText": "Contoh pesan teks di jendela modal, yang disediakan agar Anda lebih memahami ukuran yang Anda atur untuk konten teks jendela modal"
     },
     "contactTheAuthorScreen": {
       "HeaderTitle": "Hubungi penulis",

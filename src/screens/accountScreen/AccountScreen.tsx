@@ -10,8 +10,9 @@ import { ModalIcon } from '@components/modals/ModalIcon';
 import { ModalLongButton } from '@components/modals/ModalLongButton';
 import { ICON_SIZE_ALMOST_HALF_MEDIUM } from '@constants/constants';
 import { ROOT_NAVIGATOR_ROUTE } from '@enums/routesEnum';
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons/faArrowRight';
 import { faAt } from '@fortawesome/free-solid-svg-icons/faAt';
+import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons/faSignOutAlt';
+import { faTextHeight } from '@fortawesome/free-solid-svg-icons/faTextHeight';
 import { faTrash } from '@fortawesome/free-solid-svg-icons/faTrash';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { useStyles } from '@hooks/useStyles';
@@ -55,6 +56,10 @@ export const AccountScreen = () => {
   const longButtonGradient = theme.darkMode
     ? longButtonDarkGradient
     : longButtonLightGradient;
+
+  const navigateToAdjustTextSizesScreen = () => {
+    navigation.navigate(ROOT_NAVIGATOR_ROUTE.ADJUST_TEXT_SIZES_SCREEN);
+  };
 
   const navigateToAuthorCommunicationScreen = () => {
     navigation.navigate(ROOT_NAVIGATOR_ROUTE.CONTACT_THE_AUTHOR_SCREEN);
@@ -132,6 +137,13 @@ export const AccountScreen = () => {
               </LinearGradient>
               <LinearGradient colors={longButtonGradient}>
                 <LongButton
+                  icon={faTextHeight}
+                  onPress={() => navigateToAdjustTextSizesScreen()}
+                  title={t('accountScreen.AdjustTextSizesButtonTitle')}
+                />
+              </LinearGradient>
+              <LinearGradient colors={longButtonGradient}>
+                <LongButton
                   icon={faAt}
                   onPress={() => navigateToAuthorCommunicationScreen()}
                   title={t('accountScreen.ContactTheAuthorButtonTitle')}
@@ -141,7 +153,7 @@ export const AccountScreen = () => {
               <ShareAppButton longButtonGradient={longButtonGradient} />
               <LinearGradient colors={longButtonGradient}>
                 <ModalLongButton
-                  buttonIcon={faArrowRight}
+                  buttonIcon={faSignOutAlt}
                   buttonTitle={t('accountScreen.SignOutButtonTitle')}
                   description={t('accountScreen.SignOutModalTitle')}
                   disabled={waitingProcess}

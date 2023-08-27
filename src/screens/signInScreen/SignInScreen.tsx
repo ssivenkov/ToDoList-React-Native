@@ -1,26 +1,32 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
+import AppLogo from '@assets/images/icons/appLogo.svg';
 import { signInScreenGradient } from '@colors/gradients';
+import { SignInButton } from '@components/buttons/signInButton/SignInButton';
+import { signInButtonStyles } from '@components/buttons/signInButton/styles';
+import { ChangeLanguageButton } from '@components/header/buttons/changeLanguageButton/ChangeLanguageButton';
+import { Header } from '@components/header/Header';
 import { PurpleLoader } from '@components/loaders/purpleLoader/PurpleLoader';
 import { FIREBASE_OTHER } from '@enums/firebaseEnum';
-import { faFacebook } from '@fortawesome/free-brands-svg-icons/faFacebook';
+import { SIGN_IN_NAVIGATOR_ROUTE } from '@enums/routesEnum';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons/faGoogle';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons/faEnvelope';
 import { useStyles } from '@hooks/useStyles';
-import { SignInButton } from '@screens/signInScreen/buttons/signInButton/SignInButton';
-import { signInButtonStyles } from '@screens/signInScreen/buttons/signInButton/styles';
+import { SignInScreenPropsType } from '@navigation/signInNavigator/types';
+import { setWaitingUserDataOnSignInAction } from '@store/actions/userReducerActions/setWaitingUserDataOnSignInAction';
 import { facebookSignInAction } from '@store/actions/userSagaActions/FacebookSignInAction';
 import { googleSignInAction } from '@store/actions/userSagaActions/GoogleSignInAction';
 import { isWaitingUserDataOnSignInSelector } from '@store/selectors/userSelectors';
-import { useTranslation } from 'react-i18next';
-import { Image, Text, View } from 'react-native';
+import { Trans, useTranslation } from 'react-i18next';
+import { ScrollView, Text, View } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { signInScreenStyles } from './styles';
 
-export const SignInScreen = () => {
-  const { GOOGLE_TITLE, FACEBOOK_TITLE } = FIREBASE_OTHER;
+const { GOOGLE_TITLE } = FIREBASE_OTHER;
 
+export const SignInScreen = ({ navigation }: SignInScreenPropsType) => {
   const dispatch = useDispatch();
 
   const styles = useStyles(signInScreenStyles);
@@ -37,35 +43,72 @@ export const SignInScreen = () => {
     dispatch(facebookSignInAction());
   };
 
+  const navigateToSignInSelectOptionScreen = () => {
+    navigation.navigate(SIGN_IN_NAVIGATOR_ROUTE.SIGN_IN_SELECT_OPTION_SCREEN);
+  };
+
+  // disable waiting if app open again
+  useEffect(() => {
+    dispatch(setWaitingUserDataOnSignInAction({ isWaitingUserDataOnSignIn: false }));
+  }, []);
+
   return (
-    <LinearGradient colors={signInScreenGradient}>
-      <View style={styles.signInWrapper}>
+    <LinearGradient colors={signInScreenGradient} style={styles.linearGradient}>
+      <ScrollView
+        contentContainerStyle={
+          waitingUserDataOnSignIn
+            ? styles.signInScrollViewWithLoaderWrapper
+            : styles.signInScrollViewWrapper
+        }
+        keyboardShouldPersistTaps='handled'
+      >
         {waitingUserDataOnSignIn ? (
           <PurpleLoader />
         ) : (
-          <View style={styles.signInContainer}>
-            <Image
-              source={require('../../assets/images/icons/appIcon.png')}
-              style={styles.appIcon}
-            />
-            <Text style={styles.screenTitle}>{t('signInScreen.SignIn')}</Text>
-            <SignInButton
-              colorStyle={signInButtonStyles.googleStyle}
-              disabled={waitingUserDataOnSignIn}
-              icon={faGoogle}
-              onPress={onGoogleButtonPress}
-              serviceTitle={GOOGLE_TITLE}
-            />
-            <SignInButton
-              colorStyle={signInButtonStyles.facebookStyle}
-              disabled={waitingUserDataOnSignIn}
-              icon={faFacebook}
-              onPress={onFacebookButtonPress}
-              serviceTitle={FACEBOOK_TITLE}
-            />
+          <View style={styles.signInContentWrapper}>
+            <Header rightButton={<ChangeLanguageButton />} transparentBackground={true} />
+            <View style={styles.signInContentContainer}>
+              <AppLogo style={styles.appLogoSvg} />
+              <Text style={styles.screenTitle}>{t('signInNavigator.SignIn')}</Text>
+              <View style={styles.signInServicesButtonsContainer}>
+                <SignInButton
+                  colorStyle={signInButtonStyles.google}
+                  disabled={waitingUserDataOnSignIn}
+                  icon={faGoogle}
+                  onPress={onGoogleButtonPress}
+                  text={
+                    <Trans i18nKey='signInNavigator.SignInWithButtonTitle'>
+                      {GOOGLE_TITLE}
+                    </Trans>
+                  }
+                />
+                {/*<SignInButton
+                  colorStyle={signInButtonStyles.facebook}
+                  disabled={waitingUserDataOnSignIn}
+                  icon={faFacebook}
+                  onPress={onFacebookButtonPress}
+                  text={
+                    <Trans i18nKey='signInNavigator.SignInWithButtonTitle'>
+                      {FACEBOOK_TITLE}
+                    </Trans>
+                  }
+                />*/}
+                <SignInButton
+                  colorStyle={signInButtonStyles.email}
+                  disabled={waitingUserDataOnSignIn}
+                  icon={faEnvelope}
+                  onPress={navigateToSignInSelectOptionScreen}
+                  text={
+                    <Trans i18nKey='signInNavigator.SignInWithButtonTitle'>
+                      {t('signInNavigator.EmailAnotherDeclension')}
+                    </Trans>
+                  }
+                />
+              </View>
+            </View>
           </View>
         )}
-      </View>
+      </ScrollView>
     </LinearGradient>
   );
 };

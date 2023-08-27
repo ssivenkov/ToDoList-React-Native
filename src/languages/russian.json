@@ -7,7 +7,8 @@
       "Select": "Выбрать",
       "Close": "Закрыть",
       "NoInternetConnection": "Отсутствует подключение к интернету. Пожалуйста, подключитесь к интернету",
-      "NoIOSNotificationsPermission": "Отсутствует разрешение для уведомлений. Предоставьте приложению разрешение на показ уведомлений"
+      "NoIOSNotificationsPermission": "Отсутствует разрешение для уведомлений. Предоставьте приложению разрешение на показ уведомлений",
+      "UnknownError": "Неизвестная ошибка"
     },
     "notification": {
       "TaskNotification": "Выполните задачу"
@@ -25,7 +26,14 @@
       "DoneTasksTabTitle": "Выполненные",
       "NoTaskListsFound": "Списков задач не найдено",
       "EnableNotification": "Напомнить о задаче",
-      "EnableColorMark": "Цвет задачи"
+      "EnableColorMark": "Цвет задачи",
+      "ModalSortingTitle": "Настройки сортировки",
+      "sortByModificationDate": "По дате изменения",
+      "sortByCreationDate": "По дате создания",
+      "sortByTitle": "По названию",
+      "sortAscendingType": "По возрастанию",
+      "sortDescendingType": "По убыванию",
+      "taskAutosorting": "Автосортировка задач"
     },
     "addTaskScreen": {
       "HeaderTitle": "Новая задача",
@@ -33,14 +41,29 @@
     },
     "editTaskScreen": {
       "HeaderTitle": "Изменение задачи",
-      "EditTaskInputSuptitle": "Текст задачи"
+      "EditTaskInputSuptitle": "Текст задачи",
+      "ModificationDate": "Дата изменения",
+      "CreationDate": "Дата создания"
     },
-    "signInScreen": {
+    "signInNavigator": {
       "SignIn": "Вход",
       "SignInWithButtonTitle": "Вход через <0>{{text}}</0>",
+      "Email": "Эл. почта",
+      "EmailAnotherDeclension": "Эл. почту",
+      "Password": "Пароль",
+      "PasswordSubtext": "пароль должен содержать минимум 6 символов",
+      "SignInWithEmail": "Вход через эл. почту",
+      "RegisterAndSignIn": "Зарегистрироваться и войти",
+      "Registration": "Регистрация",
       "CancelAuthProcessModalTitle": "Процесс входа отменен пользователем",
       "GettingAccessTokenErrorModalTitle": "Ошибка получения токена авторизации",
-      "DeleteAccountSuccessfully": "Ваш аккаунт был успешно удален"
+      "DeleteAccountSuccessfully": "Ваш аккаунт был успешно удален",
+      "auth/email-already-in-use": "Этот адрес эл. почты уже используется. Пожалуйста, укажите другой адрес эл. почты",
+      "auth/too-many-requests": "Слишком много запросов. Повторите попытку позже",
+      "auth/user-not-found": "Пользователь с этим адресом эл. почты не найден",
+      "auth/invalid-email": "Некорректный адрес эл. почты",
+      "auth/weak-password": "Слабый пароль. Пароль должен содержать минимум 6 символов",
+      "auth/wrong-password": "Неверный пароль"
     },
     "accountScreen": {
       "HeaderTitle": "Аккаунт",
@@ -54,9 +77,24 @@
       "AccentColorModalTitle": "Выберите цвет акцента",
       "AccentColorButtonTitle": "Цвет акцента",
       "ContactTheAuthorButtonTitle": "Связаться с автором",
+      "AdjustTextSizesButtonTitle": "Размеры текста",
       "RateAppButtonTitle": "Оценить приложение",
       "ShareAppButtonTitle": "Поделиться приложением",
       "ShareAppMessage": "Я с удовольствием пользуюсь приложением ToDo List. Попробуй!"
+    },
+    "adjustTextSizesScreen": {
+      "HeaderTitle": "Размеры текста",
+      "TaskListSliderTitle": "Название списка задач",
+      "TaskSliderTitle": "Текст задачи",
+      "NotepadSliderTitle": "Текст блокнота",
+      "ModalWindowSliderTitle": "Текст модального окна",
+      "ModalButtonSliderTitle": "Текст кнопок модального окна",
+      "TaskListVisualExampleTitle": "Название списка",
+      "TaskVisualExample1Text": "Короткий текст",
+      "TaskVisualExample2Text": "Средний текст задачи для лучшего восприятия текста",
+      "TaskVisualExample3Text": "Длинный текст задачи, который был предоставен вам для лучшего восприятия заданного вами размера текста задачи",
+      "NotepadVisualExampleText": "Пример текста блокнота, который был предоставен вам для лучшего восприятия заданного вами размера текста блокнота",
+      "ModalVisualExampleText": "Пример текстового сообщения в модальном окне, который был предоставен вам для лучшего восприятия заданного вами размера для текстового содержимого модального окна"
     },
     "contactTheAuthorScreen": {
       "HeaderTitle": "Связь с автором",

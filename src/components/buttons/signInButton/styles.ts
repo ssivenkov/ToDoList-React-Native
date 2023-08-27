@@ -5,19 +5,20 @@ import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 type SignInButtonStylesType = {
   button: ViewStyle;
   disabled: ViewStyle;
-  facebookStyle: ViewStyle;
-  googleStyle: ViewStyle;
+  email: ViewStyle;
+  facebook: ViewStyle;
+  google: ViewStyle;
   icon: FontAwesomeIconStyle;
   text: TextStyle;
   textContainer: ViewStyle;
 };
 
-const { WHITE, CORNFLOWER_BLUE, CHAMBRAY, DUSTY_GRAY } = COLORS;
+const { WHITE, CORNFLOWER_BLUE, CHAMBRAY, DUSTY_GRAY, JAPANESE_LAUREL } = COLORS;
 
 export const signInButtonStyles = StyleSheet.create<SignInButtonStylesType>({
   button: {
     alignItems: 'center',
-    borderRadius: 3,
+    borderRadius: 7,
     flexDirection: 'row',
     marginVertical: 10,
     paddingHorizontal: 12,
@@ -29,11 +30,15 @@ export const signInButtonStyles = StyleSheet.create<SignInButtonStylesType>({
     backgroundColor: DUSTY_GRAY,
   },
 
-  facebookStyle: {
+  email: {
+    backgroundColor: JAPANESE_LAUREL,
+  },
+
+  facebook: {
     backgroundColor: CHAMBRAY,
   },
 
-  googleStyle: {
+  google: {
     backgroundColor: CORNFLOWER_BLUE,
   },
 

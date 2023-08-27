@@ -7,7 +7,8 @@
       "Select": "Вибрати",
       "Close": "Закрити",
       "NoInternetConnection": "Немає з'єднання з інтернетом. Будь ласка, підключіться до інтернету",
-      "NoIOSNotificationsPermission": "Немає дозволу на сповіщення. Надати додатку дозвіл на показ сповіщень"
+      "NoIOSNotificationsPermission": "Немає дозволу на сповіщення. Надати додатку дозвіл на показ сповіщень",
+      "UnknownError": "Невідома помилка"
     },
     "notification": {
       "TaskNotification": "Виконати завдання"
@@ -25,7 +26,14 @@
       "DoneTasksTabTitle": "Виконані",
       "NoTaskListsFound": "Списки завдань не знайдено",
       "EnableNotification": "Нагадуємо про завдання",
-      "EnableColorMark": "Колір завдання"
+      "EnableColorMark": "Колір завдання",
+      "ModalSortingTitle": "Налаштування сортування",
+      "sortByModificationDate": "За датою зміни",
+      "sortByCreationDate": "За датою створення",
+      "sortByTitle": "За назвою",
+      "sortAscendingType": "За зростанням",
+      "sortDescendingType": "За зменшенням",
+      "taskAutosorting": "Автосортування завдань"
     },
     "addTaskScreen": {
       "HeaderTitle": "Нове завдання",
@@ -33,14 +41,29 @@
     },
     "editTaskScreen": {
       "HeaderTitle": "Зміна завдання",
-      "EditTaskInputSuptitle": "Текст завдання"
+      "EditTaskInputSuptitle": "Текст завдання",
+      "ModificationDate": "Дата зміни",
+      "CreationDate": "Дата створення"
     },
-    "signInScreen": {
+    "signInNavigator": {
       "SignIn": "Ввійти",
       "SignInWithButtonTitle": "Увійти через <0>{{text}}</0>",
+      "Email": "Eл. пошта",
+      "EmailAnotherDeclension": "Ел. пошту",
+      "Password": "Пароль",
+      "PasswordSubtext": "пароль повинен містити щонайменше 6 символів",
+      "SignInWithEmail": "Вхід через ел. пошту",
+      "RegisterAndSignIn": "Зареєструватися та увійти",
+      "Registration": "Реєстрація",
       "CancelAuthProcessModalTitle": "Користувач скасував процес входу в систему",
       "GettingAccessTokenErrorModalTitle": "Щось пішло не так при отриманні токену доступу",
-      "DeleteAccountSuccessfully": "Ваш обліковий запис було успішно видалено"
+      "DeleteAccountSuccessfully": "Ваш обліковий запис було успішно видалено",
+      "auth/email-already-in-use": "Ця ел. пошта вже використовується. Будь ласка, вкажіть іншу ел. пошту",
+      "auth/too-many-requests": "Забагато запитів. Повторіть спробу пізніше",
+      "auth/user-not-found": "Користувача з цією адресою ел. пошти не знайдено",
+      "auth/invalid-email": "Некоректна адреса ел. пошти",
+      "auth/weak-password": "Слабкий пароль. Пароль повинен містити щонайменше 6 символів",
+      "auth/wrong-password": "Невірний пароль"
     },
     "accountScreen": {
       "HeaderTitle": "Обліковий запис",
@@ -54,20 +77,35 @@
       "AccentColorModalTitle": "Виберіть акцентний колір",
       "AccentColorButtonTitle": "Акцентний колір",
       "ContactTheAuthorButtonTitle": "Зв'язатися з автором",
+      "AdjustTextSizesButtonTitle": "Розміри тексту",
       "RateAppButtonTitle": "Оцінити додаток",
       "ShareAppButtonTitle": "Поділитися додатком",
       "ShareAppMessage": "Я із задоволенням користуюся додатком ToDo List. Спробуй!"
     },
+    "adjustTextSizesScreen": {
+      "HeaderTitle": "Розміри тексту",
+      "TaskListSliderTitle": "Назва списку завдань",
+      "TaskSliderTitle": "Текст завдання",
+      "NotepadSliderTitle": "Текст блокнота",
+      "ModalWindowSliderTitle": "Текст модального вікна",
+      "ModalButtonSliderTitle": "Текст кнопок модального вікна",
+      "TaskListVisualExampleTitle": "Назва списку",
+      "TaskVisualExample1Text": "Короткий текст",
+      "TaskVisualExample2Text": "Середній текст завдання для кращого сприйняття тексту",
+      "TaskVisualExample3Text": "Довгий текст завдання, який був наданий для кращого сприйняття заданого вами розміру тексту завдання",
+      "NotepadVisualExampleText": "Приклад тексту блокнота, який був наданий вам для кращого сприйняття заданого розміру тексту блокнота",
+      "ModalVisualExampleText": "Приклад текстового повідомлення в модальному вікні, який був наданий для кращого сприйняття заданого вами розміру для текстового вмісту модального вікна"
+    },
     "contactTheAuthorScreen": {
       "HeaderTitle": "Зв'язок із автором",
-      "EmailSuptext": "Email",
-      "EmailSubtext": "На цей email буде надіслано відповідь",
+      "EmailSuptext": "Eлектронна пошта",
+      "EmailSubtext": "На цю адресу ел. пошти буде надіслано відповідь",
       "MessageSuptext": "Текст повідомлення",
       "SendButtonTitle": "Надіслати",
       "ContactTheAuthorSuccessModalTitle": "Дякуємо, ваше повідомлення надіслано. Автор зв'яжеться з вами найближчим часом",
-      "ContactTheAuthorErrorModalTitle": "Невідома помилка. Спробуйте ввести інший email",
-      "InvalidEmailErrorTitle": "Некоректний email",
-      "EmailRequiredErrorTitle": "Email обов'язковий",
+      "ContactTheAuthorErrorModalTitle": "Невідома помилка. Спробуйте ввести іншу адресу ел. пошти",
+      "InvalidEmailErrorTitle": "Некоректна адреса ел. пошти",
+      "EmailRequiredErrorTitle": "Ел. пошта обов'язкова",
       "MessageRequiredErrorTitle": "Текст повідомлення обов'язковий"
     },
     "notepadScreen": {

@@ -5,7 +5,7 @@ import { ColorType, ThemeType } from '@store/reducers/userReducer/types';
 
 type TaskScreenParamList = { isTodoScreen: boolean };
 
-export type TopTabParamListType = {
+export type TasksTopTabNavigatorParamListType = {
   [TASKS_NAVIGATOR_ROUTE.TODO_TASKS_SCREEN]: TaskScreenParamList;
   [TASKS_NAVIGATOR_ROUTE.DONE_TASKS_SCREEN]: TaskScreenParamList;
 };

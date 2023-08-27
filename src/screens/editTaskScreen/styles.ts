@@ -9,6 +9,7 @@ type EditTaskScreenStylesType = {
   colorPickerWrapper: ViewStyle;
   contentContainer: ViewStyle;
   contentWrapper: ViewStyle;
+  infoFieldsWrapper: ViewStyle;
 };
 
 export const editTaskScreenStyles = (props: ExtendedStylesPropsType) =>
@@ -27,10 +28,9 @@ export const editTaskScreenStyles = (props: ExtendedStylesPropsType) =>
     },
 
     colorPickerWrapper: {
-      height: 310,
+      height: 240,
       marginLeft: 4,
       marginTop: 25,
-      paddingBottom: 90,
     },
 
     contentContainer: {
@@ -42,5 +42,10 @@ export const editTaskScreenStyles = (props: ExtendedStylesPropsType) =>
       alignItems: 'center',
       paddingHorizontal: 18,
       paddingTop: 22,
+      paddingBottom: 50,
+    },
+
+    infoFieldsWrapper: {
+      marginTop: 40,
     },
   });

@@ -7,8 +7,10 @@ import { FIREBASE_PATH } from '@enums/firebaseEnum';
 import { cancelNotificationHelper } from '@helpers/cancelNotificationHelper';
 import { checkInternetConnectionHelper } from '@helpers/checkInternetConnectionHelper';
 import { createNotificationHelper } from '@helpers/createNotificationHelper';
+import { createFormattedDateHelper } from '@helpers/dateHelpers';
 import { generateNumberIDHelper } from '@helpers/generateNumberIDHelper';
 import { DB } from '@root/api/DB';
+import { FirebaseNotificationType } from '@root/types/firebase/firebaseTypes';
 import * as Sentry from '@sentry/react-native';
 import { editTaskNotificationAction } from '@store/actions/tasksReducerActions/notificationsActions/editTaskNotificationAction';
 import { setEditedTaskAction } from '@store/actions/tasksReducerActions/tasksActions/setEditedTaskAction';
@@ -30,6 +32,17 @@ import {
 } from '@store/selectors/userSelectors';
 import { call, cancel, delay, put, select } from 'redux-saga/effects';
 
+const {
+  COLOR_MARK,
+  IS_TODO,
+  TASK_LISTS,
+  TASKS,
+  TITLE,
+  USERS,
+  NOTIFICATIONS,
+  MODIFICATION_DATE,
+} = FIREBASE_PATH;
+
 export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
   const {
     goBack,
@@ -44,8 +57,6 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
     shouldSetColor,
     setColorMark,
   } = action.payload;
-
-  const { COLOR_MARK, TASK_LISTS, TASKS, TITLE, USERS } = FIREBASE_PATH;
 
   try {
     const internetConnectionStatus: string = yield call(checkInternetConnectionHelper);
@@ -129,7 +140,16 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
       ).update({ [TITLE]: editedTaskTitle });
     };
 
+    const currentDate = createFormattedDateHelper();
+
+    const sendTaskModificationDateToFirebase = () => {
+      return DB.ref(
+        `${USERS}/${userID}/${TASK_LISTS}/${taskListID}/${TASKS}/${taskID}`,
+      ).update({ [MODIFICATION_DATE]: currentDate });
+    };
+
     yield call(sendTaskTitleToFirebase);
+    yield call(sendTaskModificationDateToFirebase);
 
     const taskNotification = notifications.find((item) => {
       return taskID === item.taskID;
@@ -140,6 +160,22 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
       (shouldCreateNotification && notificationID) || !shouldCreateNotification;
 
     if (shouldDeleteNotificationCondition) {
+      const snapshot: SnapshotType = yield DB.ref(
+        `${USERS}/${userID}/${NOTIFICATIONS}/${IS_TODO}/${taskListID}/${taskID}`,
+      ).once('value');
+
+      const notificationData = snapshot.val();
+
+      if (notificationData) {
+        const removeTaskNotificationFromFirebase = () => {
+          return DB.ref(
+            `${USERS}/${userID}/${NOTIFICATIONS}/${IS_TODO}/${taskListID}/${taskID}`,
+          ).remove();
+        };
+
+        yield call(removeTaskNotificationFromFirebase);
+      }
+
       if (taskNotification && notificationID) {
         cancelNotificationHelper(notificationID);
       }
@@ -157,6 +193,21 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
 
     if (shouldCreateNotificationCondition) {
       const notificationID = generateNumberIDHelper(NOTIFICATION_ID_MAX_LENGTH);
+
+      const firebaseNotification: FirebaseNotificationType = {
+        date: date.toISOString(),
+        notificationID,
+        taskTitle: editedTaskTitle,
+        taskID,
+      };
+
+      const sendTaskNotificationToFirebase = () => {
+        return DB.ref(
+          `${USERS}/${userID}/${NOTIFICATIONS}/${IS_TODO}/${taskListID}/${taskID}`,
+        ).set(firebaseNotification);
+      };
+
+      yield call(sendTaskNotificationToFirebase);
 
       yield call(createNotificationHelper, {
         channelId,
@@ -183,6 +234,7 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
           editedTaskTitle,
           taskID,
           taskListID,
+          modificationDate: currentDate,
         }),
       );
 
@@ -194,6 +246,7 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
           editedTaskTitle,
           taskID,
           taskListID,
+          modificationDate: currentDate,
         }),
       );
 
@@ -204,6 +257,7 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
           editedTaskTitle,
           taskID,
           taskListID,
+          modificationDate: currentDate,
         }),
       );
 

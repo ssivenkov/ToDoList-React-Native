@@ -3,7 +3,9 @@ import { TaskListType, TaskType } from '@store/reducers/tasksReducer/types';
 import { ColorType } from '@store/reducers/userReducer/types';
 
 export type EditTaskTitleButtonPropsType = {
+  date: TaskType['date'];
   isTodo: boolean;
+  modificationDate: TaskType['modificationDate'];
   oldTaskTitle: TaskType['title'];
   setIsMenuHorizontalVisible: SetStateType<boolean>;
   taskID: TaskType['id'];

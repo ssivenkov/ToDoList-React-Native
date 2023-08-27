@@ -1,7 +1,14 @@
 import { ONLINE } from '@constants/constants';
+import { defaultSorting } from '@constants/defaultValues';
 import { FIREBASE_PATH } from '@enums/firebaseEnum';
 import { checkInternetConnectionHelper } from '@helpers/checkInternetConnectionHelper';
+import { createNotificationHelper } from '@helpers/createNotificationHelper';
 import { DB } from '@root/api/DB';
+import {
+  FirebaseListOfTaskListsNotificationsType,
+  FirebaseNotificationType,
+  FirebaseUserDataType,
+} from '@root/types/firebase/firebaseTypes';
 import * as Sentry from '@sentry/react-native';
 import { setNotepadTextAction } from '@store/actions/notepadReducerActions/setNotepadTextAction';
 import { setNotificationsAction } from '@store/actions/tasksReducerActions/notificationsActions/setNotificationsAction';
@@ -11,20 +18,35 @@ import { setGlobalLoaderAction } from '@store/actions/userReducerActions/setGlob
 import { setIsUserDataSynchronizedAction } from '@store/actions/userReducerActions/setIsUserDataSynchronizedAction';
 import { setLanguageAction } from '@store/actions/userReducerActions/setLanguageAction';
 import { setModalMessageAction } from '@store/actions/userReducerActions/setModalMessageAction';
+import { setTextSizesAction } from '@store/actions/userReducerActions/setTextSizesAction';
 import { setThemeAction } from '@store/actions/userReducerActions/setThemeAction';
 import {
-  TaskListBeforeConvertType,
   TaskListType,
   TaskListWithoutTasksType,
+  TasksReducerStateType,
 } from '@store/reducers/tasksReducer/types';
-import { SnapshotType, UserIDType } from '@store/reducers/userReducer/types';
-import { userIDSelector } from '@store/selectors/userSelectors';
+import {
+  ChannelIDType,
+  SnapshotType,
+  UserIDType,
+} from '@store/reducers/userReducer/types';
+import { channelIDSelector, userIDSelector } from '@store/selectors/userSelectors';
 import { darkTheme, lightTheme } from '@themes/themes';
-import { call, cancel, put, select } from 'redux-saga/effects';
+import { call, cancel, put, putResolve, select } from 'redux-saga/effects';
+
+const { IS_DONE, IS_TODO, NOTIFICATIONS, USERS } = FIREBASE_PATH;
+
+type DeleteTaskNotificationFromFirebaseParamsType = {
+  isTodo: boolean;
+  taskID: string;
+  taskListID: string;
+};
+
+type ExpiredNotificationsDataType = Array<
+  Pick<FirebaseNotificationType, 'taskID'> & DeleteTaskNotificationFromFirebaseParamsType
+>;
 
 export function* syncUserDataSaga() {
-  const { USERS } = FIREBASE_PATH;
-
   try {
     const internetConnectionStatus: string = yield call(checkInternetConnectionHelper);
 
@@ -40,49 +62,184 @@ export function* syncUserDataSaga() {
 
     const snapshot: SnapshotType = yield DB.ref(`${USERS}/${userID}`).once('value');
 
-    const userData = snapshot.val() && snapshot.val();
+    const userData: FirebaseUserDataType = snapshot.val();
     const theme = userData.darkMode ? darkTheme : lightTheme;
 
-    yield put(setLanguageAction({ language: userData.language }));
+    if (userData.language) {
+      yield put(setLanguageAction({ language: userData.language }));
+    }
 
-    yield put(
-      setAccentColorAction({
-        accentColor: userData.accentColor,
-      }),
-    );
+    if (userData.accentColor) {
+      yield put(
+        setAccentColorAction({
+          accentColor: userData.accentColor,
+        }),
+      );
+    }
 
     yield put(setThemeAction({ theme }));
 
+    if (
+      userData.textSizes &&
+      userData.textSizes.notepadTextSize &&
+      userData.textSizes.taskTextSize &&
+      userData.textSizes.taskListTitleSize &&
+      userData.textSizes.modalButtonTextSize &&
+      userData.textSizes.modalWindowTextSize
+    ) {
+      yield put(
+        setTextSizesAction({
+          modalButtonTextSize: userData.textSizes.modalButtonTextSize,
+          modalWindowTextSize: userData.textSizes.modalWindowTextSize,
+          taskListTitleSize: userData.textSizes.taskListTitleSize,
+          taskTextSize: userData.textSizes.taskTextSize,
+          notepadTextSize: userData.textSizes.notepadTextSize,
+        }),
+      );
+    }
+
     if (userData.taskLists) {
-      const userTaskListsObject = snapshot.val().taskLists;
-      // convert taskLists object to taskLists array
-      const userTaskListsBeforeConvert: TaskListBeforeConvertType[] =
-        Object.values(userTaskListsObject);
-      // convert tasks object in every taskLists to tasks array in every taskLists
-      const taskLists: TaskListType[] = userTaskListsBeforeConvert.map((taskList) => {
-        const { tasks } = taskList;
+      const userTaskListsObject: FirebaseUserDataType['taskLists'] =
+        snapshot.val().taskLists;
 
-        if (tasks) {
-          const taskListWithTasksAsArray: TaskListType = {
-            ...taskList,
-            tasks: Object.values(tasks),
-          };
+      if (userTaskListsObject) {
+        // convert taskLists object to taskLists array
+        const taskListsBeforeConvert = Object.values(userTaskListsObject);
 
-          return taskListWithTasksAsArray;
-        } else {
-          const oldTaskList: TaskListWithoutTasksType = { ...taskList };
+        // convert tasks object in every taskLists to tasks array in every taskLists
+        const taskLists: TaskListType[] = taskListsBeforeConvert.map((taskList) => {
+          const { tasks } = taskList;
 
-          return oldTaskList;
-        }
-      });
+          if (tasks) {
+            const taskListWithTasksAsArray: TaskListType = {
+              ...taskList,
+              tasks: Object.values(tasks).map((task) => {
+                if (!task.modificationDate) {
+                  return { ...task, modificationDate: task.date };
+                } else return task;
+              }),
+              sorting: taskList.sorting ?? defaultSorting,
+            };
 
-      yield put(setTaskListsAction({ taskLists }));
+            return taskListWithTasksAsArray;
+          } else {
+            const taskListWithoutTasks: TaskListWithoutTasksType = { ...taskList };
+
+            return taskListWithoutTasks;
+          }
+        });
+
+        yield put(setTaskListsAction({ taskLists }));
+      }
     } else {
       yield put(setTaskListsAction({ taskLists: [] }));
       yield put(setNotificationsAction({ notifications: [] }));
     }
 
-    if (userData.notepad && userData.notepad.notepadText) {
+    const channelId: ChannelIDType = yield select(channelIDSelector);
+
+    const unexpiredNotificationsData: FirebaseNotificationType[] = [];
+    const expiredNotificationsData: ExpiredNotificationsDataType = [];
+
+    if (userData.notifications) {
+      const currentDate = new Date();
+
+      const hasNotificationDateNotExpired = (date: FirebaseNotificationType['date']) => {
+        const taskDate = new Date(date);
+
+        return taskDate > currentDate;
+      };
+
+      const checkNotificationExpiration = (
+        listOfTaskListsNotifications:
+          | FirebaseListOfTaskListsNotificationsType
+          | undefined,
+        isTodo: boolean,
+      ) => {
+        if (!listOfTaskListsNotifications) return;
+
+        const taskListWithNotificationsIDArray = Object.keys(
+          listOfTaskListsNotifications,
+        );
+        const taskListWithNotificationsArray = Object.values(
+          listOfTaskListsNotifications,
+        );
+
+        for (
+          let taskListWithNotificationsIndex = 0;
+          taskListWithNotificationsIndex < taskListWithNotificationsArray.length;
+          taskListWithNotificationsIndex += 1
+        ) {
+          for (const notification of Object.values(
+            taskListWithNotificationsArray[taskListWithNotificationsIndex],
+          )) {
+            if (hasNotificationDateNotExpired(notification.date)) {
+              unexpiredNotificationsData.push(notification);
+            } else {
+              const { taskID } = notification;
+
+              expiredNotificationsData.push({
+                taskID,
+                isTodo,
+                taskListID:
+                  taskListWithNotificationsIDArray[taskListWithNotificationsIndex],
+              });
+            }
+          }
+        }
+      };
+
+      checkNotificationExpiration(userData.notifications.isTodo, true);
+      checkNotificationExpiration(userData.notifications.isDone, false);
+    }
+
+    if (expiredNotificationsData.length > 0) {
+      const deleteTaskNotificationFromFirebase = (
+        params: DeleteTaskNotificationFromFirebaseParamsType,
+      ) => {
+        const { isTodo, taskListID, taskID } = params;
+
+        return DB.ref(
+          `${USERS}/${userID}/${NOTIFICATIONS}/${
+            isTodo ? IS_TODO : IS_DONE
+          }/${taskListID}/${taskID}`,
+        ).remove();
+      };
+
+      for (let index = 0; index < expiredNotificationsData.length; index += 1) {
+        const taskID = expiredNotificationsData[index].taskID;
+        const taskListID = expiredNotificationsData[index].taskListID;
+        const isTodo = expiredNotificationsData[index].isTodo;
+
+        yield call(deleteTaskNotificationFromFirebase, { isTodo, taskListID, taskID });
+      }
+    }
+
+    if (unexpiredNotificationsData.length > 0) {
+      const unexpiredNotifications: TasksReducerStateType['notifications'] = [];
+
+      for (let index = 0; index < unexpiredNotificationsData.length; index += 1) {
+        const date = new Date(unexpiredNotificationsData[index].date);
+        const notificationID = unexpiredNotificationsData[index].notificationID;
+        const taskTitle = unexpiredNotificationsData[index].taskTitle;
+        const taskID = unexpiredNotificationsData[index].taskID;
+
+        if (!!date && !!notificationID && !!taskID && !!channelId) {
+          yield call(createNotificationHelper, {
+            channelId,
+            date,
+            notificationID,
+            taskTitle,
+          });
+
+          unexpiredNotifications.push({ date, notificationID, taskID });
+        }
+      }
+
+      yield putResolve(setNotificationsAction({ notifications: unexpiredNotifications }));
+    }
+
+    if (userData.notepad && userData.notepad.notepadText.length > 0) {
       yield put(setNotepadTextAction({ notepadText: userData.notepad.notepadText }));
     }
 

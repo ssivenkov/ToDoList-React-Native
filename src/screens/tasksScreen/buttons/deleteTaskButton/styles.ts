@@ -18,6 +18,5 @@ export const deleteTaskButtonStyles = (props: ExtendedStylesPropsType) =>
 
     warnText: {
       color: props.TEXT_COLOR,
-      fontSize: 18,
     },
   });

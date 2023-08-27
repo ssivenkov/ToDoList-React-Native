@@ -1,6 +1,6 @@
 import { ONLINE, START_ANIMATION_DELAY } from '@constants/constants';
 import { GoogleSignInCancelError, signInActionCanceled } from '@constants/errorMessages';
-import { userSignInErrors } from '@constants/errors';
+import { commonSignInErrors } from '@constants/errors';
 import { FIREBASE_OTHER } from '@enums/firebaseEnum';
 import { checkInternetConnectionHelper } from '@helpers/checkInternetConnectionHelper';
 import auth from '@react-native-firebase/auth';
@@ -43,7 +43,7 @@ export function* googleSignInSaga() {
     if (!idToken) {
       yield put(
         setModalMessageAction({
-          modalMessage: t('signInScreen.GettingAccessTokenErrorModalTitle'),
+          modalMessage: t('signInNavigator.GettingAccessTokenErrorModalTitle'),
         }),
       );
 
@@ -71,12 +71,12 @@ export function* googleSignInSaga() {
     ) {
       yield put(
         setModalMessageAction({
-          modalMessage: t('signInScreen.CancelAuthProcessModalTitle'),
+          modalMessage: t('signInNavigator.CancelAuthProcessModalTitle'),
         }),
       );
     } else if (error instanceof Error) {
       // @ts-ignore
-      if (userSignInErrors.includes(error.code)) {
+      if (commonSignInErrors.includes(error.code)) {
         yield cancel();
       }
 

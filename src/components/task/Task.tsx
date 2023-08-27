@@ -10,26 +10,36 @@ import { DeleteTaskButton } from '@screens/tasksScreen/buttons/deleteTaskButton/
 import { DoneTaskButton } from '@screens/tasksScreen/buttons/doneTaskButton/DoneTaskButton';
 import { EditTaskButton } from '@screens/tasksScreen/buttons/editTaskButton/EditTaskButton';
 import { ToDoTaskButton } from '@screens/tasksScreen/buttons/toDoTaskButton/ToDoTaskButton';
-import { themeSelector } from '@store/selectors/userSelectors';
+import { taskTextSizeSelector, themeSelector } from '@store/selectors/userSelectors';
 import { nanoid } from 'nanoid';
 import { Text, View } from 'react-native';
 import { useSelector } from 'react-redux';
 
 import { taskStyles } from './styles';
-import { IsMenuVisibleType, TaskPropsType } from './types';
+import { IsMenuHorizontalVisibleType, TaskPropsType } from './types';
+
+const { TRANSPARENT } = COLORS;
 
 export const Task = (props: TaskPropsType) => {
-  const { isTodo, taskListID, taskTitle, taskID, fullTaskList, colorMark } = props;
-
-  const { TRANSPARENT } = COLORS;
+  const {
+    isTodo,
+    taskListID,
+    taskTitle,
+    taskID,
+    fullTaskList,
+    colorMark,
+    modificationDate,
+    date,
+  } = props;
 
   const theme = useSelector(themeSelector);
+  const taskTextSize = useSelector(taskTextSizeSelector);
 
   const styles = useStyles(taskStyles);
   const menuHorizontalStyle = useStyles(menuHorizontalStyles);
 
   const [isMenuHorizontalVisible, setIsMenuHorizontalVisible] =
-    useState<IsMenuVisibleType>(false);
+    useState<IsMenuHorizontalVisibleType>(false);
 
   const onMenuButtonPress = () => {
     if (isMenuHorizontalVisible) {
@@ -38,14 +48,16 @@ export const Task = (props: TaskPropsType) => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={styles.taskContainer}>
       <MenuHorizontal
         buttons={
           <View style={styles.buttonsContainer}>
             <View style={menuHorizontalStyle.buttonWrapper}>
               <EditTaskButton
                 colorMark={colorMark}
+                date={date}
                 isTodo={isTodo}
+                modificationDate={modificationDate}
                 oldTaskTitle={taskTitle}
                 setIsMenuHorizontalVisible={setIsMenuHorizontalVisible}
                 taskID={taskID}
@@ -75,13 +87,13 @@ export const Task = (props: TaskPropsType) => {
           key={nanoid()}
           style={[styles.colorMark, { backgroundColor: colorMark || TRANSPARENT }]}
         />
-        <Text key={nanoid()} style={styles.text}>
+        <Text key={nanoid()} style={[styles.text, { fontSize: taskTextSize }]}>
           {taskTitle}
         </Text>
         {isTodo ? (
-          <DoneTaskButton taskListID={taskListID} toDoTaskID={taskID} />
+          <DoneTaskButton taskID={taskID} taskListID={taskListID} taskTitle={taskTitle} />
         ) : (
-          <ToDoTaskButton doneTaskID={taskID} taskListID={taskListID} />
+          <ToDoTaskButton taskID={taskID} taskListID={taskListID} taskTitle={taskTitle} />
         )}
       </MenuHorizontal>
     </View>

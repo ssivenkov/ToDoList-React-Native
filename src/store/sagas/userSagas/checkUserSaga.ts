@@ -1,6 +1,5 @@
 import { COLORS } from '@colors/colors';
 import { ONLINE } from '@constants/constants';
-import { EN } from '@constants/languages';
 import { FIREBASE_PATH } from '@enums/firebaseEnum';
 import { checkInternetConnectionHelper } from '@helpers/checkInternetConnectionHelper';
 import { DB } from '@root/api/DB';
@@ -15,15 +14,16 @@ import {
 } from '@store/reducers/userReducer/types';
 import {
   isUserDataSynchronizedSelector,
+  languageSelector,
   userIDSelector,
 } from '@store/selectors/userSelectors';
 import { isEmulator } from 'react-native-device-info';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
 import { call, cancel, put, select } from 'redux-saga/effects';
 
-export function* checkUserSaga() {
-  const { USERS } = FIREBASE_PATH;
+const { USERS } = FIREBASE_PATH;
 
+export function* checkUserSaga() {
   try {
     const internetConnectionStatus: string = yield call(checkInternetConnectionHelper);
 
@@ -44,6 +44,7 @@ export function* checkUserSaga() {
     const userID: UserIDType = yield select(userIDSelector);
     const isUserDataSynchronized: UserReducerStateType['isUserDataSynchronized'] =
       yield select(isUserDataSynchronizedSelector);
+    const language: UserReducerStateType['language'] = yield select(languageSelector);
 
     const snapshot: SnapshotType = yield DB.ref(`${USERS}/${userID}`).once('value');
 
@@ -52,8 +53,8 @@ export function* checkUserSaga() {
     if (!isUserExist && userID) {
       DB.ref(`${USERS}/${userID}`).set({
         accentColor: COLORS.ELECTRIC_VIOLET2,
-        darkTheme: false,
-        language: EN,
+        darkMode: false,
+        language: language,
         userToken: userID,
       });
     } else {

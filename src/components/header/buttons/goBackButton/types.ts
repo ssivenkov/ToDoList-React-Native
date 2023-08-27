@@ -1,3 +1,3 @@
-export type GoBackPropsType = {
+export type GoBackButtonPropsType = {
   customGoBack?: () => void;
 };

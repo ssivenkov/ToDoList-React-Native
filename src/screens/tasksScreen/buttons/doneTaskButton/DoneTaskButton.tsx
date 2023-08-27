@@ -14,7 +14,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { DoneTaskButtonPropsType, SetDoneTaskType } from './types';
 
 export const DoneTaskButton = (props: DoneTaskButtonPropsType) => {
-  const { taskListID, toDoTaskID } = props;
+  const { taskListID, taskID, taskTitle } = props;
 
   const dispatch = useDispatch();
 
@@ -25,8 +25,9 @@ export const DoneTaskButton = (props: DoneTaskButtonPropsType) => {
   const setDoneTask: SetDoneTaskType = (setScreenBlocking) => {
     dispatch(
       setTaskIsDoneAction({
-        toDoTaskID,
+        taskID,
         taskListID,
+        taskTitle,
         setTaskPending,
         setTaskScreenBlocking: setScreenBlocking,
         shouldCreateSnackBarEvent: true,

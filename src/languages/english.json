@@ -7,7 +7,8 @@
       "Select": "Select",
       "Close": "Close",
       "NoInternetConnection": "No internet connection. Please connect to the internet",
-      "NoIOSNotificationsPermission": "No permission for notifications. Grant the app permission to show notifications"
+      "NoIOSNotificationsPermission": "No permission for notifications. Grant the app permission to show notifications",
+      "UnknownError": "Unknown error"
     },
     "notification": {
       "TaskNotification": "Perform task"
@@ -25,7 +26,14 @@
       "DoneTasksTabTitle": "Done tasks",
       "NoTaskListsFound": "No task lists found",
       "EnableNotification": "Remind of the task",
-      "EnableColorMark": "Task color"
+      "EnableColorMark": "Task color",
+      "ModalSortingTitle": "Sorting settings",
+      "sortByModificationDate": "By modification date",
+      "sortByCreationDate": "By creation date",
+      "sortByTitle": "By title",
+      "sortAscendingType": "Ascending",
+      "sortDescendingType": "Descending",
+      "taskAutosorting": "Tasks autosorting"
     },
     "addTaskScreen": {
       "HeaderTitle": "New task",
@@ -33,14 +41,29 @@
     },
     "editTaskScreen": {
       "HeaderTitle": "Edit task",
-      "EditTaskInputSuptitle": "Task text"
+      "EditTaskInputSuptitle": "Task text",
+      "ModificationDate": "Modification date",
+      "CreationDate": "Creation date"
     },
-    "signInScreen": {
+    "signInNavigator": {
       "SignIn": "Sign in",
       "SignInWithButtonTitle": "Sign in with <0>{{text}}</0>",
+      "Email": "Email",
+      "EmailAnotherDeclension": "Email",
+      "Password": "Password",
+      "PasswordSubtext": "should be at least 6 characters",
+      "SignInWithEmail": "Sign in with email",
+      "RegisterAndSignIn": "Register and sign in",
+      "Registration": "Registration",
       "CancelAuthProcessModalTitle": "User cancelled the login process",
       "GettingAccessTokenErrorModalTitle": "Something went wrong obtaining access token",
-      "DeleteAccountSuccessfully": "Your account has been successfully deleted"
+      "DeleteAccountSuccessfully": "Your account has been successfully deleted",
+      "auth/email-already-in-use": "That email address is already in use. Please use another email address",
+      "auth/too-many-requests": "Too many requests. Please try again later",
+      "auth/user-not-found": "User with that email not found",
+      "auth/invalid-email": "Email address is invalid",
+      "auth/weak-password": "Password is weak. Password should be at least 6 characters",
+      "auth/wrong-password": "Invalid password"
     },
     "accountScreen": {
       "HeaderTitle": "Account",
@@ -54,9 +77,24 @@
       "AccentColorModalTitle": "Select accent color",
       "AccentColorButtonTitle": "Accent color",
       "ContactTheAuthorButtonTitle": "Contact the author",
+      "AdjustTextSizesButtonTitle": "Text sizes",
       "RateAppButtonTitle": "Rate the app",
       "ShareAppButtonTitle": "Share the app",
       "ShareAppMessage": "I enjoy using the ToDo List app. Try it!"
+    },
+    "adjustTextSizesScreen": {
+      "HeaderTitle": "Text sizes",
+      "TaskListSliderTitle": "Task list name",
+      "TaskSliderTitle": "Task text",
+      "NotepadSliderTitle": "Notepad text",
+      "ModalWindowSliderTitle": "Modal window text",
+      "ModalButtonSliderTitle": "Modal window buttons text",
+      "TaskListVisualExampleTitle": "Task list name",
+      "TaskVisualExample1Text": "Short text",
+      "TaskVisualExample2Text": "Medium task text for better text perception",
+      "TaskVisualExample3Text": "The long text of the task, which was provided for you to you to better perception the size of the task text you specified",
+      "NotepadVisualExampleText": "The long text of the notepad, which was provided for you to you to better perception the size of the notepad text you specified",
+      "ModalVisualExampleText": "An example of a text message in a modal window, which was provided for you to better perception the size you set for the text content of the modal window"
     },
     "contactTheAuthorScreen": {
       "HeaderTitle": "Contact the author",

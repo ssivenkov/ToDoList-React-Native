@@ -7,7 +7,8 @@
       "Select": "Wählen",
       "Close": "Schließen sie",
       "NoInternetConnection": "Keine internetverbindung. Bitte stellen sie eine verbindung mit dem internet her",
-      "NoIOSNotificationsPermission": "Keine berechtigung für benachrichtigungen. Erteilen sie der app die erlaubnis, benachrichtigungen anzuzeigen"
+      "NoIOSNotificationsPermission": "Keine berechtigung für benachrichtigungen. Erteilen sie der app die erlaubnis, benachrichtigungen anzuzeigen",
+      "UnknownError": "Unbekannter Fehler"
     },
     "notification": {
       "TaskNotification": "Aufgabe ausführen"
@@ -25,7 +26,14 @@
       "DoneTasksTabTitle": "Erledigte aufgaben",
       "NoTaskListsFound": "Keine aufgabenliste gefunden",
       "EnableNotification": "Erinnern sie an die aufgabe",
-      "EnableColorMark": "Farbe der aufgabe"
+      "EnableColorMark": "Farbe der aufgabe",
+      "ModalSortingTitle": "Sortiereinstellungen",
+      "sortByModificationDate": "Nach Änderungsdatum",
+      "sortByCreationDate": "Nach Erstellungsdatum",
+      "sortByTitle": "Namentlich",
+      "sortAscendingType": "Aufsteigend",
+      "sortDescendingType": "Absteigend",
+      "taskAutosorting": "Aufgaben automatisch sortieren"
     },
     "addTaskScreen": {
       "HeaderTitle": "Neue aufgabe",
@@ -33,14 +41,29 @@
     },
     "editTaskScreen": {
       "HeaderTitle": "Eine aufgabe ändern",
-      "EditTaskInputSuptitle": "Aufgabentext"
+      "EditTaskInputSuptitle": "Aufgabentext",
+      "ModificationDate": "Datum der Änderung",
+      "CreationDate": "Erstelldatum"
     },
-    "signInScreen": {
+    "signInNavigator": {
       "SignIn": "Einloggen",
       "SignInWithButtonTitle": "Einloggen über <0>{{text}}</0>",
+      "Email": "Email",
+      "EmailAnotherDeclension": "Email",
+      "Password": "Passwort",
+      "PasswordSubtext": "das Passwort muss mindestens 6 Zeichen enthalten",
+      "SignInWithEmail": "Melden Sie sich per Email an",
+      "RegisterAndSignIn": "Registrieren und anmelden",
+      "Registration": "Anmeldung",
       "CancelAuthProcessModalTitle": "Benutzer hat den anmeldevorgang abgebrochen",
       "GettingAccessTokenErrorModalTitle": "Beim abrufen des zugriffstokens ist etwas schief gelaufen",
-      "DeleteAccountSuccessfully": "Ihr Konto wurde erfolgreich gelöscht"
+      "DeleteAccountSuccessfully": "Ihr Konto wurde erfolgreich gelöscht",
+      "auth/email-already-in-use": "Diese Email adresse wird schon verwendet. Bitte geben Sie eine andere Email adresse ein",
+      "auth/too-many-requests": "Zu viele Anfragen. Bitte versuchen Sie es später noch einmal",
+      "auth/user-not-found": "Benutzer mit dieser Email wurde nicht gefunden",
+      "auth/invalid-email": "Falsche Email",
+      "auth/weak-password": "Schwaches Passwort. Das Passwort muss mindestens 6 Zeichen enthalten",
+      "auth/wrong-password": "Falsches Passwort"
     },
     "accountScreen": {
       "HeaderTitle": "Konto",
@@ -54,19 +77,34 @@
       "AccentColorModalTitle": "Akzentfarbe auswählen",
       "AccentColorButtonTitle": "Akzentfarbe",
       "ContactTheAuthorButtonTitle": "Kontaktieren sie den autor",
+      "AdjustTextSizesButtonTitle": "Textgrößen",
       "RateAppButtonTitle": "Bewerte die App",
       "ShareAppButtonTitle": "App teilen",
       "ShareAppMessage": "Ich benutze gerne die ToDo List App. Versuchen!"
     },
+    "adjustTextSizesScreen": {
+      "HeaderTitle": "Textgrößen",
+      "TaskListSliderTitle": "Name der Aufgabenliste",
+      "TaskSliderTitle": "Aufgabentext",
+      "NotepadSliderTitle": "Notizblocktext",
+      "ModalWindowSliderTitle": "Modaler Fenstertext",
+      "ModalButtonSliderTitle": "Modaler Schaltflächentext",
+      "TaskListVisualExampleTitle": "Listennamen",
+      "TaskVisualExample1Text": "Kurzer Text",
+      "TaskVisualExample2Text": "Mittlerer Aufgabentext für besseres Textverständnis",
+      "TaskVisualExample3Text": "Der Langtext der Aufgabe, der Ihnen gegeben wurde, um den Umfang des von Ihnen angegebenen Aufgabentextes besser zu verstehen",
+      "NotepadVisualExampleText": "Ein Beispiel für Notizblocktext, der Ihnen bereitgestellt wurde, damit Sie die von Ihnen festgelegte Notizblocktextgröße besser verstehen",
+      "ModalVisualExampleText": "Ein Beispiel für eine Textnachricht in einem modalen Fenster, das Ihnen bereitgestellt wurde, damit Sie die Größe, die Sie für den Textinhalt des modalen Fensters festlegen, besser verstehen"
+    },
     "contactTheAuthorScreen": {
       "HeaderTitle": "Kommunikation mit dem autor",
       "EmailSuptext": "Email",
-      "EmailSubtext": "Eine antwort wird an diese email gesendet",
+      "EmailSubtext": "Eine antwort wird an diese Email gesendet",
       "MessageSuptext": "Nachrichtentext",
       "SendButtonTitle": "Schicken",
       "ContactTheAuthorSuccessModalTitle": "Vielen dank! Ihre nachricht wurde gesendet. Der autor wird sie in kürze kontaktieren",
-      "ContactTheAuthorErrorModalTitle": "Unbekannter fehler. Bitte versuchen sie, eine andere email adresse einzugeben",
-      "InvalidEmailErrorTitle": "Ungültige email adresse",
+      "ContactTheAuthorErrorModalTitle": "Unbekannter fehler. Bitte versuchen sie, eine andere Email adresse einzugeben",
+      "InvalidEmailErrorTitle": "Ungültige Email adresse",
       "EmailRequiredErrorTitle": "Email erforderlich",
       "MessageRequiredErrorTitle": "Nachrichtentext erforderlich"
     },

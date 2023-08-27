@@ -8,6 +8,7 @@ export type HeaderStylesType = {
   headerTitle: ViewStyle;
   leftButtonContainer: ViewStyle;
   rightButtonContainer: ViewStyle;
+  transparentHeader: ViewStyle;
 };
 
 const buttonPaddingLong = 13;
@@ -18,6 +19,13 @@ export const headerStyles = (props: ExtendedStylesPropsType) =>
     header: {
       alignItems: 'center',
       backgroundColor: props.darkMode ? `${props.ACCENT_COLOR}CC` : props.ACCENT_COLOR,
+      flexDirection: 'row',
+      height: headerHeight,
+      justifyContent: 'space-between',
+    },
+
+    transparentHeader: {
+      alignItems: 'center',
       flexDirection: 'row',
       height: headerHeight,
       justifyContent: 'space-between',

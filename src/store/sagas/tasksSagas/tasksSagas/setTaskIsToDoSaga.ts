@@ -1,34 +1,42 @@
-import { moveTaskInDone } from '@components/snackBar/actions';
+import { MOVE_TASK_IN_DONE } from '@components/snackBar/actions';
 import { ONLINE, START_ANIMATION_DELAY } from '@constants/constants';
 import { FIREBASE_PATH } from '@enums/firebaseEnum';
-import { cancelNotificationHelper } from '@helpers/cancelNotificationHelper';
 import { checkInternetConnectionHelper } from '@helpers/checkInternetConnectionHelper';
+import { createNotificationHelper } from '@helpers/createNotificationHelper';
+import { createFormattedDateHelper } from '@helpers/dateHelpers';
 import { DB } from '@root/api/DB';
+import { FirebaseNotificationType } from '@root/types/firebase/firebaseTypes';
 import * as Sentry from '@sentry/react-native';
 import { addSnackBarEventAction } from '@store/actions/snackBarActions/addSnackBarEventAction';
 import { deleteTaskNotificationAction } from '@store/actions/tasksReducerActions/notificationsActions/deleteTaskNotificationAction';
-import { setTaskIsToDoAction } from '@store/actions/tasksReducerActions/tasksActions/setTaskIsToDoAction';
+import { setTaskTodoStatusAction } from '@store/actions/tasksReducerActions/tasksActions/setTaskTodoStatusAction';
 import { SetTaskIsToDoSagaActionReturnType } from '@store/actions/tasksSagaActions/tasksSagasActions/setTaskIsToDoAction';
 import { setModalMessageAction } from '@store/actions/userReducerActions/setModalMessageAction';
 import { SnackBarEventType } from '@store/reducers/snackBarReducer/types';
 import { NotificationType } from '@store/reducers/tasksReducer/types';
-import { UserIDType } from '@store/reducers/userReducer/types';
+import {
+  ChannelIDType,
+  SnapshotType,
+  UserIDType,
+} from '@store/reducers/userReducer/types';
 import { notificationsSelector } from '@store/selectors/tasksSelectors';
-import { userIDSelector } from '@store/selectors/userSelectors';
+import { channelIDSelector, userIDSelector } from '@store/selectors/userSelectors';
 import { call, cancel, delay, put, select } from 'redux-saga/effects';
+
+const { IS_DONE, IS_TODO, NOTIFICATIONS, TASK_LISTS, TASKS, USERS, MODIFICATION_DATE } =
+  FIREBASE_PATH;
 
 export function* setTaskIsToDoSaga(action: SetTaskIsToDoSagaActionReturnType) {
   const {
-    doneTaskID,
+    taskID,
     taskListID,
+    taskTitle,
     setTaskPending,
     setSnackBarCancelPending,
     setTaskScreenBlocking,
     shouldCreateSnackBarEvent,
     setSnackBarCancelFulfilled,
   } = action.payload;
-
-  const { IS_DONE, TASK_LISTS, TASKS, USERS } = FIREBASE_PATH;
 
   try {
     if (setTaskPending) {
@@ -56,33 +64,96 @@ export function* setTaskIsToDoSaga(action: SetTaskIsToDoSagaActionReturnType) {
     }
 
     const userID: UserIDType = yield select(userIDSelector);
+    const channelId: ChannelIDType = yield select(channelIDSelector);
 
     const setTaskIsToDoInFirebase = () => {
       return DB.ref(
-        `${USERS}/${userID}/${TASK_LISTS}/${taskListID}/${TASKS}/${doneTaskID}`,
+        `${USERS}/${userID}/${TASK_LISTS}/${taskListID}/${TASKS}/${taskID}`,
       ).update({ [IS_DONE]: false });
     };
 
     yield call(setTaskIsToDoInFirebase);
 
+    const currentDateForTask = createFormattedDateHelper();
+
+    const sendTaskModificationDateToFirebase = () => {
+      return DB.ref(
+        `${USERS}/${userID}/${TASK_LISTS}/${taskListID}/${TASKS}/${taskID}`,
+      ).update({ [MODIFICATION_DATE]: currentDateForTask });
+    };
+
+    yield call(sendTaskModificationDateToFirebase);
+
     const notifications: NotificationType[] = yield select(notificationsSelector);
 
     const taskNotification = notifications.find((item) => {
-      return doneTaskID === item.taskID;
+      return taskID === item.taskID;
     });
 
     const notificationID = taskNotification?.notificationID;
 
-    if (taskNotification && notificationID) {
-      cancelNotificationHelper(notificationID);
+    const doneSnapshot: SnapshotType = yield DB.ref(
+      `${USERS}/${userID}/${NOTIFICATIONS}/${IS_DONE}/${taskListID}/${taskID}`,
+    ).once('value');
+
+    const doneTaskListNotificationsData = doneSnapshot.val();
+
+    if (doneTaskListNotificationsData) {
+      const removeDoneTaskNotificationFromFirebase = () => {
+        return DB.ref(
+          `${USERS}/${userID}/${NOTIFICATIONS}/${IS_DONE}/${taskListID}/${taskID}`,
+        ).remove();
+      };
+
+      yield call(removeDoneTaskNotificationFromFirebase);
     }
 
-    yield put(deleteTaskNotificationAction({ taskID: doneTaskID }));
+    const currentDateForNotification = new Date();
+    const deleteTaskNotificationCondition =
+      taskNotification &&
+      taskNotification.date &&
+      taskNotification.date <= currentDateForNotification;
+
+    // createTaskNotificationCondition
+    if (
+      taskNotification &&
+      notificationID &&
+      taskNotification.date &&
+      taskNotification.date > currentDateForNotification
+    ) {
+      const firebaseNotification: FirebaseNotificationType = {
+        date: taskNotification.date.toISOString(),
+        notificationID,
+        taskTitle,
+        taskID,
+      };
+
+      const sendTodoTaskNotificationToFirebase = () => {
+        return DB.ref(
+          `${USERS}/${userID}/${NOTIFICATIONS}/${IS_TODO}/${taskListID}/${taskID}`,
+        ).set(firebaseNotification);
+      };
+
+      yield call(sendTodoTaskNotificationToFirebase);
+
+      yield call(createNotificationHelper, {
+        channelId,
+        date: taskNotification.date,
+        notificationID,
+        taskTitle,
+      });
+    }
+
+    if (deleteTaskNotificationCondition) {
+      yield put(deleteTaskNotificationAction({ taskID }));
+    }
 
     yield put(
-      setTaskIsToDoAction({
-        doneTaskID,
+      setTaskTodoStatusAction({
+        taskID,
         taskListID,
+        isDone: false,
+        modificationDate: currentDateForTask,
       }),
     );
 
@@ -92,10 +163,11 @@ export function* setTaskIsToDoSaga(action: SetTaskIsToDoSagaActionReturnType) {
 
     if (shouldCreateSnackBarEvent) {
       const event: SnackBarEventType = {
-        taskID: doneTaskID,
+        taskID,
         taskListID,
+        taskTitle,
         snackBarUntranslatedText: 'snackBar.taskIsToDo',
-        action: moveTaskInDone,
+        action: MOVE_TASK_IN_DONE,
       };
 
       yield put(addSnackBarEventAction({ event }));

@@ -7,7 +7,8 @@
       "Select": "選ぶ",
       "Close": "閉じる",
       "NoInternetConnection": "インターネットに接続できない インターネットに接続してください",
-      "NoIOSNotificationsPermission": "通知の許可がない アプリに通知を表示する許可を与える"
+      "NoIOSNotificationsPermission": "通知の許可がない アプリに通知を表示する許可を与える",
+      "UnknownError": "不明なエラー"
     },
     "notification": {
       "TaskNotification": "タスクを実行する"
@@ -25,7 +26,14 @@
       "DoneTasksTabTitle": "完了したタスク",
       "NoTaskListsFound": "タスクリストが見つかりません",
       "EnableNotification": "タスクの再認識",
-      "EnableColorMark": "タスクカラー"
+      "EnableColorMark": "タスクカラー",
+      "ModalSortingTitle": "並べ替え設定",
+      "sortByModificationDate": "変更日順",
+      "sortByCreationDate": "作成日順",
+      "sortByTitle": "名前で",
+      "sortAscendingType": "上昇",
+      "sortDescendingType": "降順",
+      "taskAutosorting": "タスクの自動並べ替え"
     },
     "addTaskScreen": {
       "HeaderTitle": "新しい仕事",
@@ -33,14 +41,29 @@
     },
     "editTaskScreen": {
       "HeaderTitle": "タスクの変更",
-      "EditTaskInputSuptitle": "タスク テキスト"
+      "EditTaskInputSuptitle": "タスク テキスト",
+      "ModificationDate": "変更日",
+      "CreationDate": "作成日"
     },
-    "signInScreen": {
+    "signInNavigator": {
       "SignIn": "サインイン",
       "SignInWithButtonTitle": "でサインインしてください。 <0>{{text}}</0>",
+      "Email": "メール",
+      "EmailAnotherDeclension": "メール",
+      "Password": "パスワード",
+      "PasswordSubtext": "パスワードには少なくとも6文字を含める必要があります",
+      "SignInWithEmail": "メールでログインする 郵便",
+      "RegisterAndSignIn": "登録してログインする",
+      "Registration": "登録",
       "CancelAuthProcessModalTitle": "ユーザーがログイン処理をキャンセルした",
       "GettingAccessTokenErrorModalTitle": "アクセストークンの取得に失敗しました",
-      "DeleteAccountSuccessfully": "あなたのアカウントは正常に削除されました"
+      "DeleteAccountSuccessfully": "あなたのアカウントは正常に削除されました",
+      "auth/email-already-in-use": "この電子メールは既に利用されています。 別のメールアドレスを入力してください",
+      "auth/too-many-requests": "リクエストが多すぎます。 後でもう一度試してください",
+      "auth/user-not-found": "このメールアドレスを持つユーザーが見つかりません",
+      "auth/invalid-email": "正しくないメールアドレス",
+      "auth/weak-password": "弱いパスワード。 パスワードには少なくとも6文字を含める必要があります",
+      "auth/wrong-password": "パスワードが間違っています"
     },
     "accountScreen": {
       "HeaderTitle": "アカウント",
@@ -54,9 +77,24 @@
       "AccentColorModalTitle": "アクセントカラーを選択",
       "AccentColorButtonTitle": "アクセントカラー",
       "ContactTheAuthorButtonTitle": "著者に連絡する",
+      "AdjustTextSizesButtonTitle": "文字サイズ",
       "RateAppButtonTitle": "アプリを評価する",
       "ShareAppButtonTitle": "アプリを共有",
       "ShareAppMessage": "ToDo List アプリを楽しんでいます。 試す！"
+    },
+    "adjustTextSizesScreen": {
+      "HeaderTitle": "文字サイズ",
+      "TaskListSliderTitle": "タスクリスト名",
+      "TaskSliderTitle": "タスクテキスト",
+      "NotepadSliderTitle": "メモ帳のテキスト",
+      "ModalWindowSliderTitle": "モーダルウィンドウのテキスト",
+      "ModalButtonSliderTitle": "モーダルボタンのテキスト",
+      "TaskListVisualExampleTitle": "リスト名",
+      "TaskVisualExample1Text": "短いテキスト",
+      "TaskVisualExample2Text": "文章を理解しやすくするための中程度のタスクテキスト",
+      "TaskVisualExample3Text": "タスクの長いテキスト。指定したタスクのテキストのサイズをよりよく理解するために提供されます。",
+      "NotepadVisualExampleText": "設定したメモ帳のテキスト サイズをよりよく理解するために提供されたメモ帳のテキストの例",
+      "ModalVisualExampleText": "モーダル ウィンドウ内のテキスト メッセージの例。モーダル ウィンドウのテキスト コンテンツに設定したサイズをよりよく理解するために提供されています。"
     },
     "contactTheAuthorScreen": {
       "HeaderTitle": "著者に連絡する",

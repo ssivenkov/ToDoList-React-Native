@@ -7,7 +7,8 @@
       "Select": "Choisir",
       "Close": "Fermer",
       "NoInternetConnection": "Pas de connexion internet. Veuillez vous connecter à l'internet",
-      "NoIOSNotificationsPermission": "Pas d'autorisation pour les notifications. Donnez à l'application la permission d'afficher des notifications"
+      "NoIOSNotificationsPermission": "Pas d'autorisation pour les notifications. Donnez à l'application la permission d'afficher des notifications",
+      "UnknownError": "Erreur inconnue"
     },
     "notification": {
       "TaskNotification": "Effectuer la tâche"
@@ -25,7 +26,14 @@
       "DoneTasksTabTitle": "Tâches effectuées",
       "NoTaskListsFound": "Aucune liste de tâches trouvée",
       "EnableNotification": "Rappeler la tâche",
-      "EnableColorMark": "Couleur de la tâche"
+      "EnableColorMark": "Couleur de la tâche",
+      "ModalSortingTitle": "Paramètres de tri",
+      "sortByModificationDate": "Par date de modification",
+      "sortByCreationDate": "Par date de création",
+      "sortByTitle": "Par de nom",
+      "sortAscendingType": "Ascendant",
+      "sortDescendingType": "Descendant",
+      "taskAutosorting": "Tâches de tri automatique"
     },
     "addTaskScreen": {
       "HeaderTitle": "Nouvelle tâche",
@@ -33,14 +41,29 @@
     },
     "editTaskScreen": {
       "HeaderTitle": "Modification d'une tâche",
-      "EditTaskInputSuptitle": "Texte de la tâche"
+      "EditTaskInputSuptitle": "Texte de la tâche",
+      "ModificationDate": "Date du changement",
+      "CreationDate": "Date de création"
     },
-    "signInScreen": {
+    "signInNavigator": {
       "SignIn": "Se connecter",
       "SignInWithButtonTitle": "Se connecter avec <0>{{text}}</0>",
+      "Email": "Email",
+      "EmailAnotherDeclension": "Email",
+      "Password": "Mot de passe",
+      "PasswordSubtext": "le mot de passe doit contenir au moins 6 caractères",
+      "SignInWithEmail": "Connectez-vous par email",
+      "RegisterAndSignIn": "S'inscrire et se connecter",
+      "Registration": "Inscription",
       "CancelAuthProcessModalTitle": "L'utilisateur a annulé le processus de connexion",
       "GettingAccessTokenErrorModalTitle": "Un problème est survenu lors de l'obtention du jeton d'accès",
-      "DeleteAccountSuccessfully": "Votre compte a été supprimé avec succès"
+      "DeleteAccountSuccessfully": "Votre compte a été supprimé avec succès",
+      "auth/email-already-in-use": "Cette adresse email mail est déjà utilisé. Veuillez saisir une autre adresse email",
+      "auth/too-many-requests": "Trop de demandes. Veuillez réessayer plus tard",
+      "auth/user-not-found": "Utilisateur avec cette adresse email courrier introuvable",
+      "auth/invalid-email": "Adresse email invalide",
+      "auth/weak-password": "Mot de passe faible. Le mot de passe doit contenir au moins 6 caractères",
+      "auth/wrong-password": "Mot de passe incorrect"
     },
     "accountScreen": {
       "HeaderTitle": "Compte",
@@ -54,9 +77,24 @@
       "AccentColorModalTitle": "Sélectionnez la couleur d'accentuation",
       "AccentColorButtonTitle": "Couleur d'accentuation",
       "ContactTheAuthorButtonTitle": "Contacter l'auteur",
+      "AdjustTextSizesButtonTitle": "Tailles de texte",
       "RateAppButtonTitle": "Évaluer l'application",
       "ShareAppButtonTitle": "Partager l'application",
       "ShareAppMessage": "J'aime utiliser l'application ToDo List. Essayer!"
+    },
+    "adjustTextSizesScreen": {
+      "HeaderTitle": "Tailles de texte",
+      "TaskListSliderTitle": "Nom de la liste des tâches",
+      "TaskSliderTitle": "Texte de la tâche",
+      "NotepadSliderTitle": "Texte du bloc-notes",
+      "ModalWindowSliderTitle": "Texte de la fenêtre modale",
+      "ModalButtonSliderTitle": "Texte du bouton modal",
+      "TaskListVisualExampleTitle": "Liste de noms",
+      "TaskVisualExample1Text": "Texte court",
+      "TaskVisualExample2Text": "Texte de tâche moyenne pour une meilleure compréhension du texte",
+      "TaskVisualExample3Text": "Le texte long de la tâche, qui vous a été donné pour mieux comprendre la taille du texte de la tâche que vous avez spécifié",
+      "NotepadVisualExampleText": "Un exemple de texte du bloc-notes qui vous a été fourni pour mieux comprendre la taille du texte du bloc-notes que vous avez définie",
+      "ModalVisualExampleText": "Un exemple de message texte dans une fenêtre modale, qui vous a été fourni pour mieux comprendre la taille que vous avez définie pour le contenu textuel de la fenêtre modale"
     },
     "contactTheAuthorScreen": {
       "HeaderTitle": "Contacter l'auteur",
