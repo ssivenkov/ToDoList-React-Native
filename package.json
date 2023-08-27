@@ -1,6 +1,6 @@
 {
   "name": "todolist",
-  "version": "1.5.0",
+  "version": "1.10.0",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
@@ -121,7 +121,7 @@
     "app_dependencies_Windows": "cd android && gradlew app:dependencies"
   },
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=16"
   },
   "jest": {
     "preset": "react-native"
