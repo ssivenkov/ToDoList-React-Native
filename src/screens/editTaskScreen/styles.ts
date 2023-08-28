@@ -42,7 +42,7 @@ export const editTaskScreenStyles = (props: ExtendedStylesPropsType) =>
       alignItems: 'center',
       paddingHorizontal: 18,
       paddingTop: 22,
-      paddingBottom: 50,
+      paddingBottom: 120,
     },
 
     infoFieldsWrapper: {
