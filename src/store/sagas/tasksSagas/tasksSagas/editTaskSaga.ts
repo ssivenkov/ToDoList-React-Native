@@ -52,9 +52,9 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
     taskID,
     taskListID,
     date,
-    shouldCreateNotification,
-    colorMark,
+    shouldSetNotification,
     shouldSetColor,
+    colorMark,
     setColorMark,
   } = action.payload;
 
@@ -157,7 +157,7 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
     const notificationID = taskNotification?.notificationID;
 
     const shouldDeleteNotificationCondition =
-      (shouldCreateNotification && notificationID) || !shouldCreateNotification;
+      (shouldSetNotification && notificationID) || !shouldSetNotification;
 
     if (shouldDeleteNotificationCondition) {
       const snapshot: SnapshotType = yield DB.ref(
@@ -189,9 +189,9 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
       );
     }
 
-    const shouldCreateNotificationCondition = shouldCreateNotification && date;
+    const shouldSetNotificationCondition = shouldSetNotification && date;
 
-    if (shouldCreateNotificationCondition) {
+    if (shouldSetNotificationCondition) {
       const notificationID = generateNumberIDHelper(NOTIFICATION_ID_MAX_LENGTH);
 
       const firebaseNotification: FirebaseNotificationType = {

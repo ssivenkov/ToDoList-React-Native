@@ -10,8 +10,8 @@ export type SetEditedTaskSagaPayloadType = {
   setColorMark: SetStateType<ColorType>;
   setEditedTaskTitle: SetStateType<string>;
   setIsLoading: SetStateType<boolean>;
-  shouldCreateNotification: boolean;
   shouldSetColor: boolean;
+  shouldSetNotification: boolean;
   taskID: TaskType['id'];
   taskListID: TaskListType['id'];
 
