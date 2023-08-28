@@ -239,6 +239,8 @@ export const tasksReducer = (
 
                 if (colorMark) {
                   modifiedTask.colorMark = colorMark;
+                } else if (modifiedTask.colorMark) {
+                  delete modifiedTask.colorMark;
                 }
 
                 return modifiedTask;

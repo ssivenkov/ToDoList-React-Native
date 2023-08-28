@@ -52,9 +52,9 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
     taskID,
     taskListID,
     date,
-    shouldCreateNotification,
-    colorMark,
+    shouldSetNotification,
     shouldSetColor,
+    colorMark,
     setColorMark,
   } = action.payload;
 
@@ -81,16 +81,16 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
         `${USERS}/${userID}/${TASK_LISTS}/${taskListID}/${TASKS}/${taskID}/${COLOR_MARK}`,
       ).once('value');
 
-      const isColorMarkExist = typeof colorMarkSnapshot.val() === 'string';
+      const isColorMarkFromSnapshotExist = typeof colorMarkSnapshot.val() === 'string';
 
-      if (isColorMarkExist) {
-        const sendTaskColorToFirebase = () => {
+      if (isColorMarkFromSnapshotExist) {
+        const updateTaskColorOnFirebase = () => {
           return DB.ref(
             `${USERS}/${userID}/${TASK_LISTS}/${taskListID}/${TASKS}/${taskID}`,
           ).update({ [COLOR_MARK]: colorMark ?? selectedColor });
         };
 
-        yield call(sendTaskColorToFirebase);
+        yield call(updateTaskColorOnFirebase);
       } else {
         const taskSnapshot: SnapshotType = yield DB.ref(
           `${USERS}/${userID}/${TASK_LISTS}/${taskListID}/${TASKS}/${taskID}`,
@@ -142,14 +142,14 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
 
     const currentDate = createFormattedDateHelper();
 
-    const sendTaskModificationDateToFirebase = () => {
+    const updateTaskModificationDateOnFirebase = () => {
       return DB.ref(
         `${USERS}/${userID}/${TASK_LISTS}/${taskListID}/${TASKS}/${taskID}`,
       ).update({ [MODIFICATION_DATE]: currentDate });
     };
 
     yield call(sendTaskTitleToFirebase);
-    yield call(sendTaskModificationDateToFirebase);
+    yield call(updateTaskModificationDateOnFirebase);
 
     const taskNotification = notifications.find((item) => {
       return taskID === item.taskID;
@@ -157,7 +157,7 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
     const notificationID = taskNotification?.notificationID;
 
     const shouldDeleteNotificationCondition =
-      (shouldCreateNotification && notificationID) || !shouldCreateNotification;
+      (shouldSetNotification && notificationID) || !shouldSetNotification;
 
     if (shouldDeleteNotificationCondition) {
       const snapshot: SnapshotType = yield DB.ref(
@@ -189,9 +189,9 @@ export function* editTaskSaga(action: SetEditedTaskActionSagaReturnType) {
       );
     }
 
-    const shouldCreateNotificationCondition = shouldCreateNotification && date;
+    const shouldSetNotificationCondition = shouldSetNotification && date;
 
-    if (shouldCreateNotificationCondition) {
+    if (shouldSetNotificationCondition) {
       const notificationID = generateNumberIDHelper(NOTIFICATION_ID_MAX_LENGTH);
 
       const firebaseNotification: FirebaseNotificationType = {
