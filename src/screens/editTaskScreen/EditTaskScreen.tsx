@@ -64,9 +64,13 @@ export const EditTaskScreen = () => {
   const taskNotification = notifications.find((item) => item.taskID === taskID);
 
   const [editedTaskTitle, setEditedTaskTitle] = useState<TaskType['title']>(oldTaskTitle);
-  const [date, setDate] = useState<Nullable<Date>>(taskNotification?.date ?? null);
+  const [date, setDate] = useState<Nullable<Date>>(
+    (taskNotification?.date && new Date(taskNotification?.date)) ?? null,
+  );
   const [isNotificationSwitcherOn, setIsNotificationSwitcherOn] = useState<boolean>(
-    !!taskNotification?.date && taskNotification.date > currentDate,
+    !!taskNotification &&
+      !!taskNotification.date &&
+      new Date(taskNotification.date) > currentDate,
   );
   const [isColorPickerSwitcherOn, setIsColorPickerSwitcherOn] = useState<boolean>(
     !!colorMark ?? false,
